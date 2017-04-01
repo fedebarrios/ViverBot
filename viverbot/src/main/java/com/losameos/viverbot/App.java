@@ -19,6 +19,6 @@ public class App
     {
     	//VerDetallesEspecie_Controller controladorPlanta = new VerDetallesEspecie_Controller(new EspecieDTO("rosas","blancas","mascara.jpg"));
     	//AltaEspecie_Controller controladorAlta = new AltaEspecie_Controller();
-    	BajaEspecie_Controller controladorBaja = new BajaEspecie_Controller();
+    	//BajaEspecie_Controller controladorBaja = new BajaEspecie_Controller();
     }
 }
