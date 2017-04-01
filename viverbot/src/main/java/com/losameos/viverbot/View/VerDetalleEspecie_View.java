@@ -1,4 +1,4 @@
-package com.ViveroBot.View;
+package com.losameos.viverbot.View;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

@@ -1,4 +1,4 @@
-package com.ViveroBot.View;
+package com.losameos.viverbot.View;
 
 import java.awt.Color;
 import java.awt.Font;

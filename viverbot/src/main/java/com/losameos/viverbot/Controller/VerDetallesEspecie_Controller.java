@@ -1,11 +1,11 @@
-package com.ViveroBot.Controller;
+package com.losameos.viverbot.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import com.ViveroBot.View.VerDetalleEspecie_View;
-import com.ViveroBot.dto.EspecieDTO;
+import com.losameos.viverbot.View.VerDetalleEspecie_View;
+import com.losameos.viverbot.dto.EspecieDTO;
 
 public class VerDetallesEspecie_Controller implements ActionListener {
 
