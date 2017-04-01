@@ -2,13 +2,20 @@ package com.losameos.viverbot.Model.Sensores;
 
 import java.util.Calendar;
 
+import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class SensorTemperatura {
 	
 	
+	public SensorTemperatura(){
+		
+	}
+	
+	
 	public Temperatura getMedicion(){
-		return this.obtenerTemmperatura();
+		
+		return obtenerTemmperatura(); 
 	}
 
 	private Temperatura obtenerTemmperatura() {
@@ -16,9 +23,8 @@ public class SensorTemperatura {
 	}
 
 	private Temperatura SimularTemperatura() {
-		Calendar calendar =  Calendar.getInstance();
-		Double minutoActual = (double) calendar.get(Calendar.MINUTE);
-		Temperatura ret =  new Temperatura(minutoActual);
+		
+		Temperatura ret =  new Temperatura((double)Hora.obtenerHoraActual().getMinuto());
 		return ret;
 	}
 

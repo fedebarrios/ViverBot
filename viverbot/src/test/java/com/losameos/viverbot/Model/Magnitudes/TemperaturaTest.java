@@ -23,7 +23,7 @@ public class TemperaturaTest extends TestCase {
 
 	public void testGetValor() {
 		inicialize();
-		assertTrue(valorTest == temperaturaTest.getValor());
+		assertTrue(valorTest.equals(temperaturaTest.getValor()));
 		clear();
 	}
 
