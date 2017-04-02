@@ -7,6 +7,7 @@ import com.losameos.viverbot.Controller.AltaEspecie_Controller;
 import com.losameos.viverbot.Controller.BajaEspecie_Controller;
 import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
 import com.losameos.viverbot.Controller.Medicion.Temperatura.ColectorTemperatura;
+import com.losameos.viverbot.Controller.Verificacion.Temperatura.TransmisorTemperatura;
 import com.losameos.viverbot.dto.EspecieDTO;
 
 
@@ -34,7 +35,11 @@ public class App
 
 	private static void controlarTemperatura() {
 		ColectorTemperatura colector = new ColectorTemperatura();
-		colector.run();
+		Thread hiloColector =  new Thread(colector);
+		hiloColector.start();
+		
+		Thread hiloTransmisor = new Thread( new TransmisorTemperatura(colector));
+		hiloTransmisor.start();
 		
 	}
 }

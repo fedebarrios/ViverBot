@@ -4,9 +4,9 @@ import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Sensores.SensorTemperatura;
 
-public class ColectorTemperatura extends Thread {
-	SensorTemperatura sensor;
-	Temperatura temperaturaActual;
+public class ColectorTemperatura implements Runnable {
+	private SensorTemperatura sensor;
+	private Temperatura temperaturaActual;
 	private static long frecuenciaDeRepeticion = 10000; // se expresa en
 														// millisegundos
 	private static long inicio = 0;
@@ -16,19 +16,19 @@ public class ColectorTemperatura extends Thread {
 		this.temperaturaActual = null;
 	}
 
-	public void run() {
-		tomarMedicion();
-	}
-
 	private void tomarMedicion() {
 		setearTiempoInicio();
-
+		medirTemperatura();
 		while (true) {
 			if (verificarTiempoTranscurrido()) {
-				this.temperaturaActual = this.sensor.getMedicion();
+				medirTemperatura();
 				setearTiempoInicio();
 			}
 		}
+	}
+
+	private void medirTemperatura() {
+		this.temperaturaActual = this.sensor.getMedicion();
 	}
 
 	private boolean verificarTiempoTranscurrido() {
@@ -42,5 +42,11 @@ public class ColectorTemperatura extends Thread {
 	public Temperatura obtenerTemperatura() {
 
 		return this.temperaturaActual;
+	}
+
+	@Override
+	public void run() {
+		tomarMedicion();
+
 	}
 }
