@@ -13,14 +13,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-public class BajaEspecie_View extends JFrame{
+public class BajaEspecie extends JFrame{
 
 	private JPanel contentPane;
 	private JComboBox comboBox;
 	private JButton btnCancelar;
 	private JButton btnBorrar;	
 	
-	public BajaEspecie_View(BajaEspecie_Controller controlador){
+	public BajaEspecie(BajaEspecie_Controller controlador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 200);
 		setTitle("Baja de Especie");

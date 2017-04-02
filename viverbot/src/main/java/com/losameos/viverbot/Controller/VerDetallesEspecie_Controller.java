@@ -4,21 +4,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import com.losameos.viverbot.View.VerDetalleEspecie_View;
+import com.losameos.viverbot.Model.Plantas;
+import com.losameos.viverbot.View.VerDetalleEspecie;
 import com.losameos.viverbot.dto.EspecieDTO;
+import com.losameos.viverbot.dto.PlantaDTO;
 
 public class VerDetallesEspecie_Controller implements ActionListener {
 
 	
-	 private VerDetalleEspecie_View vistaVerDetalle;
+	 private VerDetalleEspecie vistaVerDetalle;
+	 private Plantas plantas;
 	 
 	 public VerDetallesEspecie_Controller(EspecieDTO especie)
 	 {
-		 vistaVerDetalle = new VerDetalleEspecie_View();
-		 vistaVerDetalle.visible(true);
-		 vistaVerDetalle.getPanel().llenarTabla(obtenerPlantas());
-		 
+		 vistaVerDetalle = new VerDetalleEspecie(this);
+		 plantas = new Plantas();
+		 vistaVerDetalle.visible(true);		 
 		 cargarDatosEspecie(especie);
+		 llenarTabla();
+		 
 		
 	 }
 	 
@@ -28,22 +32,44 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		 vistaVerDetalle.setImagenEspecie(especie.getUrlImage());
 		 
 	}
+	 
+	private void llenarTabla()
+	{
+		//aca va el nombre de la especie recibida que 'exista'
+		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas("especie3");
+		for(PlantaDTO p: listadoPlantas)
+		{
+			Object[] obj = { p.getUbicacion().getFila(), p.getUbicacion().getColumna()};
+			vistaVerDetalle.getPanel().agregarFila(obj);
 
-	private ArrayList<Object[]> obtenerPlantas(){ 
-		 
-		 //levantar del archivo :: las plantas de tal especie
-	 	ArrayList<Object[]> menues = new ArrayList<Object[]>();
-			for (int i=0; i<10; i++) {
-				
-					Object[] o = { "hola", "50", 23};
-					menues.add(o);
-			}
-		return menues;
-	 }
+		}
+	}
+
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
+			if(e.getSource() == vistaVerDetalle.getBtnRevivir())
+			{
+				System.out.println(vistaVerDetalle.filaSeleccionada());
+			}
+			
+		}
+
+		public VerDetalleEspecie getVistaVerDetalle() {
+			return vistaVerDetalle;
+		}
+
+		public void setVistaVerDetalle(VerDetalleEspecie vistaVerDetalle) {
+			this.vistaVerDetalle = vistaVerDetalle;
+		}
+
+		public Plantas getPlantas() {
+			return plantas;
+		}
+
+		public void setPlantas(Plantas plantas) {
+			this.plantas = plantas;
 		}
 	
 		

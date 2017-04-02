@@ -12,15 +12,17 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-public class ListaPlantaDeEspecie_Panel extends JPanel{
+import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
+
+public class ListaPlantaDeEspecie extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private JLabel listadoPlantas;
 	private JTable table;
-	private String[] nombreColumnas = { "Codigo", "Ubicacion","Fecha de plantado" };
+	private String[] nombreColumnas = { "Fila", "Columna" };
 	private DefaultTableModel Muestra;
 	
-	public ListaPlantaDeEspecie_Panel(){
+	public ListaPlantaDeEspecie(VerDetallesEspecie_Controller controlador){
 		super();
 		this.setBounds(21, 261, 378, 176);
 		this.setLayout(null);
@@ -45,6 +47,8 @@ public class ListaPlantaDeEspecie_Panel extends JPanel{
 		Muestra = new DefaultTableModel(null, nombreColumnas)
 		{
 
+		private static final long serialVersionUID = 1L;
+
 		@Override
 		public boolean isCellEditable(int row, int col)
 			{
@@ -61,17 +65,38 @@ public class ListaPlantaDeEspecie_Panel extends JPanel{
 		table.getTableHeader().setFont(new Font("Segoe Print", Font.PLAIN, 12));	
 		table.getTableHeader().setBackground(Color.GREEN);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
 		scrollPane.setViewportView(table);
+		
 		
 		
 	}
 	
-	public void llenarTabla(ArrayList<Object[]> matriz) {
-
-		for (int i = 0; i < matriz.size(); i++) {
-			Muestra.addRow(matriz.get(i));
-		}
+	public void agregarFila(Object[] obj)
+	{
+		Muestra.addRow(obj);
 	}
+
+	public JLabel getListadoPlantas() {
+		return listadoPlantas;
+	}
+
+	public void setListadoPlantas(JLabel listadoPlantas) {
+		this.listadoPlantas = listadoPlantas;
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	
+	public int filaSeleccionada()
+	{
+		return this.table.getSelectedRow();
+	}
+	
+	
 
 }

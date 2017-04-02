@@ -10,19 +10,18 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import com.losameos.viverbot.Model.Inventario;
-import com.losameos.viverbot.View.AltaEspecie_View;
-import com.losameos.viverbot.View.VerDetalleEspecie_View;
+import com.losameos.viverbot.View.AltaEspecie;
 import com.losameos.viverbot.dto.EspecieDTO;
 
 public class AltaEspecie_Controller implements ActionListener{
 	
-	private AltaEspecie_View altaVista;
+	private AltaEspecie altaVista;
 	public Inventario inventario;
 	
 	public AltaEspecie_Controller()
 	 {
 		this.inventario = new Inventario();
-		this.altaVista = new AltaEspecie_View(this);
+		this.altaVista = new AltaEspecie(this);
 		this.altaVista.setVisible(true);
 	 }
 

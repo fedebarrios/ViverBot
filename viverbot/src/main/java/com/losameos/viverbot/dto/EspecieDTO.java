@@ -8,7 +8,7 @@ public class EspecieDTO {
 	
 	public EspecieDTO(String nombre, String nombreC, String imagen)
 	{
-		this.nombre = nombre;
+		this.nombre = nombre; 
 		this.nombreCientifico = nombreC;
 		this.urlImage = imagen;
 	}

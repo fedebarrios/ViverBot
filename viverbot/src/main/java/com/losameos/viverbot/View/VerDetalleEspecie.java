@@ -1,27 +1,21 @@
 package com.losameos.viverbot.View;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.ScrollPane;
-import java.util.ArrayList;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
+
+import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
+import javax.swing.JButton;
 
-public class VerDetalleEspecie_View extends JFrame {
+public class VerDetalleEspecie extends JFrame {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel descripcionEspecie;
@@ -29,12 +23,15 @@ public class VerDetalleEspecie_View extends JFrame {
 	private JLabel llegoNombre;
 	private JLabel nombreCientificoEspecie;
 	private JLabel imagenEspecie;
-	private ListaPlantaDeEspecie_Panel panel;
+	private ListaPlantaDeEspecie panel;
 	private JLabel llegoNombreC;
+	private JButton btnRevivir;
+	private JButton btnEliminar;
 	
 
 
-	public VerDetalleEspecie_View() {
+	public VerDetalleEspecie(VerDetallesEspecie_Controller controlador) {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 465, 463);
 		contentPane = new JPanel();
@@ -49,7 +46,7 @@ public class VerDetalleEspecie_View extends JFrame {
 		contentPane.add(descripcionEspecie);
 		
 		imagenEspecie = new JLabel("");
-		imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie_View.class.getResource("/Recursos/mascara.jpg")));
+		imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie.class.getResource("/Recursos/mascara.jpg")));
 		imagenEspecie.setBounds(23, 63, 163, 143);
 		contentPane.add(imagenEspecie);
 		
@@ -61,8 +58,8 @@ public class VerDetalleEspecie_View extends JFrame {
 		nombreCientificoEspecie.setBounds(205, 115, 139, 16);
 		contentPane.add(nombreCientificoEspecie);
 		
-		panel = new ListaPlantaDeEspecie_Panel();
-		panel.setBounds(20, 220, 360, 203);
+		panel = new ListaPlantaDeEspecie(controlador);
+		panel.setBounds(20, 220, 360, 165);
 		contentPane.add(panel);
 		
 		JPanel panel_1 = new JPanel();
@@ -78,6 +75,16 @@ public class VerDetalleEspecie_View extends JFrame {
 		llegoNombreC.setBounds(265, 134, 139, 16);
 		contentPane.add(llegoNombreC);
 		
+		btnRevivir = new JButton("Revivir");
+		btnRevivir.setBounds(27, 397, 117, 29);
+		contentPane.add(btnRevivir);
+		btnRevivir.addActionListener(controlador);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(149, 397, 117, 29);
+		contentPane.add(btnEliminar);
+		btnEliminar.addActionListener(controlador);
+		
 
 	}
 
@@ -85,12 +92,12 @@ public class VerDetalleEspecie_View extends JFrame {
 	{
 		this.setVisible(valor);
 	}
-	public ListaPlantaDeEspecie_Panel getPanel() {
+	public ListaPlantaDeEspecie getPanel() {
 		return panel;
 	}
 
 
-	public void setPanel(ListaPlantaDeEspecie_Panel panel) {
+	public void setPanel(ListaPlantaDeEspecie panel) {
 		this.panel = panel;
 	}
 
@@ -115,10 +122,28 @@ public class VerDetalleEspecie_View extends JFrame {
 	}
 
 	public void setImagenEspecie(String imagenEspecie) {
-		this.imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie_View.class.getResource("/Recursos/"+imagenEspecie)));
+		this.imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie.class.getResource("/Recursos/"+imagenEspecie)));
+	}
+
+	public JButton getBtnRevivir() {
+		return btnRevivir;
+	}
+
+	public void setBtnRevivir(JButton btnRevivir) {
+		this.btnRevivir = btnRevivir;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public void setBtnEliminar(JButton btnEliminar) {
+		this.btnEliminar = btnEliminar;
 	}
 	
-	
-	
+	public int filaSeleccionada()
+	{
+		return panel.filaSeleccionada(); 
+	}
 	
 }

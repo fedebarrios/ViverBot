@@ -10,7 +10,7 @@ import com.losameos.viverbot.Controller.AltaEspecie_Controller;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class AltaEspecie_View extends JFrame{
+public class AltaEspecie extends JFrame{
 	
 	private JPanel contentPane;
 	private JLabel ingreseDatos;
@@ -24,7 +24,9 @@ public class AltaEspecie_View extends JFrame{
 	private JButton cancelar_btn;
 	private JTextField imagen_tf;
 	
-	public AltaEspecie_View(AltaEspecie_Controller controlador){
+
+
+	public AltaEspecie(AltaEspecie_Controller controlador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 300);
 		setTitle("Alta de Especie");
