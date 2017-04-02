@@ -17,17 +17,22 @@ public class ColectorTemperatura extends Thread {
 	}
 
 	public void run() {
-		setearTiempoInicio();
 		tomarMedicion();
 	}
 
 	private void tomarMedicion() {
+		setearTiempoInicio();
+
 		while (true) {
-			if (Hora.tiempoTranscurrido(inicio) >= frecuenciaDeRepeticion) {
+			if (verificarTiempoTranscurrido()) {
 				this.temperaturaActual = this.sensor.getMedicion();
 				setearTiempoInicio();
 			}
 		}
+	}
+
+	private boolean verificarTiempoTranscurrido() {
+		return Hora.tiempoTranscurrido(inicio) >= frecuenciaDeRepeticion;
 	}
 
 	private void setearTiempoInicio() {

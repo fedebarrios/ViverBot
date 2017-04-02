@@ -2,12 +2,16 @@ package com.losameos.viverbot.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import com.losameos.viverbot.Model.Inventario;
 import com.losameos.viverbot.View.AltaEspecie_View;
+import com.losameos.viverbot.View.VerDetalleEspecie_View;
 import com.losameos.viverbot.dto.EspecieDTO;
 
 public class AltaEspecie_Controller implements ActionListener{
@@ -36,20 +40,18 @@ public class AltaEspecie_Controller implements ActionListener{
 				JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
 			}
 			else {
-				EspecieDTO nuevaEspecie = new EspecieDTO( nombreEspecie , nombreCientifico , "");
+				String pathAlmacenado = copiar(this.altaVista.getImagen_tf().getText(), nombreEspecie);
+				EspecieDTO nuevaEspecie = new EspecieDTO( nombreEspecie , nombreCientifico , pathAlmacenado);
 				this.inventario.agregarEspecie(nuevaEspecie);
 				JOptionPane.showMessageDialog(this.altaVista, "Se guardo correctamente la nueva especie");
-				/*ArrayList<EspecieDTO> esp= inventario.obtenerEspecies();
-				for(int i = 0; i<esp.size() ; i++) {
-					System.out.println("Iteracion: "+i);
-					System.out.println(esp.get(i).getNombre());
-					System.out.println(esp.get(i).getNombreCientifico());
-				}*/
+				this.altaVista.getNombreEspecie_tf().setText("");
+				this.altaVista.getNombreCientifico_tf().setText("");
+				this.altaVista.getImagen_tf().setText("");
 			}
 		}		
 	}
 	
-	public boolean validar (String s){
+	private boolean validar (String s){
 		for (int i = 0; i<s.length() ; i++){
 			if( s.charAt(i) == '0') return false;
 			if( s.charAt(i) == '1') return false;
@@ -64,5 +66,13 @@ public class AltaEspecie_Controller implements ActionListener{
 		}
 		return true;
 	}
-
+	
+	 private String copiar(String origen, String destino){
+	        File archivoOrigen = new File(origen);
+	        String extension = origen.substring(origen.length()-4, origen.length());
+	        String pathNuevo = "src/main/java/Recursos/"+destino+extension;
+	        File archivoDestino = new File(pathNuevo);
+	        archivoOrigen.renameTo(archivoDestino);
+	        return pathNuevo;
+	 }
 }

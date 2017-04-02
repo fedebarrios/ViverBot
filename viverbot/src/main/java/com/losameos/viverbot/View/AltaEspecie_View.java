@@ -15,12 +15,14 @@ public class AltaEspecie_View extends JFrame{
 	private JPanel contentPane;
 	private JLabel ingreseDatos;
 	private JLabel nombreEspecie;
+	private JLabel lblImagen;
 	private JLabel nombreCientificoEspecie;
 	private JTextField nombreEspecie_tf;
 	private JTextField nombreCientifico_tf;
 	//private JLabel Foto;
 	private JButton guardar_btn;
 	private JButton cancelar_btn;
+	private JTextField imagen_tf;
 	
 	public AltaEspecie_View(AltaEspecie_Controller controlador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,6 +40,10 @@ public class AltaEspecie_View extends JFrame{
 		this.nombreEspecie = new JLabel("Nombre");
 		this.nombreEspecie.setBounds(10, 50, 110, 16);
 		contentPane.add(this.nombreEspecie);
+		
+		this.lblImagen = new JLabel("Imagen");
+		this.lblImagen.setBounds(10, 150, 110, 14);
+		contentPane.add(lblImagen);
 		
 		this.nombreCientificoEspecie = new JLabel("Nombre Cientifico");
 		this.nombreCientificoEspecie.setBounds(10, 100, 110, 16);
@@ -62,6 +68,11 @@ public class AltaEspecie_View extends JFrame{
 		this.cancelar_btn.setBounds(128, 227, 89, 23);
 		contentPane.add(this.cancelar_btn);
 		this.cancelar_btn.addActionListener(controlador);
+		
+		this.imagen_tf = new JTextField();
+		this.imagen_tf.setBounds(140, 147, 176, 20);
+		contentPane.add(imagen_tf);
+		this.imagen_tf.setColumns(10);
 	}
 
 	public JTextField getNombreEspecie_tf() {
@@ -95,4 +106,14 @@ public class AltaEspecie_View extends JFrame{
 	public void setCancelar_btn(JButton cancelar_btn) {
 		this.cancelar_btn = cancelar_btn;
 	}
+
+	public JTextField getImagen_tf() {
+		return imagen_tf;
+	}
+
+	public void setImagen_tf(JTextField imagen_tf) {
+		this.imagen_tf = imagen_tf;
+	}
+	
+	
 }
