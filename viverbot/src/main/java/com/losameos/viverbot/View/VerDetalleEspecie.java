@@ -46,7 +46,7 @@ public class VerDetalleEspecie extends JFrame {
 		contentPane.add(descripcionEspecie);
 		
 		imagenEspecie = new JLabel("");
-		imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie.class.getResource("/Recursos/mascara.jpg")));
+		imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie.class.getResource("/Recursos/rosa.jpg")));
 		imagenEspecie.setBounds(23, 63, 163, 143);
 		contentPane.add(imagenEspecie);
 		

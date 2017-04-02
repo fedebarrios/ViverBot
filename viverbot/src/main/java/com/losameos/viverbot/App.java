@@ -25,9 +25,9 @@ public class App
     	
     	//capas este metodo deberia ser una clase que maneje todo el ciclo referido desde que se toma
     	//la temperatura hasta que se toma alguna accion.
-    	controlarTemperatura();
+    	//controlarTemperatura();
 
-    	VerDetallesEspecie_Controller controladorPlanta = new VerDetallesEspecie_Controller(new EspecieDTO("rosas","blancas","mascara.jpg"));
+    	VerDetallesEspecie_Controller controladorPlanta = new VerDetallesEspecie_Controller(new EspecieDTO("especie1","blancas","rosa.jpg"));
     	AltaEspecie_Controller controladorAlta = new AltaEspecie_Controller();
     	BajaEspecie_Controller controladorBaja = new BajaEspecie_Controller();
 

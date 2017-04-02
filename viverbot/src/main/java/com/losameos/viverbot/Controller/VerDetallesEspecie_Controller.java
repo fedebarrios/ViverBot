@@ -21,7 +21,7 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		 plantas = new Plantas();
 		 vistaVerDetalle.visible(true);		 
 		 cargarDatosEspecie(especie);
-		 llenarTabla();
+		 llenarTabla(especie);
 		 
 		
 	 }
@@ -33,10 +33,10 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		 
 	}
 	 
-	private void llenarTabla()
+	private void llenarTabla(EspecieDTO especie)
 	{
-		//aca va el nombre de la especie recibida que 'exista'
-		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas("especie3");
+	
+		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas(especie.getNombre());
 		for(PlantaDTO p: listadoPlantas)
 		{
 			Object[] obj = { p.getUbicacion().getFila(), p.getUbicacion().getColumna()};
@@ -52,6 +52,10 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 			if(e.getSource() == vistaVerDetalle.getBtnRevivir())
 			{
 				System.out.println(vistaVerDetalle.filaSeleccionada());
+			}
+			else if(e.getSource() == vistaVerDetalle.getBtnEliminar())
+			{
+				
 			}
 			
 		}
