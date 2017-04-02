@@ -33,4 +33,13 @@ public class Hora {
 		return segundo;
 	}
 
+	public static long instanteActual() {
+		return System.currentTimeMillis();
+	}
+
+	public static long tiempoTranscurrido(long inicio) {
+		// TODO Auto-generated method stub
+		return Hora.instanteActual() - inicio;
+	}
+
 }

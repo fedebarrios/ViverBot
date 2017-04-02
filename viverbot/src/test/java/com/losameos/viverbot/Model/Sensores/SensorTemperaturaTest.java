@@ -1,45 +1,60 @@
 package com.losameos.viverbot.Model.Sensores;
 
-import com.losameos.viverbot.Model.Hora;
+import java.util.Scanner;
+
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 import junit.framework.TestCase;
 
 public class SensorTemperaturaTest extends TestCase {
-	private static Double valorTest = 15.00;
-	private static Temperatura temperaturaTest = null;
-	private static SensorTemperatura  sensorTest = null;
-	private static Temperatura temperaturaActualTest=  null;
-	
-	public void testSensor(){
+	private static SensorTemperatura sensorTest = null;
+	private static Temperatura temperaturaActualTest = null;
+
+	public void testSensor() {
 		inicialize();
 		assertNotNull(sensorTest);
 		clear();
 	}
 
-	public void testGetMedicionVerificarClase(){
+	public void testGetMedicionVerificarClase() {
 		inicialize();
 		assertTrue(sensorTest.getMedicion() instanceof Temperatura);
 		clear();
 	}
-	
+
 	public void testGetMedicion() {
 		inicialize();
-		Double temperaturaActual= (double)Hora.obtenerHoraActual().getMinuto();
+		System.out.println("ingrese la temperatura actual");
+		ingresarTemperatura();
+
 		assertTrue(sensorTest.getMedicion().getValor().equals(temperaturaActualTest.getValor()));
 		clear();
-		}
+	}
 	
-	
-	
+	public void testGetMedicionErronea() {
+		inicialize();
+		System.out.println("ingrese una temperatura que no sea la actual");
+		ingresarTemperatura();
+
+		assertFalse(sensorTest.getMedicion().getValor().equals(temperaturaActualTest.getValor()));
+		clear();
+	}
+
+	private void ingresarTemperatura() {
+		Scanner s = new Scanner(System.in);
+		Double valorIngresado = s.nextDouble();
+		temperaturaActualTest = new Temperatura(valorIngresado);
+
+	}
+
 	private void inicialize() {
-		temperaturaTest = new Temperatura(valorTest);
-		temperaturaActualTest = new Temperatura((double)Hora.obtenerHoraActual().getMinuto());
+		temperaturaActualTest = null;
 		sensorTest = new SensorTemperatura();
 	}
 
 	private void clear() {
-		temperaturaTest = null;
+		temperaturaActualTest = null;
+
 		sensorTest = null;
 
 	}
