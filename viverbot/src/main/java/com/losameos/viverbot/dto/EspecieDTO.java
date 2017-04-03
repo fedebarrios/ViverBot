@@ -1,4 +1,4 @@
-package com.losameos.viverbot.dto;
+package com.losameos.viverbot.DTO;
 
 public class EspecieDTO {
 	

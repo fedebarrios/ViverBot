@@ -1,17 +1,17 @@
-package com.losameos.viverbot.Dao;
+package com.losameos.viverbot.DAO;
 
 import java.util.ArrayList;
 
+import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.Model.Tupla;
 import com.losameos.viverbot.Model.Ubicacion;
-import com.losameos.viverbot.dto.EspecieDTO;
-import com.losameos.viverbot.dto.PlantaDTO;
 
-public class PlantaDao {
+public class PlantaDAO {
 	
 	private ArrayList<Tupla> itemPlanta;
 	
-	public PlantaDao()
+	public PlantaDAO()
 	{
 		itemPlanta = new ArrayList<Tupla>();
 		inicializar();
