@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.Model.Plantas;
 import com.losameos.viverbot.Model.Ubicacion;
-import com.losameos.viverbot.dto.PlantaDTO;
 
 public class PlantasTest {
 	

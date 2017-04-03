@@ -1,8 +1,8 @@
-package com.losameos.viverbot.Dao;
+package com.losameos.viverbot.DAO;
 
 import java.util.ArrayList;
 
-import com.losameos.viverbot.dto.EspecieDTO;
+import com.losameos.viverbot.DTO.EspecieDTO;
 
 public class EspecieDao {
 	

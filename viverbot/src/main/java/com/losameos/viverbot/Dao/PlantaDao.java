@@ -1,11 +1,11 @@
-package com.losameos.viverbot.Dao;
+package com.losameos.viverbot.DAO;
 
 import java.util.ArrayList;
 
+import com.losameos.viverbot.DTO.EspecieDTO;
 import com.losameos.viverbot.Model.Tupla;
 import com.losameos.viverbot.Model.Ubicacion;
-import com.losameos.viverbot.dto.EspecieDTO;
-import com.losameos.viverbot.dto.PlantaDTO;
+import com.losameos.viverbot.DTO.PlantaDTO;
 
 public class PlantaDao {
 	

@@ -1,4 +1,4 @@
-package com.losameos.viverbot.dto;
+package com.losameos.viverbot.DTO;
 
 import org.hamcrest.core.IsNull;
 

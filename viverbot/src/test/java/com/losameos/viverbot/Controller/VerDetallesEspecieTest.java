@@ -2,10 +2,10 @@ package com.losameos.viverbot.Controller;
 
 import org.junit.Test;
 
+import com.losameos.viverbot.DAO.EspecieDao;
+import com.losameos.viverbot.DTO.EspecieDTO;
 import com.losameos.viverbot.Model.Plantas;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
-import com.losameos.viverbot.dto.EspecieDTO;
-
 import junit.framework.TestCase;
 
 

@@ -8,7 +8,7 @@ import com.losameos.viverbot.Controller.BajaEspecie_Controller;
 import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
 import com.losameos.viverbot.Controller.Medicion.Temperatura.ColectorTemperatura;
 import com.losameos.viverbot.Controller.Verificacion.Temperatura.TransmisorTemperatura;
-import com.losameos.viverbot.dto.EspecieDTO;
+import com.losameos.viverbot.DTO.EspecieDTO;
 
 
 
@@ -25,7 +25,7 @@ public class App
     	
     	//capas este metodo deberia ser una clase que maneje todo el ciclo referido desde que se toma
     	//la temperatura hasta que se toma alguna accion.
-    	//controlarTemperatura();
+    	controlarTemperatura();
 
     	VerDetallesEspecie_Controller controladorPlanta = new VerDetallesEspecie_Controller(new EspecieDTO("especie0","blancas","rosa.jpg"));
     	AltaEspecie_Controller controladorAlta = new AltaEspecie_Controller();

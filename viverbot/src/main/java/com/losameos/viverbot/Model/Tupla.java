@@ -2,8 +2,8 @@ package com.losameos.viverbot.Model;
 
 import java.util.ArrayList;
 
-import com.losameos.viverbot.dto.EspecieDTO;
-import com.losameos.viverbot.dto.PlantaDTO;
+import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverbot.DTO.PlantaDTO;
 
 public class Tupla {
 	

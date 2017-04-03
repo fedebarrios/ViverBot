@@ -2,8 +2,8 @@ package com.losameos.viverbot.Model;
 
 import java.util.ArrayList;
 
-import com.losameos.viverbot.Dao.EspecieDao;
-import com.losameos.viverbot.dto.EspecieDTO;
+import com.losameos.viverbot.DAO.EspecieDao;
+import com.losameos.viverbot.DTO.EspecieDTO;
 
 public class Inventario {
 	private EspecieDao especieDao;

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
+import com.losameos.viverbot.DTO.EspecieDTO;
 import com.losameos.viverbot.Model.Inventario;
 import com.losameos.viverbot.View.BajaEspecie;
-import com.losameos.viverbot.dto.EspecieDTO;
 
 public class BajaEspecie_Controller implements ActionListener{
 	private BajaEspecie bajaVista;
