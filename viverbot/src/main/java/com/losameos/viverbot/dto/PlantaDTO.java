@@ -1,4 +1,4 @@
-package com.losameos.viverbot.DTO;
+package com.losameos.viverbot.dto;
 
 import com.losameos.viverbot.Model.Ubicacion;
 

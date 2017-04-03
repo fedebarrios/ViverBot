@@ -1,14 +1,14 @@
-package com.losameos.viverbot.DAO;
+package com.losameos.viverbot.Dao;
 
 import java.util.ArrayList;
 
-import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverbot.dto.EspecieDTO;
 
-public class EspecieDAO {
+public class EspecieDao {
 	
 	private ArrayList<EspecieDTO> especies ;
 	
-	public EspecieDAO() {
+	public EspecieDao() {
 		this.especies = new ArrayList<EspecieDTO>();
 		this.especies.add(new EspecieDTO("Rosa","Rosus",""));
 		this.especies.add(new EspecieDTO("Margarita","Margaritus",""));
