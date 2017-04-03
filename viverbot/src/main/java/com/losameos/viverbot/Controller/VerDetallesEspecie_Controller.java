@@ -21,7 +21,7 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		 plantas = new Plantas();
 		 vistaVerDetalle.visible(true);		 
 		 cargarDatosEspecie(especie);
-		 llenarTabla();
+		 llenarTabla(especie);
 		 
 		
 	 }
@@ -33,16 +33,25 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		 
 	}
 	 
-	private void llenarTabla()
+	private void llenarTabla(EspecieDTO especie)
 	{
-		//aca va el nombre de la especie recibida que 'exista'
-		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas("especie3");
-		for(PlantaDTO p: listadoPlantas)
+		
+		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas(especie.getNombre());
+		System.out.println(listadoPlantas.isEmpty());
+		
+		if(!listadoPlantas.isEmpty())
 		{
-			Object[] obj = { p.getUbicacion().getFila(), p.getUbicacion().getColumna()};
-			vistaVerDetalle.getPanel().agregarFila(obj);
-
+		  for(PlantaDTO p: listadoPlantas)
+		  {
+				vistaVerDetalle.getPanel().msgTablaVacia(false);
+				Object[] obj = { p.getCodigo(),p.getUbicacion().getFila(), p.getUbicacion().getColumna()};
+				vistaVerDetalle.getPanel().agregarFila(obj);
+		  }
 		}
+		else
+			vistaVerDetalle.getPanel().msgTablaVacia(true);
+		
+		
 	}
 
 
@@ -52,6 +61,10 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 			if(e.getSource() == vistaVerDetalle.getBtnRevivir())
 			{
 				System.out.println(vistaVerDetalle.filaSeleccionada());
+			}
+			else if(e.getSource() == vistaVerDetalle.getBtnEliminar())
+			{
+				
 			}
 			
 		}

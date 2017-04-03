@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,8 +20,9 @@ public class ListaPlantaDeEspecie extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel listadoPlantas;
 	private JTable table;
-	private String[] nombreColumnas = { "Fila", "Columna" };
-	private DefaultTableModel Muestra;
+	private JLabel tablaVacia;
+	private String[] nombreColumnas = { "Codigo","Fila", "Columna" };
+	private DefaultTableModel modelo;
 	
 	public ListaPlantaDeEspecie(VerDetallesEspecie_Controller controlador){
 		super();
@@ -44,7 +46,7 @@ public class ListaPlantaDeEspecie extends JPanel{
 	
 	private void encabezadoTabla()
 	{
-		Muestra = new DefaultTableModel(null, nombreColumnas)
+		modelo = new DefaultTableModel(null, nombreColumnas)
 		{
 
 		private static final long serialVersionUID = 1L;
@@ -56,16 +58,23 @@ public class ListaPlantaDeEspecie extends JPanel{
 			}
 		};
 		
+		tablaVacia = new JLabel("No se encuentran plantas cargadas.");
+		tablaVacia.setForeground(new Color(255, 69, 0));
+		tablaVacia.setBounds(141, 6, 231, 16);
+		tablaVacia.setVisible(false);
+		add(tablaVacia);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 25, 366, 134);
 		this.add(scrollPane);
-		table = new JTable(Muestra);
+		table = new JTable(modelo);
 		table.getTableHeader().setReorderingAllowed(false); 
 		table.getTableHeader().setFont(new Font("Segoe Print", Font.PLAIN, 12));	
 		table.getTableHeader().setBackground(Color.GREEN);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
+		
+	
 		
 		
 		
@@ -73,7 +82,7 @@ public class ListaPlantaDeEspecie extends JPanel{
 	
 	public void agregarFila(Object[] obj)
 	{
-		Muestra.addRow(obj);
+		modelo.addRow(obj);
 	}
 
 	public JLabel getListadoPlantas() {
@@ -92,11 +101,14 @@ public class ListaPlantaDeEspecie extends JPanel{
 		this.table = table;
 	}
 	
+	public void msgTablaVacia(boolean valor)
+	{
+		tablaVacia.setVisible(valor);
+	}
+	
 	public int filaSeleccionada()
 	{
 		return this.table.getSelectedRow();
 	}
 	
-	
-
 }

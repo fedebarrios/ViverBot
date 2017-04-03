@@ -21,16 +21,17 @@ public class PlantaDao {
 	{
 		for(int i=0; i<5; i++)
 		{
-			EspecieDTO especie = new EspecieDTO("especie"+i,"cientifico"+i,"imagen"); 
+			EspecieDTO especie = new EspecieDTO("especie"+i,"cientifico"+i,"rosa.jpg"); 
 			ArrayList<PlantaDTO> plantas = new ArrayList<PlantaDTO>();
 			for(int j=0; j<6; j++)
 			{
-				PlantaDTO p = new PlantaDTO(new Ubicacion(i*j,i*j));
+				PlantaDTO p = new PlantaDTO(123,new Ubicacion(i*j,i*j));
 				plantas.add(p);
 			}
 			Tupla t = new Tupla(especie,plantas);
 			itemPlanta.add(t);
 		}
+		itemPlanta.add(new Tupla(new EspecieDTO("Rosas","Rosa blanca","rosa.jpg"),new ArrayList<PlantaDTO>()));
 	}
 	
 	public ArrayList<PlantaDTO> Leer(String e)
