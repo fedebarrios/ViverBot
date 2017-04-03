@@ -1,18 +1,16 @@
-package com.losameos.viverbot.Controller.Verificacion.Temperatura;
+package com.losameos.viverbot.Controller;
 
-import com.losameos.viverbot.Controller.Medicion.Temperatura.ColectorTemperatura;
 import com.losameos.viverbot.Model.Hora;
-import com.losameos.viverbot.Model.Magnitudes.Temperatura;
+import com.losameos.viverbot.Model.Temperatura;
 
 public class TransmisorTemperatura implements Runnable {
-
 	private static long frecuenciaDeRepeticion = 10000; // se expresa en
 														// millisegundos
 	private static long inicio = 0;
 
-	ColectorTemperatura colector;
-	AnalizadorTemperatura analizador;
-	Temperatura temperaturaActual;
+	private ColectorTemperatura colector;
+	private AnalizadorTemperatura analizador;
+	private Temperatura temperaturaActual;
 
 	public TransmisorTemperatura(ColectorTemperatura colector) {
 		this.colector = colector;
@@ -43,7 +41,6 @@ public class TransmisorTemperatura implements Runnable {
 					this.setearTiempoInicio();
 				}
 			}
-
 		}
 	}
 

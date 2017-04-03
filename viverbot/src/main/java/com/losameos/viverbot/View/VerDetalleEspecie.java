@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
+import com.losameos.viverbot.Controller.VerDetallesEspecieController;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -30,10 +30,10 @@ public class VerDetalleEspecie extends JFrame {
 	
 
 
-	public VerDetalleEspecie(VerDetallesEspecie_Controller controlador) {
+	public VerDetalleEspecie(VerDetallesEspecieController controlador) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 465, 463);
+		setBounds(100, 100, 431, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -42,24 +42,25 @@ public class VerDetalleEspecie extends JFrame {
 		
 		
 		descripcionEspecie = new JLabel("Datos detallados sobre la especie");
-		descripcionEspecie.setBounds(27, 26, 217, 16);
+		descripcionEspecie.setBounds(10, 11, 217, 21);
 		contentPane.add(descripcionEspecie);
 		
 		imagenEspecie = new JLabel("");
 		imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie.class.getResource("/Recursos/mascara.jpg")));
-		imagenEspecie.setBounds(23, 63, 163, 143);
+		imagenEspecie.setBounds(10, 43, 163, 143);
 		contentPane.add(imagenEspecie);
 		
 		nombreEspecie = new JLabel("Nombre:");
-		nombreEspecie.setBounds(205, 70, 61, 16);
+		nombreEspecie.setBounds(183, 43, 91, 21);
 		contentPane.add(nombreEspecie);
 		
 		nombreCientificoEspecie = new JLabel("Nombre cientifico:");
-		nombreCientificoEspecie.setBounds(205, 115, 139, 16);
+		nombreCientificoEspecie.setBounds(181, 75, 93, 21);
 		contentPane.add(nombreCientificoEspecie);
 		
 		panel = new ListaPlantaDeEspecie(controlador);
-		panel.setBounds(20, 220, 360, 165);
+		panel.getListadoPlantas().setLocation(10, 11);
+		panel.setBounds(10, 197, 389, 181);
 		contentPane.add(panel);
 		
 		JPanel panel_1 = new JPanel();
@@ -68,20 +69,20 @@ public class VerDetalleEspecie extends JFrame {
 		contentPane.add(panel_1);
 		
 		llegoNombre = new JLabel("");
-		llegoNombre.setBounds(265, 87, 115, 16);
+		llegoNombre.setBounds(284, 43, 115, 21);
 		contentPane.add(llegoNombre);
 		
 		llegoNombreC = new JLabel("");
-		llegoNombreC.setBounds(265, 134, 139, 16);
+		llegoNombreC.setBounds(284, 75, 115, 21);
 		contentPane.add(llegoNombreC);
 		
 		btnRevivir = new JButton("Revivir");
-		btnRevivir.setBounds(27, 397, 117, 29);
+		btnRevivir.setBounds(157, 389, 117, 29);
 		contentPane.add(btnRevivir);
 		btnRevivir.addActionListener(controlador);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(149, 397, 117, 29);
+		btnEliminar.setBounds(284, 389, 117, 29);
 		contentPane.add(btnEliminar);
 		btnEliminar.addActionListener(controlador);
 		

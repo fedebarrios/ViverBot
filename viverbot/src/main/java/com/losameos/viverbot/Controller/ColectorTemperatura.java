@@ -1,8 +1,8 @@
-package com.losameos.viverbot.Controller.Medicion.Temperatura;
+package com.losameos.viverbot.Controller;
 
 import com.losameos.viverbot.Model.Hora;
-import com.losameos.viverbot.Model.Magnitudes.Temperatura;
-import com.losameos.viverbot.Model.Sensores.SensorTemperatura;
+import com.losameos.viverbot.Model.SensorTemperatura;
+import com.losameos.viverbot.Model.Temperatura;
 
 public class ColectorTemperatura implements Runnable {
 	private SensorTemperatura sensor;

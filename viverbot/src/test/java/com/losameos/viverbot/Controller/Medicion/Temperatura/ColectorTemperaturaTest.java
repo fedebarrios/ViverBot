@@ -1,5 +1,7 @@
 package com.losameos.viverbot.Controller.Medicion.Temperatura;
 
+import com.losameos.viverbot.Controller.ColectorTemperatura;
+
 import junit.framework.TestCase;
 
 public class ColectorTemperaturaTest extends TestCase {

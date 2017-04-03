@@ -1,5 +1,7 @@
 package com.losameos.viverbot.Model.Magnitudes;
 
+import com.losameos.viverbot.Model.Temperatura;
+
 import junit.framework.TestCase;
 
 public class TemperaturaTest extends TestCase {

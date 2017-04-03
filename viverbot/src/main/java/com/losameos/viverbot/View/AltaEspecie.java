@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.losameos.viverbot.Controller.AltaEspecie_Controller;
+import com.losameos.viverbot.Controller.AltaEspecieController;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -26,9 +26,9 @@ public class AltaEspecie extends JFrame{
 	
 
 
-	public AltaEspecie(AltaEspecie_Controller controlador){
+	public AltaEspecie(AltaEspecieController controlador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 350, 300);
+		setBounds(100, 100, 333, 212);
 		setTitle("Alta de Especie");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -36,43 +36,43 @@ public class AltaEspecie extends JFrame{
 		contentPane.setLayout(null);
 		
 		this.ingreseDatos = new JLabel("Ingrese la informacion requerida");
-		this.ingreseDatos.setBounds(10, 11, 324, 16);
+		this.ingreseDatos.setBounds(10, 11, 293, 20);
 		contentPane.add(this.ingreseDatos);
 		
 		this.nombreEspecie = new JLabel("Nombre");
-		this.nombreEspecie.setBounds(10, 50, 110, 16);
+		this.nombreEspecie.setBounds(10, 42, 110, 20);
 		contentPane.add(this.nombreEspecie);
 		
 		this.lblImagen = new JLabel("Imagen");
-		this.lblImagen.setBounds(10, 150, 110, 14);
+		this.lblImagen.setBounds(10, 104, 110, 20);
 		contentPane.add(lblImagen);
 		
 		this.nombreCientificoEspecie = new JLabel("Nombre Cientifico");
-		this.nombreCientificoEspecie.setBounds(10, 100, 110, 16);
+		this.nombreCientificoEspecie.setBounds(10, 73, 110, 20);
 		contentPane.add(this.nombreCientificoEspecie);
 		
 		this.nombreEspecie_tf = new JTextField();
-		this.nombreEspecie_tf.setBounds(140, 48, 176, 20);
+		this.nombreEspecie_tf.setBounds(130, 42, 176, 20);
 		contentPane.add(this.nombreEspecie_tf);
 		this.nombreEspecie_tf.setColumns(10);
 		
 		this.nombreCientifico_tf = new JTextField();
-		this.nombreCientifico_tf.setBounds(140, 98, 176, 20);
+		this.nombreCientifico_tf.setBounds(130, 73, 176, 20);
 		contentPane.add(this.nombreCientifico_tf);
 		this.nombreCientifico_tf.setColumns(10);
 		
 		this.guardar_btn = new JButton("Guardar");
-		this.guardar_btn.setBounds(227, 227, 89, 23);
+		this.guardar_btn.setBounds(217, 135, 89, 23);
 		contentPane.add(this.guardar_btn);
 		this.guardar_btn.addActionListener(controlador);
 		
 		this.cancelar_btn = new JButton("Cancelar");
-		this.cancelar_btn.setBounds(128, 227, 89, 23);
+		this.cancelar_btn.setBounds(118, 135, 89, 23);
 		contentPane.add(this.cancelar_btn);
 		this.cancelar_btn.addActionListener(controlador);
 		
 		this.imagen_tf = new JTextField();
-		this.imagen_tf.setBounds(140, 147, 176, 20);
+		this.imagen_tf.setBounds(130, 104, 176, 20);
 		contentPane.add(imagen_tf);
 		this.imagen_tf.setColumns(10);
 	}

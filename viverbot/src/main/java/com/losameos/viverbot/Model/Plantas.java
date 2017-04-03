@@ -2,16 +2,16 @@ package com.losameos.viverbot.Model;
 
 import java.util.ArrayList;
 
-import com.losameos.viverbot.Dao.PlantaDao;
-import com.losameos.viverbot.dto.PlantaDTO;
+import com.losameos.viverbot.DAO.PlantaDAO;
+import com.losameos.viverbot.DTO.PlantaDTO;
 
 public class Plantas {
 	
-	private PlantaDao plantaDao;
+	private PlantaDAO plantaDao;
 	
 	public Plantas()
 	{
-		this.plantaDao = new PlantaDao();
+		this.plantaDao = new PlantaDAO();
 	}
 	
 	public ArrayList<PlantaDTO> obtenerPlantas(String especie)
