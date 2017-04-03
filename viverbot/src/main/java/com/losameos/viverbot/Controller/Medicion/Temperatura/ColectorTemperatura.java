@@ -15,6 +15,12 @@ public class ColectorTemperatura implements Runnable {
 		this.sensor = new SensorTemperatura();
 		this.temperaturaActual = null;
 	}
+	
+	@Override
+	public void run() {
+		tomarMedicion();
+
+	}
 
 	private void tomarMedicion() {
 		setearTiempoInicio();
@@ -44,9 +50,5 @@ public class ColectorTemperatura implements Runnable {
 		return this.temperaturaActual;
 	}
 
-	@Override
-	public void run() {
-		tomarMedicion();
-
-	}
+	
 }

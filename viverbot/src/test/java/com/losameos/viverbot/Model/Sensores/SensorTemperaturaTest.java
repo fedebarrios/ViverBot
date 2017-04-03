@@ -10,18 +10,21 @@ public class SensorTemperaturaTest extends TestCase {
 	private static SensorTemperatura sensorTest = null;
 	private static Temperatura temperaturaActualTest = null;
 
+	//este test verifica que funciona el constructor seguramente lo saquemos :v
 	public void testSensor() {
 		inicialize();
 		assertNotNull(sensorTest);
 		clear();
 	}
 
+	//este test verifica que el return sea de tipo  temperatura
 	public void testGetMedicionVerificarClase() {
 		inicialize();
 		assertTrue(sensorTest.getMedicion() instanceof Temperatura);
 		clear();
 	}
 
+	//este test verifica que la temperatura sea correcta
 	public void testGetMedicion() {
 		inicialize();
 		System.out.println("ingrese la temperatura actual");
@@ -31,6 +34,7 @@ public class SensorTemperaturaTest extends TestCase {
 		clear();
 	}
 	
+	//este test verifica que la temperatura sea diferente a la equivocada
 	public void testGetMedicionErronea() {
 		inicialize();
 		System.out.println("ingrese una temperatura que no sea la actual");
@@ -40,6 +44,8 @@ public class SensorTemperaturaTest extends TestCase {
 		clear();
 	}
 
+	
+	///metodos auxiliares
 	private void ingresarTemperatura() {
 		Scanner s = new Scanner(System.in);
 		Double valorIngresado = s.nextDouble();

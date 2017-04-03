@@ -6,46 +6,47 @@ import java.util.ArrayList;
 import com.losameos.viverbot.Controller.AltaEspecie_Controller;
 import com.losameos.viverbot.Controller.BajaEspecie_Controller;
 import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
+import com.losameos.viverbot.Controller.Medicion.Humedad.ColectorHumedad;
 import com.losameos.viverbot.Controller.Medicion.Temperatura.ColectorTemperatura;
 import com.losameos.viverbot.Controller.Verificacion.Temperatura.TransmisorTemperatura;
 //import com.losameos.viverbot.DTO.EspecieDTO;
-
-
 
 /**
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+	public static void main(String[] args) {
 
-    
-    	
-    	//capas este metodo deberia ser una clase que maneje todo el ciclo referido desde que se toma
-    	//la temperatura hasta que se toma alguna accion.
-    	controlarTemperatura();
-    	controlarHumedad();
+		// capas este metodo deberia ser una clase que maneje todo el ciclo
+		// referido desde que se toma
+		// la temperatura hasta que se toma alguna accion.
+		controlarTemperatura();
+		controlarHumedad();
 
-    //	VerDetallesEspecie_Controller controladorPlanta = new VerDetallesEspecie_Controller(new EspecieDTO("especie0","blancas","rosa.jpg"));
-//    	AltaEspecie_Controller controladorAlta = new AltaEspecie_Controller();
-//    	BajaEspecie_Controller controladorBaja = new BajaEspecie_Controller();
+		// VerDetallesEspecie_Controller controladorPlanta = new
+		// VerDetallesEspecie_Controller(new
+		// EspecieDTO("especie0","blancas","rosa.jpg"));
+		// AltaEspecie_Controller controladorAlta = new
+		// AltaEspecie_Controller();
+		// BajaEspecie_Controller controladorBaja = new
+		// BajaEspecie_Controller();
 
-    }
+	}
 
 	private static void controlarHumedad() {
-		// TODO Auto-generated method stub
-		
+		ColectorHumedad colector = new ColectorHumedad();
+		Thread hiloColector =  new Thread(colector);
+		hiloColector.start();
 	}
 
 	private static void controlarTemperatura() {
 		ColectorTemperatura colector = new ColectorTemperatura();
-		Thread hiloColector =  new Thread(colector);
+		Thread hiloColector = new Thread(colector);
 		hiloColector.start();
-		
-		Thread hiloTransmisor = new Thread( new TransmisorTemperatura(colector));
+
+		Thread hiloTransmisor = new Thread(new TransmisorTemperatura(colector));
 		hiloTransmisor.start();
-		
+
 	}
 }
