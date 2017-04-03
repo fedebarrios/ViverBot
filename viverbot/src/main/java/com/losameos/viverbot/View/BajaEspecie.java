@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.losameos.viverbot.Controller.BajaEspecieController;
+import com.losameos.viverbot.Controller.BajaEspecie_Controller;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,9 +20,9 @@ public class BajaEspecie extends JFrame{
 	private JButton btnCancelar;
 	private JButton btnBorrar;	
 	
-	public BajaEspecie(BajaEspecieController controlador){
+	public BajaEspecie(BajaEspecie_Controller controlador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 302, 126);
+		setBounds(100, 100, 350, 200);
 		setTitle("Baja de Especie");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -30,20 +30,20 @@ public class BajaEspecie extends JFrame{
 		contentPane.setLayout(null);
 		
 		comboBox = new JComboBox();
-		comboBox.setBounds(139, 15, 136, 20);
+		comboBox.setBounds(10, 40, 176, 20);
 		contentPane.add(comboBox);
 		
 		JLabel lblSeleccioneUnaEspecie = new JLabel("Seleccione una especie");
-		lblSeleccioneUnaEspecie.setBounds(10, 15, 119, 20);
+		lblSeleccioneUnaEspecie.setBounds(10, 15, 119, 14);
 		contentPane.add(lblSeleccioneUnaEspecie);
 		
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(186, 46, 89, 23);
+		btnBorrar.setBounds(235, 102, 89, 23);
 		contentPane.add(btnBorrar);
 		btnBorrar.addActionListener(controlador);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(87, 46, 89, 23);
+		btnCancelar.setBounds(137, 102, 89, 23);
 		contentPane.add(btnCancelar);
 		btnCancelar.addActionListener(controlador);
 	}

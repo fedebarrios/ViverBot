@@ -12,7 +12,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import com.losameos.viverbot.Controller.VerDetallesEspecieController;
+import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
 
 public class ListaPlantaDeEspecie extends JPanel{
 	
@@ -22,9 +22,9 @@ public class ListaPlantaDeEspecie extends JPanel{
 	private String[] nombreColumnas = { "Fila", "Columna" };
 	private DefaultTableModel Muestra;
 	
-	public ListaPlantaDeEspecie(VerDetallesEspecieController controlador){
+	public ListaPlantaDeEspecie(VerDetallesEspecie_Controller controlador){
 		super();
-		this.setBounds(21, 261, 385, 182);
+		this.setBounds(21, 261, 378, 176);
 		this.setLayout(null);
 		inicializar();
 		
@@ -35,7 +35,7 @@ public class ListaPlantaDeEspecie extends JPanel{
 		
 		listadoPlantas = new JLabel("Listado de plantas");
 		listadoPlantas.setForeground(Color.BLACK);
-		listadoPlantas.setBounds(10, 11, 136, 16);
+		listadoPlantas.setBounds(20, 6, 136, 16);
 		this.add(listadoPlantas);
 		
 		encabezadoTabla();
@@ -58,7 +58,7 @@ public class ListaPlantaDeEspecie extends JPanel{
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 31, 366, 134);
+		scrollPane.setBounds(6, 25, 366, 134);
 		this.add(scrollPane);
 		table = new JTable(Muestra);
 		table.getTableHeader().setReorderingAllowed(false); 

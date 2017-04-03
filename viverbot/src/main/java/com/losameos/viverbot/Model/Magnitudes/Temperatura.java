@@ -1,4 +1,4 @@
-package com.losameos.viverbot.Model;
+package com.losameos.viverbot.Model.Magnitudes;
 
 public class Temperatura {
 	Double valor;

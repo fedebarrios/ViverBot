@@ -2,8 +2,7 @@ package com.losameos.viverbot.Model.Sensores;
 
 import java.util.Scanner;
 
-import com.losameos.viverbot.Model.SensorTemperatura;
-import com.losameos.viverbot.Model.Temperatura;
+import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 import junit.framework.TestCase;
 

@@ -4,18 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import com.losameos.viverbot.DTO.EspecieDTO;
-import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.Model.Plantas;
 import com.losameos.viverbot.View.VerDetalleEspecie;
+import com.losameos.viverbot.dto.EspecieDTO;
+import com.losameos.viverbot.dto.PlantaDTO;
 
-public class VerDetallesEspecieController implements ActionListener {
+public class VerDetallesEspecie_Controller implements ActionListener {
 
 	
 	 private VerDetalleEspecie vistaVerDetalle;
 	 private Plantas plantas;
 	 
-	 public VerDetallesEspecieController(EspecieDTO especie)
+	 public VerDetallesEspecie_Controller(EspecieDTO especie)
 	 {
 		 vistaVerDetalle = new VerDetalleEspecie(this);
 		 plantas = new Plantas();

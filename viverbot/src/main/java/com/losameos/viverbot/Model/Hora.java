@@ -11,7 +11,8 @@ public class Hora {
 		this.segundo = segundo;
 	}
 
-	public static Hora obtenerHoraActual() {
+	public static Hora obtenerHoraActual()
+	{
 		Calendar calendar = Calendar.getInstance();
 		int horaActual = calendar.get(Calendar.HOUR);
 		int minutoActual = calendar.get(Calendar.MINUTE);
@@ -37,6 +38,7 @@ public class Hora {
 	}
 
 	public static long tiempoTranscurrido(long inicio) {
+		// TODO Auto-generated method stub
 		return Hora.instanteActual() - inicio;
 	}
 

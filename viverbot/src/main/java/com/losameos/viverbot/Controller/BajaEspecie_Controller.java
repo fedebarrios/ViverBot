@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
-import com.losameos.viverbot.DTO.EspecieDTO;
 import com.losameos.viverbot.Model.Inventario;
 import com.losameos.viverbot.View.BajaEspecie;
+import com.losameos.viverbot.dto.EspecieDTO;
 
-public class BajaEspecieController implements ActionListener{
+public class BajaEspecie_Controller implements ActionListener{
 	private BajaEspecie bajaVista;
 	private Inventario inventario;
 	
-	public BajaEspecieController(){
+	public BajaEspecie_Controller(){
 		bajaVista = new BajaEspecie(this);
 		inventario = new Inventario();
 		llenarCombo (bajaVista.getComboBox());
