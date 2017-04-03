@@ -31,6 +31,7 @@ public class PlantaDao {
 			Tupla t = new Tupla(especie,plantas);
 			itemPlanta.add(t);
 		}
+		itemPlanta.add(new Tupla(new EspecieDTO("Rosas","Rosa blanca","rosa.jpg"),new ArrayList<PlantaDTO>()));
 	}
 	
 	public ArrayList<PlantaDTO> Leer(String e)

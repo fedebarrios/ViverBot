@@ -35,14 +35,23 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 	 
 	private void llenarTabla(EspecieDTO especie)
 	{
-	
+		
 		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas(especie.getNombre());
-		for(PlantaDTO p: listadoPlantas)
+		System.out.println(listadoPlantas.isEmpty());
+		
+		if(!listadoPlantas.isEmpty())
 		{
-			Object[] obj = { p.getUbicacion().getFila(), p.getUbicacion().getColumna()};
-			vistaVerDetalle.getPanel().agregarFila(obj);
-
+		  for(PlantaDTO p: listadoPlantas)
+		  {
+				vistaVerDetalle.getPanel().msgTablaVacia(false);
+				Object[] obj = { p.getCodigo(),p.getUbicacion().getFila(), p.getUbicacion().getColumna()};
+				vistaVerDetalle.getPanel().agregarFila(obj);
+		  }
 		}
+		else
+			vistaVerDetalle.getPanel().msgTablaVacia(true);
+		
+		
 	}
 
 

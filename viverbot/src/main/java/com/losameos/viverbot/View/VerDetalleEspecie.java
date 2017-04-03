@@ -122,8 +122,9 @@ public class VerDetalleEspecie extends JFrame {
 	}
 
 	public void setImagenEspecie(String imagenEspecie) {
+		
 		this.imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie.class.getResource("/Recursos/"+imagenEspecie)));
-	}
+		}
 
 	public JButton getBtnRevivir() {
 		return btnRevivir;
@@ -145,5 +146,7 @@ public class VerDetalleEspecie extends JFrame {
 	{
 		return panel.filaSeleccionada(); 
 	}
+	
+	
 	
 }

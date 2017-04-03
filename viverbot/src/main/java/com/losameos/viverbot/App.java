@@ -27,7 +27,7 @@ public class App
     	//la temperatura hasta que se toma alguna accion.
     	//controlarTemperatura();
 
-    	VerDetallesEspecie_Controller controladorPlanta = new VerDetallesEspecie_Controller(new EspecieDTO("especie1","blancas","rosa.jpg"));
+    	VerDetallesEspecie_Controller controladorPlanta = new VerDetallesEspecie_Controller(new EspecieDTO("especie0","blancas","rosa.jpg"));
     	AltaEspecie_Controller controladorAlta = new AltaEspecie_Controller();
     	BajaEspecie_Controller controladorBaja = new BajaEspecie_Controller();
 

@@ -1,5 +1,7 @@
 package com.losameos.viverbot.dto;
 
+import org.hamcrest.core.IsNull;
+
 public class EspecieDTO {
 	
 	private String nombre;
@@ -36,7 +38,6 @@ public class EspecieDTO {
 	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
 	}
-	
 	
 
 }

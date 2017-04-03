@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,6 +20,7 @@ public class ListaPlantaDeEspecie extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel listadoPlantas;
 	private JTable table;
+	private JLabel tablaVacia;
 	private String[] nombreColumnas = { "Codigo","Fila", "Columna" };
 	private DefaultTableModel modelo;
 	
@@ -56,6 +58,11 @@ public class ListaPlantaDeEspecie extends JPanel{
 			}
 		};
 		
+		tablaVacia = new JLabel("No se encuentran plantas cargadas.");
+		tablaVacia.setForeground(new Color(255, 69, 0));
+		tablaVacia.setBounds(141, 6, 231, 16);
+		tablaVacia.setVisible(false);
+		add(tablaVacia);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 25, 366, 134);
@@ -66,6 +73,8 @@ public class ListaPlantaDeEspecie extends JPanel{
 		table.getTableHeader().setBackground(Color.GREEN);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
+		
+	
 		
 		
 		
@@ -92,11 +101,14 @@ public class ListaPlantaDeEspecie extends JPanel{
 		this.table = table;
 	}
 	
+	public void msgTablaVacia(boolean valor)
+	{
+		tablaVacia.setVisible(valor);
+	}
+	
 	public int filaSeleccionada()
 	{
 		return this.table.getSelectedRow();
 	}
 	
-	
-
 }
