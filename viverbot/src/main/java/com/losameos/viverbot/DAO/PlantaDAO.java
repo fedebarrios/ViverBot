@@ -7,11 +7,11 @@ import com.losameos.viverbot.Model.Tupla;
 import com.losameos.viverbot.Model.Ubicacion;
 import com.losameos.viverbot.DTO.PlantaDTO;
 
-public class PlantaDao {
+public class PlantaDAO {
 	
 	private ArrayList<Tupla> itemPlanta;
 	
-	public PlantaDao()
+	public PlantaDAO()
 	{
 		itemPlanta = new ArrayList<Tupla>();
 		inicializar();

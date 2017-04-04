@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import com.losameos.viverbot.DTO.EspecieDTO;
 
-public class EspecieDao {
+public class EspecieDAO {
 	
 	private ArrayList<EspecieDTO> especies ;
 	
-	public EspecieDao() {
+	public EspecieDAO() {
 		this.especies = new ArrayList<EspecieDTO>();
 		this.especies.add(new EspecieDTO("Rosa","Rosus",""));
 		this.especies.add(new EspecieDTO("Margarita","Margaritus",""));

@@ -2,31 +2,31 @@ package com.losameos.viverbot.Model;
 
 import java.util.ArrayList;
 
-import com.losameos.viverbot.DAO.PlantaDao;
+import com.losameos.viverbot.DAO.PlantaDAO;
 import com.losameos.viverbot.DTO.PlantaDTO;
 
 public class Plantas {
 	
-	private PlantaDao plantaDao;
+	private PlantaDAO plantaDAO;
 	
 	public Plantas()
 	{
-		this.plantaDao = new PlantaDao();
+		this.plantaDAO = new PlantaDAO();
 	}
 	
 	public ArrayList<PlantaDTO> obtenerPlantas(String especie)
 	{
-		return plantaDao.Leer(especie);
+		return plantaDAO.Leer(especie);
 	}
 	
 	public void agregarPlanta(String especie, PlantaDTO nuevaPlanta)
 	{
-		plantaDao.Agregar(especie,nuevaPlanta);
+		plantaDAO.Agregar(especie,nuevaPlanta);
 	}
 	
 	public void eliminarPlanta()
 	{
-		plantaDao.Eliminar();
+		plantaDAO.Eliminar();
 	}
 
 }
