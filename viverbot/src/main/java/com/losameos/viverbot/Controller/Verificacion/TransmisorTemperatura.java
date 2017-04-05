@@ -13,7 +13,7 @@ public class TransmisorTemperatura extends Transmisor {
 	}
 
 	@Override
-	public void run() {
+	protected void Trasnmitir() {
 		this.setearTiempoInicio();
 		while (true) {
 			if (this.verificarTiempoTranscurrido()) {
@@ -25,8 +25,10 @@ public class TransmisorTemperatura extends Transmisor {
 
 			}
 
-		}
-	}
+		}	}
+	
+	
+	
 
 	
 

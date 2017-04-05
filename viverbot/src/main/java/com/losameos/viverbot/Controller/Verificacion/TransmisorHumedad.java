@@ -18,7 +18,7 @@ public class TransmisorHumedad extends Transmisor {
 	}
 
 	@Override
-	public void run() {
+	protected void Trasnmitir() {
 		this.setearTiempoInicio();
 		while (true) {
 			for (int i = 0; i < this.ubicaciones.size(); i++) {
@@ -29,8 +29,7 @@ public class TransmisorHumedad extends Transmisor {
 						this.analizador.analizar((Humedad) this.valorActual, this.ubicaciones.get(i));
 						this.setearTiempoInicio();
 					}
-				}
-				else{
+				} else {
 					i--;
 				}
 			}

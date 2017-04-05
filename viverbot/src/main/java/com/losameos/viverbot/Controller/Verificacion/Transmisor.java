@@ -21,9 +21,13 @@ public class Transmisor implements Runnable {
 
 	@Override
 	public void run() {
-
+		 Trasnmitir();
 	}
 	
+	protected void Trasnmitir() {
+		
+	}
+
 	protected boolean verificarTiempoTranscurrido() {
 		return Hora.tiempoTranscurrido(inicio) >= frecuenciaDeRepeticion;
 	}
