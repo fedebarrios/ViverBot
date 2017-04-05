@@ -5,6 +5,7 @@ public class RangoNumerico {
 	Double maximo;
 	
 	
+	
 	public RangoNumerico(Double minimo, Double maximo) {
 		super();
 		this.minimo = minimo;

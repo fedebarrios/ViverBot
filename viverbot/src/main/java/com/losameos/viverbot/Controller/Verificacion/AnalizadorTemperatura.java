@@ -1,8 +1,8 @@
-package com.losameos.viverbot.Controller.Verificacion.Temperatura;
+package com.losameos.viverbot.Controller.Verificacion;
 
 import com.losameos.viverbot.Model.RangoNumerico;
-import com.losameos.viverbot.Model.Magnitudes.EstadoTemperatura;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
+import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
 
 public class AnalizadorTemperatura {
 	
@@ -24,9 +24,13 @@ public class AnalizadorTemperatura {
 
 
 	public void analizar(Temperatura temperaturaActual) {
+		this.estado = new EstadoTemperatura(temperaturaActual, false);
+
 		if(verificarRango(temperaturaActual)){
-			this.estado = new EstadoTemperatura(temperaturaActual, false);
-			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor());
+			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor() + " y ademas es bonita :v el rango ideal es ");
+		}
+		else{
+			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor() + " y ademas es mala >:v");
 		}
 		
 	}

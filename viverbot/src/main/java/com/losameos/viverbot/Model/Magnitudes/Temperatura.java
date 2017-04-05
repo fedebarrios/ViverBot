@@ -1,14 +1,9 @@
 package com.losameos.viverbot.Model.Magnitudes;
 
-public class Temperatura {
-	Double valor;
-	
-	public Temperatura(Double valor){
-		this.valor =  valor;
-	}
-	
-	public Double getValor(){
-		return valor;
-	}
+public class Temperatura extends Magnitud{
 
+	public Temperatura(Double valor) {
+		super(valor);
+	}
+	
 }

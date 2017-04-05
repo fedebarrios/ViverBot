@@ -1,4 +1,6 @@
-package com.losameos.viverbot.Model.Magnitudes;
+package com.losameos.viverbot.Model.Medicion;
+
+import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class EstadoTemperatura {
 	private Temperatura temperatura;

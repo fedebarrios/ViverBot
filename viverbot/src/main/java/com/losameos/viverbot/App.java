@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import com.losameos.viverbot.Controller.AltaEspecie_Controller;
 import com.losameos.viverbot.Controller.BajaEspecie_Controller;
 import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
-import com.losameos.viverbot.Controller.Medicion.Humedad.ColectorHumedad;
-import com.losameos.viverbot.Controller.Medicion.Temperatura.ColectorTemperatura;
-import com.losameos.viverbot.Controller.Verificacion.Temperatura.TransmisorTemperatura;
+import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
 //import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverbot.Model.Medicion.ColectorHumedad;
+import com.losameos.viverbot.Model.Medicion.ColectorTemperatura;
 
 /**
  * Hello world!
@@ -35,17 +35,14 @@ public class App {
 	}
 
 	private static void controlarHumedad() {
-		ColectorHumedad colector = new ColectorHumedad();
-		Thread hiloColector =  new Thread(colector);
-		hiloColector.start();
+//		ColectorHumedad colector = new ColectorHumedad();
+//		Thread hiloColector =  new Thread(colector);
+//		hiloColector.start();
 	}
 
 	private static void controlarTemperatura() {
-		ColectorTemperatura colector = new ColectorTemperatura();
-		Thread hiloColector = new Thread(colector);
-		hiloColector.start();
 
-		Thread hiloTransmisor = new Thread(new TransmisorTemperatura(colector));
+		Thread hiloTransmisor = new Thread(new TransmisorTemperatura());
 		hiloTransmisor.start();
 
 	}
