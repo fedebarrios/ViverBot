@@ -15,14 +15,7 @@ public class ColectorHumedad extends Colector {
 
 	}
 
-	public Magnitud tomarMedicion(Ubicacion u) {
-		this.mover(u);
-		this.medir();
-		return this.valorActual;
-
-	}
-
-	private void mover(Ubicacion u) {
+	public void mover(Ubicacion u) {
 		this.setUbicacion(u);
 	}
 

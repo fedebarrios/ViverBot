@@ -28,8 +28,6 @@ public class TransmisorTemperatura extends Transmisor {
 		}
 	}
 
-	private void realizarMedicion() {
-		this.valorActual = this.colector.tomarMedicion();
-	}
+	
 
 }

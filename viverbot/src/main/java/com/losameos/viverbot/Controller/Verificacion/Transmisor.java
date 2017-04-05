@@ -32,4 +32,7 @@ public class Transmisor implements Runnable {
 		inicio = Hora.instanteActual();
 	}
 
+	protected void realizarMedicion() {
+		this.valorActual = this.colector.tomarMedicion();
+	}
 }

@@ -9,25 +9,20 @@ public class AnalizadorTemperatura {
 	RangoNumerico rango;
 	EstadoTemperatura estado;
 	
-	
-
 	public AnalizadorTemperatura() {
-		this.rango = this.obtenerRangoTemperatura();
+		this.rango = this.obtenerRango();
 	}
 
-
-
-	private RangoNumerico obtenerRangoTemperatura() {
+	private RangoNumerico obtenerRango() {
 		return new RangoNumerico(5.0, 50.0);
 	}
-
-
 
 	public void analizar(Temperatura temperaturaActual) {
 		this.estado = new EstadoTemperatura(temperaturaActual, false);
 
 		if(verificarRango(temperaturaActual)){
-			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor() + " y ademas es bonita :v el rango ideal es ");
+			this.estado.setOptima(true);
+			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor() + " y ademas es bonita :v");
 		}
 		else{
 			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor() + " y ademas es mala >:v");
@@ -35,10 +30,7 @@ public class AnalizadorTemperatura {
 		
 	}
 
-
-
 	private boolean verificarRango(Temperatura temperaturaActual) {
-		// TODO Auto-generated method stub
 		return this.rango.getMinimo()<= temperaturaActual.getValor() && this.rango.getMaximo() >= temperaturaActual.getValor();
 	}
 	

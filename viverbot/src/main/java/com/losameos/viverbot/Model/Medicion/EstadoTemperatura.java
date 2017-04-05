@@ -16,6 +16,12 @@ public class EstadoTemperatura {
 	public Boolean getOptima() {
 		return optima;
 	}
+	public void setTemperatura(Temperatura temperatura) {
+		this.temperatura = temperatura;
+	}
+	public void setOptima(Boolean optima) {
+		this.optima = optima;
+	}
 	
 	
 

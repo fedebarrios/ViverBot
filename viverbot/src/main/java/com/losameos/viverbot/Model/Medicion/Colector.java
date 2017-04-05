@@ -14,7 +14,8 @@ public class Colector {
 	
 	
 	public Magnitud tomarMedicion() {
-		return null;
+		this.medir();
+		return this.valorActual;
 	}
 	
 	protected void medir() {
