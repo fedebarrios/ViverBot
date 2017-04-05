@@ -8,7 +8,7 @@ import com.losameos.viverbot.Model.Medicion.ColectorHumedad;
 
 public class TransmisorHumedad extends Transmisor {
 	private AnalizadorHumedad analizador;
-	ArrayList<Ubicacion> ubicaciones;
+	private ArrayList<Ubicacion> ubicaciones;
 
 	public TransmisorHumedad() {
 		super(new ColectorHumedad());

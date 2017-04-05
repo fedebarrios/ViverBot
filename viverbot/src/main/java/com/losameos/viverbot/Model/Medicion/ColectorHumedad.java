@@ -1,13 +1,11 @@
 package com.losameos.viverbot.Model.Medicion;
 
 import com.losameos.viverbot.Model.Ubicacion;
-import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Sensores.SensorHumedad;
 
 //estas clase tiene mucho codigo repetido  seguramente tenga que usar herencia
 public class ColectorHumedad extends Colector {
-
-	Ubicacion ubicacion;
+	private Ubicacion ubicacion;
 
 	public ColectorHumedad() {
 		super(new SensorHumedad());

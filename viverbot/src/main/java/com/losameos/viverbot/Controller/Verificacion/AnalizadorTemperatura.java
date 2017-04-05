@@ -4,10 +4,9 @@ import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
 
-public class AnalizadorTemperatura extends Analizador{
-	
-	EstadoTemperatura estado;
-	
+public class AnalizadorTemperatura extends Analizador {
+	private EstadoTemperatura estado;
+
 	public AnalizadorTemperatura() {
 		this.rango = this.obtenerRango();
 	}
@@ -19,18 +18,15 @@ public class AnalizadorTemperatura extends Analizador{
 	public void analizar(Temperatura temperaturaActual) {
 		this.estado = new EstadoTemperatura(temperaturaActual, false);
 
-		if(verificarRango(temperaturaActual)){
+		if (verificarRango(temperaturaActual)) {
 			this.estado.setOptima(true);
-			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor() + " y ademas es bonita :v");
+			System.out.println(
+					"la temperatura es: " + this.estado.getTemperatura().getValor() + " y ademas es bonita :v");
+		} else {
+			System.out
+					.println("la temperatura es: " + this.estado.getTemperatura().getValor() + " y ademas es mala >:v");
 		}
-		else{
-			System.out.println("la temperatura es: " +  this.estado.getTemperatura().getValor() + " y ademas es mala >:v");
-		}
-		
-	}
 
-	
-	
-	
+	}
 
 }

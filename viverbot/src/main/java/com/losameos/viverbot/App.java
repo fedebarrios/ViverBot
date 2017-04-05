@@ -1,21 +1,9 @@
 package com.losameos.viverbot;
 
-import java.io.File;
-import java.util.ArrayList;
-
-import com.losameos.viverbot.Controller.AltaEspecie_Controller;
-import com.losameos.viverbot.Controller.BajaEspecie_Controller;
-import com.losameos.viverbot.Controller.VerDetallesEspecie_Controller;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
 //import com.losameos.viverbot.DTO.EspecieDTO;
-import com.losameos.viverbot.Model.Medicion.ColectorHumedad;
-import com.losameos.viverbot.Model.Medicion.ColectorTemperatura;
 
-/**
- * Hello world!
- *
- */
 public class App {
 	public static void main(String[] args) {
 
