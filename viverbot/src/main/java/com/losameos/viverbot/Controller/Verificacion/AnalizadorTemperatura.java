@@ -4,9 +4,8 @@ import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
 
-public class AnalizadorTemperatura {
+public class AnalizadorTemperatura extends Analizador{
 	
-	RangoNumerico rango;
 	EstadoTemperatura estado;
 	
 	public AnalizadorTemperatura() {
@@ -30,9 +29,7 @@ public class AnalizadorTemperatura {
 		
 	}
 
-	private boolean verificarRango(Temperatura temperaturaActual) {
-		return this.rango.getMinimo()<= temperaturaActual.getValor() && this.rango.getMaximo() >= temperaturaActual.getValor();
-	}
+	
 	
 	
 

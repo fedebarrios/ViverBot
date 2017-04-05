@@ -7,9 +7,8 @@ import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Medicion.EstadoHumedad;
 
-public class AnalizadorHumedad {
+public class AnalizadorHumedad extends Analizador{
 
-	RangoNumerico rango;
 	EstadoHumedad estado;
 	
 	
@@ -32,8 +31,6 @@ public class AnalizadorHumedad {
 		
 	}
 	
-	private boolean verificarRango(Magnitud m) {
-		return this.rango.getMinimo()<= m.getValor() && this.rango.getMaximo() >= m.getValor();
-	}
+	
 	
 }
