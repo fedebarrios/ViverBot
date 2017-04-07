@@ -6,6 +6,12 @@ import com.losameos.viverbot.Model.Sensores.Sensor;
 public class Colector {
 	protected Sensor sensor;
 	protected Magnitud valorActual;
+	protected String tipoValor;
+	
+	public Colector() {
+		this.valorActual = null;
+		this.tipoValor = "";
+	}
 
 	public Colector(Sensor s) {
 		this.sensor = s;

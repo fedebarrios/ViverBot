@@ -1,6 +1,6 @@
-package com.losameos.viverbot.Model;
+package com.losameos.viverbot.Model.Magnitudes;
 
-public class Altura {
+public class Altura extends Magnitud{
 	double metros;
 	double centimetros;
 	double pulgadas;
@@ -11,6 +11,7 @@ public class Altura {
 	 * **/
 	
 	public Altura (double valor, String tipo){
+		super(0.0);
 		if (tipo.equals("metros") || tipo.equals("m")) {
 			this.metros = valor;
 		}
@@ -33,6 +34,7 @@ public class Altura {
 	 * **/
 	
 	public Altura (String valor){
+		super(0.0);
 		String tipo = "";
 		if (valor.contains("metros") || (valor.contains("m") && !valor.contains("c"))) {
 			this.metros = Double.parseDouble(valor.substring(0,valor.indexOf('m') - 1));
