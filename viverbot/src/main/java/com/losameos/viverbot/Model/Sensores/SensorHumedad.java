@@ -4,7 +4,7 @@ import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Humedad;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 
-public class SensorHumedad extends Sensor {
+public class SensorHumedad extends InstrumentoMedicion {
 
 	public SensorHumedad() {
 

@@ -1,15 +1,13 @@
 package com.losameos.viverbot.Model;
 
-import java.util.Date;
-
 import com.losameos.viverbot.Model.Magnitudes.Altura;
 
 public class TuplaAltura {
 	
 	private Altura altura;
-	private Date diaDeVida;
+	private int diaDeVida;
 	
-	public TuplaAltura (Altura a, Date d){
+	public TuplaAltura (Altura a, int d){
 		this.altura = a;
 		this.diaDeVida = d;
 	}
@@ -22,11 +20,11 @@ public class TuplaAltura {
 		this.altura = altura;
 	}
 
-	public Date getDiaDeVida() {
+	public int getDiaDeVida() {
 		return diaDeVida;
 	}
 
-	public void setDiaDeVida(Date diaDeVida) {
+	public void setDiaDeVida(int diaDeVida) {
 		this.diaDeVida = diaDeVida;
 	}
 	
