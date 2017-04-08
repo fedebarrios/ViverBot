@@ -1,19 +1,17 @@
 package com.losameos.viverbot.DAO;
 
+import java.sql.Date;
 import java.util.ArrayList;
-
-import com.losameos.viverbot.DTO.EspecieDTO;
-import com.losameos.viverbot.Model.Tupla;
 import com.losameos.viverbot.Model.Ubicacion;
 import com.losameos.viverbot.DTO.PlantaDTO;
 
 public class PlantaDAO {
 	
-	private ArrayList<Tupla> itemPlanta;
+	private ArrayList<PlantaDTO> plantas;
 	
 	public PlantaDAO()
 	{
-		itemPlanta = new ArrayList<Tupla>();
+		plantas = new ArrayList<PlantaDTO>();
 		inicializar();
 	}
 	
@@ -21,50 +19,48 @@ public class PlantaDAO {
 	{
 		for(int i=0; i<5; i++)
 		{
-			EspecieDTO especie = new EspecieDTO("especie"+i,"cientifico"+i,"rosa.jpg"); 
-			ArrayList<PlantaDTO> plantas = new ArrayList<PlantaDTO>();
 			for(int j=0; j<6; j++)
 			{
-				PlantaDTO p = new PlantaDTO(123,new Ubicacion(i*j,i*j));
+				@SuppressWarnings("deprecation")
+				PlantaDTO p = new PlantaDTO(1, i++, new Ubicacion(i*j,i*j), new Date(10,10,2017));
 				plantas.add(p);
 			}
-			Tupla t = new Tupla(especie,plantas);
-			itemPlanta.add(t);
 		}
-		itemPlanta.add(new Tupla(new EspecieDTO("Rosas","Rosa blanca","rosa.jpg"),new ArrayList<PlantaDTO>()));
 	}
 	
-	public ArrayList<PlantaDTO> Leer(String e)
-	{
-		for(Tupla t: itemPlanta)
-		{
-			if(t.getEspecie().getNombre().equals(e))
-				return t.getPlantas();
+	public PlantaDTO obtenerPlanta(int codPlanta){
+		int longitud = this.plantas.size();
+		for(int i=0; i<longitud; i++){
+			if(plantas.get(i).getCodigoPlanta()==codPlanta) return plantas.get(i);
 		}
 		return null;
 	}
 	
-	public void Agregar(String especie, PlantaDTO planta)
+	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie)
 	{
-		for(Tupla t: itemPlanta)
+		ArrayList<PlantaDTO> aux = new ArrayList<PlantaDTO>();
+		for(PlantaDTO p: plantas)
 		{
-			if(t.getEspecie().getNombre().equals(especie))
-				t.agregarPlanta(planta);
+			if(p.getCodigo()==codEspecie)
+				aux.add(p);
 		}
+		return aux;
 	}
 	
-	public void Eliminar()
-	{
-		
+	public int obtenerUltimoCodigo(){
+		int longitud = this.plantas.size();
+		return this.plantas.get(longitud).getCodigoPlanta();
+	}
+	
+	public void borrarPlanta(int codPlanta){
+		int indice=0;
+		for(int i=0; i<plantas.size(); i++){
+			if(plantas.get(i).getCodigoPlanta()==codPlanta) indice=i;
+		}
+		plantas.remove(indice);
 	}
 
-	public ArrayList<Tupla> getItemPlanta() {
-		return itemPlanta;
-	}
-
-	public void setItemPlanta(ArrayList<Tupla> itemPlanta) {
-		this.itemPlanta = itemPlanta;
-	}
-	
-	
+	public void agregarPlanta(PlantaDTO plantaDTO) {
+		this.plantas.add(plantaDTO);
+	}	
 }

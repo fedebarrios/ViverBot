@@ -13,14 +13,15 @@ public class Inventario {
 	}
 	
 	public ArrayList<EspecieDTO> obtenerEspecies(){
-		return especieDAO.Leer();
+		return especieDAO.leer();
 	}
 	
-	public void agregarEspecie(EspecieDTO especie){
-		especieDAO.Agregar(especie);
+	public void agregarEspecie(String nombreEspecie, String nombreCientifico, String pathAlmacenado){
+		EspecieDTO especieDTO = new EspecieDTO(especieDAO.obtenerUltimoCodigo()+1, nombreEspecie, nombreCientifico, pathAlmacenado);
+		especieDAO.agregar(especieDTO);
 	}
 	
-	public void borrarEspecie(EspecieDTO especie){
-		especieDAO.Borrar(especie);
+	public void borrarEspecie(int codEspecie){
+		especieDAO.borrarEspecie(codEspecie);
 	}
 }

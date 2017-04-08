@@ -1,11 +1,7 @@
 package com.losameos.viverbot.Controller;
 
 import org.junit.Test;
-
-import com.losameos.viverbot.DAO.EspecieDAO;
 import com.losameos.viverbot.DTO.EspecieDTO;
-import com.losameos.viverbot.Model.Plantas;
-import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import junit.framework.TestCase;
 
 
@@ -25,8 +21,8 @@ public class VerDetallesEspecieTest extends TestCase {
 	public void testCantidadPlantas()
 	{
 		inicialize();
-		especie = new EspecieDTO("especie1","prueba","rosa.jpg");
-		Integer cantidad = controlador.getPlantas().obtenerPlantas(especie.getNombre()).size();
+		especie = new EspecieDTO(2,"especie1","prueba","rosa.jpg");
+		Integer cantidad = controlador.getPlantas().obtenerPlantas(especie.getCodEspecie()).size();
 		assertTrue(cantidad==6);
 		clear();
 	}
@@ -38,10 +34,8 @@ public class VerDetallesEspecieTest extends TestCase {
 		//
 	}
 	
-	
-	
 	private void inicialize() {
-		especie = new EspecieDTO("especie1","prueba","rosa.jpg");
+		especie = new EspecieDTO(1,"especie1","prueba","rosa.jpg");
 		controlador = new VerDetallesEspecie_Controller(especie);
 	}
 

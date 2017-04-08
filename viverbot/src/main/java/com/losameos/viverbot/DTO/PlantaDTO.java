@@ -5,21 +5,25 @@ import com.losameos.viverbot.Model.Ubicacion;
 
 public class PlantaDTO {
 	
-	private Integer codigo;
+	private int codigoEspecie;
+	private int codigoPlanta;
 	private Ubicacion ubicacion;
 	private Date fechaPlanta;
 	
-	public PlantaDTO(Integer codigo, Ubicacion ubicacion)
+	public PlantaDTO(int codigoEspecie, int codigoPlanta, Ubicacion ubicacion, Date fechaPlanta)
 	{
-		this.codigo = codigo;
-		this.ubicacion = ubicacion;
-	}
-	
-	public PlantaDTO(Integer codigo, Ubicacion ubicacion, Date fechaPlanta)
-	{
-		this.codigo = codigo;
+		this.codigoEspecie = codigoEspecie;
 		this.ubicacion = ubicacion;
 		this.fechaPlanta = fechaPlanta;
+		this.codigoPlanta = codigoPlanta;
+	}
+
+	public int getCodigoPlanta() {
+		return codigoPlanta;
+	}
+
+	public void setCodigoPlanta(int codigoPlanta) {
+		this.codigoPlanta = codigoPlanta;
 	}
 
 	public Date getFechaPlanta() {
@@ -39,13 +43,10 @@ public class PlantaDTO {
 	}
 
 	public Integer getCodigo() {
-		return codigo;
+		return codigoEspecie;
 	}
 
 	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+		this.codigoEspecie = codigo;
 	}
-	
-	
-	
 }

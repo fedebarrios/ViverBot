@@ -21,7 +21,8 @@ public class BajaEspecie_Controller implements ActionListener {
 		this.bajaVista.setVisible(true);
 	}
 
-	private void llenarCombo(JComboBox combo) {
+	@SuppressWarnings("unchecked")
+	private void llenarCombo(@SuppressWarnings("rawtypes") JComboBox combo) {
 		ArrayList<EspecieDTO> especies = inventario.obtenerEspecies();
 		for (int i = 0; i < especies.size(); i++) {
 			bajaVista.getComboBox().addItem(especies.get(i).getNombre());
@@ -37,7 +38,7 @@ public class BajaEspecie_Controller implements ActionListener {
 			ArrayList<EspecieDTO> esp = inventario.obtenerEspecies();
 			for (int i = 0; i < esp.size(); i++) {
 				if (esp.get(i).getNombre().equals(elementoElegido)) {
-					this.inventario.borrarEspecie(esp.get(i));
+					this.inventario.borrarEspecie(esp.get(i).getCodEspecie());
 				}
 			}
 			this.bajaVista.getComboBox().removeAllItems();

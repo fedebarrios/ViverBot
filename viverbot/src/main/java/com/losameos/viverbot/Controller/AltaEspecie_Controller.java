@@ -3,10 +3,7 @@ package com.losameos.viverbot.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.JOptionPane;
-
-import com.losameos.viverbot.DTO.EspecieDTO;
 import com.losameos.viverbot.Model.Inventario;
 import com.losameos.viverbot.View.AltaEspecie;
 
@@ -34,8 +31,7 @@ public class AltaEspecie_Controller implements ActionListener {
 				JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
 			} else {
 				String pathAlmacenado = copiar(this.altaVista.getImagen_tf().getText(), nombreEspecie);
-				EspecieDTO nuevaEspecie = new EspecieDTO(nombreEspecie, nombreCientifico, pathAlmacenado);
-				this.inventario.agregarEspecie(nuevaEspecie);
+				this.inventario.agregarEspecie(nombreEspecie, nombreCientifico, pathAlmacenado);
 				JOptionPane.showMessageDialog(this.altaVista, "Se guardo correctamente la nueva especie");
 				this.altaVista.getNombreEspecie_tf().setText("");
 				this.altaVista.getNombreCientifico_tf().setText("");

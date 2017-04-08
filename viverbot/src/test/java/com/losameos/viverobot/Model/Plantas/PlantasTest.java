@@ -1,12 +1,9 @@
 package com.losameos.viverobot.Model.Plantas;
 
 import static org.junit.Assert.*;
-
+import java.sql.Date;
 import org.junit.Test;
-
-import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.Model.Plantas;
-import com.losameos.viverbot.Model.Ubicacion;
 
 public class PlantasTest {
 	
@@ -15,14 +12,13 @@ public class PlantasTest {
 	@Test
 	public void testAltaPlantas() {
 		inicializar();
-		Integer cantidadPlantas = plantas.obtenerPlantas("especie3").size();
+		Integer cantidadPlantas = plantas.obtenerPlantas(1).size();
 		System.out.println("Cantidad de plantas: "+cantidadPlantas);
 		assertTrue(cantidadPlantas==6);
 		
 		System.out.println("Se carga una nueva planta");
-		PlantaDTO nuevaPlanta = new PlantaDTO(32,new Ubicacion(34,543));
-		plantas.agregarPlanta("especie3", nuevaPlanta);
-		cantidadPlantas = plantas.obtenerPlantas("especie3").size();
+		plantas.agregarPlanta(1, "34,543", new Date(10,10,1994));
+		cantidadPlantas = plantas.obtenerPlantas(1).size();
 
 		assertTrue(cantidadPlantas==7);
 		System.out.println("nueva cantidad: "+cantidadPlantas);

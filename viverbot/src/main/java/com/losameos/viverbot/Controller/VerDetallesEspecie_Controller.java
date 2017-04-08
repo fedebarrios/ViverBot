@@ -11,7 +11,6 @@ import com.losameos.viverbot.View.VerDetalleEspecie;
 
 public class VerDetallesEspecie_Controller implements ActionListener {
 
-	
 	 private VerDetalleEspecie vistaVerDetalle;
 	 private Plantas plantas;
 	 
@@ -36,7 +35,7 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 	private void llenarTabla(EspecieDTO especie)
 	{
 		
-		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas(especie.getNombre());
+		ArrayList<PlantaDTO> listadoPlantas = plantas.obtenerPlantas(especie.getCodEspecie());
 		System.out.println(listadoPlantas.isEmpty());
 		
 		if(!listadoPlantas.isEmpty())
@@ -50,8 +49,6 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		}
 		else
 			vistaVerDetalle.getPanel().msgTablaVacia(true);
-		
-		
 	}
 
 
@@ -84,6 +81,4 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		public void setPlantas(Plantas plantas) {
 			this.plantas = plantas;
 		}
-	
-		
 }

@@ -24,8 +24,6 @@ public class Tupla {
 	{
 		
 	}
-	
-
 	public EspecieDTO getEspecie() {
 		return especie;
 	}

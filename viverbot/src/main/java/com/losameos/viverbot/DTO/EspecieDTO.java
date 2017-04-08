@@ -1,18 +1,26 @@
 package com.losameos.viverbot.DTO;
 
-import org.hamcrest.core.IsNull;
-
 public class EspecieDTO {
 	
+	private int codEspecie;
 	private String nombre;
 	private String nombreCientifico;
 	private String urlImage;
 	
-	public EspecieDTO(String nombre, String nombreC, String imagen)
+	public EspecieDTO(int codEspecie, String nombre, String nombreC, String imagen)
 	{
+		this.codEspecie = codEspecie;
 		this.nombre = nombre; 
 		this.nombreCientifico = nombreC;
 		this.urlImage = imagen;
+	}
+
+	public int getCodEspecie() {
+		return codEspecie;
+	}
+
+	public void setCodEspecie(int codEspecie) {
+		this.codEspecie = codEspecie;
 	}
 
 	public String getNombre() {
@@ -38,6 +46,4 @@ public class EspecieDTO {
 	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
 	}
-	
-
 }
