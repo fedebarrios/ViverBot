@@ -36,9 +36,9 @@ public class HistorialOptimo {
 		return null;
 	}
 	
-	public TuplaAltura BuscarTupla(Date d){
+	public TuplaAltura BuscarTupla(int d){
 		for (int i = 0; i<historial.size() ; i++){
-			if(historial.get(i).getDiaDeVida().equals(d)){
+			if(historial.get(i).getDiaDeVida() == d ){
 				return historial.get(i);
 			}
 		}
