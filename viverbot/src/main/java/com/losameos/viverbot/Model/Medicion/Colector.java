@@ -1,14 +1,20 @@
 package com.losameos.viverbot.Model.Medicion;
 
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
-import com.losameos.viverbot.Model.Sensores.Sensor;
+import com.losameos.viverbot.Model.Sensores.InstrumentoMedicion;
 
 public class Colector {
-	protected Sensor sensor;
+	protected InstrumentoMedicion instrumentoMedicion;
 	protected Magnitud valorActual;
+	protected String tipoValor;
+	
+	public Colector() {
+		this.valorActual = null;
+		this.tipoValor = "";
+	}
 
-	public Colector(Sensor s) {
-		this.sensor = s;
+	public Colector(InstrumentoMedicion s) {
+		this.instrumentoMedicion = s;
 		this.valorActual = null;
 	}
 
@@ -18,7 +24,7 @@ public class Colector {
 	}
 
 	protected void medir() {
-		this.valorActual = this.sensor.getMedicion();
+		this.valorActual = this.instrumentoMedicion.getMedicion();
 	}
 
 }

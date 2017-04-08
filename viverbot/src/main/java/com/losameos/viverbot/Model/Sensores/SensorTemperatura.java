@@ -5,7 +5,7 @@ import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
-public class SensorTemperatura extends Sensor {
+public class SensorTemperatura extends InstrumentoMedicion {
 	
 	
 	public SensorTemperatura(){
