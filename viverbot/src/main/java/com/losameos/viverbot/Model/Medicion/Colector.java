@@ -1,6 +1,8 @@
 package com.losameos.viverbot.Model.Medicion;
 
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
+import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
+import com.losameos.viverbot.Model.Sensores.InstrumentoFactory;
 import com.losameos.viverbot.Model.Sensores.InstrumentoMedicion;
 
 public class Colector {
@@ -13,8 +15,8 @@ public class Colector {
 		this.tipoValor = "";
 	}
 
-	public Colector(InstrumentoMedicion s) {
-		this.instrumentoMedicion = s;
+	public Colector(Magnitudes m) {
+		this.instrumentoMedicion = InstrumentoFactory.creatInstrumento(m);
 		this.valorActual = null;
 	}
 

@@ -2,16 +2,19 @@ package com.losameos.viverbot.Controller.Verificacion;
 
 import java.util.ArrayList;
 
+import com.losameos.viverbot.Model.SoporteMovible;
 import com.losameos.viverbot.Model.Ubicacion;
-import com.losameos.viverbot.Model.Magnitudes.Humedad;
-import com.losameos.viverbot.Model.Medicion.ColectorHumedad;
+import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 
 public class TransmisorHumedad extends Transmisor {
 	private AnalizadorHumedad analizador;
 	private ArrayList<Ubicacion> ubicaciones;
+	private static Magnitudes m = Magnitudes.HUMEDAD;
+	private SoporteMovible soporte;
 
-	public TransmisorHumedad() {
-		super(new ColectorHumedad());
+	public TransmisorHumedad(SoporteMovible soporte) {
+		super(soporte.getColector());
+		this.soporte = soporte;
 		this.analizador = new AnalizadorHumedad();
 		this.ubicaciones = new ArrayList<Ubicacion>();
 		this.ubicaciones.add(new Ubicacion(10, 10));
@@ -23,12 +26,9 @@ public class TransmisorHumedad extends Transmisor {
 		while (true) {
 			for (int i = 0; i < this.ubicaciones.size(); i++) {
 				if (this.verificarTiempoTranscurrido()) {
-					((ColectorHumedad) this.colector).mover(this.ubicaciones.get(i));
-					realizarMedicion();
-					if (this.valorActual != null) {
-						this.analizador.analizar((Humedad) this.valorActual, this.ubicaciones.get(i));
-						this.setearTiempoInicio();
-					}
+					this.soporte.mover(this.ubicaciones.get(i));
+					System.out.println("La humedad es: "+ this.colector.tomarMedicion());
+					
 				} else {
 					i--;
 				}

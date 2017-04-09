@@ -1,10 +1,9 @@
 package com.losameos.viverbot.Model.Magnitudes;
 
 public class Magnitud {
-	
+
 	protected Double valor;
 
-	
 	public Magnitud(Double valor) {
 		this.valor = valor;
 	}
@@ -16,8 +15,5 @@ public class Magnitud {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	
-	
-	
 
 }

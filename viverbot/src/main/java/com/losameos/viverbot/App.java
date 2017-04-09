@@ -2,6 +2,8 @@ package com.losameos.viverbot;
 
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
+import com.losameos.viverbot.Model.SoporteMovible;
+import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 //import com.losameos.viverbot.DTO.EspecieDTO;
 
 public class App {
@@ -24,7 +26,8 @@ public class App {
 	}
 
 	private static void controlarHumedad() {
-		Thread hiloTransmisor = new Thread(new TransmisorHumedad());
+		SoporteMovible soporte =  new SoporteMovible(Magnitudes.HUMEDAD);
+		Thread hiloTransmisor = new Thread(new TransmisorHumedad(soporte));
 		hiloTransmisor.start();
 	}
 

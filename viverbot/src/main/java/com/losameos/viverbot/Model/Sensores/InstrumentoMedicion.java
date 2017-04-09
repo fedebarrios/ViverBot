@@ -2,7 +2,7 @@ package com.losameos.viverbot.Model.Sensores;
 
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 
-public class InstrumentoMedicion {
+public abstract class  InstrumentoMedicion {
 
 	public Magnitud getMedicion() {
 		return obtenerMedicion();
@@ -14,5 +14,7 @@ public class InstrumentoMedicion {
 	protected Magnitud simularMedicion(){
 		return null;
 	}
+	
+	
 
 }

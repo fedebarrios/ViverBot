@@ -6,10 +6,6 @@ import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 
 public class SensorHumedad extends InstrumentoMedicion {
 
-	public SensorHumedad() {
-
-	}
-
 	@Override
 	protected Magnitud simularMedicion() {
 		Humedad ret = new Humedad((double) Hora.obtenerHoraActual().getMinuto());

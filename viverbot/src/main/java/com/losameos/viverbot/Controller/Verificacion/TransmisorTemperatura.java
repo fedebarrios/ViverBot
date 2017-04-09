@@ -1,14 +1,16 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
+import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
-import com.losameos.viverbot.Model.Medicion.ColectorTemperatura;
+import com.losameos.viverbot.Model.Medicion.Colector;
 
 public class TransmisorTemperatura extends Transmisor {
 
-	AnalizadorTemperatura analizador;
+	private AnalizadorTemperatura analizador;
+	private static Magnitudes m = Magnitudes.TEMPERATURA;
 
 	public TransmisorTemperatura() {
-		super(new ColectorTemperatura());
+		super(new Colector(m));
 		this.analizador = new AnalizadorTemperatura();
 	}
 
