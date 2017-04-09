@@ -4,7 +4,6 @@ public class Humedad extends Magnitud{
 
 	public Humedad(Double valor) {
 		super(valor);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

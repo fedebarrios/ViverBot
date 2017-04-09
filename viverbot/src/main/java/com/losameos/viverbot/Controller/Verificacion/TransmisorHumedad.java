@@ -27,7 +27,7 @@ public class TransmisorHumedad extends Transmisor {
 				for (int i = 0; i < this.ubicaciones.size(); i++) {
 
 					this.soporte.mover(this.ubicaciones.get(i));
-					System.out.println("La humedad es: " + this.colector.tomarMedicion());
+					System.out.println("La humedad es: " + this.colector.tomarMedicion().getValor());
 
 				}
 			}
@@ -38,6 +38,10 @@ public class TransmisorHumedad extends Transmisor {
 	@Override
 	protected boolean verificarTiempo() {
 		return Hora.obtenerHoraActual().compareTo(horaInicio) > 0;
+	}
+	
+	public static Magnitudes getTipoMagnitud(){
+		return m;
 	}
 
 }

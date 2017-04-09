@@ -17,8 +17,7 @@ public class SoporteMovible implements IMovible{
 	
 	@Override
 	public void mover(Ubicacion u) {
-		// TODO Auto-generated method stub
-		IMovible.super.mover(u);
+		this.setUbicacion(u);
 	}
 
 	public Colector getColector() {
