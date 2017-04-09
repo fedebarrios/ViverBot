@@ -12,13 +12,17 @@ public class Ambiente implements Runnable {
 
 	}
 
-	public static  Temperatura getTemperatura() {
+	public static Temperatura getTemperatura() {
 		return temperaturaActual;
 
 	}
 
 	public void setHoraActual(Hora hora) {
 		horaActual = hora;
+	}
+
+	public void setTemperatura(double d) {
+		temperaturaActual = new Temperatura(d);
 	}
 
 }

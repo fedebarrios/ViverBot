@@ -29,4 +29,14 @@ public class Colector {
 		this.valorActual = this.instrumentoMedicion.getMedicion();
 	}
 
+	public InstrumentoMedicion getInstrumentoMedicion() {
+		return instrumentoMedicion;
+	}
+
+	public Magnitud getValorActual() {
+		return valorActual;
+	}
+	
+	
+
 }
