@@ -13,7 +13,7 @@ public class App {
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
 		controlarTemperatura();
-		controlarHumedad();
+		//controlarHumedad();
 
 		// VerDetallesEspecie_Controller controladorPlanta = new
 		// VerDetallesEspecie_Controller(new
