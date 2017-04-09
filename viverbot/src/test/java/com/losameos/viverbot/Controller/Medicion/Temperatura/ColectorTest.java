@@ -36,7 +36,6 @@ public class ColectorTest {
 	@Test
 	public void testTomarMedicionTemperatura() {
 		this.colectroTest = new Colector(Magnitudes.TEMPERATURA);
-
 		Ambiente ambienteSimulado = new Ambiente();
 		assertTrue(this.verificarTemperatura(this.getHorarios(), ambienteSimulado));
 		clear();
