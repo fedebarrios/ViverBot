@@ -2,6 +2,8 @@ package com.losameos.viverbot.Model.Sensores;
 
 import java.util.ArrayList;
 
+import org.junit.Test;
+
 import com.losameos.viverbot.Model.Ambiente;
 import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
@@ -12,6 +14,7 @@ public class SensorTemperaturaTest extends TestCase {
 	private static SensorTemperatura sensorTest = null;
 
 	// este test verifica que el return sea de tipo temperatura
+	@Test
 	public void testGetMedicionVerificarClase() {
 		inicialize();
 		assertTrue(sensorTest.getMedicion() instanceof Temperatura);
@@ -20,6 +23,7 @@ public class SensorTemperaturaTest extends TestCase {
 
 	// este test verifica que la temperatura sea correcta durante el cada
 	// horario definido
+	@Test
 	public void testGetMedicion() {
 		inicialize();
 
@@ -62,7 +66,7 @@ public class SensorTemperaturaTest extends TestCase {
 		boolean ret = true;
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
-			ret = true && sensorTest.getMedicion().equals(a.getTemperatura());
+			ret = ret && sensorTest.getMedicion().equals(a.getTemperatura());
 		}
 		return ret;
 	}
