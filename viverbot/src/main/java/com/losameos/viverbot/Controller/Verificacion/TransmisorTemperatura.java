@@ -30,6 +30,10 @@ public class TransmisorTemperatura extends Transmisor {
 				if (this.valorActual != null) {
 					this.analizador.analizar((Temperatura) this.valorActual);
 					this.setearTiempoInicio();
+				} else {
+					// aqui se debe la acoplar la logica de alarmas o bien el
+					// soporte que pueda brindar el
+					// sistema ante fallas en la medicion, los cuales aun no se han definido ni planificado
 				}
 
 			}

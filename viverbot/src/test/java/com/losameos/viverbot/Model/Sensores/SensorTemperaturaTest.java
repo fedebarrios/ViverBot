@@ -1,65 +1,73 @@
 package com.losameos.viverbot.Model.Sensores;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
+import com.losameos.viverbot.Model.Ambiente;
+import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 import junit.framework.TestCase;
 
 public class SensorTemperaturaTest extends TestCase {
 	private static SensorTemperatura sensorTest = null;
-	private static Temperatura temperaturaActualTest = null;
 
-	//este test verifica que funciona el constructor seguramente lo saquemos :v
-	public void testSensor() {
-		inicialize();
-		assertNotNull(sensorTest);
-		clear();
-	}
-
-	//este test verifica que el return sea de tipo  temperatura
+	// este test verifica que el return sea de tipo temperatura
 	public void testGetMedicionVerificarClase() {
 		inicialize();
 		assertTrue(sensorTest.getMedicion() instanceof Temperatura);
 		clear();
 	}
 
-	//este test verifica que la temperatura sea correcta
+	// este test verifica que la temperatura sea correcta durante el cada
+	// horario definido
 	public void testGetMedicion() {
 		inicialize();
-		System.out.println("ingrese la temperatura actual");
-		ingresarTemperatura();
 
-		assertTrue(sensorTest.getMedicion().getValor().equals(temperaturaActualTest.getValor()));
-		clear();
-	}
-	
-	//este test verifica que la temperatura sea diferente a la equivocada
-	public void testGetMedicionErronea() {
-		inicialize();
-		System.out.println("ingrese una temperatura que no sea la actual");
-		ingresarTemperatura();
+		Ambiente ambienteSimulado = new Ambiente();
 
-		assertFalse(sensorTest.getMedicion().getValor().equals(temperaturaActualTest.getValor()));
+		assertTrue(this.verificarTemperatura(this.getHorarios(), ambienteSimulado));
 		clear();
 	}
 
-	
-	///metodos auxiliares
-	private void ingresarTemperatura() {
-		Scanner s = new Scanner(System.in);
-		Double valorIngresado = s.nextDouble();
-		temperaturaActualTest = new Temperatura(valorIngresado);
+	/// metodos auxiliares
+
+	private ArrayList<Hora> getHorarios() {
+		Hora amanecer = new Hora(6, 0, 0);
+		Hora mañana = new Hora(9, 0, 0);
+		Hora medioDia = new Hora(12, 0, 0);
+		Hora tarde = new Hora(15, 0, 0);
+		Hora atardecer = new Hora(18, 0, 0);
+		Hora noche = new Hora(21, 0, 0);
+		Hora mediaNoche = new Hora(24, 0, 0);
+		Hora madrugada = new Hora(3, 0, 0);
+
+		ArrayList<Hora> horarios = new ArrayList<Hora>();
+		horarios.add(amanecer);
+		horarios.add(mañana);
+		horarios.add(medioDia);
+		horarios.add(tarde);
+		horarios.add(atardecer);
+		horarios.add(noche);
+		horarios.add(mediaNoche);
+		horarios.add(madrugada);
+		return horarios;
 
 	}
 
 	private void inicialize() {
-		temperaturaActualTest = null;
 		sensorTest = new SensorTemperatura();
 	}
 
+	private boolean verificarTemperatura(ArrayList<Hora> horarios, Ambiente a) {
+		boolean ret = true;
+		for (Hora h : horarios) {
+			a.setHoraActual(h);
+			ret = true && sensorTest.getMedicion().equals(a.getTemperatura());
+		}
+		return ret;
+	}
+
 	private void clear() {
-		temperaturaActualTest = null;
 
 		sensorTest = null;
 
