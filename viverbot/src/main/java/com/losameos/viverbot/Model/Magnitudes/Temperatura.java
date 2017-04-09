@@ -6,4 +6,6 @@ public class Temperatura extends Magnitud{
 		super(valor);
 	}
 	
+	
+	
 }
