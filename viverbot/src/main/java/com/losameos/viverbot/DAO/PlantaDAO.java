@@ -65,6 +65,7 @@ public class PlantaDAO {
 		this.plantas.add(plantaDTO);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<PlantaDTO> obtenerPlantas(){
 		return (ArrayList<PlantaDTO>) this.plantas.clone();
 	}
