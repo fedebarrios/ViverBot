@@ -11,17 +11,13 @@ public class PlantaDTO {
 	private int codigoPlanta;
 	private Ubicacion ubicacion;
 	private Date fechaPlanta;
-	private Historial historialOptimo;
-	private Historial historialVerdadero;
 	
-	public PlantaDTO(int codigoEspecie, int codigoPlanta, Ubicacion ubicacion, Date fechaPlanta, Historial h1, Historial h2)
+	public PlantaDTO(int codigoEspecie, int codigoPlanta, Ubicacion ubicacion, Date fechaPlanta)
 	{
 		this.codigoEspecie = codigoEspecie;
 		this.ubicacion = ubicacion;
 		this.fechaPlanta = fechaPlanta;
 		this.codigoPlanta = codigoPlanta;
-		this.historialOptimo = h1;
-		this.historialVerdadero = h2;
 	}
 
 	public int getCodigoPlanta() {
@@ -55,22 +51,4 @@ public class PlantaDTO {
 	public void setCodigo(Integer codigo) {
 		this.codigoEspecie = codigo;
 	}
-
-	public Historial getHistorialOptimo() {
-		return historialOptimo;
-	}
-
-	public void setHistorialOptimo(Historial historialOptimo) {
-		this.historialOptimo = historialOptimo;
-	}
-
-	public Historial getHistorialVerdadero() {
-		return historialVerdadero;
-	}
-
-	public void setHistorialVerdadero(Historial historialVerdadero) {
-		this.historialVerdadero = historialVerdadero;
-	}
-	
-	
 }

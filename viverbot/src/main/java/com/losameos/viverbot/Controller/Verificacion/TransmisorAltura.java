@@ -3,12 +3,13 @@ package com.losameos.viverbot.Controller.Verificacion;
 import java.util.ArrayList;
 
 import com.losameos.viverbot.DTO.PlantaDTO;
+import com.losameos.viverbot.Model.ControlSeguimientos;
 import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Plantas;
+import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
-import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Medicion.Colector;
 
 public class TransmisorAltura extends Transmisor{
@@ -16,13 +17,15 @@ public class TransmisorAltura extends Transmisor{
 	private static Magnitudes m = Magnitudes.ALTURA;
 	private ArrayList<PlantaDTO> plantas;
 	private static long inicio = 0;
-	private static long frecuenciaDeRepeticion = 3000;
+	private static long frecuenciaDeRepeticion = 8000;
 	private SoporteMovible soporte;
+	private ControlSeguimientos seguimientos;
 
 	public TransmisorAltura() {
 		super(new Colector(m));
 		analizadorAltura = new AnalizadorAltura();
 		plantas = new Plantas().obtenerPlantas();
+		seguimientos = ControlSeguimientos.getInstance();
 	}
 	
 	@Override
@@ -37,7 +40,13 @@ public class TransmisorAltura extends Transmisor{
 					this.soporte.mover(plantas.get(i).getUbicacion());
 					realizarMedicion();
 					if (this.valorActual != null) {
-						this.analizadorAltura.analizar(this.valorActual, plantas.get(i));
+						SeguimientoAltura seguimientoBuscado = seguimientos.getSeguimiento(plantas.get(i));
+						if ( seguimientoBuscado!= null){
+							this.analizadorAltura.analizar(this.valorActual, seguimientoBuscado );
+						}
+						else{
+							System.out.println("No hay un seguimiento asociado a la planta "+ plantas.get(i).getCodigoPlanta());
+						}
 					} else {
 						System.out.println("El metro se rompio");
 					}

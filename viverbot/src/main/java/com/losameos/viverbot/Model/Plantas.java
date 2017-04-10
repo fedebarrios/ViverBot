@@ -24,7 +24,7 @@ public class Plantas {
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Date fecha) {
 		Ubicacion ubicacionDTO = obtenerUbicacion(ubicacion);
-		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, plantaDAO.obtenerUltimoCodigo()+1, ubicacionDTO, fecha, null, null);
+		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, plantaDAO.obtenerUltimoCodigo()+1, ubicacionDTO, fecha);
 		plantaDAO.agregarPlanta(plantaDTO);
 		return false;
 	}

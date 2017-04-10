@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.Model.Historial;
+import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.TuplaAltura;
 import com.losameos.viverbot.Model.Magnitudes.Altura;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
@@ -17,9 +18,9 @@ public class AnalizadorAltura {
 		
 	}
 	
-	public void analizar(Magnitud altura, PlantaDTO planta){
-		this.historialOptimo = planta.getHistorialOptimo();
-		this.historialVerdadero = planta.getHistorialVerdadero();
+	public void analizar(Magnitud altura, SeguimientoAltura seguimiento){
+		this.historialOptimo = seguimiento.getHistorialOptimo();
+		this.historialVerdadero = seguimiento.getHistorialVerdadero();
 		//Por ahora tomo los minutos, despues habra que ver para ir guardando el dia que se tomo la medicion
 		int diaActual = Calendar.getInstance().getTime().getMinutes();
 		//TODO: chequear que la misma altura y dia no esten ya en el historial

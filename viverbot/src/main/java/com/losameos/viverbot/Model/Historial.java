@@ -1,7 +1,6 @@
 package com.losameos.viverbot.Model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.losameos.viverbot.Model.Magnitudes.Altura;
 
