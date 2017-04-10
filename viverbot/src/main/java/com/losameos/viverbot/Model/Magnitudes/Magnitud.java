@@ -16,4 +16,11 @@ public class Magnitud {
 		this.valor = valor;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Magnitud m =  (Magnitud) obj;
+		return this.getValor().equals(m.getValor());
+	}
+
+	
 }

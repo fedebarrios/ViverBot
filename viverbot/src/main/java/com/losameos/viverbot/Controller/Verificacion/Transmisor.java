@@ -28,7 +28,8 @@ public class Transmisor implements Runnable {
 
 	
 
-	protected void realizarMedicion() {
+	protected boolean realizarMedicion() {
 		this.valorActual = this.colector.tomarMedicion();
+		return this.valorActual != null;
 	}
 }

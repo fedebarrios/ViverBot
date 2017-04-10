@@ -28,4 +28,16 @@ public class EstadoTemperatura {
 		this.optima = optima;
 	}
 
+	@Override
+	public boolean equals(Object e) {
+		EstadoTemperatura estado =  (EstadoTemperatura) e;
+		boolean ret = true;
+		if(this.temperatura.getValor() != estado.getTemperatura().getValor() || 
+				this.getOptima() != estado.getOptima()){
+			ret = false;
+		}
+		
+		return ret;
+	}
+
 }

@@ -14,8 +14,9 @@ public class App {
 		// capas este metodo deberia ser una clase que maneje todo el ciclo
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
-		controlarAltura();
+		//controlarAltura();
 		//controlarHumedad();
+		controlarTemperatura();
 
 		// VerDetallesEspecie_Controller controladorPlanta = new
 		// VerDetallesEspecie_Controller(new
@@ -36,8 +37,11 @@ public class App {
 	
 
 	private static void controlarTemperatura() {
-
-		Thread hiloTransmisor = new Thread(new TransmisorTemperatura());
+		TransmisorTemperatura t = new TransmisorTemperatura();
+		t.setFactorDeInterrupcion(5);
+		t.setFrecuenciaDeRepeticion(2000);
+		Thread hiloTransmisor = new Thread(t);
+		
 		hiloTransmisor.start();
 
 	}
