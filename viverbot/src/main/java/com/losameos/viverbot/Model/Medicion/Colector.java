@@ -16,7 +16,7 @@ public class Colector {
 	}
 
 	public Colector(Magnitudes m) {
-		this.instrumentoMedicion = InstrumentoFactory.creatInstrumento(m);
+		this.instrumentoMedicion = InstrumentoFactory.crearInstrumento(m);
 		this.valorActual = null;
 	}
 

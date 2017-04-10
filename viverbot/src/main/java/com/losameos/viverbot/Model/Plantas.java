@@ -17,10 +17,14 @@ public class Plantas {
 	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {
 		return plantaDAO.obtenerPlantas(codEspecie);
 	}
+	
+	public ArrayList<PlantaDTO> obtenerPlantas() {
+		return plantaDAO.obtenerPlantas();
+	}
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Date fecha) {
 		Ubicacion ubicacionDTO = obtenerUbicacion(ubicacion);
-		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, plantaDAO.obtenerUltimoCodigo()+1, ubicacionDTO, fecha);
+		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, plantaDAO.obtenerUltimoCodigo()+1, ubicacionDTO, fecha, null, null);
 		plantaDAO.agregarPlanta(plantaDTO);
 		return false;
 	}

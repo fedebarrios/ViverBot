@@ -4,10 +4,12 @@ import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 
 public class SoporteFactory {
 	
-	static SoporteMovible soporteHumedad;
-	public static SoporteMovible creatSoporte(Magnitudes m){
+	static SoporteMovible soporte;
+	public static SoporteMovible crearSoporte(Magnitudes m){
 		if(m.equals(Magnitudes.HUMEDAD)){
-			return getInstanceSoporte(soporteHumedad, m);
+			return getInstanceSoporte(soporte, m);
+		} else if(m.equals(Magnitudes.ALTURA)){
+			return getInstanceSoporte(soporte, m);
 		}
 		return null;
 	}

@@ -12,28 +12,28 @@ public class IntrumentoFactoryTest {
 
 	@Test
 	public void CreatInstrumentoTestTemperatura() {
-		ins = InstrumentoFactory.creatInstrumento(Magnitudes.TEMPERATURA);
+		ins = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
 		assertTrue(ins instanceof SensorTemperatura);
 		clear();
 	}
 
 	@Test
 	public void CreatInstrumentoTestHumedad() {
-		ins = InstrumentoFactory.creatInstrumento(Magnitudes.HUMEDAD);
+		ins = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
 		assertTrue(ins instanceof SensorHumedad);
 	}
 
 	@Test
 	public void CreatSingletownTestTemperatura() {
-		ins = InstrumentoFactory.creatInstrumento(Magnitudes.TEMPERATURA);
-		InstrumentoMedicion aux = InstrumentoFactory.creatInstrumento(Magnitudes.TEMPERATURA);
+		ins = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
+		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
 		assertTrue(ins == aux);
 	}
 	
 	@Test
 	public void CreatSingletownTestHumedad() {
-		ins = InstrumentoFactory.creatInstrumento(Magnitudes.HUMEDAD);
-		InstrumentoMedicion aux = InstrumentoFactory.creatInstrumento(Magnitudes.HUMEDAD);
+		ins = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
+		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
 		assertTrue(ins == aux);
 	}
 

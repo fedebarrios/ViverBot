@@ -11,7 +11,7 @@ public class Altura extends Magnitud{
 	 * **/
 	
 	public Altura (double valor, String tipo){
-		super(0.0);
+		super(valor);
 		if (tipo.equals("metros") || tipo.equals("m")) {
 			this.metros = valor;
 		}

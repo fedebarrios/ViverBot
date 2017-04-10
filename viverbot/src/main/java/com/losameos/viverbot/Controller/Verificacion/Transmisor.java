@@ -5,8 +5,6 @@ import com.losameos.viverbot.Model.Medicion.Colector;
 
 public class Transmisor implements Runnable {
 
-	
-
 	protected Colector colector;
 	protected Magnitud valorActual;
 

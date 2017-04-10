@@ -1,5 +1,6 @@
 package com.losameos.viverbot;
 
+import com.losameos.viverbot.Controller.Verificacion.TransmisorAltura;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
 import com.losameos.viverbot.Model.SoporteFactory;
@@ -13,7 +14,7 @@ public class App {
 		// capas este metodo deberia ser una clase que maneje todo el ciclo
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
-		controlarTemperatura();
+		controlarAltura();
 		//controlarHumedad();
 
 		// VerDetallesEspecie_Controller controladorPlanta = new
@@ -27,7 +28,7 @@ public class App {
 	}
 
 	private static void controlarHumedad() {
-		SoporteMovible soporte =  SoporteFactory.creatSoporte((TransmisorHumedad.getTipoMagnitud()));
+		SoporteMovible soporte =  SoporteFactory.crearSoporte((TransmisorHumedad.getTipoMagnitud()));
 		Thread hiloTransmisor = new Thread(new TransmisorHumedad(soporte));
 		hiloTransmisor.start();
 	}
@@ -39,5 +40,11 @@ public class App {
 		Thread hiloTransmisor = new Thread(new TransmisorTemperatura());
 		hiloTransmisor.start();
 
+	}
+	
+	private static void controlarAltura() {
+		SoporteMovible soporte =  SoporteFactory.crearSoporte(TransmisorAltura.getTipoMagnitud());
+		Thread hiloTransmisor = new Thread(new TransmisorAltura());
+		hiloTransmisor.start();
 	}
 }
