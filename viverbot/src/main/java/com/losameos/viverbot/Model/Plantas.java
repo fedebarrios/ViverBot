@@ -33,7 +33,7 @@ public class Plantas {
 		plantaDAO.borrarPlanta(codPlanta);
 	}
 
-	public boolean ubicacionLibre(String ubicacion) {
+	public boolean esUbicacionLibre(String ubicacion) {
 		return true;
 	}
 

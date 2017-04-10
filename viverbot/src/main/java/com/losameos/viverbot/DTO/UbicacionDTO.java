@@ -3,13 +3,13 @@ package com.losameos.viverbot.DTO;
 public class UbicacionDTO {
 	private Integer fila;
 	private Integer columna;
+	private boolean estado;
 
-	
-	
-	public UbicacionDTO(Integer fila, Integer columna) {
+	public UbicacionDTO(Integer fila, Integer columna, boolean estado) {
 		super();
 		this.fila = fila;
 		this.columna = columna;
+		this.estado = estado;
 	}
 	public Integer getFila() {
 		return fila;
@@ -23,5 +23,10 @@ public class UbicacionDTO {
 	public void setColumna(Integer columna) {
 		this.columna = columna;
 	}
-	
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 }

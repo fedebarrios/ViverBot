@@ -34,8 +34,6 @@ public class VistaCambiarUbicacion  extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		
 		
 		descripcionUbicacion = new JLabel("Datos sobre la ubicacion");
 		descripcionUbicacion.setBounds(27, 26, 217, 16);

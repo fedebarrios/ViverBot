@@ -28,7 +28,7 @@ public class Controlador_AltaPlanta implements ActionListener {
 		Date fecha = this.vistaAltaPlanta.getDateFiltro();
 
 		if (ubicacion != "") {
-			if (ubicacionLibre(ubicacion)) {
+			if (esUbicacionLibre(ubicacion)) {
 				if (fecha != null) {
 					if (!Verificador.fechaFutura(fecha) && Verificador.fechaPosteriorADueño(fecha)) {
 						return true;
@@ -45,8 +45,8 @@ public class Controlador_AltaPlanta implements ActionListener {
 		return false;
 	}
 
-	public boolean ubicacionLibre(String ubicacion) {
-		return modeloPlantas.ubicacionLibre(ubicacion);
+	public boolean esUbicacionLibre(String ubicacion) {
+		return modeloPlantas.esUbicacionLibre(ubicacion);
 	}
 
 	public boolean registrarPlanta() {
