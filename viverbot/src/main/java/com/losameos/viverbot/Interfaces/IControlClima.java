@@ -17,6 +17,8 @@ public interface IControlClima {
 	public void disminuirTemperatura();
 
 	public void cambiarTemperatura(Double temp);
+	
+	public void cambiarFrioCalor();
 
 
 }
