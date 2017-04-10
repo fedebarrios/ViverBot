@@ -2,9 +2,8 @@ package com.losameos.viverbot.DAO;
 
 import java.sql.Date;
 import java.util.ArrayList;
-
-import com.losameos.viverbot.Model.Ubicacion;
 import com.losameos.viverbot.DTO.PlantaDTO;
+import com.losameos.viverbot.DTO.UbicacionDTO;
 
 public class PlantaDAO {
 	
@@ -23,7 +22,7 @@ public class PlantaDAO {
 			for(int j=0; j<6; j++)
 			{
 				@SuppressWarnings("deprecation")
-				PlantaDTO p = new PlantaDTO(1, i++, new Ubicacion(i*j,i*j), new Date(10,10,2017));
+				PlantaDTO p = new PlantaDTO(1, i++, new UbicacionDTO(i*j,i*j), new Date(10,10,2017));
 				plantas.add(p);
 			}
 		}

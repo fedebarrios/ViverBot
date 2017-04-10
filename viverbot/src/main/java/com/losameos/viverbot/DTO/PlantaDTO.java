@@ -2,17 +2,14 @@ package com.losameos.viverbot.DTO;
 
 import java.sql.Date;
 
-import com.losameos.viverbot.Model.Historial;
-import com.losameos.viverbot.Model.Ubicacion;
-
 public class PlantaDTO {
 	
 	private int codigoEspecie;
 	private int codigoPlanta;
-	private Ubicacion ubicacion;
+	private UbicacionDTO ubicacion;
 	private Date fechaPlanta;
 	
-	public PlantaDTO(int codigoEspecie, int codigoPlanta, Ubicacion ubicacion, Date fechaPlanta)
+	public PlantaDTO(int codigoEspecie, int codigoPlanta, UbicacionDTO ubicacion, Date fechaPlanta)
 	{
 		this.codigoEspecie = codigoEspecie;
 		this.ubicacion = ubicacion;
@@ -36,11 +33,11 @@ public class PlantaDTO {
 		this.fechaPlanta = fechaPlanta;
 	}
 
-	public Ubicacion getUbicacion() {
+	public UbicacionDTO getUbicacion() {
 		return ubicacion;
 	}
 
-	public void setUbicacion(Ubicacion ubicacion) {
+	public void setUbicacion(UbicacionDTO ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 

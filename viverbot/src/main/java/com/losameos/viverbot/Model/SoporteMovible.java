@@ -1,5 +1,6 @@
 package com.losameos.viverbot.Model;
 
+import com.losameos.viverbot.DTO.UbicacionDTO;
 import com.losameos.viverbot.Interfaces.IMovible;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 import com.losameos.viverbot.Model.Medicion.Colector;
@@ -7,8 +8,8 @@ import com.losameos.viverbot.Model.Medicion.Colector;
 public class SoporteMovible implements IMovible{
 
 	private Colector colector;
-	private Ubicacion ubicacion;
-	private Ubicacion defaultUbicacion= new Ubicacion(0,0);
+	private UbicacionDTO ubicacion;
+	private UbicacionDTO defaultUbicacion= new UbicacionDTO(0,0);
 	
 	public SoporteMovible(Magnitudes m){
 		this.colector = new Colector(m);
@@ -16,7 +17,7 @@ public class SoporteMovible implements IMovible{
 	}
 	
 	@Override
-	public void mover(Ubicacion u) {
+	public void mover(UbicacionDTO u) {
 		this.setUbicacion(u);
 	}
 
@@ -28,11 +29,11 @@ public class SoporteMovible implements IMovible{
 		this.colector = colector;
 	}
 
-	public Ubicacion getUbicacion() {
+	public UbicacionDTO getUbicacion() {
 		return ubicacion;
 	}
 
-	public void setUbicacion(Ubicacion ubicacion) {
+	public void setUbicacion(UbicacionDTO ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 	

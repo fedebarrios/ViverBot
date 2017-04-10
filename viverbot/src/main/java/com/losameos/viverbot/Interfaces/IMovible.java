@@ -1,9 +1,9 @@
 package com.losameos.viverbot.Interfaces;
 
-import com.losameos.viverbot.Model.Ubicacion;
+import com.losameos.viverbot.DTO.UbicacionDTO;
 
 public interface IMovible {
-	public default void mover(Ubicacion u) {
+	public default void mover(UbicacionDTO u) {
 		
 	}
 }

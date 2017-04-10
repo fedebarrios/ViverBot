@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.losameos.viverbot.DAO.PlantaDAO;
 import com.losameos.viverbot.DTO.PlantaDTO;
+import com.losameos.viverbot.DTO.UbicacionDTO;
 
 public class Plantas {
 
@@ -23,7 +24,7 @@ public class Plantas {
 	}
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Date fecha) {
-		Ubicacion ubicacionDTO = obtenerUbicacion(ubicacion);
+		UbicacionDTO ubicacionDTO = obtenerUbicacion(ubicacion);
 		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, plantaDAO.obtenerUltimoCodigo()+1, ubicacionDTO, fecha);
 		plantaDAO.agregarPlanta(plantaDTO);
 		return false;
@@ -37,7 +38,7 @@ public class Plantas {
 		return true;
 	}
 
-	private Ubicacion obtenerUbicacion(String ubicacion) {
+	private UbicacionDTO obtenerUbicacion(String ubicacion) {
 		String fila = "";
 		String columna = "";
 		char aux;
@@ -54,6 +55,6 @@ public class Plantas {
 				columna+= aux;
 			}
 		}
-		return new Ubicacion(Integer.parseInt(fila), Integer.parseInt(columna));
+		return new UbicacionDTO(Integer.parseInt(fila), Integer.parseInt(columna));
 	}
 }

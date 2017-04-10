@@ -5,12 +5,13 @@ public class UbicacionDTO {
 	private Integer columna;
 	private boolean estado;
 
-	public UbicacionDTO(Integer fila, Integer columna, boolean estado) {
+	public UbicacionDTO(Integer fila, Integer columna) {
 		super();
 		this.fila = fila;
 		this.columna = columna;
-		this.estado = estado;
+		this.estado = false;
 	}
+	
 	public Integer getFila() {
 		return fila;
 	}
