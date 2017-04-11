@@ -34,6 +34,9 @@ public class AnalizadorAlturaTest {
 	public void AnalizarPlantaSublimeTest() {
 		this.inicialize();
 		this.tuplasOptimo = new ArrayList<TuplaAltura>();
+		// ya que en todos los casos usas la misma entrada de datos encapsula eso en un metodo
+		//setearValores();
+		//me asusta que la altura se pase en string :'v
 		this.tuplasOptimo.add(new TuplaAltura(new Altura("40cm"), 1));
 		this.tuplasOptimo.add(new TuplaAltura(new Altura("45cm"), 2));
 		this.tuplasOptimo.add(new TuplaAltura(new Altura("50cm"), 3));

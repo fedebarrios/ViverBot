@@ -7,7 +7,8 @@ public class SensorTemperatura extends InstrumentoMedicion {
 
 	@Override
 	protected Magnitud simularMedicion() {
-		return Ambiente.getTemperatura();
+		Ambiente a = Ambiente.getInstance();
+		return a.getTemperatura();
 	}
 
 }

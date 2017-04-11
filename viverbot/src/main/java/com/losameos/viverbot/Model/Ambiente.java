@@ -6,13 +6,21 @@ public class Ambiente implements Runnable {
 
 	private static Temperatura temperaturaActual = new Temperatura(25.0);;
 	private Hora horaActual;
+	private static Ambiente ambiente;
+
+	public static Ambiente getInstance() {
+		if (ambiente == null) {
+			ambiente = new Ambiente();
+		}
+		return ambiente;
+	}
 
 	@Override
 	public void run() {
 
 	}
 
-	public static Temperatura getTemperatura() {
+	public Temperatura getTemperatura() {
 		return temperaturaActual;
 
 	}
@@ -21,8 +29,8 @@ public class Ambiente implements Runnable {
 		horaActual = hora;
 	}
 
-	public void setTemperatura(double d) {
-		temperaturaActual = new Temperatura(d);
+	public void setTemperatura(Temperatura t) {
+		temperaturaActual = t;
 	}
 
 }

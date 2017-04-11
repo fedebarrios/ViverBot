@@ -43,7 +43,7 @@ public class TransmisorTemperatura extends Transmisor {
 		this.tiempoTotal = Hora.instanteActual()  - this.tiempoInicio;
 	}
 
-	private void reset() {
+	protected void reset() {
 		this.inicio = 0;
 		this.adelanto = 0;
 		this.retraso = 0;
@@ -75,7 +75,7 @@ public class TransmisorTemperatura extends Transmisor {
 		return true;
 	}
 
-	private boolean enviarDato() {
+	protected boolean enviarDato() {
 
 		if (realizarMedicion()) {
 			this.analizador.analizar((Temperatura) this.valorActual);
@@ -143,6 +143,10 @@ public class TransmisorTemperatura extends Transmisor {
 
 	public long getTiempoTotal() {
 		return tiempoTotal;
+	}
+	
+	public long getTiempoInicial() {
+		return this.tiempoInicio;
 	}
 
 }
