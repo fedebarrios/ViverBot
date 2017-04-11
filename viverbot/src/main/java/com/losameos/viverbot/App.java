@@ -38,8 +38,6 @@ public class App {
 
 	private static void controlarTemperatura() {
 		TransmisorTemperatura t = new TransmisorTemperatura();
-		t.setFactorDeInterrupcion(5);
-		t.setFrecuenciaDeRepeticion(2000);
 		Thread hiloTransmisor = new Thread(t);
 		
 		hiloTransmisor.start();

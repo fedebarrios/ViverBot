@@ -9,10 +9,15 @@ public class TransmisorTemperatura extends Transmisor {
 
 	private AnalizadorTemperatura analizador;
 	private static Magnitudes m = Magnitudes.TEMPERATURA;
-	private static long inicio = 0;
-	private static long frecuenciaDeRepeticion = 1000; // se expresa en
+	private long inicio = 0;
+	private long retraso = 0;
+	private long adelanto = 0;
+	private long tiempoTotal = 0;
+	private long tiempoInicio = 0;
+
+	private long frecuenciaDeRepeticion = 10000; // se expresa en milisegundos
 	private int factorDeInterrupcion;
-	
+
 	// millisegundos
 
 	public TransmisorTemperatura() {
@@ -23,14 +28,44 @@ public class TransmisorTemperatura extends Transmisor {
 
 	@Override
 	protected void Trasnmitir() {
+		this.reset();
 		this.setearTiempoInicio();
+		this.tiempoInicio = inicio;
 		while (seDebaProceguir()) {
 			if (this.verificarTiempo()) {
 				enviarDato();
 				this.factorDeInterrupcion--;
+				this.calcularRetraso();
+				this.setearTiempoInicio();
 
 			}
 		}
+		this.tiempoTotal = Hora.instanteActual()  - this.tiempoInicio;
+	}
+
+	private void reset() {
+		this.inicio = 0;
+		this.adelanto = 0;
+		this.retraso = 0;
+		this.tiempoTotal = 0;
+		this.tiempoInicio = 0;
+	}
+
+	private void calcularRetraso() {
+		if (inicio > 0) {
+			long resta = Hora.instanteActual() - inicio - frecuenciaDeRepeticion;
+			if (resta >= 0) {
+				if (this.retraso < resta) {
+					this.retraso = resta;
+				}
+			}
+			if (resta < 0) {
+				if (this.adelanto > resta) {
+					this.adelanto = resta;
+				}
+			}
+		}
+
 	}
 
 	protected boolean seDebaProceguir() {
@@ -44,7 +79,6 @@ public class TransmisorTemperatura extends Transmisor {
 
 		if (realizarMedicion()) {
 			this.analizador.analizar((Temperatura) this.valorActual);
-			this.setearTiempoInicio();
 			return true;
 		} else {
 			// aqui se debe la acoplar la logica de alarmas o bien el
@@ -75,20 +109,20 @@ public class TransmisorTemperatura extends Transmisor {
 		this.analizador = analizador;
 	}
 
-	public static long getInicio() {
+	public long getInicio() {
 		return inicio;
 	}
 
-	public static void setInicio(long inicio) {
-		TransmisorTemperatura.inicio = inicio;
+	public void setInicio(long inicio) {
+		this.inicio = inicio;
 	}
 
-	public static long getFrecuenciaDeRepeticion() {
+	public long getFrecuenciaDeRepeticion() {
 		return frecuenciaDeRepeticion;
 	}
 
-	public static void setFrecuenciaDeRepeticion(long frecuenciaDeRepeticion) {
-		TransmisorTemperatura.frecuenciaDeRepeticion = frecuenciaDeRepeticion;
+	public void setFrecuenciaDeRepeticion(long f) {
+		this.frecuenciaDeRepeticion = f;
 	}
 
 	public int getFactorDeInterrupcion() {
@@ -97,6 +131,18 @@ public class TransmisorTemperatura extends Transmisor {
 
 	public void setFactorDeInterrupcion(int factorDeInterrupcion) {
 		this.factorDeInterrupcion = factorDeInterrupcion;
+	}
+
+	public long getRetraso() {
+		return retraso;
+	}
+
+	public long getAdelanto() {
+		return adelanto;
+	}
+
+	public long getTiempoTotal() {
+		return tiempoTotal;
 	}
 
 }
