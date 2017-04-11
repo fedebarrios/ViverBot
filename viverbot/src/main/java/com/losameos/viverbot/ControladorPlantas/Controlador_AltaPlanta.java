@@ -3,24 +3,32 @@ package com.losameos.viverbot.ControladorPlantas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
 import com.losameos.viverbot.Controller.Verificacion.Verificador;
+import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverbot.Model.Inventario;
 import com.losameos.viverbot.Model.Plantas;
 import com.losameos.viverbot.VistasPlantas.Vista_AltaPlanta;
 
 public class Controlador_AltaPlanta implements ActionListener {
 
 	private Vista_AltaPlanta vistaAltaPlanta;
-	private Plantas modeloPlantas;
+	private Plantas gestorPlantas;
+	private ArrayList<EspecieDTO> listaEspecies;
+	private Inventario gestorEspecies;
 
+	public Controlador_AltaPlanta(Inventario gestorEspecies, Plantas gestorPlantas){
+		this.gestorEspecies = gestorEspecies;
+		this.gestorPlantas = gestorPlantas;
+		listaEspecies = new ArrayList<EspecieDTO>();
+	}
+	
 	public void inicializar() {
 		if (this.vistaAltaPlanta == null) {
 			this.vistaAltaPlanta = new Vista_AltaPlanta(this);
 		}
 		this.vistaAltaPlanta.mostrarVentana();
-		modeloPlantas = new Plantas();
 	}
 
 	public boolean camposValidos() {
@@ -45,11 +53,23 @@ public class Controlador_AltaPlanta implements ActionListener {
 	public boolean registrarPlanta() {
 		String ubicacion = this.vistaAltaPlanta.getTextUbicacion().getText();
 		Date fecha = this.vistaAltaPlanta.getDateFiltro();
-		return modeloPlantas.agregarPlanta(2, ubicacion, fecha);
+		int codEspecie = listaEspecies.get(obtenerIndiceSeleccionado()).getCodEspecie();
+		return gestorPlantas.agregarPlanta(codEspecie, ubicacion, fecha);
 	}
 
 	public void seleccionarUbicacion(String ubicacion) {
 		this.vistaAltaPlanta.getTextUbicacion().setText(ubicacion);
+	}
+	
+	public void llenarComboEspecies() {
+		listaEspecies = gestorEspecies.obtenerEspecies();
+		for(EspecieDTO i: listaEspecies) {
+			vistaAltaPlanta.getCmbEspecies().addItem(i.getNombre());
+		}
+	}
+	
+	public int obtenerIndiceSeleccionado(){
+		return vistaAltaPlanta.getCmbEspecies().getSelectedIndex();
 	}
 
 	@Override
@@ -58,7 +78,7 @@ public class Controlador_AltaPlanta implements ActionListener {
 
 		if (evento == this.vistaAltaPlanta.getBtnAceptar()) {
 			if (camposValidos()) {
-
+				registrarPlanta();
 			}
 		}
 	}

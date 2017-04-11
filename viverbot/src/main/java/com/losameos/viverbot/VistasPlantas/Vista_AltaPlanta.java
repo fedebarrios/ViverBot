@@ -100,7 +100,20 @@ public class Vista_AltaPlanta extends JFrame {
 		dateFiltro = new Date(calendarFiltro.getYearChooser().getYear() - 1900,
 				calendarFiltro.getMonthChooser().getMonth(), calendarFiltro.getDayChooser().getDay());
 	}
+	
+	public void limpiarVentana(){
+		this.textUbicacion.setText("");
+		this.comboBox.removeAllItems();
+	}
 
+	public JComboBox<String> getCmbEspecies() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox<String> comboBox) {
+		this.comboBox = comboBox;
+	}
+	
 	public void mostrarVentana() {
 		this.setVisible(true);
 	}

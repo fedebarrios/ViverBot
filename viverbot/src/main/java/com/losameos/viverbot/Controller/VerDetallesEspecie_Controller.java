@@ -14,9 +14,9 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 	private VerDetalleEspecie vistaVerDetalle;
 	private Plantas plantas;
 
-	public VerDetallesEspecie_Controller(EspecieDTO especie) {
+	public VerDetallesEspecie_Controller(Plantas plantas, EspecieDTO especie) {
 		vistaVerDetalle = new VerDetalleEspecie(this);
-		plantas = new Plantas();
+		this.plantas = plantas;
 		vistaVerDetalle.visible(true);
 		cargarDatosEspecie(especie);
 		llenarTabla(especie);

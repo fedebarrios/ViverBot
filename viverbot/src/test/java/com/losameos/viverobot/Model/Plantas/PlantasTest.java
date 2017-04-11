@@ -27,7 +27,6 @@ public class PlantasTest {
 	
 	private void inicializar()
 	{
-		plantas = new Plantas();
 	}
 	private void clear()
 	{

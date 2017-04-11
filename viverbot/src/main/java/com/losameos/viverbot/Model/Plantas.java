@@ -11,8 +11,8 @@ public class Plantas {
 
 	private PlantaDAO plantaDAO;
 
-	public Plantas() {
-		this.plantaDAO = new PlantaDAO();
+	public Plantas(PlantaDAO plantaDAO) {
+		this.plantaDAO = plantaDAO;
 	}
 
 	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {

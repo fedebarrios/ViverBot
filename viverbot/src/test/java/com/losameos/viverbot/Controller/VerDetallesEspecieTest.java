@@ -1,13 +1,18 @@
 package com.losameos.viverbot.Controller;
 
 import org.junit.Test;
+
+import com.losameos.viverbot.DAO.PlantaDAO;
 import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverbot.Model.Plantas;
+
 import junit.framework.TestCase;
 
 
 public class VerDetallesEspecieTest extends TestCase {
 	private static EspecieDTO especie = null;
 	private static VerDetallesEspecie_Controller controlador = null;
+	private static Plantas planta = null;
 	
 	@Test
 	public void testInstancia() {
@@ -35,8 +40,10 @@ public class VerDetallesEspecieTest extends TestCase {
 	}
 	
 	private void inicialize() {
+		PlantaDAO plantaDAO = new PlantaDAO();
+		planta = new Plantas(plantaDAO);
 		especie = new EspecieDTO(1,"especie1","prueba","rosa.jpg");
-		controlador = new VerDetallesEspecie_Controller(especie);
+		controlador = new VerDetallesEspecie_Controller(planta, especie);
 	}
 
 	private void clear() {

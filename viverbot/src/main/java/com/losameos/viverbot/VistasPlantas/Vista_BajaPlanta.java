@@ -1,13 +1,9 @@
 package com.losameos.viverbot.VistasPlantas;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import com.losameos.viverbot.ControladorPlantas.Controlador_BajaPlanta;
-import com.losameos.viverbot.Model.Plantas;
-
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -19,19 +15,6 @@ public class Vista_BajaPlanta extends JFrame {
 	private JComboBox<String> cmbPlantas;
 	private JButton btnCancelar;
 	private JButton btnBorrar;
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Vista_BajaPlanta frame = new Vista_BajaPlanta(new Controlador_BajaPlanta(new Plantas()));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	public Vista_BajaPlanta(Controlador_BajaPlanta controlador) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

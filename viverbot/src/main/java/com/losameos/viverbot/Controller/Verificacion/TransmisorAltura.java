@@ -15,16 +15,16 @@ import com.losameos.viverbot.Model.Medicion.Colector;
 public class TransmisorAltura extends Transmisor{
 	private AnalizadorAltura analizadorAltura;
 	private static Magnitudes m = Magnitudes.ALTURA;
-	private ArrayList<PlantaDTO> plantas;
+	private ArrayList<PlantaDTO> listadoPlantas;
 	private static long inicio = 0;
 	private static long frecuenciaDeRepeticion = 8000;
 	private SoporteMovible soporte;
 	private ControlSeguimientos seguimientos;
 
-	public TransmisorAltura() {
+	public TransmisorAltura(Plantas plantas) {
 		super(new Colector(m));
 		analizadorAltura = new AnalizadorAltura();
-		plantas = new Plantas().obtenerPlantas();
+		listadoPlantas = plantas.obtenerPlantas();
 		seguimientos = ControlSeguimientos.getInstance();
 	}
 	
@@ -35,17 +35,17 @@ public class TransmisorAltura extends Transmisor{
 		while (true) {
 
 			if (this.verificarTiempo()) {
-				for (int i=0; i<plantas.size(); i++){
+				for (int i=0; i<listadoPlantas.size(); i++){
 					soporte =  SoporteFactory.crearSoporte(Magnitudes.ALTURA);
-					this.soporte.mover(plantas.get(i).getUbicacion());
+					this.soporte.mover(listadoPlantas.get(i).getUbicacion());
 					realizarMedicion();
 					if (this.valorActual != null) {
-						SeguimientoAltura seguimientoBuscado = seguimientos.getSeguimiento(plantas.get(i));
+						SeguimientoAltura seguimientoBuscado = seguimientos.getSeguimiento(listadoPlantas.get(i));
 						if ( seguimientoBuscado!= null){
 							this.analizadorAltura.analizarDiaEspecifico(this.valorActual, seguimientoBuscado );
 						}
 						else{
-							System.out.println("No hay un seguimiento asociado a la planta "+ plantas.get(i).getCodigoPlanta());
+							System.out.println("No hay un seguimiento asociado a la planta "+ listadoPlantas.get(i).getCodigoPlanta());
 						}
 					} else {
 						System.out.println("El metro se rompio");
