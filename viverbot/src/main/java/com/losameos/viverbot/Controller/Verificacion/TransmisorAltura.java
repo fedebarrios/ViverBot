@@ -20,9 +20,11 @@ public class TransmisorAltura extends Transmisor{
 	private static long frecuenciaDeRepeticion = 8000;
 	private SoporteMovible soporte;
 	private ControlSeguimientos seguimientos;
+	private Plantas plantas;
 
-	public TransmisorAltura(Plantas plantas) {
+	public TransmisorAltura() {
 		super(new Colector(m));
+		plantas = new Plantas();
 		analizadorAltura = new AnalizadorAltura();
 		listadoPlantas = plantas.obtenerPlantas();
 		seguimientos = ControlSeguimientos.getInstance();

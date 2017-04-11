@@ -17,7 +17,7 @@ public class TransmisorHumedadTest {
 
 	private TransmisorHumedad transmisorTest;
 	private Thread hiloTest;
-	private static Plantas p =  new Plantas(new PlantaDAO());
+	private static Plantas p =  new Plantas();
 
 	@Test
 	public void testTrasnmitir() {

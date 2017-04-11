@@ -18,7 +18,7 @@ public class TransmisorHumedad extends Transmisor {
 	private SoporteMovible soporte;
 	private static Hora horaInicioDefoult = new Hora(6, 0, 0);
 	private Hora horaInicio;
-	private static Plantas p = new Plantas(new PlantaDAO());
+	private static Plantas p = new Plantas();
 	private boolean seRealizoTransmision;
 
 	public TransmisorHumedad(SoporteMovible soporte) {
