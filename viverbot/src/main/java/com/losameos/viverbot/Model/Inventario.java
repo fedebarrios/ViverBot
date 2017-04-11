@@ -9,7 +9,7 @@ public class Inventario {
 	private EspecieDAO especieDAO;
 	
 	public Inventario(){
-		this.especieDAO = new EspecieDAO();
+		this.especieDAO = EspecieDAO.getInstance();
 	}
 	
 	public ArrayList<EspecieDTO> obtenerEspecies(){

@@ -12,7 +12,7 @@ public class Plantas {
 	private PlantaDAO plantaDAO;
 
 	public Plantas() {
-		this.plantaDAO = new PlantaDAO();
+		this.plantaDAO = PlantaDAO.getInstance();
 	}
 
 	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {
