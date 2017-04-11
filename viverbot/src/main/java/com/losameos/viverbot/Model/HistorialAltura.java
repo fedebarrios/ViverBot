@@ -26,22 +26,19 @@ public class HistorialAltura {
 		}
 		return ret;
 	}
+
 	
-	public TuplaAltura getTupla(int i){
-		return historial.get(i);
-	}
-	
-	public void AgregarTupla(TuplaAltura t){
+	public void agregarTupla(TuplaAltura t){
 		historial.add(t);
 	}
 	
-	public void BorrarTupla(TuplaAltura t){
+	public void borrarTupla(TuplaAltura t){
 		if (historial.contains(t)){
 			historial.remove(t);
 		}
 	}
 	
-	public TuplaAltura BuscarTupla(Altura a){
+	public TuplaAltura buscarTupla(Altura a){
 		for (int i = 0; i<historial.size() ; i++){
 			if(historial.get(i).getAltura().getCentimetros()==a.getCentimetros()){
 				return historial.get(i);
@@ -50,7 +47,7 @@ public class HistorialAltura {
 		return null;
 	}
 	
-	public TuplaAltura BuscarTupla(int d){
+	public TuplaAltura buscarTupla(int d){
 		for (int i = 0; i<historial.size() ; i++){
 			if(historial.get(i).getDiaDeVida() == d ){
 				return historial.get(i);
