@@ -45,7 +45,7 @@ public class PlantaDAO {
 
 	public int obtenerUltimoCodigo() {
 		int longitud = this.plantas.size();
-		return this.plantas.get(longitud).getCodigoPlanta();
+		return this.plantas.get(longitud-1).getCodigoPlanta();
 	}
 
 	public void borrarPlanta(int codPlanta) {

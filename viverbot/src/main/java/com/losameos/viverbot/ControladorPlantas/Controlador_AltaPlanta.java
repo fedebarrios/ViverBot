@@ -27,6 +27,7 @@ public class Controlador_AltaPlanta implements ActionListener {
 	public void inicializar() {
 		if (this.vistaAltaPlanta == null) {
 			this.vistaAltaPlanta = new Vista_AltaPlanta(this);
+			llenarComboEspecies();
 		}
 		this.vistaAltaPlanta.mostrarVentana();
 	}
@@ -81,5 +82,9 @@ public class Controlador_AltaPlanta implements ActionListener {
 				registrarPlanta();
 			}
 		}
+	}
+	
+	public Vista_AltaPlanta getVista(){
+		return vistaAltaPlanta;
 	}
 }
