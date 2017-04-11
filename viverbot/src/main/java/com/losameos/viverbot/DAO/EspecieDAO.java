@@ -34,7 +34,7 @@ public class EspecieDAO {
 	
 	public int obtenerUltimoCodigo(){
 		int longitud = this.especies.size();
-		return this.especies.get(longitud).getCodEspecie();
+		return this.especies.get(longitud-1).getCodEspecie();
 	}
 	
 	public EspecieDTO obtenerEspecie(int codEspecie){
