@@ -42,9 +42,33 @@ public class Hora implements Comparable {
 
 	@Override
 	public int compareTo(Object h) {
-		// TODO Auto-generated method stub
+		try {
+			Hora aux = (Hora) h;
+			if (this.getHora() == aux.getHora()) {
+				if (this.getMinuto() == aux.getMinuto()) {
+					if (this.getSegundo() == aux.getSegundo()) {
+						return 0;
+					} else if (this.getSegundo() > aux.getSegundo()) {
+						return 1;
+					} else {
+						return -1;
+					}
 
-		return 1;
+				} else if (this.getMinuto() > aux.getMinuto()) {
+					return 1;
+				} else {
+					return -1;
+				}
+
+			} else if (this.getHora() > aux.getHora()) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} catch (Exception e) {
+
+		}
+		return 0;
 	}
 
 }
