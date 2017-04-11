@@ -41,6 +41,15 @@ public class ColectorTest {
 		clear();
 
 	}
+	
+	@Test
+	public void testTomarMedicionHumedad() {
+		this.colectroTest = new Colector(Magnitudes.HUMEDAD);
+		Ambiente ambienteSimulado = new Ambiente();
+		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
+		clear();
+
+	}
 
 	// metodos auxiliares
 	private void clear() {
@@ -76,6 +85,15 @@ public class ColectorTest {
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
 			ret = ret && this.colectroTest.tomarMedicion().equals(a.getTemperatura());
+		}
+		return ret;
+	}
+	
+	private boolean verificarHumedad(ArrayList<Hora> horarios, Ambiente a) {
+		boolean ret = true;
+		for (Hora h : horarios) {
+			a.setHoraActual(h);
+			ret = ret && colectroTest.tomarMedicion().equals(a.getHumedad());
 		}
 		return ret;
 	}
