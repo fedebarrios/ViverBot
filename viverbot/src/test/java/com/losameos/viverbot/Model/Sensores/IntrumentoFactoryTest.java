@@ -21,6 +21,14 @@ public class IntrumentoFactoryTest {
 	public void CreatInstrumentoTestHumedad() {
 		ins = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
 		assertTrue(ins instanceof SensorHumedad);
+		this.clear();
+	}
+	
+	@Test
+	public void CreatInstrumentoTestAltura() {
+		ins = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		assertTrue(ins instanceof Metro);
+		this.clear();
 	}
 
 	@Test
@@ -28,6 +36,7 @@ public class IntrumentoFactoryTest {
 		ins = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
 		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
 		assertTrue(ins == aux);
+		this.clear();
 	}
 	
 	@Test
@@ -35,6 +44,15 @@ public class IntrumentoFactoryTest {
 		ins = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
 		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
 		assertTrue(ins == aux);
+		this.clear();
+	}
+	
+	@Test
+	public void CreatSingletownTestAltura() {
+		ins = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		assertTrue(ins == aux);
+		this.clear();
 	}
 
 	// metodos auxiliares

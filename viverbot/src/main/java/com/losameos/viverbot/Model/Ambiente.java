@@ -1,10 +1,13 @@
 package com.losameos.viverbot.Model;
 
+import com.losameos.viverbot.Model.Magnitudes.Humedad;
+import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class Ambiente implements Runnable {
 
 	private static Temperatura temperaturaActual = new Temperatura(25.0);;
+	private static Humedad humedadActual = new Humedad(10.0);
 	private Hora horaActual;
 	private static Ambiente ambiente;
 
@@ -23,6 +26,10 @@ public class Ambiente implements Runnable {
 	public Temperatura getTemperatura() {
 		return temperaturaActual;
 
+	}
+
+	public Humedad getHumedad() {
+		return humedadActual;
 	}
 
 	public void setHoraActual(Hora hora) {

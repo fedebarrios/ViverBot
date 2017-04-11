@@ -1,40 +1,57 @@
 package com.losameos.viverbot.Model.Sensores;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 
 import org.junit.Test;
 
 import com.losameos.viverbot.Model.Ambiente;
 import com.losameos.viverbot.Model.Hora;
-import com.losameos.viverbot.Model.Magnitudes.Temperatura;
+import com.losameos.viverbot.Model.Magnitudes.Humedad;
 
-import junit.framework.TestCase;
+public class SensorHumedadTest {
 
-public class SensorTemperaturaTest extends TestCase {
-	private static SensorTemperatura sensorTest = null;
+	SensorHumedad sensorTest = null;
 
-	// este test verifica que el return sea de tipo temperatura
 	@Test
-	public void testGetMedicionVerificarClase() {
+	public void verificarClaseTest() {
 		inicialize();
-		assertTrue(sensorTest.getMedicion() instanceof Temperatura);
+		assertTrue(sensorTest.getMedicion() instanceof Humedad);
 		clear();
 	}
 
-	// este test verifica que la temperatura sea correcta durante el cada
-	// horario definido
 	@Test
 	public void testGetMedicion() {
 		inicialize();
 
 		Ambiente ambienteSimulado = Ambiente.getInstance();
 
-		assertTrue(this.verificarTemperatura(this.getHorarios(), ambienteSimulado));
+		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
 		clear();
 	}
+	// metodos auxiliares
 
-	/// metodos auxiliares
+	
+	
+	private boolean verificarHumedad(ArrayList<Hora> horarios, Ambiente a) {
+		boolean ret = true;
+		for (Hora h : horarios) {
+			a.setHoraActual(h);
+			ret = ret && sensorTest.getMedicion().equals(a.getHumedad());
+		}
+		return ret;
+	}
 
+
+	private void clear() {
+		this.sensorTest = null;
+	}
+
+	private void inicialize() {
+		this.sensorTest = new SensorHumedad();
+	}
+	
 	private ArrayList<Hora> getHorarios() {
 		Hora amanecer = new Hora(6, 0, 0);
 		Hora mañana = new Hora(9, 0, 0);
@@ -55,25 +72,6 @@ public class SensorTemperaturaTest extends TestCase {
 		horarios.add(mediaNoche);
 		horarios.add(madrugada);
 		return horarios;
-
-	}
-
-	private void inicialize() {
-		sensorTest = new SensorTemperatura();
-	}
-
-	private boolean verificarTemperatura(ArrayList<Hora> horarios, Ambiente a) {
-		boolean ret = true;
-		for (Hora h : horarios) {
-			a.setHoraActual(h);
-			ret = ret && sensorTest.getMedicion().equals(a.getTemperatura());
-		}
-		return ret;
-	}
-
-	private void clear() {
-
-		sensorTest = null;
 
 	}
 
