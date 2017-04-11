@@ -27,6 +27,7 @@ public class Altura extends Magnitud{
 			this.pulgadas = 0;
 		}
 		this.convertirParametros(tipo);
+		this.setValor(this.centimetros);
 	}
 	
 	/** Constructor para crear un objeto Altura desde un valor compuesto en string
@@ -54,6 +55,7 @@ public class Altura extends Magnitud{
 			this.pulgadas = 0;
 		}
 		this.convertirParametros(tipo);
+		this.setValor(this.centimetros);
 	}
 	
 	/** Metodo que convierte todos los valores de altura a partir de la medicion pasada por parametro

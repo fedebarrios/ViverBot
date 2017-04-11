@@ -27,9 +27,9 @@ public class ControlSeguimientos {
 		this.seguimientos = seguimientos;
 	}
 	
-	public void agregarSeguimiento(PlantaDTO planta, Historial historialOptimo){
+	public void agregarSeguimiento(PlantaDTO planta, HistorialAltura historialOptimo){
 		ArrayList<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
-		Historial h2 = new Historial(tuplas);
+		HistorialAltura h2 = new HistorialAltura(tuplas);
 		this.seguimientos.add(new SeguimientoAltura(planta, historialOptimo, h2));
 	}
 	

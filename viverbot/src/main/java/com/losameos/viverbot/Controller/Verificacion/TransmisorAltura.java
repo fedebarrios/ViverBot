@@ -42,7 +42,7 @@ public class TransmisorAltura extends Transmisor{
 					if (this.valorActual != null) {
 						SeguimientoAltura seguimientoBuscado = seguimientos.getSeguimiento(plantas.get(i));
 						if ( seguimientoBuscado!= null){
-							this.analizadorAltura.analizar(this.valorActual, seguimientoBuscado );
+							this.analizadorAltura.analizarDiaEspecifico(this.valorActual, seguimientoBuscado );
 						}
 						else{
 							System.out.println("No hay un seguimiento asociado a la planta "+ plantas.get(i).getCodigoPlanta());

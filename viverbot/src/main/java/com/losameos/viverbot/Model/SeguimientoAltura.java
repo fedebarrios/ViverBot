@@ -4,10 +4,10 @@ import com.losameos.viverbot.DTO.PlantaDTO;
 
 public class SeguimientoAltura {
 	private PlantaDTO planta;
-	private Historial historialOptimo;
-	private Historial historialVerdadero;
+	private HistorialAltura historialOptimo;
+	private HistorialAltura historialVerdadero;
 	
-	public SeguimientoAltura(PlantaDTO p, Historial h1, Historial h2){
+	public SeguimientoAltura(PlantaDTO p, HistorialAltura h1, HistorialAltura h2){
 		this.planta = p;
 		this.historialOptimo = h1;
 		this.historialVerdadero = h2;
@@ -21,19 +21,19 @@ public class SeguimientoAltura {
 		this.planta = planta;
 	}
 
-	public Historial getHistorialOptimo() {
+	public HistorialAltura getHistorialOptimo() {
 		return historialOptimo;
 	}
 
-	public void setHistorialOptimo(Historial historialOptimo) {
+	public void setHistorialOptimo(HistorialAltura historialOptimo) {
 		this.historialOptimo = historialOptimo;
 	}
 
-	public Historial getHistorialVerdadero() {
+	public HistorialAltura getHistorialVerdadero() {
 		return historialVerdadero;
 	}
 
-	public void setHistorialVerdadero(Historial historialVerdadero) {
+	public void setHistorialVerdadero(HistorialAltura historialVerdadero) {
 		this.historialVerdadero = historialVerdadero;
 	}
 	
