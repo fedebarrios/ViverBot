@@ -24,4 +24,8 @@ public class Inventario {
 	public void borrarEspecie(int codEspecie){
 		especieDAO.borrarEspecie(codEspecie);
 	}
+	
+	public EspecieDTO obtenerEspecie(int codEspecie){
+		return especieDAO.obtenerEspecie(codEspecie);
+	}
 }
