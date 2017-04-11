@@ -54,6 +54,10 @@ public class Controlador_AltaPlanta implements ActionListener {
 		Date fecha = this.vistaAltaPlanta.getDateFiltro();
 		return modeloPlantas.agregarPlanta(2, ubicacion, fecha);
 	}
+	
+	public void seleccionarUbicacion(String ubicacion){
+		this.vistaAltaPlanta.getTextUbicacion().setText(ubicacion);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

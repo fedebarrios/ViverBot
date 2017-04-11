@@ -23,7 +23,11 @@ public class UbicacionDAO {
 	}
 	
 	public boolean desocuparUbicacion(UbicacionDTO ubicacion){
-		return terreno.desocuparPosicion(ubicacion);
+		return terreno.desocuparUbicacion(ubicacion);
+	}
+	
+	public UbicacionDTO[][] mostrarUbicaciones(){
+		return terreno.mostrarTerreno();
 	}
 	
 }

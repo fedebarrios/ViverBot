@@ -26,7 +26,7 @@ public class TerrenoDAO {
 		else return false;
 	}
 	
-	public boolean desocuparPosicion(UbicacionDTO ubicacion){
+	public boolean desocuparUbicacion(UbicacionDTO ubicacion){
 		int fila = ubicacion.getFila();
 		int columna = ubicacion.getColumna();
 		if(ubicaciones[fila][columna].isEstado()){

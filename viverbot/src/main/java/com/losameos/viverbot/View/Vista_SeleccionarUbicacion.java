@@ -22,6 +22,7 @@ public class Vista_SeleccionarUbicacion  extends JFrame{
 	private String[] nombreColumnas = { "Fila", "Columna", "Estado"};
 	private JButton btnSeleccionar;
 	private JScrollPane scrollPane;
+	private ArrayList<Object[]> filas;
 
 	public Vista_SeleccionarUbicacion(Controlador_VistaSeleccionarUbicacion controlador) {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -64,24 +65,26 @@ public class Vista_SeleccionarUbicacion  extends JFrame{
 		scrollPane.setViewportView(tablaUbicaciones);
 	}
 
-	public JButton getBtnVerCobro() {
+	public JButton getBtnSeleccionar() {
 		return btnSeleccionar;
 	}
 
 	public void llenarTabla(ArrayList<Object[]> matriz) {
-
+		filas = matriz;
 		for (int i = 0; i < matriz.size(); i++) {
 			modelProductos.addRow(matriz.get(i));
 		}
 	}
-
+	
 	public int getFilaSeleccionada() {
-
 		int i = tablaUbicaciones.getSelectedRow();
 		if (i > -1)
 			return tablaUbicaciones.getSelectedRow();
 		else
 			return -1;
+	}
+	public ArrayList<Object[]> getFilas(){
+		return filas;
 	}
 
 	public void limpiarTabla() {
@@ -89,6 +92,7 @@ public class Vista_SeleccionarUbicacion  extends JFrame{
 		modelProductos = new DefaultTableModel(null, nombreColumnas);
 		tablaUbicaciones = new JTable(modelProductos);
 		scrollPane.setViewportView(tablaUbicaciones);
+		filas=null;
 	}
 
 	public void mostrarVentana() {
