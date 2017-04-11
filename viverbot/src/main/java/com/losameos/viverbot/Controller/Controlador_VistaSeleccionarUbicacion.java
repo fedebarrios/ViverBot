@@ -3,6 +3,8 @@ package com.losameos.viverbot.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import com.losameos.viverbot.ControladorPlantas.Controlador_AltaPlanta;
 import com.losameos.viverbot.Model.Ubicacion;
 import com.losameos.viverbot.View.Vista_SeleccionarUbicacion;
@@ -41,7 +43,10 @@ public class Controlador_VistaSeleccionarUbicacion implements ActionListener {
 			if(i!=-1){
 				Object[] aux = obtenerFilaSeleccionada(i);
 				String cadena = aux[0] + "," + aux[1];
-				controlador.seleccionarUbicacion(cadena);
+				if(aux[2]=="false"){
+					controlador.seleccionarUbicacion(cadena);
+				}
+				else JOptionPane.showMessageDialog(null, "La ubicacion seleccionada esta ocupada");
 				this.vistaUbicacion.cerrarVentana();
 			}
 		} else if (e.getSource() == vistaUbicacion.getBtnCancelar()) {

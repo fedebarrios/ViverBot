@@ -34,10 +34,6 @@ public class Plantas {
 		plantaDAO.borrarPlanta(codPlanta);
 	}
 
-	public boolean esUbicacionLibre(String ubicacion) {
-		return true;
-	}
-
 	private UbicacionDTO obtenerUbicacion(String ubicacion) {
 		String fila = "";
 		String columna = "";

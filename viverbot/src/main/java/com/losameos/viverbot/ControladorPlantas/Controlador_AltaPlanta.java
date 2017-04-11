@@ -28,25 +28,18 @@ public class Controlador_AltaPlanta implements ActionListener {
 		Date fecha = this.vistaAltaPlanta.getDateFiltro();
 
 		if (ubicacion != "") {
-			if (esUbicacionLibre(ubicacion)) {
-				if (fecha != null) {
-					if (!Verificador.fechaFutura(fecha) && Verificador.fechaPosteriorADueño(fecha)) {
-						return true;
-					} else
-						JOptionPane.showMessageDialog(null, "La fecha de plantado es superior a la fecha actual");
-
+			if (fecha != null) {
+				if (!Verificador.fechaFutura(fecha) && Verificador.fechaPosteriorADueño(fecha)) {
+					return true;
 				} else
-					JOptionPane.showMessageDialog(null, "Complete correctamente el campo Fecha de Plantado");
+					JOptionPane.showMessageDialog(null, "La fecha de plantado es superior a la fecha actual");
+
 			} else
-				JOptionPane.showMessageDialog(null, "La ubicacion seleccionada se encuentra ocupada");
+				JOptionPane.showMessageDialog(null, "Complete correctamente el campo Fecha de Plantado");
 
 		} else
 			JOptionPane.showMessageDialog(null, "Complete correctamente el campo Ubicacion");
 		return false;
-	}
-
-	public boolean esUbicacionLibre(String ubicacion) {
-		return modeloPlantas.esUbicacionLibre(ubicacion);
 	}
 
 	public boolean registrarPlanta() {
@@ -54,8 +47,8 @@ public class Controlador_AltaPlanta implements ActionListener {
 		Date fecha = this.vistaAltaPlanta.getDateFiltro();
 		return modeloPlantas.agregarPlanta(2, ubicacion, fecha);
 	}
-	
-	public void seleccionarUbicacion(String ubicacion){
+
+	public void seleccionarUbicacion(String ubicacion) {
 		this.vistaAltaPlanta.getTextUbicacion().setText(ubicacion);
 	}
 
