@@ -18,9 +18,9 @@ public class Controlador_AltaPlanta implements ActionListener {
 	private ArrayList<EspecieDTO> listaEspecies;
 	private Inventario gestorEspecies;
 
-	public Controlador_AltaPlanta(Inventario gestorEspecies, Plantas gestorPlantas){
-		this.gestorEspecies = gestorEspecies;
-		this.gestorPlantas = gestorPlantas;
+	public Controlador_AltaPlanta(){
+		this.gestorEspecies = new Inventario();
+		this.gestorPlantas = new Plantas();
 		listaEspecies = new ArrayList<EspecieDTO>();
 	}
 	
