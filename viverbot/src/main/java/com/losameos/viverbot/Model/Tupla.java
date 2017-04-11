@@ -5,40 +5,36 @@ import java.util.ArrayList;
 import com.losameos.viverbot.DTO.EspecieDTO;
 import com.losameos.viverbot.DTO.PlantaDTO;
 
-public class Tupla {
+public class Tupla<CLAVE,VALOR> {
 	
-	private EspecieDTO especie;
-	private ArrayList<PlantaDTO> plantas;
+	private CLAVE clave;
+	private VALOR valor;
 	
-	public Tupla(EspecieDTO especie, ArrayList<PlantaDTO> plantas)
+	public Tupla(CLAVE t , VALOR s)
 	{
-		this.especie = especie;
-		this.plantas = plantas;
-	}
-	
-	public void agregarPlanta(PlantaDTO planta)
-	{
-		plantas.add(planta);
-	}
-	public void eliminarPlanta()
-	{
-		
-	}
-	public EspecieDTO getEspecie() {
-		return especie;
+		this.clave = t;
+		this.valor = s;
 	}
 
-	public void setEspecie(EspecieDTO especie) {
-		this.especie = especie;
+	public CLAVE getClave() {
+		return clave;
 	}
 
-	public ArrayList<PlantaDTO> getPlantas() {
-		return plantas;
+	public void setClave(CLAVE clave) {
+		this.clave = clave;
 	}
 
-	public void setPlantas(ArrayList<PlantaDTO> plantas) {
-		this.plantas = plantas;
+	public VALOR getValor() {
+		return valor;
 	}
+
+	public void setValor(VALOR valor) {
+		this.valor = valor;
+	}
+	
+	
+	
+	
 	
 
 }

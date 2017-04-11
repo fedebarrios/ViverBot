@@ -53,4 +53,12 @@ public class UbicacionDTO {
 		}
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "( " + this.getFila() + " , " + this.getColumna() + " )";
+	}
+	
+	
+
 }

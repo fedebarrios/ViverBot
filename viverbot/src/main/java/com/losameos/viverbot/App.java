@@ -17,10 +17,10 @@ public class App {
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
 		//controlarAltura();
-		//controlarHumedad();
-		PlantaDAO plantaDAO = new PlantaDAO();
-		planta = new Plantas(plantaDAO);
-		controlarTemperatura();
+		controlarHumedad();
+		//PlantaDAO plantaDAO = new PlantaDAO();
+		//planta = new Plantas(plantaDAO);
+		//controlarTemperatura();
 
 		// VerDetallesEspecie_Controller controladorPlanta = new
 		// VerDetallesEspecie_Controller(new
