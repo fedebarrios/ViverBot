@@ -40,7 +40,6 @@ public class VerDetallesEspecieTest extends TestCase {
 	}
 	
 	private void inicialize() {
-		PlantaDAO plantaDAO = new PlantaDAO();
 		planta = new Plantas();
 		especie = new EspecieDTO(1,"especie1","prueba","rosa.jpg");
 		controlador = new VerDetallesEspecie_Controller(planta, especie);

@@ -12,7 +12,7 @@ public class Plantas {
 	private PlantaDAO plantaDAO;
 
 	public Plantas() {
-		this.plantaDAO = new PlantaDAO();
+		this.plantaDAO = PlantaDAO.getInstance();
 	}
 
 	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {
@@ -21,6 +21,10 @@ public class Plantas {
 	
 	public ArrayList<PlantaDTO> obtenerPlantas() {
 		return plantaDAO.obtenerPlantas();
+	}
+	
+	public PlantaDTO obtenerPlantaEspecifica(int codEspecie, int codPlanta){
+		return plantaDAO.obtenerPlantaEspecifica(codEspecie, codPlanta);
 	}
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Date fecha) {

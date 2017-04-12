@@ -13,7 +13,19 @@ public class AireAcondicionadoController implements IControlClima {
 		Temperatura temp = new Temperatura(24.0);
 		this.aireAcondicionado.setTemperatura(temp);
 		this.aireAcondicionado.setFrio_calor(true);
-		this.aireAcondicionado.setFan(Potencia.POTENCIA0);
+		this.aireAcondicionado.setPotencia(Potencia.POTENCIA0);
+	}
+
+	public Potencia getPotencia() {
+		return this.aireAcondicionado.getPotencia();
+	}
+
+	public boolean isOn_off() {
+		return this.aireAcondicionado.isOn_off();
+	}
+
+	public boolean isFrio_calor() {
+		return this.aireAcondicionado.isFrio_calor();
 	}
 
 	@Override
@@ -25,7 +37,7 @@ public class AireAcondicionadoController implements IControlClima {
 			System.out.print("FRIO // ");
 		} else
 			System.out.print("CALOR // ");
-		System.out.println("FAN: " + this.aireAcondicionado.getFan().toString());
+		System.out.println("FAN: " + this.aireAcondicionado.getPotencia().toString());
 	}
 
 	@Override
@@ -37,7 +49,7 @@ public class AireAcondicionadoController implements IControlClima {
 	@Override
 	public void encenderFan(Potencia pot) {
 		if (pot != Potencia.POTENCIA0) {
-			this.aireAcondicionado.setFan(pot);
+			this.aireAcondicionado.setPotencia(pot);
 			System.out.println("El fan se encedio en " + pot.toString() + ".");
 		} else
 			throw new IllegalArgumentException("La potencia no puede ser 0.");
@@ -45,7 +57,7 @@ public class AireAcondicionadoController implements IControlClima {
 
 	@Override
 	public void apagarFan() {
-		this.aireAcondicionado.setFan(Potencia.POTENCIA0);
+		this.aireAcondicionado.setPotencia(Potencia.POTENCIA0);
 		System.out.println("Fan apagado.");
 	}
 

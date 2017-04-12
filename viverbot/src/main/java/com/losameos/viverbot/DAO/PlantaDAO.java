@@ -8,6 +8,7 @@ import com.losameos.viverbot.DTO.UbicacionDTO;
 public class PlantaDAO {
 
 	private ArrayList<PlantaDTO> plantas;
+	public static PlantaDAO plantaDAO;
 
 	public PlantaDAO() {
 		plantas = new ArrayList<PlantaDTO>();
@@ -44,7 +45,7 @@ public class PlantaDAO {
 
 	public int obtenerUltimoCodigo() {
 		int longitud = this.plantas.size();
-		return this.plantas.get(longitud).getCodigoPlanta();
+		return this.plantas.get(longitud-1).getCodigoPlanta();
 	}
 
 	public void borrarPlanta(int codPlanta) {
@@ -63,5 +64,21 @@ public class PlantaDAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<PlantaDTO> obtenerPlantas() {
 		return (ArrayList<PlantaDTO>) this.plantas.clone();
+	}
+
+	public static PlantaDAO getInstance(){                        
+		if(plantaDAO==null){
+			plantaDAO = new PlantaDAO();
+		}
+		return plantaDAO;
+	}
+
+	public PlantaDTO obtenerPlantaEspecifica(int codEspecie, int codPlanta) {
+		for (int i=0; i<plantas.size(); i++){
+			if(plantas.get(i).getCodigo()==codEspecie && plantas.get(i).getCodigo()==codPlanta){
+				return plantas.get(i);
+			}
+		}
+		return null;
 	}
 }

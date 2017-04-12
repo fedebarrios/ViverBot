@@ -1,9 +1,9 @@
 package com.losameos.viverbot.Model.Magnitudes;
 
 public class Altura extends Magnitud{
-	double metros;
-	double centimetros;
-	double pulgadas;
+	private double metros;
+	private double centimetros;
+	private double pulgadas;
 	
 	/** Constructor para crear un objeto Altura desde un valor numerico y un string
 	 *  @param valor => el valor numerico (puede llevar coma)
@@ -40,14 +40,17 @@ public class Altura extends Magnitud{
 		if (valor.contains("metros") || (valor.contains("m") && !valor.contains("c"))) {
 			this.metros = Double.parseDouble(valor.substring(0,valor.indexOf('m') - 1));
 			tipo = valor.substring(valor.indexOf('m'), valor.length() -1);
+			this.setValor(this.metros);
 		}
 		else if (valor.contains("centimetros") || valor.contains("c")) {
 			this.centimetros = Double.parseDouble(valor.substring(0,valor.indexOf('c') - 1));
 			tipo = valor.substring(valor.indexOf('c'), valor.length() -1);
+			this.setValor(this.centimetros);
 		}
 		else if (valor.contains("pulgadas") || valor.contains("p")) {
 			this.pulgadas = Double.parseDouble(valor.substring(0,valor.indexOf('p') - 1));
 			tipo = valor.substring(valor.indexOf('p'), valor.length() -1);
+			this.setValor(this.pulgadas);
 		}
 		else { // Iniciamos el objeto con ceros
 			this.metros = 0;

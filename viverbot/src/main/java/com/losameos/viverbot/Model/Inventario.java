@@ -3,13 +3,14 @@ package com.losameos.viverbot.Model;
 import java.util.ArrayList;
 
 import com.losameos.viverbot.DAO.EspecieDAO;
+import com.losameos.viverbot.DAO.PlantaDAO;
 import com.losameos.viverbot.DTO.EspecieDTO;
 
 public class Inventario {
 	private EspecieDAO especieDAO;
 	
 	public Inventario(){
-		this.especieDAO = new EspecieDAO();
+		this.especieDAO = EspecieDAO.getInstance();
 	}
 	
 	public ArrayList<EspecieDTO> obtenerEspecies(){

@@ -3,6 +3,7 @@ package com.losameos.viverbot.Model;
 import java.util.ArrayList;
 
 import com.losameos.viverbot.DTO.PlantaDTO;
+import com.losameos.viverbot.Model.Magnitudes.Altura;
 
 public class ControlSeguimientos {
 	private static ControlSeguimientos control;
@@ -10,6 +11,10 @@ public class ControlSeguimientos {
 	
 	private ControlSeguimientos(){
 		seguimientos = new ArrayList<SeguimientoAltura>();
+		ArrayList<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
+		tuplas.add(new TuplaAltura(new Altura(1.02,"cm"),1));
+		HistorialAltura historialOptimo = new HistorialAltura(tuplas);
+		this.agregarSeguimiento(new Plantas().obtenerPlantaEspecifica(1, 1), historialOptimo);
 	}
 	
 	public static ControlSeguimientos getInstance(){

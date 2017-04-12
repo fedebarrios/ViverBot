@@ -23,6 +23,7 @@ public class AltaEspecie extends JFrame{
 	private JButton guardar_btn;
 	private JButton cancelar_btn;
 	private JTextField imagen_tf;
+	private JButton btnCargarImagen;
 	
 
 
@@ -62,12 +63,12 @@ public class AltaEspecie extends JFrame{
 		this.nombreCientifico_tf.setColumns(10);
 		
 		this.guardar_btn = new JButton("Guardar");
-		this.guardar_btn.setBounds(227, 227, 89, 23);
+		this.guardar_btn.setBounds(128, 227, 89, 23);
 		contentPane.add(this.guardar_btn);
 		this.guardar_btn.addActionListener(controlador);
 		
 		this.cancelar_btn = new JButton("Cancelar");
-		this.cancelar_btn.setBounds(128, 227, 89, 23);
+		this.cancelar_btn.setBounds(227, 227, 89, 23);
 		contentPane.add(this.cancelar_btn);
 		this.cancelar_btn.addActionListener(controlador);
 		
@@ -75,6 +76,11 @@ public class AltaEspecie extends JFrame{
 		this.imagen_tf.setBounds(140, 147, 176, 20);
 		contentPane.add(imagen_tf);
 		this.imagen_tf.setColumns(10);
+		
+		btnCargarImagen = new JButton("Cargar Imagen");
+		btnCargarImagen.setBounds(140, 182, 176, 23);
+		contentPane.add(btnCargarImagen);
+		this.btnCargarImagen.addActionListener(controlador);
 	}
 
 	public JTextField getNombreEspecie_tf() {
@@ -113,9 +119,15 @@ public class AltaEspecie extends JFrame{
 		return imagen_tf;
 	}
 
-	public void setImagen_tf(JTextField imagen_tf) {
-		this.imagen_tf = imagen_tf;
+	public void setImagen_tf(String s) {
+		this.imagen_tf.setText(s);
 	}
-	
-	
+
+	public JButton getBtnCargarImagen() {
+		return btnCargarImagen;
+	}
+
+	public void setBtnCargarImagen(JButton btnCargarImagen) {
+		this.btnCargarImagen = btnCargarImagen;
+	}	
 }

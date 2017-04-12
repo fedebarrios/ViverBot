@@ -7,6 +7,7 @@ import com.losameos.viverbot.DTO.EspecieDTO;
 public class EspecieDAO {
 	
 	private ArrayList<EspecieDTO> especies ;
+	public static EspecieDAO especieDAO;
 	
 	public EspecieDAO() {
 		this.especies = new ArrayList<EspecieDTO>();
@@ -33,7 +34,7 @@ public class EspecieDAO {
 	
 	public int obtenerUltimoCodigo(){
 		int longitud = this.especies.size();
-		return this.especies.get(longitud).getCodEspecie();
+		return this.especies.get(longitud-1).getCodEspecie();
 	}
 	
 	public EspecieDTO obtenerEspecie(int codEspecie){
@@ -42,5 +43,12 @@ public class EspecieDAO {
 			if(especies.get(i).getCodEspecie()==codEspecie) return especies.get(i);
 		}
 		return null;
+	}
+	
+	public static EspecieDAO getInstance(){                        
+		if(especieDAO==null){
+			especieDAO = new EspecieDAO();
+		}
+		return especieDAO;
 	}
 }

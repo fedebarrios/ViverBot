@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class ConsultaBajaEspecie extends JFrame{
 
 	private JPanel contentPane;
@@ -21,6 +22,7 @@ public class ConsultaBajaEspecie extends JFrame{
 	private JButton btnBorrar;	
 	private JButton btnVerDetalle;
 	
+	@SuppressWarnings("rawtypes")
 	public ConsultaBajaEspecie(ConsultaBajaEspecie_Controller controlador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 200);
@@ -54,10 +56,12 @@ public class ConsultaBajaEspecie extends JFrame{
 		btnVerDetalle.addActionListener(controlador);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public JComboBox getComboBox() {
 		return comboBox;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setComboBox(JComboBox comboBox) {
 		this.comboBox = comboBox;
 	}

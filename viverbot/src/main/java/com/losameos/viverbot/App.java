@@ -1,5 +1,6 @@
 package com.losameos.viverbot;
 
+import com.losameos.viverbot.Controller.AltaEspecie_Controller;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorAltura;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
@@ -18,6 +19,7 @@ public class App {
 		//PlantaDAO plantaDAO = new PlantaDAO();
 		//planta = new Plantas(plantaDAO);
 		//controlarTemperatura();
+		controlarAltura();
 		//controlarHumedad();
 		//controlarTemperatura();
 

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+
 import com.losameos.viverbot.Model.HistorialAltura;
 import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.TuplaAltura;
@@ -29,8 +30,8 @@ public class AnalizadorAltura {
 		//Por ahora tomo los minutos, despues habra que ver para ir guardando el dia que se tomo la medicion
 		int diaActual = Calendar.getInstance().getTime().getMinutes();
 		//TODO: chequear que la misma altura y dia no esten ya en el historial
-		this.historialVerdadero.AgregarTupla(new TuplaAltura((Altura) altura, 4));
-		TuplaAltura tuplaOptima = historialOptimo.BuscarTupla(diaActual);
+		this.historialVerdadero.agregarTupla(new TuplaAltura((Altura) altura, 4));
+		TuplaAltura tuplaOptima = historialOptimo.buscarTupla(diaActual);
 		double alturaActual = altura.getValor();
 		System.out.println("altura actual : "+alturaActual);
 		if( tuplaOptima == null ){
@@ -43,18 +44,19 @@ public class AnalizadorAltura {
 	}
 	
 	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento){
+		System.out.println("La planta esta midiendo "+altura.getValor()+"cm actualmente");
 		this.historialOptimo = seguimiento.getHistorialOptimo();
 		this.historialVerdadero = seguimiento.getHistorialVerdadero();
 		Date diaNacimiento = seguimiento.getPlanta().getFechaPlanta();
 		int diaActualPlanta = diasEntreDosFechas(new Date(), diaNacimiento);
 		if (!this.historialVerdadero.verificarExistente(diaActualPlanta)){
-			this.historialVerdadero.AgregarTupla(new TuplaAltura((Altura) altura, diaActualPlanta));
+			this.historialVerdadero.agregarTupla(new TuplaAltura((Altura) altura, diaActualPlanta));
 		}
 		int valorCrecimiento = 0;
 		ArrayList<Double> porcentajes = new ArrayList<Double>();
 		for (int i = 0; i < this.historialVerdadero.tamaño(); i++){
 			TuplaAltura tuplaReal = this.historialVerdadero.buscarPorIndice(i);
-			TuplaAltura tuplaOptima = this.historialOptimo.BuscarTupla(tuplaReal.getDiaDeVida());
+			TuplaAltura tuplaOptima = this.historialOptimo.buscarTupla(tuplaReal.getDiaDeVida());
 			if (tuplaOptima != null){
 				analizarPorcentajeEnDia(tuplaReal, tuplaOptima, porcentajes);
 			}

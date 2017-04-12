@@ -4,7 +4,7 @@ import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class AireAcondicionado {
 	private boolean on_off;
-	private Potencia fan;
+	private Potencia potencia;
 	private boolean frio_calor;
 	private Temperatura temperatura;
 
@@ -20,12 +20,12 @@ public class AireAcondicionado {
 		this.on_off = on_off;
 	}
 
-	public Potencia getFan() {
-		return fan;
+	public Potencia getPotencia() {
+		return potencia;
 	}
 
-	public void setFan(Potencia fan) {
-		this.fan = fan;
+	public void setPotencia(Potencia potencia) {
+		this.potencia = potencia;
 	}
 
 	public boolean isFrio_calor() {
