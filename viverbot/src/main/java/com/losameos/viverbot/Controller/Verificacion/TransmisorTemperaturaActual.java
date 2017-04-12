@@ -28,7 +28,7 @@ public class TransmisorTemperaturaActual extends Transmisor {
 
 	@Override
 	protected void Trasnmitir() {
-		this.reset();
+		//this.reset();
 //		this.setearTiempoInicio();
 //		this.tiempoInicio = inicio;
 //		while (seDebaProceguir()) {
@@ -45,15 +45,15 @@ public class TransmisorTemperaturaActual extends Transmisor {
 //		this.tiempoTotal = Hora.instanteActual()  - this.tiempoInicio;
 	}
 
-	protected void reset() {
+/*	protected void reset() {
 		this.inicio = 0;
 		this.adelanto = 0;
 		this.retraso = 0;
 		this.tiempoTotal = 0;
 		this.tiempoInicio = 0;
 	}
-
-	private void calcularRetraso() {
+*/
+	/*private void calcularRetraso() {
 		if (inicio > 0) {
 			long resta = Hora.instanteActual() - inicio - frecuenciaDeRepeticion;
 			if (resta >= 0) {
@@ -68,15 +68,15 @@ public class TransmisorTemperaturaActual extends Transmisor {
 			}
 		}
 
-	}
+	}*/
 
-	protected boolean seDebaProceguir() {
+/*	protected boolean seDebaProceguir() {
 		if (this.factorDeInterrupcion == 0) {
 			return false;
 		}
 		return true;
 	}
-
+*/
 	protected boolean enviarDato() {
 
 		if (realizarMedicion()) {
@@ -111,7 +111,7 @@ public class TransmisorTemperaturaActual extends Transmisor {
 		this.analizador = analizador;
 	}
 
-	public long getInicio() {
+	/*public long getInicio() {
 		return inicio;
 	}
 
@@ -150,6 +150,6 @@ public class TransmisorTemperaturaActual extends Transmisor {
 	public long getTiempoInicial() {
 		return this.tiempoInicio;
 	}
-
+*/
 }
 

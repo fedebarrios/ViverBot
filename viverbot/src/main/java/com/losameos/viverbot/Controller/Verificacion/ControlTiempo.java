@@ -51,7 +51,12 @@ public class ControlTiempo {
 		return buscaEstacion();
 	}
 	
-	
+	public boolean esVerano(){
+		return (buscaEstacion()=="Verano")? true:false;
+	}
+	public boolean esInvierno(){
+		return (buscaEstacion()=="Verano")? true:false;
+	}
 
 	public boolean esDia(){
 		int h=hora.getHora();

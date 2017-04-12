@@ -9,10 +9,12 @@ public class ValidaRiegoTemperatura {
 	}
 
 	
-	public boolean temperaturaOptimaParaRiego(){
-		if (tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()> 0){
-			return true;
+	public String riegoOptimoParaTemperatura(){
+		if (tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()> 25){
+			return "Alto";
+		}else if(tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()< 5){
+			return "Bajo";
 		}
-		return false;
+		return "Normal";
 	}
 }
