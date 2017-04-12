@@ -10,9 +10,9 @@ public class ValidaRiegoTemperatura {
 
 	
 	public String riegoOptimoParaTemperatura(){
-		if (tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()> 25){
+		if (tempActual.getValorTemperatura()> 25){
 			return "Alto";
-		}else if(tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()< 5){
+		}else if(tempActual.getValorTemperatura()< 5){
 			return "Bajo";
 		}
 		return "Normal";

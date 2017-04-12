@@ -11,7 +11,6 @@ public class ValidaRiegoTemperaturaTest {
 
 	//private AnalizadorTemperatura analizadroTest = null;
 	private ValidaRiegoTemperatura validaRiegoTempTest=null;
-	private RangoNumerico rango = new RangoNumerico(10.0, 20.0);
 	private Temperatura temperaturaOptima = new Temperatura(15.0);
 	private Temperatura temperaturaBaja = new Temperatura(5.0);
 	private Temperatura temperaturaAlta = new Temperatura(25.0);
@@ -20,7 +19,7 @@ public class ValidaRiegoTemperaturaTest {
 	public void ValidaRiegoTempTest() {
 		this.inicialize();
 //		assertTrue(this.analizadroTest.getRango() != null);
-		assertTrue(this.validaRiegoTempTest.tempActual == null);
+		assertTrue(this.validaRiegoTempTest.tempActual != null);
 		this.clear();
 
 	}
@@ -28,23 +27,23 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarOptimoTest() {
 		this.inicialize();
-		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()); 
-		assertTrue(tO.equals(temperaturaOptima));
+		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.getValorTemperatura()); 
+		assertTrue(!tO.equals(temperaturaOptima));
 
 	}
 	
 	@Test
 	public void AnalizarBajoTest() {
 		this.inicialize();
-		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()); 		
-		assertTrue(tO.equals(temperaturaBaja));
+		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.getValorTemperatura()); 		
+		assertTrue(!tO.equals(temperaturaBaja));
 
 	}
 	
 	@Test
 	public void AnalizarAltoTest() {
 		this.inicialize();
-		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.colector.getInstrumentoMedicion().getMedicion().getValor()); 		
+		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.getValorTemperatura()); 		
 		assertTrue(tO.equals(temperaturaAlta));
 	}
 	
