@@ -22,6 +22,10 @@ public class Plantas {
 	public ArrayList<PlantaDTO> obtenerPlantas() {
 		return plantaDAO.obtenerPlantas();
 	}
+	
+	public PlantaDTO obtenerPlantaEspecifica(int codEspecie, int codPlanta){
+		return plantaDAO.obtenerPlantaEspecifica(codEspecie, codPlanta);
+	}
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Date fecha) {
 		UbicacionDTO ubicacionDTO = obtenerUbicacion(ubicacion);

@@ -10,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import com.losameos.viverbot.Model.HistorialAltura;
-import com.losameos.viverbot.Model.HistorialAlturaTest;
 import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.TuplaAltura;
 import com.losameos.viverbot.Model.Magnitudes.Altura;

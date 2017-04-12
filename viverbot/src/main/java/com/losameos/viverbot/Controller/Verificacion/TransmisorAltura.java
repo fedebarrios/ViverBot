@@ -26,13 +26,14 @@ public class TransmisorAltura extends Transmisor{
 		super(new Colector(m));
 		plantas = new Plantas();
 		analizadorAltura = new AnalizadorAltura();
-		listadoPlantas = plantas.obtenerPlantas();
+		listadoPlantas = new ArrayList<PlantaDTO>();
+		listadoPlantas.add(plantas.obtenerPlantaEspecifica(0, 0));
 		seguimientos = ControlSeguimientos.getInstance();
 	}
 	
 	@Override
 	protected void Trasnmitir() {
-		System.out.println("Empezo la automatizacion jeje");
+		System.out.println("Empezo la automatizacion");
 		this.setearTiempoInicio();
 		while (true) {
 

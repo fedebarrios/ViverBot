@@ -8,6 +8,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.losameos.viverbot.Controller.Verificacion.Verificador;
 import com.losameos.viverbot.Model.Inventario;
 import com.losameos.viverbot.View.AltaEspecie;
 
@@ -30,7 +31,7 @@ public class AltaEspecie_Controller implements ActionListener {
 			String nombreCientifico = this.altaVista.getNombreCientifico_tf().getText();
 			System.out.println(nombreEspecie);
 			System.out.println(nombreCientifico);
-			boolean esValido = validar(nombreEspecie);
+			boolean esValido = Verificador.campoExclusivamenteAlfabetico(nombreEspecie);
 			if (!esValido) {
 				JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
 			} else if (this.altaVista.getImagen_tf().getText().equals("")){
@@ -57,32 +58,6 @@ public class AltaEspecie_Controller implements ActionListener {
 				this.altaVista.getImagen_tf().setText(path);
 			}
 		}
-	}
-
-	private boolean validar(String s) {
-		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == '0')
-				return false;
-			if (s.charAt(i) == '1')
-				return false;
-			if (s.charAt(i) == '2')
-				return false;
-			if (s.charAt(i) == '3')
-				return false;
-			if (s.charAt(i) == '4')
-				return false;
-			if (s.charAt(i) == '5')
-				return false;
-			if (s.charAt(i) == '6')
-				return false;
-			if (s.charAt(i) == '7')
-				return false;
-			if (s.charAt(i) == '8')
-				return false;
-			if (s.charAt(i) == '9')
-				return false;
-		}
-		return true;
 	}
 
 	private String copiar(String origen, String destino) {

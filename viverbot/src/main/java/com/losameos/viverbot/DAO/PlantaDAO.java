@@ -72,4 +72,13 @@ public class PlantaDAO {
 		}
 		return plantaDAO;
 	}
+
+	public PlantaDTO obtenerPlantaEspecifica(int codEspecie, int codPlanta) {
+		for (int i=0; i<plantas.size(); i++){
+			if(plantas.get(i).getCodigo()==codEspecie && plantas.get(i).getCodigo()==codPlanta){
+				return plantas.get(i);
+			}
+		}
+		return null;
+	}
 }
