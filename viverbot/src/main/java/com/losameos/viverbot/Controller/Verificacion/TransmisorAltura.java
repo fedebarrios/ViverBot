@@ -10,20 +10,19 @@ import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
-import com.losameos.viverbot.Model.Medicion.Colector;
 
 public class TransmisorAltura extends Transmisor{
 	private AnalizadorAltura analizadorAltura;
 	private static Magnitudes m = Magnitudes.ALTURA;
 	private ArrayList<PlantaDTO> listadoPlantas;
 	private static long inicio = 0;
-	private static long frecuenciaDeRepeticion = 5000;
+	private static long frecuenciaDeRepeticion = 8000;
 	private SoporteMovible soporte;
 	private ControlSeguimientos seguimientos;
 	private Plantas plantas;
 
-	public TransmisorAltura() {
-		super(new Colector(m));
+	public TransmisorAltura(SoporteMovible soporte) {
+		super(soporte.getColector());
 		plantas = new Plantas();
 		analizadorAltura = new AnalizadorAltura();
 		listadoPlantas = new ArrayList<PlantaDTO>();
@@ -91,11 +90,13 @@ public class TransmisorAltura extends Transmisor{
 		inicio = Hora.instanteActual();
 	}
 	
-	public void setInicio(long inicio) {
-		this.inicio = inicio;
-	}
 
 	public static Magnitudes getTipoMagnitud(){
 		return m;
+	}
+
+	public void setListadoPlantas(ArrayList<PlantaDTO> plantasVacias) {
+		listadoPlantas = plantasVacias;
+		
 	}
 }

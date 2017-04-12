@@ -15,7 +15,6 @@ public class Metro extends InstrumentoMedicion {
 		Altura medicion;
 		int probabilidadRomperse = random.nextInt(100);
 
-		System.out.println(probabilidadRomperse);
 		if(probabilidadRomperse==2||probabilidadRomperse==5||probabilidadRomperse==8){
 			medicion = new Altura(-1,"cm");
 		}
