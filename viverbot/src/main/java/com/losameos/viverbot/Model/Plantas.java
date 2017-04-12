@@ -1,8 +1,6 @@
 package com.losameos.viverbot.Model;
 
-import java.sql.Date;
 import java.util.ArrayList;
-
 import com.losameos.viverbot.DAO.PlantaDAO;
 import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.DTO.UbicacionDTO;
@@ -17,6 +15,10 @@ public class Plantas {
 
 	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {
 		return plantaDAO.obtenerPlantas(codEspecie);
+	}
+	
+	public PlantaDTO obtenerPlanta(int codPlanta){
+		return plantaDAO.obtenerPlanta(codPlanta);
 	}
 	
 	public ArrayList<PlantaDTO> obtenerPlantas() {

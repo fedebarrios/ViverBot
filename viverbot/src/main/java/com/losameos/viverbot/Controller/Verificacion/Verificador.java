@@ -32,8 +32,4 @@ public class Verificador {
 	public static boolean fechaPosteriorADueño(Date fecha) {
 		return true;
 	}
-	
-	public static void main(String[] args){
-		System.out.println(fechaFutura(new Date(2017-1900,4-1,12)));
-	}
 }

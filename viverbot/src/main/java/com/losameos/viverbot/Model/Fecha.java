@@ -85,6 +85,24 @@ public class Fecha implements Comparable{
 		return 0;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fecha other = (Fecha) obj;
+		if (anio != other.anio)
+			return false;
+		if (dia != other.dia)
+			return false;
+		if (mes != other.mes)
+			return false;
+		return true;
+	}
+
 
 
 }
