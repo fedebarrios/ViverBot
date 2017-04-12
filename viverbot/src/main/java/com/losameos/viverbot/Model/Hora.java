@@ -13,24 +13,14 @@ public class Hora implements Comparable {
 
 	public static Hora obtenerHoraActual() {
 		Calendar calendar = Calendar.getInstance();
-		int horaActual = calendar.get(Calendar.HOUR);
+		int horaActual = calendar.get(Calendar.HOUR_OF_DAY);
 		int minutoActual = calendar.get(Calendar.MINUTE);
 		int segundoActual = calendar.get(Calendar.SECOND);
 		return new Hora(horaActual, minutoActual, segundoActual);
 
 	}
 
-	public int getHora() {
-		return hora;
-	}
-
-	public int getMinuto() {
-		return minuto;
-	}
-
-	public int getSegundo() {
-		return segundo;
-	}
+	
 
 	public static long instanteActual() {
 		return System.currentTimeMillis();
@@ -70,5 +60,30 @@ public class Hora implements Comparable {
 		}
 		return 0;
 	}
+	
+	public int getHora() {
+		return hora;
+	}
+
+	public int getMinuto() {
+		return minuto;
+	}
+
+	public int getSegundo() {
+		return segundo;
+	}
+
+	public void setHora(int hora) {
+		this.hora = hora;
+	}
+
+	public void setMinuto(int minuto) {
+		this.minuto = minuto;
+	}
+
+	public void setSegundo(int segundo) {
+		this.segundo = segundo;
+	}
+	
 
 }

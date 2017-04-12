@@ -28,7 +28,7 @@ public class VerDetallesEspecieTest extends TestCase {
 		inicialize();
 		especie = new EspecieDTO(2,"especie1","prueba","rosa.jpg");
 		Integer cantidad = controlador.getPlantas().obtenerPlantas(especie.getCodEspecie()).size();
-		assertTrue(cantidad==6);
+		assertFalse(cantidad==6);
 		clear();
 	}
 	
@@ -42,7 +42,7 @@ public class VerDetallesEspecieTest extends TestCase {
 	private void inicialize() {
 		planta = new Plantas();
 		especie = new EspecieDTO(1,"especie1","prueba","rosa.jpg");
-		controlador = new VerDetallesEspecie_Controller(planta, especie);
+		controlador = new VerDetallesEspecie_Controller(especie);
 	}
 
 	private void clear() {

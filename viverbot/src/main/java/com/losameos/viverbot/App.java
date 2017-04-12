@@ -1,11 +1,13 @@
 package com.losameos.viverbot;
 
 import com.losameos.viverbot.Controller.AltaEspecie_Controller;
+import com.losameos.viverbot.Controller.ConsultaBajaEspecie_Controller;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorAltura;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
+import com.losameos.viverobot.Controller.WebCam.BuscadorImagenControlador;
 //import com.losameos.viverbot.DTO.EspecieDTO;
 
 public class App {
@@ -14,10 +16,16 @@ public class App {
 		// capas este metodo deberia ser una clase que maneje todo el ciclo
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
+		//controlarAltura();
+		controlarHumedad();
+		//PlantaDAO plantaDAO = new PlantaDAO();
+		//planta = new Plantas(plantaDAO);
+		//controlarTemperatura();
 		controlarAltura();
 		//controlarHumedad();
 		//controlarTemperatura();
-
+		//ConsultaBajaEspecie_Controller mi = new ConsultaBajaEspecie_Controller();
+		//BuscadorImagenControlador webCamControlador = new BuscadorImagenControlador();
 		// VerDetallesEspecie_Controller controladorPlanta = new
 		// VerDetallesEspecie_Controller(new
 		// EspecieDTO("especie0","blancas","rosa.jpg"));

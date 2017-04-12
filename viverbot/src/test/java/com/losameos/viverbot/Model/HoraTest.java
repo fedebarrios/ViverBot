@@ -13,6 +13,12 @@ public class HoraTest {
 		Hora h2 = new Hora(13, 0, 0);
 		Hora h3 = new Hora(14, 0, 0);
 		Hora h4 = new Hora(14, 0, 0);
+		Hora h5 = Hora.obtenerHoraActual();
+		Hora h6= new Hora(6,0,0);
+		
+		System.out.println("hora: " + h5.getHora() + " minuto: " + h5.getMinuto() + " segundos: " + h5.getSegundo());
+		
+		assertTrue(h5.compareTo(h6) == 1);
 
 		assertFalse(h1.compareTo(h2) == 1);
 		assertTrue(h1.compareTo(h2) == -1);

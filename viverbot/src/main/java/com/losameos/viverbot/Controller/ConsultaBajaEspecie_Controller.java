@@ -12,6 +12,7 @@ import com.losameos.viverbot.View.ConsultaBajaEspecie;
 
 public class ConsultaBajaEspecie_Controller implements ActionListener {
 	private ConsultaBajaEspecie consultaBajaVista;
+	private VerDetallesEspecie_Controller controladorVerDetalle;
 	private Inventario inventario;
 
 	public ConsultaBajaEspecie_Controller() {
@@ -44,7 +45,12 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 			this.consultaBajaVista.getComboBox().removeAllItems();
 			llenarCombo(this.consultaBajaVista.getComboBox());
 		} else if (e.getSource() == this.consultaBajaVista.getBtnVerDetalle()){
-			//TODO: levantar la vista del detalle
+			String elementoElegido = this.consultaBajaVista.getComboBox().getSelectedItem().toString();
+			ArrayList<EspecieDTO> especies = inventario.obtenerEspecies();
+			for (EspecieDTO esp: especies) {
+				if(esp.getNombre().equals(elementoElegido))
+					controladorVerDetalle = new VerDetallesEspecie_Controller(esp);
+			}
 		}
 	}
 }
