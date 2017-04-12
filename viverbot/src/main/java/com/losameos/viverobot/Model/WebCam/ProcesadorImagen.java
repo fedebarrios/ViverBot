@@ -24,6 +24,7 @@ public class ProcesadorImagen {
 		
 		lectorImagen = new LectorImagenControlador();
 		
+		
 		if(validarImagenElegida() && validarTamañoImagen())
 		{
 			resaltadorImagen = new ResaltadorImagen(primerImagen, segundaImagen);
@@ -35,6 +36,7 @@ public class ProcesadorImagen {
 
 	}
 	
+
 	private boolean validarImagenElegida()
 	{
 		primerImagen = lectorImagen.accederImagen();

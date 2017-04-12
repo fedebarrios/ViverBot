@@ -3,6 +3,7 @@ package com.losameos.viverobot.Controller.WebCam;
 
 import javax.swing.JOptionPane;
 
+import com.losameos.viverbot.Controller.Verificacion.Verificador;
 import com.losameos.viverobot.Model.WebCam.ImagenPlanta;
 import com.losameos.viverobot.VistaWebCam.ObtenedorImagenVista;
 
@@ -16,8 +17,20 @@ public class LectorImagenControlador {
 			return null;
 		}
 		else
-			return new ImagenPlanta().LeerImagen(obtenedorImagenVista.getDirectorioImagen());
+		{
+			String ubicacionImagen = obtenedorImagenVista.getDirectorioImagen().getUbicacion();
+			if(validarExtencion(ubicacionImagen))
+				return new ImagenPlanta().LeerImagen(obtenedorImagenVista.getDirectorioImagen());
+			else
+				JOptionPane.showMessageDialog(null,"La extencion del archivo elegido no es valida.");
+			return null;
+
+		}
 	}
 
-
+	private boolean validarExtencion(String ubicacion)
+	{
+		Verificador verificador = new Verificador();
+		return verificador.extensionImagenValida(ubicacion);
+	}
 }

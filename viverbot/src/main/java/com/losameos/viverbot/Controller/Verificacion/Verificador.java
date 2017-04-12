@@ -17,7 +17,7 @@ public class Verificador {
 	
 	public static boolean extensionImagenValida(String path){
 		String extension = path.substring(path.length()-3, path.length());
-		if( extension.equals("bmp") || extension.equals("gif") || extension.equals("png") || extension.equals("jpg")){
+		if( extension.equalsIgnoreCase("bmp") || extension.equalsIgnoreCase("gif") || extension.equalsIgnoreCase("png") || extension.equalsIgnoreCase("jpg")){
 			return true;
 		}
 		return false;
