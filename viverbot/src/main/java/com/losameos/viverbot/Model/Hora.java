@@ -20,8 +20,6 @@ public class Hora implements Comparable {
 
 	}
 
-	
-
 	public static long instanteActual() {
 		return System.currentTimeMillis();
 	}
@@ -60,7 +58,7 @@ public class Hora implements Comparable {
 		}
 		return 0;
 	}
-	
+
 	public int getHora() {
 		return hora;
 	}
@@ -84,6 +82,63 @@ public class Hora implements Comparable {
 	public void setSegundo(int segundo) {
 		this.segundo = segundo;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Hora h;
+		if (obj instanceof Hora) {
+			h = (Hora) obj;
+			if (this.getHora() == h.getHora() && this.getMinuto() == h.getMinuto()
+					&& this.getSegundo() == h.getSegundo()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+
+	}
+
+	public void incrementarSegundos(int i) {
+		int seg = this.getSegundo() + i;
+		if (seg >= 60) {
+			this.incrementraMinuto(1);
+			this.setSegundo(seg - 60);
+		}
+		else{
+			this.setSegundo(seg);
+		}
+
+	}
+
+	public void incrementraMinuto(int i) {
+		int min = this.getMinuto() + i;
+		if (min >= 60) {
+			this.incrementarHora(1);
+			this.setMinuto(min - 60);
+		}
+		else{
+			this.setMinuto(min);
+		}
+
+	}
+
+	public void incrementarHora(int i) {
+		int hor = this.getHora() + i;
+		if (hor >= 24) {
+			this.setHora(hor - 24);
+		}
+		else{
+			this.setHora(hor);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return this.getHora()+":"+this.getMinuto()+":"+this.getSegundo();
+	}
+	
 	
 
 }
