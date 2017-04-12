@@ -17,15 +17,15 @@ public class App {
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
 		//controlarAltura();
-	//	controlarHumedad();
+		controlarHumedad();
 		//PlantaDAO plantaDAO = new PlantaDAO();
 		//planta = new Plantas(plantaDAO);
-		//controlarTemperatura();
+		controlarTemperatura();
 		//controlarAltura();
 		//controlarHumedad();
 		//controlarTemperatura();
 		//ConsultaBajaEspecie_Controller mi = new ConsultaBajaEspecie_Controller();
-		BuscadorImagenControlador webCamControlador = new BuscadorImagenControlador();
+		//BuscadorImagenControlador webCamControlador = new BuscadorImagenControlador();
 		// VerDetallesEspecie_Controller controladorPlanta = new
 		// VerDetallesEspecie_Controller(new
 		// EspecieDTO("especie0","blancas","rosa.jpg"));

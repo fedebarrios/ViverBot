@@ -15,7 +15,7 @@ public class TransmisorTemperatura extends Transmisor {
 	private long tiempoTotal = 0;
 	private long tiempoInicio = 0;
 
-	private long frecuenciaDeRepeticion = 10000; // se expresa en milisegundos
+	private long frecuenciaDeRepeticion = 5000; // se expresa en milisegundos
 	private int factorDeInterrupcion;
 
 	// millisegundos

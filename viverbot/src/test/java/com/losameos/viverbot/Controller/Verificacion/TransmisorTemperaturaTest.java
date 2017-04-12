@@ -19,7 +19,7 @@ public class TransmisorTemperaturaTest {
 		assertTrue(this.trasnmisorTest.getAdelanto() == 0);
 		assertTrue(this.trasnmisorTest.getAnalizador() != null);
 		assertTrue(this.trasnmisorTest.getFactorDeInterrupcion() == -1);
-		assertTrue(this.trasnmisorTest.getFrecuenciaDeRepeticion() == 10000);
+		assertTrue(this.trasnmisorTest.getFrecuenciaDeRepeticion() == 5000);
 		assertTrue(this.trasnmisorTest.getInicio() == 0);
 		assertTrue(this.trasnmisorTest.getRetraso() == 0);
 		assertTrue(this.trasnmisorTest.getTiempoTotal() == 0);

@@ -11,7 +11,7 @@ public class Temperatura extends Magnitud{
 	@Override
 	public boolean equals(Object o) {
 		
-		return super.equals(o) && (o instanceof Temperatura);
+		return (o instanceof Temperatura) && super.equals(o) ;
 	}
 	
 	

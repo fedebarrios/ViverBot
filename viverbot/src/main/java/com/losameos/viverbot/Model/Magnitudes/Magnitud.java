@@ -1,6 +1,6 @@
 package com.losameos.viverbot.Model.Magnitudes;
 
-public class Magnitud {
+public abstract class Magnitud {
 
 	protected Double valor;
 
