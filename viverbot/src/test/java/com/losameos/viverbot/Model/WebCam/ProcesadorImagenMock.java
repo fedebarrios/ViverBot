@@ -41,8 +41,8 @@ public class ProcesadorImagenMock {
 	{
 		primerImagen = new ImagenPlanta();
 		segundaImagen = new ImagenPlanta();
-		primerImagen.LeerImagen(new UbicacionImagen("/Users/Pandari/Desktop/ViverBot/viverbot/src/test/java/com/losameos/viverbot/Model/WebCam/"+img1));
-		segundaImagen.LeerImagen(new UbicacionImagen("/Users/Pandari/Desktop/ViverBot/viverbot/src/test/java/com/losameos/viverbot/Model/WebCam/"+img2));
+		primerImagen.LeerImagen(new UbicacionImagen("src/test/java/com/losameos/viverbot/recursosTest/"+img1));
+		segundaImagen.LeerImagen(new UbicacionImagen("src/test/java/com/losameos/viverbot/recursosTest/"+img2));
 	}
 
 

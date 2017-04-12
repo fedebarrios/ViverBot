@@ -33,7 +33,7 @@ public class ImagenPlantaTest {
 
 	private void inicializar(String imagen)
 	{
-		UbicacionImagen ubicacion = new UbicacionImagen("/Users/Pandari/Desktop/ViverBot/viverbot/src/test/java/com/losameos/viverbot/Model/WebCam/"+imagen);
+		UbicacionImagen ubicacion = new UbicacionImagen("src/test/java/com/losameos/viverbot/recursosTest/"+imagen);
 		plantaImagen = new ImagenPlanta();
 		plantaImagen.LeerImagen(ubicacion);
 	}

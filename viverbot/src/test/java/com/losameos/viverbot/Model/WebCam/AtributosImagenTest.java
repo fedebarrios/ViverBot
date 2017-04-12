@@ -58,7 +58,7 @@ public class AtributosImagenTest {
 	
 	private void inicializar(String direccion)
 	{
-		String ubicacion = "/Users/Pandari/Desktop/ViverBot/viverbot/src/test/java/com/losameos/viverbot/Model/WebCam/"+direccion;
+		String ubicacion = "src/test/java/com/losameos/viverbot/recursosTest/"+direccion;
 		atributos = new AtributosImagen();
 		atributos.iniBuffer(new File(ubicacion));
 	}
