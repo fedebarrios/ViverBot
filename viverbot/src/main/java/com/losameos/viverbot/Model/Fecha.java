@@ -11,7 +11,7 @@ public class Fecha implements Comparable{
 		this.anio = anio;
 	}
 	
-	public static Fecha obtenerHoraActual() {
+	public static Fecha obtenerFechaActual() {
 		Calendar calendar = Calendar.getInstance();
 		int diaActual = calendar.get(Calendar.DAY_OF_MONTH);
 		int mesActual = calendar.get(Calendar.MONTH);
