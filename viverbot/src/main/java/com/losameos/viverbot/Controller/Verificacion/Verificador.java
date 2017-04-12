@@ -15,8 +15,12 @@ public class Verificador {
 		return true;
 	}
 	
-	public static boolean extensionValida(String path){
-		return true;
+	public static boolean extensionImagenValida(String path){
+		String extension = path.substring(path.length()-3, path.length());
+		if( extension.equals("bmp") || extension.equals("gif") || extension.equals("png") || extension.equals("jpg")){
+			return true;
+		}
+		return false;
 	}
 	
 	public static boolean fechaFutura(Date fecha){
