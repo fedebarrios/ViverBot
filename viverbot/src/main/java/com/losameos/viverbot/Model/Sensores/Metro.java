@@ -9,7 +9,7 @@ public class Metro extends InstrumentoMedicion {
 	@Override
 	protected Magnitud simularMedicion() {
 		Random random = new Random();
-		Altura medicion = new Altura( random.nextDouble() * 5 + 0.1 , "cm");
+		Altura medicion = new Altura( random.nextDouble() * 200 + 100 , "cm");
 		return medicion;
 		
 	}

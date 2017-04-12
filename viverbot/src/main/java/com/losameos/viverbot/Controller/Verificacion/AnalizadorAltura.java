@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import com.losameos.viverbot.Model.Fecha;
 import com.losameos.viverbot.Model.HistorialAltura;
 import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.TuplaAltura;
@@ -29,12 +30,13 @@ public class AnalizadorAltura {
 	public void analizarDiaEspecifico(Magnitud altura, SeguimientoAltura seguimiento){
 		this.historialOptimo = seguimiento.getHistorialOptimo();
 		this.historialVerdadero = seguimiento.getHistorialVerdadero();
-		Date diaNacimiento = seguimiento.getPlanta().getFechaPlanta();
-		int diaActual = diasEntreDosFechas(new Date(), diaNacimiento);
+		Fecha diaNacimiento = seguimiento.getPlanta().getFechaPlanta();
+		int diaActual = Fecha.diasEntreDosFechas(new Fecha(1,1,4), diaNacimiento);
 		//TODO: chequear que la misma altura y dia no esten ya en el historial
 		this.historialVerdadero.agregarTupla(new TuplaAltura((Altura) altura, diaActual));
 		TuplaAltura tuplaOptima = historialOptimo.buscarTupla(diaActual);
 		double alturaActual = altura.getValor();
+		System.out.println("Hoy es el dia:"+ diaActual);
 		System.out.println("altura actual : "+alturaActual);
 		if( tuplaOptima == null ){
 			System.out.println("No se encontro un dia en donde este especificada la altura optima");
@@ -51,9 +53,12 @@ public class AnalizadorAltura {
 		System.out.println("La planta esta midiendo "+altura.getValor()+"cm actualmente");
 		this.historialOptimo = seguimiento.getHistorialOptimo();
 		this.historialVerdadero = seguimiento.getHistorialVerdadero();
-		Date diaNacimiento = seguimiento.getPlanta().getFechaPlanta();
-		int diaActualPlanta = diasEntreDosFechas(new Date(), diaNacimiento);
-		System.out.println(diaActualPlanta);
+		Fecha diaNacimiento = seguimiento.getPlanta().getFechaPlanta();
+		Fecha hoy = Fecha.obtenerFechaActual();
+		System.out.println(hoy.getDia()+"-"+hoy.getMes()+"."+hoy.getAnio());
+		int diaActualPlanta = Fecha.diasEntreDosFechas(hoy, diaNacimiento);
+		
+		System.out.println("Hoy es el dia:"+ diaActualPlanta);
 		if (!this.historialVerdadero.verificarExistente(diaActualPlanta)){
 			this.historialVerdadero.agregarTupla(new TuplaAltura((Altura) altura, diaActualPlanta));
 		}
@@ -130,12 +135,10 @@ public class AnalizadorAltura {
 		return (int) porcentajeAcumulado;
 	}
 	
-	public int diasEntreDosFechas(Date hoy, Date diaNacimiento) {
-		DateFormat df = new SimpleDateFormat("dd MM yyyy");
-		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        final LocalDate firstDate = LocalDate.parse(df.format(hoy), formatter);
-        final LocalDate secondDate = LocalDate.parse(df.format(diaNacimiento), formatter);
-        final long days = ChronoUnit.DAYS.between(secondDate, firstDate);
+	/*public int diasEntreDosFechas(Date hoy, Date diaNacimiento) {
+		System.out.println(hoy.getDay()+"/"+hoy.getMonth()+"/"+hoy.getYear());
+		final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; //Milisegundos al día 		     
+		long days = ( hoy.getTime() - diaNacimiento.getTime() ) / MILLSECS_PER_DAY;
         return (int) days;
-	}
+	}*/
 }

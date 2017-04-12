@@ -3,6 +3,8 @@ package com.losameos.viverobot.Model.Plantas;
 import static org.junit.Assert.*;
 import java.sql.Date;
 import org.junit.Test;
+
+import com.losameos.viverbot.Model.Fecha;
 import com.losameos.viverbot.Model.Plantas;
 
 public class PlantasTest {
@@ -17,7 +19,7 @@ public class PlantasTest {
 		assertTrue(cantidadPlantas==6);
 		
 		System.out.println("Se carga una nueva planta");
-		plantas.agregarPlanta(1, "34,543", new Date(10,10,1994));
+		plantas.agregarPlanta(1, "34,543", new Fecha(10,10,1994));
 		cantidadPlantas = plantas.obtenerPlantas(1).size();
 
 		assertTrue(cantidadPlantas==7);

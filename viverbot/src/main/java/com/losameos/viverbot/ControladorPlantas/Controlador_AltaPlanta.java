@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.losameos.viverbot.Controller.Verificacion.Verificador;
 import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverbot.Model.Fecha;
 import com.losameos.viverbot.Model.Inventario;
 import com.losameos.viverbot.Model.Plantas;
 import com.losameos.viverbot.VistasPlantas.Vista_AltaPlanta;
@@ -53,7 +54,7 @@ public class Controlador_AltaPlanta implements ActionListener {
 
 	public boolean registrarPlanta() {
 		String ubicacion = this.vistaAltaPlanta.getTextUbicacion().getText();
-		Date fecha = this.vistaAltaPlanta.getDateFiltro();
+		Fecha fecha = new Fecha(this.vistaAltaPlanta.getDateFiltro().getDay(), this.vistaAltaPlanta.getDateFiltro().getMonth() , this.vistaAltaPlanta.getDateFiltro().getYear());
 		int codEspecie = listaEspecies.get(obtenerIndiceSeleccionado()).getCodEspecie();
 		return gestorPlantas.agregarPlanta(codEspecie, ubicacion, fecha);
 	}

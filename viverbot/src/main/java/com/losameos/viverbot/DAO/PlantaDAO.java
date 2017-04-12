@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.DTO.UbicacionDTO;
+import com.losameos.viverbot.Model.Fecha;
 
 public class PlantaDAO {
 
@@ -19,7 +20,7 @@ public class PlantaDAO {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 6; j++) {
 				@SuppressWarnings("deprecation")
-				PlantaDTO p = new PlantaDTO(1, i++, new UbicacionDTO(i * j, i * j), new Date(10, 10, 2017));
+				PlantaDTO p = new PlantaDTO(1, i++, new UbicacionDTO(i * j, i * j), new Fecha(10, 04, 2017));
 				plantas.add(p);
 			}
 		}

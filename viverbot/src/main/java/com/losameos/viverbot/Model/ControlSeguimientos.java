@@ -12,7 +12,12 @@ public class ControlSeguimientos {
 	private ControlSeguimientos(){
 		seguimientos = new ArrayList<SeguimientoAltura>();
 		ArrayList<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
-		tuplas.add(new TuplaAltura(new Altura(1.02,"cm"),1));
+		tuplas.add(new TuplaAltura(new Altura(122,"cm"),1));
+		tuplas.add(new TuplaAltura(new Altura(157,"cm"),2));
+		tuplas.add(new TuplaAltura(new Altura(179,"cm"),3));
+		tuplas.add(new TuplaAltura(new Altura(181,"cm"),4));
+		tuplas.add(new TuplaAltura(new Altura(191,"cm"),5));
+		tuplas.add(new TuplaAltura(new Altura(199,"cm"),6));
 		HistorialAltura historialOptimo = new HistorialAltura(tuplas);
 		this.agregarSeguimiento(new Plantas().obtenerPlantaEspecifica(1), historialOptimo);
 	}

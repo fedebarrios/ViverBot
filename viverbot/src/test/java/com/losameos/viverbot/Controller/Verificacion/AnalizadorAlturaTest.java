@@ -11,6 +11,7 @@ import org.junit.Test;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 import com.losameos.viverbot.DTO.PlantaDTO;
+import com.losameos.viverbot.Model.Fecha;
 import com.losameos.viverbot.Model.HistorialAltura;
 import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.TuplaAltura;
@@ -45,7 +46,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		assertTrue(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
@@ -65,7 +66,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
@@ -85,7 +86,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
@@ -105,7 +106,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
@@ -125,7 +126,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null,new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
@@ -146,7 +147,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		this.analizador.verificarAlturaActual();
@@ -164,7 +165,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		this.analizador.verificarAlturaActual();
@@ -182,7 +183,7 @@ public class AnalizadorAlturaTest {
 		final Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.DATE, -4);
 	    Date nacimiento = cal.getTime();
-		this.planta = new PlantaDTO(1, 1, null, new java.sql.Date(nacimiento.getTime()));
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(nacimiento.getDay(),nacimiento.getMonth(),nacimiento.getYear()));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
 		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
 		this.analizador.verificarAlturaActual();
