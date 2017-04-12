@@ -1,21 +1,22 @@
-package com.losameos.viverbot.Model;
+package com.losameos.viverbot.Model.Medicion;
 
-import com.losameos.viverbot.Controller.AireAcondicionadoController;
+import com.losameos.viverbot.Model.Hora;
+import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
-public class AutomatizacionDeClima extends Thread {
+public class AutomatizacionDeClimaState extends Thread {
 	private Temperatura temp;
 	private RangoNumerico rango;
-	private AireAcondicionadoController aireAcondicionado;
+	private AireAcondicionadoState aireAcondicionado;
 	private long inicio = 0;
-	private long frecuenciaDeAutomatizacion = 1000;
+	private final long frecuenciaDeAutomatizacion = 1000;
 	private long frecuenciaDeControl;
 
-	public AutomatizacionDeClima(Temperatura temp, RangoNumerico rango, long frecuenciaDeControl) {
+	public AutomatizacionDeClimaState(Temperatura temp, RangoNumerico rango, long frecuenciaDeControl) {
 		this.temp = temp;
 		this.rango = rango;
 		this.frecuenciaDeControl = frecuenciaDeControl;
-		this.aireAcondicionado = new AireAcondicionadoController();
+		this.aireAcondicionado = new AireAcondicionadoState();
 	}
 
 	private boolean verificarTiempoDeAutomatizacion() {
@@ -33,35 +34,13 @@ public class AutomatizacionDeClima extends Thread {
 	private boolean verificarRango() {
 		return this.temp.getValor() >= this.rango.getMinimo() && this.temp.getValor() <= this.rango.getMaximo();
 	}
-
-	private void bajarTemperatura() {
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA0) {
-			this.temp.setValor(this.temp.getValor() - 0.5);
-		}
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA1) {
-			this.temp.setValor(this.temp.getValor() - 1.0);
-		}
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA2) {
-			this.temp.setValor(this.temp.getValor() - 2.0);
-		}
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA3) {
-			this.temp.setValor(this.temp.getValor() - 3.0);
-		}
+	
+	private void frioState(){
+		this.aireAcondicionado.frioState();
 	}
-
-	private void subirTemperatura() {
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA0) {
-			this.temp.setValor(this.temp.getValor() + 0.5);
-		}
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA1) {
-			this.temp.setValor(this.temp.getValor() + 1.0);
-		}
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA2) {
-			this.temp.setValor(this.temp.getValor() + 2.0);
-		}
-		if (this.aireAcondicionado.getPotencia() == Potencia.POTENCIA3) {
-			this.temp.setValor(this.temp.getValor() + 3.0);
-		}
+	
+	private void calorState(){
+		this.aireAcondicionado.calorState();
 	}
 
 	@Override
@@ -74,33 +53,33 @@ public class AutomatizacionDeClima extends Thread {
 			if (verificarTiempoDeControl()) {
 				if (!verificarRango()) {
 					System.out.println("la temperatura no se encuentra dentro del rango establecido.");
-					aireAcondicionado.encenderAireAcondicionado();
 					if (temp.getValor() > rango.getMaximo()) {
+						frioState();
+						this.aireAcondicionado.estableceCalculadorDePotencia(this.temp, this.rango);
 						boolean ret = true;
 						while (ret) {
 							if (verificarTiempoDeAutomatizacion()) {
 								System.out.println("hay que bajarla");
-								bajarTemperatura();
+								this.aireAcondicionado.interferirTemperatura(this.temp);
 								System.out.println(this.temp.getValor());
 								setInicio();
 								if (verificarRango()) {
 									ret = false;
-									aireAcondicionado.apagarAireAcondicionado();
 								}
 							}
 						}
 					} else {
-						aireAcondicionado.cambiarFrioCalor();
+						calorState();
+						this.aireAcondicionado.estableceCalculadorDePotencia(this.temp, this.rango);
 						boolean ret1 = true;
 						while (ret1) {
 							if (verificarTiempoDeAutomatizacion()) {
 								System.out.println("hay que subirla");
-								subirTemperatura();
+								this.aireAcondicionado.interferirTemperatura(this.temp);
 								System.out.println(this.temp.getValor());
 								setInicio();
 								if (verificarRango()) {
 									ret1 = false;
-									aireAcondicionado.apagarAireAcondicionado();
 								}
 							}
 						}
@@ -116,9 +95,9 @@ public class AutomatizacionDeClima extends Thread {
 
 	public static void main(String[] args) {
 
-		Temperatura temp = new Temperatura(10.0);
+		Temperatura temp = new Temperatura(25.0);
 		RangoNumerico rango = new RangoNumerico(15.0, 20.0);
-		AutomatizacionDeClima automatizacion = new AutomatizacionDeClima(temp, rango, 1000);
+		AutomatizacionDeClimaState automatizacion = new AutomatizacionDeClimaState(temp, rango, 3000);
 		automatizacion.start();
 
 	}
