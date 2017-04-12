@@ -49,10 +49,14 @@ public class AltaEspecie_Controller implements ActionListener {
 				this.altaVista.getImagen_tf().setText("");
 			}
 		} else if (e.getSource() == this.altaVista.getBtnCargarImagen()) {
-			JFileChooser file=new JFileChooser();
-			file.setDialogTitle("Seleccione Imagen");
-			file.showOpenDialog(this.altaVista);
-			File archivoElegido = file.getSelectedFile();
+			
+			
+			JFileChooser selector=new JFileChooser();
+			selector.setDialogTitle("Seleccione Imagen");
+			FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
+			selector.setFileFilter(filtroImagen);
+			selector.showOpenDialog(this.altaVista);
+			File archivoElegido = selector.getSelectedFile();
 			if (archivoElegido!=null){
 				String path = archivoElegido.getPath().toString();
 				this.altaVista.getImagen_tf().setText(path);

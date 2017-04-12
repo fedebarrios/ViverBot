@@ -13,7 +13,7 @@ public class Metro extends InstrumentoMedicion {
 		Altura medicion;
 		cantidadDeMediciones++;
 		if(cantidadDeMediciones < 3){
-			medicion = new Altura( random.nextDouble() * 120 - 1000 , "cm");
+			medicion = new Altura( random.nextDouble() * 120 + 100 , "cm");
 		}
 		else if(cantidadDeMediciones < 5){
 			medicion = new Altura( random.nextDouble() * 80 + 120 , "cm");

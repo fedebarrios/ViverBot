@@ -15,6 +15,10 @@ public class Verificador {
 		return true;
 	}
 	
+	public static boolean extensionValida(String path){
+		return true;
+	}
+	
 	public static boolean fechaFutura(Date fecha){
 		Calendar fechaActual = Calendar.getInstance();
 		if(fechaActual.getTime().compareTo(fecha)==-1) return true;

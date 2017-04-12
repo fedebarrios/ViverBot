@@ -9,12 +9,12 @@ import com.losameos.viverbot.Model.Plantas;
 
 public class PlantasTest {
 	
-	private static Plantas plantas = null;
+	private static Plantas plantas = new Plantas();
 	
 	@Test
 	public void testAltaPlantas() {
 		inicializar();
-		Integer cantidadPlantas = plantas.obtenerPlantas(1).size();
+		Integer cantidadPlantas = plantas.obtenerPlantas().size();
 		System.out.println("Cantidad de plantas: "+cantidadPlantas);
 		assertTrue(cantidadPlantas==6);
 		
