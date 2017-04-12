@@ -29,6 +29,7 @@ public class AltaPlantaTest {
 		controladorPlantas.registrarPlanta();
 		int cantPlantasFinal = PlantaDAO.getInstance().obtenerPlantas().size();
 		assertTrue(cantPlantasInicio==cantPlantasFinal-1);
+		controladorPlantas.getVista().dispose();
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -40,6 +41,7 @@ public class AltaPlantaTest {
 		controladorPlantas.getVista().getCmbEspecies().setSelectedIndex(1);
 		controladorPlantas.getVista().setDateFiltro(new Date(2017-1900,4-1,10));
 		assertTrue(controladorPlantas.camposValidos());
+		controladorPlantas.getVista().dispose();
 	}
 	
 	@Test
@@ -48,6 +50,7 @@ public class AltaPlantaTest {
 		controladorPlantas.inicializar();
 		controladorPlantas.seleccionarUbicacion("0,0");
 		assertTrue(controladorPlantas.getVista().getTextUbicacion().getText().equals("0,0"));
+		controladorPlantas.getVista().dispose();
 	}
 
 }  

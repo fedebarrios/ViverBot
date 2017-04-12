@@ -22,6 +22,7 @@ public class BajaPlantaTest {
 		controladorPlantas.inicializar();
 		int cantItemsFinales = controladorPlantas.getVistaBajaPlanta().getCmbPlantas().getModel().getSize();
 		assertEquals(cantItemsIniciales, cantItemsFinales);  
+		controladorPlantas.getVistaBajaPlanta().cerrarVentana();
 	}
 	
 	@Test
@@ -34,6 +35,7 @@ public class BajaPlantaTest {
 		
 		controladorPlantas.borrarItemPlanta(1);
 		assertTrue(cantItemsFinales==cantItemsIniciales);
+		controladorPlantas.getVistaBajaPlanta().cerrarVentana();
 	}
 	
 	@Test
@@ -43,6 +45,7 @@ public class BajaPlantaTest {
 		int indiceSeleccionadoEnVista = controladorPlantas.getVistaBajaPlanta().getCmbPlantas().getSelectedIndex();
 		int indiceSeleccionado = controladorPlantas.obtenerIndiceSeleccionado();
 		assertEquals(indiceSeleccionado, indiceSeleccionadoEnVista);
+		controladorPlantas.getVistaBajaPlanta().cerrarVentana();
 	}
 	
 }
