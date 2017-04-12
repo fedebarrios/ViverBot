@@ -45,5 +45,17 @@ public class SeguimientoAltura {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}	
+	}
+	
+	public int getUltimoDiaMedicion(){
+		if(historialVerdadero.tamaño()==0){
+			Fecha diaNacimiento = this.planta.getFechaPlanta();
+			Fecha hoy = Fecha.obtenerFechaActual();
+			int diaActualPlanta = Fecha.diasEntreDosFechas(hoy, diaNacimiento);
+			return diaActualPlanta-1;
+		}
+		else{
+			return historialVerdadero.diaUltimaMedicion();
+		}
+	}
 }

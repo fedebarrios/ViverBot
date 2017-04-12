@@ -1,17 +1,8 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-
-import com.losameos.viverbot.Model.Fecha;
 import com.losameos.viverbot.Model.HistorialAltura;
+import com.losameos.viverbot.Model.LectorConsola;
 import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.TuplaAltura;
 import com.losameos.viverbot.Model.Magnitudes.Altura;
@@ -27,41 +18,36 @@ public class AnalizadorAltura {
 		
 	}
 	
-	public void analizarDiaEspecifico(Magnitud altura, SeguimientoAltura seguimiento){
-		this.historialOptimo = seguimiento.getHistorialOptimo();
-		this.historialVerdadero = seguimiento.getHistorialVerdadero();
-		Fecha diaNacimiento = seguimiento.getPlanta().getFechaPlanta();
-		int diaActual = Fecha.diasEntreDosFechas(new Fecha(1,1,4), diaNacimiento);
-		//TODO: chequear que la misma altura y dia no esten ya en el historial
-		this.historialVerdadero.agregarTupla(new TuplaAltura((Altura) altura, diaActual));
-		TuplaAltura tuplaOptima = historialOptimo.buscarTupla(diaActual);
-		double alturaActual = altura.getValor();
-		System.out.println("Hoy es el dia:"+ diaActual);
-		System.out.println("altura actual : "+alturaActual);
-		if( tuplaOptima == null ){
-			System.out.println("No se encontro un dia en donde este especificada la altura optima");
-		} else if (tuplaOptima.getAltura().getCentimetros() < alturaActual){
-			System.out.println("La planta ha crecido mas de lo esperado");
-			this.diferenciaAltura = diferenciaDeAlturas(tuplaOptima.getAltura(), new Altura(alturaActual, "cm"));
-		} else {
-			System.out.println("La planta esta creciendo menos de lo esperado");
-			this.diferenciaAltura = diferenciaDeAlturas(tuplaOptima.getAltura(), new Altura(alturaActual, "cm"));
-		}
-	}
-	
 	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento){
-		System.out.println("La planta esta midiendo "+altura.getValor()+"cm actualmente");
+		System.out.println("-----------------------------------------------------------");
+		
+		//Tomo los historiales de la planta a analizar
 		this.historialOptimo = seguimiento.getHistorialOptimo();
 		this.historialVerdadero = seguimiento.getHistorialVerdadero();
-		Fecha diaNacimiento = seguimiento.getPlanta().getFechaPlanta();
-		Fecha hoy = Fecha.obtenerFechaActual();
-		System.out.println(hoy.getDia()+"-"+hoy.getMes()+"."+hoy.getAnio());
-		int diaActualPlanta = Fecha.diasEntreDosFechas(hoy, diaNacimiento);
+		//Me fijo en que dia de medicion estamos con respecto a los dias de vida de la planta
+		int diaActualPlanta = seguimiento.getUltimoDiaMedicion()+1;
+
+		System.out.println("Hoy es el dia: "+ diaActualPlanta);
+		System.out.println("La planta esta midiendo "+altura.getValor()+"cm actualmente");
 		
-		System.out.println("Hoy es el dia:"+ diaActualPlanta);
+		//Si no existe ya, una medicion tomada en el dia de hoy, la guardo en el hisotiral verdadero
 		if (!this.historialVerdadero.verificarExistente(diaActualPlanta)){
 			this.historialVerdadero.agregarTupla(new TuplaAltura((Altura) altura, diaActualPlanta));
 		}
+		
+		//Si en el historial con el cual comparo los valores no hay una tupla para el dia deseado
+		//se pregunta al usuario si desea actualizar el historial optimo
+		if (this.historialOptimo.verificarExistente(diaActualPlanta)){
+			System.out.println("La planta deberia estar midiendo "+seguimiento.getHistorialOptimo().buscarTupla(diaActualPlanta).getAltura().getCentimetros()+" cm actualmente");
+		} else {
+			System.out.println("La planta no tiene un historial asociado para el dia de hoy. Ingrese Si, si desea guardar la nueva medicion");
+			String entradaTeclado = LectorConsola.getInstance().leerLinea();
+		    if(entradaTeclado.equals("si"));{
+		    	this.historialOptimo.agregarTupla( new TuplaAltura((Altura) altura, diaActualPlanta));
+		    }
+		}
+		
+		//Comparo cuanto crecio o decrecio una planta en toda su vida, para sacar un porcentaje global del crecimiento
 		int valorCrecimiento = 0;
 		ArrayList<Double> porcentajes = new ArrayList<Double>();
 		for (int i = 0; i < this.historialVerdadero.tamaño(); i++){
@@ -75,6 +61,11 @@ public class AnalizadorAltura {
 			}
 		}
 		valorCrecimiento = calcularCrecimiento(valorCrecimiento, porcentajes);
+		
+		//Calculo cuantos cm de diferencia hay con la altura esperada
+		verificarAlturaActual();
+		
+		//Casos segun el crecimientos
 		if( valorCrecimiento > 150 ){
 			System.out.println("La planta creció demasiado para lo que se esperaba.");
 			System.out.println("Tiene "+this.diferenciaAltura.getCentimetros()+" cm de diferencia con lo optimo");
@@ -90,22 +81,30 @@ public class AnalizadorAltura {
 			System.out.println("La planta esta creciendo menos de lo esperado. Tomar accion lo antes posible");
 			this.estadoPlantaAnalizada = "Anormal";
 		}
-		else {
-			System.out.println("La planta tiene un problema de crecimiento. Ingresi Si si desea matarla");
-			String entradaTeclado = "";
-		    Scanner entradaEscaner = new Scanner (System.in);
-		    entradaTeclado = entradaEscaner.nextLine ();
-		    
-			this.estadoPlantaAnalizada = "Defectuosa";
+		else { // La planta ha decrecido mucho, se pregunta si se desea podarla
+			System.out.println("La planta tiene un problema de crecimiento. Ingrese Si, si desea podarla");
+			String entradaTeclado = LectorConsola.getInstance().leerLinea();
+		    if(entradaTeclado.equals("si"));{
+
+				this.estadoPlantaAnalizada = "Defectuosa";
+				seguimiento.setEstado(estadoPlantaAnalizada);
+		    }
 		}
+		this.diferenciaAltura = null;
 	}
 	
 	public void verificarAlturaActual() {
 		if (this.diferenciaAltura == null){
 			System.out.println("La planta no tiene un optimo en el historial para comparar en el dia de la fecha.");
 		}
-		else if (this.diferenciaAltura.getValor() > 0){
+		else if (this.diferenciaAltura.getValor() > 10){
 			System.out.println("La planta esta unos: " + (int) this.diferenciaAltura.getCentimetros() + "cm por encima de lo optimo.");
+		}
+		else if (this.diferenciaAltura.getValor() < 10  && this.diferenciaAltura.getValor()>0){
+			System.out.println("La planta esta un rango aceptable, a "+(int) this.diferenciaAltura.getCentimetros()+" del valor optimo");
+		}
+		else if (this.diferenciaAltura.getValor() < 0  && this.diferenciaAltura.getValor()>-10){
+			System.out.println("La planta esta un rango aceptable, a "+(int) this.diferenciaAltura.getCentimetros()*-1+" del valor optimo");
 		}
 		else if (this.diferenciaAltura.getValor() == 0){
 			System.out.println("La planta esta exactamente en el valor optimo.");
@@ -116,7 +115,6 @@ public class AnalizadorAltura {
 	}
 	
 	public Altura diferenciaDeAlturas(Altura optima, Altura actual){
-		System.out.println(actual.getValor() + " y " + optima.getValor());
 		double dif = actual.getValor() - optima.getValor();
 		return new Altura(dif , "cm");
 	}
@@ -135,10 +133,4 @@ public class AnalizadorAltura {
 		return (int) porcentajeAcumulado;
 	}
 	
-	/*public int diasEntreDosFechas(Date hoy, Date diaNacimiento) {
-		System.out.println(hoy.getDay()+"/"+hoy.getMonth()+"/"+hoy.getYear());
-		final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; //Milisegundos al día 		     
-		long days = ( hoy.getTime() - diaNacimiento.getTime() ) / MILLSECS_PER_DAY;
-        return (int) days;
-	}*/
 }

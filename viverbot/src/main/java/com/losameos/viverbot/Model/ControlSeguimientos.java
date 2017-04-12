@@ -18,6 +18,14 @@ public class ControlSeguimientos {
 		tuplas.add(new TuplaAltura(new Altura(181,"cm"),4));
 		tuplas.add(new TuplaAltura(new Altura(191,"cm"),5));
 		tuplas.add(new TuplaAltura(new Altura(199,"cm"),6));
+		tuplas.add(new TuplaAltura(new Altura(204,"cm"),7));
+		tuplas.add(new TuplaAltura(new Altura(200,"cm"),8));
+		tuplas.add(new TuplaAltura(new Altura(197,"cm"),9));
+		tuplas.add(new TuplaAltura(new Altura(206,"cm"),10));
+		tuplas.add(new TuplaAltura(new Altura(240,"cm"),11));
+		tuplas.add(new TuplaAltura(new Altura(230,"cm"),12));
+		tuplas.add(new TuplaAltura(new Altura(200,"cm"),13));
+		tuplas.add(new TuplaAltura(new Altura(180,"cm"),14));
 		HistorialAltura historialOptimo = new HistorialAltura(tuplas);
 		this.agregarSeguimiento(new Plantas().obtenerPlantaEspecifica(1), historialOptimo);
 	}

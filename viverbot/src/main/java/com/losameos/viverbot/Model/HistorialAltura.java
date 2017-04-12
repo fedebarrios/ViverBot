@@ -64,5 +64,13 @@ public class HistorialAltura {
 		}
 		return false;
 	}
+	
+	public int diaUltimaMedicion(){
+		if(historial.size()==0){
+			return 0;
+		} else{
+			return historial.get(historial.size()-1).getDiaDeVida();
+		}
+	}
 
 }

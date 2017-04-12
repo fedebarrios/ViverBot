@@ -76,10 +76,14 @@ public class PlantaDAO {
 
 	public PlantaDTO obtenerPlantaEspecifica(int codPlanta) {
 		for (int i=0; i<plantas.size(); i++){
-			if( plantas.get(i).getCodigo()==codPlanta){
+			if( plantas.get(i).getCodigoPlanta()==codPlanta){
 				return plantas.get(i);
 			}
 		}
 		return null;
+	}
+	
+	public int cantidadPlantas(){
+		return plantas.size();
 	}
 }

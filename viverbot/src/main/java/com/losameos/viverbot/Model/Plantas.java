@@ -57,4 +57,8 @@ public class Plantas {
 		}
 		return new UbicacionDTO(Integer.parseInt(fila), Integer.parseInt(columna));
 	}
+	
+	public int cantidadPlantas(){
+		return plantaDAO.cantidadPlantas();
+	}
 }
