@@ -18,13 +18,18 @@ public class Controlador_BajaPlanta implements ActionListener{
 	private Plantas gestorPlantas;
 	private Inventario inventario;
 	
-	public Controlador_BajaPlanta(Plantas gestorPlantas){
-		this.gestorPlantas = gestorPlantas;
+	public static void main(String[] args){
+		Controlador_BajaPlanta a = new Controlador_BajaPlanta();
+		a.inicializar();
+	}
+	
+	public Controlador_BajaPlanta(){
+		this.gestorPlantas = new Plantas();
 		this.inventario = new Inventario();
 	}
 	
 	public void inicializar(){
-		if(this.vistaBajaPlanta!=null){
+		if(this.vistaBajaPlanta==null){
 			this.vistaBajaPlanta = new Vista_BajaPlanta(this);
 			llenarComboPlantas();
 			this.vistaBajaPlanta.mostrarVentana();
@@ -51,6 +56,8 @@ public class Controlador_BajaPlanta implements ActionListener{
 	
 	public void borrarItemPlanta(int i){
 		this.vistaBajaPlanta.getCmbPlantas().remove(i);
+		gestorPlantas.eliminarPlanta(listaPlantas.get(i).getCodigoPlanta());
+		listaPlantas.remove(i);
 		this.vistaBajaPlanta.limpiarVista();
 		this.llenarComboPlantas();
 	}
@@ -69,4 +76,14 @@ public class Controlador_BajaPlanta implements ActionListener{
 			}
 		}
 	}
+
+	public Vista_BajaPlanta getVistaBajaPlanta() {
+		return vistaBajaPlanta;
+	}
+
+	public void setVistaBajaPlanta(Vista_BajaPlanta vistaBajaPlanta) {
+		this.vistaBajaPlanta = vistaBajaPlanta;
+	}
+	
+	
 }

@@ -41,5 +41,13 @@ public class AltaPlantaTest {
 		controladorPlantas.getVista().setDateFiltro(new Date(2017-1900,4-1,10));
 		assertTrue(controladorPlantas.camposValidos());
 	}
+	
+	@Test
+	public void testSeleccionarUbicacion(){
+		inicialize();
+		controladorPlantas.inicializar();
+		controladorPlantas.seleccionarUbicacion("0,0");
+		assertTrue(controladorPlantas.getVista().getTextUbicacion().getText().equals("0,0"));
+	}
 
 }  
