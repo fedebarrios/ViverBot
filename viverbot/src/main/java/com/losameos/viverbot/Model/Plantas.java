@@ -10,7 +10,7 @@ import com.losameos.viverbot.DTO.UbicacionDTO;
 public class Plantas {
 
 	private PlantaDAO plantaDAO;
-
+	
 	public Plantas() {
 		this.plantaDAO = PlantaDAO.getInstance();
 	}
