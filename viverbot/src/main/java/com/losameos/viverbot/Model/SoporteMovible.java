@@ -8,11 +8,13 @@ import com.losameos.viverbot.Model.Medicion.Colector;
 public class SoporteMovible implements IMovible{
 
 	private Colector colector;
+	private Podador podador;
 	private UbicacionDTO ubicacion;
 	private UbicacionDTO defaultUbicacion= new UbicacionDTO(0,0);
 	
 	public SoporteMovible(Magnitudes m){
 		this.colector = new Colector(m);
+		this.podador = Podador.getInstance();
 		this.ubicacion = defaultUbicacion;
 	}
 	
@@ -36,9 +38,12 @@ public class SoporteMovible implements IMovible{
 	public void setUbicacion(UbicacionDTO ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	
-	
-	
-	
 
+	public Podador getPodador() {
+		return podador;
+	}
+
+	public void setPodador(Podador podador) {
+		this.podador = podador;
+	}	
 }

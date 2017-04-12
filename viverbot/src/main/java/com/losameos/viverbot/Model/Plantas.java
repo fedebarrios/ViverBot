@@ -10,7 +10,7 @@ import com.losameos.viverbot.DTO.UbicacionDTO;
 public class Plantas {
 
 	private PlantaDAO plantaDAO;
-	
+
 	public Plantas() {
 		this.plantaDAO = PlantaDAO.getInstance();
 	}
@@ -23,8 +23,8 @@ public class Plantas {
 		return plantaDAO.obtenerPlantas();
 	}
 	
-	public PlantaDTO obtenerPlantaEspecifica(int codEspecie, int codPlanta){
-		return plantaDAO.obtenerPlantaEspecifica(codEspecie, codPlanta);
+	public PlantaDTO obtenerPlantaEspecifica( int codPlanta){
+		return plantaDAO.obtenerPlantaEspecifica( codPlanta);
 	}
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Date fecha) {

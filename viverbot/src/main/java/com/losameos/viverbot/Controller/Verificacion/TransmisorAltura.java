@@ -27,7 +27,7 @@ public class TransmisorAltura extends Transmisor{
 		plantas = new Plantas();
 		analizadorAltura = new AnalizadorAltura();
 		listadoPlantas = new ArrayList<PlantaDTO>();
-		listadoPlantas.add(plantas.obtenerPlantaEspecifica(1,1));
+		listadoPlantas.add(plantas.obtenerPlantaEspecifica(1));
 		seguimientos = ControlSeguimientos.getInstance();
 	}
 	
@@ -46,6 +46,10 @@ public class TransmisorAltura extends Transmisor{
 						SeguimientoAltura seguimientoBuscado = seguimientos.getSeguimiento(listadoPlantas.get(i));
 						if ( seguimientoBuscado!= null){
 							this.analizadorAltura.analizarExaustivo(this.valorActual, seguimientoBuscado );
+							if(seguimientoBuscado.getEstado().equals("Defectuosa")){
+								soporte.getPodador().podar(listadoPlantas.get(i));
+							}
+							
 						}
 						else{
 							System.out.println("No hay un seguimiento asociado a la planta "+ listadoPlantas.get(i).getCodigoPlanta());

@@ -3,6 +3,7 @@ package com.losameos.viverbot.Controller.Verificacion;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -71,6 +72,7 @@ public class AnalizadorAltura {
 		valorCrecimiento = calcularCrecimiento(valorCrecimiento, porcentajes);
 		if( valorCrecimiento > 150 ){
 			System.out.println("La planta creció demasiado para lo que se esperaba.");
+			System.out.println("Tiene "+this.diferenciaAltura.getCentimetros()+" cm de diferencia con lo optimo");
 			this.estadoPlantaAnalizada = "Sublime";
 		} else if (valorCrecimiento > 110 ){
 			System.out.println("La planta ha crecido mas de lo esperado en su ciclo vital");
@@ -84,7 +86,11 @@ public class AnalizadorAltura {
 			this.estadoPlantaAnalizada = "Anormal";
 		}
 		else {
-			System.out.println("La planta tiene un problema de crecimiento. ¿Matarla?");
+			System.out.println("La planta tiene un problema de crecimiento. Ingresi Si si desea matarla");
+			String entradaTeclado = "";
+		    Scanner entradaEscaner = new Scanner (System.in);
+		    entradaTeclado = entradaEscaner.nextLine ();
+		    
 			this.estadoPlantaAnalizada = "Defectuosa";
 		}
 	}
@@ -107,7 +113,7 @@ public class AnalizadorAltura {
 	public Altura diferenciaDeAlturas(Altura optima, Altura actual){
 		System.out.println(actual.getValor() + " y " + optima.getValor());
 		double dif = actual.getValor() - optima.getValor();
-		return new Altura(dif + "cm");
+		return new Altura(dif , "cm");
 	}
 	
 	public void analizarPorcentajeEnDia(TuplaAltura real, TuplaAltura tentativa, ArrayList<Double> porcentajes){
