@@ -56,7 +56,7 @@ public class App {
 	@SuppressWarnings("unused")
 	private static void controlarAltura() {
 		SoporteMovible soporte =  SoporteFactory.crearSoporte(TransmisorAltura.getTipoMagnitud());
-		Thread hiloTransmisor = new Thread(new TransmisorAltura());
+		Thread hiloTransmisor = new Thread(new TransmisorAltura(soporte));
 		hiloTransmisor.start();
 	}
 }
