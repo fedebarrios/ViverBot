@@ -8,7 +8,9 @@ import org.junit.Test;
 
 import com.losameos.viverbot.Model.Ambiente;
 import com.losameos.viverbot.Model.Hora;
+import com.losameos.viverbot.Model.Magnitudes.Humedad;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
+import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Medicion.Colector;
 import com.losameos.viverbot.Model.Sensores.SensorHumedad;
 import com.losameos.viverbot.Model.Sensores.SensorTemperatura;
@@ -21,7 +23,7 @@ public class ColectorTest {
 	public void colectorMagnitudesTestTemperatura() {
 		this.colectroTest = new Colector(Magnitudes.TEMPERATURA);
 		assertTrue(this.colectroTest.getInstrumentoMedicion() instanceof SensorTemperatura);
-		assertTrue(this.colectroTest.getValorActual() == null);
+		assertNull(this.colectroTest.getValorActual());
 		this.clear();
 	}
 
@@ -29,7 +31,9 @@ public class ColectorTest {
 	public void colectorMagnitudesTestHumedad() {
 		this.colectroTest = new Colector(Magnitudes.HUMEDAD);
 		assertTrue(this.colectroTest.getInstrumentoMedicion() instanceof SensorHumedad);
-		assertTrue(this.colectroTest.getValorActual() == null);
+		assertNull(this.colectroTest.getValorActual());
+		
+		
 		this.clear();
 	}
 
@@ -38,6 +42,8 @@ public class ColectorTest {
 		this.colectroTest = new Colector(Magnitudes.TEMPERATURA);
 		Ambiente ambienteSimulado = new Ambiente();
 		assertTrue(this.verificarTemperatura(this.getHorarios(), ambienteSimulado));
+		assertTrue(this.colectroTest.getValorActual() instanceof Temperatura);
+
 		clear();
 
 	}
@@ -47,6 +53,8 @@ public class ColectorTest {
 		this.colectroTest = new Colector(Magnitudes.HUMEDAD);
 		Ambiente ambienteSimulado = new Ambiente();
 		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
+		assertTrue(this.colectroTest.getValorActual() instanceof Humedad);
+
 		clear();
 
 	}

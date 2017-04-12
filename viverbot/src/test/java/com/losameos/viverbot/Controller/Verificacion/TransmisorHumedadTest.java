@@ -12,6 +12,8 @@ import com.losameos.viverbot.DTO.UbicacionDTO;
 import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Plantas;
 import com.losameos.viverbot.Model.SoporteFactory;
+import com.losameos.viverbot.Model.Tupla;
+import com.losameos.viverbot.Model.Magnitudes.Humedad;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 
 public class TransmisorHumedadTest {
@@ -38,7 +40,7 @@ public class TransmisorHumedadTest {
 	@Test
 	public void testTrasnmitir() {
 		this.inicialize();
-		Hora h = new Hora(1, 0, 0);
+		Hora h = new Hora(0, 0, 0);
 		this.transmisorTest.setHora(h);
 		this.hiloTest.start();
 		this.esperarHilo();
@@ -56,7 +58,7 @@ public class TransmisorHumedadTest {
 		h.incrementarHora(1);
 		this.transmisorTest.setHora(h);
 		this.hiloTest.start();
-		this.esperar(1);
+		this.esperar(2);
 		this.hiloTest.interrupt();
 		assertFalse(this.transmisorTest.isSeRealizoTransmision());
 		this.clear();
@@ -65,15 +67,25 @@ public class TransmisorHumedadTest {
 	@Test
 	public void verificarTiempoTest() {
 		this.inicialize();
-		long inicio = Hora.instanteActual();
 		Hora h = Hora.obtenerHoraActual();
 
-		int seg = 1;
+		int seg = 10;
 		h.incrementarSegundos(seg);
 		this.transmisorTest.setHora(h);
 		while (!this.transmisorTest.verificarTiempo()) {
 		}
 		assertTrue(this.transmisorTest.verificarTiempo());
+		this.clear();
+
+	}
+	
+	@Test
+	public void verificarTiempoFalseTest() {
+		this.inicialize();
+		Hora h = new Hora(23,59,59);
+		this.transmisorTest.setHora(h);
+		
+		assertFalse(this.transmisorTest.verificarTiempo());
 		this.clear();
 
 	}
@@ -85,6 +97,8 @@ public class TransmisorHumedadTest {
 		this.transmisorTest.moverSoporteMovil(u);
 	}
 	// metodos auxiliares
+	
+	
 
 	private void esperarHilo() {
 		while (!this.transmisorTest.isSeRealizoTransmision()) {
