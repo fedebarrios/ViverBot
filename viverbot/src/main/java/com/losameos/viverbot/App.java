@@ -7,6 +7,7 @@ import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
+import com.losameos.viverobot.Controller.WebCam.BuscadorImagenControlador;
 //import com.losameos.viverbot.DTO.EspecieDTO;
 
 public class App {
@@ -23,7 +24,8 @@ public class App {
 		controlarAltura();
 		//controlarHumedad();
 		//controlarTemperatura();
-		ConsultaBajaEspecie_Controller mi = new ConsultaBajaEspecie_Controller();
+		//ConsultaBajaEspecie_Controller mi = new ConsultaBajaEspecie_Controller();
+		//BuscadorImagenControlador webCamControlador = new BuscadorImagenControlador();
 		// VerDetallesEspecie_Controller controladorPlanta = new
 		// VerDetallesEspecie_Controller(new
 		// EspecieDTO("especie0","blancas","rosa.jpg"));
