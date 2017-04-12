@@ -17,7 +17,7 @@ public class TransmisorAltura extends Transmisor{
 	private static Magnitudes m = Magnitudes.ALTURA;
 	private ArrayList<PlantaDTO> listadoPlantas;
 	private static long inicio = 0;
-	private static long frecuenciaDeRepeticion = 8000;
+	private static long frecuenciaDeRepeticion = 5000;
 	private SoporteMovible soporte;
 	private ControlSeguimientos seguimientos;
 	private Plantas plantas;
@@ -27,7 +27,7 @@ public class TransmisorAltura extends Transmisor{
 		plantas = new Plantas();
 		analizadorAltura = new AnalizadorAltura();
 		listadoPlantas = new ArrayList<PlantaDTO>();
-		listadoPlantas.add(plantas.obtenerPlantaEspecifica(0, 0));
+		listadoPlantas.add(plantas.obtenerPlantaEspecifica(1,1));
 		seguimientos = ControlSeguimientos.getInstance();
 	}
 	
@@ -45,7 +45,7 @@ public class TransmisorAltura extends Transmisor{
 					if (this.valorActual != null) {
 						SeguimientoAltura seguimientoBuscado = seguimientos.getSeguimiento(listadoPlantas.get(i));
 						if ( seguimientoBuscado!= null){
-							this.analizadorAltura.analizarDiaEspecifico(this.valorActual, seguimientoBuscado );
+							this.analizadorAltura.analizarExaustivo(this.valorActual, seguimientoBuscado );
 						}
 						else{
 							System.out.println("No hay un seguimiento asociado a la planta "+ listadoPlantas.get(i).getCodigoPlanta());

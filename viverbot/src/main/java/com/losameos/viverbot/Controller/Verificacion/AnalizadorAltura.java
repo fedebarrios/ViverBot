@@ -44,6 +44,7 @@ public class AnalizadorAltura {
 	}
 	
 	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento){
+		System.out.println("La planta esta midiendo "+altura.getValor()+"cm actualmente");
 		this.historialOptimo = seguimiento.getHistorialOptimo();
 		this.historialVerdadero = seguimiento.getHistorialVerdadero();
 		Date diaNacimiento = seguimiento.getPlanta().getFechaPlanta();

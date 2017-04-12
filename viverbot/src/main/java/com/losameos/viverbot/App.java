@@ -14,7 +14,7 @@ public class App {
 		// capas este metodo deberia ser una clase que maneje todo el ciclo
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
-		//controlarAltura();
+		controlarAltura();
 		//controlarHumedad();
 		//controlarTemperatura();
 
