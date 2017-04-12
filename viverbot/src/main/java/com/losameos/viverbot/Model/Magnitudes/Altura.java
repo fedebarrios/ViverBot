@@ -38,18 +38,18 @@ public class Altura extends Magnitud{
 		super(0.0);
 		String tipo = "";
 		if (valor.contains("metros") || (valor.contains("m") && !valor.contains("c"))) {
-			this.metros = Double.parseDouble(valor.substring(0,valor.indexOf('m') - 1));
-			tipo = valor.substring(valor.indexOf('m'), valor.length() -1);
+			this.metros = Double.parseDouble(valor.substring(0,valor.indexOf('m')));
+			tipo = valor.substring(valor.indexOf('m'), valor.length());
 			this.setValor(this.metros);
 		}
 		else if (valor.contains("centimetros") || valor.contains("c")) {
-			this.centimetros = Double.parseDouble(valor.substring(0,valor.indexOf('c') - 1));
-			tipo = valor.substring(valor.indexOf('c'), valor.length() -1);
+			this.centimetros = Double.parseDouble(valor.substring(0,valor.indexOf('c')));
+			tipo = valor.substring(valor.indexOf('c'), valor.length());
 			this.setValor(this.centimetros);
 		}
 		else if (valor.contains("pulgadas") || valor.contains("p")) {
-			this.pulgadas = Double.parseDouble(valor.substring(0,valor.indexOf('p') - 1));
-			tipo = valor.substring(valor.indexOf('p'), valor.length() -1);
+			this.pulgadas = Double.parseDouble(valor.substring(0,valor.indexOf('p')));
+			tipo = valor.substring(valor.indexOf('p'), valor.length());
 			this.setValor(this.pulgadas);
 		}
 		else { // Iniciamos el objeto con ceros
