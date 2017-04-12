@@ -35,11 +35,6 @@ public class AtributosImagen {
 		return buffer;
 	}
 
-	public void setBuffer(BufferedImage buffer) {
-		this.buffer = buffer;
-	}
-
-	
 
 	public Integer getCanalAzul() {
 		return canalAzul;
