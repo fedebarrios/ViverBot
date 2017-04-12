@@ -21,6 +21,10 @@ public class Plantas {
 		return plantaDAO.obtenerPlanta(codPlanta);
 	}
 	
+	public int obtenerUltimoCodigoPlanta(){
+		return plantaDAO.obtenerUltimoCodigo();
+	}
+	
 	public ArrayList<PlantaDTO> obtenerPlantas() {
 		return plantaDAO.obtenerPlantas();
 	}
@@ -31,7 +35,7 @@ public class Plantas {
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Fecha fecha) {
 		UbicacionDTO ubicacionDTO = obtenerUbicacion(ubicacion);
-		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, plantaDAO.obtenerUltimoCodigo()+1, ubicacionDTO, fecha);
+		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, obtenerUltimoCodigoPlanta()+1, ubicacionDTO, fecha);
 		plantaDAO.agregarPlanta(plantaDTO);
 		return false;
 	}
@@ -40,7 +44,7 @@ public class Plantas {
 		plantaDAO.borrarPlanta(codPlanta);
 	}
 
-	private UbicacionDTO obtenerUbicacion(String ubicacion) {
+	public UbicacionDTO obtenerUbicacion(String ubicacion) {
 		String fila = "";
 		String columna = "";
 		char aux;
@@ -48,7 +52,9 @@ public class Plantas {
 		for (int i = 0; i < ubicacion.length(); i++) {
 			aux = ubicacion.charAt(i);
 			if (aux != ',') {
-				fila += aux;
+				if(!filaCompleta){
+					fila += aux;
+				}
 			} else{
 				filaCompleta = true;
 				continue;

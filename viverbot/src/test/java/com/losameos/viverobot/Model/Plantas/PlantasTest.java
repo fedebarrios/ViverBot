@@ -1,6 +1,7 @@
 package com.losameos.viverobot.Model.Plantas;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import com.losameos.viverbot.DAO.PlantaDAO;
@@ -12,7 +13,6 @@ import com.losameos.viverbot.Model.Plantas;
 public class PlantasTest {
 
 	private static Plantas plantas;
-	private static PlantaDAO plantaDAO;
 
 	@Test
 	public void testAgregarPlantas() {
@@ -36,26 +36,51 @@ public class PlantasTest {
 		assertTrue(cantidadPlantas == 6);
 
 		// Agregaremos una nueva planta
-		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 1994));
-		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantaDAO.obtenerUltimoCodigo(),new UbicacionDTO(34,543), 
+		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 2017));
+		
+		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543), 
 																					new Fecha(10, 10, 2017));
 		cantidadPlantas = plantas.obtenerPlantas().size();
-		System.out.println(plantaPorCrear.getUbicacion().getFila() + " " +plantaPorCrear.getUbicacion().getColumna());
 		// Ahora la cantidad de plantas se incremento
 		assertTrue(cantidadPlantas == 7);
-		int codPlanta = plantaDAO.obtenerUltimoCodigo();
-		PlantaDTO plantaEnPersistencia = plantas.obtenerPlanta(codPlanta);
-		
-		System.out.println(plantaEnPersistencia.getUbicacion().getFila() + " " +plantaEnPersistencia.getUbicacion().getColumna());
-		//assertTrue(plantaEnPersistencia.equals(plantaPorCrear));
 		
 		plantas.eliminarPlanta(plantaPorCrear.getCodigoPlanta());
-		
+		// Corroboramos que la planta se borro exitosamente
 		assertFalse(plantas.obtenerPlantas().contains(plantaPorCrear));
+	}
+	
+	@Test
+	public void testObtenerUltimoCodigoPlanta() {
+		inicializar();
+		// La cantidad de plantas iniciales son:
+		Integer cantidadPlantas = plantas.obtenerPlantas().size();
+		assertTrue(cantidadPlantas == 6);
+
+		// Agregaremos una nueva planta
+		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 2017));
+		
+		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543), 
+																					new Fecha(10, 10, 2017));
+		cantidadPlantas = plantas.obtenerPlantas().size();
+		// Ahora la cantidad de plantas se incremento
+		assertTrue(cantidadPlantas == 7);
+		int codPlanta = plantas.obtenerUltimoCodigoPlanta();
+		PlantaDTO plantaEnPersistencia = plantas.obtenerPlanta(codPlanta);
+		// Corroboramos que la planta en cuestion es la misma que se agregó al final
+		assertTrue(plantaEnPersistencia.equals(plantaPorCrear));
+	}
+	
+	@Test
+	public void testObtenerUbicacion() {
+		inicializar();
+		
+		String ubicacion = "77,88";
+		UbicacionDTO ubicacionDTO = new UbicacionDTO(77, 88);
+		assertTrue(plantas.obtenerUbicacion(ubicacion).equals(ubicacionDTO));
 	}
 
 	private void inicializar() {
 		plantas = new Plantas();
-		plantaDAO = new PlantaDAO();
+		PlantaDAO.plantaDAO = null;
 	}
 }
