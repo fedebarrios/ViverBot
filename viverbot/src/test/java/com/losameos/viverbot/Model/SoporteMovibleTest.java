@@ -4,12 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.losameos.viverbot.DTO.PlantaDTO;
 import com.losameos.viverbot.DTO.UbicacionDTO;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 
 public class SoporteMovibleTest {
 	
 	SoporteMovible soporteTest = null;
+	private Plantas plantas = new Plantas();
 	
 	
 
@@ -29,6 +31,18 @@ public class SoporteMovibleTest {
 		this.soporteTest.mover(u);
 		
 		assertTrue(this.soporteTest.getUbicacion().equals(u));
+	}
+	
+	@Test
+	public void podar(){
+		inicialize();
+		int cantidadPlantasAntes = plantas.cantidadPlantas();
+		PlantaDTO plantaAPodar = plantas.obtenerPlantaEspecifica(1);
+		boolean b = this.soporteTest.getPodador().podar(plantaAPodar);
+		assertTrue(b);
+		assertTrue(plantas.cantidadPlantas()==cantidadPlantasAntes-1);
+		boolean b2= this.soporteTest.getPodador().podar(plantaAPodar);
+		assertFalse(b2);
 	}
 
 	

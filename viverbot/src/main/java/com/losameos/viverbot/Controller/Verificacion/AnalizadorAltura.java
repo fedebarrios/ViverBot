@@ -30,7 +30,7 @@ public class AnalizadorAltura {
 		System.out.println("Hoy es el dia: "+ diaActualPlanta);
 		System.out.println("La planta esta midiendo "+altura.getValor()+"cm actualmente");
 		
-		//Si no existe ya, una medicion tomada en el dia de hoy, la guardo en el hisotiral verdadero
+		//Si no existe ya, una medicion tomada en el dia de hoy, la guardo en el historial verdadero
 		if (!this.historialVerdadero.verificarExistente(diaActualPlanta)){
 			this.historialVerdadero.agregarTupla(new TuplaAltura((Altura) altura, diaActualPlanta));
 		}

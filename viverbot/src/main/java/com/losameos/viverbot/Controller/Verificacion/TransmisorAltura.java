@@ -90,6 +90,10 @@ public class TransmisorAltura extends Transmisor{
 	protected void setearTiempoInicio() {
 		inicio = Hora.instanteActual();
 	}
+	
+	public void setInicio(long inicio) {
+		this.inicio = inicio;
+	}
 
 	public static Magnitudes getTipoMagnitud(){
 		return m;

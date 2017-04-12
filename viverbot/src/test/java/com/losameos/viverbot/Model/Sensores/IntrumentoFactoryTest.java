@@ -53,7 +53,7 @@ public class IntrumentoFactoryTest {
 		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
-	}
+	}	
 
 	// metodos auxiliares
 	private void clear() {

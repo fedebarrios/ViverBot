@@ -16,8 +16,6 @@ public class Podador {
 	}
 	
 	public boolean podar(PlantaDTO planta){
-		System.out.println("Ha llegado una planta para podar");
-		System.out.println(planta.getCodigoPlanta()+"el codigo de la planta");
 		Plantas plantas = new Plantas();
 		if(plantas.obtenerPlantaEspecifica(planta.getCodigoPlanta())==null){
 			return false;
