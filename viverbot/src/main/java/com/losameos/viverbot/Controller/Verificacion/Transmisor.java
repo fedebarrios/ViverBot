@@ -3,7 +3,7 @@ package com.losameos.viverbot.Controller.Verificacion;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Medicion.Colector;
 
-public class Transmisor implements Runnable {
+public abstract class  Transmisor implements Runnable {
 
 	protected Colector colector;
 	protected Magnitud valorActual;
@@ -16,6 +16,10 @@ public class Transmisor implements Runnable {
 	@Override
 	public void run() {
 		Trasnmitir();
+	}
+	
+	public Colector getColector() {
+		return this.colector;
 	}
 
 	protected void Trasnmitir() {
