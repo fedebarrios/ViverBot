@@ -18,8 +18,8 @@ public class AnalizadorTemperaturaTest {
 	@Test
 	public void AnalizadorTest() {
 		this.inicialize();
-		assertTrue(this.analizadroTest.getRango() != null);
-		assertTrue(this.analizadroTest.getEstado() == null);
+		assertNotNull(this.analizadroTest.getRango());
+		assertNull(this.analizadroTest.getEstado());
 		this.clear();
 
 	}
@@ -31,6 +31,7 @@ public class AnalizadorTemperaturaTest {
 		this.analizadroTest.analizar(temperaturaOptima);
 		assertTrue(this.analizadroTest.getEstado().getOptima() == true);
 		assertTrue(this.analizadroTest.getEstado().getTemperatura().equals(temperaturaOptima));
+		assertNotNull(this.analizadroTest.getEstado());
 
 	}
 	
@@ -41,6 +42,8 @@ public class AnalizadorTemperaturaTest {
 		this.analizadroTest.analizar(this.temperaturaBaja);
 		assertTrue(this.analizadroTest.getEstado().getOptima() == false);
 		assertTrue(this.analizadroTest.getEstado().getTemperatura().equals(temperaturaBaja));
+		assertNotNull(this.analizadroTest.getEstado());
+
 
 	}
 	
@@ -51,6 +54,8 @@ public class AnalizadorTemperaturaTest {
 		this.analizadroTest.analizar(this.temperaturaAlta);
 		assertTrue(this.analizadroTest.getEstado().getOptima() == false);
 		assertTrue(this.analizadroTest.getEstado().getTemperatura().equals(this.temperaturaAlta));
+		assertNotNull(this.analizadroTest.getEstado());
+
 
 	}
 	
@@ -58,7 +63,7 @@ public class AnalizadorTemperaturaTest {
 	public void VerificarRangoOptimoTest() {
 		this.inicialize();
 		this.analizadroTest.setRango(this.rango);
-		assertTrue(this.analizadroTest.verificarTemperatura(temperaturaOptima));
+		assertTrue(this.analizadroTest.verificarTemperatura(temperaturaOptima) == 0);
 		
 
 	}
@@ -67,14 +72,14 @@ public class AnalizadorTemperaturaTest {
 	public void VerificarRangoBajaTest() {
 		this.inicialize();
 		this.analizadroTest.setRango(this.rango);
-		assertFalse(this.analizadroTest.verificarTemperatura(this.temperaturaBaja));
+		assertTrue(this.analizadroTest.verificarTemperatura(this.temperaturaBaja) == -1);
 		
 
 	}@Test
 	public void VerificarRangoAltaTest() {
 		this.inicialize();
 		this.analizadroTest.setRango(this.rango);
-		assertFalse(this.analizadroTest.verificarTemperatura(this.temperaturaAlta));
+		assertTrue(this.analizadroTest.verificarTemperatura(this.temperaturaAlta) == 1);
 		
 
 	}

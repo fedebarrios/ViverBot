@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.losameos.viverbot.Model.Ambiente;
+import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
 
@@ -64,58 +65,53 @@ public class TransmisorTemperaturaTest {
 		this.trasnmisorTest.enviarDato();
 		EstadoTemperatura e = this.trasnmisorTest.getAnalizador().getEstado();
 		assertTrue(e != null);
+		assertTrue(e.getTemperatura() instanceof Temperatura);
 		assertTrue(e.getTemperatura().equals(t));
 		this.clear();
 	}
-	
+
 	@Test
-	public void verificarTiempoTrueTest(){
+	public void verificarTiempoTrueTest() {
 		this.inicialize();
-		long frecuencia = 1000;
-		long inicio = 1000000000;
-		long fin =133045820;
+		long frecuencia = this.trasnmisorTest.getFrecuenciaDeRepeticion();
+		long inicio = Hora.instanteActual() - 10000;
 		this.trasnmisorTest.setFrecuenciaDeRepeticion(frecuencia);
 		this.trasnmisorTest.setInicio(inicio);
 		assertTrue(this.trasnmisorTest.verificarTiempo());
 		this.clear();
-		
-		
+
 	}
-	
+
 	@Test
-	public void verificarTiempoFalseTest(){
+	public void verificarTiempoFalseTest() {
 		this.inicialize();
-		long frecuencia = 1000;
-		long inicio = 1000000000;
-		long fin =133045820;
+		long frecuencia = 5000;
+		long inicio = Hora.instanteActual() - 3000;
 		this.trasnmisorTest.setFrecuenciaDeRepeticion(frecuencia);
 		this.trasnmisorTest.setInicio(inicio);
-		assertTrue(this.trasnmisorTest.verificarTiempo());
+		assertFalse(this.trasnmisorTest.verificarTiempo());
 		this.clear();
 	}
 
-	// @Test
-	// public void rasnmitirTest() {
-	// this.inicialize();
-	// long frecuencia = 1000;
-	// int interrupcion = 10;
-	// this.trasnmisorTest.setFactorDeInterrupcion(interrupcion);
-	// this.trasnmisorTest.setFrecuenciaDeRepeticion(frecuencia);
-	// this.hilo.start();
-	// while (this.trasnmisorTest.seDebaProceguir()) {
-	// System.out.print("");
-	// }
-	// assertTrue(this.trasnmisorTest.getAdelanto() >= 0);
-	// assertTrue(this.trasnmisorTest.getRetraso() <=
-	// this.trasnmisorTest.getFrecuenciaDeRepeticion());
-	//
-	// // Tiempo promedio
-	// assertTrue((this.trasnmisorTest.getTiempoTotal() / interrupcion) < 2 *
-	// frecuencia);
-	// this.hilo.interrupt();
-	// clear();
-	//
-	// }
+	@Test
+	public void rasnmitirTest() {
+		this.inicialize();
+		long frecuencia = 1000;
+		int interrupcion = 10;
+		this.trasnmisorTest.setFactorDeInterrupcion(interrupcion);
+		this.trasnmisorTest.setFrecuenciaDeRepeticion(frecuencia);
+		this.hilo.start();
+		while (this.trasnmisorTest.seDebaProceguir()) {
+			System.out.print("");
+		}
+		assertTrue(this.trasnmisorTest.getAdelanto() >= 0);
+		assertTrue(this.trasnmisorTest.getRetraso() <= this.trasnmisorTest.getFrecuenciaDeRepeticion());
+
+		
+		this.hilo.interrupt();
+		clear();
+
+	}
 
 	// metodos auxiliares
 	private void inicialize() {

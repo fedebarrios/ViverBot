@@ -20,20 +20,37 @@ public class AnalizadorTemperatura {
 
 	public void analizar(Temperatura temperaturaActual) {
 		this.estado = new EstadoTemperatura(temperaturaActual, false);
-
-		if (verificarTemperatura(temperaturaActual)) {
+		int resultado = verificarTemperatura(temperaturaActual);
+		if (resultado == 0) {
 			this.estado.setOptima(true);
 			System.out.println(
-					"la temperatura es: " + this.estado.getTemperatura().getValor() + " y ademas es bonita :v");
+					"la temperatura es: " + this.estado.getTemperatura().getValor() + " esta dentro del rango ideal");
 		} else {
+			
+			if(resultado == 1){
+				this.estado.setDiferencia( temperaturaActual.getValor() - this.rango.getMaximo() );
+			}
+			else{
+				this.estado.setDiferencia(temperaturaActual.getValor() -  this.rango.getMinimo());
+				
+			}
+			
 			System.out
-					.println("la temperatura es: " + this.estado.getTemperatura().getValor() + " y ademas es mala >:v");
+			.println("la temperatura es: " + this.estado.getTemperatura().getValor() + " y no  esta dentro del rango ideal por: " + this.estado.getDiferencia() + " grados" );
 		}
 
 	}
 
-	protected boolean verificarTemperatura(Temperatura t) {
-		return this.rango.getMinimo() <= t.getValor() && this.rango.getMaximo() >= t.getValor();
+	protected int verificarTemperatura(Temperatura t) {
+		if(this.rango.getMinimo() <= t.getValor() && this.rango.getMaximo() >= t.getValor()){
+			return 0;
+		}
+		else if(t.getValor() < this.rango.getMinimo()){
+			return -1;
+		}
+		else{
+			return 1;
+		}
 	}
 	
 	
