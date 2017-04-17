@@ -1,9 +1,11 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
+import java.util.Observable;
+
 import com.losameos.viverbot.Model.Tarea;
 import com.losameos.viverbot.Model.Temporizador;
 
-public abstract class MiObjeto implements Runnable {
+public abstract class Automatizador extends Observable implements Runnable {
 
 	private long frecuencia = 5000; // se expresa en milisegundos
 	private long delay = 0;

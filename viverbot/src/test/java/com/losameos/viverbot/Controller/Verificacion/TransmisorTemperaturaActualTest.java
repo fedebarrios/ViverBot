@@ -10,7 +10,7 @@ import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
 
 public class TransmisorTemperaturaActualTest {
 
-	ColectorTemperatura trasnmisorTest = null;
+	TransmisorTemperaturaActual trasnmisorTest = null;
 	Thread hilo = null;
 
 	@Test
@@ -46,7 +46,7 @@ public class TransmisorTemperaturaActualTest {
 
 	// metodos auxiliares
 	private void inicialize() {
-		this.trasnmisorTest = new ColectorTemperatura();
+		this.trasnmisorTest = new TransmisorTemperaturaActual();
 	}
 
 	private void clear() {

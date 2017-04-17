@@ -5,6 +5,7 @@ import com.losameos.viverbot.Controller.ConsultaBajaEspecie_Controller;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorAltura;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
+import com.losameos.viverbot.Controller.Verificacion.ColectorTemperatura;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
 import com.losameos.viverobot.Controller.WebCam.BuscadorImagenControlador;
@@ -46,7 +47,9 @@ public class App {
 	
 
 	private static void controlarTemperatura() {
-		TransmisorTemperatura t = new TransmisorTemperatura();
+		ColectorTemperatura t = new ColectorTemperatura();
+		TransmisorTemperatura tr =  new TransmisorTemperatura();
+		t.addObserver(tr);
 		Thread hiloTransmisor = new Thread(t);
 		
 		hiloTransmisor.start();
