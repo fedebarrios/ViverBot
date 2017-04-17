@@ -1,104 +1,42 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
-import com.losameos.viverbot.Model.Hora;
+import com.losameos.viverbot.Model.Tarea;
+import com.losameos.viverbot.Model.Temporizador;
+import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 import com.losameos.viverbot.Model.Medicion.Colector;
 
-public class TransmisorTemperatura extends Transmisor {
+public class TransmisorTemperatura extends MiObjeto {
 
+	protected Colector colector;
+	protected Magnitud valorActual;
 	private AnalizadorTemperatura analizador;
 	private static Magnitudes m = Magnitudes.TEMPERATURA;
-	private long inicio = 0;
-	private long retraso = 0;
-	private long adelanto = 0;
-	private long tiempoTotal = 0;
-	private long tiempoInicio = 0;
-
-	private long frecuenciaDeRepeticion = 5000; // se expresa en milisegundos
-	private int factorDeInterrupcion;
-
-	// millisegundos
 
 	public TransmisorTemperatura() {
-		super(new Colector(m));
+		colector =  new Colector(m);
+		this.valorActual =  null;
 		this.analizador = new AnalizadorTemperatura();
-		this.factorDeInterrupcion = -1;
 	}
 
 	@Override
-	protected void Trasnmitir() {
-		this.reset();
-		this.setearTiempoInicio();
-		this.tiempoInicio = inicio;
-		while (seDebaProceguir()) {
-			if (this.verificarTiempo()) {
-				enviarDato();
-				this.factorDeInterrupcion--;
-				this.calcularRetraso();
-				this.setearTiempoInicio();
-
-			}
-		}
-		this.tiempoTotal = Hora.instanteActual()  - this.tiempoInicio;
-	}
-
-	protected void reset() {
-		this.inicio = 0;
-		this.adelanto = 0;
-		this.retraso = 0;
-		this.tiempoTotal = 0;
-		this.tiempoInicio = 0;
-	}
-
-	private void calcularRetraso() {
-		if (inicio > 0) {
-			long resta = Hora.instanteActual() - inicio - frecuenciaDeRepeticion;
-			if (resta >= 0) {
-				if (this.retraso < resta) {
-					this.retraso = resta;
-				}
-			}
-			if (resta < 0) {
-				if (this.adelanto > resta) {
-					this.adelanto = resta;
-				}
-			}
-		}
-
-	}
-
-	protected boolean seDebaProceguir() {
-		if (this.factorDeInterrupcion == 0) {
-			return false;
-		}
-		return true;
-	}
-
-	protected boolean enviarDato() {
-
+	protected void realizarTarea() {
+		// TODO Auto-generated method stub
 		if (realizarMedicion()) {
 			this.analizador.analizar((Temperatura) this.valorActual);
-			return true;
 		} else {
 			// aqui se debe la acoplar la logica de alarmas o bien el
 			// soporte que pueda brindar el
 			// sistema ante fallas en la medicion, los cuales aun no se han
 			// definido ni planificado
-			return false;
 		}
-
 	}
 
-	@Override
-	protected boolean verificarTiempo() {
-
-		return Hora.tiempoTranscurrido(inicio) >= frecuenciaDeRepeticion;
-
-	}
-
-	protected void setearTiempoInicio() {
-		inicio = Hora.instanteActual();
+	private boolean realizarMedicion() {
+		// TODO Auto-generated method stub
+		this.valorActual = this.colector.tomarMedicion();
+		return this.valorActual != null;
 	}
 
 	public AnalizadorTemperatura getAnalizador() {
@@ -107,46 +45,6 @@ public class TransmisorTemperatura extends Transmisor {
 
 	public void setAnalizador(AnalizadorTemperatura analizador) {
 		this.analizador = analizador;
-	}
-
-	public long getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(long inicio) {
-		this.inicio = inicio;
-	}
-
-	public long getFrecuenciaDeRepeticion() {
-		return frecuenciaDeRepeticion;
-	}
-
-	public void setFrecuenciaDeRepeticion(long f) {
-		this.frecuenciaDeRepeticion = f;
-	}
-
-	public int getFactorDeInterrupcion() {
-		return factorDeInterrupcion;
-	}
-
-	public void setFactorDeInterrupcion(int factorDeInterrupcion) {
-		this.factorDeInterrupcion = factorDeInterrupcion;
-	}
-
-	public long getRetraso() {
-		return retraso;
-	}
-
-	public long getAdelanto() {
-		return adelanto;
-	}
-
-	public long getTiempoTotal() {
-		return tiempoTotal;
-	}
-	
-	public long getTiempoInicial() {
-		return this.tiempoInicio;
 	}
 
 }

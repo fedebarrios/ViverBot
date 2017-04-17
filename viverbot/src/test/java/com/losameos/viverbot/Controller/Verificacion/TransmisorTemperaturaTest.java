@@ -62,7 +62,7 @@ public class TransmisorTemperaturaTest {
 		Temperatura t = new Temperatura(20.0);
 		Ambiente a = Ambiente.getInstance();
 		a.setTemperatura(t);
-		this.trasnmisorTest.enviarDato();
+		this.trasnmisorTest.realizarTarea();
 		EstadoTemperatura e = this.trasnmisorTest.getAnalizador().getEstado();
 		assertTrue(e != null);
 		assertTrue(e.getTemperatura() instanceof Temperatura);
