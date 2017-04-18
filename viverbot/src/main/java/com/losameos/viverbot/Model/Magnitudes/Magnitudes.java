@@ -1,5 +1,5 @@
 package com.losameos.viverbot.Model.Magnitudes;
 
 public enum Magnitudes {
-	TEMPERATURA, HUMEDAD, ALTURA;
+	TEMPERATURA, HUMEDAD, ALTURA, VACIO;
 }

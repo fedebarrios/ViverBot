@@ -3,17 +3,17 @@ package com.losameos.viverbot.Model;
 import com.losameos.viverbot.DTO.UbicacionDTO;
 import com.losameos.viverbot.Interfaces.IMovible;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
-import com.losameos.viverbot.Model.Medicion.Colector;
+import com.losameos.viverbot.Model.Medicion.InstrumentoMediator;
 
 public class SoporteMovible implements IMovible{
 
-	private Colector colector;
+	private InstrumentoMediator mediator;
 	private Podador podador;
 	private UbicacionDTO ubicacion;
 	private UbicacionDTO defaultUbicacion= new UbicacionDTO(0,0);
 	
 	public SoporteMovible(Magnitudes m){
-		this.colector = new Colector(m);
+		this.mediator = new InstrumentoMediator(m);
 		this.podador = Podador.getInstance();
 		this.ubicacion = defaultUbicacion;
 	}
@@ -23,12 +23,12 @@ public class SoporteMovible implements IMovible{
 		this.setUbicacion(u);
 	}
 
-	public Colector getColector() {
-		return colector;
+	public InstrumentoMediator getColector() {
+		return mediator;
 	}
 
-	public void setColector(Colector colector) {
-		this.colector = colector;
+	public void setColector(InstrumentoMediator colector) {
+		this.mediator = colector;
 	}
 
 	public UbicacionDTO getUbicacion() {

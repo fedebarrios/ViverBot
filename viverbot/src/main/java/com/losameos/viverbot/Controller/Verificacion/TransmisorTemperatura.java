@@ -3,6 +3,8 @@ package com.losameos.viverbot.Controller.Verificacion;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.losameos.viverbot.Model.Magnitudes.Magnitud;
+import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class TransmisorTemperatura implements Observer{
@@ -15,11 +17,11 @@ public class TransmisorTemperatura implements Observer{
 	}
 	@Override
 	public void update(Observable o, Object temp) {
-		this.Transmitir((Temperatura)temp);
+		this.Transmitir((Magnitud)temp);
 	}
 	
-	private void Transmitir(Temperatura temp){
-		this.analizador.analizar((Temperatura)temp);
+	private void Transmitir(Magnitud temp){
+		this.analizador.analizar(temp);
 
 	}
 

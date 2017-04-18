@@ -1,14 +1,14 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
-import com.losameos.viverbot.Model.Medicion.Colector;
+import com.losameos.viverbot.Model.Medicion.InstrumentoMediator;
 
 public abstract class  Transmisor implements Runnable {
 
-	protected Colector colector;
+	protected InstrumentoMediator colector;
 	protected Magnitud valorActual;
 
-	public Transmisor(Colector c) {
+	public Transmisor(InstrumentoMediator c) {
 		this.colector = c;
 		this.valorActual = null;
 	}
@@ -18,7 +18,7 @@ public abstract class  Transmisor implements Runnable {
 		Trasnmitir();
 	}
 	
-	public Colector getColector() {
+	public InstrumentoMediator getColector() {
 		return this.colector;
 	}
 

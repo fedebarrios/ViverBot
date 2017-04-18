@@ -9,11 +9,9 @@ public abstract class  InstrumentoMedicion {
 	}
 
 	protected Magnitud obtenerMedicion(){
-		return simularMedicion();
-	}
-	protected Magnitud simularMedicion(){
 		return null;
 	}
+	
 	
 	
 

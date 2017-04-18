@@ -15,7 +15,7 @@ public class InstrumentoFactory {
 		} else if (m.equals(Magnitudes.ALTURA)) {
 			return getInstanceMetro();
 		}
-		return null;
+		return new UnknowInstrumentoMedicion();
 
 	}
 
