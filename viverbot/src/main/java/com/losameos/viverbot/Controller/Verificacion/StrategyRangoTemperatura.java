@@ -7,39 +7,39 @@ import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
 
 public class StrategyRangoTemperatura implements IAnalisis {
 
-	private EstadoTemperatura estado;
-	private RangoNumerico rango;
 	private static RangoNumerico rangoIdeal = new RangoNumerico(10.0, 30.0);
 
 	@Override
 	public void analizar(Magnitud temp) {
-		this.rango = rangoIdeal;
-		this.estado = new EstadoTemperatura((Temperatura)temp, false);
-		int resultado = verificarTemperatura((Temperatura)temp);
+		RangoNumerico rango = rangoIdeal;
+		Temperatura t = (Temperatura)temp;
+		EstadoTemperatura estado = new EstadoTemperatura(t, false);
+		int resultado = verificarTemperatura(t,  rango);
 		if (resultado == 0) {
-			this.estado.setOptima(true);
+			estado.setOptima(true);
 			System.out.println(
-					"la temperatura es: " + this.estado.getTemperatura().getValor() + " esta dentro del rango ideal");
+					"la temperatura es: " + estado.getTemperatura().getValor() + " esta dentro del rango ideal");
 		} else {
 			
 			if(resultado == 1){
-				this.estado.setDiferencia( temp.getValor() - this.rango.getMaximo() );
+				estado.setDiferencia( temp.getValor() - rango.getMaximo() );
 			}
 			else{
-				this.estado.setDiferencia(temp.getValor() -  this.rango.getMinimo());
+				estado.setDiferencia(temp.getValor() -  rango.getMinimo());
 				
 			}
 			
 			System.out
-			.println("la temperatura es: " + this.estado.getTemperatura().getValor() + " y no  esta dentro del rango ideal por: " + this.estado.getDiferencia() + " grados" );
+					.println("la temperatura es: " + estado.getTemperatura().getValor()
+							+ " y no  esta dentro del rango ideal por: " + estado.getDiferencia() + " grados" );
 		}
 	}
 	
-	protected int verificarTemperatura(Temperatura t) {
-		if(this.rango.getMinimo() <= t.getValor() && this.rango.getMaximo() >= t.getValor()){
+	protected int verificarTemperatura(Temperatura t, RangoNumerico rango) {
+		if(rango.getMinimo() <= t.getValor() && rango.getMaximo() >= t.getValor()){
 			return 0;
 		}
-		else if(t.getValor() < this.rango.getMinimo()){
+		else if(t.getValor() < rango.getMinimo()){
 			return -1;
 		}
 		else{
