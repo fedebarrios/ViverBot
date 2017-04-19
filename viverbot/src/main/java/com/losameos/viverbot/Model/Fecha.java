@@ -3,21 +3,21 @@ package com.losameos.viverbot.Model;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Fecha implements Comparable{
+public class Fecha implements Comparable {
 	int dia, mes, anio;
-	
+
 	public Fecha(int dia, int mes, int anio) {
 		this.dia = dia;
 		this.mes = mes;
 		this.anio = anio;
 	}
-	
+
 	public static Fecha obtenerFechaActual() {
 		Calendar calendar = Calendar.getInstance();
 		int diaActual = calendar.get(Calendar.DAY_OF_MONTH);
 		int mesActual = calendar.get(Calendar.MONTH);
 		int anioActual = calendar.get(Calendar.YEAR);
-		return new Fecha(diaActual, mesActual+1, anioActual);
+		return new Fecha(diaActual, mesActual + 1, anioActual);
 
 	}
 
@@ -25,23 +25,21 @@ public class Fecha implements Comparable{
 		return dia;
 	}
 
-
 	public int getMes() {
 		return mes;
 	}
 
-
 	public int getAnio() {
 		return anio;
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	public static int diasEntreDosFechas(Fecha fechaActual, Fecha fechaPasada){
+	public static int diasEntreDosFechas(Fecha fechaActual, Fecha fechaPasada) {
 		final long milisegundosPorDia = 24 * 60 * 60 * 1000;
-		Date dateActual = new Date(fechaActual.anio,fechaActual.mes,fechaActual.dia); 	
-		Date datePasado = new Date(fechaPasada.anio,fechaPasada.mes,fechaPasada.dia);
-		long days = ( dateActual.getTime() - datePasado.getTime() ) / milisegundosPorDia;
-        return (int) days;
+		Date dateActual = new Date(fechaActual.anio, fechaActual.mes, fechaActual.dia);
+		Date datePasado = new Date(fechaPasada.anio, fechaPasada.mes, fechaPasada.dia);
+		long days = (dateActual.getTime() - datePasado.getTime()) / milisegundosPorDia;
+		return (int) days;
 	}
 
 	@Override
@@ -103,6 +101,9 @@ public class Fecha implements Comparable{
 		return true;
 	}
 
-
+	@Override
+	public String toString() {
+		return dia + "/" + mes + "/"  + anio;
+	}
 
 }

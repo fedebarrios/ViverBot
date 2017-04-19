@@ -23,4 +23,11 @@ public class CalorState implements IFrioCalorState {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Calor";
+	}
+	
+	
+
 }

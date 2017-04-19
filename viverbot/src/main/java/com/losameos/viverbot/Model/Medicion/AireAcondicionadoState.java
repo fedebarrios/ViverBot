@@ -2,16 +2,54 @@ package com.losameos.viverbot.Model.Medicion;
 
 import com.losameos.viverbot.Interfaces.IFrioCalorState;
 import com.losameos.viverbot.Interfaces.IPotencia;
+import com.losameos.viverbot.Model.Fecha;
+import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class AireAcondicionadoState {
 	private IPotencia potencia;
 	private IFrioCalorState estado;
+	private Hora horaDeInicio;
+	private Fecha fechaDeInicio;
+	private Hora horaDeFin;
+	private Fecha fechaDeFin;
 
 	public AireAcondicionadoState() {
 		this.potencia = null;
 		this.estado = null;
+	}
+
+	public Hora getHoraDeInicio() {
+		return horaDeInicio;
+	}
+
+	public void setHoraDeInicio(Hora horaDeInicio) {
+		this.horaDeInicio = horaDeInicio;
+	}
+
+	public Fecha getFechaDeInicio() {
+		return fechaDeInicio;
+	}
+
+	public void setFechaDeInicio(Fecha fechaDeInicio) {
+		this.fechaDeInicio = fechaDeInicio;
+	}
+
+	public Hora getHoraDeFin() {
+		return horaDeFin;
+	}
+
+	public void setHoraDeFin(Hora horaDeFin) {
+		this.horaDeFin = horaDeFin;
+	}
+
+	public Fecha getFechaDeFin() {
+		return fechaDeFin;
+	}
+
+	public void setFechaDeFin(Fecha fechaDeFin) {
+		this.fechaDeFin = fechaDeFin;
 	}
 
 	public void frioState() {
@@ -20,6 +58,22 @@ public class AireAcondicionadoState {
 
 	public void calorState() {
 		this.estado = new CalorState();
+	}
+
+	public IPotencia getPotencia() {
+		return potencia;
+	}
+
+	public void setPotencia(IPotencia potencia) {
+		this.potencia = potencia;
+	}
+
+	public IFrioCalorState getEstado() {
+		return estado;
+	}
+
+	public void setEstado(IFrioCalorState estado) {
+		this.estado = estado;
 	}
 
 	public void interferirTemperatura(Temperatura temp) {

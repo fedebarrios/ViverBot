@@ -22,5 +22,10 @@ public class FrioState implements IFrioCalorState {
 			return temp;
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Frio";
+	}
 
 }

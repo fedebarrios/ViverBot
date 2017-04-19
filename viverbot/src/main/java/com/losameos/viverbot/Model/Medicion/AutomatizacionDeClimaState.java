@@ -1,5 +1,6 @@
 package com.losameos.viverbot.Model.Medicion;
 
+import com.losameos.viverbot.Model.Fecha;
 import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
@@ -56,6 +57,8 @@ public class AutomatizacionDeClimaState extends Thread {
 					if (temp.getValor() > rango.getMaximo()) {
 						frioState();
 						this.aireAcondicionado.estableceCalculadorDePotencia(this.temp, this.rango);
+						this.aireAcondicionado.setFechaDeInicio(Fecha.obtenerFechaActual());
+						this.aireAcondicionado.setHoraDeInicio(Hora.obtenerHoraActual());
 						boolean ret = true;
 						while (ret) {
 							if (verificarTiempoDeAutomatizacion()) {
@@ -65,12 +68,16 @@ public class AutomatizacionDeClimaState extends Thread {
 								setInicio();
 								if (verificarRango()) {
 									ret = false;
+									this.aireAcondicionado.setFechaDeFin(Fecha.obtenerFechaActual());
+									this.aireAcondicionado.setHoraDeFin(Hora.obtenerHoraActual());
 								}
 							}
 						}
 					} else {
 						calorState();
 						this.aireAcondicionado.estableceCalculadorDePotencia(this.temp, this.rango);
+						this.aireAcondicionado.setFechaDeInicio(Fecha.obtenerFechaActual());
+						this.aireAcondicionado.setHoraDeInicio(Hora.obtenerHoraActual());
 						boolean ret1 = true;
 						while (ret1) {
 							if (verificarTiempoDeAutomatizacion()) {
@@ -80,6 +87,8 @@ public class AutomatizacionDeClimaState extends Thread {
 								setInicio();
 								if (verificarRango()) {
 									ret1 = false;
+									this.aireAcondicionado.setFechaDeFin(Fecha.obtenerFechaActual());
+									this.aireAcondicionado.setHoraDeFin(Hora.obtenerHoraActual());
 								}
 							}
 						}
