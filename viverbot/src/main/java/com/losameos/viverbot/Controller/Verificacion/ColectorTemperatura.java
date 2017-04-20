@@ -17,13 +17,13 @@ public class ColectorTemperatura extends Automatizador {
 	@Override
 	protected void realizarTarea() {
 
-		Magnitud valorActual = this.realizarMedicion();
+		Magnitud valorActual = this.medir();
 		this.setChanged();
 		this.notifyObservers(valorActual);
 
 	}
 
-	private Magnitud realizarMedicion() {
+	private Magnitud medir() {
 		return this.mediator.tomarMedicion();
 	}
 

@@ -25,10 +25,7 @@ public class TransmisorTemperatura implements Observer{
 
 	}
 
-	public AnalizadorTemperatura getAnalizador() {
-		return analizador;
-	}
-
+	
 	public void setAnalizador(AnalizadorTemperatura analizador) {
 		this.analizador = analizador;
 	}
