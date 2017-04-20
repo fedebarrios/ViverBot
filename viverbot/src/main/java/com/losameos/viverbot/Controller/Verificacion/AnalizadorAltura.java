@@ -18,7 +18,7 @@ public class AnalizadorAltura {
 		
 	}
 	
-	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento){
+	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento, boolean calcularFuturo){
 		System.out.println("-----------------------------------------------------------");
 		
 		//Tomo los historiales de la planta a analizar
@@ -90,6 +90,7 @@ public class AnalizadorAltura {
 				seguimiento.setEstado(estadoPlantaAnalizada);
 		    }
 		}
+		if (calcularFuturo) calcularCrecimientoFaltante(seguimiento, diaActualPlanta, (Altura) altura);
 		this.diferenciaAltura = null;
 	}
 	
@@ -111,6 +112,20 @@ public class AnalizadorAltura {
 		}
 		else {
 			System.out.println("La planta esta unos: " + (int) this.diferenciaAltura.getCentimetros() + "cm por debajo de lo optimo.");
+		}
+	}
+	
+	public void calcularCrecimientoFaltante(SeguimientoAltura seguimiento, int diaActualPlanta, Altura actual) {
+		if (this.diferenciaAltura == null) return;
+		int ultimoDia = seguimiento.getHistorialOptimo().diaUltimaMedicion();
+		int diasRestantes = ultimoDia - diaActualPlanta;
+		Altura ultimaAlturaDeseada = seguimiento.getHistorialOptimo().buscarTupla(ultimoDia).getAltura();
+		double crecimientoFaltante = ultimaAlturaDeseada.getValor() - actual.getValor();
+		if (crecimientoFaltante < 0.0){
+			System.out.println("La planta ya ha sobrepasado su altura ideal.");
+		}
+		else{
+			System.out.println("La planta debera crecer unos " + crecimientoFaltante + "cm en los proximos " + diasRestantes + " dias.");
 		}
 	}
 	

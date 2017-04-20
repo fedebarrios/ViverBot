@@ -48,7 +48,7 @@ public class AnalizadorAlturaTest {
 	    Date nacimiento = cal.getTime();
 		this.planta = new PlantaDTO(1, 1, null,  new Fecha(14,1,2014));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
-		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, false);
 		assertTrue(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Perfecta"));
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Normal"));
@@ -68,7 +68,7 @@ public class AnalizadorAlturaTest {
 	    Date nacimiento = cal.getTime();
 		this.planta = new PlantaDTO(1, 1, null, new Fecha(14,1,2014));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
-		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, false);
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
 		assertTrue(this.analizador.estadoPlantaAnalizada.equals("Perfecta"));
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Normal"));
@@ -88,7 +88,7 @@ public class AnalizadorAlturaTest {
 	    Date nacimiento = cal.getTime();
 		this.planta = new PlantaDTO(1, 1, null,  new Fecha(14,1,2014));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
-		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, false);
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Perfecta"));
 		assertTrue(this.analizador.estadoPlantaAnalizada.equals("Normal"));
@@ -108,7 +108,7 @@ public class AnalizadorAlturaTest {
 	    Date nacimiento = cal.getTime();
 		this.planta = new PlantaDTO(1, 1, null,  new Fecha(14,1,2014));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
-		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, false);
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Sublime"));
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Perfecta"));
 		assertFalse(this.analizador.estadoPlantaAnalizada.equals("Normal"));
@@ -130,9 +130,43 @@ public class AnalizadorAlturaTest {
 	    Date nacimiento = cal.getTime();
 		this.planta = new PlantaDTO(1, 1, null,  new Fecha(14,1,2014));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
-		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, false);
 		this.analizador.verificarAlturaActual();
 		assertThat(outContent.toString(), containsString("La planta esta unos: 80cm por encima de lo optimo"));
+		this.clear();
+	}
+	
+	@Test
+	public void AnalizarAlturaFaltanteTest() {//ok
+		this.inicialize();
+		setearValoresOptimos(new String[] {"40cm", "45cm", "50cm", "55cm", "60cm"});
+		setearValoresVerdaderos(new String[] {"40cm", "45cm"});
+		this.alturaDiaria = new Altura("50cm");
+		final Calendar cal = Calendar.getInstance();
+	    cal.add(Calendar.DATE, -4);
+	    Date nacimiento = cal.getTime();
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(14,1,2014));
+		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, true);
+		this.analizador.verificarAlturaActual();
+		assertThat(outContent.toString(), containsString("La planta debera crecer unos 10.0cm en los proximos 2 dias."));
+		this.clear();
+	}
+	
+	@Test
+	public void AnalizarAlturaSobrepasadaTest() {//ok
+		this.inicialize();
+		setearValoresOptimos(new String[] {"40cm", "45cm", "50cm", "55cm", "60cm"});
+		setearValoresVerdaderos(new String[] {"40cm", "45cm"});
+		this.alturaDiaria = new Altura("65cm");
+		final Calendar cal = Calendar.getInstance();
+	    cal.add(Calendar.DATE, -4);
+	    Date nacimiento = cal.getTime();
+		this.planta = new PlantaDTO(1, 1, null, new Fecha(14,1,2014));
+		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, true);
+		this.analizador.verificarAlturaActual();
+		assertThat(outContent.toString(), containsString("La planta ya ha sobrepasado su altura ideal."));
 		this.clear();
 	}
 	
@@ -147,13 +181,11 @@ public class AnalizadorAlturaTest {
 	    Date nacimiento = cal.getTime();
 		this.planta = new PlantaDTO(1, 1, null, new Fecha(14,1,2014));
 		this.seguimiento = new SeguimientoAltura(planta, optimo, verdadero);
-		this.analizador.analizarExaustivo(alturaDiaria, seguimiento);
+		this.analizador.analizarExaustivo(alturaDiaria, seguimiento, false);
 		this.analizador.verificarAlturaActual();
 		assertThat(outContent.toString(), containsString("La planta esta exactamente en el valor optimo."));
 		this.clear();
 	}
-	
-
 	
 	
 	private void setearValoresOptimos(String[] valores){

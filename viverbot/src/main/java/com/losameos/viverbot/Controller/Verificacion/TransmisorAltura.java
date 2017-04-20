@@ -53,7 +53,7 @@ public class TransmisorAltura extends Transmisor{
 							SeguimientoAltura seguimientoBuscado = seguimientos.getSeguimiento(listadoPlantas.get(i));
 							if ( seguimientoBuscado!= null){
 								//La mando a analizar
-								this.analizadorAltura.analizarExaustivo(this.valorActual, seguimientoBuscado );
+								this.analizadorAltura.analizarExaustivo(this.valorActual, seguimientoBuscado, false);
 								//Si el estado es defectuoso, le pido al podador que la pode
 								if(seguimientoBuscado.getEstado().equals("Defectuosa")){
 									if(soporte.getPodador().podar(listadoPlantas.get(i))){
