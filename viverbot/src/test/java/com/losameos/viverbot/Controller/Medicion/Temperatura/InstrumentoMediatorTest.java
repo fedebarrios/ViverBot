@@ -15,23 +15,21 @@ import com.losameos.viverbot.Model.Medicion.InstrumentoMediator;
 import com.losameos.viverbot.Model.Sensores.SensorHumedad;
 import com.losameos.viverbot.Model.Sensores.SensorTemperatura;
 
-public class ColectorTest {
+public class InstrumentoMediatorTest {
 
-	InstrumentoMediator colectroTest = null;
+	InstrumentoMediator mediatorTest = null;
 
 	@Test
 	public void colectorMagnitudesTestTemperatura() {
-		this.colectroTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
-		assertTrue(this.colectroTest.getInstrumentoMedicion() instanceof SensorTemperatura);
-		assertNull(this.colectroTest.getValorActual());
+		this.mediatorTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
+		assertTrue(this.mediatorTest.getInstrumentoMedicion().getClass() == SensorTemperatura.class);
 		this.clear();
 	}
 
 	@Test
 	public void colectorMagnitudesTestHumedad() {
-		this.colectroTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
-		assertTrue(this.colectroTest.getInstrumentoMedicion() instanceof SensorHumedad);
-		assertNull(this.colectroTest.getValorActual());
+		this.mediatorTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
+		assertTrue(this.mediatorTest.getInstrumentoMedicion() instanceof SensorHumedad);
 		
 		
 		this.clear();
@@ -39,10 +37,10 @@ public class ColectorTest {
 
 	@Test
 	public void testTomarMedicionTemperatura() {
-		this.colectroTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
+		this.mediatorTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
 		Ambiente ambienteSimulado = new Ambiente();
 		assertTrue(this.verificarTemperatura(this.getHorarios(), ambienteSimulado));
-		assertTrue(this.colectroTest.getValorActual() instanceof Temperatura);
+		assertTrue(this.mediatorTest.tomarMedicion().getClass() ==  Temperatura.class);
 
 		clear();
 
@@ -50,10 +48,10 @@ public class ColectorTest {
 	
 	@Test
 	public void testTomarMedicionHumedad() {
-		this.colectroTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
+		this.mediatorTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
 		Ambiente ambienteSimulado = new Ambiente();
 		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
-		assertTrue(this.colectroTest.getValorActual() instanceof Humedad);
+		assertTrue(this.mediatorTest.tomarMedicion().getClass() == Humedad.class);
 
 		clear();
 
@@ -61,7 +59,7 @@ public class ColectorTest {
 
 	// metodos auxiliares
 	private void clear() {
-		this.colectroTest = null;
+		this.mediatorTest = null;
 
 	}
 
@@ -92,7 +90,7 @@ public class ColectorTest {
 		boolean ret = true;
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
-			ret = ret && this.colectroTest.tomarMedicion().equals(a.getTemperatura());
+			ret = ret && this.mediatorTest.tomarMedicion().equals(a.getTemperatura());
 		}
 		return ret;
 	}
@@ -101,7 +99,7 @@ public class ColectorTest {
 		boolean ret = true;
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
-			ret = ret && colectroTest.tomarMedicion().equals(a.getHumedad());
+			ret = ret && mediatorTest.tomarMedicion().equals(a.getHumedad());
 		}
 		return ret;
 	}

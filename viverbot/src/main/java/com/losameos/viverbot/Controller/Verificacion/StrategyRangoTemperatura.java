@@ -1,5 +1,6 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
+import com.losameos.viverbot.Interfaces.IAnalisis;
 import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;

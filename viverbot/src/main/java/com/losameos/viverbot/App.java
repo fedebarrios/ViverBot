@@ -17,16 +17,18 @@ public class App {
 		// capas este metodo deberia ser una clase que maneje todo el ciclo
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
-		//controlarAltura();
-		//controlarHumedad();
-		//PlantaDAO plantaDAO = new PlantaDAO();
-		//planta = new Plantas(plantaDAO);
+		// controlarAltura();
+		// controlarHumedad();
+		// PlantaDAO plantaDAO = new PlantaDAO();
+		// planta = new Plantas(plantaDAO);
 		controlarTemperatura();
-		//controlarAltura();
-		//controlarHumedad();
-		//controlarTemperatura();
-		//ConsultaBajaEspecie_Controller mi = new ConsultaBajaEspecie_Controller();
-		//BuscadorImagenControlador webCamControlador = new BuscadorImagenControlador();
+		// controlarAltura();
+		controlarHumedad();
+		// controlarTemperatura();
+		// ConsultaBajaEspecie_Controller mi = new
+		// ConsultaBajaEspecie_Controller();
+		// BuscadorImagenControlador webCamControlador = new
+		// BuscadorImagenControlador();
 		// VerDetallesEspecie_Controller controladorPlanta = new
 		// VerDetallesEspecie_Controller(new
 		// EspecieDTO("especie0","blancas","rosa.jpg"));
@@ -39,26 +41,26 @@ public class App {
 
 	@SuppressWarnings("unused")
 	private static void controlarHumedad() {
-		SoporteMovible soporte =  SoporteFactory.crearSoporte((TransmisorHumedad.getTipoMagnitud()));
+		SoporteMovible soporte = SoporteFactory.crearSoporte((TransmisorHumedad.getTipoMagnitud()));
 		Thread hiloTransmisor = new Thread(new TransmisorHumedad(soporte));
 		hiloTransmisor.start();
 	}
 
-	
-
 	private static void controlarTemperatura() {
-		ColectorTemperatura t = new ColectorTemperatura();
-		TransmisorTemperatura tr =  new TransmisorTemperatura();
+		ColectorTemperatura t = new ColectorTemperatura(5000, 0);
+		TransmisorTemperatura tr = new TransmisorTemperatura();
 		t.addObserver(tr);
-		Thread hiloTransmisor = new Thread(t);
+		t.colectar();
+
 		
-		hiloTransmisor.start();
+	
+		
 
 	}
-	
+
 	@SuppressWarnings("unused")
 	private static void controlarAltura() {
-		SoporteMovible soporte =  SoporteFactory.crearSoporte(TransmisorAltura.getTipoMagnitud());
+		SoporteMovible soporte = SoporteFactory.crearSoporte(TransmisorAltura.getTipoMagnitud());
 		Thread hiloTransmisor = new Thread(new TransmisorAltura(soporte));
 		hiloTransmisor.start();
 	}

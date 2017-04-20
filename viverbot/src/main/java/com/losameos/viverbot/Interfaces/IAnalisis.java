@@ -1,4 +1,4 @@
-package com.losameos.viverbot.Controller.Verificacion;
+package com.losameos.viverbot.Interfaces;
 
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 
