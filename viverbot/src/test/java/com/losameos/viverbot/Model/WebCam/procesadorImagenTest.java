@@ -7,6 +7,7 @@ import org.junit.Test;
 
 
 public class procesadorImagenTest {
+	
 	/*
 	private ProcesadorImagenMock procesador;
 	@Test

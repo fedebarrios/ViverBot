@@ -11,12 +11,11 @@ public class ValidadorSeleccion {
 	
 	public static boolean validarOpcion(Integer opcion)
 	{
-		if (opcion == JFileChooser.APPROVE_OPTION)
-			return true;
-		else
-			return false;
-		
+		if (opcion == JFileChooser.APPROVE_OPTION) return true;
+		else return false;
+	
 	}
+	
 	public static boolean validarExtencion(String path)
 	{
 		if(Verificador.extensionImagenValida(path)) return true;
@@ -24,6 +23,7 @@ public class ValidadorSeleccion {
 			  return false; }
 			
 	}
+	
 	public static boolean validarPathSeleccionado(String primerPath) {
 		return primerPath.isEmpty();
 	}

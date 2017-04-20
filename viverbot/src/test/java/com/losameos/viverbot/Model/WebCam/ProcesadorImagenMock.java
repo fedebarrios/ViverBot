@@ -9,11 +9,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.losameos.viverobot.Model.WebCam.ObtenedorImagenes;
+
 
 
 
 public class ProcesadorImagenMock {
-/*
+	/*private ObtenedorImagenes obtenedorImagen;
 	private ResaltadorImagen resaltadorImagen;
 	private ImagenPlanta primerImagen;
 	private ImagenPlanta segundaImagen;
