@@ -9,14 +9,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.losameos.viverobot.Controller.WebCam.LectorImagenControlador;
-import com.losameos.viverobot.Model.WebCam.ImagenPlanta;
-import com.losameos.viverobot.Model.WebCam.ResaltadorImagen;
-import com.losameos.viverobot.Model.WebCam.UbicacionImagen;
+
 
 
 public class ProcesadorImagenMock {
-
+/*
 	private ResaltadorImagen resaltadorImagen;
 	private ImagenPlanta primerImagen;
 	private ImagenPlanta segundaImagen;
@@ -77,7 +74,7 @@ public class ProcesadorImagenMock {
 	public void setSegundaImagen(ImagenPlanta segundaImagen) {
 		this.segundaImagen = segundaImagen;
 	}
-
+*/
 	
 	
 	

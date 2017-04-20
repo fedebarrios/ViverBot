@@ -4,13 +4,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.losameos.viverobot.Controller.WebCam.BuscadorImagenControlador;
+import com.losameos.viverobot.Controller.WebCam.ObtenedorComando;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class ComparadorImagenesVista extends JFrame {
+public class ObtenedorSeleccionVista extends JFrame {
 	
 
 	private static final long serialVersionUID = 1L;
@@ -23,7 +23,7 @@ public class ComparadorImagenesVista extends JFrame {
 	private JLabel panelPrimeraImagen;
 	private JLabel panelSegundaImagen;
 	
-	public ComparadorImagenesVista(BuscadorImagenControlador controlador) {
+	public ObtenedorSeleccionVista(ObtenedorComando controlador) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 703, 513);
@@ -67,7 +67,7 @@ public class ComparadorImagenesVista extends JFrame {
 		contentPane.add(btnCerrar);
 	}
 	
-	private void listenerControlador(BuscadorImagenControlador controlador)
+	private void listenerControlador(ObtenedorComando controlador)
 	{
 		btnFiltrar.addActionListener(controlador);
 		btnCargar.addActionListener(controlador);

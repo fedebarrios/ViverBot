@@ -10,6 +10,7 @@ import com.losameos.viverbot.Model.Medicion.ColectorTemperatura;
 import com.losameos.viverbot.Model.Medicion.TransmisorTemperatura;
 import com.losameos.viverobot.Controller.WebCam.BuscadorImagenControlador;
 //import com.losameos.viverbot.DTO.EspecieDTO;
+import com.losameos.viverobot.Controller.WebCam.ObtenedorComando;
 
 public class App {
 	public static void main(String[] args) {
@@ -27,6 +28,8 @@ public class App {
 		// controlarTemperatura();
 		// ConsultaBajaEspecie_Controller mi = new
 		// ConsultaBajaEspecie_Controller();
+		//ObtenedorComando obtenedor = new ObtenedorComando();
+
 		// BuscadorImagenControlador webCamControlador = new
 		// BuscadorImagenControlador();
 		// VerDetallesEspecie_Controller controladorPlanta = new

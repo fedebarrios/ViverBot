@@ -1,61 +1,49 @@
 package com.losameos.viverobot.Model.WebCam;
 
-import java.awt.Color;
 
 public class ResaltadorImagen {
 	
-	private ImagenPlanta primeraImagen;
-	private ImagenPlanta segundaImagen;
-	private Integer colorSRGB;
-
 	
-	public ResaltadorImagen(ImagenPlanta img1, ImagenPlanta img2)
+	public Imagen resaltarImagen(GeneradorImagenes contenedor)
 	{
-		primeraImagen = img1;
-		segundaImagen = img2;
-	}
+		
+		Imagen imagenResaltada = contenedor.getPrimerImagen();
+		Imagen imagenBoseto = contenedor.getSegundaImagen();
+		for(int x=0; x<imagenResaltada.getAncho(); x++)
+			for(int y=0; y<imagenResaltada.getAlto(); y++)
+				analizarRGB(x,y,imagenResaltada,imagenBoseto);
 	
-	public ImagenPlanta compararImagenes()
-	{
-		for(int x=0; x<primeraImagen.getAncho(); x++)
-			for(int y=0; y<primeraImagen.getAlto(); y++)
-				analizarRGB(x,y);
-	
-		return primeraImagen;
+		return imagenResaltada;
 	}
 
-	private void analizarRGB(int x, int y) {
+	private void analizarRGB(int x, int y, Imagen imagenResaltada, Imagen imagenBoseto) {
 		
 		Integer pixel;
-		AtributosImagen primeraImgRGB = primeraImagen.getAtributos();
-		AtributosImagen segundaImgRGB = segundaImagen.getAtributos();
 		
-		 primeraImgRGB.iniRGB(x, y);
-		 segundaImgRGB.iniRGB(x, y);
-		 
-		if(compararCanales(primeraImgRGB,segundaImgRGB))
+		imagenResaltada.getRGB(x, y);
+		imagenBoseto.getRGB(x, y);
+
+		if(compararCanales(imagenResaltada,imagenBoseto))
 		{
-			pixel = primeraImgRGB.getCanalAzul() + primeraImgRGB.getCanalRojo()+ primeraImgRGB.getCanalVerde();
-			int nuevoSRGB = (pixel << 70) | (pixel << 70) | pixel;
-			formatoSRGB(x,y,nuevoSRGB);
+			pixel = imagenResaltada.getAzul()+ imagenResaltada.getRojo()+ imagenResaltada.getVerde();
+			int nuevoSRGB = (pixel << 70) | pixel;
+			formatoSRGB(x,y,nuevoSRGB,imagenResaltada,imagenBoseto);
 
 		} else {
-			pixel = segundaImgRGB.getValorRGB();
-			formatoSRGB(x,y,pixel);
+			pixel = imagenBoseto.valorRGB();
+			formatoSRGB(x,y,pixel, imagenResaltada, imagenBoseto);
 					
 		}
 		
-
-	}
-
-	private boolean compararCanales(AtributosImagen atributo1, AtributosImagen atributo2) {
-		return atributo1.getColorRgb().getRGB() == atributo2.getColorRgb().getRGB();
 	}
 	
-	private void formatoSRGB(int x, int y, int n)
+	private boolean compararCanales(Imagen imagenResaltada, Imagen imagenBoseto) {
+		return imagenResaltada.getColorImagen().getRGB()== imagenBoseto.getColorImagen().getRGB();
+	}
+	
+	private void formatoSRGB(int x, int y, int n,Imagen imagenResaltada, Imagen imagenBoseto)
 	{
-		this.colorSRGB = n;
-		primeraImagen.getAtributos().getBuffer().setRGB(x, y, colorSRGB);
+		imagenResaltada.setRGB(x, y, n);
 
 	}
 	
