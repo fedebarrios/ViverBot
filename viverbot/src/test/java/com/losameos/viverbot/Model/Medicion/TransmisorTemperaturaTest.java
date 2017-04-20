@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.Observable;
 
+import org.easymock.EasyMock;
 import org.junit.Test;
 
-import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
@@ -21,30 +21,40 @@ public class TransmisorTemperaturaTest {
 		this.clear();
 	}
 
+//	@Test
+//	public void updateTest() throws InterruptedException {
+//		this.inicialize();
+//
+//		ColectorTemperatura colector = new ColectorTemperatura(3000, 0);
+//		colector.addObserver(this.trasnmisorTest);
+//		colector.colectar();
+//		this.esperar(3000);
+//		colector.detenerColeccion();
+//
+//		Magnitud ret = this.trasnmisorTest.getAnalizador().getValorRecibido();
+//		assertNotNull(ret);
+//		assertTrue(ret.getClass() == Temperatura.class);
+//		this.clear();
+//	}
+
 	@Test
-	public void transmitirTemperaturaTest() {
+	public void transmitirTest() throws InterruptedException {
 		this.inicialize();
-
-		Magnitud t = new Temperatura(25.0);
-		Observable o = new Observable(){
-			public void actuar(){
-				this.setChanged();
-				this.notifyObservers(t);
-			}
-		};
-		
-		o.addObserver(this.trasnmisorTest);
-		
-		
+		Temperatura t =  new Temperatura(25.0);
+		this.trasnmisorTest.Transmitir(t);
 		Magnitud ret = this.trasnmisorTest.getAnalizador().getValorRecibido();
-		System.out.println(ret);
 		assertNotNull(ret);
-		assertTrue(ret.getValor().equals(t));
-
+		assertTrue(ret.getClass() == Temperatura.class);
+		assertEquals(ret, t);
 		this.clear();
 	}
 
 	// metodos auxiliares
+
+//	private void esperar(long i) throws InterruptedException {
+//		Thread.sleep(i);
+//	}
+
 	private void inicialize() {
 		this.trasnmisorTest = new TransmisorTemperatura();
 	}

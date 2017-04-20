@@ -14,6 +14,7 @@ public class ColectorTemperatura extends Observable {
 	private long delay;
 	private Timer timer;
 	private Magnitud valorActual;
+	private TimerTask task;
 
 	private final static Magnitudes m = Magnitudes.TEMPERATURA;
 
@@ -23,14 +24,12 @@ public class ColectorTemperatura extends Observable {
 		this.delay = delay;
 		this.timer = new Timer();
 		this.valorActual = null;
+		
 	}
 
 	protected Magnitud medir() {
-		Magnitud ret  = this.mediator.tomarMedicion();
-		setChanged();
-		notifyObservers(valorActual);
-		return ret;
-		
+		return this.mediator.tomarMedicion();
+
 	}
 
 	public void colectar() {
@@ -40,11 +39,20 @@ public class ColectorTemperatura extends Observable {
 			@Override
 			public void run() {
 				valorActual = medir();
-				
+				notificar();
+
 			}
+
 		};
+		
+		
 		timer.schedule(t, delay, frecuencia);
 
+	}
+
+	protected void notificar() {
+		setChanged();
+		notifyObservers(valorActual);
 	}
 
 	public InstrumentoMediator getMediator() {
