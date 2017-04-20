@@ -1,5 +1,7 @@
-package com.losameos.viverbot.Controller.Verificacion;
+package com.losameos.viverbot.Model.Medicion;
 
+import com.losameos.viverbot.Controller.Verificacion.StrategyMagnitudInvalida;
+import com.losameos.viverbot.Controller.Verificacion.StrategyRangoTemperatura;
 import com.losameos.viverbot.Interfaces.IAnalisis;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;

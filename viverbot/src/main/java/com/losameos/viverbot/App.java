@@ -5,9 +5,9 @@ import com.losameos.viverbot.Controller.ConsultaBajaEspecie_Controller;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorAltura;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
-import com.losameos.viverbot.Controller.Verificacion.ColectorTemperatura;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
+import com.losameos.viverbot.Model.Medicion.ColectorTemperatura;
 import com.losameos.viverobot.Controller.WebCam.BuscadorImagenControlador;
 //import com.losameos.viverbot.DTO.EspecieDTO;
 
@@ -23,7 +23,7 @@ public class App {
 		// planta = new Plantas(plantaDAO);
 		controlarTemperatura();
 		// controlarAltura();
-		controlarHumedad();
+		//controlarHumedad();
 		// controlarTemperatura();
 		// ConsultaBajaEspecie_Controller mi = new
 		// ConsultaBajaEspecie_Controller();

@@ -1,4 +1,4 @@
-package com.losameos.viverbot.Controller.Medicion.Temperatura;
+package com.losameos.viverbot.Model.Magnitudes;
 
 import static org.junit.Assert.*;
 

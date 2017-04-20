@@ -6,6 +6,7 @@ import java.util.Observer;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
+import com.losameos.viverbot.Model.Medicion.AnalizadorTemperatura;
 
 public class TransmisorTemperatura implements Observer{
 
@@ -28,5 +29,9 @@ public class TransmisorTemperatura implements Observer{
 	
 	public void setAnalizador(AnalizadorTemperatura analizador) {
 		this.analizador = analizador;
+	}
+	public AnalizadorTemperatura getAnalizador() {
+		// TODO Auto-generated method stub
+		return this.analizador;
 	}
 }

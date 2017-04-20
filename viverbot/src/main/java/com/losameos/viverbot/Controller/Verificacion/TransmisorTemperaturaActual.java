@@ -3,6 +3,7 @@ package com.losameos.viverbot.Controller.Verificacion;
 import com.losameos.viverbot.Model.Hora;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
+import com.losameos.viverbot.Model.Medicion.AnalizadorTemperatura;
 import com.losameos.viverbot.Model.Medicion.InstrumentoMediator;
 
 public class TransmisorTemperaturaActual extends Transmisor {

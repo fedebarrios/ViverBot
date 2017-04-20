@@ -1,4 +1,4 @@
-package com.losameos.viverbot.Controller.Verificacion;
+package com.losameos.viverbot.Model.Medicion;
 
 import static org.junit.Assert.*;
 
