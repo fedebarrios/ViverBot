@@ -26,7 +26,11 @@ public class ColectorTemperatura extends Observable {
 	}
 
 	protected Magnitud medir() {
-		return this.mediator.tomarMedicion();
+		Magnitud ret  = this.mediator.tomarMedicion();
+		setChanged();
+		notifyObservers(valorActual);
+		return ret;
+		
 	}
 
 	public void colectar() {
@@ -36,8 +40,7 @@ public class ColectorTemperatura extends Observable {
 			@Override
 			public void run() {
 				valorActual = medir();
-				setChanged();
-				notifyObservers(valorActual);
+				
 			}
 		};
 		timer.schedule(t, delay, frecuencia);

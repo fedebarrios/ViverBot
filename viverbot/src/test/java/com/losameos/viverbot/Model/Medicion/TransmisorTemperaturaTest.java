@@ -2,14 +2,13 @@ package com.losameos.viverbot.Model.Medicion;
 
 import static org.junit.Assert.*;
 
+import java.util.Observable;
+
 import org.junit.Test;
 
 import com.losameos.viverbot.Controller.Verificacion.TransmisorTemperatura;
-import com.losameos.viverbot.Model.Ambiente;
-import com.losameos.viverbot.Model.Hora;
+import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
-import com.losameos.viverbot.Model.Medicion.ColectorTemperatura;
-import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
 
 public class TransmisorTemperaturaTest {
 
@@ -19,6 +18,29 @@ public class TransmisorTemperaturaTest {
 	public void transmisorTest() {
 		this.inicialize();
 		assertNotNull(this.trasnmisorTest.getAnalizador());
+		this.clear();
+	}
+
+	@Test
+	public void transmitirTemperaturaTest() {
+		this.inicialize();
+
+		Magnitud t = new Temperatura(25.0);
+		Observable o = new Observable(){
+			public void actuar(){
+				this.setChanged();
+				this.notifyObservers(t);
+			}
+		};
+		
+		o.addObserver(this.trasnmisorTest);
+		
+		
+		Magnitud ret = this.trasnmisorTest.getAnalizador().getValorRecibido();
+		System.out.println(ret);
+		assertNotNull(ret);
+		assertTrue(ret.getValor().equals(t));
+
 		this.clear();
 	}
 

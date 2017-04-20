@@ -8,14 +8,17 @@ import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class AnalizadorTemperatura {
 	private IAnalisis estrategia;
+	private Magnitud m;
 
 	public AnalizadorTemperatura() {
 		this.estrategia = null;
+		this.m = null;
 	}
 
 	public void analizar(Magnitud temp) {
-		this.estrategia = this.getStrategy(temp);
-		this.estrategia.analizar(temp);
+		this.m = temp;
+		this.estrategia = this.getStrategy(m);
+		this.estrategia.analizar(m);
 
 	}
 
@@ -27,4 +30,9 @@ public class AnalizadorTemperatura {
 		}
 	}
 
+	public Magnitud getValorRecibido() {
+		return m;
+	}
+
+	
 }
