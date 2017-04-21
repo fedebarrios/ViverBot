@@ -5,11 +5,11 @@ import com.losameos.viverbot.Model.Medicion.InstrumentoMediator;
 
 public abstract class  Transmisor implements Runnable {
 
-	protected InstrumentoMediator colector;
+	protected InstrumentoMediator mediador;
 	protected Magnitud valorActual;
 
 	public Transmisor(InstrumentoMediator c) {
-		this.colector = c;
+		this.mediador = c;
 		this.valorActual = null;
 	}
 
@@ -19,7 +19,7 @@ public abstract class  Transmisor implements Runnable {
 	}
 	
 	public InstrumentoMediator getColector() {
-		return this.colector;
+		return this.mediador;
 	}
 
 	protected void Trasnmitir() {
@@ -33,7 +33,7 @@ public abstract class  Transmisor implements Runnable {
 	
 
 	protected boolean realizarMedicion() {
-		this.valorActual = this.colector.tomarMedicion();
+		this.valorActual = this.mediador.tomarMedicion();
 		return this.valorActual != null;
 	}
 }

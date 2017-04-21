@@ -41,11 +41,11 @@ public class TransmisorHumedad extends Transmisor {
 					if (this.soporte.getUbicacion().equals(this.plantas.get(i).getUbicacion())) {
 						if (this.realizarMedicion()) {
 							Tupla<PlantaDTO, Humedad> t = new Tupla<PlantaDTO, Humedad>(this.plantas.get(i),
-									(Humedad) this.colector.tomarMedicion());
+									(Humedad) this.mediador.tomarMedicion());
 							almacenarMedicion(t);
 							System.out.println("La humedad de la planta en la ubicacion "
 									+ this.plantas.get(i).getUbicacion().toString() + "es: "
-									+ this.colector.tomarMedicion().getValor());
+									+ this.mediador.tomarMedicion().getValor());
 						}
 						else{
 							// logica para tomar accion cuando falla la medicion
