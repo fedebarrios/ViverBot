@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.losameos.viverbot.Model.Ambiente;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
-import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
+import com.losameos.viverbot.Model.Medicion.DiagnosticoAnalisis;
 
 public class TransmisorTemperaturaActualTest {
 

@@ -1,15 +1,16 @@
 package com.losameos.viverbot.Model.Medicion;
 
+import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
-public class EstadoTemperatura {
-	private Temperatura temperatura;
+public class DiagnosticoAnalisis {
+	private Magnitud m;
 	private Boolean optima;
 	Double diferencia ;
 
-	public EstadoTemperatura(Temperatura temperatura, Boolean optima) {
+	public DiagnosticoAnalisis(Magnitud temperatura, Boolean optima) {
 		super();
-		this.temperatura = temperatura;
+		this.m = temperatura;
 		this.optima = optima;
 		this.diferencia = 0.0;
 	}
@@ -25,8 +26,8 @@ public class EstadoTemperatura {
 	}
 
 
-	public Temperatura getTemperatura() {
-		return temperatura;
+	public Magnitud getMagnitud() {
+		return m;
 	}
 
 	public Boolean getOptima() {
@@ -34,7 +35,7 @@ public class EstadoTemperatura {
 	}
 
 	public void setTemperatura(Temperatura temperatura) {
-		this.temperatura = temperatura;
+		this.m = temperatura;
 	}
 
 	public void setOptima(Boolean optima) {
@@ -43,9 +44,9 @@ public class EstadoTemperatura {
 
 	@Override
 	public boolean equals(Object e) {
-		EstadoTemperatura estado =  (EstadoTemperatura) e;
+		DiagnosticoAnalisis estado =  (DiagnosticoAnalisis) e;
 		boolean ret = true;
-		if(this.temperatura.getValor() != estado.getTemperatura().getValor() || 
+		if(this.m.getValor() != estado.getMagnitud().getValor() || 
 				this.getOptima() != estado.getOptima()){
 			ret = false;
 		}

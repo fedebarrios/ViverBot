@@ -4,39 +4,38 @@ import com.losameos.viverbot.Interfaces.IAnalisis;
 import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
-import com.losameos.viverbot.Model.Medicion.EstadoTemperatura;
+import com.losameos.viverbot.Model.Medicion.DiagnosticoAnalisis;
 
 public class StrategyRangoTemperatura implements IAnalisis {
 
-	private static RangoNumerico rangoIdeal = new RangoNumerico(10.0, 30.0);
 
 	@Override
-	public void analizar(Magnitud temp) {
+	public DiagnosticoAnalisis analizar(Magnitud t, RangoNumerico rangoIdeal) {
 		RangoNumerico rango = rangoIdeal;
-		Temperatura t = (Temperatura)temp;
-		EstadoTemperatura estado = new EstadoTemperatura(t, false);
-		int resultado = verificarTemperatura(t,  rango);
+		DiagnosticoAnalisis estado = new DiagnosticoAnalisis(t, false);
+		int resultado = verificarRango(t,  rango);
 		if (resultado == 0) {
 			estado.setOptima(true);
 			System.out.println(
-					"la temperatura es: " + estado.getTemperatura().getValor() + " esta dentro del rango ideal");
+					"la temperatura es: " + estado.getMagnitud().getValor() + " esta dentro del rango ideal");
 		} else {
 			
 			if(resultado == 1){
-				estado.setDiferencia( temp.getValor() - rango.getMaximo() );
+				estado.setDiferencia( t.getValor() - rango.getMaximo() );
 			}
 			else{
-				estado.setDiferencia(temp.getValor() -  rango.getMinimo());
+				estado.setDiferencia(t.getValor() -  rango.getMinimo());
 				
 			}
 			
 			System.out
-					.println("la temperatura es: " + estado.getTemperatura().getValor()
+					.println("la temperatura es: " + estado.getMagnitud().getValor()
 							+ " y no  esta dentro del rango ideal por: " + estado.getDiferencia() + " grados" );
 		}
+		return estado;
 	}
 	
-	protected int verificarTemperatura(Temperatura t, RangoNumerico rango) {
+	protected int verificarRango(Magnitud t, RangoNumerico rango) {
 		if(rango.getMinimo() <= t.getValor() && rango.getMaximo() >= t.getValor()){
 			return 0;
 		}
