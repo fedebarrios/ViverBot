@@ -35,6 +35,20 @@ public class ControlTiempoTest {
 
 
 	
+	@Test
+	public void AnalizarDiaTest() {
+		this.inicialize();
+		if (controlTiempoTest.esDeDia())
+			assertTrue(controlTiempoTest.esDeDia());
+		
+	}
+	
+	@Test
+	public void AnalizarNocheTest() {
+		this.inicialize();
+		if (!controlTiempoTest.esDeDia())
+			assertFalse(controlTiempoTest.esDeDia());
+	}
 
 
 
