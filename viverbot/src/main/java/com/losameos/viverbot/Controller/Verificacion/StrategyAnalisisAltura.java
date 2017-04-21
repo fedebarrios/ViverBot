@@ -18,7 +18,7 @@ public class StrategyAnalisisAltura implements IAnalisisAltura{
 	private HistorialAltura historialOptimo;
 	private HistorialAltura historialVerdadero;
 	private Altura diferenciaAltura;
-	private String estadoPlantaAnalizada;
+	public String estadoPlantaAnalizada;
 	private SoporteMovible soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
 
 	@Override

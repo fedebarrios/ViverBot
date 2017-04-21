@@ -20,7 +20,7 @@ public class TransmisorAltura implements Observer{
 		this.Transmitir((ArrayList<Magnitud>) temp);
 	}
 
-	protected void Transmitir(ArrayList<Magnitud> temp) {
+	public void Transmitir(ArrayList<Magnitud> temp) {
 		this.analizador.analizar(temp);
 	}
 

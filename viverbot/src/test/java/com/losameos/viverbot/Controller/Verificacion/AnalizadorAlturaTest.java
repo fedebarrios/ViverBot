@@ -22,7 +22,7 @@ public class AnalizadorAlturaTest {
 
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	private AnalizadorAltura analizador;
+	private StrategyAnalisisAltura analizador;
 	private ArrayList<TuplaAltura> tuplasOptimo;
 	private ArrayList<TuplaAltura> tuplasVerdadero;
 	private HistorialAltura optimo;
@@ -205,7 +205,7 @@ public class AnalizadorAlturaTest {
 	}
 
 	private void inicialize() {
-		this.analizador = new AnalizadorAltura();
+		this.analizador = new StrategyAnalisisAltura();
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
 	}

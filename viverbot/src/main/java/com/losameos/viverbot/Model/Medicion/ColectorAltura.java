@@ -23,12 +23,15 @@ public class ColectorAltura extends Observable{
 	public ColectorAltura() {
 		this.mediator = new InstrumentoMediator(m);
 		this.timer = new Timer();
-		this.alturasActuales = null;
-		
+		this.alturasActuales = null;	
 	}
 
 	protected ArrayList<Magnitud> medir() {
-		return this.mediator.tomarAlturas();
+		ArrayList<Magnitud> a = this.mediator.tomarAlturas();
+		for ( Magnitud m : a){
+			System.out.println(m.getValor()+"hola jaja");
+		}
+		return a;
 
 	}
 
@@ -46,8 +49,7 @@ public class ColectorAltura extends Observable{
 
 		};
 		//La tarea se ejecutara una vez por dia
-		fechaActual = Fecha.obtenerFechaActual();
-		timer.schedule(task, new Date(fechaActual.getAnio(),fechaActual.getMes(), fechaActual.getDia()) , this.milisegundosEnUnDia );
+		timer.schedule(task, new Date() , this.milisegundosEnUnDia );
 
 	}
 

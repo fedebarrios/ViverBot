@@ -8,7 +8,7 @@ public class StrategyMetroDown implements IAnalisisAltura{
 
 	@Override
 	public void analizar(Magnitud m, SeguimientoAltura seguimiento) {
-		System.out.println("El metro esta averiado");
+		System.out.println("El metro esta averiado, o no existe planta para tomar la altura en esa posicion");
 		//Alertador.alertar();
 		
 	}

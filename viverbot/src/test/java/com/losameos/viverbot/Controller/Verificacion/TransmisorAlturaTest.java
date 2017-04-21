@@ -3,38 +3,44 @@ package com.losameos.viverbot.Controller.Verificacion;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.losameos.viverbot.DTO.PlantaDTO;
-import com.losameos.viverbot.Model.Plantas;
-import com.losameos.viverbot.Model.SoporteFactory;
-import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
+import com.losameos.viverbot.Model.Magnitudes.Altura;
+import com.losameos.viverbot.Model.Magnitudes.Magnitud;
+import com.losameos.viverbot.Model.Medicion.TransmisorAltura;
 
 public class TransmisorAlturaTest {
-	private TransmisorAltura transmisorTest;
-	private Thread hilo;
-	private static Plantas p =  new Plantas();
-	
+	TransmisorAltura trasnmisorTest = null;
+
 	@Test
-	public void TransmisorTest(){
+	public void transmisorTest() {
 		this.inicialize();
-		ArrayList<PlantaDTO> plantasVacias = new ArrayList<PlantaDTO> ();
-		transmisorTest.setListadoPlantas(plantasVacias);
-		assertNotNull(this.transmisorTest.getColector());
-		assertEquals(TransmisorAltura.getTipoMagnitud(), Magnitudes.ALTURA);
+		assertNotNull(this.trasnmisorTest.getAnalizador());
 		this.clear();
 	}
-	
-	private void inicialize() {
-		this.transmisorTest = new TransmisorAltura(SoporteFactory.crearSoporte(Magnitudes.ALTURA));
-		this.hilo = new Thread(this.transmisorTest);
+
+	@Test
+	public void transmitirTest() throws InterruptedException {
+		this.inicialize();
+		Altura a =  new Altura(230,"cm");
+		ArrayList<Magnitud> alturas = new ArrayList<Magnitud>();
+		alturas.add(a);
+		this.trasnmisorTest.Transmitir(alturas);
+		Magnitud ret = this.trasnmisorTest.getAnalizador().getAlturasRecibidas().get(0);
+		assertNotNull(ret);
+		assertEquals(ret, a);
+		this.clear();
 	}
-	
+
+	private void inicialize() {
+		this.trasnmisorTest = new TransmisorAltura();
+	}
+
 	private void clear() {
-		this.transmisorTest = null;
-		this.hilo = null;
+		this.trasnmisorTest = null;
 	}
 }

@@ -27,7 +27,7 @@ public class ControlSeguimientos {
 		tuplas.add(new TuplaAltura(new Altura(200,"cm"),13));
 		tuplas.add(new TuplaAltura(new Altura(180,"cm"),14));
 		HistorialAltura historialOptimo = new HistorialAltura(tuplas);
-		this.agregarSeguimiento(new Plantas().obtenerPlantaEspecifica(1), historialOptimo);
+		this.agregarSeguimiento(new Plantas().obtenerPlantaEspecifica(0), historialOptimo);
 	}
 	
 	public static ControlSeguimientos getInstance(){

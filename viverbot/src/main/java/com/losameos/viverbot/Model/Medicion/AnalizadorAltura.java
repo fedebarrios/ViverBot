@@ -19,11 +19,8 @@ public class AnalizadorAltura {
 	private ControlSeguimientos seguimientos;
 	private ArrayList<PlantaDTO> plantas;
 	private SeguimientoAltura seguimientoBuscado;
-	private HistorialAltura historialOptimo;
-	private HistorialAltura historialVerdadero;
-	public String estadoPlantaAnalizada = "";
-	public Altura diferenciaAltura = null;
-	public Magnitud m;
+	private ArrayList<Magnitud> alturasRecibidas;
+	private Magnitud m;
 	
 	public AnalizadorAltura() {
 		this.estrategia = null;
@@ -33,8 +30,13 @@ public class AnalizadorAltura {
 	}
 
 	public void analizar(ArrayList<Magnitud> alturas) {
+		alturasRecibidas = alturas;
 		for(int i = 0; i<plantas.size(); i++){
-			this.m = alturas.get(i);
+			if(i<alturas.size()){
+				this.m = alturas.get(i);
+			} else{
+				this.m = null;
+			}
 			this.seguimientoBuscado = seguimientos.getSeguimiento(plantas.get(i));
 			this.estrategia = this.getStrategy(m, seguimientoBuscado);
 			this.estrategia.analizar(m, seguimientoBuscado);
@@ -51,4 +53,8 @@ public class AnalizadorAltura {
 			return new StrategyAnalisisAltura();
 		}
 	}	
+	
+	public ArrayList<Magnitud> getAlturasRecibidas() {
+		return alturasRecibidas;
+	}
 }
