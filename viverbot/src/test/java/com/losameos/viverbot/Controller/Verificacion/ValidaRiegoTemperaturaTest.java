@@ -18,7 +18,10 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void ValidaRiegoTempTest() {
 		this.inicialize();
+<<<<<<< HEAD
+=======
 //		assertTrue(this.analizadroTest.getRango() != null);
+>>>>>>> origin/master
 		assertTrue(this.validaRiegoTempTest.tempActual != null);
 		this.clear();
 
@@ -27,7 +30,11 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarOptimoTest() {
 		this.inicialize();
+<<<<<<< HEAD
+		Temperatura tO= validaRiegoTempTest.tempActual.getValorTemperatura(); 
+=======
 		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.getValorTemperatura()); 
+>>>>>>> origin/master
 		assertTrue(!tO.equals(temperaturaOptima));
 
 	}
@@ -35,7 +42,11 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarBajoTest() {
 		this.inicialize();
+<<<<<<< HEAD
+		Temperatura tO= validaRiegoTempTest.tempActual.getValorTemperatura(); 		
+=======
 		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.getValorTemperatura()); 		
+>>>>>>> origin/master
 		assertTrue(!tO.equals(temperaturaBaja));
 
 	}
@@ -43,7 +54,11 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarAltoTest() {
 		this.inicialize();
+<<<<<<< HEAD
+		Temperatura tO= validaRiegoTempTest.tempActual.getValorTemperatura(); 		
+=======
 		Temperatura tO= new Temperatura(validaRiegoTempTest.tempActual.getValorTemperatura()); 		
+>>>>>>> origin/master
 		assertTrue(tO.equals(temperaturaAlta));
 	}
 	
