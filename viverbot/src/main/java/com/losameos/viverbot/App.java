@@ -2,11 +2,13 @@ package com.losameos.viverbot;
 
 import com.losameos.viverbot.Controller.AltaEspecie_Controller;
 import com.losameos.viverbot.Controller.ConsultaBajaEspecie_Controller;
-import com.losameos.viverbot.Controller.Verificacion.TransmisorAltura;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
+import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
+import com.losameos.viverbot.Model.Medicion.ColectorAltura;
 import com.losameos.viverbot.Model.Medicion.ColectorTemperatura;
+import com.losameos.viverbot.Model.Medicion.TransmisorAltura;
 import com.losameos.viverbot.Model.Medicion.TransmisorTemperatura;
 import com.losameos.viverobot.Controller.WebCam.BuscadorImagenControlador;
 //import com.losameos.viverbot.DTO.EspecieDTO;
@@ -60,8 +62,9 @@ public class App {
 
 	@SuppressWarnings("unused")
 	private static void controlarAltura() {
-		SoporteMovible soporte = SoporteFactory.crearSoporte(TransmisorAltura.getTipoMagnitud());
-		Thread hiloTransmisor = new Thread(new TransmisorAltura(soporte));
-		hiloTransmisor.start();
+		ColectorAltura t = new ColectorAltura();
+		TransmisorAltura tr = new TransmisorAltura();
+		t.addObserver(tr);
+		t.colectar();
 	}
 }

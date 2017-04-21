@@ -1,26 +1,42 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
 import java.util.ArrayList;
+
+import com.losameos.viverbot.Interfaces.IAnalisisAltura;
 import com.losameos.viverbot.Model.HistorialAltura;
 import com.losameos.viverbot.Model.LectorConsola;
 import com.losameos.viverbot.Model.SeguimientoAltura;
+import com.losameos.viverbot.Model.SoporteFactory;
+import com.losameos.viverbot.Model.SoporteMovible;
 import com.losameos.viverbot.Model.TuplaAltura;
 import com.losameos.viverbot.Model.Magnitudes.Altura;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
+import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 
-public class AnalizadorAltura {
+public class StrategyAnalisisAltura implements IAnalisisAltura{
+	
 	private HistorialAltura historialOptimo;
 	private HistorialAltura historialVerdadero;
-	public String estadoPlantaAnalizada = "";
-	public Altura diferenciaAltura = null;
-	
-	public AnalizadorAltura(){
+	private Altura diferenciaAltura;
+	private String estadoPlantaAnalizada;
+	private SoporteMovible soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
+
+	@Override
+	public void analizar(Magnitud m, SeguimientoAltura seguimiento) {
+		
+		analizarExaustivo(m, seguimiento, true);
+		if(estadoPlantaAnalizada.equals("Defectuosa")){
+			if(soporte.getPodador().podar(seguimiento.getPlanta())){
+				System.out.println("La planta se ha podado");
+			}
+			else{
+				System.out.println("No se pudo podar la planta");
+			}
+		}
 		
 	}
 	
 	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento, boolean calcularFuturo){
-		System.out.println("-----------------------------------------------------------");
-		
 		//Tomo los historiales de la planta a analizar
 		this.historialOptimo = seguimiento.getHistorialOptimo();
 		this.historialVerdadero = seguimiento.getHistorialVerdadero();
@@ -61,6 +77,8 @@ public class AnalizadorAltura {
 			}
 		}
 		valorCrecimiento = calcularCrecimiento(valorCrecimiento, porcentajes);
+		
+		
 		
 		//Calculo cuantos cm de diferencia hay con la altura esperada
 		verificarAlturaActual();
@@ -147,5 +165,5 @@ public class AnalizadorAltura {
 		porcentajeAcumulado = porcentajeAcumulado / porcentajes.size();
 		return (int) porcentajeAcumulado;
 	}
-	
+
 }

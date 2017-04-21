@@ -19,7 +19,7 @@ public class AnalizadorTemperatura {
 		this.m = temp;
 		this.estrategia = this.getStrategy(m);
 		this.estrategia.analizar(m);
-
+		
 	}
 
 	private IAnalisis getStrategy(Magnitud temp) {
