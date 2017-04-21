@@ -4,17 +4,19 @@ import com.losameos.viverbot.Model.NivelRiego;
 import com.losameos.viverbot.Model.RangoNumerico;
 import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
-public class ValidaRiegoTemperatura {
-	TransmisorTemperaturaActual transmTempActual;
-	RangoNumerico rangoIdeal = new RangoNumerico(25.0, 5.0);
+public class ValidaRiegoTemperatura  extends ValidaRiegoDecorator{
+	private TransmisorTemperaturaActual transmTempActual;
+	private RangoNumerico rangoIdeal = new RangoNumerico(25.0, 5.0);
 
-	public ValidaRiegoTemperatura() {
+
+	public ValidaRiegoTemperatura(RiegoValidable riegoValidable) {
+		super(riegoValidable);
 		transmTempActual =new TransmisorTemperaturaActual();
 		
 	}
 
 	
-	public NivelRiego riegoOptimoPorTemperatura(){
+	public NivelRiego cantidadOptimaRiego(){
 		Temperatura temperaturaActual= transmTempActual.getTemperaturaActual();
 		NivelRiego nivel=NivelRiego.NORMAL;
 		
@@ -23,6 +25,17 @@ public class ValidaRiegoTemperatura {
 		}else if(temperaturaActual.getValor()< rangoIdeal.getMinimo()){
 			nivel= NivelRiego.BAJAR;
 		}
-		return nivel;
+		return promediaNivel(nivel);
 	}
+	
+	public TransmisorTemperaturaActual getTransmTempActual() {
+		return transmTempActual;
+	}
+
+
+	public RangoNumerico getRangoIdeal() {
+		return rangoIdeal;
+	}
+
+
 }
