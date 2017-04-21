@@ -9,7 +9,6 @@ import com.losameos.viverbot.Model.Magnitudes.Temperatura;
 
 public class ValidaRiegoTemperaturaTest {
 
-	//private AnalizadorTemperatura analizadroTest = null;
 	private ValidaRiegoTemperatura validaRiegoTempTest=null;
 	private Temperatura temperaturaOptima = new Temperatura(15.0);
 	private Temperatura temperaturaBaja = new Temperatura(5.0);
@@ -18,7 +17,7 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void ValidaRiegoTempTest() {
 		this.inicialize();
-		assertTrue(this.validaRiegoTempTest.tempActual != null);
+		assertTrue(this.validaRiegoTempTest.transmTempActual != null);
 		this.clear();
 
 	}
@@ -26,7 +25,7 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarOptimoTest() {
 		this.inicialize();
-		Temperatura tO= validaRiegoTempTest.tempActual.getValorTemperatura(); 
+		Temperatura tO= validaRiegoTempTest.transmTempActual.getTemperaturaActual(); 
 		assertTrue(!tO.equals(temperaturaOptima));
 
 	}
@@ -34,7 +33,7 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarBajoTest() {
 		this.inicialize();
-		Temperatura tO= validaRiegoTempTest.tempActual.getValorTemperatura(); 		
+		Temperatura tO= validaRiegoTempTest.transmTempActual.getTemperaturaActual(); 		
 		assertTrue(!tO.equals(temperaturaBaja));
 
 	}
@@ -42,7 +41,7 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarAltoTest() {
 		this.inicialize();
-		Temperatura tO= validaRiegoTempTest.tempActual.getValorTemperatura(); 		
+		Temperatura tO= validaRiegoTempTest.transmTempActual.getTemperaturaActual(); 		
 		assertTrue(tO.equals(temperaturaAlta));
 	}
 	

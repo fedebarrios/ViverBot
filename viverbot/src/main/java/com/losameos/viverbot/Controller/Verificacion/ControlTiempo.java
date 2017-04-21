@@ -52,8 +52,6 @@ public class ControlTiempo {
 		   return estacion;
 	}
 	
-	
-
 
 	public Estacion getEstacionAnio() {
 
@@ -64,16 +62,16 @@ public class ControlTiempo {
 
 		return (buscaEstacion()==Estacion.VERANO)? true:false;
 	}
+
 	public boolean esInvierno(){
 		return (buscaEstacion()==Estacion.INVIERNO)? true:false;
 
 	}
 
-	public boolean esDia(){
+	public boolean esDeDia(){
 		int h=hora.getHora();
 		boolean esDia=false;
 		switch (buscaEstacion()){
-
 
 		case PRIMAVERA:
 			if (h>7 && h<20)

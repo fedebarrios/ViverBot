@@ -18,9 +18,7 @@ public class TransmisorTemperaturaActual extends Transmisor {
 	}
 
 
-
-
-	public Temperatura getValorTemperatura(){
+	public Temperatura getTemperaturaActual(){
 		
 		return new Temperatura(mediador.getInstrumentoMedicion().getMedicion().getValor());
 	}

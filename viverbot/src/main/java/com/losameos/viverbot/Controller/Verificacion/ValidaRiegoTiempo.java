@@ -1,5 +1,7 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
+import com.losameos.viverbot.Model.NivelRiego;
+
 public class ValidaRiegoTiempo {
 	ControlTiempo controlTiempo;
 
@@ -7,14 +9,16 @@ public class ValidaRiegoTiempo {
 		controlTiempo=new ControlTiempo();
 	}
 	
-	public String cantidadOptimaRiego(){
-		String cantidad="NORMAL";
-		if(controlTiempo.esDia()&&controlTiempo.esVerano()){
-			cantidad="ALTA";
-		}else if(controlTiempo.esDia()&&controlTiempo.esInvierno()){
-			cantidad="BAJA";
+	public NivelRiego cantidadOptimaRiego(){
+		
+		NivelRiego nivel=NivelRiego.NORMAL;
+		
+		if(controlTiempo.esDeDia()&&controlTiempo.esVerano()){
+			nivel =NivelRiego.AUMENTAR;
+		}else if(!controlTiempo.esDeDia()&&controlTiempo.esInvierno()){
+			nivel =NivelRiego.BAJAR;
 		}
-		return cantidad;
+		return nivel;
 	}
 	
 }

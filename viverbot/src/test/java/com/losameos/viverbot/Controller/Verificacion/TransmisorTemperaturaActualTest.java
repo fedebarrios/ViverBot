@@ -16,7 +16,7 @@ public class TransmisorTemperaturaActualTest {
 	@Test
 	public void transmisorTest() {
 		this.inicialize();
-		assertTrue(this.trasnmisorTest.getValorTemperatura() != null);
+		assertTrue(this.trasnmisorTest.getTemperaturaActual() != null);
 
 		this.clear();
 	}
