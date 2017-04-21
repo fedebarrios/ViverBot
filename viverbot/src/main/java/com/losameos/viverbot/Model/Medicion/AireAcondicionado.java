@@ -50,32 +50,4 @@ public class AireAcondicionado {
 		}
 	}
 
-	// public void establecerPotencia(Temperatura temp, RangoNumerico rango) {
-	// if (this.estado.getClass() == Frio.class) {
-	// if (temp.getValor() - rango.getMaximo() <= 1.0) {
-	// this.potencia = new Potencia0Strategy();
-	// } else if (temp.getValor() - rango.getMaximo() > 1.0
-	// && temp.getValor() - rango.getMaximo() <= 2.5) {
-	// this.potencia = new Potencia1Strategy();
-	// } else if (temp.getValor() - rango.getMaximo() > 2.5
-	// && temp.getValor() - rango.getMaximo() <= 4.0) {
-	// this.potencia = new Potencia2Strategy();
-	// } else if (temp.getValor() - rango.getMaximo() > 4.0) {
-	// this.potencia = new Potencia3Strategy();
-	// }
-	// } else {
-	// if (rango.getMinimo() - temp.getValor() <= 1.0) {
-	// this.potencia = new Potencia0Strategy();
-	// } else if (rango.getMinimo() - temp.getValor() > 1.0
-	// && rango.getMinimo() - temp.getValor() <= 2.5) {
-	// this.potencia = new Potencia1Strategy();
-	// } else if (rango.getMinimo() - temp.getValor() > 2.5
-	// && rango.getMinimo() - temp.getValor() <= 4.0) {
-	// this.potencia = new Potencia2Strategy();
-	// } else if (rango.getMinimo() - temp.getValor() > 4.0) {
-	// this.potencia = new Potencia3Strategy();
-	// }
-	// }
-	// }
-
 }

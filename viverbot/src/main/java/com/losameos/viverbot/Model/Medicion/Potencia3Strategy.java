@@ -11,4 +11,9 @@ public class Potencia3Strategy implements IPotencia {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return "Potencia 3";
+	}
+
 }
