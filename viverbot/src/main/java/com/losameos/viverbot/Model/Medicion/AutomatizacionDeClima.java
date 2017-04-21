@@ -13,15 +13,15 @@ public class AutomatizacionDeClima {
 	public AutomatizacionDeClima(Temperatura temp, RangoNumerico rango) {
 		this.temp = temp;
 		this.rango = rango;
-		WriterExcel.registrarAutomatizacion(aireAcondicionado);
 	}
 
 	TimerTask tt = new TimerTask() {
-
+		
 		@Override
 		public void run() {
 			aireAcondicionado.establecerPotenciaYEstado(temp, rango);
 			aireAcondicionado.interferirTemperatura(temp);
+			WriterExcel.registrarAutomatizacion(aireAcondicionado);
 			System.out.println(temp.getValor());
 			if (veriricarRango()) {
 				tt.cancel();
