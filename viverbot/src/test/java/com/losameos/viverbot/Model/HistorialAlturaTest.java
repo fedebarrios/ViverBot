@@ -30,8 +30,10 @@ public class HistorialAlturaTest {
 		assertTrue(historial.tamaño()==1);
 		assertTrue(historial.buscarTupla(new Altura(14,"cm")).getDiaDeVida()==2);
 		assertTrue(historial.buscarTupla(2).getAltura().getCentimetros()==14);
+		
 		assertNull(historial.buscarTupla(new Altura(10,"cm")));
 		assertNull(historial.buscarTupla(4));
+		
 		assertTrue(historial.verificarExistente(2));
 		assertFalse(historial.verificarExistente(4));
 	}

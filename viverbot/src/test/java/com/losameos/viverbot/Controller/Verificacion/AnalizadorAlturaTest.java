@@ -16,6 +16,8 @@ import com.losameos.viverbot.Model.HistorialAltura;
 import com.losameos.viverbot.Model.SeguimientoAltura;
 import com.losameos.viverbot.Model.TuplaAltura;
 import com.losameos.viverbot.Model.Magnitudes.Altura;
+import com.losameos.viverbot.Model.Magnitudes.Magnitud;
+import com.losameos.viverbot.Model.Medicion.AnalizadorAltura;
 
 @SuppressWarnings("deprecation")
 public class AnalizadorAlturaTest {
@@ -186,6 +188,23 @@ public class AnalizadorAlturaTest {
 		assertThat(outContent.toString(), containsString("La planta esta exactamente en el valor optimo."));
 		this.clear();
 	}
+	
+	@Test
+	public void AnalizarMetroAveriado() {
+		this.inicialize();
+		AnalizadorAltura analizador = new AnalizadorAltura();
+		ArrayList<Magnitud> alturasNegativa = new ArrayList<Magnitud>();
+		alturasNegativa.add(new Altura(-1,"cm"));
+		alturasNegativa.add(new Altura(-1,"cm"));
+		alturasNegativa.add(new Altura(-1,"cm"));
+		alturasNegativa.add(new Altura(-1,"cm"));
+		alturasNegativa.add(new Altura(-1,"cm"));
+		alturasNegativa.add(new Altura(-1,"cm"));
+		analizador.analizar(alturasNegativa);
+		assertThat(outContent.toString(), containsString("El metro esta averiado, o no existe planta para tomar la altura en esa posicion"));
+		this.clear();
+	}
+	
 	
 	
 	private void setearValoresOptimos(String[] valores){

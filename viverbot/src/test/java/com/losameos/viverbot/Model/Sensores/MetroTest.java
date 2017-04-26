@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.losameos.viverbot.Model.Magnitudes.Altura;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 
@@ -22,5 +23,10 @@ public class MetroTest {
 				assertTrue(m.getValor()>0);
 			}
 		}
+	}
+	
+	public void retornarAltura(){
+		metro = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		assertTrue(metro.getMedicion() instanceof Altura);
 	}
 }
