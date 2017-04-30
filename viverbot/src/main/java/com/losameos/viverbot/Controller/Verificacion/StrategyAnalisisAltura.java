@@ -27,24 +27,25 @@ public class StrategyAnalisisAltura implements IAnalisisAltura{
 		analizarExaustivo(m, seguimiento, true);
 		if(estadoPlantaAnalizada.equals("Defectuosa")){
 			if(soporte.getPodador().podar(seguimiento.getPlanta())){
-				System.out.println("La planta se ha podado");
+				System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta()+" se ha podado");
 			}
 			else{
-				System.out.println("No se pudo podar la planta");
+				System.out.println("No se pudo podar la planta "+ seguimiento.getPlanta().getCodigoPlanta());
 			}
 		}
 		
 	}
 	
 	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento, boolean calcularFuturo){
+		System.out.println("-----------------------------------------------------------");
 		//Tomo los historiales de la planta a analizar
 		this.historialOptimo = seguimiento.getHistorialOptimo();
 		this.historialVerdadero = seguimiento.getHistorialVerdadero();
 		//Me fijo en que dia de medicion estamos con respecto a los dias de vida de la planta
 		int diaActualPlanta = seguimiento.getUltimoDiaMedicion()+1;
 
-		System.out.println("Hoy es el dia: "+ diaActualPlanta);
-		System.out.println("La planta esta midiendo "+altura.getValor()+"cm actualmente");
+		System.out.println("Hoy es el dia "+ diaActualPlanta + " de vida de la planta "+ seguimiento.getPlanta().getCodigoPlanta());
+		System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta()+ " esta midiendo "+altura.getValor()+"cm actualmente");
 		
 		//Si no existe ya, una medicion tomada en el dia de hoy, la guardo en el historial verdadero
 		if (!this.historialVerdadero.verificarExistente(diaActualPlanta)){
@@ -54,9 +55,11 @@ public class StrategyAnalisisAltura implements IAnalisisAltura{
 		//Si en el historial con el cual comparo los valores no hay una tupla para el dia deseado
 		//se pregunta al usuario si desea actualizar el historial optimo
 		if (this.historialOptimo.verificarExistente(diaActualPlanta)){
-			System.out.println("La planta deberia estar midiendo "+seguimiento.getHistorialOptimo().buscarTupla(diaActualPlanta).getAltura().getCentimetros()+" cm actualmente");
+			System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta() +" deberia estar midiendo "+
+					seguimiento.getHistorialOptimo().buscarTupla(diaActualPlanta).getAltura().getCentimetros()+" cm actualmente");
 		} else {
-			System.out.println("La planta no tiene un historial asociado para el dia de hoy. Ingrese Si, si desea guardar la nueva medicion");
+			System.out.println("La planta " + seguimiento.getPlanta().getCodigoPlanta()+""
+					+ " no tiene un historial asociado para el dia de hoy. Ingrese Si, si desea guardar la nueva medicion");
 			String entradaTeclado = LectorConsola.getInstance().leerLinea();
 		    if(entradaTeclado.equals("si"));{
 		    	this.historialOptimo.agregarTupla( new TuplaAltura((Altura) altura, diaActualPlanta));
@@ -85,22 +88,22 @@ public class StrategyAnalisisAltura implements IAnalisisAltura{
 		
 		//Casos segun el crecimientos
 		if( valorCrecimiento > 150 ){
-			System.out.println("La planta creció demasiado para lo que se esperaba.");
+			System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta() +" creció demasiado para lo que se esperaba.");
 			System.out.println("Tiene "+this.diferenciaAltura.getCentimetros()+" cm de diferencia con lo optimo");
 			this.estadoPlantaAnalizada = "Sublime";
 		} else if (valorCrecimiento > 110 ){
-			System.out.println("La planta ha crecido mas de lo esperado en su ciclo vital");
+			System.out.println("La planta "+seguimiento.getPlanta().getCodigoPlanta() +" ha crecido mas de lo esperado en su ciclo vital");
 			this.estadoPlantaAnalizada = "Perfecta";
 		} else if (valorCrecimiento > 90 ){
-			System.out.println("La planta esta creciendo normalmente entre los valores esperados");
+			System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta() +"esta creciendo normalmente entre los valores esperados");
 			this.estadoPlantaAnalizada = "Normal";
 		}
 		else if (valorCrecimiento > 70 ){
-			System.out.println("La planta esta creciendo menos de lo esperado. Tomar accion lo antes posible");
+			System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta() + "esta creciendo menos de lo esperado. Tomar accion lo antes posible");
 			this.estadoPlantaAnalizada = "Anormal";
 		}
 		else { // La planta ha decrecido mucho, se pregunta si se desea podarla
-			System.out.println("La planta tiene un problema de crecimiento. Ingrese Si, si desea podarla");
+			System.out.println("La planta"+ seguimiento.getPlanta().getCodigoPlanta() +" tiene un problema de crecimiento. Ingrese Si, si desea podarla");
 			String entradaTeclado = LectorConsola.getInstance().leerLinea();
 		    if(entradaTeclado.equals("si"));{
 

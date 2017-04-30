@@ -1,5 +1,14 @@
 package com.losameos.viverbot.Controller.Verificacion;
 
-public class ValidaRiego {
+import com.losameos.viverbot.Model.NivelRiego;
 
+public class ValidaRiego  extends AnalizadorRiego{
+	
+	
+	public ValidaRiego() {
+	}
+
+	public NivelRiego cantidadOptimaRiego(){
+		return NivelRiego.NORMAL;
+	}
 }

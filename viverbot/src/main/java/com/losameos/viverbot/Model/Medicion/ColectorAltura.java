@@ -6,7 +6,6 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.losameos.viverbot.Model.Fecha;
 import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 import com.losameos.viverbot.Model.Magnitudes.Magnitudes;
 
@@ -15,7 +14,6 @@ public class ColectorAltura extends Observable{
 	private Timer timer;
 	private ArrayList<Magnitud> alturasActuales;
 	private TimerTask task;
-	private Fecha fechaActual;
 	private long milisegundosEnUnDia = 3600000*24;
 
 	private final static Magnitudes m = Magnitudes.ALTURA;
@@ -27,11 +25,7 @@ public class ColectorAltura extends Observable{
 	}
 
 	protected ArrayList<Magnitud> medir() {
-		ArrayList<Magnitud> a = this.mediator.tomarAlturas();
-		for ( Magnitud m : a){
-			System.out.println(m.getValor()+"hola jaja");
-		}
-		return a;
+		return this.mediator.tomarAlturas();
 
 	}
 
@@ -50,6 +44,7 @@ public class ColectorAltura extends Observable{
 		};
 		//La tarea se ejecutara una vez por dia
 		timer.schedule(task, new Date() , this.milisegundosEnUnDia );
+		//timer.schedule(task, 0, 3000);
 
 	}
 

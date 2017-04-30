@@ -30,6 +30,7 @@ public class AnalizadorAltura {
 	}
 
 	public void analizar(ArrayList<Magnitud> alturas) {
+		this.plantas = new Plantas().obtenerPlantas();
 		alturasRecibidas = alturas;
 		for(int i = 0; i<plantas.size(); i++){
 			if(i<alturas.size()){
@@ -46,7 +47,7 @@ public class AnalizadorAltura {
 	private IAnalisisAltura getStrategy(Magnitud temp, SeguimientoAltura seguimiento) {
 		if (seguimiento == null){
 			return new StrategySeguimientoNull();
-		}else if (temp == null){
+		}else if (temp.getValor() == -1){
 			return new StrategyMetroDown();
 		}
 		else{
