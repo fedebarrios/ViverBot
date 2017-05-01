@@ -2,6 +2,7 @@ package com.losameos.viverbot;
 
 import com.losameos.viverbot.Controller.AltaEspecie_Controller;
 import com.losameos.viverbot.Controller.ConsultaBajaEspecie_Controller;
+import com.losameos.viverbot.Controller.VistaPrincipalController;
 import com.losameos.viverbot.Controller.Verificacion.TransmisorHumedad;
 import com.losameos.viverbot.Model.SoporteFactory;
 import com.losameos.viverbot.Model.SoporteMovible;
@@ -17,6 +18,7 @@ import com.losameos.viverobot.Controller.WebCam.ObtenedorComando;
 public class App {
 	public static void main(String[] args) {
 
+		VistaPrincipalController principal =  new VistaPrincipalController();
 		// capas este metodo deberia ser una clase que maneje todo el ciclo
 		// referido desde que se toma
 		// la temperatura hasta que se toma alguna accion.
@@ -24,13 +26,13 @@ public class App {
 		// controlarHumedad();
 		// PlantaDAO plantaDAO = new PlantaDAO();
 		// planta = new Plantas(plantaDAO);
-		controlarTemperatura();
+		//controlarTemperatura();
 		// controlarAltura();
 		// controlarHumedad();
 		// controlarTemperatura();
 		// ConsultaBajaEspecie_Controller mi = new
 		// ConsultaBajaEspecie_Controller();
-		//ObtenedorComando obtenedor = new ObtenedorComando();
+		// ObtenedorComando obtenedor = new ObtenedorComando();
 
 		// BuscadorImagenControlador webCamControlador = new
 		// BuscadorImagenControlador();
@@ -46,25 +48,16 @@ public class App {
 
 	@SuppressWarnings("unused")
 	private static void controlarHumedad() {
-		SoporteMovible soporte = SoporteFactory.crearSoporte((TransmisorHumedad.getTipoMagnitud()));
-		Thread hiloTransmisor = new Thread(new TransmisorHumedad(soporte));
-		hiloTransmisor.start();
+		
 	}
 
 	private static void controlarTemperatura() {
-		ColectorTemperatura t = new ColectorTemperatura(5000, 0);
-
-		TransmisorTemperatura tr = new TransmisorTemperatura();
-		t.addObserver(tr);
-		t.colectar();
+		
 
 	}
 
 	@SuppressWarnings("unused")
 	private static void controlarAltura() {
-		ColectorAltura t = new ColectorAltura();
-		TransmisorAltura tr = new TransmisorAltura();
-		t.addObserver(tr);
-		t.colectar();
+		
 	}
 }
