@@ -21,7 +21,7 @@ public class TransmisorAltura implements Observer{
 	}
 
 	public void Transmitir(ArrayList<Magnitud> temp) {
-		this.analizador.analizar(temp);
+		this.analizador.analizarAlturas(temp);
 	}
 
 	public AnalizadorAltura getAnalizador() {

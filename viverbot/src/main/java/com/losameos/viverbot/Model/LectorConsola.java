@@ -18,6 +18,6 @@ public class LectorConsola {
 	}
 	
 	public String leerLinea(){
-		return entradaEscaner.nextLine();
+		return entradaEscaner.nextLine().toLowerCase();
 	}
 }

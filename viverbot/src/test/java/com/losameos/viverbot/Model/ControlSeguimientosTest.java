@@ -28,7 +28,6 @@ public class ControlSeguimientosTest {
 		tuplas = new ArrayList<TuplaAltura>();
 		tuplas.add(new TuplaAltura(new Altura(40,"cm"), 4));
 		historial = new HistorialAltura(tuplas);
-		control.agregarSeguimiento(planta1, historial);
 		assertTrue(control.getSeguimientos().size()==1);
 		assertTrue(control.getSeguimiento(planta1).getHistorialVerdadero()!=null);
 		assertTrue(control.getSeguimiento(planta1).getHistorialOptimo()!=null);

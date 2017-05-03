@@ -7,11 +7,8 @@ import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 public class StrategyMetroDown implements IAnalisisAltura{
 
 	@Override
-	public void analizar(Magnitud m, SeguimientoAltura seguimiento) {
-		System.out.println("------------------------------------------------");
-		System.out.println("El metro esta averiado, o no existe planta para tomar la altura en esa posicion");
-		//Alertador.alertar();
-		
+	public EstadoAltura analizar(Magnitud m, SeguimientoAltura seguimiento) {
+		return new EstadoAlturaNoComparada("MetroDown");
 	}
 
 }

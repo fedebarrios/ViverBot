@@ -19,24 +19,17 @@ public class StrategyAnalisisAltura implements IAnalisisAltura{
 	private HistorialAltura historialVerdadero;
 	private Altura diferenciaAltura;
 	public String estadoPlantaAnalizada;
-	private SoporteMovible soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
 
 	@Override
-	public void analizar(Magnitud m, SeguimientoAltura seguimiento) {
+	public EstadoAltura analizar(Magnitud m, SeguimientoAltura seguimiento) {
 		
-		analizarExaustivo(m, seguimiento, true);
-		if(estadoPlantaAnalizada.equals("Defectuosa")){
-			if(soporte.getPodador().podar(seguimiento.getPlanta())){
-				System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta()+" se ha podado");
-			}
-			else{
-				System.out.println("No se pudo podar la planta "+ seguimiento.getPlanta().getCodigoPlanta());
-			}
-		}
-		
+		EstadoAltura estado = analizarExaustivo(m, seguimiento, true);
+		return estado;
 	}
 	
-	public void analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento, boolean calcularFuturo){
+	public EstadoAltura analizarExaustivo(Magnitud altura, SeguimientoAltura seguimiento, boolean calcular){
+		boolean calcularFuturo = calcular;
+		EstadoAltura estado;
 		System.out.println("-----------------------------------------------------------");
 		//Tomo los historiales de la planta a analizar
 		this.historialOptimo = seguimiento.getHistorialOptimo();
@@ -88,31 +81,21 @@ public class StrategyAnalisisAltura implements IAnalisisAltura{
 		
 		//Casos segun el crecimientos
 		if( valorCrecimiento > 150 ){
-			System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta() +" creció demasiado para lo que se esperaba.");
-			System.out.println("Tiene "+this.diferenciaAltura.getCentimetros()+" cm de diferencia con lo optimo");
-			this.estadoPlantaAnalizada = "Sublime";
-		} else if (valorCrecimiento > 110 ){
-			System.out.println("La planta "+seguimiento.getPlanta().getCodigoPlanta() +" ha crecido mas de lo esperado en su ciclo vital");
-			this.estadoPlantaAnalizada = "Perfecta";
-		} else if (valorCrecimiento > 90 ){
-			System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta() +"esta creciendo normalmente entre los valores esperados");
-			this.estadoPlantaAnalizada = "Normal";
+			estado = new EstadoAlturaPerfecta(this.diferenciaAltura.getCentimetros(), seguimiento.getPlanta());
+		}else if (valorCrecimiento > 90 ){
+			estado = new EstadoAlturaNormal(this.diferenciaAltura.getCentimetros(), seguimiento.getPlanta());
 		}
 		else if (valorCrecimiento > 70 ){
-			System.out.println("La planta "+ seguimiento.getPlanta().getCodigoPlanta() + "esta creciendo menos de lo esperado. Tomar accion lo antes posible");
-			this.estadoPlantaAnalizada = "Anormal";
+			estado = new EstadoAlturaAnormal(this.diferenciaAltura.getCentimetros(), seguimiento.getPlanta());
 		}
 		else { // La planta ha decrecido mucho, se pregunta si se desea podarla
-			System.out.println("La planta"+ seguimiento.getPlanta().getCodigoPlanta() +" tiene un problema de crecimiento. Ingrese Si, si desea podarla");
-			String entradaTeclado = LectorConsola.getInstance().leerLinea();
-		    if(entradaTeclado.equals("si"));{
-
-				this.estadoPlantaAnalizada = "Defectuosa";
-				seguimiento.setEstado(estadoPlantaAnalizada);
-		    }
+	    	estado = new EstadoAlturaDefectuosa(this.diferenciaAltura.getCentimetros() , seguimiento.getPlanta());
+	    	calcularFuturo = false;
 		}
 		if (calcularFuturo) calcularCrecimientoFaltante(seguimiento, diaActualPlanta, (Altura) altura);
 		this.diferenciaAltura = null;
+		
+		return estado;
 	}
 	
 	public void verificarAlturaActual() {

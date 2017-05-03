@@ -7,10 +7,8 @@ import com.losameos.viverbot.Model.Magnitudes.Magnitud;
 public class StrategySeguimientoNull implements IAnalisisAltura{
 
 	@Override
-	public void analizar(Magnitud m, SeguimientoAltura seguimiento) {
-		System.out.println("-------------------------------------------------");
-		System.out.println("No existe un seguimiento vinculado a la planta actual");
-		//Alertador.alertar();
+	public EstadoAltura analizar(Magnitud m, SeguimientoAltura seguimiento) {
+		return new EstadoAlturaNoComparada("SeguimientoNull");
 		
 	}
 
