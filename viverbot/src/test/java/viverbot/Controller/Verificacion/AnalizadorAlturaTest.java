@@ -202,7 +202,7 @@ public class AnalizadorAlturaTest {
 		alturasNegativa.add(new Altura(-1,"cm"));
 		alturasNegativa.add(new Altura(-1,"cm"));
 		alturasNegativa.add(new Altura(-1,"cm"));
-		analizador.analizarAlturas(alturasNegativa);
+		analizador.analizar(alturasNegativa);
 		assertThat(outContent.toString(), containsString("El metro esta averiado, o no existe planta para tomar la altura en esa posicion"));
 		this.clear();
 	}
