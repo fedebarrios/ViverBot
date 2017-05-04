@@ -4,11 +4,11 @@ import viverbot.DTO.PlantaDTO;
 
 public class SeguimientoAltura {
 	private PlantaDTO planta;
-	private HistorialAltura historialOptimo;
+	private HistorialOptimo historialOptimo;
 	private HistorialAltura historialVerdadero;
 	private String estado;
 	
-	public SeguimientoAltura(PlantaDTO p, HistorialAltura h1, HistorialAltura h2){
+	public SeguimientoAltura(PlantaDTO p, HistorialOptimo h1, HistorialAltura h2){
 		this.planta = p;
 		this.historialOptimo = h1;
 		this.historialVerdadero = h2;
@@ -23,11 +23,11 @@ public class SeguimientoAltura {
 		this.planta = planta;
 	}
 
-	public HistorialAltura getHistorialOptimo() {
+	public HistorialOptimo getHistorialOptimo() {
 		return historialOptimo;
 	}
 
-	public void setHistorialOptimo(HistorialAltura historialOptimo) {
+	public void setHistorialOptimo(HistorialOptimo historialOptimo) {
 		this.historialOptimo = historialOptimo;
 	}
 

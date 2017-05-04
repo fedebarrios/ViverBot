@@ -1,15 +1,15 @@
 package viverbot.Model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import viverbot.Model.Magnitudes.Altura;
 import viverbot.Model.Magnitudes.EmptyAltura;
 
 public class HistorialAltura {
 	
-	private ArrayList<TuplaAltura> historial;
+	private List<TuplaAltura> historial;
 	
-	public HistorialAltura(ArrayList<TuplaAltura> lista){
+	public HistorialAltura(List<TuplaAltura> lista){
 		this.historial = lista;
 	}
 	
