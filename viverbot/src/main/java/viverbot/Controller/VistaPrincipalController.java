@@ -3,11 +3,17 @@ package viverbot.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import viverbot.Controller.Verificacion.PlanificadorAltura;
 import viverbot.Controller.Verificacion.TransmisorHumedad;
+import viverbot.Model.BuscadorHistorial;
+import viverbot.Model.ControlSeguimientos;
+import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
+import viverbot.Model.Medicion.AnalizadorAltura;
 import viverbot.Model.Medicion.ColectorAltura;
 import viverbot.Model.Medicion.ColectorTemperatura;
+import viverbot.Model.Medicion.MapperAltura;
 import viverbot.Model.Medicion.TransmisorAltura;
 import viverbot.Model.Medicion.TransmisorTemperatura;
 import viverbot.View.PrincipalView;
@@ -39,10 +45,14 @@ public class VistaPrincipalController  implements ActionListener{
 			hiloTransmisor.start();
 		}
 		else if(e.getSource() == this.vistaPrincipal.getMntmControlarAltura()){
-			ColectorAltura t = new ColectorAltura();
-			TransmisorAltura tr = new TransmisorAltura();
-			t.addObserver(tr);
-			t.colectar();
+			ColectorAltura c = new ColectorAltura();
+			PlanificadorAltura p = PlanificadorAltura.getInstance();
+			AnalizadorAltura a = new AnalizadorAltura(p);
+			BuscadorHistorial b = new BuscadorHistorial(ControlSeguimientos.getInstance());
+			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas() , b);
+			TransmisorAltura t = new TransmisorAltura(m);
+			c.addObserver(t);
+			c.colectar();
 		}
 		
 	}

@@ -3,6 +3,7 @@ package viverbot.Model;
 import java.util.ArrayList;
 
 import viverbot.Model.Magnitudes.Altura;
+import viverbot.Model.Magnitudes.EmptyAltura;
 
 public class HistorialAltura {
 	
@@ -44,7 +45,7 @@ public class HistorialAltura {
 				return historial.get(i);
 			}
 		}
-		return null;
+		return new TuplaAltura(new EmptyAltura(),0);
 	}
 	
 	public TuplaAltura buscarTupla(int d){
@@ -53,7 +54,7 @@ public class HistorialAltura {
 				return historial.get(i);
 			}
 		}
-		return null;
+		return new TuplaAltura(new EmptyAltura(),0);
 	}
 	
 	public boolean verificarExistente(int dia) {

@@ -8,24 +8,24 @@ import viverbot.Model.Magnitudes.Altura;
 
 public class TransmisorAltura implements Observer{
 	
-	private AnalizadorAltura analizador;
+	private MapperAltura mediador;
 
-	public TransmisorAltura() {
-		this.analizador = new AnalizadorAltura();
+	public TransmisorAltura(MapperAltura mediador) {
+		this.mediador = mediador;
 
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void update(Observable o, Object temp) {
-		this.Transmitir((ArrayList<Altura>) temp);
+	public void update(Observable o, Object alturas) {
+		this.Transmitir((ArrayList<Altura>) alturas);
 	}
 
-	public void Transmitir(ArrayList<Altura> temp) {
-		this.analizador.analizar(temp);
+	public void Transmitir(ArrayList<Altura> alturas) {
+		this.mediador.relacionar(alturas);
 	}
 
-	public AnalizadorAltura getAnalizador() {
-		return this.analizador;
+	public MapperAltura getAnalizador() {
+		return this.mediador;
 	}
 }
