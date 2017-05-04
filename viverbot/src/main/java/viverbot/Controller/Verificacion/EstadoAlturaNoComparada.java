@@ -14,7 +14,7 @@ public class EstadoAlturaNoComparada extends EstadoAltura{
 		}
 		else if(this.getEstado() == "SeguimientoNull"){
 			System.out.println("-------------------------------------------------");
-			System.out.println("No existe un seguimiento vinculado a la planta actual");
+			System.out.println("No existe una medicion contra la cual comparar para el dia de hoy");
 		}
 	}
 }

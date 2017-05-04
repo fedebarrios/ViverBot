@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import viverbot.Controller.Verificacion.PlanificadorAltura;
 import viverbot.Controller.Verificacion.TransmisorHumedad;
-import viverbot.Model.BuscadorHistorial;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
@@ -48,8 +47,7 @@ public class VistaPrincipalController  implements ActionListener{
 			ColectorAltura c = new ColectorAltura();
 			PlanificadorAltura p = PlanificadorAltura.getInstance();
 			AnalizadorAltura a = new AnalizadorAltura(p);
-			BuscadorHistorial b = new BuscadorHistorial(ControlSeguimientos.getInstance());
-			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas() , b);
+			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas() , ControlSeguimientos.getInstance());
 			TransmisorAltura t = new TransmisorAltura(m);
 			c.addObserver(t);
 			c.colectar();

@@ -21,7 +21,7 @@ public class AnalizadorAltura implements AnalizadorMagnitud{
 		int diaActual = seguimiento.getUltimoDiaMedicion()+1;
 		Altura alturaEsperada = seguimiento.getHistorialOptimo().buscarTupla(diaActual).getAltura();
 		IAnalisisAltura estrategia = getStrategy(alturaActual, alturaEsperada) ;
-		EstadoAltura estadoActual = estrategia.analizar(alturaActual, seguimiento);
+		EstadoAltura estadoActual = estrategia.analizar(alturaActual, alturaEsperada, seguimiento.getPlanta());
 		planificador.actuar(estadoActual);		
 	}
 	

@@ -13,7 +13,7 @@ public class GatewaySeguimientos {
 	    String ret = "";
 
 	    try {
-	        entrada = new FileInputStream("src/main/java/com/losameos/viverbot/archivos/StubSeguimientos.properties");
+	        entrada = new FileInputStream("src/main/java/viverbot/archivos/StubSeguimientos.properties");
 	        propiedades.load(entrada);
 	        ret = propiedades.getProperty("stub");
 	    } catch (IOException ex) {

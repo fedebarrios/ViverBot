@@ -1,10 +1,7 @@
 package viverbot.Model;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Properties;
+
 
 import viverbot.Controller.Verificacion.StubFaltaSeguimiento;
 import viverbot.Controller.Verificacion.StubPlantasPerfectas;
@@ -12,7 +9,6 @@ import viverbot.Controller.Verificacion.StubSeguimientoAltura;
 import viverbot.archivos.GatewaySeguimientos;
 
 import viverbot.DTO.PlantaDTO;
-import viverbot.Model.Magnitudes.Altura;
 
 public class ControlSeguimientos {
 	private static ControlSeguimientos control;

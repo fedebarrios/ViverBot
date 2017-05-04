@@ -8,10 +8,10 @@ import viverbot.Model.Magnitudes.Altura;
 
 public class TransmisorAltura implements Observer{
 	
-	private MapperAltura mediador;
+	private MapperAltura mapper;
 
 	public TransmisorAltura(MapperAltura mediador) {
-		this.mediador = mediador;
+		this.mapper = mediador;
 
 	}
 
@@ -22,10 +22,10 @@ public class TransmisorAltura implements Observer{
 	}
 
 	public void Transmitir(ArrayList<Altura> alturas) {
-		this.mediador.relacionar(alturas);
+		this.mapper.relacionar(alturas);
 	}
 
 	public MapperAltura getAnalizador() {
-		return this.mediador;
+		return this.mapper;
 	}
 }
