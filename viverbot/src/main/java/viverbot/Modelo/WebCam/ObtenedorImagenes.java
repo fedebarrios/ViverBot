@@ -1,34 +1,22 @@
 package viverbot.Modelo.WebCam;
 
-import viverbot.Controlador.WebCam.BuscadorImagenControlador;
+import java.util.ArrayList;
 
 public class ObtenedorImagenes {
 
 	private GeneradorImagenes contenedorImagenes;
 
 	public boolean obtenerImagenes() {
-			
-			//Mejorar este sector.....
-			BuscadorImagenControlador buscadorImagen = new BuscadorImagenControlador();
-			String segundoPath ="";
-			String primerPath = buscadorImagen.buscarImagen();
-			if(!primerPath.isEmpty())
-				segundoPath = buscadorImagen.buscarImagen();
-				if(!segundoPath.isEmpty())
-				{
-					if(ValidadorImagenes.validarTamañoImagen(primerPath, segundoPath)){
-						contenedorImagenes = new GeneradorImagenes();
-						contenedorImagenes.generarImagenes(primerPath, segundoPath);
-						return true; }
-					else
-						return false;
-				}
+			ObtenedorPath obtenedorPath = new ObtenedorPath();
+	
+			if(obtenedorPath.obtenerPath()){
+				contenedorImagenes = new GeneradorImagenes();
+				contenedorImagenes.generarImagenes(obtenedorPath.getPrimerPath(), obtenedorPath.getSegundoPath());
+				return true; }
 			else
 				return false;
-			
+	}
 	
-			//.....
-		}
 
 	public GeneradorImagenes getContenedorImagenes() {
 		return contenedorImagenes;

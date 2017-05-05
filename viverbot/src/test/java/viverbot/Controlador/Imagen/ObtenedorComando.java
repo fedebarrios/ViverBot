@@ -1,4 +1,4 @@
-package viverbot.Controlador.WebCam;
+package viverbot.Controlador.Imagen;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,16 +6,16 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import viverbot.Model.WebCam.ObtenedorImagenesMock;
 import viverbot.Modelo.WebCam.Imagen;
-import viverbot.Modelo.WebCam.ObtenedorImagenes;
 import viverbot.Modelo.WebCam.ResaltadorImagen;
-import viverobot.Vista.WebCam.ObtenedorSeleccionVista;
+import viverbot.Vista.Imagen.ObtenedorSeleccionVista;
 
 
 public class ObtenedorComando implements ActionListener{
 	
 	private ObtenedorSeleccionVista vistaCargarImagen;
-	private ObtenedorImagenes obtenedorImagenes;
+	private ObtenedorImagenesMock obtenedorImagenes;
 	private ResaltadorImagen resaltadorImagen;
 	
 	
@@ -23,7 +23,7 @@ public class ObtenedorComando implements ActionListener{
 	{
 		vistaCargarImagen = new ObtenedorSeleccionVista(this);
 		vistaCargarImagen.visible(true);
-		obtenedorImagenes = new ObtenedorImagenes();
+		obtenedorImagenes = new ObtenedorImagenesMock();
 		resaltadorImagen = new ResaltadorImagen();
 	}
 	
