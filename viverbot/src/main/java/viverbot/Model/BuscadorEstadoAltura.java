@@ -1,4 +1,4 @@
-package viverbot.Model.Medicion;
+package viverbot.Model;
 
 import java.util.ArrayList;
 

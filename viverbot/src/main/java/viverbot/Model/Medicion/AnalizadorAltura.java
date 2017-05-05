@@ -11,7 +11,7 @@ import viverbot.Model.SeguimientoAltura;
 import viverbot.Model.Magnitudes.Altura;
 import viverbot.Model.Magnitudes.EmptyAltura;
 
-public class AnalizadorAltura implements AnalizadorMagnitud{
+public class AnalizadorAltura {
 	private PlanificadorAltura planificador;
 	private GuardadorAltura guardador;
 	

@@ -2,8 +2,8 @@ package viverbot.Controller.Verificacion;
 
 import viverbot.DTO.PlantaDTO;
 import viverbot.Interfaces.IAnalisisAltura;
+import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Medicion.BuscadorEstadoAltura;
 
 public class StrategyAnalisisAltura implements IAnalisisAltura{
 
