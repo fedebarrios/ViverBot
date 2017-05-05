@@ -10,7 +10,6 @@ public class ControlSeguimientos {
 	public ArrayList<SeguimientoAltura> seguimientos;
 	
 	private ControlSeguimientos(){
-		cargarSeguimientosHardcodeados();
 	}
 	
 	public static ControlSeguimientos getInstance(){
@@ -23,10 +22,6 @@ public class ControlSeguimientos {
 	public ArrayList<SeguimientoAltura> getSeguimientos() {
 		return seguimientos;
 	}
-
-	public void setSeguimientos(ArrayList<SeguimientoAltura> seguimientos) {
-		this.seguimientos = seguimientos;
-	}
 	
 	public SeguimientoAltura getSeguimiento( PlantaDTO planta ){
 		for (int i = 0; i<seguimientos.size() ; i++){
@@ -38,7 +33,7 @@ public class ControlSeguimientos {
 		return null;
 	}
 	
-	private void cargarSeguimientosHardcodeados(){
+	public void cargarSeguimientosHardcodeados(){
 		this.seguimientos = new ArrayList<SeguimientoAltura>();
 		
 		ArrayList<TuplaAltura> tuplas0 = new ArrayList<TuplaAltura>();
@@ -136,7 +131,11 @@ public class ControlSeguimientos {
 	public void agregarSeguimiento(PlantaDTO planta, HistorialOptimo historialOptimo){
 		ArrayList<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
 		HistorialAltura h2 = new HistorialAltura(tuplas);
-		this.seguimientos.add(new SeguimientoAltura(planta, historialOptimo, h2));
+		try {
+			this.seguimientos.add(new SeguimientoAltura(planta, historialOptimo, h2));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void cargarSeguimientos(ArrayList<SeguimientoAltura> seguimientos){
