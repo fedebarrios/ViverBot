@@ -5,16 +5,21 @@ import viverbot.Model.Fecha;
 import viverbot.Model.Hora;;
 
 public class ControlTiempo {
-	private Hora hora;
-	private Fecha fecha;
+	private Hora hora=Hora.obtenerHoraActual();
+	private Fecha fecha=Fecha.obtenerFechaActual();
+
 	
 	public ControlTiempo(){
-		fecha = Fecha.obtenerFechaActual();
-		hora = Hora.obtenerHoraActual();
 	}
 	
+	public ControlTiempo(Fecha f, Hora h){
+		fecha = f;
+		hora = h;
+	}
+
+	
 	private Estacion buscaEstacion(){
-		Estacion estacion = null;
+		Estacion estacion = Estacion.VERANO;
 
 		
 		switch(fecha.getMes()){
@@ -70,8 +75,8 @@ public class ControlTiempo {
 	public boolean esDeDia(){
 		int h=hora.getHora();
 		boolean esDia=false;
-		switch (buscaEstacion()){
 
+		switch (buscaEstacion()){
 		case PRIMAVERA:
 			if (h>7 && h<20)
 				esDia= true;

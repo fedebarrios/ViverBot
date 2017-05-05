@@ -7,45 +7,38 @@ import org.junit.Test;
 import viverbot.Controlador.Verificacion.RiegoValidable;
 import viverbot.Controlador.Verificacion.EvaluaRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiegoXTemperatura;
+import viverbot.Model.NivelRiego;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class ValidaRiegoTemperaturaTest {
 
-	private EvaluaRiegoXTemperatura validaRiegoTempTest=null;
-	private Temperatura temperaturaOptima = new Temperatura(15.0);
+	private EvaluaRiegoXTemperatura EvaluaRiegoTempTest=null;
 	private Temperatura temperaturaBaja = new Temperatura(5.0);
 	private Temperatura temperaturaAlta = new Temperatura(25.0);
 
 	@Test
 	public void ValidaRiegoTempTest() {
 		this.inicialize();
-		assertTrue(this.validaRiegoTempTest.getTransmTempActual() != null);
+		assertTrue(this.EvaluaRiegoTempTest.getTemperaturaActual() != null);
 		this.clear();
 
 	}
 
-	@Test
-	public void AnalizarOptimoTest() {
-		this.inicialize();
-		Temperatura tO= validaRiegoTempTest.getTransmTempActual().getTemperaturaActual(); 
-		assertTrue(!tO.equals(temperaturaOptima));
-
-	}
 	
 	@Test
 	public void AnalizarBajoTest() {
 		this.inicialize();
-		Temperatura tO= validaRiegoTempTest.getTransmTempActual().getTemperaturaActual(); 		
-		assertTrue(!tO.equals(temperaturaBaja));
+		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaBaja); 
+		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),NivelRiego.BAJAR);
 
 	}
 	
 	@Test
 	public void AnalizarAltoTest() {
 		this.inicialize();
-		Temperatura tO= validaRiegoTempTest.getTransmTempActual().getTemperaturaActual(); 		
-		assertTrue(tO.equals(temperaturaAlta));
+		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaAlta); 
+		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),NivelRiego.AUMENTAR);
 	}
 	
 	
@@ -54,11 +47,11 @@ public class ValidaRiegoTemperaturaTest {
 
 	private void inicialize() {
 		RiegoValidable rv= new EvaluaRiego();
-		validaRiegoTempTest=new EvaluaRiegoXTemperatura(rv);
+		EvaluaRiegoTempTest=new EvaluaRiegoXTemperatura(rv);
 
 	}
 
 	private void clear() {
-		this.validaRiegoTempTest = null;
+		this.EvaluaRiegoTempTest = null;
 	}
 }

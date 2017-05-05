@@ -25,5 +25,11 @@ public class EvaluaRiegoXTiempo extends EvaluaRiegoDecorator{
 	public ControlTiempo getControlTiempo() {
 		return controlTiempo;
 	}
+
+	public void setControlTiempo(ControlTiempo controlTiempo) {
+		this.controlTiempo = controlTiempo;
+	}
+	
+	
 	
 }

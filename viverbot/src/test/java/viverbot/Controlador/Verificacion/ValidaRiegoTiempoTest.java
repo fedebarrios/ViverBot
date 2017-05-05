@@ -9,6 +9,9 @@ import viverbot.Controlador.Verificacion.RiegoValidable;
 import viverbot.Controlador.Verificacion.EvaluaRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiegoXTiempo;
 import viverbot.Model.Estacion;
+import viverbot.Model.Fecha;
+import viverbot.Model.Hora;
+import viverbot.Model.NivelRiego;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
@@ -25,29 +28,35 @@ public class ValidaRiegoTiempoTest {
 	}
 
 	@Test
-	public void AnalizarVeranoDiaTest() {
+	public void ValidaAltoTest() {
 		this.inicialize();
-		ControlTiempo t1 = new ControlTiempo();
+		Fecha f=new Fecha(16,01,1986);
+		Hora h=new Hora(15,00,00);
+		ControlTiempo t1 = new ControlTiempo(new Fecha(16,01,1986),new Hora(15,00,00));
+		validaRiegoTiempoTest.setControlTiempo(t1);
 		
-		if (t1.esVerano()){
-			assertTrue(validaRiegoTiempoTest.getControlTiempo().esVerano());
-			if (t1.esDeDia())
-				assertTrue(validaRiegoTiempoTest.getControlTiempo().esDeDia());
-		}
+		assertTrue(validaRiegoTiempoTest.getControlTiempo().esVerano());
+		assertTrue(validaRiegoTiempoTest.getControlTiempo().esDeDia());
+		assertEquals(validaRiegoTiempoTest.cantidadOptimaRiego(),NivelRiego.AUMENTAR);
+		
 	}
+
 	
 	@Test
-	public void AnalizarInviernoNocheTest() {
+	public void ValidaBajoTest() {
 		this.inicialize();
-		ControlTiempo t1 = new ControlTiempo();
-		
-		if (t1.esInvierno()){
-			assertTrue(validaRiegoTiempoTest.getControlTiempo().esInvierno());
-			if (t1.esDeDia())
-				assertFalse(validaRiegoTiempoTest.getControlTiempo().esDeDia());
-		}
+		Fecha f=new Fecha(16,07,1986);
+		Hora h=new Hora(22,00,00);
 
+		ControlTiempo t1 = new ControlTiempo(f,h);
+		validaRiegoTiempoTest.setControlTiempo(t1);
+		
+		assertTrue(validaRiegoTiempoTest.getControlTiempo().esInvierno());
+		assertFalse(validaRiegoTiempoTest.getControlTiempo().esDeDia());
+		assertEquals(validaRiegoTiempoTest.cantidadOptimaRiego(),NivelRiego.BAJAR);
+			
 	}
+
 	
 	
 	

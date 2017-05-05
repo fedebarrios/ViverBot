@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import viverbot.Controlador.Verificacion.ControlTiempo;
 import viverbot.Model.Estacion;
+import viverbot.Model.Fecha;
+import viverbot.Model.Hora;
 
 public class ControlTiempoTest {
 
@@ -13,7 +15,7 @@ public class ControlTiempoTest {
 
 	@Test
 	public void ValidaRiegoTempTest() {
-		this.inicialize();
+		this.inicialize(Fecha.obtenerFechaActual(),Hora.obtenerHoraActual());
 		assertTrue(this.controlTiempoTest != null);
 		this.clear();
 
@@ -21,35 +23,42 @@ public class ControlTiempoTest {
 
 	@Test
 	public void AnalizarVeranoTest() {
-		this.inicialize();
-		if (controlTiempoTest.getEstacionAnio()==Estacion.VERANO)
-			assertTrue(controlTiempoTest.esVerano());
+		Fecha f=new Fecha(16,01,1986);
+		Hora h=new Hora(15,00,00);
+		this.inicialize(f,h);
+		assertTrue(controlTiempoTest.esVerano());
 		
-	}
+	}	
 	
 	@Test
 	public void AnalizarInviernoTest() {
-		this.inicialize();
-		if (controlTiempoTest.getEstacionAnio()==Estacion.INVIERNO)
-			assertTrue(controlTiempoTest.esInvierno());
+		Fecha f=new Fecha(16,07,1986);
+		Hora h=new Hora(22,00,00);
+		this.inicialize(f,h);
+		assertTrue(controlTiempoTest.esInvierno());
 	}
+
 
 
 	
+
 	@Test
 	public void AnalizarDiaTest() {
-		this.inicialize();
-		if (controlTiempoTest.esDeDia())
-			assertTrue(controlTiempoTest.esDeDia());
-		
+		Fecha f=new Fecha(16,01,1986);
+		Hora h=new Hora(15,00,00);
+		this.inicialize(f,h);
+		assertTrue(controlTiempoTest.esDeDia());
 	}
+
 	
 	@Test
 	public void AnalizarNocheTest() {
-		this.inicialize();
-		if (!controlTiempoTest.esDeDia())
-			assertFalse(controlTiempoTest.esDeDia());
+		Fecha f=new Fecha(16,01,1986);
+		Hora h=new Hora(22,00,00);
+		this.inicialize(f,h);
+		assertFalse(controlTiempoTest.esDeDia());
 	}
+
 
 
 
@@ -58,11 +67,10 @@ public class ControlTiempoTest {
 
 	// metodos auxiliares
 
-	private void inicialize() {
-		controlTiempoTest=new ControlTiempo();
-
+	private void inicialize(Fecha f, Hora h) {
+		controlTiempoTest=new ControlTiempo(f,h);
 	}
-
+	
 	private void clear() {
 		this.controlTiempoTest = null;
 	}
