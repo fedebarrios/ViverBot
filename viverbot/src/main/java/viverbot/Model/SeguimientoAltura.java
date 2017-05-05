@@ -8,16 +8,13 @@ public class SeguimientoAltura {
 	private HistorialAltura historialVerdadero;
 	private String estado;
 	
-	public SeguimientoAltura(PlantaDTO p, HistorialOptimo h1, HistorialAltura h2) throws Exception{
-		if(p.getCodigo() == h1.getEspecie().getCodEspecie()){
+	public SeguimientoAltura(PlantaDTO p, HistorialOptimo h1, HistorialAltura h2) {
+	
 			this.planta = p;
 			this.historialOptimo = h1;
 			this.historialVerdadero = h2;
 			this.estado = "";
-		}
-		else{
-			throw new Exception("Las especies del historial y de la planta deben coincidir");
-		}
+		
 		
 	}
 

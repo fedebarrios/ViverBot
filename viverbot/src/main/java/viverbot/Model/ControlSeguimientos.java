@@ -10,6 +10,7 @@ public class ControlSeguimientos {
 	public ArrayList<SeguimientoAltura> seguimientos;
 	
 	private ControlSeguimientos(){
+		this.seguimientos = new ArrayList<SeguimientoAltura>();
 	}
 	
 	public static ControlSeguimientos getInstance(){
@@ -129,13 +130,12 @@ public class ControlSeguimientos {
 	}
 	
 	public void agregarSeguimiento(PlantaDTO planta, HistorialOptimo historialOptimo){
-		ArrayList<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
-		HistorialAltura h2 = new HistorialAltura(tuplas);
-		try {
+		if(planta.getCodigo() == historialOptimo.getEspecie().getCodEspecie()){
+			ArrayList<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
+			HistorialAltura h2 = new HistorialAltura(tuplas);
 			this.seguimientos.add(new SeguimientoAltura(planta, historialOptimo, h2));
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+		
 	}
 	
 	public void cargarSeguimientos(ArrayList<SeguimientoAltura> seguimientos){

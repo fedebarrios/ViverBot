@@ -33,12 +33,18 @@ public class BuscadorEstadoAltura {
 		int i = 0;
 		EstadoAltura estado = null;
 		for (Integer porcentaje : porcentajesDeCrecimiento){
+
 			if (valorCrecimiento < porcentaje){
 				estado= estados.get(i);
 				estado.setCmDeDiferencia(diferenciaAltura);
 				estado.setPlanta(planta);
 				break;
-			}			
+			}
+			else{
+				estado= estados.get(estados.size()-1);
+				estado.setCmDeDiferencia(diferenciaAltura);
+				estado.setPlanta(planta);
+			}
 			i++;			
 		}
 		return estado;

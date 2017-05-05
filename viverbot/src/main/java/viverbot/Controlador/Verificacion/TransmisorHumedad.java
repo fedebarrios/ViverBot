@@ -64,7 +64,7 @@ public class TransmisorHumedad extends Transmisor {
 		}
 	}
 
-	protected void moverSoporteMovil(UbicacionDTO u) {
+	public void moverSoporteMovil(UbicacionDTO u) {
 		this.soporte.mover(u);
 	}
 
@@ -74,7 +74,7 @@ public class TransmisorHumedad extends Transmisor {
 	}
 
 	@Override
-	protected boolean verificarTiempo() {
+	public boolean verificarTiempo() {
 		return Hora.obtenerHoraActual().compareTo(horaInicio) >= 0;
 	}
 
