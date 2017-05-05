@@ -1,10 +1,10 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
 import viverbot.Interfaces.IAnalisis;
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.DiagnosticoAnalisis;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 
 public class StrategyRangoTemperatura implements IAnalisis {
 

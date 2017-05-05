@@ -1,9 +1,9 @@
 package viverbot.archivo;
 
+import viverbot.Archivos.WriterExcel;
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.AireAcondicionado;
-import viverbot.archivos.WriterExcel;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.AireAcondicionado;
 
 public class WriterExcelTest {
 

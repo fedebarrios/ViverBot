@@ -1,9 +1,9 @@
-package viverbot.Model.Sensores;
+package viverbot.Modelo.Sensores;
 
 import java.util.Random;
 
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public class Metro extends InstrumentoMedicion {
 	private int cantidadDeMediciones = 0;

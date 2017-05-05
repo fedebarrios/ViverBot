@@ -1,10 +1,10 @@
-package viverbot.VistasPlantas;
+package viverbot.Vista.Plantas;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import viverbot.ControladorPlantas.Controlador_BajaPlanta;
+import viverbot.Controlador.Plantas.Controlador_BajaPlanta;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;

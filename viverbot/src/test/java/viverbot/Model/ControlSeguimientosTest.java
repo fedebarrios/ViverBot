@@ -14,7 +14,7 @@ import viverbot.Model.Fecha;
 import viverbot.Model.HistorialAltura;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Model.TuplaAltura;
-import viverbot.Model.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Altura;
 
 public class ControlSeguimientosTest {
 	EspecieDTO especie1;

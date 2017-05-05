@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import viverbot.Model.Medicion.ColectorAltura;
+import viverbot.Modelo.Medicion.ColectorAltura;
 
 
 public class ColectorAlturaTest {

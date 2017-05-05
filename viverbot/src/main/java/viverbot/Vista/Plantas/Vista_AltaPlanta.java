@@ -1,4 +1,4 @@
-package viverbot.VistasPlantas;
+package viverbot.Vista.Plantas;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -6,7 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JCalendar;
 
-import viverbot.ControladorPlantas.Controlador_AltaPlanta;
+import viverbot.Controlador.Plantas.Controlador_AltaPlanta;
 
 import javax.swing.JLabel;
 import java.awt.Font;

@@ -1,11 +1,11 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class ColectorTemperatura extends Observable {
 

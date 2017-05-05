@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.EmptyMagnitud;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.AnalizadorTemperatura;
-import viverbot.Model.Medicion.DiagnosticoAnalisis;
+import viverbot.Modelo.Magnitudes.EmptyMagnitud;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.AnalizadorTemperatura;
+import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 
 public class AnalizadorTemperaturaTest {
 	AnalizadorTemperatura analizadorTest;

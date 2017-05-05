@@ -1,22 +1,22 @@
-package viverbot.Controller;
+package viverbot.Controlador.Especies;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import viverbot.Controller.Verificacion.PlanificadorAltura;
-import viverbot.Controller.Verificacion.TransmisorHumedad;
+import viverbot.Controlador.Verificacion.PlanificadorAltura;
+import viverbot.Controlador.Verificacion.TransmisorHumedad;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
-import viverbot.Model.Medicion.AnalizadorAltura;
-import viverbot.Model.Medicion.ColectorAltura;
-import viverbot.Model.Medicion.ColectorTemperatura;
-import viverbot.Model.Medicion.MapperAltura;
-import viverbot.Model.Medicion.TransmisorAltura;
-import viverbot.Model.Medicion.TransmisorTemperatura;
-import viverbot.View.PrincipalView;
+import viverbot.Modelo.Medicion.AnalizadorAltura;
+import viverbot.Modelo.Medicion.ColectorAltura;
+import viverbot.Modelo.Medicion.ColectorTemperatura;
+import viverbot.Modelo.Medicion.MapperAltura;
+import viverbot.Modelo.Medicion.TransmisorAltura;
+import viverbot.Modelo.Medicion.TransmisorTemperatura;
+import viverbot.Vista.Especie.PrincipalView;
 
 public class VistaPrincipalController  implements ActionListener{
 	

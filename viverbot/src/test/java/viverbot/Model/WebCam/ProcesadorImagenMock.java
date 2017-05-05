@@ -9,7 +9,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import viverobot.Model.WebCam.ObtenedorImagenes;
+import viverbot.Modelo.WebCam.ObtenedorImagenes;
 
 
 

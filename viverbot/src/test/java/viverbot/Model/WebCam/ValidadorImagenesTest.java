@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverobot.Model.WebCam.ValidadorImagenes;
+import viverbot.Modelo.WebCam.ValidadorImagenes;
 
 public class ValidadorImagenesTest {
 	

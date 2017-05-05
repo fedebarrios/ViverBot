@@ -1,8 +1,8 @@
 package viverbot.Model;
 
-import viverbot.Model.Magnitudes.Humedad;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Humedad;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class Ambiente implements Runnable {
 

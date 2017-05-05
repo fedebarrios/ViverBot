@@ -1,8 +1,8 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
 import viverbot.Model.NivelRiego;
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class ValidaRiegoTemperatura  extends ValidaRiegoDecorator{
 	private TransmisorTemperaturaActual transmTempActual;

@@ -2,8 +2,8 @@ package viverbot.Model;
 
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Interfaces.IMovible;
-import viverbot.Model.Magnitudes.Magnitudes;
-import viverbot.Model.Medicion.InstrumentoMediator;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Medicion.InstrumentoMediator;
 
 public class SoporteMovible implements IMovible{
 

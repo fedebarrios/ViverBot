@@ -1,9 +1,9 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
 import viverbot.Model.LectorConsola;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
-import viverbot.Model.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 
 
 public class PlanificadorAltura {

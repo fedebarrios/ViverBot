@@ -1,7 +1,7 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class DiagnosticoAnalisis {
 	private Magnitud m;

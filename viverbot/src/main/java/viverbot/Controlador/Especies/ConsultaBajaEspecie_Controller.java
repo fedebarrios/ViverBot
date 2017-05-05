@@ -1,4 +1,4 @@
-package viverbot.Controller;
+package viverbot.Controlador.Especies;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +8,7 @@ import javax.swing.JComboBox;
 
 import viverbot.DTO.EspecieDTO;
 import viverbot.Model.Inventario;
-import viverbot.View.ConsultaBajaEspecie;
+import viverbot.Vista.Especie.ConsultaBajaEspecie;
 
 public class ConsultaBajaEspecie_Controller implements ActionListener {
 	private ConsultaBajaEspecie consultaBajaVista;

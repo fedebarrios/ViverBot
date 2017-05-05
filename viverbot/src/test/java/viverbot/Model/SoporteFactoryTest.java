@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
-import viverbot.Model.Magnitudes.Magnitudes;
-import viverbot.Model.Sensores.Metro;
-import viverbot.Model.Sensores.SensorHumedad;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Sensores.Metro;
+import viverbot.Modelo.Sensores.SensorHumedad;
 
 public class SoporteFactoryTest {
 	

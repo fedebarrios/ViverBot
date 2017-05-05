@@ -8,12 +8,12 @@ import org.junit.Test;
 
 import viverbot.Model.Ambiente;
 import viverbot.Model.Hora;
-import viverbot.Model.Magnitudes.Humedad;
-import viverbot.Model.Magnitudes.Magnitudes;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.InstrumentoMediator;
-import viverbot.Model.Sensores.SensorHumedad;
-import viverbot.Model.Sensores.SensorTemperatura;
+import viverbot.Modelo.Magnitudes.Humedad;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.InstrumentoMediator;
+import viverbot.Modelo.Sensores.SensorHumedad;
+import viverbot.Modelo.Sensores.SensorTemperatura;
 
 public class InstrumentoMediatorTest {
 

@@ -1,6 +1,6 @@
 package viverbot;
 
-import viverbot.Controller.VistaPrincipalController;
+import viverbot.Controlador.Especies.VistaPrincipalController;
 
 public class App {
 	public static void main(String[] args) {

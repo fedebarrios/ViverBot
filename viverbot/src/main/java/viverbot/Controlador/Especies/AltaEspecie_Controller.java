@@ -1,4 +1,4 @@
-package viverbot.Controller;
+package viverbot.Controlador.Especies;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,9 +8,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import viverbot.Controller.Verificacion.Verificador;
+import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.Inventario;
-import viverbot.View.AltaEspecie;
+import viverbot.Vista.Especie.AltaEspecie;
 
 public class AltaEspecie_Controller implements ActionListener {
 

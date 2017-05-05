@@ -1,10 +1,10 @@
-package viverobot.VistaWebCam;
+package viverobot.Vista.WebCam;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import viverobot.Controller.WebCam.ObtenedorComando;
+import viverbot.Controlador.WebCam.ObtenedorComando;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;

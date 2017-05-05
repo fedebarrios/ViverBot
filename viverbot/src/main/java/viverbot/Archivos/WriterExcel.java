@@ -1,4 +1,4 @@
-package viverbot.archivos;
+package viverbot.Archivos;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +11,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import viverbot.Model.Medicion.AireAcondicionado;
+import viverbot.Modelo.Medicion.AireAcondicionado;
 
 public class WriterExcel {
 	private final static File file = new File("RegistroAireAcondicionado.xls");

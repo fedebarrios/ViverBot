@@ -1,9 +1,9 @@
-package viverobot.VistaWebCam;
+package viverobot.Vista.WebCam;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import viverobot.Controller.WebCam.BuscadorImagenControlador;
+import viverbot.Controlador.WebCam.BuscadorImagenControlador;
 
 public class ObtenedorImagenVista extends JFileChooser {
 

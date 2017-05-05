@@ -1,4 +1,4 @@
-package viverbot.ControladorPlantas;
+package viverbot.Controlador.Plantas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import viverbot.DTO.PlantaDTO;
 import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
-import viverbot.VistasPlantas.Vista_BajaPlanta;
+import viverbot.Vista.Plantas.Vista_BajaPlanta;
 
 public class Controlador_BajaPlanta implements ActionListener{
 

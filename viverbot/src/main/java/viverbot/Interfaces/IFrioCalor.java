@@ -1,6 +1,6 @@
 package viverbot.Interfaces;
 
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public interface IFrioCalor {
 

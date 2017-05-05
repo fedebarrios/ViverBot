@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Model.Magnitudes.Humedad;
+import viverbot.Modelo.Magnitudes.Humedad;
 
 public class HumedadTest {
 

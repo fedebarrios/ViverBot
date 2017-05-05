@@ -1,4 +1,4 @@
-package viverobot.Controller.WebCam;
+package viverbot.Controlador.WebCam;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import viverobot.Model.WebCam.Imagen;
-import viverobot.Model.WebCam.ObtenedorImagenes;
-import viverobot.Model.WebCam.ResaltadorImagen;
-import viverobot.VistaWebCam.ObtenedorSeleccionVista;
+import viverbot.Modelo.WebCam.Imagen;
+import viverbot.Modelo.WebCam.ObtenedorImagenes;
+import viverbot.Modelo.WebCam.ResaltadorImagen;
+import viverobot.Vista.WebCam.ObtenedorSeleccionVista;
 
 
 public class ObtenedorComando implements ActionListener{

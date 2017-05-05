@@ -1,10 +1,10 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
 import viverbot.Interfaces.IAnalisis;
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.EmptyMagnitud;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Medicion.DiagnosticoAnalisis;
+import viverbot.Modelo.Magnitudes.EmptyMagnitud;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 
 public class StrategyMagnitudInvalida implements IAnalisis {
 

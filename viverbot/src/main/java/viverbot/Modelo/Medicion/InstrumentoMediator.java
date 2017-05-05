@@ -1,4 +1,4 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
 import java.util.ArrayList;
 
@@ -6,10 +6,10 @@ import viverbot.DTO.PlantaDTO;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Magnitudes;
-import viverbot.Model.Sensores.InstrumentoFactory;
-import viverbot.Model.Sensores.InstrumentoMedicion;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Sensores.InstrumentoFactory;
+import viverbot.Modelo.Sensores.InstrumentoMedicion;
 
 public class InstrumentoMediator {
 	protected InstrumentoMedicion instrumentoMedicion;

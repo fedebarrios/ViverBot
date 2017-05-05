@@ -9,15 +9,15 @@ import java.util.Calendar;
 import java.util.Date;
 import org.junit.Test;
 
-import viverbot.Controller.Verificacion.StrategyAnalisisAltura;
+import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.DTO.PlantaDTO;
 import viverbot.Model.Fecha;
 import viverbot.Model.HistorialAltura;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Model.TuplaAltura;
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Medicion.AnalizadorAltura;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Medicion.AnalizadorAltura;
 
 import static org.junit.matchers.JUnitMatchers.containsString;
 

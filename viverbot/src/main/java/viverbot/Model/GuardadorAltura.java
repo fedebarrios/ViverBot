@@ -1,8 +1,8 @@
 package viverbot.Model;
 
-import viverbot.Controller.Verificacion.StrategyAnalisisAltura;
+import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.Interfaces.IAnalisisAltura;
-import viverbot.Model.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Altura;
 
 public class GuardadorAltura {
 	

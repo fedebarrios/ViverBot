@@ -1,9 +1,9 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
 import viverbot.DTO.PlantaDTO;
 import viverbot.Interfaces.IAnalisisAltura;
 import viverbot.Model.SeguimientoAltura;
-import viverbot.Model.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Altura;
 
 public class StrategySeguimientoNull implements IAnalisisAltura{
 

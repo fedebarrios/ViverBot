@@ -1,8 +1,8 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
-import viverbot.Model.Magnitudes.Magnitudes;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.InstrumentoMediator;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.InstrumentoMediator;
 
 
 

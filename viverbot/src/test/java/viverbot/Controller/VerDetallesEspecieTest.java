@@ -3,7 +3,7 @@ package viverbot.Controller;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import viverbot.Controller.VerDetallesEspecie_Controller;
+import viverbot.Controlador.Especies.VerDetallesEspecie_Controller;
 import viverbot.DAO.PlantaDAO;
 import viverbot.DTO.EspecieDTO;
 import viverbot.Model.Plantas;

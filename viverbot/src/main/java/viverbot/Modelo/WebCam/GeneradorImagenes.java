@@ -1,4 +1,4 @@
-package viverobot.Model.WebCam;
+package viverbot.Modelo.WebCam;
 
 public class GeneradorImagenes {
 	

@@ -1,7 +1,7 @@
-package viverbot.Model.Sensores;
+package viverbot.Modelo.Sensores;
 
-import viverbot.Model.Magnitudes.EmptyMagnitud;
-import viverbot.Model.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.EmptyMagnitud;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public class UnknowInstrumentoMedicion extends InstrumentoMedicion {
 

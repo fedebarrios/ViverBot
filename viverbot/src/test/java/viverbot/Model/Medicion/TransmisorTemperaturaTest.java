@@ -7,9 +7,9 @@ import java.util.Observable;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.TransmisorTemperatura;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.TransmisorTemperatura;
 
 public class TransmisorTemperaturaTest {
 

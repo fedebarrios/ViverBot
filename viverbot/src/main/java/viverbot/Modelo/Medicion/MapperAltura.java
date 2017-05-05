@@ -1,11 +1,11 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
 import java.util.List;
 
 import viverbot.DTO.PlantaDTO;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.SeguimientoAltura;
-import viverbot.Model.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Altura;
 
 public class MapperAltura {
 	

@@ -1,4 +1,4 @@
-package viverbot.Model.Magnitudes;
+package viverbot.Modelo.Magnitudes;
 
 public class EmptyMagnitud extends Magnitud {
 

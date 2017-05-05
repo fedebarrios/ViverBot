@@ -1,10 +1,10 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
 import java.util.TimerTask;
 
+import viverbot.Archivos.WriterExcel;
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.archivos.WriterExcel;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class AutomatizacionDeClima {
 	private Temperatura temp;

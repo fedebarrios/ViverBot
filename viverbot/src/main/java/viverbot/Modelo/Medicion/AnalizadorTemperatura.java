@@ -1,11 +1,11 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
-import viverbot.Controller.Verificacion.StrategyMagnitudInvalida;
-import viverbot.Controller.Verificacion.StrategyRangoTemperatura;
+import viverbot.Controlador.Verificacion.StrategyMagnitudInvalida;
+import viverbot.Controlador.Verificacion.StrategyRangoTemperatura;
 import viverbot.Interfaces.IAnalisis;
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class AnalizadorTemperatura {
 	private IAnalisis estrategia;

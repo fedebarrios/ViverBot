@@ -1,7 +1,7 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Medicion.InstrumentoMediator;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Medicion.InstrumentoMediator;
 
 public abstract class  Transmisor implements Runnable {
 

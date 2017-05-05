@@ -1,6 +1,6 @@
-package viverbot.Model.Sensores;
+package viverbot.Modelo.Sensores;
 
-import viverbot.Model.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class InstrumentoFactory {
 	private static InstrumentoMedicion sensorTemp;

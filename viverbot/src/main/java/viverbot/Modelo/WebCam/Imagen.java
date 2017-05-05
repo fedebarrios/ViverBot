@@ -1,4 +1,4 @@
-package viverobot.Model.WebCam;
+package viverbot.Modelo.WebCam;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

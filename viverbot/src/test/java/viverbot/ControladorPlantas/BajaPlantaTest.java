@@ -3,8 +3,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.ControladorPlantas.Controlador_BajaPlanta;
-import viverbot.Controller.AltaEspecie_Controller;
+import viverbot.Controlador.Especies.AltaEspecie_Controller;
+import viverbot.Controlador.Plantas.Controlador_BajaPlanta;
 import viverbot.DAO.PlantaDAO;
 
 public class BajaPlantaTest {

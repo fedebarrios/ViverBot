@@ -3,7 +3,7 @@ package viverbot.Model;
 import java.util.ArrayList;
 import viverbot.DAO.EspecieDAO;
 import viverbot.DTO.PlantaDTO;
-import viverbot.Model.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Altura;
 
 public class ControlSeguimientos {
 	private static ControlSeguimientos control;

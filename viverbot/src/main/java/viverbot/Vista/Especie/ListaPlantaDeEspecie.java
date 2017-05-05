@@ -1,4 +1,4 @@
-package viverbot.View;
+package viverbot.Vista.Especie;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import viverbot.Controller.VerDetallesEspecie_Controller;
+import viverbot.Controlador.Especies.VerDetallesEspecie_Controller;
 
 public class ListaPlantaDeEspecie extends JPanel{
 	

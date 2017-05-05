@@ -1,10 +1,10 @@
 package viverbot.Interfaces;
 
-import viverbot.Controller.Verificacion.EstadoAltura;
+import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.DTO.PlantaDTO;
 import viverbot.Model.SeguimientoAltura;
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public interface IAnalisisAltura {
 	

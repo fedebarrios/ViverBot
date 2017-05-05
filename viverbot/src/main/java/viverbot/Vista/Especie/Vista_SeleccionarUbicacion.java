@@ -1,4 +1,4 @@
-package viverbot.View;
+package viverbot.Vista.Especie;
 
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -10,7 +10,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import viverbot.Controller.Controlador_VistaSeleccionarUbicacion;
+import viverbot.Controlador.Especies.Controlador_VistaSeleccionarUbicacion;
 
 
 public class Vista_SeleccionarUbicacion  extends JFrame{

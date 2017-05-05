@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.AireAcondicionado;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.AireAcondicionado;
 
 public class AireAcondicionadoTest {
 

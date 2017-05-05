@@ -1,4 +1,4 @@
-package viverbot.Controller;
+package viverbot.Controlador.Especies;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import viverbot.DTO.EspecieDTO;
 import viverbot.DTO.PlantaDTO;
 import viverbot.Model.Plantas;
-import viverbot.View.VerDetalleEspecie;
+import viverbot.Vista.Especie.VerDetalleEspecie;
 
 public class VerDetallesEspecie_Controller implements ActionListener {
 

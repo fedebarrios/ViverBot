@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Controller.Verificacion.TransmisorTemperaturaActual;
+import viverbot.Controlador.Verificacion.TransmisorTemperaturaActual;
 import viverbot.Model.Ambiente;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.DiagnosticoAnalisis;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 
 public class TransmisorTemperaturaActualTest {
 

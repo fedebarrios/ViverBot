@@ -2,8 +2,8 @@ package viverbot.Model;
 
 import java.util.List;
 
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.EmptyAltura;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.EmptyAltura;
 
 public class HistorialAltura {
 	

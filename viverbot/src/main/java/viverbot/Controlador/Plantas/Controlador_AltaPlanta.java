@@ -1,4 +1,4 @@
-package viverbot.ControladorPlantas;
+package viverbot.Controlador.Plantas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,12 +6,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-import viverbot.Controller.Verificacion.Verificador;
+import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.DTO.EspecieDTO;
 import viverbot.Model.Fecha;
 import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
-import viverbot.VistasPlantas.Vista_AltaPlanta;
+import viverbot.Vista.Plantas.Vista_AltaPlanta;
 
 public class Controlador_AltaPlanta implements ActionListener {
 

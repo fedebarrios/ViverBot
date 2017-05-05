@@ -1,9 +1,9 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
 import java.util.Observable;
 import java.util.Observer;
 
-import viverbot.Model.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public class TransmisorTemperatura implements Observer {
 

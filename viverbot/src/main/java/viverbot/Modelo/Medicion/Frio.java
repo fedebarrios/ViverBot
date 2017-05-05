@@ -1,8 +1,8 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
 import viverbot.Interfaces.IFrioCalor;
 import viverbot.Interfaces.IPotencia;
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class Frio implements IFrioCalor {
 

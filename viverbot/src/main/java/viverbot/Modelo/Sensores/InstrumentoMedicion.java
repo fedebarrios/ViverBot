@@ -1,6 +1,6 @@
-package viverbot.Model.Sensores;
+package viverbot.Modelo.Sensores;
 
-import viverbot.Model.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public abstract class  InstrumentoMedicion {
 

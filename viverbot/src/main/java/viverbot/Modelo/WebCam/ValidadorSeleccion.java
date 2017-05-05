@@ -1,10 +1,10 @@
-package viverobot.Model.WebCam;
+package viverbot.Modelo.WebCam;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import viverbot.Controller.Verificacion.Verificador;
-import viverobot.VistaWebCam.ObtenedorImagenVista;
+import viverbot.Controlador.Verificacion.Verificador;
+import viverobot.Vista.WebCam.ObtenedorImagenVista;
 
 public class ValidadorSeleccion {
 	

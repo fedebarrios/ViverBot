@@ -1,8 +1,8 @@
-package viverbot.Model.Sensores;
+package viverbot.Modelo.Sensores;
 
 import viverbot.Model.Ambiente;
-import viverbot.Model.Magnitudes.Humedad;
-import viverbot.Model.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Humedad;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public class SensorHumedad extends InstrumentoMedicion {
 

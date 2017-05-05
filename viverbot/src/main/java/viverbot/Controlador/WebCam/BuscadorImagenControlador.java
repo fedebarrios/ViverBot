@@ -1,8 +1,8 @@
-package viverobot.Controller.WebCam;
+package viverbot.Controlador.WebCam;
 
 
-import viverobot.Model.WebCam.ValidadorSeleccion;
-import viverobot.VistaWebCam.ObtenedorImagenVista;
+import viverbot.Modelo.WebCam.ValidadorSeleccion;
+import viverobot.Vista.WebCam.ObtenedorImagenVista;
 
 public class BuscadorImagenControlador {
 	

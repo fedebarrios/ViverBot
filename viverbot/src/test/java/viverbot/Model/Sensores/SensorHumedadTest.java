@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import viverbot.Model.Ambiente;
 import viverbot.Model.Hora;
-import viverbot.Model.Magnitudes.Humedad;
-import viverbot.Model.Sensores.SensorHumedad;
+import viverbot.Modelo.Magnitudes.Humedad;
+import viverbot.Modelo.Sensores.SensorHumedad;
 
 public class SensorHumedadTest {
 

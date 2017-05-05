@@ -1,4 +1,4 @@
-package viverbot.View;
+package viverbot.Vista.Especie;
 
 
 
@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import viverbot.Controller.VerDetallesEspecie_Controller;
+import viverbot.Controlador.Especies.VerDetallesEspecie_Controller;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;

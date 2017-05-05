@@ -1,13 +1,13 @@
-package viverbot.Controller;
+package viverbot.Controlador.Especies;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import viverbot.ControladorPlantas.Controlador_AltaPlanta;
+import viverbot.Controlador.Plantas.Controlador_AltaPlanta;
 import viverbot.Model.Ubicacion;
-import viverbot.View.Vista_SeleccionarUbicacion;
+import viverbot.Vista.Especie.Vista_SeleccionarUbicacion;
 
 public class Controlador_VistaSeleccionarUbicacion implements ActionListener {
 

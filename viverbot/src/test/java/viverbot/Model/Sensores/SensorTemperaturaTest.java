@@ -7,8 +7,8 @@ import org.junit.Test;
 import junit.framework.TestCase;
 import viverbot.Model.Ambiente;
 import viverbot.Model.Hora;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Sensores.SensorTemperatura;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Sensores.SensorTemperatura;
 
 public class SensorTemperaturaTest extends TestCase {
 	private static SensorTemperatura sensorTest = null;

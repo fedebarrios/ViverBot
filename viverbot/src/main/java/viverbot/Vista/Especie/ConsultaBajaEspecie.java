@@ -1,10 +1,10 @@
-package viverbot.View;
+package viverbot.Vista.Especie;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import viverbot.Controller.ConsultaBajaEspecie_Controller;
+import viverbot.Controlador.Especies.ConsultaBajaEspecie_Controller;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;

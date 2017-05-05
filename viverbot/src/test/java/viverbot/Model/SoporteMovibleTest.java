@@ -8,7 +8,7 @@ import viverbot.DTO.PlantaDTO;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteMovible;
-import viverbot.Model.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class SoporteMovibleTest {
 	

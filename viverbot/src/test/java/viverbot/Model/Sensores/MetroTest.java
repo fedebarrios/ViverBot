@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Magnitudes.Magnitudes;
-import viverbot.Model.Sensores.InstrumentoFactory;
-import viverbot.Model.Sensores.InstrumentoMedicion;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Sensores.InstrumentoFactory;
+import viverbot.Modelo.Sensores.InstrumentoMedicion;
 
 public class MetroTest {
 	private InstrumentoMedicion metro;

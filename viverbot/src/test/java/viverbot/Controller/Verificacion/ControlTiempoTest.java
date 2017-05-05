@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Controller.Verificacion.ControlTiempo;
+import viverbot.Controlador.Verificacion.ControlTiempo;
 import viverbot.Model.Estacion;
 
 public class ControlTiempoTest {

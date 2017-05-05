@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Controller.Verificacion.RiegoValidable;
-import viverbot.Controller.Verificacion.ValidaRiego;
-import viverbot.Controller.Verificacion.ValidaRiegoTemperatura;
+import viverbot.Controlador.Verificacion.RiegoValidable;
+import viverbot.Controlador.Verificacion.ValidaRiego;
+import viverbot.Controlador.Verificacion.ValidaRiegoTemperatura;
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class ValidaRiegoTemperaturaTest {
 

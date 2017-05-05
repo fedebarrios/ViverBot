@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Model.Magnitudes.Magnitudes;
-import viverbot.Model.Sensores.InstrumentoFactory;
-import viverbot.Model.Sensores.InstrumentoMedicion;
-import viverbot.Model.Sensores.Metro;
-import viverbot.Model.Sensores.SensorHumedad;
-import viverbot.Model.Sensores.SensorTemperatura;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Sensores.InstrumentoFactory;
+import viverbot.Modelo.Sensores.InstrumentoMedicion;
+import viverbot.Modelo.Sensores.Metro;
+import viverbot.Modelo.Sensores.SensorHumedad;
+import viverbot.Modelo.Sensores.SensorTemperatura;
 
 public class IntrumentoFactoryTest {
 

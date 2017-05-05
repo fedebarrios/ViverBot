@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import viverbot.Model.Ambiente;
 import viverbot.Model.Hora;
-import viverbot.Model.Medicion.ColectorTemperatura;
+import viverbot.Modelo.Medicion.ColectorTemperatura;
 
 public class ColectorTemperaturaTest {
 	ColectorTemperatura colector = null;

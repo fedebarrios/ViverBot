@@ -1,10 +1,10 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import viverbot.Model.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Altura;
 
 public class TransmisorAltura implements Observer{
 	

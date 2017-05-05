@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 import java.sql.Date;
 import org.junit.Test;
 
-import viverbot.ControladorPlantas.Controlador_AltaPlanta;
-import viverbot.Controller.AltaEspecie_Controller;
+import viverbot.Controlador.Especies.AltaEspecie_Controller;
+import viverbot.Controlador.Plantas.Controlador_AltaPlanta;
 import viverbot.DAO.PlantaDAO;
 
 public class AltaPlantaTest {

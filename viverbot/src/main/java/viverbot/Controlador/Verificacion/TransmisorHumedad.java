@@ -1,4 +1,4 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
 import java.util.ArrayList;
 
@@ -9,8 +9,8 @@ import viverbot.Model.Hora;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteMovible;
 import viverbot.Model.Tupla;
-import viverbot.Model.Magnitudes.Humedad;
-import viverbot.Model.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Humedad;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class TransmisorHumedad extends Transmisor {
 	private ArrayList<PlantaDTO> plantas;

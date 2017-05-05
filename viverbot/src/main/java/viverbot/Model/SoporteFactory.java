@@ -1,6 +1,6 @@
 package viverbot.Model;
 
-import viverbot.Model.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class SoporteFactory {
 	

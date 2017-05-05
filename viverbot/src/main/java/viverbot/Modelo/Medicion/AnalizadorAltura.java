@@ -1,15 +1,15 @@
-package viverbot.Model.Medicion;
+package viverbot.Modelo.Medicion;
 
-import viverbot.Controller.Verificacion.EstadoAltura;
-import viverbot.Controller.Verificacion.PlanificadorAltura;
-import viverbot.Controller.Verificacion.StrategyAnalisisAltura;
-import viverbot.Controller.Verificacion.StrategyMetroDown;
-import viverbot.Controller.Verificacion.StrategySeguimientoNull;
+import viverbot.Controlador.Verificacion.EstadoAltura;
+import viverbot.Controlador.Verificacion.PlanificadorAltura;
+import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
+import viverbot.Controlador.Verificacion.StrategyMetroDown;
+import viverbot.Controlador.Verificacion.StrategySeguimientoNull;
 import viverbot.Interfaces.IAnalisisAltura;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.SeguimientoAltura;
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.EmptyAltura;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.EmptyAltura;
 
 public class AnalizadorAltura {
 	private PlanificadorAltura planificador;

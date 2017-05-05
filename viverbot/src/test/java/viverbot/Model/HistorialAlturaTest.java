@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import viverbot.Model.HistorialAltura;
 import viverbot.Model.TuplaAltura;
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.EmptyAltura;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.EmptyAltura;
 
 public class HistorialAlturaTest {
 	private HistorialAltura historial ;

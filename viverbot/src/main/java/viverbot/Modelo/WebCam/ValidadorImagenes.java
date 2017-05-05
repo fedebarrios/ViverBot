@@ -1,4 +1,4 @@
-package viverobot.Model.WebCam;
+package viverbot.Modelo.WebCam;
 
 import javax.swing.JOptionPane;
 

@@ -1,6 +1,6 @@
 package viverbot.Model;
 
-import viverbot.Model.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Altura;
 
 public class TuplaAltura {
 	

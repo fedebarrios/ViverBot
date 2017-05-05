@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import viverbot.Controller.Verificacion.TransmisorHumedad;
+import viverbot.Controlador.Verificacion.TransmisorHumedad;
 import viverbot.DAO.PlantaDAO;
 import viverbot.DTO.PlantaDTO;
 import viverbot.DTO.UbicacionDTO;
@@ -14,8 +14,8 @@ import viverbot.Model.Hora;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.Tupla;
-import viverbot.Model.Magnitudes.Humedad;
-import viverbot.Model.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Humedad;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class TransmisorHumedadTest {
 

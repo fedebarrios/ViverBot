@@ -1,6 +1,6 @@
-package viverobot.Model.WebCam;
+package viverbot.Modelo.WebCam;
 
-import viverobot.Controller.WebCam.BuscadorImagenControlador;
+import viverbot.Controlador.WebCam.BuscadorImagenControlador;
 
 public class ObtenedorImagenes {
 

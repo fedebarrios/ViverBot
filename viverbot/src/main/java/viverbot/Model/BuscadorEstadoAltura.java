@@ -2,11 +2,11 @@ package viverbot.Model;
 
 import java.util.ArrayList;
 
-import viverbot.Controller.Verificacion.EstadoAltura;
-import viverbot.Controller.Verificacion.EstadoAlturaAnormal;
-import viverbot.Controller.Verificacion.EstadoAlturaDefectuosa;
-import viverbot.Controller.Verificacion.EstadoAlturaNormal;
-import viverbot.Controller.Verificacion.EstadoAlturaPerfecta;
+import viverbot.Controlador.Verificacion.EstadoAltura;
+import viverbot.Controlador.Verificacion.EstadoAlturaAnormal;
+import viverbot.Controlador.Verificacion.EstadoAlturaDefectuosa;
+import viverbot.Controlador.Verificacion.EstadoAlturaNormal;
+import viverbot.Controlador.Verificacion.EstadoAlturaPerfecta;
 import viverbot.DTO.PlantaDTO;
 
 public class BuscadorEstadoAltura {

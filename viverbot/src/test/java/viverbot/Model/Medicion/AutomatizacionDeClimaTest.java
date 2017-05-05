@@ -3,8 +3,8 @@ package viverbot.Model.Medicion;
 import java.util.Timer;
 
 import viverbot.Model.RangoNumerico;
-import viverbot.Model.Magnitudes.Temperatura;
-import viverbot.Model.Medicion.AutomatizacionDeClima;
+import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.AutomatizacionDeClima;
 
 public class AutomatizacionDeClimaTest {
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverobot.Model.WebCam.Imagen;
+import viverbot.Modelo.WebCam.Imagen;
 
 public class ImagenTest {
 	

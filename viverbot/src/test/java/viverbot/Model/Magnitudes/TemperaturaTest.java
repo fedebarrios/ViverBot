@@ -3,7 +3,7 @@ package viverbot.Model.Magnitudes;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import viverbot.Model.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class TemperaturaTest extends TestCase {
 

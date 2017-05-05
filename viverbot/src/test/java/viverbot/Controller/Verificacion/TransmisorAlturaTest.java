@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import viverbot.Model.Magnitudes.Altura;
-import viverbot.Model.Magnitudes.Magnitud;
-import viverbot.Model.Medicion.TransmisorAltura;
+import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Medicion.TransmisorAltura;
 
 public class TransmisorAlturaTest {
 	TransmisorAltura trasnmisorTest = null;
