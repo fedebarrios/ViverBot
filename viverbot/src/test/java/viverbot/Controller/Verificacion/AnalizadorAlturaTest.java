@@ -7,6 +7,7 @@ import org.junit.Test;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.EstadoAlturaAnormal;
 import viverbot.Controlador.Verificacion.EstadoAlturaDefectuosa;
+import viverbot.Controlador.Verificacion.EstadoAlturaNoComparada;
 import viverbot.Controlador.Verificacion.EstadoAlturaNormal;
 import viverbot.Controlador.Verificacion.EstadoAlturaPerfecta;
 import viverbot.Controlador.Verificacion.PlanificadorAltura;
@@ -62,6 +63,22 @@ public class AnalizadorAlturaTest {
 		AnalizadorAltura analizador = new AnalizadorAltura(planificador, GuardadorAltura.getInstance());
 		IAnalisisAltura estrategia = analizador.getStrategy(new Altura(-10,"cm"), new Altura(4,"cm"));
 		assertTrue(estrategia instanceof StrategyMetroDown);
+	}
+	
+	@Test
+	public void EstadoNoComparada(){
+		StrategyMetroDown estrategiaMetro = new StrategyMetroDown();
+		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5), new Fecha(04, 05, 2017));
+		EstadoAltura estadoDevuelto = estrategiaMetro.analizar(new Altura(-5,"cm"), new Altura(20,"cm"), planta);
+		assertTrue(estadoDevuelto instanceof EstadoAlturaNoComparada);
+	}
+	
+	@Test
+	public void EstadoNoComparada2(){
+		StrategySeguimientoNull estrategiaSeguimiento = new StrategySeguimientoNull();
+		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5), new Fecha(04, 05, 2017));
+		EstadoAltura estadoDevuelto = estrategiaSeguimiento.analizar(new Altura(45,"cm"), new EmptyAltura(), planta);
+		assertTrue(estadoDevuelto instanceof EstadoAlturaNoComparada);
 	}
 	
 	@Test
