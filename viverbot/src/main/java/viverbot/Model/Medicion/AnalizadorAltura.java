@@ -20,8 +20,7 @@ public class AnalizadorAltura implements AnalizadorMagnitud{
 		this.guardador = guardador;
 	}
 
-	public void analizar(Altura alturaActual, SeguimientoAltura seguimiento) {
-		int diaActual = seguimiento.getUltimoDiaMedicion()+1;
+	public void analizar(Altura alturaActual, SeguimientoAltura seguimiento, int diaActual) {
 		Altura alturaEsperada = seguimiento.getHistorialOptimo().buscarTupla(diaActual).getAltura();
 		IAnalisisAltura estrategia = getStrategy(alturaActual, alturaEsperada) ;
 		EstadoAltura estadoActual = estrategia.analizar(alturaActual, alturaEsperada, seguimiento.getPlanta());

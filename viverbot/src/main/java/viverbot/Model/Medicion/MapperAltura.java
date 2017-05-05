@@ -23,8 +23,8 @@ public class MapperAltura {
 		int i = 0;
 		for(PlantaDTO p : plantas){
 			SeguimientoAltura seguimiento = buscador.getSeguimiento(p);
-			if(seguimiento == null) System.out.println("es nulo");
-			analizador.analizar(alturas.get(i), seguimiento);
+			int diaActual = seguimiento.getUltimoDiaMedicion()+1;
+			analizador.analizar(alturas.get(i), seguimiento, diaActual);
 			i++;
 		}
 	}

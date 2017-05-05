@@ -17,6 +17,8 @@ public class BuscadorEstadoAltura {
 	
 	private BuscadorEstadoAltura(){
 		//Luego lo hara otra clase encargada de levantar la info de un txt
+		this.porcentajesDeCrecimiento = new ArrayList<Integer>();
+		this.estados = new ArrayList<EstadoAltura>();
 		cargarArreglos(porcentajesDeCrecimiento, estados);
 	};
 	
@@ -35,6 +37,7 @@ public class BuscadorEstadoAltura {
 				estado= estados.get(i);
 				estado.setCmDeDiferencia(diferenciaAltura);
 				estado.setPlanta(planta);
+				break;
 			}			
 			i++;			
 		}

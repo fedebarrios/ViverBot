@@ -40,6 +40,5 @@ public class EstadoAltura {
 	public void informar(){
 		
 	}
-	
-	
+
 }
