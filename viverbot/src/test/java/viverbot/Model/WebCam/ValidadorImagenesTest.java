@@ -32,8 +32,8 @@ public class ValidadorImagenesTest {
 	
 	public void inicializarPath(String path1, String path2)
 	{
-		primerPath = "src/test/java/com/losameos/viverbot/recursosTest/"+path1;
-		segundoPath = "src/test/java/com/losameos/viverbot/recursosTest/"+path2;
+		primerPath = "src/test/java/viverbot/recursosTest/"+path1;
+		segundoPath = "src/test/java/viverbot/recursosTest/"+path2;
 	}
 	
 	public void clear()

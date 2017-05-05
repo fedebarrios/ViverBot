@@ -21,7 +21,7 @@ public class ImagenTest {
 
 	private void inicializar(String imagen)
 	{
-		String ubicacion = "src/test/java/com/losameos/viverbot/recursosTest/"+imagen;
+		String ubicacion = "src/test/java/viverbot/recursosTest/"+imagen;
 		plantaImagen = new Imagen(ubicacion);
 		
 	}
