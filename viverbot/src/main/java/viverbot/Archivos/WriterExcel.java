@@ -40,6 +40,9 @@ public class WriterExcel {
 	}
 
 	public static void registrarAutomatizacion(AireAcondicionado aire) {
+		if(!file.exists()){
+			crearDocumento();
+		}
 		try {
 			FileInputStream archivoEntrada = new FileInputStream(file);
 			HSSFWorkbook libro = new HSSFWorkbook(archivoEntrada);
