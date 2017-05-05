@@ -12,6 +12,6 @@ public class EstadoAlturaNormal extends EstadoAltura{
 	
 	@Override
 	public void informar(){
-		System.out.println("La planta "+ this.getPlanta().getCodigoPlanta() +" esta creciendo normalmente entre los valores esperados");
+		System.out.println("La planta "+ this.getPlanta().getCodigoPlanta() +" esta creciendo normalmente entre los valores esperados.");
 	}
 }

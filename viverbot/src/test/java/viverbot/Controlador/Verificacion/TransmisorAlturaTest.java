@@ -1,8 +1,11 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -25,6 +28,8 @@ import viverbot.Modelo.Medicion.MapperAltura;
 import viverbot.Modelo.Medicion.TransmisorAltura;
 
 public class TransmisorAlturaTest {
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	ArrayList<Altura> alturas;
 	PlanificadorAltura planificador;
 	AnalizadorAltura analizador ;
@@ -57,14 +62,14 @@ public class TransmisorAlturaTest {
 		HistorialOptimo ho1 = new HistorialOptimo(tuplas2 , e2);
 		c.agregarSeguimiento(p1, ho1);
 		assertTrue(c.seguimientos.size() == 1);
+		assertThat(outContent.toString(), containsString("La planta 10 creció demasiado para lo que se esperaba."));
+		assertThat(outContent.toString(), containsString("Tiene 205.0 cm de diferencia con lo optimo"));
 		this.clear();
-		
-		/*Me haces que capte que imprimio
-		La planta 10 creció demasiado para lo que se esperaba.
-		Tiene 205.0 cm de diferencia con lo optimo*/
 	}
 
 	private void inicialize() {
+		System.setOut(new PrintStream(outContent));
+	    System.setErr(new PrintStream(errContent));
 		Altura a1 =  new Altura(230,"cm");
 		alturas = new ArrayList<Altura>();
 		alturas.add(a1);
@@ -100,5 +105,7 @@ public class TransmisorAlturaTest {
 
 	private void clear() {
 		this.trasnmisorTest = null;
+		 System.setOut(null);
+		 System.setErr(null);
 	}
 }

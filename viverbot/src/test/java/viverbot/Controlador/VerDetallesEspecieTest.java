@@ -1,4 +1,4 @@
-package viverbot.Controller;
+package viverbot.Controlador;
 
 import org.junit.Test;
 

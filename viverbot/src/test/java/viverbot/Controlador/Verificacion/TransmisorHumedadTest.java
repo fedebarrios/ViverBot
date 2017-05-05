@@ -1,4 +1,4 @@
-package viverbot.Controller.Verificacion;
+package viverbot.Controlador.Verificacion;
 
 import static org.junit.Assert.*;
 

@@ -12,6 +12,6 @@ public class EstadoAlturaDefectuosa extends EstadoAltura{
 	
 	@Override
 	public void informar(){
-		System.out.println("La planta"+ this.getPlanta().getCodigoPlanta() +" tiene un problema de crecimiento.");
+		System.out.println("La planta "+ this.getPlanta().getCodigoPlanta() +" tiene un problema de crecimiento.");
 	}
 }
