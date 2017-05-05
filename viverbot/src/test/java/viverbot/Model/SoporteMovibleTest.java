@@ -40,6 +40,7 @@ public class SoporteMovibleTest {
 		inicialize();
 		int cantidadPlantasAntes = plantas.cantidadPlantas();
 		PlantaDTO plantaAPodar = plantas.obtenerPlantaEspecifica(1);
+		assertNotNull(this.soporteTest.getPodador());
 		boolean b = this.soporteTest.getPodador().podar(plantaAPodar);
 		assertTrue(b);
 		assertTrue(plantas.cantidadPlantas()==cantidadPlantasAntes-1);
