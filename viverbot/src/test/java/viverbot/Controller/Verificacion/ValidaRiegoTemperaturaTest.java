@@ -5,14 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import viverbot.Controlador.Verificacion.RiegoValidable;
-import viverbot.Controlador.Verificacion.ValidaRiego;
-import viverbot.Controlador.Verificacion.ValidaRiegoTemperatura;
+import viverbot.Controlador.Verificacion.EvaluaRiego;
+import viverbot.Controlador.Verificacion.EvaluaRiegoXTemperatura;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class ValidaRiegoTemperaturaTest {
 
-	private ValidaRiegoTemperatura validaRiegoTempTest=null;
+	private EvaluaRiegoXTemperatura validaRiegoTempTest=null;
 	private Temperatura temperaturaOptima = new Temperatura(15.0);
 	private Temperatura temperaturaBaja = new Temperatura(5.0);
 	private Temperatura temperaturaAlta = new Temperatura(25.0);
@@ -53,8 +53,8 @@ public class ValidaRiegoTemperaturaTest {
 	// metodos auxiliares
 
 	private void inicialize() {
-		RiegoValidable rv= new ValidaRiego();
-		validaRiegoTempTest=new ValidaRiegoTemperatura(rv);
+		RiegoValidable rv= new EvaluaRiego();
+		validaRiegoTempTest=new EvaluaRiegoXTemperatura(rv);
 
 	}
 

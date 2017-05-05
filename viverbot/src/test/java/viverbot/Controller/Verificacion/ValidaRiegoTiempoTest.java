@@ -6,15 +6,15 @@ import org.junit.Test;
 
 import viverbot.Controlador.Verificacion.ControlTiempo;
 import viverbot.Controlador.Verificacion.RiegoValidable;
-import viverbot.Controlador.Verificacion.ValidaRiego;
-import viverbot.Controlador.Verificacion.ValidaRiegoTiempo;
+import viverbot.Controlador.Verificacion.EvaluaRiego;
+import viverbot.Controlador.Verificacion.EvaluaRiegoXTiempo;
 import viverbot.Model.Estacion;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class ValidaRiegoTiempoTest {
 
-	private ValidaRiegoTiempo validaRiegoTiempoTest=null;
+	private EvaluaRiegoXTiempo validaRiegoTiempoTest=null;
 
 	@Test
 	public void ValidaRiegoTempTest() {
@@ -55,8 +55,8 @@ public class ValidaRiegoTiempoTest {
 	// metodos auxiliares
 
 	private void inicialize() {
-		RiegoValidable rv= new ValidaRiego();
-		validaRiegoTiempoTest=new ValidaRiegoTiempo(rv);
+		RiegoValidable rv= new EvaluaRiego();
+		validaRiegoTiempoTest=new EvaluaRiegoXTiempo(rv);
 
 	}
 
