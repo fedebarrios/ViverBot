@@ -17,7 +17,6 @@ public class AltaPlantaTest {
 		controladorEspecies = new AltaEspecie_Controller();
 		controladorEspecies.getInventario().agregarEspecie("Tomate", "Tomatus", "rosa.jpg");
 		controladorPlantas = new Controlador_AltaPlanta();
-		System.out.println(PlantaDAO.getInstance().obtenerPlantas().size());
 	}
 	
 	@Test
@@ -45,6 +44,18 @@ public class AltaPlantaTest {
 		assertTrue(controladorPlantas.camposValidos());
 		controladorPlantas.getVista().dispose();
 	}
+	
+//	@SuppressWarnings("deprecation")
+//	@Test
+//	public void testCamposValidos(){
+//		inicialize();
+//		controladorPlantas.inicializar();
+//		controladorPlantas.getVista().getTextUbicacion().setText("0,0");
+//		controladorPlantas.getVista().getCmbEspecies().setSelectedIndex(1);
+//		controladorPlantas.getVista().setDateFiltro(new Date(2017-1900,4-1,10));
+//		assertTrue(controladorPlantas.camposValidos());
+//		controladorPlantas.getVista().dispose();
+//	}
 	
 	@Test
 	public void testSeleccionarUbicacion(){

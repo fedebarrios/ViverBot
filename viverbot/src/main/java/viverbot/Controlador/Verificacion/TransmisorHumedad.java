@@ -59,7 +59,7 @@ public class TransmisorHumedad extends Transmisor {
 				System.out.println("cantidad mediciones: " + this.mediciones.size());
 				this.seRealizoTransmision = true;
 			} else {
-				System.out.println("no es hora de la trasmicion");
+				//System.out.println("no es hora de la trasmicion");
 			}
 		}
 	}

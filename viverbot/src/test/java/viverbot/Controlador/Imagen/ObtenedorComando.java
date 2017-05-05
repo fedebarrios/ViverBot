@@ -40,8 +40,6 @@ public class ObtenedorComando implements ActionListener{
 	        vistaCargarImagen.getPanelPrimeraImagen().setIcon(new ImageIcon(obtenedorImagenes.getContenedorImagenes().getPrimerImagen().getRepresentacion()));
 	        vistaCargarImagen.getPanelSegundaImagen().setIcon(new ImageIcon(obtenedorImagenes.getContenedorImagenes().getSegundaImagen().getRepresentacion()));
 			}
-			else
-				JOptionPane.showMessageDialog(null,"No se ha podido cargar las imagenes.");
 
 				
 		}
@@ -52,8 +50,6 @@ public class ObtenedorComando implements ActionListener{
 				vistaCargarImagen.getPanelPrimeraImagen().setIcon(new ImageIcon(imgResaltada.getRepresentacion()));
 				vistaCargarImagen.getPanelSegundaImagen().setIcon(new ImageIcon(obtenedorImagenes.getContenedorImagenes().getSegundaImagen().getRepresentacion()));
 			}
-			else
-				JOptionPane.showMessageDialog(null,"No ha cargado ninguna imagen.");
 
 		}
 		

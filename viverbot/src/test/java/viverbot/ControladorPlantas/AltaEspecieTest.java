@@ -12,10 +12,11 @@ public class AltaEspecieTest {
 	@Test
 	public void TestAltaEspecie(){
 		controladorEspecies = new AltaEspecie_Controller();
+		controladorEspecies.getAltaVista().dispose();
 		assertTrue(controladorEspecies.esValido("Tomatina"));
 		assertFalse(controladorEspecies.esValido("456"));	
 		assertTrue(controladorEspecies.esValido("Tomate grande"));
-		assertFalse(controladorEspecies.esValido("Tomate45"));
+		assertFalse(controladorEspecies.esValido("Tomate45")); 
 		
 		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
 		assertTrue(controladorEspecies.registrarEspecie("Cebolla", "Tomate", ""));

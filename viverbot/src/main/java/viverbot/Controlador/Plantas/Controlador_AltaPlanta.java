@@ -20,12 +20,12 @@ public class Controlador_AltaPlanta implements ActionListener {
 	private ArrayList<EspecieDTO> listaEspecies;
 	private Inventario gestorEspecies;
 
-	public Controlador_AltaPlanta(){
+	public Controlador_AltaPlanta() {
 		this.gestorEspecies = new Inventario();
 		this.gestorPlantas = new Plantas();
 		listaEspecies = new ArrayList<EspecieDTO>();
 	}
-	
+
 	public void inicializar() {
 		if (this.vistaAltaPlanta == null) {
 			this.vistaAltaPlanta = new Vista_AltaPlanta(this);
@@ -38,24 +38,36 @@ public class Controlador_AltaPlanta implements ActionListener {
 		String ubicacion = this.vistaAltaPlanta.getTextUbicacion().getText();
 		Date fecha = this.vistaAltaPlanta.getDateFiltro();
 
-		if (ubicacion != "") {
-			if (fecha != null) {
-				if (!Verificador.fechaFutura(fecha) && Verificador.fechaPosteriorADueño(fecha)) {
-					return true;
-				} else
-					JOptionPane.showMessageDialog(null, "La fecha de plantado es superior a la fecha actual");
+		if (comprobarUbicacion(ubicacion)) {
 
+			if (!comprobarFecha(fecha)) {
+				return true;
 			} else
-				JOptionPane.showMessageDialog(null, "Complete correctamente el campo Fecha de Plantado");
-
+				JOptionPane.showMessageDialog(null, "La fecha de plantado es superior a la fecha actual");
 		} else
 			JOptionPane.showMessageDialog(null, "Complete correctamente el campo Ubicacion");
 		return false;
 	}
 
+	public boolean comprobarFecha(Date fecha) {
+		if (fecha != null) {
+			return Verificador.fechaFutura(fecha);
+		}
+		return false;
+	}
+
+	public boolean comprobarUbicacion(String ubicacion) {
+		if (ubicacion != "") {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	@SuppressWarnings("deprecation")
 	public boolean registrarPlanta() {
 		String ubicacion = this.vistaAltaPlanta.getTextUbicacion().getText();
-		Fecha fecha = new Fecha(this.vistaAltaPlanta.getDateFiltro().getDay(), this.vistaAltaPlanta.getDateFiltro().getMonth() , this.vistaAltaPlanta.getDateFiltro().getYear());
+		Fecha fecha = new Fecha(this.vistaAltaPlanta.getDateFiltro().getDay(),
+				this.vistaAltaPlanta.getDateFiltro().getMonth(), this.vistaAltaPlanta.getDateFiltro().getYear());
 		int codEspecie = listaEspecies.get(obtenerIndiceSeleccionado()).getCodEspecie();
 		return gestorPlantas.agregarPlanta(codEspecie, ubicacion, fecha);
 	}
@@ -63,15 +75,15 @@ public class Controlador_AltaPlanta implements ActionListener {
 	public void seleccionarUbicacion(String ubicacion) {
 		this.vistaAltaPlanta.getTextUbicacion().setText(ubicacion);
 	}
-	
+
 	public void llenarComboEspecies() {
 		listaEspecies = gestorEspecies.obtenerEspecies();
-		for(EspecieDTO i: listaEspecies) {
+		for (EspecieDTO i : listaEspecies) {
 			vistaAltaPlanta.getCmbEspecies().addItem(i.getNombre());
 		}
 	}
-	
-	public int obtenerIndiceSeleccionado(){
+
+	public int obtenerIndiceSeleccionado() {
 		return vistaAltaPlanta.getCmbEspecies().getSelectedIndex();
 	}
 
@@ -85,8 +97,8 @@ public class Controlador_AltaPlanta implements ActionListener {
 			}
 		}
 	}
-	
-	public Vista_AltaPlanta getVista(){
+
+	public Vista_AltaPlanta getVista() {
 		return vistaAltaPlanta;
 	}
 }
