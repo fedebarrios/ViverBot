@@ -29,4 +29,8 @@ public class MapperAltura {
 		}
 	}
 
+	public int cantidadPlantas() {
+		return this.plantas.size();
+	}
+
 }

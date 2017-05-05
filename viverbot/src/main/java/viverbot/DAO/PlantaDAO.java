@@ -2,6 +2,7 @@ package viverbot.DAO;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 import viverbot.DTO.PlantaDTO;
 import viverbot.DTO.UbicacionDTO;
@@ -14,10 +15,14 @@ public class PlantaDAO {
 
 	public PlantaDAO() {
 		plantas = new ArrayList<PlantaDTO>();
-		inicializar();
+		cargarPlantasHarcodeadas();
+	}
+	
+	public void cargarPlantas(List<PlantaDTO> plantas){
+		this.plantas = (ArrayList<PlantaDTO>) plantas;
 	}
 
-	private void inicializar() {
+	private void cargarPlantasHarcodeadas() {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 6; j++) {
 				@SuppressWarnings("deprecation")

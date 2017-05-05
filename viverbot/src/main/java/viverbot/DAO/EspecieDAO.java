@@ -1,6 +1,7 @@
 package viverbot.DAO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import viverbot.DTO.EspecieDTO;
 
@@ -11,9 +12,17 @@ public class EspecieDAO {
 	
 	public EspecieDAO() {
 		this.especies = new ArrayList<EspecieDTO>();
+		cargarEspeciesHarcodeadas();
+	}
+	
+	public void cargarEspeciesHarcodeadas(){
 		this.especies.add(new EspecieDTO(1, "Rosa","Rosus",""));
 		this.especies.add(new EspecieDTO(2, "Margarita","Margaritus",""));
 		this.especies.add(new EspecieDTO(3, "Amapola","Amapolus",""));
+	}
+	
+	public void cargarEspecies(List<EspecieDTO> especies){
+		this.especies = (ArrayList<EspecieDTO>) especies;
 	}
 	
 	public void agregar(EspecieDTO especie){

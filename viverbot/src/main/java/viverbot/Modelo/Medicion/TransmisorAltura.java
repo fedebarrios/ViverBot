@@ -25,7 +25,7 @@ public class TransmisorAltura implements Observer{
 		this.mapper.relacionar(alturas);
 	}
 
-	public MapperAltura getAnalizador() {
+	public MapperAltura getMapper() {
 		return this.mapper;
 	}
 }
