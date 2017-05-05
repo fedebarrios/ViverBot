@@ -28,7 +28,7 @@ public class AnalizadorAltura {
 		planificador.actuar(estadoActual);		
 	}
 	
-	private IAnalisisAltura getStrategy(Altura alturaActual, Altura alturaEsperada) {
+	public IAnalisisAltura getStrategy(Altura alturaActual, Altura alturaEsperada) {
 		if (alturaEsperada instanceof EmptyAltura){
 			return new StrategySeguimientoNull();
 		}else if (alturaActual.getValor() < 0){

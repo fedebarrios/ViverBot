@@ -16,7 +16,6 @@ import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.Fecha;
 import viverbot.Model.GuardadorAltura;
-import viverbot.Model.HistorialAltura;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Plantas;
 import viverbot.Model.TuplaAltura;
