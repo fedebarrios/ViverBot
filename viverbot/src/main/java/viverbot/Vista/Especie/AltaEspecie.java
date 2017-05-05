@@ -87,16 +87,16 @@ public class AltaEspecie extends JFrame{
 		return nombreEspecie_tf;
 	}
 
-	public void setNombreEspecie_tf(JTextField nombreEspecie_tf) {
-		this.nombreEspecie_tf = nombreEspecie_tf;
+	public void setNombreEspecie_tf(String s) {
+		this.nombreEspecie_tf.setText(s);
 	}
 
 	public JTextField getNombreCientifico_tf() {
 		return nombreCientifico_tf;
 	}
 
-	public void setNombreCientifico_tf(JTextField nombreCientifico_tf) {
-		this.nombreCientifico_tf = nombreCientifico_tf;
+	public void setNombreCientifico_tf(String s) {
+		this.nombreCientifico_tf.setText(s);
 	}
 
 	public JButton getGuardar_btn() {

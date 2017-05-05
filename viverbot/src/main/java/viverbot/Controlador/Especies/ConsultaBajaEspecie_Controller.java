@@ -5,9 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 import viverbot.DTO.EspecieDTO;
 import viverbot.Model.Inventario;
+import viverbot.Model.Plantas;
 import viverbot.Vista.Especie.ConsultaBajaEspecie;
 
 public class ConsultaBajaEspecie_Controller implements ActionListener {
@@ -36,14 +38,20 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 			this.consultaBajaVista.dispose();
 		} else if (e.getSource() == this.consultaBajaVista.getBtnBorrar()) {
 			String elementoElegido = this.consultaBajaVista.getComboBox().getSelectedItem().toString();
-			ArrayList<EspecieDTO> esp = inventario.obtenerEspecies();
-			for (int i = 0; i < esp.size(); i++) {
-				if (esp.get(i).getNombre().equals(elementoElegido)) {
-					this.inventario.borrarEspecie(esp.get(i).getCodEspecie());
-				}
+			boolean sePuedeBorrar = sePuedeBorrar(elementoElegido);
+			if(!sePuedeBorrar) { 
+				JOptionPane.showMessageDialog(this.consultaBajaVista, "La especie asociada tiene plantas cargadas");
 			}
-			this.consultaBajaVista.getComboBox().removeAllItems();
-			llenarCombo(this.consultaBajaVista.getComboBox());
+			else{
+				ArrayList<EspecieDTO> esp = inventario.obtenerEspecies();
+				for (int i = 0; i < esp.size(); i++) {
+					if (esp.get(i).getNombre().equals(elementoElegido)) {
+						this.inventario.borrarEspecie(esp.get(i).getCodEspecie());
+					}
+				}
+				this.consultaBajaVista.getComboBox().removeAllItems();
+				llenarCombo(this.consultaBajaVista.getComboBox());
+			}
 		} else if (e.getSource() == this.consultaBajaVista.getBtnVerDetalle()){
 			String elementoElegido = this.consultaBajaVista.getComboBox().getSelectedItem().toString();
 			ArrayList<EspecieDTO> especies = inventario.obtenerEspecies();
@@ -52,5 +60,20 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 					controladorVerDetalle = new VerDetallesEspecie_Controller(esp);
 			}
 		}
+	}
+
+	public boolean sePuedeBorrar(String elementoElegido) {
+		ArrayList<EspecieDTO> esp = inventario.obtenerEspecies();
+		int codigoEspecie = 0;
+		for (int i = 0; i < esp.size(); i++) {
+			if (esp.get(i).getNombre().equals(elementoElegido)) {
+				codigoEspecie = esp.get(i).getCodEspecie();
+			}
+		}
+		Plantas plantas = new Plantas();
+		if(plantas.obtenerPlantas(codigoEspecie).size() == 0){
+			return true;
+		}
+		return false;
 	}
 }

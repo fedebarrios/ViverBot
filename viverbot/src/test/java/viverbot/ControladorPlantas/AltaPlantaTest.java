@@ -15,7 +15,7 @@ public class AltaPlantaTest {
 	
 	private void inicialize() {
 		controladorEspecies = new AltaEspecie_Controller();
-		controladorEspecies.inventario.agregarEspecie("Tomate", "Tomatus", "rosa.jpg");
+		controladorEspecies.getInventario().agregarEspecie("Tomate", "Tomatus", "rosa.jpg");
 		controladorPlantas = new Controlador_AltaPlanta();
 		System.out.println(PlantaDAO.getInstance().obtenerPlantas().size());
 	}

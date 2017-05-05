@@ -15,7 +15,7 @@ import viverbot.Vista.Especie.AltaEspecie;
 public class AltaEspecie_Controller implements ActionListener {
 
 	private AltaEspecie altaVista;
-	public Inventario inventario;
+	private Inventario inventario;
 
 	public AltaEspecie_Controller() {
 		this.inventario = new Inventario();
@@ -29,20 +29,17 @@ public class AltaEspecie_Controller implements ActionListener {
 		} else if (e.getSource() == this.altaVista.getGuardar_btn()) {
 			String nombreEspecie = this.altaVista.getNombreEspecie_tf().getText();
 			String nombreCientifico = this.altaVista.getNombreCientifico_tf().getText();
-			System.out.println(nombreEspecie);
-			System.out.println(nombreCientifico);
-			boolean esValido = Verificador.campoExclusivamenteAlfabetico(nombreEspecie);
-			if (!esValido) {
-				JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
-			} else if (this.altaVista.getImagen_tf().getText().equals("")){
+			if (this.altaVista.getImagen_tf().getText().equals("")){
 				JOptionPane.showMessageDialog(this.altaVista, "Cargue una imagen");
 			} else if (this.altaVista.getNombreCientifico_tf().getText().equals("")){
 				JOptionPane.showMessageDialog(this.altaVista, "Cargue un nombre Cientifico");
 			} else if (this.altaVista.getNombreEspecie_tf().getText().equals("")){
 				JOptionPane.showMessageDialog(this.altaVista, "Cargue un nombre de Especie");
+			} else if (esValido(nombreEspecie)) {
+				JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
 			} else {
 				String pathAlmacenado = copiar(this.altaVista.getImagen_tf().getText(), nombreEspecie);
-				this.inventario.agregarEspecie(nombreEspecie, nombreCientifico, pathAlmacenado);
+				this.registrarEspecie(nombreEspecie, nombreCientifico, pathAlmacenado);
 				JOptionPane.showMessageDialog(this.altaVista, "Se guardo correctamente la nueva especie");
 				this.altaVista.getNombreEspecie_tf().setText("");
 				this.altaVista.getNombreCientifico_tf().setText("");
@@ -71,6 +68,26 @@ public class AltaEspecie_Controller implements ActionListener {
 		File archivoDestino = new File(pathNuevo);
 		archivoOrigen.renameTo(archivoDestino);
 		return pathNuevo;
+	}
+	
+	public boolean esValido(String s){
+		return Verificador.campoExclusivamenteAlfabetico(s);
+	}
+	
+	public boolean registrarEspecie(String nombreEspecie, String nombreCientifico, String path) {
+		if(esValido(nombreEspecie) && esValido(nombreCientifico)){
+			this.inventario.agregarEspecie(nombreEspecie, nombreCientifico, path);
+			return true;
+		}
+		return false;
+	}
+
+	public AltaEspecie getAltaVista() {
+		return altaVista;
+	}
+	
+	public Inventario getInventario(){
+		return this.inventario;
 	}
 
 }

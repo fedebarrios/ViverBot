@@ -7,10 +7,9 @@ public class Verificador {
 	
 	public static boolean campoExclusivamenteAlfabetico(String campo){
 		for(int i=0; i<campo.length(); i++){
-			Integer aux = (int) campo.charAt(i);
-			if(aux!=null){
+			if(Character.isDigit(campo.charAt(i))) {
 				return false;
-			}
+			} ;
 		}
 		return true;
 	}
