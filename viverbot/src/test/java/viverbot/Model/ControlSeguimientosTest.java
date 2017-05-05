@@ -30,18 +30,33 @@ public class ControlSeguimientosTest {
 	SeguimientoAltura seguimiento1;
 	
 	
-	@Test(expected = Exception.class)
-	public void SeguimientoInvalido() throws Exception{
+	@Test
+	public void SeguimientoInvalido() {
 		inicializar();
 		
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie1);
-		HistorialAltura historialAltura1 = new HistorialAltura(tuplas2);
 		
-		SeguimientoAltura seguimiento1 = new SeguimientoAltura(planta1, historialOptimo1 , historialAltura1 );	
+		ControlSeguimientos control = ControlSeguimientos.getInstance();
+		control.agregarSeguimiento(planta1, historialOptimo1);
+		
+		assertTrue(control.getSeguimientos().size() == 0);
 	}
 	
 	@Test
-	public void ControlSeguimientoTest() throws Exception{
+	public void SeguimientoValidoCargado() {
+		inicializar();
+		
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
+		
+		ControlSeguimientos control = ControlSeguimientos.getInstance();
+		control.agregarSeguimiento(planta1, historialOptimo1);
+		
+		assertTrue(control.getSeguimientos().size() == 1);
+	}
+
+	
+	@Test
+	public void ControlSeguimientoTest() {
 		inicializar();
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie3);
 		HistorialAltura historialAltura1 = new HistorialAltura(tuplas2);
