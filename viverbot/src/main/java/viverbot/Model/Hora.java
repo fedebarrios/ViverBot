@@ -138,6 +138,8 @@ public class Hora implements Comparable {
 	public String toString() {
 		return this.getHora()+":"+this.getMinuto()+":"+this.getSegundo();
 	}
+
+	
 	
 	
 
