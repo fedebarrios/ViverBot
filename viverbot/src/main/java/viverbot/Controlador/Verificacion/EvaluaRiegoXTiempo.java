@@ -19,7 +19,8 @@ public class EvaluaRiegoXTiempo extends EvaluaRiegoDecorator{
 			nivel =NivelRiego.BAJAR;
 		}
 		
-		return promediaNivel(nivel);
+ 		return getRiegoValidable().cantidadOptimaRiego().nivelar(nivel);
+
 	}
 
 	public ControlTiempo getControlTiempo() {

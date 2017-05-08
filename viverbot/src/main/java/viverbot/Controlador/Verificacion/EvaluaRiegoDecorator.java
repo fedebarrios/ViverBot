@@ -4,7 +4,6 @@ import viverbot.Model.NivelRiego;
 
 public abstract class EvaluaRiegoDecorator implements RiegoValidable {
 	private RiegoValidable riegoValidable;
-
 	
 	public EvaluaRiegoDecorator(RiegoValidable riegoValidable) {		
 		this.riegoValidable = riegoValidable;

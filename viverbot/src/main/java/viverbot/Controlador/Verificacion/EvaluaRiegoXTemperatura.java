@@ -20,7 +20,7 @@ public class EvaluaRiegoXTemperatura  extends EvaluaRiegoDecorator{
 		}else if(temperaturaActual.getValor()< rangoIdeal.getMinimo()){
 			nivel= NivelRiego.BAJAR;
 		}
-		return promediaNivel(nivel);
+		return getRiegoValidable().cantidadOptimaRiego().nivelar(nivel);
 	}
 	
 	

@@ -9,6 +9,6 @@ public class EvaluaRiego  extends AnalizadorRiego{
 	}
 
 	public NivelRiego cantidadOptimaRiego(){
-		return NivelRiego.NORMAL;
+		return NivelRiego.NEUTRO;
 	}
 }
