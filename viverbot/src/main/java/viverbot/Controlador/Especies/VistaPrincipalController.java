@@ -14,7 +14,6 @@ import viverbot.Modelo.Medicion.AnalizadorAltura;
 import viverbot.Modelo.Medicion.ColectorAltura;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
 import viverbot.Modelo.Medicion.MapperAltura;
-import viverbot.Modelo.Medicion.TransmisorAltura;
 import viverbot.Modelo.Medicion.TransmisorTemperatura;
 import viverbot.Vista.Especie.PrincipalView;
 
@@ -49,8 +48,8 @@ public class VistaPrincipalController  implements ActionListener{
 			PlanificadorAltura p = PlanificadorAltura.getInstance();
 			AnalizadorAltura a = new AnalizadorAltura(p, GuardadorAltura.getInstance());
 			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas() , ControlSeguimientos.getInstance());
-			TransmisorAltura t = new TransmisorAltura(m);
-			c.addObserver(t);
+			c.addObserver(m);
+			m.addObserver(p);
 			c.colectar();
 		}
 		

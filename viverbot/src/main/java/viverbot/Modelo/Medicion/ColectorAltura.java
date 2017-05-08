@@ -29,7 +29,6 @@ public class ColectorAltura extends Observable{
 
 	}
 
-	@SuppressWarnings("deprecation")
 	public void colectar() {
 
 		task = new TimerTask() {

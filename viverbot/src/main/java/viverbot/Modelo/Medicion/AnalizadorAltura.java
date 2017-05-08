@@ -20,12 +20,13 @@ public class AnalizadorAltura {
 		this.guardador = guardador;
 	}
 
-	public void analizar(Altura alturaActual, SeguimientoAltura seguimiento, int diaActual) {
+	public EstadoAltura analizar(Altura alturaActual, SeguimientoAltura seguimiento, int diaActual) {
 		Altura alturaEsperada = seguimiento.getHistorialOptimo().buscarTupla(diaActual).getAltura();
 		IAnalisisAltura estrategia = getStrategy(alturaActual, alturaEsperada) ;
 		EstadoAltura estadoActual = estrategia.analizar(alturaActual, alturaEsperada, seguimiento.getPlanta());
-		guardador.guardar(estrategia, alturaActual, diaActual, seguimiento.getHistorialVerdadero());
-		planificador.actuar(estadoActual);		
+		//guardador.guardar(estrategia, alturaActual, diaActual, seguimiento.getHistorialVerdadero());
+		//planificador.actuar(estadoActual);	
+		return estadoActual;
 	}
 	
 	public IAnalisisAltura getStrategy(Altura alturaActual, Altura alturaEsperada) {

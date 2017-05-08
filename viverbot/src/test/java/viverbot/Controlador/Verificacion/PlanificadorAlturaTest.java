@@ -35,6 +35,8 @@ public class PlanificadorAlturaTest {
 	EstadoAlturaNormal esn;
 	EstadoAlturaAnormal esa;
 	EstadoAlturaDefectuosa esd;
+	EstadoAlturaNoComparada esncs;
+	EstadoAlturaNoComparada esncm;
 	EspecieDTO e1;
 	EspecieDTO e2;
 	SimuladorEscritura si;
@@ -63,6 +65,22 @@ public class PlanificadorAlturaTest {
 		this.inicialize();
 		planificador.actuar(esa);
 		assertThat(outContent.toString(), containsString("esta creciendo menos de lo esperado. Tomar accion lo antes posible."));
+		this.clear();
+	}
+	
+	@Test
+	public void estadoAlturaNoComparadaMetroTest() {
+		this.inicialize();
+		planificador.actuar(esncm);
+		assertThat(outContent.toString(), containsString("El metro esta averiado"));
+		this.clear();
+	}
+	
+	@Test
+	public void estadoAlturaNoComparadaSeguimientoTest() {
+		this.inicialize();
+		planificador.actuar(esncs);
+		assertThat(outContent.toString(), containsString("No existe una medicion contra la cual comparar para el dia de hoy"));
 		this.clear();
 	}
 
@@ -124,6 +142,8 @@ public class PlanificadorAlturaTest {
 		esn = new EstadoAlturaNormal(150.0, p2);
 		esa = new EstadoAlturaAnormal(30.0, p3);
 		esd = new EstadoAlturaDefectuosa(-50.0, p4);
+		esncm = new EstadoAlturaNoComparada("MetroDown");
+		esncs = new EstadoAlturaNoComparada("SeguimientoNull");
 		
 		plantasTest.add(p1);
 		plantasTest.add(p2);

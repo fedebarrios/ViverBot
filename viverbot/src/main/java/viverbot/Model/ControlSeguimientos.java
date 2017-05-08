@@ -34,7 +34,7 @@ public class ControlSeguimientos {
 		return null;
 	}
 	
-	public void cargarSeguimientosHardcodeados(){
+	/*public void cargarSeguimientosHardcodeados(){
 		this.seguimientos = new ArrayList<SeguimientoAltura>();
 		
 		ArrayList<TuplaAltura> tuplas0 = new ArrayList<TuplaAltura>();
@@ -127,7 +127,7 @@ public class ControlSeguimientos {
 		HistorialOptimo historialOptimo4 = new HistorialOptimo( tuplas4, EspecieDAO.getInstance().obtenerEspecie(0));
 		this.agregarSeguimiento(new Plantas().obtenerPlantaEspecifica(4), historialOptimo4);
 		
-	}
+	}*/
 	
 	public void agregarSeguimiento(PlantaDTO planta, HistorialOptimo historialOptimo){
 		if(planta.getCodigo() == historialOptimo.getEspecie().getCodEspecie()){

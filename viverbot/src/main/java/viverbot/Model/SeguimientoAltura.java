@@ -22,32 +22,16 @@ public class SeguimientoAltura {
 		return planta;
 	}
 
-	public void setPlanta(PlantaDTO planta) {
-		this.planta = planta;
-	}
-
 	public HistorialOptimo getHistorialOptimo() {
 		return historialOptimo;
-	}
-
-	public void setHistorialOptimo(HistorialOptimo historialOptimo) {
-		this.historialOptimo = historialOptimo;
 	}
 
 	public HistorialAltura getHistorialVerdadero() {
 		return historialVerdadero;
 	}
 
-	public void setHistorialVerdadero(HistorialAltura historialVerdadero) {
-		this.historialVerdadero = historialVerdadero;
-	}
-
 	public String getEstado() {
 		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
 	}
 	
 	public int getUltimoDiaMedicion(){

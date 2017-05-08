@@ -1,12 +1,16 @@
 package viverbot.Controlador.Verificacion;
 
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
 import viverbot.Model.LectorConsola;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 
 
-public class PlanificadorAltura {
+public class PlanificadorAltura implements Observer{
 	private static PlanificadorAltura planificador;
 	private SoporteMovible soporte;
 	
@@ -42,6 +46,15 @@ public class PlanificadorAltura {
 		    else{
 		    	System.out.println("La planta no se podo.");
 		    }
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void update(Observable o, Object estadosDevueltos) {
+		List<EstadoAltura> estados = (List<EstadoAltura>) estadosDevueltos;		
+		for(EstadoAltura e : estados){
+			actuar(e);
 		}
 	}
 }
