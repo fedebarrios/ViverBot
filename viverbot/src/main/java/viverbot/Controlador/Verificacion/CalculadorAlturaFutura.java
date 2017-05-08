@@ -11,7 +11,7 @@ public class CalculadorAlturaFutura {
 	}
 	
 	public static CalculadorAlturaFutura getInstance(){
-		if( calculador == null){
+		if( calculador == null){ 
 			calculador = new CalculadorAlturaFutura();
 		}
 		return calculador;
@@ -23,12 +23,12 @@ public class CalculadorAlturaFutura {
 		double ultimaAlturaDeseada = ultimaTupla.getAltura().getValor();
 		double crecimientoFaltante = ultimaAlturaDeseada - alturaActual;
 		if (crecimientoFaltante < 0.0){
-			System.out.println("La planta ya ha sobrepasado su altura ideal.");
+			//System.out.println("La planta ya ha sobrepasado su altura ideal.");
 			return 0.0;
 		}
 		else{
-			System.out.println("La planta debera crecer unos " + crecimientoFaltante + "cm en los proximos " + diasRestantes + " dias.");
+			//System.out.println("La planta debera crecer unos " + crecimientoFaltante + "cm en los proximos " + diasRestantes + " dias.");
 			return crecimientoFaltante;
-		}
+		} 
 	}
 }

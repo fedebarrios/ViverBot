@@ -11,7 +11,6 @@ public class ValidadorImagenes {
 		
 		if(!primerImagenAux.getAlto().equals(segundaImagenAux.getAlto()) 
 				|| !primerImagenAux.getAncho().equals(segundaImagenAux.getAncho())){
-			JOptionPane.showMessageDialog(null,"La resolucion de las imagenes no coinciden."); 
 			return false; }
 		return true;
 	}

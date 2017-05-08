@@ -138,8 +138,6 @@ public class PlanificadorAlturaTest {
 	}
 
 	private void clear() {
-		System.setOut(null);
-		System.setErr(null);
 		System.setIn(inStream);
 	}
 }

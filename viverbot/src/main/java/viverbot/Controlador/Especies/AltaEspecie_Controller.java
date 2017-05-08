@@ -48,7 +48,7 @@ public class AltaEspecie_Controller implements ActionListener {
 		} else if (e.getSource() == this.altaVista.getBtnCargarImagen()) {
 			
 			
-			JFileChooser selector=new JFileChooser();
+			JFileChooser selector=new JFileChooser(); 
 			selector.setDialogTitle("Seleccione Imagen");
 			FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
 			selector.setFileFilter(filtroImagen);

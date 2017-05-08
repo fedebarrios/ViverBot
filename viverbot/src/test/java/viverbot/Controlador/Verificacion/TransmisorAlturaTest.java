@@ -51,9 +51,9 @@ public class TransmisorAlturaTest {
 	public void transmitirTest() {
 		this.inicialize();
 		this.trasnmisorTest.Transmitir(alturas);
-		assertTrue(c.seguimientos.size() == 1);
-		assertTrue(alturas.size() == this.trasnmisorTest.getMapper().cantidadPlantas());
-		
+		assertEquals(c.seguimientos.size(),2);
+		assertTrue(alturas.size() == this.trasnmisorTest.getMapper().cantidadPlantas()); 
+		 
 		ArrayList<TuplaAltura> tuplas2 = new ArrayList<TuplaAltura>();
 		tuplas2.add(new TuplaAltura(new Altura(25,"cm"),1));
 		tuplas2.add(new TuplaAltura(new Altura(58,"cm"),2));
@@ -61,7 +61,7 @@ public class TransmisorAlturaTest {
 		tuplas2.add(new TuplaAltura(new Altura(69,"cm"),4));
 		HistorialOptimo ho1 = new HistorialOptimo(tuplas2 , e2);
 		c.agregarSeguimiento(p1, ho1);
-		assertTrue(c.seguimientos.size() == 1);
+		assertEquals(c.seguimientos.size(),2);
 		assertThat(outContent.toString(), containsString("La planta 10 creció demasiado para lo que se esperaba."));
 		assertThat(outContent.toString(), containsString("Tiene 205.0 cm de diferencia con lo optimo"));
 		this.clear();

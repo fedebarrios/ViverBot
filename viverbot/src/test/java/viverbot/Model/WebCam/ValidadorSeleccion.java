@@ -18,7 +18,7 @@ public class ValidadorSeleccion {
 	public static boolean validarExtencion(String path)
 	{
 		if(Verificador.extensionImagenValida(path)) return true;
-		else{ JOptionPane.showMessageDialog(null,"La extencion del archivo elegido no es valida.");	
+		else{
 			  return false; }
 			
 	}

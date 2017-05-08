@@ -23,17 +23,10 @@ public class ResaltadorImagen {
 		imagenResaltada.getRGB(x, y);
 		imagenBoseto.getRGB(x, y);
 
-		if(compararCanales(imagenResaltada,imagenBoseto))
-		{
-			pixel = imagenResaltada.getAzul()+ imagenResaltada.getRojo()+ imagenResaltada.getVerde();
-			int nuevoSRGB = (pixel << 70) | pixel;
-			formatoSRGB(x,y,nuevoSRGB,imagenResaltada,imagenBoseto);
-
-		} else {
-			pixel = imagenBoseto.valorRGB();
-			formatoSRGB(x,y,pixel, imagenResaltada, imagenBoseto);
-					
-		}
+		if(compararCanales(imagenResaltada,imagenBoseto)) pixel = 0;
+		else pixel = imagenBoseto.valorRGB();
+			
+		formatoSRGB(x,y,pixel, imagenResaltada, imagenBoseto);
 		
 	}
 	
