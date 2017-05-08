@@ -11,18 +11,20 @@ import viverbot.Modelo.Magnitudes.Medicion;
 
 public class Simulador implements ISimularMedicion {
 
-	private Map<Horario, RangoNumerico> rangos = new HashMap<Horario, RangoNumerico>();
+	private Map<Horario, RangoNumerico> rangos;
 	private Magnitudes magnitud;
 
-	public Simulador(HashMap<Horario, RangoNumerico> r, Magnitudes m ) {
+	public Simulador(Map<Horario, RangoNumerico> r, Magnitudes m ) {
 		this.rangos = r;
 		magnitud = m; 
 	}
 
+	
+
 	@Override
 	public Medicion getMedicion(Hora actual) {
 		RangoNumerico r = this.rangos.get(Horario.getHorario(actual));
-		return new Medicion(Math.random() * 3 + r.getMinimo(), this.magnitud);
+		return new Medicion(Math.random() * (r.getMaximo()-r.getMinimo()) + r.getMinimo(), this.magnitud);
 
 	}
 
