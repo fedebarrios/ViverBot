@@ -27,24 +27,23 @@ public class AltaEspecie_Controller implements ActionListener {
 		if (e.getSource() == this.altaVista.getCancelar_btn()) {
 			this.altaVista.dispose();
 		} else if (e.getSource() == this.altaVista.getGuardar_btn()) {
-			String nombreEspecie = this.altaVista.getNombreEspecie_tf().getText();
-			String nombreCientifico = this.altaVista.getNombreCientifico_tf().getText();
-			if (this.altaVista.getImagen_tf().getText().equals("")){
-				JOptionPane.showMessageDialog(this.altaVista, "Cargue una imagen");
-			} else if (this.altaVista.getNombreCientifico_tf().getText().equals("")){
-				JOptionPane.showMessageDialog(this.altaVista, "Cargue un nombre Cientifico");
-			} else if (this.altaVista.getNombreEspecie_tf().getText().equals("")){
-				JOptionPane.showMessageDialog(this.altaVista, "Cargue un nombre de Especie");
-			} else if (esValido(nombreEspecie)) {
-				JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
-			} else {
-				String pathAlmacenado = copiar(this.altaVista.getImagen_tf().getText(), nombreEspecie);
-				this.registrarEspecie(nombreEspecie, nombreCientifico, pathAlmacenado);
-				JOptionPane.showMessageDialog(this.altaVista, "Se guardo correctamente la nueva especie");
-				this.altaVista.getNombreEspecie_tf().setText("");
-				this.altaVista.getNombreCientifico_tf().setText("");
-				this.altaVista.getImagen_tf().setText("");
+			
+			if(!registrarEspecie()){
+				if(nombreEspecieVacio()){
+					JOptionPane.showMessageDialog(this.altaVista, "Cargue un nombre de Especie");
+				}else if(nombreCientificoVacio()){
+					JOptionPane.showMessageDialog(this.altaVista, "Cargue un nombre Cientifico");
+				}else if(nombreImagenVacio()){
+					JOptionPane.showMessageDialog(this.altaVista, "Cargue una imagen");
+				}else{
+					JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
+				}
 			}
+			else{
+				JOptionPane.showMessageDialog(this.altaVista, "Se guardo correctamente la nueva especie");
+				limpiar();
+			}
+			
 		} else if (e.getSource() == this.altaVista.getBtnCargarImagen()) {
 			
 			
@@ -61,12 +60,19 @@ public class AltaEspecie_Controller implements ActionListener {
 		}
 	}
 
+	public void limpiar() {
+		this.altaVista.getNombreEspecie_tf().setText("");
+		this.altaVista.getNombreCientifico_tf().setText("");
+		this.altaVista.getImagen_tf().setText("");
+	}
+
 	private String copiar(String origen, String destino) {
 		File archivoOrigen = new File(origen);
 		String extension = origen.substring(origen.length() - 4, origen.length());
 		String pathNuevo = "src/main/java/Recursos/" + destino + extension;
 		File archivoDestino = new File(pathNuevo);
 		archivoOrigen.renameTo(archivoDestino);
+		System.out.println(pathNuevo+"----jeje");
 		return pathNuevo;
 	}
 	
@@ -74,12 +80,28 @@ public class AltaEspecie_Controller implements ActionListener {
 		return Verificador.campoExclusivamenteAlfabetico(s);
 	}
 	
-	public boolean registrarEspecie(String nombreEspecie, String nombreCientifico, String path) {
-		if(esValido(nombreEspecie) && esValido(nombreCientifico)){
-			this.inventario.agregarEspecie(nombreEspecie, nombreCientifico, path);
+	public boolean registrarEspecie() {
+		String nombreEspecie = this.altaVista.getNombreEspecie_tf().getText();
+		String nombreCientifico = this.altaVista.getNombreCientifico_tf().getText();
+		String path = this.altaVista.getImagen_tf().getText();
+		if(esValido(nombreEspecie) && esValido(nombreCientifico) && path.length()>0){
+			String pathAGuardar = copiar(this.altaVista.getImagen_tf().getText(), nombreEspecie);
+			this.inventario.agregarEspecie(nombreEspecie, nombreCientifico, pathAGuardar);
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean nombreEspecieVacio(){
+		return altaVista.getNombreEspecie_tf().getText().length()==0;
+	}
+	
+	public boolean nombreCientificoVacio(){
+		return altaVista.getNombreCientifico_tf().getText().length()==0;
+	}
+	
+	public boolean nombreImagenVacio(){
+		return altaVista.getImagen_tf().getText().length()==0;
 	}
 
 	public AltaEspecie getAltaVista() {

@@ -46,7 +46,7 @@ public class VistaPrincipalController  implements ActionListener{
 		else if(e.getSource() == this.vistaPrincipal.getMntmControlarAltura()){
 			ColectorAltura c = new ColectorAltura();
 			PlanificadorAltura p = PlanificadorAltura.getInstance();
-			AnalizadorAltura a = new AnalizadorAltura(p, GuardadorAltura.getInstance());
+			AnalizadorAltura a = new AnalizadorAltura(GuardadorAltura.getInstance());
 			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas() , ControlSeguimientos.getInstance());
 			c.addObserver(m);
 			m.addObserver(p);

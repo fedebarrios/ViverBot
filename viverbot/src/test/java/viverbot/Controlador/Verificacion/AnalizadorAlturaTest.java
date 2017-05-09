@@ -60,7 +60,7 @@ public class AnalizadorAlturaTest {
 	@Test
 	public void EstrategiaMetroRoto(){
 		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
-		AnalizadorAltura analizador = new AnalizadorAltura(planificador, GuardadorAltura.getInstance());
+		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		IAnalisisAltura estrategia = analizador.getStrategy(new Altura(-10,"cm"), new Altura(4,"cm"));
 		assertTrue(estrategia instanceof StrategyMetroDown);
 	}
@@ -84,7 +84,7 @@ public class AnalizadorAlturaTest {
 	@Test
 	public void EstrategiaNadaContraQueComparar(){
 		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
-		AnalizadorAltura analizador = new AnalizadorAltura(planificador, GuardadorAltura.getInstance());
+		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		IAnalisisAltura estrategia = analizador.getStrategy(new Altura(4,"cm"), new EmptyAltura());
 		assertTrue(estrategia instanceof StrategySeguimientoNull);
 	}
@@ -92,7 +92,7 @@ public class AnalizadorAlturaTest {
 	@Test
 	public void EstrategiaSePuedeAnalizar(){
 		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
-		AnalizadorAltura analizador = new AnalizadorAltura(planificador, GuardadorAltura.getInstance());
+		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		IAnalisisAltura estrategia = analizador.getStrategy(new Altura(10,"cm"), new Altura(4,"cm"));
 		assertTrue(estrategia instanceof StrategyAnalisisAltura);
 	}

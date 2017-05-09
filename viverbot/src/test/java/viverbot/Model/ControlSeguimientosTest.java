@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.DTO.EspecieDTO;
 import viverbot.DTO.PlantaDTO;
 import viverbot.DTO.UbicacionDTO;
@@ -28,18 +29,21 @@ public class ControlSeguimientosTest {
 	HistorialOptimo historialOptimo1;
 	HistorialAltura historialAltura1;
 	SeguimientoAltura seguimiento1;
+	ControlSeguimientos control;
 	
 	
 	@Test
 	public void SeguimientoInvalido() {
 		inicializar();
 		
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie1);
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
 		
-		ControlSeguimientos control = ControlSeguimientos.getInstance();
-		control.agregarSeguimiento(planta1, historialOptimo1);
+		this.control = ControlSeguimientos.getInstance();
+		control.agregarSeguimiento(planta2, historialOptimo1);
 		
-		assertTrue(control.getSeguimientos().size() == 0);
+		assertEquals(0 , control.getSeguimientos().size());
+		
+		clear();
 	}
 	
 	@Test
@@ -48,12 +52,43 @@ public class ControlSeguimientosTest {
 		
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
 		
-		ControlSeguimientos control = ControlSeguimientos.getInstance();
+		this.control = ControlSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
 		
-		assertTrue(control.getSeguimientos().size() == 1);
+		assertEquals(1 , control.getSeguimientos().size());
+
+		clear();
+	}
+	
+	@Test
+	public void UltimoDiamedicionTestSinMedicionAnterior() {
+		inicializar();
+		
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
+		
+		this.control = ControlSeguimientos.getInstance();
+		control.agregarSeguimiento(planta1, historialOptimo1);
+		
+		assertEquals(1,control.getSeguimiento(planta1).getUltimoDiaMedicion());
+
+		clear();
+	}
+	
+	@Test
+	public void UltimoDiamedicionTestConMedicionGuardada() {
+		inicializar();
+		
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
+		this.control = ControlSeguimientos.getInstance();
+		control.agregarSeguimiento(planta1, historialOptimo1);
+		GuardadorAltura g = GuardadorAltura.getInstance();
+		g.guardar(new StrategyAnalisisAltura(),new Altura(14,"cm") , 5, control.getSeguimiento(planta1).getHistorialVerdadero());
+		assertEquals(5,control.getSeguimiento(planta1).getUltimoDiaMedicion());
+
+		clear();
 	}
 
+	
 	
 	@Test
 	public void ControlSeguimientoTest() {
@@ -66,12 +101,14 @@ public class ControlSeguimientosTest {
 		ArrayList<SeguimientoAltura> seguimientos = new ArrayList<SeguimientoAltura>();
 		seguimientos.add(seguimiento1);
 		
-		ControlSeguimientos control = ControlSeguimientos.getInstance();
+		this.control = ControlSeguimientos.getInstance();
 		control.cargarSeguimientos(seguimientos);
 		
 		assertTrue(control.getSeguimientos()!=null);
 		assertTrue(control.getSeguimientos().size()==1);
 		assertTrue(control.getSeguimiento(planta3)!=null);
+
+		clear();
 	}
 	
 	private void inicializar() {
@@ -79,9 +116,9 @@ public class ControlSeguimientosTest {
 		especie2 = new EspecieDTO(64 , "cebolla" , "cebollus" , "");
 		especie3 = new EspecieDTO(65 , "papa" , "papus" , "");
 		
-		planta1 = new PlantaDTO(64, 22, new UbicacionDTO(5,4), new Fecha(10, 10, 2016));
-		planta2 = new PlantaDTO(60, 59, new UbicacionDTO(4,4), new Fecha(10, 10, 2016));
-		planta3 = new PlantaDTO(65, 100, new UbicacionDTO(1,4), new Fecha(10, 10, 2016));
+		planta1 = new PlantaDTO(64, 22, new UbicacionDTO(5,4), new Fecha(6, 5, 2017));
+		planta2 = new PlantaDTO(60, 59, new UbicacionDTO(4,4), new Fecha(6, 5, 2017));
+		planta3 = new PlantaDTO(65, 100, new UbicacionDTO(1,4), new Fecha(6, 5, 2017));
 		
 		
 		tuplas1 = new ArrayList<TuplaAltura>();
@@ -94,5 +131,9 @@ public class ControlSeguimientosTest {
 		tuplas2.add(new TuplaAltura(new Altura(40,"cm"), 5));
 		tuplas2.add(new TuplaAltura(new Altura(50,"cm"), 6));
 		
+	}
+	
+	private void clear(){
+		ControlSeguimientos.getInstance().clear();;
 	}
 }

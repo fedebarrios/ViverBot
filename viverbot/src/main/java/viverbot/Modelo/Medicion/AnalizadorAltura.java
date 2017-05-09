@@ -12,11 +12,9 @@ import viverbot.Modelo.Magnitudes.Altura;
 import viverbot.Modelo.Magnitudes.EmptyAltura;
 
 public class AnalizadorAltura {
-	private PlanificadorAltura planificador;
 	private GuardadorAltura guardador;
 	
-	public AnalizadorAltura(PlanificadorAltura planificador, GuardadorAltura guardador) {
-		this.planificador = planificador;
+	public AnalizadorAltura(GuardadorAltura guardador) {
 		this.guardador = guardador;
 	}
 

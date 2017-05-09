@@ -10,19 +10,45 @@ public class AltaEspecieTest {
 	private AltaEspecie_Controller controladorEspecies;
 	
 	@Test
-	public void TestAltaEspecie(){
-		controladorEspecies = new AltaEspecie_Controller();
-		controladorEspecies.getAltaVista().dispose();
-		assertTrue(controladorEspecies.esValido("Tomatina"));
-		assertFalse(controladorEspecies.esValido("456"));	
-		assertTrue(controladorEspecies.esValido("Tomate grande"));
-		assertFalse(controladorEspecies.esValido("Tomate45")); 
-		
+	public void TestSeAgregoEspecie(){
+		inicializar();
 		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
-		assertTrue(controladorEspecies.registrarEspecie("Cebolla", "Tomate", ""));
-		assertFalse(controladorEspecies.registrarEspecie("Cebolla 45", "Tomate", ""));
-		assertFalse(controladorEspecies.registrarEspecie("Cebolla", "Tomate 12", ""));
+		assertTrue(controladorEspecies.registrarEspecie());
 		int cantidadEspeciesDespues = controladorEspecies.getInventario().obtenerEspecies().size();
-		assertTrue(cantidadEspeciesAntes+1 == cantidadEspeciesDespues);
+		assertEquals(cantidadEspeciesAntes+1 , cantidadEspeciesDespues);
+	}
+	
+	@Test
+	public void TestNoSePuedoAgregarEspecie(){
+		inicializar();
+		controladorEspecies.getAltaVista().getImagen_tf().setText("");
+		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
+		assertFalse(controladorEspecies.registrarEspecie());
+		int cantidadEspeciesDespues = controladorEspecies.getInventario().obtenerEspecies().size();
+		assertEquals(cantidadEspeciesAntes , cantidadEspeciesDespues);
+	}
+	
+	@Test
+	public void TestLimpiar(){
+		inicializar();
+		controladorEspecies.limpiar();
+		assertTrue(controladorEspecies.nombreEspecieVacio());
+		assertTrue(controladorEspecies.nombreCientificoVacio());
+		assertTrue(controladorEspecies.nombreImagenVacio());
+	}
+	
+	@Test
+	public void TestNoVacio(){
+		inicializar();
+		assertFalse(controladorEspecies.nombreEspecieVacio());
+		assertFalse(controladorEspecies.nombreCientificoVacio());
+		assertFalse(controladorEspecies.nombreImagenVacio());
+	}
+	
+	public void inicializar(){
+		controladorEspecies = new AltaEspecie_Controller();
+		controladorEspecies.getAltaVista().getNombreEspecie_tf().setText("Cebolla de verdeo");
+		controladorEspecies.getAltaVista().getNombreCientifico_tf().setText("Cebolla");
+		controladorEspecies.getAltaVista().getImagen_tf().setText("jeje");
 	}
 }

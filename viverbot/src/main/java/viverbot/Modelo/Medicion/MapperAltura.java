@@ -37,10 +37,6 @@ public class MapperAltura extends Observable implements Observer  {
 		return estadosDevueltos;
 	}
 
-	public int cantidadPlantas() {
-		return this.plantas.size();
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable o, Object alturasTomadas) {

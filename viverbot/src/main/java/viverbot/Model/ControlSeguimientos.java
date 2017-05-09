@@ -1,12 +1,10 @@
 package viverbot.Model;
 
 import java.util.ArrayList;
-import viverbot.DAO.EspecieDAO;
 import viverbot.DTO.PlantaDTO;
-import viverbot.Modelo.Magnitudes.Altura;
 
 public class ControlSeguimientos {
-	private static ControlSeguimientos control;
+	protected static ControlSeguimientos control;
 	public ArrayList<SeguimientoAltura> seguimientos;
 	
 	private ControlSeguimientos(){
@@ -135,10 +133,13 @@ public class ControlSeguimientos {
 			HistorialAltura h2 = new HistorialAltura(tuplas);
 			this.seguimientos.add(new SeguimientoAltura(planta, historialOptimo, h2));
 		}
-		
 	}
 	
 	public void cargarSeguimientos(ArrayList<SeguimientoAltura> seguimientos){
 		this.seguimientos = seguimientos;
+	}
+	
+	public void clear(){
+		ControlSeguimientos.control = null;
 	}
 }
