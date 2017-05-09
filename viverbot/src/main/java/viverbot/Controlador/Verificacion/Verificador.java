@@ -4,14 +4,17 @@ import java.util.Calendar;
 import java.sql.Date;
 
 public class Verificador {
-	
+	 
 	public static boolean campoExclusivamenteAlfabetico(String campo){
-		for(int i=0; i<campo.length(); i++){
-			if(Character.isDigit(campo.charAt(i))) {
-				return false;
-			} ;
+		if(!campo.isEmpty()){
+			for(int i=0; i<campo.length(); i++){
+				if(Character.isDigit(campo.charAt(i))) {
+					return false;
+				} ;
+			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	public static boolean extensionImagenValida(String path){
