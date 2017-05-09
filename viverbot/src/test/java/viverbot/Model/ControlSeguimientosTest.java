@@ -68,8 +68,8 @@ public class ControlSeguimientosTest {
 		
 		this.control = ControlSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
-		
-		assertEquals(1,control.getSeguimiento(planta1).getUltimoDiaMedicion());
+		int diaActualPlanta = Fecha.diasEntreDosFechas(Fecha.obtenerFechaActual(), planta1.getFechaPlanta())-1;
+		assertEquals(diaActualPlanta ,control.getSeguimiento(planta1).getUltimoDiaMedicion());
 
 		clear();
 	}
@@ -87,31 +87,9 @@ public class ControlSeguimientosTest {
 
 		clear();
 	}
-
-	
-	
-	@Test
-	public void ControlSeguimientoTest() {
-		inicializar();
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie3);
-		HistorialAltura historialAltura1 = new HistorialAltura(tuplas2);
-		SeguimientoAltura seguimiento1 = new SeguimientoAltura(planta3, historialOptimo1 , historialAltura1 );
-		
-		
-		ArrayList<SeguimientoAltura> seguimientos = new ArrayList<SeguimientoAltura>();
-		seguimientos.add(seguimiento1);
-		
-		this.control = ControlSeguimientos.getInstance();
-		control.cargarSeguimientos(seguimientos);
-		
-		assertTrue(control.getSeguimientos()!=null);
-		assertTrue(control.getSeguimientos().size()==1);
-		assertTrue(control.getSeguimiento(planta3)!=null);
-
-		clear();
-	}
 	
 	private void inicializar() {
+		clear();
 		especie1 = new EspecieDTO(60 , "tomates" , "tomatus" , "");
 		especie2 = new EspecieDTO(64 , "cebolla" , "cebollus" , "");
 		especie3 = new EspecieDTO(65 , "papa" , "papus" , "");
@@ -134,6 +112,6 @@ public class ControlSeguimientosTest {
 	}
 	
 	private void clear(){
-		ControlSeguimientos.getInstance().clear();;
+		ControlSeguimientos.getInstance().clear();
 	}
 }
