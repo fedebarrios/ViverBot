@@ -1,74 +1,181 @@
 package viverbot.Model.Sensores;
 
-import java.util.ArrayList;
 
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import viverbot.Model.Ambiente;
 import viverbot.Model.Hora;
-import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Model.RangoNumerico;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Sensores.SensorTemperatura;
+import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
+import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaJunio;
+import viverbot.Modelo.Simulacion.IBuildMedir;
+import viverbot.Modelo.Simulacion.Simulador;
 
 public class SensorTemperaturaTest extends TestCase {
 	private static SensorTemperatura sensorTest = null;
+	private static final IBuildMedir bEnero = new BuildSimuladorTemperaturaEnero();
+	private static  Simulador simuladorEnero = bEnero.getSimulador();
+	private static final IBuildMedir bJunio = new BuildSimuladorTemperaturaJunio();
+	private static  Simulador simuladorJunio = bJunio.getSimulador();
 
 	// este test verifica que el return sea de tipo temperatura
-	@Test
-	public void testGetMedicionVerificarClase() {
-		inicialize();
-		assertTrue(sensorTest.getMedicion() instanceof Temperatura);
-		clear();
-	}
+	
 
 	// este test verifica que la temperatura sea correcta durante el cada
 	// horario definido
 	@Test
-	public void testGetMedicion() {
+	public void testGetMedicionMediaNoche() {
 		inicialize();
+		sensorTest.setSimulador(simuladorEnero);
 
-		Ambiente ambienteSimulado = Ambiente.getInstance();
+		Hora noche = new Hora(0, 0, 0);
+		simuladorEnero.setHoraActual(noche);
+		RangoNumerico r = simuladorEnero.getRango();
+		Medicion m = sensorTest.getMedicion();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
 
-		assertTrue(this.verificarTemperatura(this.getHorarios(), ambienteSimulado));
+		Medicion ms = simuladorEnero.getMedicion();
+
+		double diferencia = m.getValor() - ms.getValor();
+		if (diferencia < 0) {
+			diferencia = diferencia * -1;
+		}
+		assertTrue(diferencia <= r.getMaximo() - r.getMinimo());
 		clear();
 	}
 
-	/// metodos auxiliares
+	@Test
+	public void testGetMedicionMadrugada() {
+		inicialize();
+		Hora noche = new Hora(3, 0, 0);
+		simuladorEnero.setHoraActual(noche);
+		sensorTest.setSimulador(simuladorEnero);
 
-	private ArrayList<Hora> getHorarios() {
-		Hora amanecer = new Hora(6, 0, 0);
-		Hora mañana = new Hora(9, 0, 0);
-		Hora medioDia = new Hora(12, 0, 0);
-		Hora tarde = new Hora(15, 0, 0);
-		Hora atardecer = new Hora(18, 0, 0);
+		
+		RangoNumerico r = simuladorEnero.getRango();
+		Medicion m = sensorTest.getMedicion();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+
+		Medicion ms = simuladorEnero.getMedicion();
+
+		double diferencia = m.getValor() - ms.getValor();
+		if (diferencia < 0) {
+			diferencia = diferencia * -1;
+		}
+
+		assertTrue(diferencia <= r.getMaximo() - r.getMinimo());
+		clear();
+	}@Test
+	public void testGetMedicionAmanecer() {
+		inicialize();
+		
+		Hora h = new Hora(6,0,0);
+		simuladorEnero.setHoraActual(h);
+		System.out.println(simuladorEnero.getMedicion().getValor());
+		clear();
+	}@Test
+	public void testGetMedicionMañana() {
+		inicialize();
+		sensorTest.setSimulador(simuladorEnero);
+
+		Hora noche = new Hora(9, 0, 0);
+		simuladorEnero.setHoraActual(noche);
+		Medicion ms = simuladorEnero.getMedicion();
+
+		RangoNumerico r = simuladorEnero.getRango();
+		Medicion m = sensorTest.getMedicion();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+
+
+		double diferencia = m.getValor() - ms.getValor();
+		if (diferencia < 0) {
+			diferencia = diferencia * -1;
+		}
+		assertTrue(diferencia <= r.getMaximo() - r.getMinimo());
+		clear();
+	}@Test
+	public void testGetMedicionMedioDia() {
+		inicialize();
+		sensorTest.setSimulador(simuladorEnero);
+
+		Hora noche = new Hora(12, 0, 0);
+		simuladorEnero.setHoraActual(noche);
+		RangoNumerico r = simuladorEnero.getRango();
+		Medicion m = sensorTest.getMedicion();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+
+		Medicion ms = simuladorEnero.getMedicion();
+
+		double diferencia = m.getValor() - ms.getValor();
+		if (diferencia < 0) {
+			diferencia = diferencia * -1;
+		}
+		assertTrue(diferencia <= r.getMaximo() - r.getMinimo());
+		clear();
+	}@Test
+	public void testGetMedicionTarde() {
+		inicialize();
+		sensorTest.setSimulador(simuladorEnero);
+
+		Hora noche = new Hora(15, 0, 0);
+		simuladorEnero.setHoraActual(noche);
+		RangoNumerico r = simuladorEnero.getRango();
+		Medicion m = sensorTest.getMedicion();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+
+		Medicion ms = simuladorEnero.getMedicion();
+
+		double diferencia = m.getValor() - ms.getValor();
+		if (diferencia < 0) {
+			diferencia = diferencia * -1;
+		}
+		assertTrue(diferencia <= r.getMaximo() - r.getMinimo());
+		clear();
+	}@Test
+	public void testGetMedicionAtardecer() {
+		inicialize();
+		sensorTest.setSimulador(simuladorEnero);
+		Hora noche = new Hora(18, 0, 0);
+		simuladorEnero.setHoraActual(noche);
+		RangoNumerico r = simuladorEnero.getRango();
+		Medicion m = sensorTest.getMedicion();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+
+		Medicion ms = simuladorEnero.getMedicion();
+
+		double diferencia = m.getValor() - ms.getValor();
+		if (diferencia < 0) {
+			diferencia = diferencia * -1;
+		}
+		assertTrue(diferencia <= r.getMaximo() - r.getMinimo());
+		clear();
+	}@Test
+	public void testGetMedicionNoche() {
+		inicialize();
+		sensorTest.setSimulador(simuladorEnero);
+
 		Hora noche = new Hora(21, 0, 0);
-		Hora mediaNoche = new Hora(24, 0, 0);
-		Hora madrugada = new Hora(3, 0, 0);
+		simuladorEnero.setHoraActual(noche);
+		RangoNumerico r = simuladorEnero.getRango();
+		Medicion m = sensorTest.getMedicion();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
 
-		ArrayList<Hora> horarios = new ArrayList<Hora>();
-		horarios.add(amanecer);
-		horarios.add(mañana);
-		horarios.add(medioDia);
-		horarios.add(tarde);
-		horarios.add(atardecer);
-		horarios.add(noche);
-		horarios.add(mediaNoche);
-		horarios.add(madrugada);
-		return horarios;
+		Medicion ms = simuladorEnero.getMedicion();
 
+		double diferencia = m.getValor() - ms.getValor();
+		if (diferencia < 0) {
+			diferencia = diferencia * -1;
+		}
+		assertTrue(diferencia <= r.getMaximo() - r.getMinimo());
+		clear();
 	}
+	/// metodos auxiliares
 
 	private void inicialize() {
 		sensorTest = new SensorTemperatura();
-	}
-
-	private boolean verificarTemperatura(ArrayList<Hora> horarios, Ambiente a) {
-		boolean ret = true;
-		for (Hora h : horarios) {
-			a.setHoraActual(h);
-			ret = ret && sensorTest.getMedicion().equals(a.getTemperatura());
-		}
-		return ret;
 	}
 
 	private void clear() {

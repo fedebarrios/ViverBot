@@ -11,7 +11,7 @@ import viverbot.Modelo.Magnitudes.Medicion;
 public class BuildSimuladorTemperaturaEneroTest {
 
 	private static final IBuildMedir b = new BuildSimuladorTemperaturaEnero();
-	private static final Simulador s = b.getSimulador();
+	private static  Simulador s = b.getSimulador();
 
 	@Test
 	public void testGetSimuladorMediaNoche() {

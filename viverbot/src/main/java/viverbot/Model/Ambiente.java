@@ -2,12 +2,14 @@ package viverbot.Model;
 
 import viverbot.Modelo.Magnitudes.Humedad;
 import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class Ambiente implements Runnable {
 
 	private static Temperatura temperaturaActual = new Temperatura(25.0);;
-	private static Humedad humedadActual = new Humedad(10.0);
+	private static Medicion humedadActual = new Medicion(10.0, Magnitudes.HUMEDAD);
 	private Hora horaActual;
 	private static Ambiente ambiente;
 
@@ -28,7 +30,7 @@ public class Ambiente implements Runnable {
 
 	}
 
-	public Humedad getHumedad() {
+	public Medicion getHumedad() {
 		return humedadActual;
 	}
 

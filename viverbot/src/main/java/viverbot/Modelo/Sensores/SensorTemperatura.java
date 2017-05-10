@@ -1,19 +1,26 @@
 package viverbot.Modelo.Sensores;
 
-import viverbot.Model.Ambiente;
-import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Model.Hora;
+import viverbot.Modelo.Magnitudes.Medicion;
+import viverbot.Modelo.Simulacion.Simulador;
 
 public class SensorTemperatura extends InstrumentoMedicion {
 
-	
+	private Simulador s;
+
 	@Override
-	protected Magnitud obtenerMedicion() {
+	public Medicion getMedicion() {
+
 		return this.simularMedicion();
 	}
 
-	protected Magnitud simularMedicion() {
-		Ambiente a = Ambiente.getInstance();
-		return a.getTemperatura();
+	protected Medicion simularMedicion() {
+		s.setHoraActual(Hora.obtenerHoraActual());
+		return s.getMedicion();
+	}
+
+	public void setSimulador(Simulador simulador) {
+		this.s = simulador;
 	}
 
 }
