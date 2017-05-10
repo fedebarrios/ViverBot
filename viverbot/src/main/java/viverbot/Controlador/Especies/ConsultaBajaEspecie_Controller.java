@@ -10,26 +10,37 @@ import javax.swing.JOptionPane;
 import viverbot.DTO.EspecieDTO;
 import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
+import viverbot.Vista.Auxiliares.DefaultOptionPane;
 import viverbot.Vista.Especie.ConsultaBajaEspecie;
 
 public class ConsultaBajaEspecie_Controller implements ActionListener {
 	private ConsultaBajaEspecie consultaBajaVista;
 	private VerDetallesEspecie_Controller controladorVerDetalle;
 	private Inventario inventario;
+	private DefaultOptionPane optionPane;
 
 	public ConsultaBajaEspecie_Controller() {
 		consultaBajaVista = new ConsultaBajaEspecie(this);
 		inventario = new Inventario();
 		llenarCombo(consultaBajaVista.getComboBox());
 		this.consultaBajaVista.setVisible(true);
+		this.optionPane = new DefaultOptionPane();
 	}
 
 	@SuppressWarnings("unchecked")
-	private void llenarCombo(@SuppressWarnings("rawtypes") JComboBox combo) {
+	public void llenarCombo(@SuppressWarnings("rawtypes") JComboBox combo) {
 		ArrayList<EspecieDTO> especies = inventario.obtenerEspecies();
 		for (int i = 0; i < especies.size(); i++) {
 			consultaBajaVista.getComboBox().addItem(especies.get(i).getNombre());
 		}
+	}
+	
+	public ConsultaBajaEspecie getVista(){
+		return consultaBajaVista;
+	}
+	
+	public VerDetallesEspecie_Controller getControladorVerDetalle(){
+		return controladorVerDetalle;
 	}
 
 	@Override
@@ -40,8 +51,8 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 			String elementoElegido = this.consultaBajaVista.getComboBox().getSelectedItem().toString();
 			boolean sePuedeBorrar = sePuedeBorrar(elementoElegido);
 			if(!sePuedeBorrar) { 
-				JOptionPane.showMessageDialog(this.consultaBajaVista, "La especie asociada tiene plantas cargadas");
-			}
+				optionPane.showMessageDialog(this.consultaBajaVista, "La especie asociada tiene plantas cargadas");
+			} 
 			else{
 				ArrayList<EspecieDTO> esp = inventario.obtenerEspecies();
 				for (int i = 0; i < esp.size(); i++) {
@@ -75,5 +86,9 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 			return true;
 		}
 		return false;
+	}
+
+	public void setOptionPane(DefaultOptionPane optionPane) {
+		this.optionPane = optionPane;
 	}
 }
