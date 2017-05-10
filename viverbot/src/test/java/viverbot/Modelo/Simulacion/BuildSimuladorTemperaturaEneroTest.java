@@ -21,15 +21,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(15.0, 19.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 
@@ -41,15 +41,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(10.0, 17.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 
@@ -61,15 +61,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(15.0, 20.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 
@@ -81,15 +81,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(18.0, 25.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 
@@ -101,15 +101,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(25.0, 32.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 
@@ -121,15 +121,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(27.0, 35.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 
@@ -141,15 +141,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(20.0, 30.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 
@@ -161,15 +161,15 @@ public class BuildSimuladorTemperaturaEneroTest {
 		RangoNumerico r = new RangoNumerico(17.0, 25.0);
 		
 		s.setHoraActual(h0);
-		Medicion m = s.getMedicion(h0);
+		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h1);
-		m = s.getMedicion(h1);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 		
 		s.setHoraActual(h2);
-		m = s.getMedicion(h2);
+		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
 	}
 

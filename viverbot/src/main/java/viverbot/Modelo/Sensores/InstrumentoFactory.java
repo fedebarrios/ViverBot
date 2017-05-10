@@ -2,42 +2,29 @@ package viverbot.Modelo.Sensores;
 
 import viverbot.Modelo.Magnitudes.Magnitudes;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class InstrumentoFactory {
-	private static InstrumentoMedicion sensorTemp;
-	private static InstrumentoMedicion sensorHumedad;
-	private static InstrumentoMedicion metro;
+	
+	private static final Map<Magnitudes, InstrumentoMedicion> sensores= inicializar();
 
 	public static InstrumentoMedicion crearInstrumento(Magnitudes m) {
-		if (m.equals(Magnitudes.TEMPERATURA)) {
-			return getInstanceSensorTemperatura();
-		} else if (m.equals(Magnitudes.HUMEDAD)) {
-			return getInstanceSensorHumedad();
-		} else if (m.equals(Magnitudes.ALTURA)) {
-			return getInstanceMetro();
-		}
-		return new UnknowInstrumentoMedicion();
-
-	}
-
-	private static InstrumentoMedicion getInstanceSensorTemperatura() {
-		if (sensorTemp == null) {
-			sensorTemp = new SensorTemperatura();
-		}
-		return sensorTemp;
-	}
-
-	private static InstrumentoMedicion getInstanceSensorHumedad() {
-		if (sensorHumedad == null) {
-			sensorHumedad = new SensorHumedad();
-		}
-		return sensorHumedad;
+		return sensores.get(m);
 	}
 	
-	private static InstrumentoMedicion getInstanceMetro() {
-		if (metro == null) {
-			metro = new Metro();
-		}
-		return metro;
+	private static Map<Magnitudes, InstrumentoMedicion> inicializar(){
+		
+		Map<Magnitudes, InstrumentoMedicion> s = new HashMap<Magnitudes, InstrumentoMedicion>();
+		s.put(Magnitudes.TEMPERATURA, new SensorTemperatura());
+		s.put(Magnitudes.HUMEDAD, new SensorHumedad());
+		s.put(Magnitudes.ALTURA, new Metro());
+
+		return s;
 	}
+
+	
+
 
 }

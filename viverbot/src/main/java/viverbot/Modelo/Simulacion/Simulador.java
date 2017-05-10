@@ -20,7 +20,7 @@ public class Simulador {
 		this.horaActual = Hora.obtenerHoraActual();
 	}
 
-	public Medicion getMedicion(Hora actual) {
+	public Medicion getMedicion() {
 		RangoNumerico r = this.rangos.get(Horario.getHorario(this.horaActual));
 		return new Medicion(Math.random() * (r.getMaximo() - r.getMinimo()) + r.getMinimo(), this.magnitud);
 

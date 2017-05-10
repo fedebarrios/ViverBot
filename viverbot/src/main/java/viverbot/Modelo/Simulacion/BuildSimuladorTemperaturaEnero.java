@@ -9,10 +9,10 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 public class BuildSimuladorTemperaturaEnero implements IBuildMedir {
 
 	private static final Map<Horario, RangoNumerico> rangos = inicializarRangos();
+	private static final Simulador s = new Simulador(rangos, Magnitudes.TEMPERATURA);
 
 	@Override
 	public Simulador getSimulador() {
-		Simulador s = new Simulador(rangos, Magnitudes.TEMPERATURA);
 		return s;
 	}
 
