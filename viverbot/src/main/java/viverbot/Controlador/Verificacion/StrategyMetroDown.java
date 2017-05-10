@@ -2,13 +2,12 @@ package viverbot.Controlador.Verificacion;
 
 import viverbot.DTO.PlantaDTO;
 import viverbot.Interfaces.IAnalisisAltura;
-import viverbot.Model.SeguimientoAltura;
-import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class StrategyMetroDown implements IAnalisisAltura{
 
 	@Override
-	public EstadoAltura analizar(Altura actual, Altura esperada , PlantaDTO planta) {
+	public EstadoAltura analizar(Medicion actual, Medicion esperada , PlantaDTO planta) {
 		return new EstadoAlturaNoComparada("MetroDown");
 	}
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
@@ -12,7 +12,7 @@ import viverbot.Modelo.Sensores.InstrumentoMedicion;
 
 public class MetroTest {
 	private InstrumentoMedicion metro;
-	private Magnitud m;
+	private Medicion m;
 	@Test
 	public void medicionNoNegativa(){
 		metro = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
@@ -29,6 +29,6 @@ public class MetroTest {
 	
 	public void retornarAltura(){
 		metro = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
-		assertTrue(metro.getMedicion() instanceof Altura);
+		assertTrue(metro.getMedicion() instanceof Medicion);
 	}
 }

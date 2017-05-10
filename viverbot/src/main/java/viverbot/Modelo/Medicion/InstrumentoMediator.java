@@ -8,6 +8,7 @@ import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
 import viverbot.Modelo.Sensores.InstrumentoMedicion;
 
@@ -25,7 +26,7 @@ public class InstrumentoMediator {
 		this.instrumentoMedicion = InstrumentoFactory.crearInstrumento(m);
 	}
 
-	public Magnitud tomarMedicion() {
+	public Medicion tomarMedicion() {
 		return this.instrumentoMedicion.getMedicion();
 	}
 
@@ -33,8 +34,8 @@ public class InstrumentoMediator {
 		return instrumentoMedicion;
 	}
 	
-	public ArrayList<Magnitud> tomarAlturas(){
-		ArrayList<Magnitud> alturasActuales = new ArrayList<Magnitud> ();
+	public ArrayList<Medicion> tomarAlturas(){
+		ArrayList<Medicion> alturasActuales = new ArrayList<Medicion> ();
 		soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
 		plantas = new Plantas().obtenerPlantas();
 		for (int i = 0 ; i < plantas.size() ; i++){

@@ -8,8 +8,8 @@ import viverbot.Controlador.Verificacion.StrategySeguimientoNull;
 import viverbot.Interfaces.IAnalisisAltura;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.SeguimientoAltura;
-import viverbot.Modelo.Magnitudes.Altura;
-import viverbot.Modelo.Magnitudes.EmptyAltura;
+import viverbot.Modelo.Magnitudes.EmptyMedicion;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class AnalizadorAltura {
 	private GuardadorAltura guardador;
@@ -18,8 +18,8 @@ public class AnalizadorAltura {
 		this.guardador = guardador;
 	}
 
-	public EstadoAltura analizar(Altura alturaActual, SeguimientoAltura seguimiento, int diaActual) {
-		Altura alturaEsperada = seguimiento.getHistorialOptimo().buscarTupla(diaActual).getAltura();
+	public EstadoAltura analizar(Medicion alturaActual, SeguimientoAltura seguimiento, int diaActual) {
+		Medicion alturaEsperada = seguimiento.getHistorialOptimo().buscarTupla(diaActual).getAltura();
 		IAnalisisAltura estrategia = getStrategy(alturaActual, alturaEsperada) ;
 		EstadoAltura estadoActual = estrategia.analizar(alturaActual, alturaEsperada, seguimiento.getPlanta());
 		//guardador.guardar(estrategia, alturaActual, diaActual, seguimiento.getHistorialVerdadero());
@@ -27,8 +27,8 @@ public class AnalizadorAltura {
 		return estadoActual;
 	}
 	
-	public IAnalisisAltura getStrategy(Altura alturaActual, Altura alturaEsperada) {
-		if (alturaEsperada instanceof EmptyAltura){
+	public IAnalisisAltura getStrategy(Medicion alturaActual, Medicion alturaEsperada) {
+		if (alturaEsperada instanceof EmptyMedicion){
 			return new StrategySeguimientoNull();
 		}else if (alturaActual.getValor() < 0){
 			return new StrategyMetroDown();

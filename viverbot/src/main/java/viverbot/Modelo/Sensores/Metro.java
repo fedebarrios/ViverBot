@@ -2,36 +2,37 @@ package viverbot.Modelo.Sensores;
 
 import java.util.Random;
 
-import viverbot.Modelo.Magnitudes.Altura;
 import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class Metro extends InstrumentoMedicion {
 	private int cantidadDeMediciones = 0;
 	private Random random;
 
 	@Override
-	protected Magnitud obtenerMedicion() {
+	protected Medicion obtenerMedicion() {
 		return this.simularMedicion();
 	}
 
-	protected Magnitud simularMedicion() {
+	protected Medicion simularMedicion() {
 		random = new Random();
 
-		Altura medicion;
+		Medicion medicion;
 		int probabilidadRomperse = random.nextInt(100);
 
 		if (probabilidadRomperse == 2 || probabilidadRomperse == 5 || probabilidadRomperse == 8) {
-			medicion = new Altura(-1, "cm");
+			medicion = new Medicion(-1.0, Magnitudes.ALTURA);
 		} else {
 			cantidadDeMediciones++;
 			if (cantidadDeMediciones < 3) {
-				medicion = new Altura(random.nextDouble() * 25 + 100, "cm");
+				medicion = new Medicion(random.nextDouble() * 25 + 100, Magnitudes.ALTURA);
 			} else if (cantidadDeMediciones < 5) {
-				medicion = new Altura(random.nextDouble() * 30 + 120, "cm");
+				medicion = new Medicion(random.nextDouble() * 30 + 120, Magnitudes.ALTURA);
 			} else if (cantidadDeMediciones < 8) {
-				medicion = new Altura(random.nextDouble() * 40 + 110, "cm");
+				medicion = new Medicion(random.nextDouble() * 40 + 110, Magnitudes.ALTURA);
 			} else {
-				medicion = new Altura(random.nextDouble() * 25 + 100, "cm");
+				medicion = new Medicion(random.nextDouble() * 25 + 100, Magnitudes.ALTURA);
 			}
 		}
 		return medicion;

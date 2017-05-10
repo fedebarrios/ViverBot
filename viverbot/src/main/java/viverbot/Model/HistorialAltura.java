@@ -2,8 +2,8 @@ package viverbot.Model;
 
 import java.util.List;
 
-import viverbot.Modelo.Magnitudes.Altura;
-import viverbot.Modelo.Magnitudes.EmptyAltura;
+import viverbot.Modelo.Magnitudes.EmptyMedicion;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class HistorialAltura {
 	
@@ -39,13 +39,13 @@ public class HistorialAltura {
 		}
 	}
 	
-	public TuplaAltura buscarTupla(Altura a){
+	public TuplaAltura buscarTupla(Medicion a){
 		for (int i = 0; i<historial.size() ; i++){
-			if(historial.get(i).getAltura().getCentimetros()==a.getCentimetros()){
+			if(historial.get(i).getAltura().getValor()==a.getValor()){
 				return historial.get(i);
 			}
 		}
-		return new TuplaAltura(new EmptyAltura(),0);
+		return new TuplaAltura(new EmptyMedicion(),0);
 	}
 	
 	public TuplaAltura buscarTupla(int d){
@@ -54,7 +54,7 @@ public class HistorialAltura {
 				return historial.get(i);
 			}
 		}
-		return new TuplaAltura(new EmptyAltura(),0);
+		return new TuplaAltura(new EmptyMedicion(),0);
 	}
 	
 	public boolean verificarExistente(int dia) {

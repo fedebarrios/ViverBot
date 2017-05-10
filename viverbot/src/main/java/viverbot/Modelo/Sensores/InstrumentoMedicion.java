@@ -1,14 +1,14 @@
 package viverbot.Modelo.Sensores;
 
-import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public abstract class  InstrumentoMedicion {
 
-	public Magnitud getMedicion() {
+	public Medicion getMedicion() {
 		return obtenerMedicion();
 	}
 
-	protected Magnitud obtenerMedicion(){
+	protected Medicion obtenerMedicion(){
 		return null;
 	}
 	

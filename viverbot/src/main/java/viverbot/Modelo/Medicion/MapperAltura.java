@@ -9,7 +9,7 @@ import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.DTO.PlantaDTO;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.SeguimientoAltura;
-import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class MapperAltura extends Observable implements Observer  {
 	
@@ -25,7 +25,7 @@ public class MapperAltura extends Observable implements Observer  {
 		estadosDePlantas = new ArrayList<EstadoAltura>();
 	}
 	
-	public List<EstadoAltura> relacionar(List<Altura> alturas){
+	public List<EstadoAltura> relacionar(List<Medicion> alturas){
 		List<EstadoAltura> estadosDevueltos = new ArrayList<EstadoAltura>(); 
 		int i = 0;
 		for(PlantaDTO p : plantas){
@@ -40,7 +40,7 @@ public class MapperAltura extends Observable implements Observer  {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable o, Object alturasTomadas) {
-		this.estadosDePlantas = this.relacionar(((ArrayList<Altura>) alturasTomadas));
+		this.estadosDePlantas = this.relacionar(((ArrayList<Medicion>) alturasTomadas));
 		notificar();
 	}
 	
