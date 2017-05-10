@@ -14,18 +14,16 @@ public class EvaluaRiegoXTemperatura  extends EvaluaRiegoDecorator{
 
 	
 	public NivelRiego cantidadOptimaRiego(){
-		NivelRiego nivel=NivelRiego.NORMAL;
+		NivelRiego nivel=getRiegoValidable().cantidadOptimaRiego();
 		if (temperaturaActual.getValor()> rangoIdeal.getMaximo()){
-			nivel= NivelRiego.AUMENTAR;
+			nivel=nivel.aumentar();
 		}else if(temperaturaActual.getValor()< rangoIdeal.getMinimo()){
-			nivel= NivelRiego.BAJAR;
+			nivel=nivel.bajar();
 		}
-		return getRiegoValidable().cantidadOptimaRiego().nivelar(nivel);
+		return nivel;
 	}
 	
 	
-
-
 	public RangoNumerico getRangoIdeal() {
 		return rangoIdeal;
 	}

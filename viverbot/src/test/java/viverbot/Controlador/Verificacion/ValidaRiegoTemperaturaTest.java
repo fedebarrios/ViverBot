@@ -7,13 +7,13 @@ import org.junit.Test;
 import viverbot.Controlador.Verificacion.RiegoValidable;
 import viverbot.Controlador.Verificacion.EvaluaRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiegoXTemperatura;
-import viverbot.Model.NivelRiego;
-import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class ValidaRiegoTemperaturaTest {
 
 	private EvaluaRiegoXTemperatura EvaluaRiegoTempTest=null;
+	private EvaluaRiego EvaluaRiegoInicial=null;
+
 	private Temperatura temperaturaBaja = new Temperatura(5.0);
 	private Temperatura temperaturaAlta = new Temperatura(25.0);
 
@@ -29,16 +29,18 @@ public class ValidaRiegoTemperaturaTest {
 	@Test
 	public void AnalizarBajoTest() {
 		this.inicialize();
-		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaBaja); 
-		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),NivelRiego.BAJAR);
+		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaBaja);
+				
+		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),EvaluaRiegoInicial.cantidadOptimaRiego().bajar());
 
 	}
 	
 	@Test
 	public void AnalizarAltoTest() {
 		this.inicialize();
-		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaAlta); 
-		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),NivelRiego.AUMENTAR);
+		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaAlta);
+		
+		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),EvaluaRiegoInicial.cantidadOptimaRiego().aumentar());
 	}
 	
 	
@@ -47,8 +49,11 @@ public class ValidaRiegoTemperaturaTest {
 
 	private void inicialize() {
 		RiegoValidable rv= new EvaluaRiego();
+		EvaluaRiegoInicial=new EvaluaRiego();
 		EvaluaRiegoTempTest=new EvaluaRiegoXTemperatura(rv);
 
+
+		
 	}
 
 	private void clear() {

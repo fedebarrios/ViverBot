@@ -8,16 +8,12 @@ import viverbot.Controlador.Verificacion.ControlTiempo;
 import viverbot.Controlador.Verificacion.RiegoValidable;
 import viverbot.Controlador.Verificacion.EvaluaRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiegoXTiempo;
-import viverbot.Model.Estacion;
 import viverbot.Model.Fecha;
 import viverbot.Model.Hora;
-import viverbot.Model.NivelRiego;
-import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Temperatura;
-
 public class ValidaRiegoTiempoTest {
 
 	private EvaluaRiegoXTiempo validaRiegoTiempoTest=null;
+	private EvaluaRiego EvaluaRiegoInicial=null;
 
 	@Test
 	public void ValidaRiegoTempTest() {
@@ -32,12 +28,12 @@ public class ValidaRiegoTiempoTest {
 		this.inicialize();
 		Fecha f=new Fecha(16,01,1986);
 		Hora h=new Hora(15,00,00);
-		ControlTiempo t1 = new ControlTiempo(new Fecha(16,01,1986),new Hora(15,00,00));
+		ControlTiempo t1 = new ControlTiempo(f,h);
 		validaRiegoTiempoTest.setControlTiempo(t1);
 		
 		assertTrue(validaRiegoTiempoTest.getControlTiempo().esVerano());
 		assertTrue(validaRiegoTiempoTest.getControlTiempo().esDeDia());
-		assertEquals(validaRiegoTiempoTest.cantidadOptimaRiego(),NivelRiego.AUMENTAR);
+		assertEquals(validaRiegoTiempoTest.cantidadOptimaRiego(),EvaluaRiegoInicial.cantidadOptimaRiego().aumentar());
 		
 	}
 
@@ -53,7 +49,7 @@ public class ValidaRiegoTiempoTest {
 		
 		assertTrue(validaRiegoTiempoTest.getControlTiempo().esInvierno());
 		assertFalse(validaRiegoTiempoTest.getControlTiempo().esDeDia());
-		assertEquals(validaRiegoTiempoTest.cantidadOptimaRiego(),NivelRiego.BAJAR);
+		assertEquals(validaRiegoTiempoTest.cantidadOptimaRiego(),EvaluaRiegoInicial.cantidadOptimaRiego().bajar());
 			
 	}
 
@@ -65,6 +61,7 @@ public class ValidaRiegoTiempoTest {
 
 	private void inicialize() {
 		RiegoValidable rv= new EvaluaRiego();
+		EvaluaRiegoInicial=new EvaluaRiego();
 		validaRiegoTiempoTest=new EvaluaRiegoXTiempo(rv);
 
 	}

@@ -1,11 +1,9 @@
 package viverbot.Model;
 
 public enum NivelRiego {
-	NULO(0),
-	AUMENTAR(-1),
-	BAJAR(-2),
-	NORMAL(3),
-	NEUTRO(3),
+	NIVELNULO(0),
+	NIVELNORMAL(3),
+	NIVELNEUTRO(3),
 	
     NIVEL1(1),
 	NIVEL2(2),
@@ -17,41 +15,30 @@ public enum NivelRiego {
 	
 	NivelRiego (int pesoEspecifico) { 
 	      this.cantidadEspecifico = pesoEspecifico;
-	} //Cierre del constructor
+	} 
 	
 	
 	
     public int getPesoEspecifico() { 
     	return cantidadEspecifico; 
     }
-    
-    
-    public NivelRiego nivelar(NivelRiego nivelR){
-    	NivelRiego n = nivelR;
-    	if(getPesoEspecifico()!=0){
-    		switch (nivelR){
-    		case AUMENTAR:
-    		n=evaluaPeso(getPesoEspecifico()+1);
-    		break;
-    		case BAJAR:
-   		 	n=evaluaPeso(getPesoEspecifico()-1);
-   		 	break;
-    		case NULO:
-    		n=NivelRiego.NULO;
-    		break;
-    		case NORMAL:
-         	n=evaluaPeso(getPesoEspecifico());;	
-    		break;
-    		case NEUTRO:    	
-       		n=evaluaPeso(getPesoEspecifico());;	
-    		break;
-    		}
-    	}else{
-    		n=NivelRiego.NULO;
-    	}
-       	
-    	return n;
+
+    public NivelRiego aumentar(){
+    	if (getPesoEspecifico()!=0) 
+    		return evaluaPeso(getPesoEspecifico()+1); 
+    	else
+    		return NIVELNULO;
     }
+    
+    public NivelRiego bajar(){
+    	if (getPesoEspecifico()!=0) 
+    		return evaluaPeso(getPesoEspecifico()-1); 
+    	else
+    		return NIVELNULO;    
+    }
+    
+    
+
     
     private NivelRiego evaluaPeso(int peso){
     	NivelRiego n=NIVEL1;
@@ -86,9 +73,3 @@ public enum NivelRiego {
     
     
 }
-/*    	if(getPesoEspecifico()-nivelR.getPesoEspecifico()<0){
-    		return NIVEL1;
-    	}else if(getPesoEspecifico()-nivelR.getPesoEspecifico()>5){
-    		return NIVEL5;
-    	}
-*/
