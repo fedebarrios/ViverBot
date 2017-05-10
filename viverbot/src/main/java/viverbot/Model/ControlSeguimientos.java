@@ -18,6 +18,7 @@ public class ControlSeguimientos {
 		return control;
 	}
 
+	
 	public ArrayList<SeguimientoAltura> getSeguimientos() {
 		return seguimientos;
 	}
