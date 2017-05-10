@@ -37,6 +37,7 @@ public class InstrumentoMediator {
 	//move este ciclo al colector
 	public ArrayList<Medicion> tomarAlturas(){
 		ArrayList<Medicion> alturasActuales = new ArrayList<Medicion>();
+
 		soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
 		plantas = new Plantas().obtenerPlantas();
 		for (int i = 0 ; i < plantas.size() ; i++){
