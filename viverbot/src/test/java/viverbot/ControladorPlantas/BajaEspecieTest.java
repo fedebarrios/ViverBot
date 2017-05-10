@@ -32,7 +32,7 @@ public class BajaEspecieTest {
 		especies.add(e2);
 		EspecieDAO.getInstance().cargarEspecies(especies);
 		ArrayList<PlantaDTO> plantasTest = new ArrayList<PlantaDTO>();
-		PlantaDTO p1= new PlantaDTO(1, 10, new UbicacionDTO(1,5), new Fecha(04, 05, 2017));
+		PlantaDTO p1= new PlantaDTO(1, 10, new UbicacionDTO(1,5,0), new Fecha(04, 05, 2017));
 		plantasTest.add(p1);
 		PlantaDAO.getInstance().cargarPlantas(plantasTest);		
 	}
@@ -83,7 +83,7 @@ public class BajaEspecieTest {
 		especies.add(e1);
 		EspecieDAO.getInstance().cargarEspecies(especies);
 		ArrayList<PlantaDTO> plantasTest = new ArrayList<PlantaDTO>();
-		PlantaDTO p1= new PlantaDTO(155, 10, new UbicacionDTO(1,5), new Fecha(04, 05, 2017));
+		PlantaDTO p1= new PlantaDTO(155, 10, new UbicacionDTO(1,5,0), new Fecha(04, 05, 2017));
 		plantasTest.add(p1);
 		PlantaDAO.getInstance().cargarPlantas(plantasTest);		
 		controladorEspecies.setOptionPane(new MockOptionPane());

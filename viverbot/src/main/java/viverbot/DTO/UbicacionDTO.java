@@ -4,12 +4,14 @@ public class UbicacionDTO {
 	private Integer fila;
 	private Integer columna;
 	private boolean estado;
+	private Integer indice;
 
-	public UbicacionDTO(Integer fila, Integer columna) {
+	public UbicacionDTO(Integer fila, Integer columna, Integer indice) {
 		super();
 		this.fila = fila;
 		this.columna = columna;
 		this.estado = false;
+		this.indice = indice;
 	}
 
 	public Integer getFila() {
@@ -57,6 +59,14 @@ public class UbicacionDTO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "( " + this.getFila() + " , " + this.getColumna() + " )";
+	}
+
+	public Integer getIndice() {
+		return indice;
+	}
+
+	public void setIndice(Integer indice) {
+		this.indice = indice;
 	}
 	
 	

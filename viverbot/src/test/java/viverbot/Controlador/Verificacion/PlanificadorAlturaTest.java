@@ -133,10 +133,10 @@ public class PlanificadorAlturaTest {
 		EspecieDAO.getInstance().cargarEspecies(especies);
 		
 		ArrayList<PlantaDTO> plantasTest = new ArrayList<PlantaDTO>();
-		p1 = new PlantaDTO(1, 10, new UbicacionDTO(1,5), new Fecha(04, 05, 2017));
-		p2 = new PlantaDTO(1, 11, new UbicacionDTO(1,6), new Fecha(04, 05, 2017));
-		p3 = new PlantaDTO(2, 12, new UbicacionDTO(1,7), new Fecha(04, 05, 2017));
-		p4 = new PlantaDTO(2, 13, new UbicacionDTO(1,8), new Fecha(04, 05, 2017));
+		p1 = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
+		p2 = new PlantaDTO(1, 11, new UbicacionDTO(1,6,5), new Fecha(04, 05, 2017));
+		p3 = new PlantaDTO(2, 12, new UbicacionDTO(1,7,6), new Fecha(04, 05, 2017));
+		p4 = new PlantaDTO(2, 13, new UbicacionDTO(1,8,7), new Fecha(04, 05, 2017));
 		
 		esp = new EstadoAlturaPerfecta(200.0, p1);
 		esn = new EstadoAlturaNormal(150.0, p2);

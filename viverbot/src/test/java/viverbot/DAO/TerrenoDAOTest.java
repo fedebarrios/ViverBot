@@ -31,7 +31,7 @@ public class TerrenoDAOTest {
 	public void ocuparUbicacionTest() {
 		inicializar();
 		terreno.construirTerreno(3, 3);
-		terreno.ocuparUbicacion(new UbicacionDTO(0,0));
+		terreno.ocuparUbicacion(new UbicacionDTO(0,0,0));
 		assertTrue(terreno.mostrarTerreno()[0][0].isEstado());
 	}
 	
@@ -39,8 +39,8 @@ public class TerrenoDAOTest {
 	public void ocuparUbicacionYaOcupadaTest() {
 		inicializar();
 		terreno.construirTerreno(3, 3);
-		terreno.ocuparUbicacion(new UbicacionDTO(0,0));
-		assertFalse(terreno.ocuparUbicacion(new UbicacionDTO(0,0)));
+		terreno.ocuparUbicacion(new UbicacionDTO(0,0,0));
+		assertFalse(terreno.ocuparUbicacion(new UbicacionDTO(0,0,0)));
 		assertTrue(terreno.mostrarTerreno()[0][0].isEstado());
 	}
 	
@@ -48,8 +48,8 @@ public class TerrenoDAOTest {
 	public void desocuparUbicacionTest() {
 		inicializar();
 		terreno.construirTerreno(3, 3);
-		terreno.ocuparUbicacion(new UbicacionDTO(0,0));
-		terreno.desocuparUbicacion(new UbicacionDTO(0,0));
+		terreno.ocuparUbicacion(new UbicacionDTO(0,0,0));
+		terreno.desocuparUbicacion(new UbicacionDTO(0,0,0));
 		assertFalse(terreno.mostrarTerreno()[0][0].isEstado());
 	}
 	
@@ -57,9 +57,9 @@ public class TerrenoDAOTest {
 	public void desocuparUbicacionYaDesocupadaTest() {
 		inicializar();
 		terreno.construirTerreno(3, 3);
-		terreno.ocuparUbicacion(new UbicacionDTO(0,0));
-		terreno.desocuparUbicacion(new UbicacionDTO(0,0));
-		assertFalse(terreno.desocuparUbicacion(new UbicacionDTO(0,0)));
+		terreno.ocuparUbicacion(new UbicacionDTO(0,0,0));
+		terreno.desocuparUbicacion(new UbicacionDTO(0,0,0));
+		assertFalse(terreno.desocuparUbicacion(new UbicacionDTO(0,0,0)));
 	}
 
 }

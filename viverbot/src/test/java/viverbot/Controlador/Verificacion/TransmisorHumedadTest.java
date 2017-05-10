@@ -94,7 +94,7 @@ public class TransmisorHumedadTest {
 	@Test
 	public void moverSoporteTest() {
 		this.inicialize();
-		UbicacionDTO u = new UbicacionDTO(4, 3);
+		UbicacionDTO u = new UbicacionDTO(4, 3, 11);
 		this.transmisorTest.moverSoporteMovil(u);
 	}
 	// metodos auxiliares

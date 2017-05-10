@@ -13,9 +13,9 @@ public class TerrenoDAO {
 		ubicaciones = new UbicacionDTO[cantFilas][cantColumnas];
 		for (int i = 0; i < cantFilas; i++) {
 			for (int j = 0; j < cantColumnas; j++) {
-				UbicacionDTO ubicacion = new UbicacionDTO(i, j);
+				UbicacionDTO ubicacion = new UbicacionDTO(i, j, ((i+1)*j)-1);
 				ubicaciones[i][j] = ubicacion;
-			}
+			} 
 		}
 	}
 	

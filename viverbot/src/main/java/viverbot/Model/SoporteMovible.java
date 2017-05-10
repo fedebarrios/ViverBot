@@ -10,7 +10,7 @@ public class SoporteMovible implements IMovible{
 	private InstrumentoMediator mediator;
 	private Podador podador;
 	private UbicacionDTO ubicacion;
-	private UbicacionDTO defaultUbicacion= new UbicacionDTO(0,0);
+	private UbicacionDTO defaultUbicacion= new UbicacionDTO(0,0,0);
 	
 	public SoporteMovible(Magnitudes m){
 		this.mediator = new InstrumentoMediator(m);

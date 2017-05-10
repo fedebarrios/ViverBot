@@ -53,7 +53,7 @@ public class MapperAlturaTest {
 		mapper = new MapperAltura(analizador, plantas, control);
 		
 		EspecieDTO especie1 = new EspecieDTO(60 , "tomates" , "tomatus" , "");
-		PlantaDTO planta1 = new PlantaDTO(60, 22, new UbicacionDTO(5,4), new Fecha(5, 5, 2017));
+		PlantaDTO planta1 = new PlantaDTO(60, 22, new UbicacionDTO(5,4,19), new Fecha(5, 5, 2017));
 		plantas.add(planta1);
 		
 		ArrayList <TuplaAltura> tuplas1 = new ArrayList<TuplaAltura>();

@@ -20,7 +20,7 @@ public class SoporteMovibleTest {
 	@Test
 	public void SoporteTest() {
 		this.inicialize();
-		UbicacionDTO u =  new UbicacionDTO(0,0);
+		UbicacionDTO u =  new UbicacionDTO(0,0,0);
 		assertTrue(this.soporteTest.getColector() != null);
 		assertTrue(this.soporteTest.getUbicacion().equals(u));
 		this.clear();
@@ -29,7 +29,7 @@ public class SoporteMovibleTest {
 	@Test 
 	public void moverTest(){
 		this.inicialize();
-		UbicacionDTO u = new UbicacionDTO(4,2);
+		UbicacionDTO u = new UbicacionDTO(4,2,7);
 		this.soporteTest.mover(u);
 		
 		assertTrue(this.soporteTest.getUbicacion().equals(u));

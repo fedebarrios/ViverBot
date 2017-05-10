@@ -38,7 +38,7 @@ public class PlantasTest {
 		// Agregaremos una nueva planta
 		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 2017));
 		
-		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543), 
+		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543,18461), 
 																					new Fecha(10, 10, 2017));
 		cantidadPlantas = plantas.obtenerPlantas().size();
 		// Ahora la cantidad de plantas se incremento
@@ -59,7 +59,7 @@ public class PlantasTest {
 		// Agregaremos una nueva planta
 		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 2017));
 		
-		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543), 
+		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543, 18461), 
 																					new Fecha(10, 10, 2017));
 		cantidadPlantas = plantas.obtenerPlantas().size();
 		// Ahora la cantidad de plantas se incremento
@@ -75,7 +75,7 @@ public class PlantasTest {
 		inicializar();
 		
 		String ubicacion = "77,88";
-		UbicacionDTO ubicacionDTO = new UbicacionDTO(77, 88);
+		UbicacionDTO ubicacionDTO = new UbicacionDTO(77, 88, 18461);
 		assertTrue(plantas.obtenerUbicacion(ubicacion).equals(ubicacionDTO));
 	}
 

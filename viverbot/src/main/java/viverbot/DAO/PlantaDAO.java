@@ -26,9 +26,9 @@ public class PlantaDAO {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 6; j++) {
 				@SuppressWarnings("deprecation")
-				PlantaDTO p = new PlantaDTO(1, i++, new UbicacionDTO(i * j, i * j), new Fecha(02, 05, 2017));
+				PlantaDTO p = new PlantaDTO(1, i++, new UbicacionDTO(i * j, i * j,(((i*j)+1)*(i*j))-1), new Fecha(02, 05, 2017));
 				plantas.add(p);
-			}
+			} 
 		}
 	}
 

@@ -95,9 +95,9 @@ public class ControlSeguimientosTest {
 		especie2 = new EspecieDTO(64 , "cebolla" , "cebollus" , "");
 		especie3 = new EspecieDTO(65 , "papa" , "papus" , "");
 		
-		planta1 = new PlantaDTO(64, 22, new UbicacionDTO(5,4), new Fecha(6, 5, 2017));
-		planta2 = new PlantaDTO(60, 59, new UbicacionDTO(4,4), new Fecha(6, 5, 2017));
-		planta3 = new PlantaDTO(65, 100, new UbicacionDTO(1,4), new Fecha(6, 5, 2017));
+		planta1 = new PlantaDTO(64, 22, new UbicacionDTO(5,4,19), new Fecha(6, 5, 2017));
+		planta2 = new PlantaDTO(60, 59, new UbicacionDTO(4,4,15), new Fecha(6, 5, 2017));
+		planta3 = new PlantaDTO(65, 100, new UbicacionDTO(1,4,3), new Fecha(6, 5, 2017));
 		
 		
 		tuplas1 = new ArrayList<TuplaAltura>();
