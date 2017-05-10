@@ -8,11 +8,12 @@ import java.util.TimerTask;
 
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class ColectorAltura extends Observable{
 	private InstrumentoMediator mediator;
 	private Timer timer;
-	private ArrayList<Magnitud> alturasActuales;
+	private ArrayList<Medicion> alturasActuales;
 	private TimerTask task;
 	private long milisegundosEnUnDia = 3600000*24;
 
@@ -24,7 +25,7 @@ public class ColectorAltura extends Observable{
 		this.alturasActuales = null;	
 	}
 
-	protected ArrayList<Magnitud> medir() {
+	protected ArrayList<Medicion> medir() {
 		return this.mediator.tomarAlturas();
 
 	}
@@ -56,7 +57,7 @@ public class ColectorAltura extends Observable{
 		return mediator;
 	}
 
-	public ArrayList<Magnitud> getValorActual() {
+	public ArrayList<Medicion> getValorActual() {
 		return alturasActuales;
 	}
 

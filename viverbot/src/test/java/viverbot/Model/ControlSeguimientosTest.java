@@ -15,7 +15,8 @@ import viverbot.Model.Fecha;
 import viverbot.Model.HistorialAltura;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Model.TuplaAltura;
-import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class ControlSeguimientosTest {
 	EspecieDTO especie1;
@@ -82,7 +83,7 @@ public class ControlSeguimientosTest {
 		this.control = ControlSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
 		GuardadorAltura g = GuardadorAltura.getInstance();
-		g.guardar(new StrategyAnalisisAltura(),new Altura(14,"cm") , 5, control.getSeguimiento(planta1).getHistorialVerdadero());
+		g.guardar(new StrategyAnalisisAltura(),new Medicion(14.0,Magnitudes.ALTURA) , 5, control.getSeguimiento(planta1).getHistorialVerdadero());
 		assertEquals(5,control.getSeguimiento(planta1).getUltimoDiaMedicion());
 
 		clear();
@@ -94,20 +95,20 @@ public class ControlSeguimientosTest {
 		especie2 = new EspecieDTO(64 , "cebolla" , "cebollus" , "");
 		especie3 = new EspecieDTO(65 , "papa" , "papus" , "");
 		
-		planta1 = new PlantaDTO(64, 22, new UbicacionDTO(5,4), new Fecha(6, 5, 2017));
-		planta2 = new PlantaDTO(60, 59, new UbicacionDTO(4,4), new Fecha(6, 5, 2017));
-		planta3 = new PlantaDTO(65, 100, new UbicacionDTO(1,4), new Fecha(6, 5, 2017));
+		planta1 = new PlantaDTO(64, 22, new UbicacionDTO(5,4,19), new Fecha(6, 5, 2017));
+		planta2 = new PlantaDTO(60, 59, new UbicacionDTO(4,4,15), new Fecha(6, 5, 2017));
+		planta3 = new PlantaDTO(65, 100, new UbicacionDTO(1,4,3), new Fecha(6, 5, 2017));
 		
 		
 		tuplas1 = new ArrayList<TuplaAltura>();
-		tuplas1.add(new TuplaAltura(new Altura(30,"cm"), 4));
-		tuplas1.add(new TuplaAltura(new Altura(40,"cm"), 5));
-		tuplas1.add(new TuplaAltura(new Altura(50,"cm"), 6));
+		tuplas1.add(new TuplaAltura(new Medicion(30.0, Magnitudes.ALTURA), 4));
+		tuplas1.add(new TuplaAltura(new Medicion(40.0 , Magnitudes.ALTURA), 5));
+		tuplas1.add(new TuplaAltura(new Medicion(50.0, Magnitudes.ALTURA), 6));
 		
 		tuplas2 = new ArrayList<TuplaAltura>();
-		tuplas2.add(new TuplaAltura(new Altura(30,"cm"), 4));
-		tuplas2.add(new TuplaAltura(new Altura(40,"cm"), 5));
-		tuplas2.add(new TuplaAltura(new Altura(50,"cm"), 6));
+		tuplas2.add(new TuplaAltura(new Medicion(30.0, Magnitudes.ALTURA), 4));
+		tuplas2.add(new TuplaAltura(new Medicion(40.0, Magnitudes.ALTURA), 5));
+		tuplas2.add(new TuplaAltura(new Medicion(50.0, Magnitudes.ALTURA), 6));
 		
 	}
 	

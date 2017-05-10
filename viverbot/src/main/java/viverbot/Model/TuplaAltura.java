@@ -1,22 +1,22 @@
 package viverbot.Model;
 
-import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class TuplaAltura {
 	
-	private Altura altura;
+	private Medicion altura;
 	private int diaDeVida;
 	
-	public TuplaAltura (Altura a, int d){
+	public TuplaAltura (Medicion a, int d){
 		this.altura = a;
 		this.diaDeVida = d;
 	}
 
-	public Altura getAltura() {
+	public Medicion getAltura() {
 		return altura;
 	}
 
-	public void setAltura(Altura altura) {
+	public void setAltura(Medicion altura) {
 		this.altura = altura;
 	}
 

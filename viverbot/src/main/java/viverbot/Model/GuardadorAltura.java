@@ -2,7 +2,7 @@ package viverbot.Model;
 
 import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.Interfaces.IAnalisisAltura;
-import viverbot.Modelo.Magnitudes.Altura;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class GuardadorAltura {
 	
@@ -18,7 +18,7 @@ public class GuardadorAltura {
 		return guardador;
 	}
 	
-	public void guardar(IAnalisisAltura estrategia, Altura altura, int diaActual , HistorialAltura historial){
+	public void guardar(IAnalisisAltura estrategia, Medicion altura, int diaActual , HistorialAltura historial){
 		if( estrategia instanceof StrategyAnalisisAltura){
 			historial.agregarTupla(new TuplaAltura(altura, diaActual));
 		}

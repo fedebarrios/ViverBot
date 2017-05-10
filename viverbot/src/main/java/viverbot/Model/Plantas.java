@@ -48,8 +48,10 @@ public class Plantas {
 	public UbicacionDTO obtenerUbicacion(String ubicacion) {
 		String fila = "";
 		String columna = "";
+		String indice = "";
 		char aux;
 		boolean filaCompleta = false;
+		boolean columnaCompleta = false;
 		for (int i = 0; i < ubicacion.length(); i++) {
 			aux = ubicacion.charAt(i);
 			if (aux != ',') {
@@ -60,11 +62,14 @@ public class Plantas {
 				filaCompleta = true;
 				continue;
 			}
-			if (filaCompleta) {
+			if (filaCompleta && aux != ',') {
 				columna+= aux;
 			}
-		}
-		return new UbicacionDTO(Integer.parseInt(fila), Integer.parseInt(columna));
+			if (columnaCompleta && aux != ',') {
+				indice+= aux;
+			}
+		} 
+		return new UbicacionDTO(Integer.parseInt(fila), Integer.parseInt(columna), Integer.parseInt(indice));
 	}
 	
 	public int cantidadPlantas(){
