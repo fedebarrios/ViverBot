@@ -3,7 +3,6 @@ package viverbot.Modelo.Simulacion;
 import java.util.HashMap;
 import java.util.Map;
 
-import viverbot.Interfaces.ISimularMedicion;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 
@@ -12,8 +11,8 @@ public class BuildSimuladorTemperaturaJunio implements IBuildMedir {
 	private static final Map<Horario, RangoNumerico> rangos = inicializarRangos();
 
 	@Override
-	public ISimularMedicion getSimulador() {
-		ISimularMedicion s = new Simulador(rangos, Magnitudes.TEMPERATURA);
+	public Simulador getSimulador() {
+		Simulador s = new Simulador(rangos, Magnitudes.TEMPERATURA);
 		return s;
 	}
 
