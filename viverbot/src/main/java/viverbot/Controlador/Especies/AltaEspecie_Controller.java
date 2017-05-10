@@ -3,24 +3,27 @@ package viverbot.Controlador.Especies;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.Inventario;
+import viverbot.Vista.Auxiliares.DefaultOptionPane;
+import viverbot.Vista.Auxiliares.FileChooser;
 import viverbot.Vista.Especie.AltaEspecie;
 
 public class AltaEspecie_Controller implements ActionListener {
-
+ 
 	private AltaEspecie altaVista;
 	private Inventario inventario;
+	private DefaultOptionPane optionPane;
+	private FileChooser selector;
 
 	public AltaEspecie_Controller() {
 		this.inventario = new Inventario();
 		this.altaVista = new AltaEspecie(this);
 		this.altaVista.setVisible(true);
+		this.optionPane = new DefaultOptionPane();
+		selector = new FileChooser();
 	}
  
 	public void actionPerformed(ActionEvent e) {
@@ -32,13 +35,11 @@ public class AltaEspecie_Controller implements ActionListener {
 			String path = this.altaVista.getImagen_tf().getText();
 			if(!registrarEspecie(nombreEspecie, nombreCientifico, path)){
 				if(nombreEspecieVacio()){ 
-					JOptionPane.showInternalMessageDialog(this.altaVista, "Cargue un nombre de Especie");
+					optionPane.showMessageDialog(this.altaVista, "Cargue un nombre de Especie");
 				}else if(nombreCientificoVacio()){
-					JOptionPane.showMessageDialog(this.altaVista, "Cargue un nombre Cientifico");
+					optionPane.showMessageDialog(this.altaVista, "Cargue un nombre Cientifico");
 				}else if(nombreImagenVacio()){
-					JOptionPane.showMessageDialog(this.altaVista, "Cargue una imagen");
-				}else{
-					JOptionPane.showMessageDialog(this.altaVista, "No ingrese numeros");
+					optionPane.showMessageDialog(this.altaVista, "Cargue una imagen");
 				}
 			} 
 			else{
@@ -46,13 +47,12 @@ public class AltaEspecie_Controller implements ActionListener {
 			}
 		} else if (e.getSource() == this.altaVista.getBtnCargarImagen()) {
 			if(!cargarImagen()){
-				JOptionPane.showMessageDialog(this.altaVista, "No se selecciono correctamente la imagen");
+				optionPane.showMessageDialog(this.altaVista, "No se selecciono correctamente la imagen");
 			}
 		}
 	}
 	
 	public boolean cargarImagen(){
-		JFileChooser selector=new JFileChooser(); 
 		selector.setDialogTitle("Seleccione Imagen");
 		FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
 		selector.setFileFilter(filtroImagen);
@@ -114,5 +114,12 @@ public class AltaEspecie_Controller implements ActionListener {
 	public Inventario getInventario(){
 		return this.inventario;
 	}
-
+	
+	public void setOptionPane(DefaultOptionPane o) {
+		this.optionPane = o;
+	}
+	
+	public void setFileChooser(FileChooser f){
+		this.selector = f;
+	}
 }

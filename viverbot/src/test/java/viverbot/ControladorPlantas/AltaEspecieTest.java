@@ -1,13 +1,11 @@
 package viverbot.ControladorPlantas;
 
 import static org.junit.Assert.*;
-
 import java.awt.event.ActionEvent;
-
-import javax.swing.JOptionPane;
-
 import org.junit.Test;
 
+import viverbot.MockFileChooser;
+import viverbot.MockOptionPane;
 import viverbot.Controlador.Especies.AltaEspecie_Controller;
 
 public class AltaEspecieTest {
@@ -66,16 +64,59 @@ public class AltaEspecieTest {
 		assertFalse(controladorEspecies.getAltaVista().isVisible());
 	} 
 	
-//	@Test
-//	public void TestActionPerformedGuardarNombreEspecieVacio(){
-//		inicializar();
-//		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
-//		controladorEspecies.getAltaVista().getNombreEspecie_tf().setText("");;
-//		controladorEspecies.actionPerformed(new ActionEvent(controladorEspecies.getAltaVista().getGuardar_btn(), 1, ""));
-//		int cantidadEspeciesDespues = controladorEspecies.getInventario().obtenerEspecies().size();
-//		assertEquals(cantidadEspeciesAntes, cantidadEspeciesDespues);
-//	}
+	@Test
+	public void TestActionPerformedGuardarNombreEspecieVacio(){
+		inicializar();
+		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
+		controladorEspecies.getAltaVista().getNombreEspecie_tf().setText("");
+		controladorEspecies.setOptionPane(new MockOptionPane());
+		controladorEspecies.actionPerformed(new ActionEvent(controladorEspecies.getAltaVista().getGuardar_btn(), 1, ""));
+		int cantidadEspeciesDespues = controladorEspecies.getInventario().obtenerEspecies().size();
+		assertEquals(cantidadEspeciesAntes, cantidadEspeciesDespues);
+	}
 	
+	@Test
+	public void TestActionPerformedGuardarNombreCientificoEspecieVacio(){
+		inicializar();
+		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
+		controladorEspecies.getAltaVista().getNombreCientifico_tf().setText("");
+		controladorEspecies.setOptionPane(new MockOptionPane());
+		controladorEspecies.actionPerformed(new ActionEvent(controladorEspecies.getAltaVista().getGuardar_btn(), 1, ""));
+		int cantidadEspeciesDespues = controladorEspecies.getInventario().obtenerEspecies().size();
+		assertEquals(cantidadEspeciesAntes, cantidadEspeciesDespues);
+	}
+	
+	@Test
+	public void TestActionPerformedGuardarImagenEspecieVacio(){
+		inicializar();
+		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
+		controladorEspecies.getAltaVista().getImagen_tf().setText("");
+		controladorEspecies.setOptionPane(new MockOptionPane());
+		controladorEspecies.actionPerformed(new ActionEvent(controladorEspecies.getAltaVista().getGuardar_btn(), 1, ""));
+		int cantidadEspeciesDespues = controladorEspecies.getInventario().obtenerEspecies().size();
+		assertEquals(cantidadEspeciesAntes, cantidadEspeciesDespues);
+	}
+	
+	@Test
+	public void TestCargarImagen(){
+		inicializar();
+		controladorEspecies.setFileChooser(new MockFileChooser());
+		assertTrue(controladorEspecies.cargarImagen());
+	}
+	
+	@Test
+	public void TestActionPerformedCargarImagenIncorrecta(){
+		inicializar();
+		MockFileChooser fileChooser = new MockFileChooser();
+		fileChooser.setFile(null);
+		controladorEspecies.setFileChooser(fileChooser);
+		int cantidadEspeciesAntes = controladorEspecies.getInventario().obtenerEspecies().size();
+		controladorEspecies.setOptionPane(new MockOptionPane());
+		controladorEspecies.actionPerformed(new ActionEvent(controladorEspecies.getAltaVista().getBtnCargarImagen(), 1, ""));
+		int cantidadEspeciesDespues = controladorEspecies.getInventario().obtenerEspecies().size();
+		assertEquals(cantidadEspeciesAntes, cantidadEspeciesDespues);
+	}
+	 
 	public void inicializar(){
 		controladorEspecies = new AltaEspecie_Controller();
 		controladorEspecies.getAltaVista().dispose();

@@ -52,9 +52,5 @@ public class VistaPrincipalController  implements ActionListener{
 			m.addObserver(p);
 			c.colectar();
 		}
-		
 	}
-
-	
-	
 }
