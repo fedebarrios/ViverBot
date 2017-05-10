@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class ColectorTemperatura extends Observable {
 
@@ -13,13 +14,13 @@ public class ColectorTemperatura extends Observable {
 	private long frecuencia;
 	private long delay;
 	private Timer timer;
-	private Magnitud valorActual;
+	private Medicion valorActual;
 	private TimerTask task;
 
 	private final static Magnitudes m = Magnitudes.TEMPERATURA;
 
-	public ColectorTemperatura(long frecuencia, long delay) {
-		mediator = new InstrumentoMediator(m);
+	public ColectorTemperatura(long frecuencia, long delay, InstrumentoMediator mediator) {
+		this.mediator = mediator;
 		this.frecuencia = frecuencia;
 		this.delay = delay;
 		this.timer = new Timer();
@@ -27,7 +28,7 @@ public class ColectorTemperatura extends Observable {
 		
 	}
 
-	public Magnitud medir() {
+	public Medicion medir() {
 		return this.mediator.tomarMedicion();
 
 	}
@@ -59,7 +60,7 @@ public class ColectorTemperatura extends Observable {
 		return mediator;
 	}
 
-	public Magnitud getValorActual() {
+	public Medicion getValorActual() {
 		return valorActual;
 	}
 

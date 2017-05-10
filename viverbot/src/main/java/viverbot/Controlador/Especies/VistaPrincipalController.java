@@ -10,11 +10,15 @@ import viverbot.Model.GuardadorAltura;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
+import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.ColectorAltura;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
+import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Medicion.MapperAltura;
-import viverbot.Modelo.Medicion.TransmisorTemperatura;
+import viverbot.Modelo.Sensores.SensorTemperatura;
+import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
 import viverbot.Vista.Especie.PrincipalView;
 
 public class VistaPrincipalController  implements ActionListener{
@@ -32,9 +36,12 @@ public class VistaPrincipalController  implements ActionListener{
 		
 		if(e.getSource() == this.vistaPrincipal.getMntmControlarTemperatura()){
 			//abstraer en otro objeto
-			ColectorTemperatura t = new ColectorTemperatura(5000, 0);
+			InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
+			SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();
+			s.setSimulador(new BuildSimuladorTemperaturaEnero().getSimulador());
+			ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 
-			TransmisorTemperatura tr = new TransmisorTemperatura();
+			AnalizadorTemperatura tr = new AnalizadorTemperatura();
 			t.addObserver(tr);
 			t.colectar();
 		}

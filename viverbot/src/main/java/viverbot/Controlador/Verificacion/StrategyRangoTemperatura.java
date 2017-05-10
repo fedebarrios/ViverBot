@@ -3,6 +3,7 @@ package viverbot.Controlador.Verificacion;
 import viverbot.Interfaces.IAnalisis;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 
@@ -10,7 +11,7 @@ public class StrategyRangoTemperatura implements IAnalisis {
 
 
 	@Override
-	public DiagnosticoAnalisis analizar(Magnitud t, RangoNumerico rangoIdeal) {
+	public DiagnosticoAnalisis analizar(Medicion t, RangoNumerico rangoIdeal) {
 		RangoNumerico rango = rangoIdeal;
 		DiagnosticoAnalisis estado = new DiagnosticoAnalisis(t, false);
 		int resultado = verificarRango(t,  rango);
@@ -35,7 +36,7 @@ public class StrategyRangoTemperatura implements IAnalisis {
 		return estado;
 	}
 	
-	protected int verificarRango(Magnitud t, RangoNumerico rango) {
+	protected int verificarRango(Medicion t, RangoNumerico rango) {
 		if(rango.getMinimo() <= t.getValor() && rango.getMaximo() >= t.getValor()){
 			return 0;
 		}

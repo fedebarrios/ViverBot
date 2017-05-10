@@ -1,14 +1,15 @@
 package viverbot.Modelo.Medicion;
 
 import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class DiagnosticoAnalisis {
-	private Magnitud m;
+	private Medicion m;
 	private Boolean optima;
 	Double diferencia ;
 
-	public DiagnosticoAnalisis(Magnitud temperatura, Boolean optima) {
+	public DiagnosticoAnalisis(Medicion temperatura, Boolean optima) {
 		super();
 		this.m = temperatura;
 		this.optima = optima;
@@ -26,7 +27,7 @@ public class DiagnosticoAnalisis {
 	}
 
 
-	public Magnitud getMagnitud() {
+	public Medicion getMagnitud() {
 		return m;
 	}
 
@@ -34,7 +35,7 @@ public class DiagnosticoAnalisis {
 		return optima;
 	}
 
-	public void setTemperatura(Temperatura temperatura) {
+	public void setTemperatura(Medicion temperatura) {
 		this.m = temperatura;
 	}
 
