@@ -66,4 +66,9 @@ public class AutomatizadorDeClima {
 		}
 	}
 
+	@SuppressWarnings("unused")
+	private AireAcondicionado getAire() {
+		return aire;
+	}
+
 }
