@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.EmptyMagnitud;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
@@ -13,10 +15,10 @@ import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 public class AnalizadorTemperaturaTest {
 	AnalizadorTemperatura analizadorTest;
 	private RangoNumerico rango = new RangoNumerico(10.0, 20.0);
-	private Temperatura temperaturaOptima = new Temperatura(15.0);
-	private Temperatura temperaturaBaja = new Temperatura(5.0);
-	private Temperatura temperaturaAlta = new Temperatura(25.0);
-	private EmptyMagnitud vacia =  new EmptyMagnitud(null);
+	private Medicion temperaturaOptima = new Medicion(15.0, Magnitudes.TEMPERATURA);
+	private Medicion temperaturaBaja = new Medicion(5.0,Magnitudes.TEMPERATURA);
+	private Medicion temperaturaAlta = new Medicion(25.0,Magnitudes.TEMPERATURA);
+	private Medicion vacia = new Medicion(null,Magnitudes.VACIO);
 
 	@Test
 	public void AnalizadorTest() {
@@ -33,8 +35,10 @@ public class AnalizadorTemperaturaTest {
 		this.analizadorTest.setRango(this.rango);
 		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(temperaturaOptima);
 		assertNotNull(resultado);
-		assertTrue(resultado.getOptima() == true);
-		assertTrue(resultado.getMagnitud().equals(temperaturaOptima));
+		assertEquals(resultado.getOptima(), true);
+		assertEquals(resultado.getMagnitud(), temperaturaOptima);
+		assertTrue(resultado.getDiferencia() == 0.0);
+		
 		this.clear();
 
 	}
@@ -47,6 +51,8 @@ public class AnalizadorTemperaturaTest {
 		assertNotNull(resultado);
 		assertTrue(resultado.getOptima() == false);
 		assertTrue((resultado.getMagnitud()).equals(temperaturaBaja));
+		assertTrue(resultado.getDiferencia() == -5.0);
+
 		this.clear();
 
 	}
@@ -59,6 +65,8 @@ public class AnalizadorTemperaturaTest {
 		assertTrue(resultado.getOptima() == false);
 		assertTrue(resultado.getMagnitud().equals(this.temperaturaAlta));
 		assertNotNull(resultado);
+		assertTrue(resultado.getDiferencia() == 5.0);
+
 		this.clear();
 
 	}
