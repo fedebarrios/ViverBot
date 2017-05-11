@@ -1,7 +1,7 @@
 package viverbot.Modelo.Simulacion;
 
 
-public interface IBuildMedir {
+public interface IBuildSimulador {
 	
 	public Simulador getSimulador();
 

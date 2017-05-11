@@ -1,6 +1,5 @@
 package viverbot.Modelo.Sensores;
 
-import viverbot.Model.Hora;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Simulacion.Simulador;
 
@@ -15,7 +14,6 @@ public class SensorTemperatura extends InstrumentoMedicion {
 	}
 
 	protected Medicion simularMedicion() {
-		s.setHoraActual(Hora.obtenerHoraActual());
 		return s.getMedicion();
 	}
 

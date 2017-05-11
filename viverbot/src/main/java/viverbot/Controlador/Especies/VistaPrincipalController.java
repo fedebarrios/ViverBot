@@ -19,6 +19,7 @@ import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Medicion.MapperAltura;
 import viverbot.Modelo.Sensores.SensorTemperatura;
 import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
+import viverbot.Modelo.Simulacion.Simulador;
 import viverbot.Vista.Especie.PrincipalView;
 
 public class VistaPrincipalController  implements ActionListener{
@@ -38,7 +39,10 @@ public class VistaPrincipalController  implements ActionListener{
 			//abstraer en otro objeto
 			InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
 			SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();
-			s.setSimulador(new BuildSimuladorTemperaturaEnero().getSimulador());
+			Simulador simulador = new BuildSimuladorTemperaturaEnero().getSimulador();
+			simulador.simular();
+			s.setSimulador(simulador);
+			
 			ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 
 			AnalizadorTemperatura tr = new AnalizadorTemperatura();

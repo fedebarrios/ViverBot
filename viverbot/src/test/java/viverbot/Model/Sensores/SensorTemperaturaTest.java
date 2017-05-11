@@ -11,14 +11,14 @@ import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Sensores.SensorTemperatura;
 import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
 import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaJunio;
-import viverbot.Modelo.Simulacion.IBuildMedir;
+import viverbot.Modelo.Simulacion.IBuildSimulador;
 import viverbot.Modelo.Simulacion.Simulador;
 
 public class SensorTemperaturaTest extends TestCase {
 	private static SensorTemperatura sensorTest = null;
-	private static final IBuildMedir bEnero = new BuildSimuladorTemperaturaEnero();
+	private static final IBuildSimulador bEnero = new BuildSimuladorTemperaturaEnero();
 	private static  Simulador simuladorEnero = bEnero.getSimulador();
-	private static final IBuildMedir bJunio = new BuildSimuladorTemperaturaJunio();
+	private static final IBuildSimulador bJunio = new BuildSimuladorTemperaturaJunio();
 	private static  Simulador simuladorJunio = bJunio.getSimulador();
 
 	// este test verifica que el return sea de tipo temperatura

@@ -6,7 +6,7 @@ import java.util.Map;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 
-public class BuildSimuladorTemperaturaJunio implements IBuildMedir {
+public class BuildSimuladorTemperaturaJunio implements IBuildSimulador {
 
 	private static final Map<Horario, RangoNumerico> rangos = inicializarRangos();
 	private static final Simulador s = new Simulador(rangos, Magnitudes.TEMPERATURA);

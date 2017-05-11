@@ -1,7 +1,8 @@
 package viverbot.Modelo.Simulacion;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import viverbot.Model.Hora;
 import viverbot.Model.RangoNumerico;
@@ -13,25 +14,53 @@ public class Simulador {
 	private Map<Horario, RangoNumerico> rangos;
 	private Magnitudes magnitud;
 	private Hora horaActual;
+	private Medicion valorActual;
 
 	public Simulador(Map<Horario, RangoNumerico> r, Magnitudes m) {
 		this.rangos = r;
 		magnitud = m;
-		this.horaActual = Hora.obtenerHoraActual();
+		this.actualizarValorActual(Hora.obtenerHoraActual());
+	}
+	
+	public void simular() {
+		Timer timer = new Timer();
+		TimerTask t = new TimerTask() {
+
+			@Override
+			public void run() {
+				actualizarValorActual(Hora.obtenerHoraActual());
+
+			}
+
+		};
+		timer.schedule(t, 0, 300000);
+	}
+	
+	public void actualizarValorActual(Hora h0) {
+		this.horaActual = h0;
+		this.valorActual = this.crearMedicion(h0);
 	}
 
-	public Medicion getMedicion() {
-		RangoNumerico r = getRango();
+	private Medicion crearMedicion(Hora h) {
+		RangoNumerico r = getRango(h);
 		return new Medicion(Math.random() * (r.getMaximo() - r.getMinimo()) + r.getMinimo(), this.magnitud);
 
 	}
 
-	public RangoNumerico getRango() {
-		return this.rangos.get(Horario.getHorario(this.horaActual));
+	public RangoNumerico getRango(Hora h) {
+		return this.rangos.get(Horario.getHorario(h));
 	}
 
 	public void setHoraActual(Hora h0) {
-		this.horaActual = h0;
+		actualizarValorActual(h0);
+	}
+
+	
+
+	
+
+	public Medicion getMedicion() {
+		return this.valorActual;
 	}
 
 }
