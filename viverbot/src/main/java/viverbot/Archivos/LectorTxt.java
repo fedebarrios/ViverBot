@@ -5,10 +5,18 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LectorTxt {
+	Validador validador;
 	
-	public static String leerTxt(String archivo) {
-		if (!archivo.endsWith(".txt")){
-			System.out.println("El formato del archivo no es .txt.");
+	public LectorTxt(Validador validador){
+		this.validador = validador;
+	}
+	
+	public String leerTxt(String archivo) {
+		if(!validador.validarExistencia(archivo)){
+			System.out.println("No existe archivo");
+			return null;
+		}else if (!validador.validarExtension(archivo, "txt")){
+			System.out.println("La extension del archivo no es .txt.");
 			return null;
 		}
 		String data = "";

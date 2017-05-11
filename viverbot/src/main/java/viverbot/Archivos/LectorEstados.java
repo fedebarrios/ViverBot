@@ -2,7 +2,11 @@ package viverbot.Archivos;
 
 public class LectorEstados extends LectorTxt {
 	
-	public static void leerArchivo(String archivo){
+	public LectorEstados(Validador validador) {
+		super(validador);
+	}
+
+	public void leerArchivo(String archivo){
         String data = leerTxt(archivo);
         if (data == null) return;
         if (data.indexOf('/') < 0){
