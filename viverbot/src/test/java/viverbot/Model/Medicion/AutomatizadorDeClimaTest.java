@@ -1,6 +1,10 @@
 package viverbot.Model.Medicion;
 
-import java.util.Timer;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+import org.powermock.reflect.Whitebox;
 
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Temperatura;
@@ -8,12 +12,22 @@ import viverbot.Modelo.Medicion.AutomatizadorDeClima;
 
 public class AutomatizadorDeClimaTest {
 
-	public static void main(String[] args) {
-		Temperatura temp = new Temperatura(21.0);
+	@Test
+	public void verificarRango_recibeRangoValido_devuelveTrue() throws Exception {
+		Temperatura tempValida = new Temperatura(18.0);
 		RangoNumerico rango = new RangoNumerico(15.0, 20.0);
-		AutomatizadorDeClima automatizacion = new AutomatizadorDeClima(temp, rango);
-		Timer timer = new Timer();
-		timer.schedule(automatizacion.tt, 1000, 1000);
+		AutomatizadorDeClima automatizadorValido = new AutomatizadorDeClima(tempValida, rango);
+		boolean type = Whitebox.invokeMethod(automatizadorValido, "verificarRango");
+		assertTrue(type);
+	}
+
+	@Test
+	public void verificarRango_recibeRangoInvalido_devuelveFalse() throws Exception {
+		Temperatura tempInvalida = new Temperatura(25.0);
+		RangoNumerico rango = new RangoNumerico(15.0, 20.0);
+		AutomatizadorDeClima automatizadorInvalido = new AutomatizadorDeClima(tempInvalida, rango);
+		boolean type = Whitebox.invokeMethod(automatizadorInvalido, "verificarRango");
+		assertFalse(type);
 	}
 
 }

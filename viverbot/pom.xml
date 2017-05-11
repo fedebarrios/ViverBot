@@ -17,6 +17,7 @@
 	</properties>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -38,16 +39,18 @@
 
 		<!-- https://mvnrepository.com/artifact/org.easymock/easymock -->
 		<dependency>
-   		 <groupId>org.easymock</groupId>
-    		<artifactId>easymock</artifactId>
-    		<version>3.4</version>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.4</version>
 		</dependency>
 
-
-
-
-
+		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-reflect -->
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-reflect</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		
 	</dependencies>
-
 
 </project>

@@ -1,9 +1,9 @@
 package viverbot.Interfaces;
 
-import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Medicion.AireAcondicionado;
 
 public interface IFrioCalor {
 
-	public Temperatura interferirClima(Temperatura temp, IPotencia potencia);
+	public void anunciarEstado(AireAcondicionado aire);
 
 }

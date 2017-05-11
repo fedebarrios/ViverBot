@@ -1,26 +1,13 @@
 package viverbot.Modelo.Medicion;
 
 import viverbot.Interfaces.IFrioCalor;
-import viverbot.Interfaces.IPotencia;
-import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class Frio implements IFrioCalor {
 
 	@Override
-	public Temperatura interferirClima(Temperatura temp, IPotencia potencia) {
-		if (potencia.getClass() == Potencia0Strategy.class) {
-			temp.setValor(temp.getValor() - 0.05);
-			return temp;
-		} else if (potencia.getClass() == Potencia1Strategy.class) {
-			temp.setValor(temp.getValor() - 0.1);
-			return temp;
-		} else if (potencia.getClass() == Potencia2Strategy.class) {
-			temp.setValor(temp.getValor() - 0.15);
-			return temp;
-		} else {
-			temp.setValor(temp.getValor() - 0.2);
-			return temp;
-		}
+	public void anunciarEstado(AireAcondicionado aire) {
+		aire.setFrioCalorEstado(this);
+		System.out.println("El aire se encuentra en frio");
 	}
 
 	@Override
