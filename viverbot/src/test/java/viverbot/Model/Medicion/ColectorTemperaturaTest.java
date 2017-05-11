@@ -4,15 +4,23 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-
 import org.junit.Test;
 
 import viverbot.Model.Ambiente;
 import viverbot.Model.Hora;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
+import viverbot.Modelo.Medicion.InstrumentoMediator;
+import viverbot.Modelo.Sensores.SensorTemperatura;
+import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
+import viverbot.Modelo.Simulacion.IBuildSimulador;
+import viverbot.Modelo.Simulacion.Simulador;
 
 public class ColectorTemperaturaTest {
 	ColectorTemperatura colector = null;
+	private InstrumentoMediator m = null;
+	private static IBuildSimulador bEnero = new BuildSimuladorTemperaturaEnero();
+	private static Simulador simuladorEnero = bEnero.getSimulador();
 
 	@Test
 	public void testColectorTemperatura() {
@@ -38,7 +46,9 @@ public class ColectorTemperaturaTest {
 	@Test
 	public void testMedir() {
 		this.inicialize();
-		assertTrue(this.verificarTemperatura(this.getHorarios(), Ambiente.getInstance()));
+
+		assertEquals(this.colector.medir(), simuladorEnero.getMedicion());
+
 		this.clear();
 
 	}
@@ -51,45 +61,16 @@ public class ColectorTemperaturaTest {
 	}
 
 	private void inicialize() {
-		this.colector = new ColectorTemperatura(5000, 0);
+		m = new InstrumentoMediator(Magnitudes.TEMPERATURA);
+		SensorTemperatura s = (SensorTemperatura) this.m.getInstrumentoMedicion();
+		s.setSimulador(simuladorEnero);
+		this.colector = new ColectorTemperatura(5000, 0, m);
 	}
 
 	private void clear() {
 		this.colector.detenerColeccion();
 		this.colector = null;
+		this.m = null;
 	}
-	
-	private ArrayList<Hora> getHorarios() {
-		Hora amanecer = new Hora(6, 0, 0);
-		Hora mañana = new Hora(9, 0, 0);
-		Hora medioDia = new Hora(12, 0, 0);
-		Hora tarde = new Hora(15, 0, 0);
-		Hora atardecer = new Hora(18, 0, 0);
-		Hora noche = new Hora(21, 0, 0);
-		Hora mediaNoche = new Hora(24, 0, 0);
-		Hora madrugada = new Hora(3, 0, 0);
-
-		ArrayList<Hora> horarios = new ArrayList<Hora>();
-		horarios.add(amanecer);
-		horarios.add(mañana);
-		horarios.add(medioDia);
-		horarios.add(tarde);
-		horarios.add(atardecer);
-		horarios.add(noche);
-		horarios.add(mediaNoche);
-		horarios.add(madrugada);
-		return horarios;
-
-	}
-
-	private boolean verificarTemperatura(ArrayList<Hora> horarios, Ambiente a) {
-		boolean ret = true;
-		for (Hora h : horarios) {
-			a.setHoraActual(h);
-			ret = ret && this.colector.medir().equals(a.getTemperatura());
-		}
-		return ret;
-	}
-	
 
 }
