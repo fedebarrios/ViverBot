@@ -15,13 +15,16 @@ public class Simulador {
 	private Magnitudes magnitud;
 	private Hora horaActual;
 	private Medicion valorActual;
+	private long frecuencia;
 
 	public Simulador(Map<Horario, RangoNumerico> r, Magnitudes m) {
 		this.rangos = r;
 		magnitud = m;
-		this.actualizarValorActual(Hora.obtenerHoraActual());
+		this.horaActual = Hora.obtenerHoraActual();
+		this.actualizarValorActual(this.horaActual);
+		this.frecuencia = 300000;
 	}
-	
+
 	public void simular() {
 		Timer timer = new Timer();
 		TimerTask t = new TimerTask() {
@@ -33,9 +36,9 @@ public class Simulador {
 			}
 
 		};
-		timer.schedule(t, 0, 300000);
+		timer.schedule(t, 0, this.frecuencia);
 	}
-	
+
 	public void actualizarValorActual(Hora h0) {
 		this.horaActual = h0;
 		this.valorActual = this.crearMedicion(h0);
@@ -55,12 +58,17 @@ public class Simulador {
 		actualizarValorActual(h0);
 	}
 
-	
-
-	
-
 	public Medicion getMedicion() {
 		return this.valorActual;
+	}
+
+	public Hora getHora() {
+		// TODO Auto-generated method stub
+		return this.horaActual;
+	}
+
+	public void setFrecuencia(long i) {
+		this.frecuencia = i;
 	}
 
 }

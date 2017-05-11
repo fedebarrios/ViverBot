@@ -28,6 +28,8 @@ public class Hora implements Comparable {
 		return Hora.instanteActual() - inicio;
 	}
 
+	
+	//seguramente se vaya ya que solo lo  usa una clase que ya no va a existir
 	@Override
 	public int compareTo(Object h) {
 		try {
