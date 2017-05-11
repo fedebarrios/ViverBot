@@ -18,6 +18,7 @@ public class InstrumentoMediator {
 	protected SoporteMovible soporte;
 	protected ArrayList<PlantaDTO> plantas;
 
+	//revisar si esto se va a seguir utilizando
 	public InstrumentoMediator() {
 		this.tipoValor = "";
 	}

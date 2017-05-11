@@ -8,16 +8,19 @@ import org.junit.Test;
 
 import viverbot.Model.Ambiente;
 import viverbot.Model.Hora;
-import viverbot.Modelo.Magnitudes.Humedad;
 import viverbot.Modelo.Magnitudes.Magnitudes;
-import viverbot.Modelo.Magnitudes.Temperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Sensores.SensorHumedad;
 import viverbot.Modelo.Sensores.SensorTemperatura;
+import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
+import viverbot.Modelo.Simulacion.IBuildSimulador;
+import viverbot.Modelo.Simulacion.Simulador;
 
 public class InstrumentoMediatorTest {
 
 	InstrumentoMediator mediatorTest = null;
+	private static IBuildSimulador bEnero = new BuildSimuladorTemperaturaEnero();
+	private static Simulador simuladorEnero = bEnero.getSimulador();
 
 	@Test
 	public void colectorMagnitudesTestTemperatura() {
@@ -38,9 +41,12 @@ public class InstrumentoMediatorTest {
 	@Test
 	public void testTomarMedicionTemperatura() {
 		this.mediatorTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
-		Ambiente ambienteSimulado = new Ambiente();
-		assertTrue(this.verificarTemperatura(this.getHorarios(), ambienteSimulado));
-		assertTrue(this.mediatorTest.tomarMedicion().getClass() ==  Temperatura.class);
+		SensorTemperatura s = (SensorTemperatura) this.mediatorTest.getInstrumentoMedicion();
+		s.setSimulador(simuladorEnero);
+		simuladorEnero.simular();
+		
+		assertEquals(simuladorEnero.getMedicion(), this.mediatorTest.tomarMedicion());
+		assertEquals(this.mediatorTest.tomarMedicion().getTipo(), Magnitudes.TEMPERATURA);
 
 		clear();
 
@@ -51,7 +57,7 @@ public class InstrumentoMediatorTest {
 		this.mediatorTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
 		Ambiente ambienteSimulado = new Ambiente();
 		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
-		assertTrue(this.mediatorTest.tomarMedicion().getClass() == Humedad.class);
+		assertTrue(this.mediatorTest.tomarMedicion().getTipo() == Magnitudes.HUMEDAD);
 
 		clear();
 
@@ -86,14 +92,7 @@ public class InstrumentoMediatorTest {
 
 	}
 
-	private boolean verificarTemperatura(ArrayList<Hora> horarios, Ambiente a) {
-		boolean ret = true;
-		for (Hora h : horarios) {
-			a.setHoraActual(h);
-			ret = ret && this.mediatorTest.tomarMedicion().equals(a.getTemperatura());
-		}
-		return ret;
-	}
+	
 	
 	private boolean verificarHumedad(ArrayList<Hora> horarios, Ambiente a) {
 		boolean ret = true;
