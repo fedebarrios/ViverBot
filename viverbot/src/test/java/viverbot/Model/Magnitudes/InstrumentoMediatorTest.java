@@ -6,7 +6,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Ambiente;
+import viverbot.Model.Fecha;
 import viverbot.Model.Hora;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
@@ -62,6 +65,14 @@ public class InstrumentoMediatorTest {
 		clear();
 
 	}
+	
+	@Test
+	public void TomarAltura() {
+		this.mediatorTest = new InstrumentoMediator(Magnitudes.ALTURA);
+		PlantaDTO p = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
+		assertEquals(Magnitudes.ALTURA , mediatorTest.tomarAltura(p).getTipo());
+		this.clear();
+	}	
 
 	// metodos auxiliares
 	private void clear() {

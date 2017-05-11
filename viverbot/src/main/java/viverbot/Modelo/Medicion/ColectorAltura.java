@@ -2,18 +2,20 @@ package viverbot.Modelo.Medicion;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import viverbot.Modelo.Magnitudes.Magnitud;
+import viverbot.DTO.PlantaDTO;
+import viverbot.Model.Plantas;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class ColectorAltura extends Observable{
 	private InstrumentoMediator mediator;
 	private Timer timer;
-	private ArrayList<Medicion> alturasActuales;
+	private List<Medicion> alturasActuales;
 	private TimerTask task;
 	private long milisegundosEnUnDia = 3600000*24;
 
@@ -25,18 +27,23 @@ public class ColectorAltura extends Observable{
 		this.alturasActuales = null;	
 	}
 
-	protected ArrayList<Medicion> medir() {
-		return this.mediator.tomarAlturas();
+	protected List<Medicion> medir(List<PlantaDTO> plantas) {
+		List<Medicion> alturasActuales = new ArrayList<Medicion>();
+		for (PlantaDTO p : plantas){
+			alturasActuales.add(this.mediator.tomarAltura(p));
+		}
+		return alturasActuales;
 
 	}
 
 	public void colectar() {
 
 		task = new TimerTask() {
-
+			
+			List<PlantaDTO> plantas = new Plantas().obtenerPlantas();
 			@Override
 			public void run() {
-				alturasActuales = medir();
+				alturasActuales = medir(plantas);
 				notificar();
 
 			}
@@ -57,7 +64,7 @@ public class ColectorAltura extends Observable{
 		return mediator;
 	}
 
-	public ArrayList<Medicion> getValorActual() {
+	public List<Medicion> getValorActual() {
 		return alturasActuales;
 	}
 
