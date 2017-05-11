@@ -26,7 +26,7 @@ public class Medicion {
 		else{
 			Medicion m = (Medicion) o;
 			return m.getValor().doubleValue() == this.getValor().doubleValue()
-					|| m.getTipo() == this.getTipo();
+					&& m.getTipo() == this.getTipo();
 		}
 	}
 	

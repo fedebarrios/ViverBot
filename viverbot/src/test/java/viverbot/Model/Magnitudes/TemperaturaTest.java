@@ -11,6 +11,7 @@ public class TemperaturaTest extends TestCase {
 	public void testVerificarClase() {
 		Temperatura t1 =  new Temperatura(9.0);
 		Temperatura t2 =  new Temperatura(9.0);
+		
 
 		assertTrue(t1.getValor() instanceof Double);
 		assertTrue(t1.getValor().equals(9.0));
