@@ -2,8 +2,8 @@ package viverbot.Archivos;
 
 public class LectorEstados extends LectorTxt {
 	
-	public LectorEstados(Validador validador) {
-		super(validador);
+	public LectorEstados(Validador validador, Parser parser) {
+		super(validador, parser);
 	}
 
 	public void leerArchivo(String archivo){

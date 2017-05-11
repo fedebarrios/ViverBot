@@ -6,18 +6,20 @@ import java.io.IOException;
 
 public class LectorTxt {
 	Validador validador;
+	Parser parser;
 	
-	public LectorTxt(Validador validador){
+	public LectorTxt(Validador validador, Parser parser){
 		this.validador = validador;
+		this.parser = parser;
 	}
 	
 	public String leerTxt(String archivo) {
 		if(!validador.validarExistencia(archivo)){
 			System.out.println("No existe archivo");
-			return null;
+			return "N";
 		}else if (!validador.validarExtension(archivo, "txt")){
 			System.out.println("La extension del archivo no es .txt.");
-			return null;
+			return "E";
 		}
 		String data = "";
         FileReader f;
