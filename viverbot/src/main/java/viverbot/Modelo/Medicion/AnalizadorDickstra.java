@@ -9,16 +9,16 @@ import viverbot.DTO.Tupla;
 
 public class AnalizadorDickstra {
 	
-	Grafo g;// el analizador siempre esta ligado a un grafo
-	ArrayList<Tupla> camino;
-	ArrayList<Integer> noVisitados;
+	private Grafo g;// el analizador siempre esta ligado a un grafo
+	private ArrayList<Tupla> camino;
+	private ArrayList<Integer> noVisitados;
 	static final Double inf = Double.POSITIVE_INFINITY;
 	
 	public AnalizadorDickstra(Grafo _grafo)
 	{
 		g = _grafo;
 		
-		camino = new ArrayList<Tupla>();
+		camino = new ArrayList<Tupla>(); 
 		for(int i = 0; i < g.getVertices(); i++)
 		{
 			camino.add(new Tupla(inf, null));
