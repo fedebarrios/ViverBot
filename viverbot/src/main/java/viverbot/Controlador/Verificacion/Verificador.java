@@ -1,6 +1,7 @@
 package viverbot.Controlador.Verificacion;
 
 import java.util.Calendar;
+import java.io.File;
 import java.sql.Date;
 
 public class Verificador {
@@ -11,6 +12,31 @@ public class Verificador {
 				if(Character.isDigit(campo.charAt(i))) {
 					return false;
 				} ;
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean validarExistencia(String path){
+		File archivo = new File(path);
+		if( archivo.isFile()) return true;
+		return false;
+	}
+	
+	public static boolean validarExtension(String path, String extension){
+		if (path.endsWith(extension)){
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean campoExclusivamenteNumerico(String campo){
+		if(!campo.isEmpty()){
+			for(int i=0; i<campo.length(); i++){
+				if(!Character.isDigit(campo.charAt(i))) {
+					return false;
+				};
 			}
 			return true;
 		}

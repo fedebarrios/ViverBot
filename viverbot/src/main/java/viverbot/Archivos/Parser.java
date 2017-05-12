@@ -9,9 +9,9 @@ public class Parser {
 		
 	}
 	
-	public String[] parsearDiaHistorial(String s){
-		String[] medicionDiaria = s.split(":");
-		return medicionDiaria;
+	public String[] separarDato(String s){
+		String[] datos = s.split(":");
+		return datos;
 	}
 	
 	public List<String> separarEntradas(String s){
