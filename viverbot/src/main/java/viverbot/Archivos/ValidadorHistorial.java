@@ -31,18 +31,29 @@ public class ValidadorHistorial {
 
 				String[] datos = Separador.separarDato(s);
 				datos[0] = datos[0].substring(1);
-				System.out.println(datos[0]+".."+datos[1]);
-				if (!validarDatosNumericosHistorial(datos)){
-					System.out.println("No se puede ingresar informacion que no sean numeros");
-					return false;
-				} else if(!validarCantidadDatosHistorial(datos)){
+				if(!validarCantidadDatosHistorial(datos)){
 					System.out.println("Debe ingresar dos datos por fila");	
 					return false;
-				}
+				} else if (!validarDatosNumericosHistorial(datos)){
+					System.out.println("No se puede ingresar informacion que no sean numeros");
+					return false;
+				} 
 				
 			}
 			pos++;
 		}
 		return true;
+	}
+	
+	protected boolean validarInfoEspecie(List<String> entradas){
+		int cantidadDeInfoEspecie= 0;
+		boolean tieneFormatoValido = false;
+		for(String s : entradas){
+			if(s.substring(0,1).equals("e")){
+				cantidadDeInfoEspecie++;
+				tieneFormatoValido = this.validarCantidadDatosHistorial(Separador.separarDato(s.substring(1)));
+			}
+		}
+		return tieneFormatoValido && cantidadDeInfoEspecie == 1;
 	}
 }

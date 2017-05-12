@@ -1,13 +1,19 @@
 package viverbot.Archivos;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
 public class ValidadorTest {
 	ValidadorHistorial validador;
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	
 	
 	@Test
@@ -37,7 +43,7 @@ public class ValidadorTest {
 	@Test
 	public void HistorialValido(){
 		inicialize();
-		String[] entradas = {"h54:65.0","h57:14.3","e65:47.9"};
+		String[] entradas = {"h54:65.0","h57:14.3","etomate:tomatus"};
 		ArrayList<String> lectura = new ArrayList<String>();
 		for(String s : entradas){
 			lectura.add(s);
@@ -45,7 +51,78 @@ public class ValidadorTest {
 		assertTrue(validador.validarHistorial(lectura));
 	}
 	
+	@Test
+	public void HistorialInvalidoInfoNoNumerica(){
+		inicialize();
+		String[] entradas = {"hinfo:65.0","h57:14.3","etomate:tomatus"};
+		ArrayList<String> lectura = new ArrayList<String>();
+		for(String s : entradas){
+			lectura.add(s);
+		}
+		assertFalse(validador.validarHistorial(lectura));
+		assertThat(outContent.toString(), containsString("No se puede ingresar informacion que no sean numeros"));
+	}
+	
+	@Test
+	public void HistorialInvalidoMenorCantidadDatos(){
+		inicialize();
+		String[] entradas = {"h4:65.0","h57:","etomate:tomatus"};
+		ArrayList<String> lectura = new ArrayList<String>();
+		for(String s : entradas){
+			lectura.add(s);
+		}
+		assertFalse(validador.validarHistorial(lectura));
+		assertThat(outContent.toString(), containsString("Debe ingresar dos datos por fila"));
+	}
+	
+	@Test
+	public void HistorialConInfoDeEspecie(){
+		inicialize();
+		String[] entradas = {"h54:65.0","h57:14.3","epera:peral"};
+		List<String> lectura = new ArrayList<String>();
+		for(String s : entradas){
+			lectura.add(s);
+		}
+		assertTrue(validador.validarInfoEspecie(lectura));
+	}
+	
+	@Test
+	public void HistorialSinInfoDeEspecie(){
+		inicialize();
+		String[] entradas = {"h54:65.0","h57:14.3","hberenjena:berenjenus"};
+		List<String> lectura = new ArrayList<String>();
+		for(String s : entradas){
+			lectura.add(s);
+		}
+		assertFalse(validador.validarInfoEspecie(lectura));
+	}
+	
+	@Test
+	public void HistorialConMasDeUnaInfoDeEspecie(){
+		inicialize();
+		String[] entradas = {"h54:65.0","e57:14.3","etomate:tomatus"};
+		List<String> lectura = new ArrayList<String>();
+		for(String s : entradas){
+			lectura.add(s);
+		}
+		assertFalse(validador.validarInfoEspecie(lectura));
+	}
+	
+	@Test
+	public void HistorialConFormatoExcesivoInfoDeEspecie(){
+		inicialize();
+		String[] entradas = {"h54:65.0","h57:14.3","etomate:pera:papa"};
+		List<String> lectura = new ArrayList<String>();
+		for(String s : entradas){
+			lectura.add(s);
+		}
+		assertFalse(validador.validarInfoEspecie(lectura));
+	}
+	
+	
 	public void inicialize(){
 		validador = new ValidadorHistorial();
+		System.setOut(new PrintStream(outContent));
+	    System.setErr(new PrintStream(errContent));
 	}
 }
