@@ -29,17 +29,7 @@ public class DetectorTest {
 	}
 	
 	@Test
-	public void kernelVacioTest()
-	{
-		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
-		iniciarReconocimiento(0,0);
-		assertTrue(0==reconocedor.getCont());
-		clean();
-	}
-	
-	@Test
-	public void validacionKernelTest()
+	public void posicionKernelTest()
 	{
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
@@ -63,6 +53,7 @@ public class DetectorTest {
 		assertTrue(0==detector.getCont());
 		clean();
 	}
+	
 	@Test
 	public void kernelAnalizaPixel()
 	{
@@ -79,6 +70,21 @@ public class DetectorTest {
 		assertTrue(0==detector.getCont());
 		clean();
 	}
+	
+	@Test
+	public void kernelSinPixelesTest()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
+		iniciarReconocimiento(0,100);
+		assertTrue(0==reconocedor.getCont());
+		clean();
+		
+	}
+	
+
+	
+
 	
 	
 	private void inicializar()
