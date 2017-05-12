@@ -23,7 +23,7 @@ public class ObtenedorSeleccionVista extends JFrame {
 	private JLabel panelPrimeraImagen;
 	private JLabel panelSegundaImagen;
 	
-	public ObtenedorSeleccionVista(ObtenedorComando controlador) {
+	public ObtenedorSeleccionVista() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 703, 513);
@@ -33,7 +33,7 @@ public class ObtenedorSeleccionVista extends JFrame {
 		contentPane.setLayout(null);
 		
 		iniComponentes();
-		listenerControlador(controlador);
+		//listenerControlador(controlador);
 		
 	
 	}

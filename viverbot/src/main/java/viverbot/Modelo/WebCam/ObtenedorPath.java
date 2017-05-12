@@ -14,8 +14,8 @@ public class ObtenedorPath {
 	public boolean obtenerPath()
 	{
 		// Levantar desde property
-	  primerPath="src/test/java/com/losameos/viverbot/viverbot.recursos.Test/arbol.JPG";
-	  segundoPath="src/test/java/com/losameos/viverbot/viverbot.recursos.Test/arbol 4.png";
+	  primerPath="src/test/java/viverbot/recursosTest/arbol.JPG";
+	  segundoPath="src/test/java/viverbot/recursosTest/arbolC.png";
 	  if(validarPath()) return true;
 	  else return false;
 	}
