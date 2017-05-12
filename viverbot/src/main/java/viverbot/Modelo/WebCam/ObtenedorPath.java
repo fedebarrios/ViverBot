@@ -15,7 +15,7 @@ public class ObtenedorPath {
 	{
 		// Levantar desde property
 	  primerPath="src/test/java/viverbot/recursosTest/arbol.JPG";
-	  segundoPath="src/test/java/viverbot/recursosTest/arbolC.png";
+	  segundoPath="src/test/java/viverbot/recursosTest/arbolSuperado.png";
 	  if(validarPath()) return true;
 	  else return false;
 	}
@@ -30,6 +30,16 @@ public class ObtenedorPath {
 
 	public String getSegundoPath() {
 		return segundoPath;
+	}
+	
+	public void setPrimerPath(String path)
+	{
+		primerPath = path;
+	}
+	
+	public void setSegundoPath(String path)
+	{
+		segundoPath = path;
 	}
 
 }

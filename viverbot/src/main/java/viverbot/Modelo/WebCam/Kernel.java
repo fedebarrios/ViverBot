@@ -10,6 +10,15 @@ public class Kernel {
 	private Integer height;
 	private ArrayList<Integer> datos;
 	
+	public Kernel()
+	{
+		this.x = 0;
+		this.y = 0;
+		this.width = 0;
+		this.height = 0;
+		this.datos = new ArrayList<Integer>();
+	}
+	
 	public Kernel(int x, int y)
 	{
 		this.x = x;
