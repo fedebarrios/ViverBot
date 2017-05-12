@@ -12,7 +12,6 @@ import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-
 public class SimularTest {
 
 	private static Simulador simulador = null;
@@ -25,46 +24,15 @@ public class SimularTest {
 	private static Hora tarde = new Hora(15, 0, 0);
 	private static Hora atardecer = new Hora(18, 0, 0);
 	private static Hora noche = new Hora(21, 0, 0);
-	
-	private static RangoNumerico r1=  new RangoNumerico(0.0, 1.0);
-	private static RangoNumerico r2=  new RangoNumerico(1.0, 2.0);
-	private static RangoNumerico r3=  new RangoNumerico(2.0, 3.0);
-	private static RangoNumerico r4=  new RangoNumerico(3.0, 4.0);
-	private static RangoNumerico r5=  new RangoNumerico(4.0, 5.0);
-	private static RangoNumerico r6=  new RangoNumerico(5.0, 6.0);
-	private static RangoNumerico r7= new RangoNumerico(6.0, 7.0);
-	private static RangoNumerico r8=  new RangoNumerico(7.0, 8.0);
 
-	@Test
-	public void testActualizarValorActualMedianoche() {
-
-		this.inicializar();
-		simulador.actualizarValorActual(medianoche);
-		Medicion m = simulador.getMedicion();
-		assertTrue(m.getValor() >= 0.0 && m.getValor() <= 1.0);
-	}
-
-	@Test
-	public void testActualizarValorActualMadrugada() {
-
-		this.inicializar();
-		simulador.actualizarValorActual(madrugada);
-		Medicion m = simulador.getMedicion();
-		assertTrue(m.getValor() >= 1.0 && m.getValor() <= 2.0);
-		this.clear();
-
-	}
-
-	@Test
-	public void testActualizarValorActualAmanecer() {
-
-		this.inicializar();
-		simulador.actualizarValorActual(amanecer);
-		Medicion m = simulador.getMedicion();
-		assertTrue(m.getValor() >= 2.0 && m.getValor() <= 3.0);
-		this.clear();
-
-	}
+	private static RangoNumerico r1 = new RangoNumerico(0.0, 1.0);
+	private static RangoNumerico r2 = new RangoNumerico(1.0, 2.0);
+	private static RangoNumerico r3 = new RangoNumerico(2.0, 3.0);
+	private static RangoNumerico r4 = new RangoNumerico(3.0, 4.0);
+	private static RangoNumerico r5 = new RangoNumerico(4.0, 5.0);
+	private static RangoNumerico r6 = new RangoNumerico(5.0, 6.0);
+	private static RangoNumerico r7 = new RangoNumerico(6.0, 7.0);
+	private static RangoNumerico r8 = new RangoNumerico(7.0, 8.0);
 
 	@Test
 	public void testActualizarValorActualMañana() {
@@ -73,17 +41,8 @@ public class SimularTest {
 		simulador.actualizarValorActual(mañana);
 		Medicion m = simulador.getMedicion();
 		assertTrue(m.getValor() >= 3.0 && m.getValor() <= 4.0);
-		this.clear();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
 
-	}
-
-	@Test
-	public void testActualizarValorActualMediodia() {
-
-		this.inicializar();
-		simulador.actualizarValorActual(mediodia);
-		Medicion m = simulador.getMedicion();
-		assertTrue(m.getValor() >= 4.0 && m.getValor() <= 5.0);
 		this.clear();
 
 	}
@@ -95,17 +54,8 @@ public class SimularTest {
 		simulador.actualizarValorActual(tarde);
 		Medicion m = simulador.getMedicion();
 		assertTrue(m.getValor() >= 5.0 && m.getValor() <= 6.0);
-		this.clear();
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
 
-	}
-
-	@Test
-	public void testActualizarValorActualAtardecer() {
-
-		this.inicializar();
-		simulador.actualizarValorActual(atardecer);
-		Medicion m = simulador.getMedicion();
-		assertTrue(m.getValor() >= 6.0 && m.getValor() <= 7.0);
 		this.clear();
 
 	}
@@ -117,6 +67,8 @@ public class SimularTest {
 		simulador.actualizarValorActual(noche);
 		Medicion m = simulador.getMedicion();
 		assertTrue(m.getValor() >= 7.0 && m.getValor() <= 8.0);
+		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+
 		this.clear();
 
 	}
@@ -126,23 +78,19 @@ public class SimularTest {
 		this.inicializar();
 		assertEquals(simulador.getRango(medianoche), r1);
 		this.clear();
-		
-		
+
 	}
 
 	@Test
 	public void testGetRangoMadrugada() {
-		
-		
 		this.inicializar();
 		assertEquals(simulador.getRango(madrugada), r2);
-
 		this.clear();
 	}
 
 	@Test
 	public void testGetRangoAmanecer() {
-		
+
 		this.inicializar();
 		assertEquals(simulador.getRango(amanecer), r3);
 
@@ -151,8 +99,7 @@ public class SimularTest {
 
 	@Test
 	public void testGetRangoMañana() {
-		
-		
+
 		this.inicializar();
 		assertEquals(simulador.getRango(mañana), r4);
 
@@ -161,8 +108,7 @@ public class SimularTest {
 
 	@Test
 	public void testGetRangoMediodia() {
-		
-		
+
 		this.inicializar();
 		assertEquals(simulador.getRango(mediodia), r5);
 
@@ -171,17 +117,16 @@ public class SimularTest {
 
 	@Test
 	public void testGetRangoTarde() {
-	
-		
+
 		this.inicializar();
-		assertEquals(simulador.getRango(tarde),r6);
+		assertEquals(simulador.getRango(tarde), r6);
 
 		this.clear();
 	}
 
 	@Test
 	public void testGetRangoAtardecer() {
-		
+
 		this.inicializar();
 		assertEquals(simulador.getRango(atardecer), r7);
 
@@ -190,8 +135,7 @@ public class SimularTest {
 
 	@Test
 	public void testGetRangoNoche() {
-		
-		
+
 		this.inicializar();
 		assertEquals(simulador.getRango(noche), r8);
 
@@ -200,23 +144,21 @@ public class SimularTest {
 
 	@Test
 	public void testSetHoraActual() {
-		
+
 		this.inicializar();
-		Hora h = new Hora(4,54,32);
+		Hora h = new Hora(4, 54, 32);
 		simulador.setHoraActual(h);
 		assertEquals(simulador.getHora(), h);
 		this.clear();
 
 	}
 
-	
-
 	public void inicializar() {
 		r.put(Horario.MEDIANOCHE, r1);
 		r.put(Horario.MADRUGADA, r2);
 		r.put(Horario.AMANECER, r3);
-		r.put(Horario.MAÑANA,r4);
-		r.put(Horario.MEDIODIA,r5);
+		r.put(Horario.MAÑANA, r4);
+		r.put(Horario.MEDIODIA, r5);
 		r.put(Horario.TARDE, r6);
 		r.put(Horario.ATARDECER, r7);
 		r.put(Horario.NOCHE, r8);
