@@ -24,8 +24,9 @@ public class AutomatizacionController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.automatizacionVista.getMenuitem_salir()) {
 			this.automatizacionVista.dispose();
-		} else if (e.getSource() == this.automatizacionVista.getMenuitem_configuracion()){
-			AutomatizacionConfiguracionController autoController = new AutomatizacionConfiguracionController(this.automatizacionDeClima);
+		} else if (e.getSource() == this.automatizacionVista.getMenuitem_configuracion()) {
+			AutomatizacionConfiguracionController autoController = new AutomatizacionConfiguracionController(
+					this.automatizacionDeClima);
 		}
 
 	}
@@ -36,7 +37,7 @@ public class AutomatizacionController implements ActionListener {
 		this.automatizacionVista.getText_temperaturaAmbiente().setText(temp.getValor().toString());
 		this.automatizacionVista.getText_rango()
 				.setText(rango.getMinimo().toString() + " | " + rango.getMaximo().toString());
-		if (this.automatizacionDeClima.isEncendido()) {
+		if (this.automatizacionDeClima.isEncendidoAutomatizador()) {
 			this.automatizacionVista.getText_encendido().setText("Encendido");
 			AireAcondicionado aire = this.automatizacionDeClima.getAire();
 			this.automatizacionVista.getText_estado().setText(aire.getFrioCalorEstado().toString());
@@ -48,7 +49,6 @@ public class AutomatizacionController implements ActionListener {
 			this.automatizacionVista.getText_potencia().setText("");
 			this.automatizacionVista.getText_temperaturaAire().setText("");
 		}
-
 	}
 
 	public void mostrar() {

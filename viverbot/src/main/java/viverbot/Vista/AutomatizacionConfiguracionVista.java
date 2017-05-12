@@ -46,16 +46,19 @@ public class AutomatizacionConfiguracionVista extends JFrame {
 		text_friocalor.setBounds(169, 11, 149, 29);
 		contentPane.add(text_friocalor);
 		text_friocalor.setColumns(10);
+		text_friocalor.addActionListener(controlador);
 
 		text_potencia = new JTextField();
 		text_potencia.setColumns(10);
 		text_potencia.setBounds(169, 51, 149, 29);
 		contentPane.add(text_potencia);
+		text_potencia.addActionListener(controlador);
 
 		text_temperatura = new JTextField();
 		text_temperatura.setColumns(10);
 		text_temperatura.setBounds(169, 91, 149, 29);
 		contentPane.add(text_temperatura);
+		text_temperatura.addActionListener(controlador);
 
 		btn_friocalor = new JButton("Set");
 		btn_friocalor.setBounds(328, 14, 108, 23);

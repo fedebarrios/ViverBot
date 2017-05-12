@@ -34,4 +34,5 @@ public class AireAcondicionado {
 		this.potenciaEstado.aplicarPotencia(this, temp);
 	}
 
+
 }

@@ -11,25 +11,39 @@ public class AutomatizadorDeClima {
 	private Temperatura temp;
 	private RangoNumerico rango;
 	private AireAcondicionado aire = new AireAcondicionado();
-	private boolean encendido;
+	private boolean encendidoAutomatizador;
+	private boolean encendidoAire;
 
 	public AutomatizadorDeClima(Temperatura temp, RangoNumerico rango) {
 		this.temp = temp;
 		this.rango = rango;
 	}
 
-	public TimerTask tt = new TimerTask() {
+	public TimerTask ttAutomatizado = new TimerTask() {
 
 		@Override
 		public void run() {
-			if (encendido == true) {
+			if (encendidoAutomatizador == true) {
 				definirEstados();
 				aire.ejecutar(temp);
 				WriterExcel.registrarAutomatizacion(aire);
 				System.out.println(temp.getValor());
 				if (verificarRango()) {
-					tt.cancel();
+					ttAutomatizado.cancel();
 				}
+			}
+		}
+	};
+
+	public TimerTask ttNoAutomatizado = new TimerTask() {
+
+		@Override
+		public void run() {
+			aire.ejecutar(temp);
+			WriterExcel.registrarAutomatizacion(aire);
+			System.out.println(temp.getValor());
+			if (verificarRango()) {
+				ttNoAutomatizado.cancel();
 			}
 		}
 	};
@@ -82,20 +96,35 @@ public class AutomatizadorDeClima {
 		return rango;
 	}
 
-	public boolean isEncendido() {
-		return encendido;
+	public boolean isEncendidoAutomatizador() {
+		return encendidoAutomatizador;
+	}
+
+	public boolean isEncendidoAire() {
+		return encendidoAire;
 	}
 
 	public void encenderApagarAutomatizador(boolean encendido) {
 		Timer timer = new Timer();
-		if(encendido == true){
-			this.encendido = true;
-			timer.schedule(this.tt, 1000, 1000);
-		}else {
-			this.encendido = false;
+		if (encendido == true) {
+			this.encendidoAutomatizador = true;
+			timer.schedule(this.ttAutomatizado, 1000, 1000);
+		} else {
+			this.encendidoAutomatizador = false;
 			timer.cancel();
 		}
-		
+
+	}
+
+	public void encenderApagarManual(boolean encendido) {
+		Timer timer = new Timer();
+		if (encendido == true) {
+			this.encendidoAutomatizador = true;
+			timer.schedule(this.ttNoAutomatizado, 1000, 1000);
+		} else {
+			this.encendidoAutomatizador = false;
+			timer.cancel();
+		}
 	}
 
 }
