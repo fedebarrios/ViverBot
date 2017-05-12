@@ -12,7 +12,7 @@ public class SeparadorTest {
 	@Test
 	public void testSepararEntradas(){
 		inicialize();
-		List<String> entradas = parser.separarEntradas("14:4/15:47/47:69");
+		List<String> entradas = parser.separarEntradas("14:4/15:47/47:69/");
 		assertEquals(3 , entradas.size());
 		assertEquals("14:4" , entradas.get(0));
 	}

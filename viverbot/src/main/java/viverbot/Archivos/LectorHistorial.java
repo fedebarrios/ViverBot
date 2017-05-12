@@ -15,6 +15,7 @@ public class LectorHistorial extends LectorTxt{
 		if( !contenido.equals("N") || !contenido.equals("E")){
 			entradas = Separador.separarEntradas(contenido);
 		}
+		for(String s:entradas) System.out.println(s);
 		return entradas;
 	}		
 }

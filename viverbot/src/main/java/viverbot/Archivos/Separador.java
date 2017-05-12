@@ -19,7 +19,6 @@ public class Separador {
 				aux = i+1;
 			}
 		}
-		entradas.add(s.substring(aux, s.length()));		
 		return entradas;
 		
 	}
