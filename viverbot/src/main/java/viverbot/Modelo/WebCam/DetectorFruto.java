@@ -23,12 +23,15 @@ public class DetectorFruto {
 		
 		kernel = new Kernel(x,y);
 
-		
+		if(kernel.getHeight()<primerImg.getAlto() && kernel.getWidth()<primerImg.getAncho()){
+
 		System.out.println("kernelAncho: "+kernel.getWidth()+"kernelAlto"+kernel.getHeight()+" cant px detectador: "+ contador);
 		contador=0;
 		for(int j=y; j<kernel.getHeight(); j++)
 			for(int i=x; i<kernel.getWidth();i++)
 				analizarKernel(i,j,primerImg);
+		
+		}
 		return primerImg;
 		/*
 		iniKernelFruto();

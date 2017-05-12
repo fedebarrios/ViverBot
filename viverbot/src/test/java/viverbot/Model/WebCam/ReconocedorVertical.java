@@ -1,24 +1,22 @@
-package viverbot.Modelo.WebCam;
+package viverbot.Model.WebCam;
 
 import java.awt.image.Kernel;
 
-public class ReconocedorFruto {
+import viverbot.Modelo.WebCam.DetectorFruto;
+import viverbot.Modelo.WebCam.Imagen;
+
+public class ReconocedorVertical {
 	
 	private Integer cont = 0;
-	public Imagen reconocerFrutos(Imagen generador)
+	public Imagen reconocerFrutos(Imagen generador,int xx, int yy)
 	{
 		Imagen img = generador;
-		Integer y=0;
-		Integer x=0;
+		Integer y=yy;
+		Integer x=xx;
 		Integer amountObject=0;
 		DetectorFruto detector = new DetectorFruto();
 		
-		while(y != img.getAlto()&& y < img.getAlto()-27)
-		{
-			while(x != img.getAncho() && x < img.getAncho()-33)
-			{
 				img = detector.detectObject(x,y,generador);
-				
 					if(detector.getCont()==0)
 					{
 						x += 33;
@@ -31,13 +29,9 @@ public class ReconocedorFruto {
 						amountObject +=1;
 					
 					
-					System.out.println("detector.contador: "+detector.getCont());
-			}
-			detector.setCont();
-			x=0;
-			y += 1;
-		}
-		cont = amountObject;
+				System.out.println("detector.contador: "+x);
+		
+		cont = x;
 		return img;
 		
 		

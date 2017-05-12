@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import viverbot.Modelo.WebCam.DetectorFruto;
 import viverbot.Modelo.WebCam.GeneradorImagenes;
 import viverbot.Modelo.WebCam.Kernel;
 import viverbot.Modelo.WebCam.ObtenedorPath;
@@ -80,6 +81,20 @@ public class DetectorTest {
 		assertTrue(0==reconocedor.getCont());
 		clean();
 		
+	}
+	
+	@Test
+	public void kernelSuperaDimensiones()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
+		DetectorFruto detector = new DetectorFruto();
+		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
+		detector.detectObject(440, 440, generador.getPrimerImagen());
+		assertTrue(0==detector.getCont());
+		assertTrue(detector.getKernel().getWidth()>generador.getPrimerImagen().getAncho());
+		assertTrue(detector.getKernel().getHeight()>generador.getPrimerImagen().getAlto());
+
 	}
 	
 
