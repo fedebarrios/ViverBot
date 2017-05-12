@@ -31,7 +31,6 @@ public class ReconocedorFruto {
 						amountObject +=1;
 					
 					
-					System.out.println("detector.contador: "+detector.getCont());
 			}
 			detector.setCont();
 			x=0;
