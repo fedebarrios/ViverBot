@@ -9,30 +9,32 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import viverbot.Controlador.AutomatizacionVistaController;
+import viverbot.Controlador.AutomatizacionController;
 
 public class AutomatizacionVista extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField text_temperaturaAmbiente;
 	private JTextField text_rango;
 	private JTextField text_encendido;
 	private JTextField text_estado;
 	private JTextField text_potencia;
-	private JTextField text_temperatura;
+	private JTextField text_temperaturaAire;
+	private JLabel label_temperaturaAmbiente;
 	private JLabel label_rango;
 	private JLabel label_encendido;
 	private JLabel label_estado;
 	private JLabel label_potencia;
-	private JLabel label_temperatura;
+	private JLabel label_temperaturaAire;
 	private JMenuBar menuBar;
 	private JMenu menu_archivo;
 	private JMenuItem menuitem_salir;
 	private JMenu menu_opciones;
 	private JMenuItem menuitem_configuracion;
 
-	public AutomatizacionVista(AutomatizacionVistaController controlador) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 363, 280);
+	public AutomatizacionVista(AutomatizacionController controlador) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 363, 317);
 		setTitle("Automatizacion de temperatura");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -57,55 +59,65 @@ public class AutomatizacionVista extends JFrame {
 		menu_opciones.add(menuitem_configuracion);
 		menuitem_configuracion.addActionListener(controlador);
 
+		label_temperaturaAmbiente = new JLabel("Temperatura ambiente en C°");
+		label_temperaturaAmbiente.setBounds(10, 43, 153, 26);
+		contentPane.add(label_temperaturaAmbiente);
+
 		label_rango = new JLabel("Rango establecido");
-		label_rango.setBounds(10, 39, 153, 26);
+		label_rango.setBounds(10, 82, 153, 26);
 		contentPane.add(label_rango);
 
-		label_encendido = new JLabel("On / Off");
-		label_encendido.setBounds(10, 76, 153, 26);
+		label_encendido = new JLabel("Estado de automatizacion");
+		label_encendido.setBounds(10, 119, 153, 26);
 		contentPane.add(label_encendido);
 
-		label_estado = new JLabel("Estado");
-		label_estado.setBounds(10, 113, 153, 26);
+		label_estado = new JLabel("Frio/Calor");
+		label_estado.setBounds(10, 156, 153, 26);
 		contentPane.add(label_estado);
 
 		label_potencia = new JLabel("Potencia");
-		label_potencia.setBounds(10, 150, 153, 26);
+		label_potencia.setBounds(10, 193, 153, 26);
 		contentPane.add(label_potencia);
 
-		label_temperatura = new JLabel("Temperatura");
-		label_temperatura.setBounds(10, 187, 153, 26);
-		contentPane.add(label_temperatura);
+		label_temperaturaAire = new JLabel("Temperatura del aire en C°");
+		label_temperaturaAire.setBounds(10, 230, 153, 26);
+		contentPane.add(label_temperaturaAire);
+
+		text_temperaturaAmbiente = new JTextField();
+		text_temperaturaAmbiente.setColumns(10);
+		text_temperaturaAmbiente.setBounds(173, 45, 153, 26);
+		text_temperaturaAmbiente.addActionListener(controlador);
+		contentPane.add(text_temperaturaAmbiente);
 
 		text_rango = new JTextField();
-		text_rango.setBounds(173, 39, 153, 26);
+		text_rango.setBounds(173, 82, 153, 26);
 		text_rango.addActionListener(controlador);
 		text_rango.setColumns(10);
 		contentPane.add(text_rango);
 
 		text_encendido = new JTextField();
-		text_encendido.setBounds(173, 76, 153, 26);
+		text_encendido.setBounds(173, 119, 153, 26);
 		text_encendido.addActionListener(controlador);
 		text_encendido.setColumns(10);
 		contentPane.add(text_encendido);
 
 		text_estado = new JTextField();
 		text_estado.setColumns(10);
-		text_estado.setBounds(173, 116, 153, 26);
+		text_estado.setBounds(173, 156, 153, 26);
 		text_estado.addActionListener(controlador);
 		contentPane.add(text_estado);
 
 		text_potencia = new JTextField();
 		text_potencia.setColumns(10);
-		text_potencia.setBounds(173, 153, 153, 26);
+		text_potencia.setBounds(173, 193, 153, 26);
 		text_potencia.addActionListener(controlador);
 		contentPane.add(text_potencia);
 
-		text_temperatura = new JTextField();
-		text_temperatura.setColumns(10);
-		text_temperatura.setBounds(173, 190, 153, 26);
-		text_temperatura.addActionListener(controlador);
-		contentPane.add(text_temperatura);
+		text_temperaturaAire = new JTextField();
+		text_temperaturaAire.setColumns(10);
+		text_temperaturaAire.setBounds(173, 230, 153, 26);
+		text_temperaturaAire.addActionListener(controlador);
+		contentPane.add(text_temperaturaAire);
 
 	}
 
@@ -141,12 +153,12 @@ public class AutomatizacionVista extends JFrame {
 		this.text_potencia = text_potencia;
 	}
 
-	public JTextField getText_temperatura() {
-		return text_temperatura;
+	public JTextField getText_temperaturaAire() {
+		return text_temperaturaAire;
 	}
 
-	public void setText_temperatura(JTextField text_temperatura) {
-		this.text_temperatura = text_temperatura;
+	public void setText_temperaturaAire(JTextField text_temperatura) {
+		this.text_temperaturaAire = text_temperatura;
 	}
 
 	public JMenuItem getMenuitem_salir() {
@@ -163,6 +175,14 @@ public class AutomatizacionVista extends JFrame {
 
 	public void setMenuitem_configuracion(JMenuItem menuitem_configuracion) {
 		this.menuitem_configuracion = menuitem_configuracion;
+	}
+
+	public JTextField getText_temperaturaAmbiente() {
+		return text_temperaturaAmbiente;
+	}
+
+	public void setText_temperaturaAmbiente(JTextField text_temperaturaAmbiente) {
+		this.text_temperaturaAmbiente = text_temperaturaAmbiente;
 	}
 
 }

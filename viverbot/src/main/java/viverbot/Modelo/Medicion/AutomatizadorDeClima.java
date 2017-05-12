@@ -1,5 +1,6 @@
 package viverbot.Modelo.Medicion;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 import viverbot.Archivos.WriterExcel;
@@ -30,7 +31,6 @@ public class AutomatizadorDeClima {
 					tt.cancel();
 				}
 			}
-
 		}
 	};
 
@@ -74,12 +74,28 @@ public class AutomatizadorDeClima {
 		return aire;
 	}
 
+	public Temperatura getTemp() {
+		return temp;
+	}
+
+	public RangoNumerico getRango() {
+		return rango;
+	}
+
 	public boolean isEncendido() {
 		return encendido;
 	}
 
-	public void setEncendido(boolean encendido) {
-		this.encendido = encendido;
+	public void encenderApagarAutomatizador(boolean encendido) {
+		Timer timer = new Timer();
+		if(encendido == true){
+			this.encendido = true;
+			timer.schedule(this.tt, 1000, 1000);
+		}else {
+			this.encendido = false;
+			timer.cancel();
+		}
+		
 	}
 
 }
