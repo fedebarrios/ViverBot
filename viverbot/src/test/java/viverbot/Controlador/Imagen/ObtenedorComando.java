@@ -21,7 +21,7 @@ public class ObtenedorComando implements ActionListener{
 	
 	public ObtenedorComando()
 	{
-		vistaCargarImagen = new ObtenedorSeleccionVista(this);
+		vistaCargarImagen = new ObtenedorSeleccionVista();
 		vistaCargarImagen.visible(true);
 		obtenedorImagenes = new ObtenedorImagenesMock();
 		resaltadorImagen = new ResaltadorImagen();

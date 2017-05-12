@@ -1,15 +1,18 @@
-package viverbot.Modelo.WebCam;
+package viverbot.Model.WebCam;
 
 import java.util.ArrayList;
 
-public class DetectorFruto {
+import viverbot.Modelo.WebCam.Imagen;
+import viverbot.Modelo.WebCam.Kernel;
+
+public class DetectorFrutoMock {
 
 	private Kernel kernel;
 	private Integer contador=0;
 	private Integer contFruta=0;
 	private ArrayList<Kernel> kernelValidos;
 	
-	public DetectorFruto()
+	public DetectorFrutoMock()
 	{
 		kernelValidos = new ArrayList<Kernel>();
 		contador=0;
@@ -21,7 +24,7 @@ public class DetectorFruto {
 		
 		Imagen primerImg = contenedor;
 		
-		kernel = new Kernel(x,y);
+		kernel = new Kernel();
 
 		
 		System.out.println("kernelAncho: "+kernel.getWidth()+"kernelAlto"+kernel.getHeight()+" cant px detectador: "+ contador);
