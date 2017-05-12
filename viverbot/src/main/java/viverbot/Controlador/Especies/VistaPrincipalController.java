@@ -46,7 +46,7 @@ public class VistaPrincipalController implements ActionListener {
 
 			// ventana de opciones
 			int confirmado = JOptionPane.showConfirmDialog(null,
-					"La medicion de datos de temperatura no esta disponible. Utilizar una simulacion?");
+					"La medicion de datos de temperatura no esta disponible. Utilizar una simulacion?", "Seleccione", JOptionPane.OK_CANCEL_OPTION);
 			if (JOptionPane.OK_OPTION == confirmado) {
 				int seleccion = JOptionPane.showOptionDialog(null, "Seleccione opcion", "Simulaciones",
 						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,

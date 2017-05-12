@@ -14,83 +14,7 @@ public class BuildSimuladorTemperaturaJunioTest {
 	private static final IBuildSimulador b = new BuildSimuladorTemperaturaJunio();
 	private static final Simulador s = b.getSimulador();
 
-	@Test
-	public void testGetSimuladorMediaNoche() {
-		Hora h0 = new Hora(0, 0, 0);
-		Hora h1 = new Hora(1, 0, 0);
-		Hora h2 = new Hora(2, 0, 0);
-		RangoNumerico r = new RangoNumerico(0.0, 5.0);
-		
-		s.setHoraActual(h0);
-		Medicion m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-		
-		s.setHoraActual(h1);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h2);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-	}
-
-	@Test
-	public void testGetSimuladorMadrugada() {
-		Hora h0 = new Hora(3, 0, 0);
-		Hora h1 = new Hora(4, 0, 0);
-		Hora h2 = new Hora(5, 0, 0);
-		RangoNumerico r = new RangoNumerico(2.0, 7.0);
-		
-		s.setHoraActual(h0);
-		Medicion m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h1);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h2);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-	}
-
-	@Test
-	public void testGetSimuladorAmanecer() {
-		Hora h0 = new Hora(6, 0, 0);
-		Hora h1 = new Hora(7, 0, 0);
-		Hora h2 = new Hora(8, 0, 0);
-		RangoNumerico r = new RangoNumerico(5.0, 10.0);
-		
-		s.setHoraActual(h0);
-		Medicion m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h1);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h2);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-	}
-
+	
 	@Test
 	public void testGetSimuladorMañana() {
 		Hora h0 = new Hora(9, 0, 0);
@@ -117,31 +41,7 @@ public class BuildSimuladorTemperaturaJunioTest {
 
 	}
 
-	@Test
-	public void testGetSimuladorMedioDia() {
-		Hora h0 = new Hora(12, 0, 0);
-		Hora h1 = new Hora(13, 0, 0);
-		Hora h2 = new Hora(14, 0, 0);
-		RangoNumerico r = new RangoNumerico(10.0, 17.0);
-		
-		s.setHoraActual(h0);
-		Medicion m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h1);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h2);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-	}
+	
 
 	@Test
 	public void testGetSimuladorTarde() {
@@ -169,31 +69,7 @@ public class BuildSimuladorTemperaturaJunioTest {
 
 	}
 
-	@Test
-	public void testGetSimuladorAtardecer() {
-		Hora h0 = new Hora(18, 0, 0);
-		Hora h1 = new Hora(19, 0, 0);
-		Hora h2 = new Hora(20, 0, 0);
-		RangoNumerico r = new RangoNumerico(5.0, 10.0);
-		
-		s.setHoraActual(h0);
-		Medicion m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h1);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-		
-		s.setHoraActual(h2);
-		m = s.getMedicion();
-		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
-
-	}
+	
 
 	@Test
 	public void testGetSimuladorNoche() {
