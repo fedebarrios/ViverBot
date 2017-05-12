@@ -40,7 +40,7 @@ public class WriterExcel {
 	}
 
 	public static void registrarAutomatizacion(AireAcondicionado aire) {
-		if(!file.exists()){
+		if (!file.exists()) {
 			crearDocumento();
 		}
 		try {
@@ -63,6 +63,23 @@ public class WriterExcel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void borrarDocumento() {
+		if (file.exists()) {
+			file.delete();
+		}
+
+	}
+
+	@SuppressWarnings("unused")
+	private File getFile() {
+		return file;
+	}
+
+	@SuppressWarnings("unused")
+	private String getPath() {
+		return file.getAbsolutePath();
 	}
 
 }

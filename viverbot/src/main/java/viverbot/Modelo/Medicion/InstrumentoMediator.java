@@ -6,7 +6,6 @@ import viverbot.DTO.PlantaDTO;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
-import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
@@ -35,17 +34,11 @@ public class InstrumentoMediator {
 		return instrumentoMedicion;
 	}
 	
-	//move este ciclo al colector
-	public ArrayList<Medicion> tomarAlturas(){
-		ArrayList<Medicion> alturasActuales = new ArrayList<Medicion>();
-
+	public Medicion tomarAltura(PlantaDTO p){
 		soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
 		plantas = new Plantas().obtenerPlantas();
-		for (int i = 0 ; i < plantas.size() ; i++){
-			soporte.mover(plantas.get(i).getUbicacion());
-			alturasActuales.add(tomarMedicion());
-		}
-		return alturasActuales;
+		soporte.mover(p.getUbicacion());
+		return tomarMedicion();
 	}
 
 }

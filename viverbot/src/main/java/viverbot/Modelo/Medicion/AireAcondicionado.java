@@ -9,6 +9,8 @@ public class AireAcondicionado {
 	private IFrioCalor frioCalorEstado;
 
 	public AireAcondicionado() {
+		this.potenciaEstado = new Potencia_0();
+		this.frioCalorEstado = new Frio();
 	}
 
 	public IPotencia getPotenciaEstado() {

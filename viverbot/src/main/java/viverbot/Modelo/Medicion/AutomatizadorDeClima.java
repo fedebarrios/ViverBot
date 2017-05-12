@@ -1,5 +1,6 @@
 package viverbot.Modelo.Medicion;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 import viverbot.Archivos.WriterExcel;
@@ -10,6 +11,7 @@ public class AutomatizadorDeClima {
 	private Temperatura temp;
 	private RangoNumerico rango;
 	private AireAcondicionado aire = new AireAcondicionado();
+	private boolean encendido;
 
 	public AutomatizadorDeClima(Temperatura temp, RangoNumerico rango) {
 		this.temp = temp;
@@ -20,12 +22,14 @@ public class AutomatizadorDeClima {
 
 		@Override
 		public void run() {
-			definirEstados();
-			aire.ejecutar(temp);
-			WriterExcel.registrarAutomatizacion(aire);
-			System.out.println(temp.getValor());
-			if (verificarRango()) {
-				tt.cancel();
+			if (encendido == true) {
+				definirEstados();
+				aire.ejecutar(temp);
+				WriterExcel.registrarAutomatizacion(aire);
+				System.out.println(temp.getValor());
+				if (verificarRango()) {
+					tt.cancel();
+				}
 			}
 		}
 	};
@@ -64,6 +68,34 @@ public class AutomatizadorDeClima {
 		if (temp.getValor() - rango.getMaximo() > 4.0 || rango.getMinimo() - temp.getValor() > 4.0) {
 			aire.setPotenciaEstado(new Potencia_3());
 		}
+	}
+
+	public AireAcondicionado getAire() {
+		return aire;
+	}
+
+	public Temperatura getTemp() {
+		return temp;
+	}
+
+	public RangoNumerico getRango() {
+		return rango;
+	}
+
+	public boolean isEncendido() {
+		return encendido;
+	}
+
+	public void encenderApagarAutomatizador(boolean encendido) {
+		Timer timer = new Timer();
+		if(encendido == true){
+			this.encendido = true;
+			timer.schedule(this.tt, 1000, 1000);
+		}else {
+			this.encendido = false;
+			timer.cancel();
+		}
+		
 	}
 
 }
