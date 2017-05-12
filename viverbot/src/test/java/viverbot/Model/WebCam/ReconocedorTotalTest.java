@@ -18,7 +18,7 @@ public class ReconocedorTotalTest {
 	private ObtenedorPath obtenedor; 
 	private GeneradorImagenes generador;
 	
-	//@Test
+	@Test
 	public void deteccion5Frutostest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
@@ -27,7 +27,7 @@ public class ReconocedorTotalTest {
 		clean();
 	}
 	
-	//@Test
+	@Test
 	public void deteccion0Frutostest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.JPG");
@@ -37,7 +37,7 @@ public class ReconocedorTotalTest {
 
 	}
 	
-	//@Test
+	@Test
 	public void deteccionObjetoBasuratest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
@@ -47,7 +47,7 @@ public class ReconocedorTotalTest {
 
 	}
 	
-	//@Test
+	@Test
 	public void deteccion10Frutostest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol10.png");
@@ -68,18 +68,8 @@ public class ReconocedorTotalTest {
 
 	}
 	
-	@Test
-	public void desplazamiento1pxTest() {
-		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbol10.png");
-		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
-		reconocedorVertical.reconocerFrutos(resaltador.resaltarImagen(generador),150,185);
-		assertTrue(151==reconocedorVertical.getCont());
-		clean();
-
-	}
 	
-	//@Test
+	@Test
 	public void sinDeteccionPixeles() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol10.png");

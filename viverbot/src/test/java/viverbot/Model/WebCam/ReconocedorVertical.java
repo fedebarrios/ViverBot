@@ -29,7 +29,6 @@ public class ReconocedorVertical {
 						amountObject +=1;
 					
 					
-				System.out.println("detector.contador: "+x);
 		
 		cont = x;
 		return img;

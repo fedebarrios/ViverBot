@@ -25,7 +25,6 @@ public class DetectorFruto {
 
 		if(kernel.getHeight()<primerImg.getAlto() && kernel.getWidth()<primerImg.getAncho()){
 
-		System.out.println("kernelAncho: "+kernel.getWidth()+"kernelAlto"+kernel.getHeight()+" cant px detectador: "+ contador);
 		contador=0;
 		for(int j=y; j<kernel.getHeight(); j++)
 			for(int i=x; i<kernel.getWidth();i++)
@@ -33,24 +32,7 @@ public class DetectorFruto {
 		
 		}
 		return primerImg;
-		/*
-		iniKernelFruto();
-		int cantpxSimilares=0;
-		for(int i=0; i<kernel.getDatos().length; i++)
-			if(kernel.iesimo(i)==kernelFruto.getKernel().iesimo(i)){
-				System.out.println("fruto:"+kernel.iesimo(i)+"gg"+kernelFruto.getKernel().iesimo(i));
-				cantpxSimilares += 1;
-				
-			}
-		
-		pxSimilares = cantpxSimilares;
-		if(cantpxSimilares>0){
-			cont +=1;
-			return true;
-		}
-		else
-			return false;
-				*/
+	
 				
 	}
 	
