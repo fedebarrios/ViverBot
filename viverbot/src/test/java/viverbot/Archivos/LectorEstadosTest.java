@@ -13,80 +13,36 @@ public class LectorEstadosTest extends TestCase {
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	LectorEstados lector;
 	
-	/*@SuppressWarnings("static-access")
 	@Test
 	public void testArchivoNoTxt()
 	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/File.notxt");
+		inicialize("src/test/java/viverbot/Archivos/File.notxt");
 		assertThat(outContent.toString(), containsString("La extension del archivo no es .txt."));
 		clear();
-	}*/
-	
-	@SuppressWarnings("static-access")
-	@Test
-	public void testArchivoValoresNoNumericos()
-	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/FileNoNumerico.txt");
-		assertThat(outContent.toString(), containsString("Ingreso un valor que no es numerico para la lista de valores."));
-		clear();
 	}
 	
-	@SuppressWarnings("static-access")
-	@Test
-	public void testArchivoNombresIncorrectos()
-	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/FileNombresIncorrectos.txt");
-		assertThat(outContent.toString(), containsString("Ingreso un nombre con caracteres no alfanumericos."));
-		clear();
-	}
-	
-	@SuppressWarnings("static-access")
-	@Test
-	public void testArchivoArreglosIgualTamaño()
-	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/FileIgualdad.txt");
-		assertThat(outContent.toString(), containsString("La cantidad de estados debe ser menor en uno a la cantidad de valores."));
-		clear();
-	}
-	
-	@SuppressWarnings("static-access")
-	@Test
-	public void testArchivoArregloEstadosMasGrande()
-	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
-		assertThat(outContent.toString(), containsString("La cantidad de estados debe ser menor en uno a la cantidad de valores."));
-		clear();
-	}
-	
-	@SuppressWarnings("static-access")
-	@Test
-	public void testArchivoDosEstadosMenosQueValores()
-	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/FileDosEstadosMenos.txt");
-		assertThat(outContent.toString(), containsString("La cantidad de estados debe ser menor en uno a la cantidad de valores."));
-		clear();
-	}
-	
-	@SuppressWarnings("static-access")
 	@Test
 	public void testArchivoNoEncontrado()
 	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/FixleDoxsEstadxxosMenoxs.txt");
-		assertThat(outContent.toString(), containsString("Archivo no encontrado."));
+		inicialize("src/test/java/viverbot/Archivos/FixleDoxsEstadxxosMenoxs.txt");
+		assertThat(outContent.toString(), containsString("No existe archivo."));
 		clear();
 	}
 	
-	private void inicialize() {
-		lector = new LectorEstados();
+	
+	@Test
+	public void testArchivoOK()
+	{
+		inicialize("src/test/java/viverbot/Archivos/FileNoNumerico.txt");
+		assertThat(outContent.toString(), containsString(""));
+		clear();
+	}
+	
+	private void inicialize(String archivo) {
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
+		lector = new LectorEstados();
+		lector.leerArchivo(archivo);
 	}
 
 	private void clear() {

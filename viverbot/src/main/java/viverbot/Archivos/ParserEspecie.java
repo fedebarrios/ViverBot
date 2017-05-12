@@ -2,10 +2,11 @@ package viverbot.Archivos;
 
 import viverbot.DAO.EspecieDAO;
 import viverbot.DTO.EspecieDTO;
+import viverbot.Interfaces.IParser;
 
-public class ParserEspecie extends Parser{
+public class ParserEspecie implements IParser<EspecieDTO>{
 	
-	public EspecieDTO parsearEspecie(String s){
+	public EspecieDTO parsear(String s){
 		String[] datos = s.split(":");
 		datos[0] = datos[0].substring(1);
 		EspecieDTO ret = new EspecieDTO(69,datos[0],datos[1],"");

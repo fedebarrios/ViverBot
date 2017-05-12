@@ -13,9 +13,9 @@ public class LectorTxt {
 	
 	public String leerTxt(String archivo) {
 		if(!Verificador.validarExistencia(archivo)){
-			System.out.println("No existe archivo");
+			System.out.println("No existe archivo.");
 			return "N";
-		}else if (!Verificador.validarExtension(archivo, "txt")){
+		}else if (!Verificador.validarExtension(archivo, ".txt")){
 			System.out.println("La extension del archivo no es .txt.");
 			return "E";
 		}

@@ -17,7 +17,7 @@ public class ParserTest {
 	public void ParserEspecie(){
 		ParserEspecie parser = new ParserEspecie();
 		String datos = "etomate:tomatus";
-		EspecieDTO especie = parser.parsearEspecie(datos);
+		EspecieDTO especie = parser.parsear(datos);
 		assertEquals("tomate",especie.getNombre());
 		assertEquals("tomatus",especie.getNombreCientifico());
 	}
@@ -26,7 +26,7 @@ public class ParserTest {
 	public void ParserTuplaAltura(){
 		ParserHistorial parser = new ParserHistorial();
 		String datos = "h14:2.05";
-		TuplaAltura tupla = parser.parsearHistorial(datos);
+		TuplaAltura tupla = parser.parsear(datos);
 		assertEquals(14,tupla.getDiaDeVida());
 		assertTrue( 2.05 == tupla.getAltura().getValor());
 	}

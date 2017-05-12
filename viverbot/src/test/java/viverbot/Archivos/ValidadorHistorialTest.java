@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class ValidadorTest {
+public class ValidadorHistorialTest {
 	ValidadorHistorial validador;
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
