@@ -2,36 +2,47 @@ package viverbot.Archivos;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
+import viverbot.DTO.EspecieDTO;
+import viverbot.Model.HistorialOptimo;
+import viverbot.Model.TuplaAltura;
+import viverbot.Modelo.Magnitudes.EmptyMedicion;
+
 public class ParserTest {
-	Separador parser;
 	
 	@Test
-	public void testSepararEntradas(){
-		inicialize();
-		List<String> entradas = parser.separarEntradas("14:4/15:47/47:69");
-		assertEquals(3 , entradas.size());
-		assertEquals("14:4" , entradas.get(0));
+	public void ParserEspecie(){
+		ParserEspecie parser = new ParserEspecie();
+		String datos = "etomate:tomatus";
+		EspecieDTO especie = parser.parsearEspecie(datos);
+		assertEquals("tomate",especie.getNombre());
+		assertEquals("tomatus",especie.getNombreCientifico());
 	}
 	
 	@Test
-	public void testSepararDatos(){
-		inicialize();
-		String[] casos =  {"16:54:4" , "16:4" , "14" , ""};
-		String[] datos1 = parser.separarDato(casos[0]);
-		String[] datos2 = parser.separarDato(casos[1]);
-		String[] datos3 = parser.separarDato(casos[2]);
-		String[] datos4 = parser.separarDato(casos[3]);
-		assertEquals( 3, datos1.length);
-		assertEquals( 2, datos2.length);
-		assertEquals( 1, datos3.length);
-		assertEquals( 1, datos4.length);
+	public void ParserTuplaAltura(){
+		ParserHistorial parser = new ParserHistorial();
+		String datos = "h14:2.05";
+		TuplaAltura tupla = parser.parsearHistorial(datos);
+		assertEquals(14,tupla.getDiaDeVida());
+		assertTrue( 2.05 == tupla.getAltura().getValor());
 	}
 	
-	public void inicialize(){
-		parser = new Separador();
+	@Test
+	public void MediatorTest(){
+		MediatorParser mediator = new MediatorParser();
+		ArrayList<String> datos = new ArrayList<String>();
+		datos.add("h1:1.54");
+		datos.add("h3:1.65");
+		datos.add("ecebolla:cebollus");
+		HistorialOptimo historial = mediator.parsearHistorialEspecie(datos);
+		assertEquals("cebolla",historial.getEspecie().getNombre());
+		assertEquals("cebollus",historial.getEspecie().getNombreCientifico());
+		assertTrue(1.54 == historial.buscarTupla(1).getAltura().getValor());
+		assertTrue(1.65 == historial.buscarTupla(3).getAltura().getValor());
+		assertTrue(historial.buscarTupla(4).getAltura() instanceof EmptyMedicion);
 	}
 }

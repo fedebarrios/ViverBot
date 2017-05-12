@@ -26,10 +26,12 @@ public class ValidadorHistorial {
 	protected boolean validarHistorial(List<String> entradas){
 		int pos = 0;
 		for (String s : entradas){
+			
 			if(pos+1 != entradas.size()){
 
 				String[] datos = Separador.separarDato(s);
 				datos[0] = datos[0].substring(1);
+				System.out.println(datos[0]+".."+datos[1]);
 				if (!validarDatosNumericosHistorial(datos)){
 					System.out.println("No se puede ingresar informacion que no sean numeros");
 					return false;
@@ -38,7 +40,8 @@ public class ValidadorHistorial {
 					return false;
 				}
 				
-			}pos++;
+			}
+			pos++;
 		}
 		return true;
 	}

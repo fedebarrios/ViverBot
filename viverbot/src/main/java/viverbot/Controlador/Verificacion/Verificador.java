@@ -34,7 +34,7 @@ public class Verificador {
 	public static boolean campoExclusivamenteNumerico(String campo){
 		if(!campo.isEmpty()){
 			for(int i=0; i<campo.length(); i++){
-				if(!Character.isDigit(campo.charAt(i))) {
+				if(!Character.isDigit(campo.charAt(i))&&!(campo.charAt(i)=='.')) {
 					return false;
 				};
 			}
