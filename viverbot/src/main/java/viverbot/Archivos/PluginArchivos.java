@@ -2,21 +2,22 @@ package viverbot.Archivos;
 
 import java.util.List;
 
+import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Model.HistorialOptimo;
 
 public class PluginArchivos {
-	LectorHistorial lector ;
+	LectorTxt lector ;
 	ValidadorHistorial validadorHistorial ;
+	ValidadorEstados validadorEstados ;
 	
-	public PluginArchivos(LectorHistorial lector , ValidadorHistorial validador){
-		this.lector = lector;
-		this.validadorHistorial = validador;
+	public PluginArchivos(){
+		
 	}
 	
 	public HistorialOptimo cargarHistorial(String path){
 		lector = new LectorHistorial();
 		validadorHistorial = new ValidadorHistorial();
-		List<String> lectura = lector.leerArchivo(path);
+		List<String> lectura = ((LectorHistorial) lector).leerArchivo(path);
 		boolean esValidoHistorial = validadorHistorial.validarHistorial(lectura);
 		boolean esValidoEspecie = validadorHistorial.validarInfoEspecie(lectura);
 		if(esValidoHistorial && esValidoEspecie){
@@ -31,6 +32,19 @@ public class PluginArchivos {
 		}
 		else{
 			System.out.println("No existe informacion acerca de la especie");
+		}
+		return null;
+	}
+	
+	public Object cargarEstados(String path){
+		lector = new LectorEstados();
+		validadorEstados = new ValidadorEstados();
+		List<String[]> lectura = ((LectorEstados) lector).leerArchivo(path);
+		boolean esValidoEstados = validadorEstados.validarEstados(lectura);
+		if(esValidoEstados){
+			MediatorParser mediator = new MediatorParser();
+			List<EstadoAltura> estados = mediator.parsearEstados(lectura);
+			return estados;
 		}
 		return null;
 	}

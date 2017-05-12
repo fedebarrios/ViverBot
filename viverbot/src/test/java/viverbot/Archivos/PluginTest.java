@@ -40,7 +40,7 @@ public class PluginTest {
 	}
 	
 	public void inicialize(){
-		plugin = new PluginArchivos(new LectorHistorial() , new ValidadorHistorial());
+		plugin = new PluginArchivos();
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
 	}
