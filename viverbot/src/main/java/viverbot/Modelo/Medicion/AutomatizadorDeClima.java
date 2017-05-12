@@ -10,6 +10,7 @@ public class AutomatizadorDeClima {
 	private Temperatura temp;
 	private RangoNumerico rango;
 	private AireAcondicionado aire = new AireAcondicionado();
+	private boolean encendido;
 
 	public AutomatizadorDeClima(Temperatura temp, RangoNumerico rango) {
 		this.temp = temp;
@@ -20,13 +21,16 @@ public class AutomatizadorDeClima {
 
 		@Override
 		public void run() {
-			definirEstados();
-			aire.ejecutar(temp);
-			WriterExcel.registrarAutomatizacion(aire);
-			System.out.println(temp.getValor());
-			if (verificarRango()) {
-				tt.cancel();
+			if (encendido == true) {
+				definirEstados();
+				aire.ejecutar(temp);
+				WriterExcel.registrarAutomatizacion(aire);
+				System.out.println(temp.getValor());
+				if (verificarRango()) {
+					tt.cancel();
+				}
 			}
+
 		}
 	};
 
@@ -66,9 +70,16 @@ public class AutomatizadorDeClima {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	private AireAcondicionado getAire() {
+	public AireAcondicionado getAire() {
 		return aire;
+	}
+
+	public boolean isEncendido() {
+		return encendido;
+	}
+
+	public void setEncendido(boolean encendido) {
+		this.encendido = encendido;
 	}
 
 }
