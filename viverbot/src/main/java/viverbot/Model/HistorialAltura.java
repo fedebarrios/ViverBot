@@ -27,6 +27,10 @@ public class HistorialAltura {
 		}
 		return ret;
 	}
+	
+	public List<TuplaAltura> getTuplas(){
+		return historial;
+	}
 
 	
 	public void agregarTupla(TuplaAltura t){

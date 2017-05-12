@@ -7,10 +7,8 @@ import java.io.IOException;
 import viverbot.Controlador.Verificacion.Verificador;
 
 public class LectorTxt {
-	Parser parser;
 	
-	public LectorTxt(Parser parser){
-		this.parser = parser;
+	public LectorTxt(){
 	}
 	
 	public String leerTxt(String archivo) {

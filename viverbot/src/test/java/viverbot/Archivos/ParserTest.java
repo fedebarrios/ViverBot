@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class ParserTest {
-	Parser parser;
+	Separador parser;
 	
 	@Test
 	public void testSepararEntradas(){
@@ -32,6 +32,6 @@ public class ParserTest {
 	}
 	
 	public void inicialize(){
-		parser = new Parser();
+		parser = new Separador();
 	}
 }

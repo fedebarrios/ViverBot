@@ -5,15 +5,15 @@ import java.util.List;
 
 public class LectorHistorial extends LectorTxt{
 
-	public LectorHistorial( Parser parser) {
-		super(parser);
+	public LectorHistorial() {
+		
 	}
 	
 	public List<String> leerArchivo(String path){
 		String contenido =this.leerTxt(path);
 		List<String> entradas = new ArrayList<String>();
 		if( !contenido.equals("N") || !contenido.equals("E")){
-			entradas = parser.separarEntradas(contenido);
+			entradas = Separador.separarEntradas(contenido);
 		}
 		return entradas;
 	}		
