@@ -22,7 +22,7 @@ public class PlantasTest {
 		assertTrue(cantidadPlantas == 6);
 
 		// Agregaremos una nueva planta
-		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 1994));
+		plantas.agregarPlanta(1, "34,543,55", new Fecha(10, 10, 1994));
 		cantidadPlantas = plantas.obtenerPlantas().size();
 
 		// Ahora la cantidad de plantas se incremento
@@ -36,7 +36,7 @@ public class PlantasTest {
 		assertTrue(cantidadPlantas == 6);
 
 		// Agregaremos una nueva planta
-		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 2017));
+		plantas.agregarPlanta(1, "34,543,55", new Fecha(10, 10, 2017));
 		
 		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543,18461), 
 																					new Fecha(10, 10, 2017));
@@ -57,7 +57,7 @@ public class PlantasTest {
 		assertTrue(cantidadPlantas == 6);
 
 		// Agregaremos una nueva planta
-		plantas.agregarPlanta(1, "34,543", new Fecha(10, 10, 2017));
+		plantas.agregarPlanta(1, "34,543,55", new Fecha(10, 10, 2017));
 		
 		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543, 18461), 
 																					new Fecha(10, 10, 2017));
@@ -74,9 +74,11 @@ public class PlantasTest {
 	public void testObtenerUbicacion() {
 		inicializar();
 		
-		String ubicacion = "77,88";
+		String ubicacion = "77,88,18461";
 		UbicacionDTO ubicacionDTO = new UbicacionDTO(77, 88, 18461);
-		assertTrue(plantas.obtenerUbicacion(ubicacion).equals(ubicacionDTO));
+		System.out.println(ubicacion);
+		System.out.println(ubicacionDTO.toString());
+		assertEquals(plantas.obtenerUbicacion(ubicacion),ubicacionDTO);
 	}
 
 	private void inicializar() {

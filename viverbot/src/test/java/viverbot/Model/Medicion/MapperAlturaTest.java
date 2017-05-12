@@ -37,14 +37,14 @@ public class MapperAlturaTest {
 		assertEquals(1, estadosDevueltos.size());
 	}
 	
-	@Test
-	public void EstadoPerfectoDevuelto(){
-		inicializar();
-		ArrayList<Medicion> alturas = new ArrayList<Medicion>();
-		alturas.add(new Medicion(240.0, Magnitudes.ALTURA));
-		List<EstadoAltura> estadosDevueltos = mapper.relacionar(alturas);
-		assertTrue(estadosDevueltos.get(0) instanceof EstadoAlturaPerfecta);
-	}
+//	@Test
+//	public void EstadoPerfectoDevuelto(){
+//		inicializar();
+//		ArrayList<Medicion> alturas = new ArrayList<Medicion>();
+//		alturas.add(new Medicion(240.0, Magnitudes.ALTURA));
+//		List<EstadoAltura> estadosDevueltos = mapper.relacionar(alturas);
+//		assertTrue(estadosDevueltos.get(0) instanceof EstadoAlturaPerfecta);
+//	}
 	
 	public void inicializar(){
 		plantas = new ArrayList<PlantaDTO>();

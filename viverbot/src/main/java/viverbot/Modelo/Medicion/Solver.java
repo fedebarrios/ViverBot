@@ -42,7 +42,7 @@ public class Solver {
 		Grafo g = new Grafo(n);
 		
 		for(Arista arista: listaAristas){
-			g.agregarArista(arista.getUbicacionA(), arista.getUbicacionB(), arista.getDistancia());
+			g.agregarArista(arista.getUbicacionA().getIndice(), arista.getUbicacionB().getIndice(), arista.getDistancia());
 		}
 				
 		return g;

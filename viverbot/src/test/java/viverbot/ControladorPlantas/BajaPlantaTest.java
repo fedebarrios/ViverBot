@@ -33,9 +33,9 @@ public class BajaPlantaTest {
 		int cantItemsIniciales = PlantaDAO.getInstance().obtenerPlantas().size();
 		controladorPlantas.inicializar();
 		int cantItemsFinales = controladorPlantas.getVistaBajaPlanta().getCmbPlantas().getModel().getSize();
-		assertEquals(cantItemsIniciales, cantItemsFinales);  
-		
-		controladorPlantas.borrarItemPlanta(1);
+		assertEquals(cantItemsIniciales, cantItemsFinales); 
+		 
+		controladorPlantas.borrarItemPlanta(0);
 		assertTrue(cantItemsFinales==cantItemsIniciales);
 		controladorPlantas.getVistaBajaPlanta().cerrarVentana();
 	}

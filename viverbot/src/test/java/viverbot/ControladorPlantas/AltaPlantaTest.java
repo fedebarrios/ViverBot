@@ -24,7 +24,7 @@ public class AltaPlantaTest {
 		inicialize();
 		int cantPlantasInicio = PlantaDAO.getInstance().obtenerPlantas().size();
 		controladorPlantas.inicializar();
-		controladorPlantas.getVista().getTextUbicacion().setText("0,0");
+		controladorPlantas.getVista().getTextUbicacion().setText("0,0,5");
 		controladorPlantas.getVista().getCmbEspecies().setSelectedIndex(1);
 		controladorPlantas.getVista().setDateFiltro(new Date(10/10/2017));
 		controladorPlantas.registrarPlanta();
@@ -38,7 +38,7 @@ public class AltaPlantaTest {
 	public void testCamposValidos(){
 		inicialize();
 		controladorPlantas.inicializar();
-		controladorPlantas.getVista().getTextUbicacion().setText("0,0");
+		controladorPlantas.getVista().getTextUbicacion().setText("0,0,5");
 		controladorPlantas.getVista().getCmbEspecies().setSelectedIndex(1);
 		controladorPlantas.getVista().setDateFiltro(new Date(2017-1900,4-1,10));
 		assertTrue(controladorPlantas.camposValidos());
@@ -61,8 +61,8 @@ public class AltaPlantaTest {
 	public void testSeleccionarUbicacion(){
 		inicialize();
 		controladorPlantas.inicializar();
-		controladorPlantas.seleccionarUbicacion("0,0");
-		assertTrue(controladorPlantas.getVista().getTextUbicacion().getText().equals("0,0"));
+		controladorPlantas.seleccionarUbicacion("0,0,5");
+		assertTrue(controladorPlantas.getVista().getTextUbicacion().getText().equals("0,0,5"));
 		controladorPlantas.getVista().dispose();
 	}
 

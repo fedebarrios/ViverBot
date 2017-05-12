@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import viverbot.Controlador.Verificacion.PlanificadorAltura;
-import viverbot.Controlador.Verificacion.TransmisorHumedad;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.Plantas;
@@ -69,10 +68,6 @@ public class VistaPrincipalController implements ActionListener {
 			}
 			// fin de la ventan de opciones
 
-		} else if (e.getSource() == this.vistaPrincipal.getMntmControolarHumedad()) {
-			SoporteMovible soporte = SoporteFactory.crearSoporte((TransmisorHumedad.getTipoMagnitud()));
-			Thread hiloTransmisor = new Thread(new TransmisorHumedad(soporte));
-			hiloTransmisor.start();
 		} else if (e.getSource() == this.vistaPrincipal.getMntmControlarAltura()) {
 			ColectorAltura c = new ColectorAltura();
 			PlanificadorAltura p = PlanificadorAltura.getInstance();

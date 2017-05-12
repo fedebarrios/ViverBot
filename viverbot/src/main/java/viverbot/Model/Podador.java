@@ -18,7 +18,7 @@ public class Podador {
 	public boolean podar(PlantaDTO planta){
 		Plantas plantas = new Plantas();
 		if(plantas.obtenerPlantaEspecifica(planta.getCodigoPlanta())==null){
-			return false;
+			return false; 
 		}
 		else{
 			plantas.eliminarPlanta(planta.getCodigoPlanta());

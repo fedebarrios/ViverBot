@@ -52,7 +52,11 @@ public class PlantaDAO {
 
 	public int obtenerUltimoCodigo() {
 		int longitud = this.plantas.size();
-		return this.plantas.get(longitud-1).getCodigoPlanta();
+		if(longitud==0){
+			return 9949;
+		}else{
+			return this.plantas.get(longitud-1).getCodigoPlanta();
+		}
 	}
 
 	public void borrarPlanta(int codPlanta) {

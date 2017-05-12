@@ -17,26 +17,26 @@ public class Plantas {
 	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {
 		return plantaDAO.obtenerPlantas(codEspecie);
 	}
-	
-	public PlantaDTO obtenerPlanta(int codPlanta){
+
+	public PlantaDTO obtenerPlanta(int codPlanta) {
 		return plantaDAO.obtenerPlanta(codPlanta);
 	}
-	
-	public int obtenerUltimoCodigoPlanta(){
+
+	public int obtenerUltimoCodigoPlanta() {
 		return plantaDAO.obtenerUltimoCodigo();
 	}
-	
+
 	public ArrayList<PlantaDTO> obtenerPlantas() {
 		return plantaDAO.obtenerPlantas();
 	}
-	
-	public PlantaDTO obtenerPlantaEspecifica( int codPlanta){
-		return plantaDAO.obtenerPlantaEspecifica( codPlanta);
+
+	public PlantaDTO obtenerPlantaEspecifica(int codPlanta) {
+		return plantaDAO.obtenerPlantaEspecifica(codPlanta);
 	}
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Fecha fecha) {
 		UbicacionDTO ubicacionDTO = obtenerUbicacion(ubicacion);
-		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, obtenerUltimoCodigoPlanta()+1, ubicacionDTO, fecha);
+		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, obtenerUltimoCodigoPlanta() + 1, ubicacionDTO, fecha);
 		plantaDAO.agregarPlanta(plantaDTO);
 		return false;
 	}
@@ -45,34 +45,72 @@ public class Plantas {
 		plantaDAO.borrarPlanta(codPlanta);
 	}
 
+//	public UbicacionDTO obtenerUbicacion(String ubicacion) {
+//		String fila = "";
+//		String columna = "";
+//		String indice = "";
+//		char aux;
+//		boolean filaCompleta = false;
+//		boolean columnaCompleta = false;
+//		for (int i = 0; i < ubicacion.length(); i++) {
+//			aux = ubicacion.charAt(i);
+//			if (aux != ',') {
+//				if (!filaCompleta) {
+//					fila += aux;
+//				} else if (!columnaCompleta) {
+//					columna += aux;
+//				} else {
+//					indice += aux;
+//				}
+//
+//			} else {
+//				filaCompleta = true;
+//			}
+//			if (filaCompleta && !columnaCompleta && aux != ',') {
+//				columna += aux;
+//			}
+//			if (filaCompleta && aux == ',') {
+//				columnaCompleta = true;
+//				System.out.println("algo");
+//			}
+//			if (columnaCompleta && aux != ',') {
+//				indice += aux;
+//			}
+//		}
+//		System.out.println("-.-------------");
+//		System.out.println(fila);
+//		System.out.println(columna);
+//		System.out.println(indice);
+//		System.out.println("---------------");
+//		return new UbicacionDTO(Integer.parseInt(fila), Integer.parseInt(columna), Integer.parseInt(indice));
+//	}
+
 	public UbicacionDTO obtenerUbicacion(String ubicacion) {
 		String fila = "";
 		String columna = "";
 		String indice = "";
+		ArrayList<String> arreglo = new ArrayList<String>();
+		int indiceX = 0;
 		char aux;
 		boolean filaCompleta = false;
 		boolean columnaCompleta = false;
 		for (int i = 0; i < ubicacion.length(); i++) {
 			aux = ubicacion.charAt(i);
 			if (aux != ',') {
-				if(!filaCompleta){
-					fila += aux;
-				}
-			} else{
-				filaCompleta = true;
-				continue;
+				fila += aux;
+			} else {
+				arreglo.add(fila.toString());
+				fila="";
 			}
-			if (filaCompleta && aux != ',') {
-				columna+= aux;
-			}
-			if (columnaCompleta && aux != ',') {
-				indice+= aux;
-			}
-		} 
+		}
+		arreglo.add(fila.toString());
+		fila=arreglo.get(0);
+		columna=arreglo.get(1);
+		indice=arreglo.get(2);
 		return new UbicacionDTO(Integer.parseInt(fila), Integer.parseInt(columna), Integer.parseInt(indice));
 	}
-	
-	public int cantidadPlantas(){
+
+	public int cantidadPlantas() {
 		return plantaDAO.cantidadPlantas();
 	}
 }
