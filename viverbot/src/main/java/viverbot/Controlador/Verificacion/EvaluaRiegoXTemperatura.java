@@ -6,8 +6,9 @@ import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class EvaluaRiegoXTemperatura  extends EvaluaRiegoDecorator{
 	private RangoNumerico rangoIdeal = new RangoNumerico(25.0, 5.0);
-	private Temperatura temperaturaActual=new TransmisorTemperaturaActual().getTemperaturaActual();
-
+//	private Temperatura temperaturaActual=new TransmisorTemperaturaActual().getTemperaturaActual();
+	private Temperatura temperaturaActual=new Temperatura(5.0);
+	
 	public EvaluaRiegoXTemperatura(RiegoValidable riegoValidable) {
 		super(riegoValidable);
 	}
