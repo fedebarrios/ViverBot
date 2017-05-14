@@ -4,6 +4,6 @@ import viverbot.Modelo.Medicion.AireAcondicionado;
 
 public interface IFrioCalor {
 
-	public void anunciarEstado(AireAcondicionado aire);
+	public void definirEstado(AireAcondicionado aire);
 
 }

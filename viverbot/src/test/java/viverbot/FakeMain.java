@@ -1,6 +1,6 @@
 package viverbot;
 
-import viverbot.Controlador.AutomatizacionController;
+import viverbot.Controlador.AutomatizadorVistaController;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Temperatura;
 import viverbot.Modelo.Medicion.AutomatizadorDeClima;
@@ -11,8 +11,7 @@ public class FakeMain {
 		Temperatura temp = new Temperatura(25.0);
 		RangoNumerico rango = new RangoNumerico(15.0, 20.0);
 		AutomatizadorDeClima automatizacion = new AutomatizadorDeClima(temp, rango);
-		automatizacion.encenderApagarAutomatizador(true);
-		AutomatizacionController vista = new AutomatizacionController(automatizacion);
+		AutomatizadorVistaController vista = new AutomatizadorVistaController(automatizacion);
 		
 	}
 

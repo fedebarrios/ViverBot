@@ -1,19 +1,16 @@
 package viverbot.Modelo.Medicion;
 
 import viverbot.Interfaces.IPotencia;
-import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class Potencia_2 implements IPotencia {
 
 	@Override
-	public Temperatura aplicarPotencia(AireAcondicionado aire, Temperatura temp) {
+	public Medicion aplicarPotencia(AireAcondicionado aire) {
+		Medicion ret = new Medicion(0.15, Magnitudes.TEMPERATURA);
 		aire.setPotenciaEstado(this);
-		if (aire.getFrioCalorEstado().getClass() == Calor.class) {
-			temp.setValor(temp.getValor() + 0.15);
-			return temp;
-		}
-		temp.setValor(temp.getValor() - 0.15);
-		return temp;
+		return ret;
 	}
 
 	@Override

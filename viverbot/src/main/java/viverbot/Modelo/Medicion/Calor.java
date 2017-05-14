@@ -5,7 +5,7 @@ import viverbot.Interfaces.IFrioCalor;
 public class Calor implements IFrioCalor {
 	
 	@Override
-	public void anunciarEstado(AireAcondicionado aire) {
+	public void definirEstado(AireAcondicionado aire) {
 		aire.setFrioCalorEstado(this);
 		System.out.println("El aire se encuentra en calor");
 	}
