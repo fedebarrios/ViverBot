@@ -57,6 +57,41 @@ public class DetectorFruto {
 		
 	}
 	
+	public boolean isFruit() {
+		
+		
+		if(contador>=672 && contador <=676){
+			if(validarVecino()){
+			contFruta += 1;
+			return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean validarVecino()
+	{
+		
+		System.out.println("ESTADO ARREGLOancho "+kernelValidos.isEmpty()+" TAMAÑO DEL ARREGLO "+kernelValidos.size());
+
+		if(kernelValidos.isEmpty()){
+			kernelValidos.add(kernel);
+			return true;
+		}
+		else 
+		{
+			Kernel kernelAntecesor = kernelValidos.get(kernelValidos.size()-1);
+			kernelValidos.add(kernel);
+			System.out.println("kernel analizado: "+kernel.getWidth()+" ---- "+kernel.getHeight());
+			if(kernelAntecesor.getWidth() == kernel.getWidth()-1 || kernelAntecesor.getHeight() == kernel.getHeight()-1){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+	}
+	
 
 	private boolean compararCanales(Imagen imagenResaltada) {
 		return imagenResaltada.getColorImagen().getRGB()==-16777216;
@@ -98,38 +133,5 @@ public class DetectorFruto {
 		this.contFruta = contFruta;
 	}
 
-	public boolean isFruit() {
-		
-		
-		if(contador>=672 && contador <=676){
-			if(validarVecino()){
-			contFruta += 1;
-			return true;
-			}
-		}
-		return false;
-	}
-	
-	private boolean validarVecino()
-	{
-		
-		System.out.println("ESTADO ARREGLOancho "+kernelValidos.isEmpty()+" TAMAÑO DEL ARREGLO "+kernelValidos.size());
 
-		if(kernelValidos.isEmpty()){
-			kernelValidos.add(kernel);
-			return true;
-		}
-		else 
-		{
-			Kernel kernelAntecesor = kernelValidos.get(kernelValidos.size()-1);
-			kernelValidos.add(kernel);
-			System.out.println("kernel analizado: "+kernel.getWidth()+" ---- "+kernel.getHeight());
-			if(kernelAntecesor.getWidth() == kernel.getWidth()-1 || kernelAntecesor.getHeight() == kernel.getHeight()-1){
-				return false;
-			}
-			else{
-				return true;
-			}
-		}
-	}
 }
