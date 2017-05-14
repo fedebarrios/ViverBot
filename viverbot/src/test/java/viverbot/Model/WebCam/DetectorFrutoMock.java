@@ -1,15 +1,18 @@
-package viverbot.Modelo.WebCam;
+package viverbot.Model.WebCam;
 
 import java.util.ArrayList;
 
-public class DetectorFruto {
+import viverbot.Modelo.WebCam.Imagen;
+import viverbot.Modelo.WebCam.Kernel;
+
+public class DetectorFrutoMock {
 
 	private Kernel kernel;
 	private Integer contador=0;
 	private Integer contFruta=0;
 	private ArrayList<Kernel> kernelValidos;
 	
-	public DetectorFruto()
+	public DetectorFrutoMock()
 	{
 		kernelValidos = new ArrayList<Kernel>();
 		contador=0;
@@ -21,18 +24,33 @@ public class DetectorFruto {
 		
 		Imagen primerImg = contenedor;
 		
-		kernel = new Kernel(x,y);
+		kernel = new Kernel();
 
-		if(kernel.getHeight()<primerImg.getAlto() && kernel.getWidth()<primerImg.getAncho()){
-
+		
+		System.out.println("kernelAncho: "+kernel.getWidth()+"kernelAlto"+kernel.getHeight()+" cant px detectador: "+ contador);
 		contador=0;
 		for(int j=y; j<kernel.getHeight(); j++)
 			for(int i=x; i<kernel.getWidth();i++)
 				analizarKernel(i,j,primerImg);
-		
-		}
 		return primerImg;
-	
+		/*
+		iniKernelFruto();
+		int cantpxSimilares=0;
+		for(int i=0; i<kernel.getDatos().length; i++)
+			if(kernel.iesimo(i)==kernelFruto.getKernel().iesimo(i)){
+				System.out.println("fruto:"+kernel.iesimo(i)+"gg"+kernelFruto.getKernel().iesimo(i));
+				cantpxSimilares += 1;
+				
+			}
+		
+		pxSimilares = cantpxSimilares;
+		if(cantpxSimilares>0){
+			cont +=1;
+			return true;
+		}
+		else
+			return false;
+				*/
 				
 	}
 	
