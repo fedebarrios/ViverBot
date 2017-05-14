@@ -19,8 +19,7 @@ public class PluginArchivos {
 		validadorHistorial = new ValidadorHistorial();
 		List<String> lectura = ((LectorHistorial) lector).leerArchivo(path);
 		boolean esValidoHistorial = validadorHistorial.validarHistorial(lectura);
-		boolean esValidoEspecie = validadorHistorial.validarInfoEspecie(lectura);
-		if(esValidoHistorial && esValidoEspecie){
+		if(esValidoHistorial){
 			MediatorParser mediator = new MediatorParser();
 			HistorialOptimo historial = mediator.parsearHistorialEspecie(lectura);
 			if(!CalculadorHistorial.calcularDiferencia(historial)){
