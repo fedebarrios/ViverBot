@@ -17,15 +17,19 @@ public class LectorEstadosTest extends TestCase {
 	public void testArchivoNoTxt()
 	{
 		inicialize("src/test/java/viverbot/Archivos/File.notxt");
-		assertThat(outContent.toString(), containsString("La extension del archivo no es .txt."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("La extension del archivo no es .txt."));
 		clear();
 	}
-	
+
 	@Test
 	public void testArchivoNoEncontrado()
-	{
+	{	
 		inicialize("src/test/java/viverbot/Archivos/FixleDoxsEstadxxosMenoxs.txt");
-		assertThat(outContent.toString(), containsString("No existe archivo."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("No existe archivo"));
 		clear();
 	}
 	
@@ -34,7 +38,9 @@ public class LectorEstadosTest extends TestCase {
 	public void testArchivoOK()
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileNoNumerico.txt");
-		assertThat(outContent.toString(), containsString(""));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains(""));
 		clear();
 	}
 	

@@ -4,19 +4,24 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import viverbot.Controlador.Verificacion.Verificador;
+import viverbot.Model.Log;
 
 public class LectorTxt {
+	private Logger logger ;
 	
 	public LectorTxt(){
+		logger = Log.getLog(LectorTxt.class);
 	}
 	
 	public String leerTxt(String archivo) {
 		if(!Verificador.validarExistencia(archivo)){
-			System.out.println("No existe archivo.");
+			logger.error("No existe archivo");
 			return "N";
 		}else if (!Verificador.validarExtension(archivo, ".txt")){
-			System.out.println("La extension del archivo no es .txt.");
+			logger.error("La extension del archivo no es .txt.");
 			return "E";
 		}
 		String data = "";

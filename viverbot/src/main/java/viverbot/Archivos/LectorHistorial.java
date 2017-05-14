@@ -6,7 +6,7 @@ import java.util.List;
 public class LectorHistorial extends LectorTxt{
 
 	public LectorHistorial() {
-		
+		super();
 	}
 	
 	public List<String> leerArchivo(String path){

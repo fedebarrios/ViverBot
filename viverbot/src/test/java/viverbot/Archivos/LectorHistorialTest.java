@@ -16,23 +16,26 @@ public class LectorHistorialTest {
 	@Test
 	public void testArchivoNoEncontrado()
 	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/Historial.t");
-		assertThat(outContent.toString(), containsString("No existe archivo"));
+		inicialize("src/test/java/viverbot/Archivos/Historial.t");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("No existe archivo"));
 
 	}
 	
 	@Test
 	public void testArchivoNoTxt()
 	{
-		inicialize();
-		lector.leerArchivo("src/test/java/viverbot/Archivos/Historial.csb");
-		assertThat(outContent.toString(), containsString("La extension del archivo no es .txt."));
+		inicialize("src/test/java/viverbot/Archivos/Historial.csb");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("La extension del archivo no es .txt."));
 	}
 	
-	private void inicialize() {
-		lector = new LectorHistorial();
+	private void inicialize(String archivo) {
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
+		lector = new LectorHistorial();
+		lector.leerArchivo(archivo);
 	}
 }
