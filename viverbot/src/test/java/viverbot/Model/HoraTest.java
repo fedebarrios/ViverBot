@@ -86,6 +86,40 @@ public class HoraTest {
 
 
 	}
+	
+	@Test
+	public void noEquals(){
+		Hora h1 = new Hora(12,14,56);
+		Hora h2 = new Hora(12,14,54);
+		Hora h3 = new Hora(12,14,56);
+		Fecha f1 = new Fecha(14,2,2015);
+		assertFalse(h1.equals(f1));
+		assertFalse(h1.equals(h2));
+		assertTrue(h1.equals(h3));
+	}
+	
+	@Test
+	public void incrementar(){
+		Hora h1 = new Hora(12,14,56);
+		h1.incrementarHora(4);
+		h1.incrementarSegundos(3);
+		h1.incrementraMinuto(14);
+		assertEquals(16 , h1.getHora());
+		assertEquals(28 , h1.getMinuto());
+		assertEquals(59 , h1.getSegundo());
+	}
+	
+	@Test
+	public void incrementarMas(){
+		Hora h1 = new Hora(22,48,56);
+		h1.incrementarHora(4);
+		assertEquals(2 , h1.getHora());
+		h1.incrementraMinuto(20);
+		assertEquals(8 , h1.getMinuto());
+		h1.incrementarSegundos(10);
+		assertEquals(6 , h1.getSegundo());
+	}
+
 
 
 }

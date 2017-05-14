@@ -1,7 +1,5 @@
 package viverbot.Modelo.Sensores;
 
-import viverbot.Modelo.Magnitudes.EmptyMagnitud;
-import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 

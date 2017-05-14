@@ -1,8 +1,6 @@
 package viverbot.Modelo.Medicion;
 
-import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
-import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class DiagnosticoAnalisis {
 	private Medicion m;
@@ -47,8 +45,7 @@ public class DiagnosticoAnalisis {
 	public boolean equals(Object e) {
 		DiagnosticoAnalisis estado =  (DiagnosticoAnalisis) e;
 		boolean ret = true;
-		if(this.m.getValor() != estado.getMagnitud().getValor() || 
-				this.getOptima() != estado.getOptima()){
+		if(this.m.getValor() != estado.getMagnitud().getValor() || this.getOptima() != estado.getOptima()){
 			ret = false;
 		}
 		

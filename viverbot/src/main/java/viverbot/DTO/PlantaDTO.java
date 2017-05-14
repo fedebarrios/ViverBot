@@ -21,32 +21,16 @@ public class PlantaDTO {
 		return codigoPlanta;
 	}
 
-	public void setCodigoPlanta(int codigoPlanta) {
-		this.codigoPlanta = codigoPlanta;
-	}
-
 	public Fecha getFechaPlanta() {
 		return fechaPlanta;
-	}
-
-	public void setFechaPlanta(Fecha fechaPlanta) {
-		this.fechaPlanta = fechaPlanta;
 	}
 
 	public UbicacionDTO getUbicacion() {
 		return ubicacion;
 	}
 
-	public void setUbicacion(UbicacionDTO ubicacion) {
-		this.ubicacion = ubicacion;
-	}
-
 	public Integer getCodigo() {
 		return codigoEspecie;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigoEspecie = codigo;
 	}
 
 	@Override

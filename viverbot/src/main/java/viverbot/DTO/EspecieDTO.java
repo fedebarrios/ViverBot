@@ -19,31 +19,15 @@ public class EspecieDTO {
 		return codEspecie;
 	}
 
-	public void setCodEspecie(int codEspecie) {
-		this.codEspecie = codEspecie;
-	}
-
 	public String getNombre() {
 		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 
 	public String getNombreCientifico() {
 		return nombreCientifico;
 	}
 
-	public void setNombreCientifico(String nombreCientifico) {
-		this.nombreCientifico = nombreCientifico;
-	}
-
 	public String getUrlImage() {
 		return urlImage;
-	}
-
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
 	}
 }

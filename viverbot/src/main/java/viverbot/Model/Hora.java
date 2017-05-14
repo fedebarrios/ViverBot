@@ -135,14 +135,4 @@ public class Hora implements Comparable {
 			this.setHora(hor);
 		}
 	}
-
-	@Override
-	public String toString() {
-		return this.getHora()+":"+this.getMinuto()+":"+this.getSegundo();
-	}
-
-	
-	
-	
-
 }

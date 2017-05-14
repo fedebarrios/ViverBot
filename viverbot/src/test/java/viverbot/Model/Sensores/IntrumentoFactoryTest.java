@@ -10,6 +10,7 @@ import viverbot.Modelo.Sensores.InstrumentoMedicion;
 import viverbot.Modelo.Sensores.Metro;
 import viverbot.Modelo.Sensores.SensorHumedad;
 import viverbot.Modelo.Sensores.SensorTemperatura;
+import viverbot.Modelo.Sensores.UnknowInstrumentoMedicion;
 
 public class IntrumentoFactoryTest {
 
@@ -33,6 +34,15 @@ public class IntrumentoFactoryTest {
 	public void CreatInstrumentoTestAltura() {
 		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
 		assertTrue(instrumentoTest instanceof Metro);
+		this.clear();
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void CreatInstrumentoDesconocido() {
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.VACIO);
+		assertTrue(instrumentoTest instanceof UnknowInstrumentoMedicion);
+		assertEquals(0.0 , instrumentoTest.getMedicion().getValor().doubleValue(),1);
 		this.clear();
 	}
 

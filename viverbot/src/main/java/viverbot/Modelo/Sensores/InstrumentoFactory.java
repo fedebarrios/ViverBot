@@ -20,6 +20,7 @@ public class InstrumentoFactory {
 		s.put(Magnitudes.TEMPERATURA, new SensorTemperatura());
 		s.put(Magnitudes.HUMEDAD, new SensorHumedad());
 		s.put(Magnitudes.ALTURA, new Metro());
+		s.put(Magnitudes.VACIO, new UnknowInstrumentoMedicion());
 
 		return s;
 	}

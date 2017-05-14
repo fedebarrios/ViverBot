@@ -13,16 +13,8 @@ public class RangoNumerico {
 		return minimo;
 	}
 
-	public void setMinimo(Double minimo) {
-		this.minimo = minimo;
-	}
-
 	public Double getMaximo() {
 		return maximo;
-	}
-
-	public void setMaximo(Double maximo) {
-		this.maximo = maximo;
 	}
 
 	@Override

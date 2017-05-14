@@ -43,16 +43,6 @@ public class Fecha implements Comparable {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + anio;
-		result = prime * result + dia;
-		result = prime * result + mes;
-		return result;
-	}
-
-	@Override
 	public int compareTo(Object h) {
 		try {
 			Fecha aux = (Fecha) h;
@@ -100,10 +90,4 @@ public class Fecha implements Comparable {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return dia + "/" + mes + "/"  + anio;
-	}
-
 }

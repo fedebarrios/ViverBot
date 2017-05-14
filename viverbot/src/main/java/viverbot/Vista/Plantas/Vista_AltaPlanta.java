@@ -125,10 +125,6 @@ public class Vista_AltaPlanta extends JFrame {
 		return textUbicacion;
 	}
 
-	public void setTextUbicacion(JTextField textUbicacion) {
-		this.textUbicacion = textUbicacion;
-	}
-
 	public Date getDateFiltro() {
 		return dateFiltro;
 	}
@@ -141,23 +137,11 @@ public class Vista_AltaPlanta extends JFrame {
 		return btnSeleccionarUbicacion;
 	}
 
-	public void setBtnSeleccionarUbicacion(JButton btnSeleccionarUbicacion) {
-		this.btnSeleccionarUbicacion = btnSeleccionarUbicacion;
-	}
-
 	public JButton getBtnCancelar() {
 		return btnCancelar;
 	}
 
-	public void setBtnCancelar(JButton btnCancelar) {
-		this.btnCancelar = btnCancelar;
-	}
-
 	public JButton getBtnAceptar() {
 		return btnAceptar;
-	}
-
-	public void setBtnAceptar(JButton btnAceptar) {
-		this.btnAceptar = btnAceptar;
 	}
 }

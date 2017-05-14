@@ -26,9 +26,7 @@ public class HistorialAlturaTest {
 		historial = new HistorialAltura(tuplas);
 		
 		assertTrue(historial.tamaño()==4);
-		assertTrue(historial.buscarTupla(new Medicion(13.0, Magnitudes.ALTURA)).getAltura() instanceof EmptyMedicion);
 		assertTrue(historial.buscarTupla(5).getAltura() instanceof EmptyMedicion);
-		assertTrue(historial.buscarTupla(new Medicion(14.0, Magnitudes.ALTURA)).getDiaDeVida() == 2);
 		assertTrue(historial.buscarTupla(4).getAltura().getValor() == 18);
 	}
 	
@@ -50,5 +48,13 @@ public class HistorialAlturaTest {
 		
 		assertTrue(historial.verificarExistente(20));
 		assertFalse(historial.verificarExistente(4));
+	}
+	
+	@Test
+	public void retornarDia(){
+		tuplas = new ArrayList<TuplaAltura>();
+		historial = new HistorialAltura(tuplas);
+		
+		assertEquals(0,historial.diaUltimaMedicion());
 	}
 }

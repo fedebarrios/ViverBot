@@ -18,16 +18,9 @@ public class UbicacionDTO {
 		return fila;
 	}
 
-	public void setFila(Integer fila) {
-		this.fila = fila;
-	}
 
 	public Integer getColumna() {
 		return columna;
-	}
-
-	public void setColumna(Integer columna) {
-		this.columna = columna;
 	}
 
 	public boolean isEstado() {
@@ -65,10 +58,5 @@ public class UbicacionDTO {
 		return indice;
 	}
 
-	public void setIndice(Integer indice) {
-		this.indice = indice;
-	}
-	
-	
 
 }

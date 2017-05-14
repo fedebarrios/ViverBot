@@ -9,8 +9,6 @@ import viverbot.Controlador.Verificacion.PlanificadorAltura;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.Plantas;
-import viverbot.Model.SoporteFactory;
-import viverbot.Model.SoporteMovible;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
 import viverbot.Modelo.Medicion.AnalizadorTemperatura;

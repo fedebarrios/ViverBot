@@ -86,6 +86,24 @@ public class FechaTest {
 
 
 	}
+	
+	@Test
+	public void noEquals(){
+		fechaTest  = new Fecha(14, 5 , 2009);
+		assertFalse( fechaTest.equals(new Fecha(10, 5 , 2009)));
+		assertFalse( fechaTest.equals(new Fecha(14, 6 , 2009)));
+		assertFalse( fechaTest.equals(new Fecha(14, 5 , 2010)));
+		assertFalse( fechaTest.equals(new Hora(14,15,16)));
+		assertFalse( fechaTest.equals(null));
+		assertTrue( fechaTest.equals(fechaTest));
+		assertTrue(fechaTest.equals(new Fecha(14, 5 , 2009)));
+	}
+	
+	@Test
+	public void testDiasDiferencia(){
+		fechaTest  = new Fecha(14, 5 , 2009);
+		assertEquals(9 , Fecha.diasEntreDosFechas(fechaTest, new Fecha(5,5,2009)));
+	}
 
 
 }
