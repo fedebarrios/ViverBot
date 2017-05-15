@@ -29,4 +29,8 @@ public class Inventario {
 	public EspecieDTO obtenerEspecie(int codEspecie){
 		return especieDAO.obtenerEspecie(codEspecie);
 	}
+	
+	public boolean existeEspecie(EspecieDTO especie){
+		return especieDAO.existeEspecie(especie);
+	}
 }

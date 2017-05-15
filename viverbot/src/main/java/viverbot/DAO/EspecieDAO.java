@@ -60,4 +60,13 @@ public class EspecieDAO {
 		}
 		return especieDAO;
 	}
+
+	public boolean existeEspecie(EspecieDTO especie) {
+		for(EspecieDTO e : especies){
+			if(e.equals(especie)){
+				return true;
+			}
+		}
+		return false;
+	}
 }

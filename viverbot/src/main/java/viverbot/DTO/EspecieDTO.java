@@ -30,4 +30,15 @@ public class EspecieDTO {
 	public String getUrlImage() {
 		return urlImage;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof EspecieDTO){
+			if(((EspecieDTO) o).getNombre().equals(nombre)&&((EspecieDTO) o).getNombreCientifico().equals(nombreCientifico)){
+				return true;
+			}
+		}
+		return false;
+		
+	}
 }
