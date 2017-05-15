@@ -28,7 +28,7 @@ public class EstadoVivero extends Observable implements Observer  {
 		this.temperaturaColector = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.temperaturaDiferencia = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.humedadActual = new Medicion(10.0, Magnitudes.HUMEDAD);
-		this.rangoTemperatura =  new RangoNumerico(10.00, 30.00);
+		this.rangoTemperatura =  new RangoNumerico(15.00, 25.00);
 	}
 
 	public Medicion getTemperaturaColector() {
@@ -45,7 +45,7 @@ public class EstadoVivero extends Observable implements Observer  {
 
 	public void setTemperaturaColector(Medicion t) {
 		this.temperaturaColector = t;
-		this.actualizar(t);
+		this.actualizar();
 
 	}
 
@@ -55,7 +55,7 @@ public class EstadoVivero extends Observable implements Observer  {
 
 	public void setTemperaturaActual(Medicion t) {
 		this.temperaturaActual = t;
-		this.actualizar(t);
+		this.actualizar();
 	}
 
 	public Medicion getTemperaturaDiferencia() {
@@ -64,7 +64,7 @@ public class EstadoVivero extends Observable implements Observer  {
 
 	public void setTemperaturaDiferencia(Medicion t) {
 		this.temperaturaDiferencia = t;
-		this.actualizar(t);
+		this.actualizar();
 	}
 
 	public Medicion getHumedadActual() {
@@ -83,11 +83,10 @@ public class EstadoVivero extends Observable implements Observer  {
 		this.horaActual = horaActual;
 	}
 	
-	public Medicion actualizar(Medicion t){
+	private void actualizar(){
 		this.temperaturaActual =  new Medicion(this.temperaturaColector.getValor() + this.temperaturaDiferencia.getValor(), Magnitudes.TEMPERATURA);
 		this.setChanged();
 		this.notifyObservers(this.temperaturaActual);
-		return this.temperaturaActual;
 	}
 
 	@Override

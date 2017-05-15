@@ -28,7 +28,7 @@ public class AutomatizadorDeClima implements Observer{
 			definirEstados();
 			estadoVivero.setTemperaturaDiferencia(aire.ejecutar());
 			WriterExcel.registrarAutomatizacion(aire);
-			System.out.println(getTemp().getValor());
+			System.out.println(estadoVivero.getTemperaturaActual().getValor());
 			if (verificarRango()) {
 				tt.cancel();
 			}
