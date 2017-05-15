@@ -29,7 +29,7 @@ public class PluginArchivos extends Observable{
 	public List<HistorialOptimo> levantarArchivos() throws Exception{
 		//FALTAN COSAS; VOY A TENER UNOS PARES DE PATHS DONDE BUSCAR
 		//Version 0.69
-		String directorio = GatewayConfiguracion.getDirectorioPrimario();
+		String directorio = GatewayConfiguracion.getDirectorio(1);
 		String file = "";
 		File folder = new File(directorio);
 	    File[] files = folder.listFiles();

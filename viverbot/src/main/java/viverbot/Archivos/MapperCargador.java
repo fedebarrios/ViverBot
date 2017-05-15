@@ -14,9 +14,9 @@ public class MapperCargador implements Observer{
 	private ControlHistoriales controlHistoriales;
 	private Inventario inventario;
 
-	public MapperCargador(){
-		controlHistoriales = ControlHistoriales.getInstance();
-		inventario = new Inventario();
+	public MapperCargador(ControlHistoriales control, Inventario inventario){
+		this.controlHistoriales = control;
+		this.inventario = inventario;
 	}
 	
 	protected boolean sePuedeCargarHistorial(HistorialOptimo h){
@@ -40,7 +40,7 @@ public class MapperCargador implements Observer{
 		Log.getLog(MapperCargador.class).info("Se cargaron "+i+" historiales");
 	}
 
-	private int cargar(List<HistorialOptimo> historiales) {
+	protected int cargar(List<HistorialOptimo> historiales) {
 		int cantidadCargadas= 0;
 		for(HistorialOptimo h : historiales){
 			if(sePuedeCargarEspecie(h.getEspecie())&&sePuedeCargarHistorial(h)){

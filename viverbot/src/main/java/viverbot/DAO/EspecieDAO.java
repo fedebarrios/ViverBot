@@ -12,7 +12,6 @@ public class EspecieDAO {
 	
 	public EspecieDAO() {
 		this.especies = new ArrayList<EspecieDTO>();
-		cargarEspeciesHarcodeadas();
 	}
 	
 	public void cargarEspeciesHarcodeadas(){
@@ -43,7 +42,8 @@ public class EspecieDAO {
 	
 	public int obtenerUltimoCodigo(){
 		int longitud = this.especies.size();
-		return this.especies.get(longitud-1).getCodEspecie();
+		if(longitud!=0) return this.especies.get(longitud-1).getCodEspecie();
+		return longitud;
 	}
 	
 	public EspecieDTO obtenerEspecie(int codEspecie){

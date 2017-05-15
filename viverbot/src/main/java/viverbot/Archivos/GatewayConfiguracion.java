@@ -1,81 +1,41 @@
 package viverbot.Archivos;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 public class GatewayConfiguracion {
 	
-	public static String getDirectorioPrimario(){
+	public static String getDirectorio(int posicion){
 		Properties propiedades = new Properties();
 	    InputStream entrada = null;									
 	    try {
-	    	entrada = new FileInputStream("src/test/java/viverbot/Archivos/configuracion.properties");	
+	    	entrada = new FileInputStream("src/main/java/viverbot/Archivos/configuracion.properties");	
 	        propiedades.load(entrada);
-	        return propiedades.getProperty("directorioPrimario");
+	        if(posicion == 1){
+	        	entrada.close();
+	        	return propiedades.getProperty("directorioPrimario");
+	        } else if (posicion == 2){
+	        	entrada.close();
+	        	return propiedades.getProperty("directorioSecundario");
+	        } else if (posicion == 3){
+	        	entrada.close();
+	        	return propiedades.getProperty("directorioTerciario");	
+	        }
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
-	    } finally {
-	        if (entrada != null) {
-	            try {
-	                entrada.close();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
+	    } 
 		return null;
 	}
-	
-	public static String getDirectorioSecundario(){
+
+	public static void setearDirectorio(String pathDirectorio, int posicion){
 		Properties propiedades = new Properties();
-	    InputStream entrada = null;									
+		OutputStream output = null;								
 	    try {
-	    	entrada = new FileInputStream("src/test/java/viverbot/Archivos/configuracion.properties");	
-	        propiedades.load(entrada);
-	        return propiedades.getProperty("directorioSecundario");
-	    } catch (IOException ex) {
-	        ex.printStackTrace();
-	    } finally {
-	        if (entrada != null) {
-	            try {
-	                entrada.close();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
-		return null;
-	}
-	
-	public static String getDirectorioTerciario(){
-		Properties propiedades = new Properties();
-	    InputStream entrada = null;									
-	    try {
-	    	entrada = new FileInputStream("src/test/java/viverbot/Archivos/configuracion.properties");	
-	        propiedades.load(entrada);
-	        return propiedades.getProperty("directorioTerciario");
-	    } catch (IOException ex) {
-	        ex.printStackTrace();
-	    } finally {
-	        if (entrada != null) {
-	            try {
-	                entrada.close();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
-		return null;
-	}
-	
-	public void setearDirectorio(String pathDirectorio, int posicion){
-		Properties propiedades = new Properties();
-	    InputStream entrada = null;									
-	    try {
-	    	entrada = new FileInputStream("src/test/java/viverbot/Archivos/configuracion.properties");	
-	        propiedades.load(entrada);
+	    	output = new FileOutputStream("src/main/java/viverbot/Archivos/configuracion.properties");	
 	        if(posicion == 1){
 	        	propiedades.setProperty("directorioPrimario", pathDirectorio);
 	        } else if (posicion == 2){
@@ -83,16 +43,10 @@ public class GatewayConfiguracion {
 	        } else{
 	        	propiedades.setProperty("directorioTerciario", pathDirectorio);	
 	        }
+	        propiedades.store(output, null);
+            output.close();
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
-	    } finally {
-	        if (entrada != null) {
-	            try {
-	                entrada.close();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
 	    }
 	}
 }
