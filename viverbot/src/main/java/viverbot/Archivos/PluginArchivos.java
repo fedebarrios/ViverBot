@@ -3,7 +3,9 @@ package viverbot.Archivos;
 import java.util.List;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
+import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Model.HistorialOptimo;
+import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
 public class PluginArchivos {
 	LectorTxt lector ;
@@ -35,7 +37,7 @@ public class PluginArchivos {
 		return null;
 	}
 	
-	public Object cargarEstados(String path){
+	public boolean cargarEstados(String path){
 		lector = new LectorEstados();
 		validadorEstados = new ValidadorEstados();
 		List<String[]> lectura = ((LectorEstados) lector).leerArchivo(path);
@@ -43,8 +45,11 @@ public class PluginArchivos {
 		if(esValidoEstados){
 			MediatorParser mediator = new MediatorParser();
 			List<EstadoAltura> estados = mediator.parsearEstados(lectura);
-			return estados;
+			BuscadorEstadoAltura buscador = new BuscadorEstadoAltura();
+			MapperEstadoAltura mapper = new MapperEstadoAltura();
+			mapper.relacionar(buscador, estados);
+			return false;
 		}
-		return null;
+		return true;
 	}
 }
