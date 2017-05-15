@@ -41,7 +41,7 @@ public class SensorHumedadTest {
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
 			assertTrue(this.sensorTest.getMedicion().getValor() >= 0);
-			ret = ret && sensorTest.getMedicion().equals(a.getHumedad());
+			ret = ret && sensorTest.getMedicion().equals(a.getHumedadActual());
 		}
 		return ret;
 	}

@@ -1,9 +1,12 @@
 package viverbot.Model;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class EstadoVivero  {
+public class EstadoVivero extends Observable implements Observer  {
 
 	private Medicion temperaturaColector;
 	private Medicion temperaturaActual;
@@ -20,7 +23,7 @@ public class EstadoVivero  {
 		return ambiente;
 	}
 
-	private EstadoVivero() {
+	public EstadoVivero() {
 		this.temperaturaActual = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.temperaturaColector = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.temperaturaDiferencia = new Medicion(0.0, Magnitudes.TEMPERATURA);
@@ -80,7 +83,16 @@ public class EstadoVivero  {
 	
 	public Medicion actualizar(Medicion t){
 		this.temperaturaActual =  new Medicion(this.temperaturaColector.getValor() + this.temperaturaDiferencia.getValor(), Magnitudes.TEMPERATURA);
+		this.setChanged();
+		this.notifyObservers(this.temperaturaActual);
 		return this.temperaturaActual;
+	}
+
+	@Override
+	public void update(Observable arg0, Object t) {
+		Medicion m =  (Medicion) t;
+		this.setTemperaturaColector(m);
+		
 	}
 
 }
