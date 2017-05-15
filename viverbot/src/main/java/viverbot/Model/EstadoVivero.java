@@ -10,6 +10,7 @@ public class EstadoVivero  {
 	private Medicion temperaturaDiferencia;
 	private Medicion humedadActual;
 	private Hora horaActual;
+	private RangoNumerico rangoTemperatura;
 	private static EstadoVivero ambiente;
 
 	public static EstadoVivero getInstance() {
@@ -24,10 +25,19 @@ public class EstadoVivero  {
 		this.temperaturaColector = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.temperaturaDiferencia = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.humedadActual = new Medicion(10.0, Magnitudes.HUMEDAD);
+		this.rangoTemperatura =  new RangoNumerico(10.00, 30.00);
 	}
 
 	public Medicion getTemperaturaColector() {
 		return temperaturaColector;
+	}
+
+	public RangoNumerico getRangoTemperatura() {
+		return rangoTemperatura;
+	}
+
+	public void setRangoTemperatura(RangoNumerico rangoTemperatura) {
+		this.rangoTemperatura = rangoTemperatura;
 	}
 
 	public void setTemperaturaColector(Medicion temperaturaColector) {
