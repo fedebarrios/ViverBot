@@ -6,6 +6,7 @@ import java.util.TimerTask;
 import viverbot.Archivos.WriterExcel;
 import viverbot.Interfaces.IFrioCalor;
 import viverbot.Interfaces.IPotencia;
+import viverbot.Model.EstadoVivero;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
@@ -15,20 +16,20 @@ public class AireAcondicionado {
 	private Timer timer;
 	private boolean encendidoManualmente = false;
 	private boolean encendidoAutomatizado = false;
+	private EstadoVivero estadoVivero;
 
 	public AireAcondicionado() {
 		this.potenciaEstado = new Potencia_0();
 		this.frioCalorEstado = new Frio();
 		this.timer = new Timer();
+		this.estadoVivero = EstadoVivero.getInstance();
 	}
 
 	private TimerTask tt = new TimerTask() {
 
 		@Override
 		public void run() {
-			// Aca le doy a javi la diferencia de la temperatura
-			// modificar el metodo ejecutar() para devuelva la diferencia
-			ejecutar();
+			estadoVivero.setTemperaturaDiferencia(ejecutar());
 			WriterExcel.registrarAutomatizacion(returnThis());
 		}
 	};
@@ -49,9 +50,10 @@ public class AireAcondicionado {
 		this.frioCalorEstado = frioCalorEstado;
 	}
 
-	public void ejecutar() {
+	public Medicion ejecutar() {
 		frioCalorEstado.definirEstado(this);
-		potenciaPositivaNegativa();
+		Medicion dif = potenciaPositivaNegativa();
+		return dif;
 	}
 
 	public AireAcondicionado returnThis() {

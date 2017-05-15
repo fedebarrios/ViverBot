@@ -1,23 +1,24 @@
 package viverbot.Modelo.Medicion;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import viverbot.Archivos.WriterExcel;
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Medicion;
 
-public class AutomatizadorDeClima {
-	private Temperatura temp;
-	private RangoNumerico rango;
+public class AutomatizadorDeClima implements Observer{
 	private AireAcondicionado aire = new AireAcondicionado();
 	private Timer timer;
 	private boolean encendido = false;
+	private EstadoVivero estadoVivero;
 
-	public AutomatizadorDeClima(Temperatura temp, RangoNumerico rango) {
-		this.temp = temp;
-		this.rango = rango;
-		timer = new Timer();
+	public AutomatizadorDeClima() {
+		this.timer = new Timer();
+		this.estadoVivero = EstadoVivero.getInstance();
 	}
 
 	private TimerTask tt = new TimerTask() {
@@ -25,11 +26,9 @@ public class AutomatizadorDeClima {
 		@Override
 		public void run() {
 			definirEstados();
-			// Aca le doy a javi la diferencia de la temperatura
-			// modificar el metodo ejecutar() para devuelva la diferencia
-			aire.ejecutar();
+			estadoVivero.setTemperaturaDiferencia(aire.ejecutar());
 			WriterExcel.registrarAutomatizacion(aire);
-			System.out.println(temp.getValor());
+			System.out.println(getTemp().getValor());
 			if (verificarRango()) {
 				tt.cancel();
 			}
@@ -37,7 +36,7 @@ public class AutomatizadorDeClima {
 	};
 
 	private boolean verificarRango() {
-		if (temp.getValor() <= rango.getMaximo() && temp.getValor() >= rango.getMinimo()) {
+		if (getTemp().getValor() <= getRango().getMaximo() && getTemp().getValor() >= getRango().getMinimo()) {
 			return true;
 		}
 		return false;
@@ -49,25 +48,25 @@ public class AutomatizadorDeClima {
 	}
 
 	private void definirFrioCalor() {
-		if (temp.getValor() > rango.getMaximo()) {
+		if (getTemp().getValor() > getRango().getMaximo()) {
 			aire.setFrioCalorEstado(new Frio());
 		} else
 			aire.setFrioCalorEstado(new Calor());
 	}
 
 	private void definirPotencia() {
-		if (temp.getValor() - rango.getMaximo() <= 1.0 || rango.getMinimo() - temp.getValor() <= 1.0) {
+		if (getTemp().getValor() - getRango().getMaximo() <= 1.0 || getRango().getMinimo() - getTemp().getValor() <= 1.0) {
 			aire.setPotenciaEstado(new Potencia_0());
 		}
-		if (temp.getValor() - rango.getMaximo() > 1.0 && temp.getValor() - rango.getMaximo() <= 2.5
-				|| rango.getMinimo() - temp.getValor() > 1.0 && rango.getMinimo() - temp.getValor() <= 2.5) {
+		if (getTemp().getValor() - getRango().getMaximo() > 1.0 && getTemp().getValor() - getRango().getMaximo() <= 2.5
+				|| getRango().getMinimo() - getTemp().getValor() > 1.0 && getRango().getMinimo() - getTemp().getValor() <= 2.5) {
 			aire.setPotenciaEstado(new Potencia_1());
 		}
-		if (temp.getValor() - rango.getMaximo() > 2.5 && temp.getValor() - rango.getMaximo() <= 4.0
-				|| rango.getMinimo() - temp.getValor() > 2.5 && rango.getMinimo() - temp.getValor() <= 4.0) {
+		if (getTemp().getValor() - getRango().getMaximo() > 2.5 && getTemp().getValor() - getRango().getMaximo() <= 4.0
+				|| getRango().getMinimo() - getTemp().getValor() > 2.5 && getRango().getMinimo() - getTemp().getValor() <= 4.0) {
 			aire.setPotenciaEstado(new Potencia_2());
 		}
-		if (temp.getValor() - rango.getMaximo() > 4.0 || rango.getMinimo() - temp.getValor() > 4.0) {
+		if (getTemp().getValor() - getRango().getMaximo() > 4.0 || getRango().getMinimo() - getTemp().getValor() > 4.0) {
 			aire.setPotenciaEstado(new Potencia_3());
 		}
 	}
@@ -75,7 +74,7 @@ public class AutomatizadorDeClima {
 	public void encenderAutomatizador() {
 		timer.schedule(tt, 1000, 1000);
 		encendido = true;
-		aire.setEncendidoAutomatizado(true); 
+		aire.setEncendidoAutomatizado(true);
 	}
 
 	public void apagarAutomatizador() {
@@ -89,16 +88,22 @@ public class AutomatizadorDeClima {
 		return aire;
 	}
 
-	public Temperatura getTemp() {
-		return temp;
-	}
-
-	public RangoNumerico getRango() {
-		return rango;
-	}
-
 	public boolean isEncendido() {
 		return encendido;
+	}
+
+	private Medicion getTemp() {
+		return this.estadoVivero.getTemperaturaActual();
+	}
+
+	private RangoNumerico getRango() {
+		return this.estadoVivero.getRangoTemperatura();
+	}
+
+	@SuppressWarnings("unused")
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		Medicion temp = (Medicion) arg1;
 	}
 
 }

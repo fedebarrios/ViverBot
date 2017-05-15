@@ -1,10 +1,11 @@
 package viverbot;
 
-import viverbot.Controlador.Especies.VistaPrincipalController;
+import viverbot.Controlador.VistaPrincipalController;
 
 public class App {
+	
 	public static void main(String[] args) {
-
-		VistaPrincipalController principal =  new VistaPrincipalController();
+		
+		VistaPrincipalController principal = new VistaPrincipalController();
 	}
 }

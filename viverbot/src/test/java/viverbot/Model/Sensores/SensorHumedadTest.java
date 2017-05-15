@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import viverbot.Model.Ambiente;
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.Hora;
 import viverbot.Modelo.Magnitudes.Humedad;
 import viverbot.Modelo.Magnitudes.Magnitudes;
@@ -27,7 +27,7 @@ public class SensorHumedadTest {
 	public void testGetMedicion() {
 		inicialize();
 
-		Ambiente ambienteSimulado = Ambiente.getInstance();
+		EstadoVivero ambienteSimulado = EstadoVivero.getInstance();
 
 		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
 		clear();
@@ -36,12 +36,12 @@ public class SensorHumedadTest {
 
 	
 	
-	private boolean verificarHumedad(ArrayList<Hora> horarios, Ambiente a) {
+	private boolean verificarHumedad(ArrayList<Hora> horarios, EstadoVivero a) {
 		boolean ret = true;
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
 			assertTrue(this.sensorTest.getMedicion().getValor() >= 0);
-			ret = ret && sensorTest.getMedicion().equals(a.getHumedad());
+			ret = ret && sensorTest.getMedicion().equals(a.getHumedadActual());
 		}
 		return ret;
 	}

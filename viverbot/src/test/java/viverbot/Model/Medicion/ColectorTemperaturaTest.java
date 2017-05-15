@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import viverbot.Model.Ambiente;
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.Hora;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
