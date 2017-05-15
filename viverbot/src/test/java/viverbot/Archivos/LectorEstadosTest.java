@@ -13,7 +13,7 @@ public class LectorEstadosTest extends TestCase {
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	LectorEstados lector;
 	
-	@Test
+	@Test (expected = Exception.class)
 	public void testArchivoNoTxt() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/File.notxt");
@@ -23,7 +23,7 @@ public class LectorEstadosTest extends TestCase {
 		clear();
 	}
 
-	@Test
+	@Test (expected = Exception.class)
 	public void testArchivoNoEncontrado() throws Exception
 	{	
 		inicialize("src/test/java/viverbot/Archivos/FixleDoxsEstadxxosMenoxs.txt");

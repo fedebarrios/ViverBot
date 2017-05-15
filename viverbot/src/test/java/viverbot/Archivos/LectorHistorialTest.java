@@ -13,7 +13,7 @@ public class LectorHistorialTest {
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	LectorHistorial lector;
 	
-	@Test
+	@Test (expected = Exception.class)
 	public void testArchivoNoEncontrado() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/Historial.t");
@@ -23,7 +23,7 @@ public class LectorHistorialTest {
 
 	}
 	
-	@Test
+	@Test (expected = Exception.class)
 	public void testArchivoNoTxt() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/Historial.csb");
