@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import viverbot.DTO.PlantaDTO;
 import viverbot.DTO.UbicacionDTO;
-import viverbot.Model.Ambiente;
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.Fecha;
 import viverbot.Model.Hora;
 import viverbot.Modelo.Magnitudes.Magnitudes;
@@ -58,7 +58,7 @@ public class InstrumentoMediatorTest {
 	@Test
 	public void testTomarMedicionHumedad() {
 		this.mediatorTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
-		Ambiente ambienteSimulado = new Ambiente();
+		EstadoVivero ambienteSimulado = new EstadoVivero();
 		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
 		assertTrue(this.mediatorTest.tomarMedicion().getTipo() == Magnitudes.HUMEDAD);
 
@@ -105,7 +105,7 @@ public class InstrumentoMediatorTest {
 
 	
 	
-	private boolean verificarHumedad(ArrayList<Hora> horarios, Ambiente a) {
+	private boolean verificarHumedad(ArrayList<Hora> horarios, EstadoVivero a) {
 		boolean ret = true;
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
