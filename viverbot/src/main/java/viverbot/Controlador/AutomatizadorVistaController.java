@@ -25,10 +25,11 @@ public class AutomatizadorVistaController implements ActionListener {
 		if (e.getSource() == vista.getMenuitem_salir()) {
 			vista.dispose();
 		} else if (e.getSource() == vista.getMenuitem_configuracionManual()) {
-			ControlManualAireVistaController autoController = new ControlManualAireVistaController(automatizador);
+			@SuppressWarnings("unused")
+			ControlManualAireVistaController autoController = new ControlManualAireVistaController(automatizador.getAire());
 		}
 		if (e.getSource() == vista.getMenuitem_onOffAutomatizador()) {
-			if (automatizador.isEncendidoAutomatizador()) {
+			if (automatizador.isEncendido()) {
 				automatizador.apagarAutomatizador();
 			} else {
 				automatizador.encenderAutomatizador();
@@ -38,22 +39,32 @@ public class AutomatizadorVistaController implements ActionListener {
 	}
 
 	private void cargarCampos() {
-		RangoNumerico rango = automatizador.getRango();
+		AireAcondicionado aire = automatizador.getAire();
+
 		// Aca iria la temperatura ambiente que javi me tiene que dar
 		Temperatura temp = automatizador.getTemp();
-		this.vista.getText_temperaturaAmbiente().setText(temp.getValor().toString());
-		this.vista.getText_rango().setText(rango.getMinimo().toString() + " | " + rango.getMaximo().toString());
-		if (automatizador.isEncendidoAutomatizador()) {
-			this.vista.getText_encendidoAutomatizador().setText("Encendido");
-			AireAcondicionado aire = automatizador.getAire();
-			this.vista.getText_estado().setText(aire.getFrioCalorEstado().toString());
-			this.vista.getText_potencia().setText(aire.getPotenciaEstado().toString());
-			this.vista.getText_temperaturaAire().setText("NO AUN");
+		vista.getText_temperaturaAmbiente().setText(temp.getValor().toString() + " C°");
+
+		// Aca iria el rango que javi me tiene que dar
+		RangoNumerico rango = automatizador.getRango();
+		vista.getText_rango().setText(rango.getMinimo().toString() + " C° | " + rango.getMaximo().toString() + " C°");
+
+		if (automatizador.isEncendido()) {
+			vista.getText_encendidoAutomatizador().setText("Encendido");
+			vista.getText_controlmanual().setText("Apagado");
+			vista.getText_estado().setText(aire.getFrioCalorEstado().toString());
+			vista.getText_potencia().setText(aire.getPotenciaEstado().toString());
+			vista.getText_temperaturaAire().setText("NO AUN");
 		} else {
-			this.vista.getText_encendidoAutomatizador().setText("Apagado");
-			this.vista.getText_estado().setText("");
-			this.vista.getText_potencia().setText("");
-			this.vista.getText_temperaturaAire().setText("");
+			vista.getText_encendidoAutomatizador().setText("Apagado");
+			if (aire.isEncendidoManualmente()) {
+				vista.getText_controlmanual().setText("Encendido");
+			} else {
+				vista.getText_controlmanual().setText("Apagado");
+			}
+			vista.getText_estado().setText("");
+			vista.getText_potencia().setText("");
+			vista.getText_temperaturaAire().setText("NO AUN");
 		}
 	}
 

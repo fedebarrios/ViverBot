@@ -13,11 +13,13 @@ public class AireAcondicionado {
 	private IPotencia potenciaEstado;
 	private IFrioCalor frioCalorEstado;
 	private Timer timer;
-	private boolean encendido = false;
+	private boolean encendidoManualmente = false;
+	private boolean encendidoAutomatizado = false;
 
 	public AireAcondicionado() {
 		this.potenciaEstado = new Potencia_0();
 		this.frioCalorEstado = new Frio();
+		this.timer = new Timer();
 	}
 
 	private TimerTask tt = new TimerTask() {
@@ -56,32 +58,40 @@ public class AireAcondicionado {
 		return this;
 	}
 
-	public void encenderAutomatizador() {
+	public void encender() {
 		timer.schedule(tt, 1000, 1000);
-		encendido = true;
+		encendidoManualmente = true;
 	}
 
-	public void apagarAutomatizador() {
+	public void apagar() {
 		timer.purge();
 		timer.cancel();
-		encendido = false;
+		encendidoManualmente = false;
 	}
 
-	public boolean isEncendido() {
-		return encendido;
-	}
-	
-	private Medicion potenciaPositivaNegativa(){
+	private Medicion potenciaPositivaNegativa() {
 		Medicion ret;
 		Double num;
-		if(frioCalorEstado.getClass() == Calor.class){
+		if (frioCalorEstado.getClass() == Calor.class) {
 			ret = new Medicion(potenciaEstado.aplicarPotencia(this).getValor(), Magnitudes.TEMPERATURA);
 			return ret;
-		}else {
+		} else {
 			num = potenciaEstado.aplicarPotencia(this).getValor() * (-1.0);
 			ret = new Medicion(num, Magnitudes.TEMPERATURA);
 			return ret;
 		}
+	}
+
+	public boolean isEncendidoAutomatizado() {
+		return encendidoAutomatizado;
+	}
+
+	public void setEncendidoAutomatizado(boolean encendidoAutomatizado) {
+		this.encendidoAutomatizado = encendidoAutomatizado;
+	}
+
+	public boolean isEncendidoManualmente() {
+		return encendidoManualmente;
 	}
 
 }

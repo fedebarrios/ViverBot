@@ -1,21 +1,20 @@
 package viverbot.Vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import viverbot.Controlador.ControlManualAireVistaController;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 
 public class ControlManualAireVista extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JComboBox dropdown_friocalor;
 	private JComboBox dropdown_potencia;
-	private JTextField text_temperatura;
+	private JComboBox dropdown_temperatura;
 	private JLabel label_friocalor;
 	private JLabel label_potencia;
 	private JLabel label_temperatura;
@@ -46,17 +45,18 @@ public class ControlManualAireVista extends JFrame {
 
 		dropdown_friocalor = new JComboBox();
 		dropdown_friocalor.setBounds(128, 11, 125, 29);
+		dropdown_friocalor.addActionListener(controlador);
 		contentPane.add(dropdown_friocalor);
 
 		dropdown_potencia = new JComboBox();
 		dropdown_potencia.setBounds(128, 51, 125, 29);
+		dropdown_potencia.addActionListener(controlador);
 		contentPane.add(dropdown_potencia);
 
-		text_temperatura = new JTextField();
-		text_temperatura.setColumns(10);
-		text_temperatura.setBounds(128, 91, 125, 29);
-		contentPane.add(text_temperatura);
-		text_temperatura.addActionListener(controlador);
+		dropdown_temperatura = new JComboBox();
+		dropdown_temperatura.setBounds(128, 91, 125, 29);
+		dropdown_temperatura.addActionListener(controlador);
+		contentPane.add(dropdown_temperatura);
 
 		btn_guardar = new JButton("Guardar");
 		btn_guardar.setBounds(145, 165, 108, 23);
@@ -75,14 +75,6 @@ public class ControlManualAireVista extends JFrame {
 
 	}
 
-	public JTextField getText_temperatura() {
-		return text_temperatura;
-	}
-
-	public void setText_temperatura(JTextField text_temperatura) {
-		this.text_temperatura = text_temperatura;
-	}
-
 	public JButton getBtn_guardar() {
 		return btn_guardar;
 	}
@@ -99,16 +91,11 @@ public class ControlManualAireVista extends JFrame {
 		return dropdown_friocalor;
 	}
 
-	public void setDropdown_friocalor(JComboBox dropdown_friocalor) {
-		this.dropdown_friocalor = dropdown_friocalor;
-	}
-
 	public JComboBox getDropdown_potencia() {
 		return dropdown_potencia;
 	}
 
-	public void setDropdown_potencia(JComboBox dropdown_potencia) {
-		this.dropdown_potencia = dropdown_potencia;
+	public JComboBox getDropdown_temperatura() {
+		return dropdown_temperatura;
 	}
-
 }

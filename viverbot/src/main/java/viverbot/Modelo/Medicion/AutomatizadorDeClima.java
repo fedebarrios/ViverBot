@@ -72,6 +72,19 @@ public class AutomatizadorDeClima {
 		}
 	}
 
+	public void encenderAutomatizador() {
+		timer.schedule(tt, 1000, 1000);
+		encendido = true;
+		aire.setEncendidoAutomatizado(true); 
+	}
+
+	public void apagarAutomatizador() {
+		timer.cancel();
+		timer.purge();
+		encendido = false;
+		aire.setEncendidoAutomatizado(false);
+	}
+
 	public AireAcondicionado getAire() {
 		return aire;
 	}
@@ -84,18 +97,7 @@ public class AutomatizadorDeClima {
 		return rango;
 	}
 
-	public void encenderAutomatizador() {
-		timer.schedule(tt, 1000, 1000);
-		encendido = true;
-	}
-
-	public void apagarAutomatizador() {
-		timer.purge();
-		timer.cancel();
-		encendido = false;
-	}
-
-	public boolean isEncendidoAutomatizador() {
+	public boolean isEncendido() {
 		return encendido;
 	}
 
