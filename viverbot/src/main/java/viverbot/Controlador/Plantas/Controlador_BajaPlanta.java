@@ -3,12 +3,10 @@ package viverbot.Controlador.Plantas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
 import viverbot.DTO.PlantaDTO;
 import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
+import viverbot.Vista.Auxiliares.DefaultOptionPane;
 import viverbot.Vista.Plantas.Vista_BajaPlanta;
 
 public class Controlador_BajaPlanta implements ActionListener{
@@ -17,15 +15,12 @@ public class Controlador_BajaPlanta implements ActionListener{
 	private ArrayList<PlantaDTO> listaPlantas;
 	private Plantas gestorPlantas;
 	private Inventario inventario;
-	
-	public static void main(String[] args){
-		Controlador_BajaPlanta a = new Controlador_BajaPlanta();
-		a.inicializar();
-	}
+	private DefaultOptionPane optionPane;
 	
 	public Controlador_BajaPlanta(){
 		this.gestorPlantas = new Plantas();
 		this.inventario = new Inventario();
+		this.optionPane = new DefaultOptionPane();
 	}
 	
 	public void inicializar(){
@@ -72,7 +67,7 @@ public class Controlador_BajaPlanta implements ActionListener{
 			if(indice>=0){
 				borrarItemPlanta(indice);
 			}else{
-				JOptionPane.showMessageDialog(null, "No ha seleccionado ninguna planta");
+				optionPane.showMessageDialog(null, "No ha seleccionado ninguna planta");
 			}
 		}
 	}
@@ -80,10 +75,8 @@ public class Controlador_BajaPlanta implements ActionListener{
 	public Vista_BajaPlanta getVistaBajaPlanta() {
 		return vistaBajaPlanta;
 	}
-
-	public void setVistaBajaPlanta(Vista_BajaPlanta vistaBajaPlanta) {
-		this.vistaBajaPlanta = vistaBajaPlanta;
+	
+	public void setOptionPane(DefaultOptionPane optionPane){
+		this.optionPane=optionPane;
 	}
-	
-	
 }

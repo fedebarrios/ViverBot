@@ -9,10 +9,10 @@ import viverbot.DTO.Arista;
 import viverbot.DTO.TerrenoDTO;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Modelo.Magnitudes.Temperatura;
-import viverbot.Modelo.Medicion.Solver;
+import viverbot.Modelo.Medicion.AnalizadorCaminoMinimo;
 
 public class AnalizadorCaminoMinimoTest {
-	private Solver analizadorCamino;
+	private AnalizadorCaminoMinimo analizadorCamino;
 	
 	private UbicacionDTO[][] inicializar(int x, int y){
 		UbicacionDTO[][] ubicaciones = new UbicacionDTO[x][y];
@@ -30,7 +30,7 @@ public class AnalizadorCaminoMinimoTest {
 	public void analizarCaminoMinimoTest() {
 		UbicacionDTO[][] ubicaciones = inicializar(4,4);
 		TerrenoDTO terreno = new TerrenoDTO(ubicaciones, new Temperatura(2.5));
-		analizadorCamino = new Solver(terreno);
+		analizadorCamino = new AnalizadorCaminoMinimo(terreno);
 		ArrayList<Arista> camino = analizadorCamino.caminoMinimo(1, 14);
 		for (int i = 0; i < camino.size(); i++) {
 			System.out.print("->"+camino.get(i).getUbicacionA().getIndice());
@@ -44,7 +44,7 @@ public class AnalizadorCaminoMinimoTest {
 	public void analizarCaminoMinimoTest2() {
 		UbicacionDTO[][] ubicaciones = inicializar(4,4);
 		TerrenoDTO terreno = new TerrenoDTO(ubicaciones, new Temperatura(2.5));
-		analizadorCamino = new Solver(terreno);
+		analizadorCamino = new AnalizadorCaminoMinimo(terreno);
 		ArrayList<Arista> camino = analizadorCamino.caminoMinimo(1, 14);
 		assertEquals(camino.size(),4);
 	}

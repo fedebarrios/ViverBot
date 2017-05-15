@@ -1,7 +1,5 @@
 package viverbot.DTO;
 
-import java.util.ArrayList;
-
 public class Grafo {
 	
 	private Double[][] _A;
@@ -27,31 +25,9 @@ public class Grafo {
 
 	}
 	
-	public void borrarArista(int i, int j)
-	{
-		_A[i][j]= -1.0; // en vez de -1 va infinitoo
-		_A[j][i]= -1.0; // en vez de -1 va infinitoo
-
-	}
-	
 	public int getVertices()
 	{
 		return vertices;
-	}
-	
-
-	
-	public ArrayList<Integer> listaVecinos(int i)
-	{
-		ArrayList<Integer> aux= new ArrayList<Integer>();
-		for(int j=0; j<getVertices(); j++)
-		{
-			if(isArista(i,j))
-			{
-				aux.add(j);
-			}
-		}
-		return aux;
 	}
 	
 	
