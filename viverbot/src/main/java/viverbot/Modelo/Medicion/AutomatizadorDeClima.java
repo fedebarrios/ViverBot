@@ -5,16 +5,16 @@ import java.util.TimerTask;
 
 import viverbot.Archivos.WriterExcel;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class AutomatizadorDeClima {
-	private Temperatura temp;
+	private Medicion temp;
 	private RangoNumerico rango;
 	private AireAcondicionado aire = new AireAcondicionado();
 	private Timer timer;
 	private boolean encendido = false;
 
-	public AutomatizadorDeClima(Temperatura temp, RangoNumerico rango) {
+	public AutomatizadorDeClima(Medicion temp, RangoNumerico rango) {
 		this.temp = temp;
 		this.rango = rango;
 		timer = new Timer();
@@ -75,7 +75,7 @@ public class AutomatizadorDeClima {
 	public void encenderAutomatizador() {
 		timer.schedule(tt, 1000, 1000);
 		encendido = true;
-		aire.setEncendidoAutomatizado(true); 
+		aire.setEncendidoAutomatizado(true);
 	}
 
 	public void apagarAutomatizador() {
@@ -89,7 +89,7 @@ public class AutomatizadorDeClima {
 		return aire;
 	}
 
-	public Temperatura getTemp() {
+	public Medicion getTemp() {
 		return temp;
 	}
 

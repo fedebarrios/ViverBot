@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AireAcondicionado;
 import viverbot.Modelo.Medicion.AutomatizadorDeClima;
 import viverbot.Vista.AutomatizadorVista;
@@ -42,7 +42,7 @@ public class AutomatizadorVistaController implements ActionListener {
 		AireAcondicionado aire = automatizador.getAire();
 
 		// Aca iria la temperatura ambiente que javi me tiene que dar
-		Temperatura temp = automatizador.getTemp();
+		Medicion temp = automatizador.getTemp();
 		vista.getText_temperaturaAmbiente().setText(temp.getValor().toString() + " C°");
 
 		// Aca iria el rango que javi me tiene que dar

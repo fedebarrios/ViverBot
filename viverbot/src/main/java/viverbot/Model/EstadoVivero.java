@@ -1,19 +1,19 @@
 package viverbot.Model;
 
-import viverbot.Modelo.Magnitudes.Humedad;
-import viverbot.Modelo.Magnitudes.Magnitud;
-import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
-import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class EstadoVivero {
 
-	private  Medicion temperaturaColector;
-	private  Medicion temperaturaActual;
-	private  Medicion temperaturaDiferencia;
-	private  Medicion humedadActual;
+	private Medicion temperaturaColector;
+	private Medicion temperaturaActual;
+	private Medicion temperaturaDiferencia;
+	private Medicion humedadActual;
 	private Hora horaActual;
 	private static EstadoVivero ambiente;
+
+	private EstadoVivero() {
+
+	}
 
 	public static EstadoVivero getInstance() {
 		if (ambiente == null) {
@@ -22,25 +22,44 @@ public class EstadoVivero {
 		return ambiente;
 	}
 
-	
-
-	public Medicion getTemperatura() {
-		
-		
-		return temperaturaActual;
-
+	public Medicion getTemperaturaColector() {
+		return temperaturaColector;
 	}
 
-	public Medicion getHumedad() {
+	public void setTemperaturaColector(Medicion temperaturaColector) {
+		this.temperaturaColector = temperaturaColector;
+	}
+
+	public Medicion getTemperaturaActual() {
+		return temperaturaActual;
+	}
+
+	public void setTemperaturaActual(Medicion temperaturaActual) {
+		this.temperaturaActual = temperaturaActual;
+	}
+
+	public Medicion getTemperaturaDiferencia() {
+		return temperaturaDiferencia;
+	}
+
+	public void setTemperaturaDiferencia(Medicion temperaturaDiferencia) {
+		this.temperaturaDiferencia = temperaturaDiferencia;
+	}
+
+	public Medicion getHumedadActual() {
 		return humedadActual;
 	}
 
-	public void setHoraActual(Hora hora) {
-		horaActual = hora;
+	public void setHumedadActual(Medicion humedadActual) {
+		this.humedadActual = humedadActual;
 	}
 
-	public void setTemperatura(Medicion t) {
-		temperaturaActual = t;
+	public Hora getHoraActual() {
+		return horaActual;
+	}
+
+	public void setHoraActual(Hora horaActual) {
+		this.horaActual = horaActual;
 	}
 
 }
