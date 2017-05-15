@@ -1,7 +1,9 @@
 package viverbot.Archivos;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import org.apache.log4j.Logger;
 
@@ -11,7 +13,7 @@ import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
 import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
-public class PluginArchivos {
+public class PluginArchivos extends Observable{
 	LectorTxt lector ;
 	ValidadorHistorial validadorHistorial ;
 	ValidadorEstados validadorEstados ;
@@ -20,21 +22,32 @@ public class PluginArchivos {
 		logger = Log.getLog(PluginArchivos.class);
 	}
 	
+	public void actuar() throws Exception{
+		notificarHistorialesNuevos(levantarArchivos());
+	}
+	
 	public List<HistorialOptimo> levantarArchivos() throws Exception{
 		//FALTAN COSAS; VOY A TENER UNOS PARES DE PATHS DONDE BUSCAR
 		//Version 0.69
-		String directorio = "src/test/java/viverbot";
-		String file;
+		String directorio = GatewayConfiguracion.getDirectorioPrimario();
+		String file = "";
 		File folder = new File(directorio);
-	    File[] files = folder.listFiles(); 
+	    File[] files = folder.listFiles();
+	    List<HistorialOptimo> historiales= new ArrayList<HistorialOptimo>();
 	    for (File f : files){
             if (f.isFile()){
                 file = f.getName();
                 logger.info(file);
-                HistorialOptimo h = cargarHistorial(directorio+"/"+file);
+                try{
+                	HistorialOptimo h = cargarHistorial(directorio+"/"+file);
+                	historiales.add(h);
+                }
+                catch(Exception e){
+                	logger.error(e.getMessage());
+                }
             }
         }
-	    return null;
+	    return historiales;
 	}
 	
 	public HistorialOptimo cargarHistorial(String path) throws Exception{
@@ -55,7 +68,12 @@ public class PluginArchivos {
 		else{
 			logger.info("No existe informacion acerca de la especie");
 		}
-		return null;
+		throw new Exception();
+	}
+	
+	protected void notificarHistorialesNuevos(List<HistorialOptimo> historiales) {
+		setChanged();
+		notifyObservers(historiales);
 	}
 	
 	public boolean cargarEstados(String path) throws Exception{

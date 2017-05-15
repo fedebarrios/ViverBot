@@ -24,18 +24,16 @@ public class PluginTest {
 		assertNotNull(h);
 	}
 	
-	@Test
+	@Test (expected = Exception.class)
 	public void cargaFallidaHistorial() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialNoConsistente.txt");
-		assertNull(h);
 	}
 	
-	@Test
+	@Test (expected = Exception.class)
 	public void FaltaInfoEspecie() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialSinInfoEspecie.txt");
-		assertNull(h);
 		//assertThat(outContent.toString(), containsString("No existe informacion acerca de la especie"));
 	}
 	
