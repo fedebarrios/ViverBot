@@ -1,8 +1,9 @@
 package viverbot.Model;
 
+import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class EstadoVivero {
+public class EstadoVivero  {
 
 	private Medicion temperaturaColector;
 	private Medicion temperaturaActual;
@@ -11,15 +12,18 @@ public class EstadoVivero {
 	private Hora horaActual;
 	private static EstadoVivero ambiente;
 
-	private EstadoVivero() {
-
-	}
-
 	public static EstadoVivero getInstance() {
 		if (ambiente == null) {
 			ambiente = new EstadoVivero();
 		}
 		return ambiente;
+	}
+
+	private EstadoVivero() {
+		this.temperaturaActual = new Medicion(0.0, Magnitudes.TEMPERATURA);
+		this.temperaturaColector = new Medicion(0.0, Magnitudes.TEMPERATURA);
+		this.temperaturaDiferencia = new Medicion(0.0, Magnitudes.TEMPERATURA);
+		this.humedadActual = new Medicion(10.0, Magnitudes.HUMEDAD);
 	}
 
 	public Medicion getTemperaturaColector() {
@@ -34,16 +38,18 @@ public class EstadoVivero {
 		return temperaturaActual;
 	}
 
-	public void setTemperaturaActual(Medicion temperaturaActual) {
-		this.temperaturaActual = temperaturaActual;
+	public void setTemperaturaActual(Medicion t) {
+		this.temperaturaActual = t;
+		this.actualizar(t);
 	}
 
 	public Medicion getTemperaturaDiferencia() {
 		return temperaturaDiferencia;
 	}
 
-	public void setTemperaturaDiferencia(Medicion temperaturaDiferencia) {
-		this.temperaturaDiferencia = temperaturaDiferencia;
+	public void setTemperaturaDiferencia(Medicion t) {
+		this.temperaturaDiferencia = t;
+		this.actualizar(t);
 	}
 
 	public Medicion getHumedadActual() {
@@ -60,6 +66,11 @@ public class EstadoVivero {
 
 	public void setHoraActual(Hora horaActual) {
 		this.horaActual = horaActual;
+	}
+	
+	public Medicion actualizar(Medicion t){
+		this.temperaturaActual =  new Medicion(this.temperaturaColector.getValor() + this.temperaturaDiferencia.getValor(), Magnitudes.TEMPERATURA);
+		return this.temperaturaActual;
 	}
 
 }

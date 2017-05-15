@@ -15,7 +15,7 @@ public class SensorHumedad extends InstrumentoMedicion {
 
 	protected Medicion simularMedicion() {
 		EstadoVivero a = EstadoVivero.getInstance();
-		return a.getHumedad();
+		return a.getHumedadActual();
 		
 	}
 
