@@ -9,7 +9,7 @@ import org.junit.Test;
 public class LecturaArchivoTest {
 	
 	@Test
-	public void testLecturaExitosa()
+	public void testLecturaExitosa() throws Exception
 	{
 		LectorHistorial lector = new LectorHistorial();
 		List<String> lectura = lector.leerArchivo("src/test/java/viverbot/Archivos/Historial.txt");

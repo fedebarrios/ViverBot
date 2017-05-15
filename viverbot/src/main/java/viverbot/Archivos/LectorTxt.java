@@ -16,28 +16,33 @@ public class LectorTxt {
 		logger = Log.getLog(LectorTxt.class);
 	}
 	
-	public String leerTxt(String archivo) {
+	public String leerTxt(String archivo) throws Exception {
 		if(!Verificador.validarExistencia(archivo)){
 			logger.error("No existe archivo");
-			return "N";
+			throw new Exception();
 		}else if (!Verificador.validarExtension(archivo, ".txt")){
 			logger.error("La extension del archivo no es .txt.");
-			return "E";
+			throw new Exception();
 		}
-		String data = "";
-        FileReader f;
-		try {
-			f = new FileReader(archivo);
-	        BufferedReader b = new BufferedReader(f);
-	        String line = "";
-	        while((line = b.readLine()) != null) {
-	            data += line + "/";
-	        }
-	        b.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return e.toString();
+		else{
+
+			String data = "";
+	        FileReader f;
+			try {
+				f = new FileReader(archivo);
+		        BufferedReader b = new BufferedReader(f);
+		        String line = "";
+		        while((line = b.readLine()) != null) {
+		            data += line + "/";
+		        }
+		        b.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return e.toString();
+			}
+	        return data;
+
 		}
-        return data;
+			
     }
 }

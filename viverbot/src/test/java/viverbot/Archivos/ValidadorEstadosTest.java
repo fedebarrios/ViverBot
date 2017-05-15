@@ -14,7 +14,7 @@ public class ValidadorEstadosTest extends TestCase {
 	PluginArchivos plugin;
 	
 	@Test
-	public void testArchivoValoresNoNumericos()
+	public void testArchivoValoresNoNumericos() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileNoNumerico.txt");
 		assertThat(outContent.toString(), containsString("Ingreso un valor que no es numerico para la lista de valores."));
@@ -22,7 +22,7 @@ public class ValidadorEstadosTest extends TestCase {
 	}
 	
 	@Test
-	public void testArchivoNombresIncorrectos()
+	public void testArchivoNombresIncorrectos() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileNombresIncorrectos.txt");
 		assertThat(outContent.toString(), containsString("Ingreso un nombre con caracteres no alfanumericos."));
@@ -30,7 +30,7 @@ public class ValidadorEstadosTest extends TestCase {
 	}
 	
 	@Test
-	public void testArchivoArreglosIgualTamaño()
+	public void testArchivoArreglosIgualTamaño() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileIgualdad.txt");
 		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
@@ -38,7 +38,7 @@ public class ValidadorEstadosTest extends TestCase {
 	}
 	
 	@Test
-	public void testArchivoArregloValoresMasGrande()
+	public void testArchivoArregloValoresMasGrande() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileValoresMasGrande.txt");
 		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
@@ -46,7 +46,7 @@ public class ValidadorEstadosTest extends TestCase {
 	}
 	
 	@Test
-	public void testArchivoDosEstadosMenosQueValores()
+	public void testArchivoDosEstadosMenosQueValores() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileDosEstadosMenos.txt");
 		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
@@ -54,7 +54,7 @@ public class ValidadorEstadosTest extends TestCase {
 	}
 	
 	@Test
-	public void testArchivoDosEstadosMasQueValores()
+	public void testArchivoDosEstadosMasQueValores() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileDosEstadosMas.txt");
 		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
@@ -62,14 +62,14 @@ public class ValidadorEstadosTest extends TestCase {
 	}
 	
 	@Test
-	public void testArchivoOK()
+	public void testArchivoOK() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
 		assertThat(outContent.toString(), containsString(""));
 		clear();
 	}
 	
-	private void inicialize(String archivo) {
+	private void inicialize(String archivo) throws Exception{
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
 		plugin = new PluginArchivos();

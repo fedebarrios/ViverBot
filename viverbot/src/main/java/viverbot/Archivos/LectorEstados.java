@@ -9,7 +9,7 @@ public class LectorEstados extends LectorTxt {
 		super();
 	}
 
-	public List<String[]> leerArchivo(String archivo){
+	public List<String[]> leerArchivo(String archivo) throws Exception{
         String data = leerTxt(archivo);
         if (data.equals("N") || data.equals("E")){
         	return null;

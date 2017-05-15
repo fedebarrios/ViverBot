@@ -14,7 +14,7 @@ public class LectorEstadosTest extends TestCase {
 	LectorEstados lector;
 	
 	@Test
-	public void testArchivoNoTxt()
+	public void testArchivoNoTxt() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/File.notxt");
 		String msjLog = outContent.toString();
@@ -24,7 +24,7 @@ public class LectorEstadosTest extends TestCase {
 	}
 
 	@Test
-	public void testArchivoNoEncontrado()
+	public void testArchivoNoEncontrado() throws Exception
 	{	
 		inicialize("src/test/java/viverbot/Archivos/FixleDoxsEstadxxosMenoxs.txt");
 		String msjLog = outContent.toString();
@@ -35,7 +35,7 @@ public class LectorEstadosTest extends TestCase {
 	
 	
 	@Test
-	public void testArchivoOK()
+	public void testArchivoOK() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileNoNumerico.txt");
 		String msjLog = outContent.toString();
@@ -44,7 +44,7 @@ public class LectorEstadosTest extends TestCase {
 		clear();
 	}
 	
-	private void inicialize(String archivo) {
+	private void inicialize(String archivo) throws Exception {
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
 		lector = new LectorEstados();

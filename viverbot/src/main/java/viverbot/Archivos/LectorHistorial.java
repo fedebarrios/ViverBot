@@ -9,7 +9,7 @@ public class LectorHistorial extends LectorTxt{
 		super();
 	}
 	
-	public List<String> leerArchivo(String path){
+	public List<String> leerArchivo(String path) throws Exception{
 		String contenido =this.leerTxt(path);
 		List<String> entradas = new ArrayList<String>();
 		if( !contenido.equals("N") || !contenido.equals("E")){

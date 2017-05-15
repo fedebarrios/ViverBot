@@ -16,7 +16,7 @@ public class PluginTest {
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	
 	@Test
-	public void cargarHistorial(){
+	public void cargarHistorial() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/Historial.txt");
 		assertEquals("zanahoria",h.getEspecie().getNombre());
@@ -25,14 +25,14 @@ public class PluginTest {
 	}
 	
 	@Test
-	public void cargaFallidaHistorial(){
+	public void cargaFallidaHistorial() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialNoConsistente.txt");
 		assertNull(h);
 	}
 	
 	@Test
-	public void FaltaInfoEspecie(){
+	public void FaltaInfoEspecie() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialSinInfoEspecie.txt");
 		assertNull(h);
