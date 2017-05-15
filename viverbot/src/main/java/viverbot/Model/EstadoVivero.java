@@ -43,8 +43,10 @@ public class EstadoVivero extends Observable implements Observer  {
 		this.rangoTemperatura = rangoTemperatura;
 	}
 
-	public void setTemperaturaColector(Medicion temperaturaColector) {
-		this.temperaturaColector = temperaturaColector;
+	public void setTemperaturaColector(Medicion t) {
+		this.temperaturaColector = t;
+		this.actualizar(t);
+
 	}
 
 	public Medicion getTemperaturaActual() {

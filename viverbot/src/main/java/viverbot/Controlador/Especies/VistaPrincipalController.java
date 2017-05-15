@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import viverbot.Controlador.Verificacion.PlanificadorAltura;
 import viverbot.Model.ControlSeguimientos;
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.Plantas;
 import viverbot.Modelo.Magnitudes.Magnitudes;
@@ -57,10 +58,10 @@ public class VistaPrincipalController implements ActionListener {
 				simulador.simular();
 				s.setSimulador(simulador);
 				ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
-
-				AnalizadorTemperatura tr = new AnalizadorTemperatura();
-				t.addObserver(tr);
+				EstadoVivero estado  = EstadoVivero.getInstance();
+				t.addObserver(estado);
 				t.colectar();
+				// ak se une fede estado.addObserver(o);
 			} else {
 
 			}
