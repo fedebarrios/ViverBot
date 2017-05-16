@@ -45,7 +45,7 @@ public class RecoFrutosTest {
 		 ObtenedorPath obtenedor2 = new ObtenedorPath();
 		 obtenedor2.obtenerPath();
 		 GeneradorImagenes gen2 = new GeneradorImagenes();
-		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbol15.png");
+		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
 		 gen2.generarImagenes(obtenedor2.getPrimerPath(),obtenedor2.getSegundoPath());
 		
 		 AdapterImage adaptador = new AdapterImage();

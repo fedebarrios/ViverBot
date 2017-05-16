@@ -113,6 +113,7 @@ public class DetectorFrutoTest {
 		obtenedor.obtenerPath();
 		obtenedor.setSegundoPath(path);
 		generador = new GeneradorImagenes();
+		
 	}
 	
 	private void iniciarImagenes()

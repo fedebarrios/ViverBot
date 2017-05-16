@@ -54,9 +54,6 @@ public class Imagen {
 		return colorImagen;
 	}
 
-	public void setColorImagen(Color colorImagen) {
-		this.colorImagen = colorImagen;
-	}
 	
 	private static File convertirString(String ubicacion)
 	{

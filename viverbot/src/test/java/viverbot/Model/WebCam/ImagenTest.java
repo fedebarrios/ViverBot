@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import viverbot.Modelo.WebCam.Imagen;
+import viverbot.Modelo.WebCam.ObtenedorImagenes;
 
 public class ImagenTest {
 	
@@ -23,6 +24,8 @@ public class ImagenTest {
 	{
 		String ubicacion = "src/test/java/viverbot/recursosTest/"+imagen;
 		plantaImagen = new Imagen(ubicacion);
+		ObtenedorImagenes obtenedor = new ObtenedorImagenes();
+		obtenedor.obtenerImagenes();
 		
 	}
 

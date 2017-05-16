@@ -23,7 +23,7 @@ public class ReconocedorTotalTest {
 	private ReconocedorFruto reconocedor;
 	private RectificadorImagen<Imagen> resaltador;
 	
-	//@Test
+	@Test
 	public void deteccion5Frutostest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
@@ -32,7 +32,7 @@ public class ReconocedorTotalTest {
 		assertEquals(5,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
 	}
 	
-	//@Test
+	@Test
 	public void deteccion0Frutostest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.JPG");
@@ -43,7 +43,7 @@ public class ReconocedorTotalTest {
 	}
 	
 	
-	//@Test
+	@Test
 	public void deteccionObjetoBasuratest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
@@ -63,32 +63,30 @@ public class ReconocedorTotalTest {
 
 
 	}
-	/*
+	
+	@Test
+	public void desplazamientoPorPixelTest() {
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		ReconocedorFrutoMock recoFalso = new ReconocedorFrutoMock();
+		assertEquals(1,recoFalso.reconocerFrutos(imgResaltada(), posicionador).intValue());
+
+	}
+	
+	
 	@Test
 	public void desplazamientoPorBloqueTest() {
 		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbol10.png");
-		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
-		reconocedorVertical.reconocerFrutos(resaltador.resaltarImagen(generador),0,0);
-		assertTrue(33==reconocedorVertical.getCont());
-		clean();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
+		iniciarImagenes();
+		posicionarKernel(164, 213);
+		ReconocedorFrutoMock recoFalso = new ReconocedorFrutoMock();
+		assertEquals(33,recoFalso.reconocerFrutos(imgResaltada(), posicionador).intValue());
 
 	}
 	
-	
-	@Test
-	public void sinDeteccionPixeles() {
-		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbol10.png");
-		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
-		reconocedorVertical.reconocerFrutos(resaltador.resaltarImagen(generador),0,0);
-		assertTrue(33==reconocedorVertical.getCont());
-		clean();
-
-	}
-	
-	
-	*/
 	
 	private Imagen imgResaltada()
 	{

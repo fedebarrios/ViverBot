@@ -9,30 +9,25 @@ public class ReconocedorFrutoMock {
 	
 	public Integer reconocerFrutos(Imagen imagen, PosicionadorKernel posicionador)
 	{
-		Integer y=0;
-		Integer x=0;
+		Integer y=posicionador.getY();
+		Integer x=posicionador.getX();
 		Integer cantidadF=0;
 		RectificadorImagen<PosicionadorKernel> rectificador = new RectificadorImagen<PosicionadorKernel>();
 
-		while(y != imagen.getAlto()&& y < imagen.getAlto()-posicionador.getHeightKernel())
+	
+		if(DetectorFruto.detectar(imagen, x, y, posicionador.getKernel()))
 		{
-			while(x != imagen.getAncho() && x < imagen.getAncho()-posicionador.getWidthKernel())
-			{				
-					if(DetectorFruto.detectar(imagen, x, y, posicionador.getKernel()))
-					{
-						posicionador.setX(x);
-						posicionador.setY(y);
-						rectificador.rectificarImagen(imagen, posicionador);
-						cantidadF ++;
-						x += posicionador.getWidthKernel();
-					}
-					else
-						x ++;	
-			}
-			x=0;
-			y ++;
+			posicionador.setX(x);
+			posicionador.setY(y);
+			rectificador.rectificarImagen(imagen, posicionador);
+			cantidadF ++;
+			x = posicionador.getWidthKernel();
 		}
-		return cantidadF;
+		else
+			x ++;	
+			
+	
+		return x;
 		
 		
 	}

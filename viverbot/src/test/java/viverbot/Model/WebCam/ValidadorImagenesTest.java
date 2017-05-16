@@ -34,6 +34,7 @@ public class ValidadorImagenesTest {
 	{
 		primerPath = "src/test/java/viverbot/recursosTest/"+path1;
 		segundoPath = "src/test/java/viverbot/recursosTest/"+path2;
+		
 	}
 	
 	public void clear()
