@@ -1,6 +1,5 @@
 package viverbot.Modelo.WebCam;
 
-import javax.swing.JOptionPane;
 
 public class ValidadorImagenes {
 	
