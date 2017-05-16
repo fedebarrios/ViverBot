@@ -40,7 +40,7 @@ public class ReconocedorTest {
 
 		 vista.visible(true);
 		 ReconocedorFruto reco = new ReconocedorFruto();
-		 System.out.println("Cantidad de frutos: "+reco.reconocerFrutos(img2, posicionador));
+		 System.out.println("Frutos detectados: "+reco.reconocerFrutos(img2, posicionador));
 		
 		 //    vista.getPanelPrimeraImagen().setIcon(new ImageIcon(resaltador.resaltarImagen(gen2).getRepresentacion()));
 		
