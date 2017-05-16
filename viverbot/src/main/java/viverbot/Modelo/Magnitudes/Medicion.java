@@ -1,11 +1,11 @@
 package viverbot.Modelo.Magnitudes;
 
 public class Medicion {
-	
+
 	private Double valor;
-	Magnitudes tipo;
-	
-	public Medicion(Double v, Magnitudes m ){
+	private Magnitudes tipo;
+
+	public Medicion(Double v, Magnitudes m) {
 		this.valor = v;
 		this.tipo = m;
 	}
@@ -14,25 +14,22 @@ public class Medicion {
 		return valor;
 	}
 
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
 	public Magnitudes getTipo() {
 		return tipo;
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		if(!(o instanceof Medicion)){
+		if (!(o instanceof Medicion)) {
 			return false;
-		}
-		else{
+		} else {
 			Medicion m = (Medicion) o;
-			return m.getValor().doubleValue() == this.getValor().doubleValue()
-					&& m.getTipo() == this.getTipo();
+			return m.getValor().doubleValue() == this.getValor().doubleValue() && m.getTipo() == this.getTipo();
 		}
 	}
-	
-	
-	
-	
-	
 
 }

@@ -23,7 +23,7 @@ public class EstadoVivero extends Observable implements Observer  {
 		return ambiente;
 	}
 
-	public EstadoVivero() {
+	private EstadoVivero() {
 		this.temperaturaActual = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.temperaturaColector = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.temperaturaDiferencia = new Medicion(0.0, Magnitudes.TEMPERATURA);
@@ -93,7 +93,6 @@ public class EstadoVivero extends Observable implements Observer  {
 	public void update(Observable arg0, Object t) {
 		Medicion m =  (Medicion) t;
 		this.setTemperaturaColector(m);
-		
 	}
 
 }

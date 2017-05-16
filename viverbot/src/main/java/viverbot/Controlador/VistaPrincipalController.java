@@ -22,14 +22,15 @@ import viverbot.Modelo.Sensores.SensorTemperatura;
 import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
 import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaJunio;
 import viverbot.Modelo.Simulacion.Simulador;
-import viverbot.Vista.PrincipalView;
+import viverbot.Vista.VistaPrincipal;
 
 public class VistaPrincipalController implements ActionListener {
-	private PrincipalView vista;
+	private VistaPrincipal vista;
 	private AutomatizadorDeClima automatizador;
+	private EstadoVivero estado = EstadoVivero.getInstance();
 
 	public VistaPrincipalController() {
-		this.vista = new PrincipalView(this);
+		this.vista = new VistaPrincipal(this);
 		this.vista.mostrar();
 		this.automatizador = new AutomatizadorDeClima();
 	}
@@ -61,10 +62,9 @@ public class VistaPrincipalController implements ActionListener {
 				simulador.simular();
 				s.setSimulador(simulador);
 				ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
-				EstadoVivero estado = EstadoVivero.getInstance();
 				t.addObserver(estado);
 				t.colectar();
-				estado.addObserver(automatizador);
+				//estado.addObserver(automatizador);
 				MonitorEstado monitor = new MonitorEstado(this);
 				estado.addObserver(monitor);
 			} else {

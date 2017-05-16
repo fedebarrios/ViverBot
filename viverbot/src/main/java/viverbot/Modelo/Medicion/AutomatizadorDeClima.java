@@ -10,7 +10,7 @@ import viverbot.Model.EstadoVivero;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class AutomatizadorDeClima implements Observer{
+public class AutomatizadorDeClima {
 	private AireAcondicionado aire = new AireAcondicionado();
 	private Timer timer;
 	private boolean encendido = false;
@@ -55,18 +55,22 @@ public class AutomatizadorDeClima implements Observer{
 	}
 
 	private void definirPotencia() {
-		if (getTemp().getValor() - getRango().getMaximo() <= 1.0 || getRango().getMinimo() - getTemp().getValor() <= 1.0) {
+		if (getTemp().getValor() - getRango().getMaximo() <= 1.0
+				|| getRango().getMinimo() - getTemp().getValor() <= 1.0) {
 			aire.setPotenciaEstado(new Potencia_0());
 		}
 		if (getTemp().getValor() - getRango().getMaximo() > 1.0 && getTemp().getValor() - getRango().getMaximo() <= 2.5
-				|| getRango().getMinimo() - getTemp().getValor() > 1.0 && getRango().getMinimo() - getTemp().getValor() <= 2.5) {
+				|| getRango().getMinimo() - getTemp().getValor() > 1.0
+						&& getRango().getMinimo() - getTemp().getValor() <= 2.5) {
 			aire.setPotenciaEstado(new Potencia_1());
 		}
 		if (getTemp().getValor() - getRango().getMaximo() > 2.5 && getTemp().getValor() - getRango().getMaximo() <= 4.0
-				|| getRango().getMinimo() - getTemp().getValor() > 2.5 && getRango().getMinimo() - getTemp().getValor() <= 4.0) {
+				|| getRango().getMinimo() - getTemp().getValor() > 2.5
+						&& getRango().getMinimo() - getTemp().getValor() <= 4.0) {
 			aire.setPotenciaEstado(new Potencia_2());
 		}
-		if (getTemp().getValor() - getRango().getMaximo() > 4.0 || getRango().getMinimo() - getTemp().getValor() > 4.0) {
+		if (getTemp().getValor() - getRango().getMaximo() > 4.0
+				|| getRango().getMinimo() - getTemp().getValor() > 4.0) {
 			aire.setPotenciaEstado(new Potencia_3());
 		}
 	}
@@ -98,12 +102,6 @@ public class AutomatizadorDeClima implements Observer{
 
 	private RangoNumerico getRango() {
 		return this.estadoVivero.getRangoTemperatura();
-	}
-
-	@SuppressWarnings("unused")
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		Medicion temp = (Medicion) arg1;
 	}
 
 }

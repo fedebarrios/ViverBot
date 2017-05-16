@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
-public class PrincipalView extends JFrame {
+public class VistaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuBar menuBar;
@@ -25,7 +25,7 @@ public class PrincipalView extends JFrame {
 	private JLabel labelTemperatura;
 	private JLabel labelEstado;
 
-	public PrincipalView(ActionListener controlador) {
+	public VistaPrincipal(ActionListener controlador) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

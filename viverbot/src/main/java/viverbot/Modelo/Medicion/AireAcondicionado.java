@@ -11,16 +11,18 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class AireAcondicionado {
-	private IPotencia potenciaEstado;
-	private IFrioCalor frioCalorEstado;
+	private IPotencia potencia;
+	private IFrioCalor estado;
+	private TemperaturaAireAcondicionado temp;
 	private Timer timer;
 	private boolean encendidoManualmente = false;
 	private boolean encendidoAutomatizado = false;
 	private EstadoVivero estadoVivero;
 
 	public AireAcondicionado() {
-		this.potenciaEstado = new Potencia_0();
-		this.frioCalorEstado = new Frio();
+		this.potencia = new Potencia_0();
+		this.estado = new Frio();
+		this.temp = new TemperaturaAireAcondicionado();
 		this.timer = new Timer();
 		this.estadoVivero = EstadoVivero.getInstance();
 	}
@@ -31,29 +33,34 @@ public class AireAcondicionado {
 		public void run() {
 			estadoVivero.setTemperaturaDiferencia(ejecutar());
 			WriterExcel.registrarAutomatizacion(returnThis());
+			System.out.println(estadoVivero.getTemperaturaActual().getValor());
 		}
 	};
 
 	public IPotencia getPotenciaEstado() {
-		return potenciaEstado;
+		return potencia;
 	}
 
 	public IFrioCalor getFrioCalorEstado() {
-		return frioCalorEstado;
+		return estado;
 	}
 
 	public void setPotenciaEstado(IPotencia potenciaEstado) {
-		this.potenciaEstado = potenciaEstado;
+		this.potencia = potenciaEstado;
 	}
 
 	public void setFrioCalorEstado(IFrioCalor frioCalorEstado) {
-		this.frioCalorEstado = frioCalorEstado;
+		this.estado = frioCalorEstado;
+	}
+	
+	public void setTemperaturaAireAcondicionado(String s){
+		this.temp.definirTemp(s);
 	}
 
 	public Medicion ejecutar() {
-		frioCalorEstado.definirEstado(this);
-		Medicion dif = potenciaPositivaNegativa();
-		return dif;
+		estado.definirEstado(this);
+		Double suma = potencia.aplicarPotencia(this).getValor() + temp.getDiferencia().getValor();
+		return new Medicion(definirPositivoNegativo(suma), Magnitudes.TEMPERATURA);
 	}
 
 	public AireAcondicionado returnThis() {
@@ -66,21 +73,16 @@ public class AireAcondicionado {
 	}
 
 	public void apagar() {
-		timer.purge();
 		timer.cancel();
+		timer.purge();
 		encendidoManualmente = false;
 	}
 
-	private Medicion potenciaPositivaNegativa() {
-		Medicion ret;
-		Double num;
-		if (frioCalorEstado.getClass() == Calor.class) {
-			ret = new Medicion(potenciaEstado.aplicarPotencia(this).getValor(), Magnitudes.TEMPERATURA);
-			return ret;
+	private Double definirPositivoNegativo(Double d) {
+		if (estado.getClass() == Calor.class) {
+			return d;
 		} else {
-			num = potenciaEstado.aplicarPotencia(this).getValor() * (-1.0);
-			ret = new Medicion(num, Magnitudes.TEMPERATURA);
-			return ret;
+			return d * (-1.0);
 		}
 	}
 
@@ -95,5 +97,15 @@ public class AireAcondicionado {
 	public boolean isEncendidoManualmente() {
 		return encendidoManualmente;
 	}
+
+	public EstadoVivero getEstadoVivero() {
+		return estadoVivero;
+	}
+
+	public void setEstadoVivero(EstadoVivero estadoVivero) {
+		this.estadoVivero = estadoVivero;
+	}
+	
+	
 
 }
