@@ -10,7 +10,7 @@ import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.Log;
 
 public class LectorTxt {
-	private Logger logger ;
+	protected Logger logger ;
 	
 	public LectorTxt(){
 		logger = Log.getLog(LectorTxt.class);

@@ -17,7 +17,9 @@ public class ValidadorEstadosTest extends TestCase {
 	public void testArchivoValoresNoNumericos() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileNoNumerico.txt");
-		assertThat(outContent.toString(), containsString("Ingreso un valor que no es numerico para la lista de valores."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("Ingreso un valor que no es numerico para la lista de valores."));
 		clear();
 	}
 	
@@ -25,7 +27,19 @@ public class ValidadorEstadosTest extends TestCase {
 	public void testArchivoNombresIncorrectos() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileNombresIncorrectos.txt");
-		assertThat(outContent.toString(), containsString("Ingreso un nombre con caracteres no alfanumericos."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("Ingreso un nombre con caracteres no alfanumericos."));
+		clear();
+	}
+	
+	@Test
+	public void testArchivoCodigoIncorrecto() throws Exception
+	{
+		inicialize("src/test/java/viverbot/Archivos/FileCodigoIncorrecto.txt");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("El codigo de especie no es numerico."));
 		clear();
 	}
 	
@@ -33,7 +47,9 @@ public class ValidadorEstadosTest extends TestCase {
 	public void testArchivoArreglosIgualTamaño() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileIgualdad.txt");
-		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
 		clear();
 	}
 	
@@ -41,7 +57,9 @@ public class ValidadorEstadosTest extends TestCase {
 	public void testArchivoArregloValoresMasGrande() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileValoresMasGrande.txt");
-		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
 		clear();
 	}
 	
@@ -49,7 +67,9 @@ public class ValidadorEstadosTest extends TestCase {
 	public void testArchivoDosEstadosMenosQueValores() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileDosEstadosMenos.txt");
-		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
 		clear();
 	}
 	
@@ -57,7 +77,9 @@ public class ValidadorEstadosTest extends TestCase {
 	public void testArchivoDosEstadosMasQueValores() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileDosEstadosMas.txt");
-		assertThat(outContent.toString(), containsString("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
 		clear();
 	}
 	
@@ -65,6 +87,9 @@ public class ValidadorEstadosTest extends TestCase {
 	public void testArchivoOK() throws Exception
 	{
 		inicialize("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains(""));
 		assertThat(outContent.toString(), containsString(""));
 		clear();
 	}

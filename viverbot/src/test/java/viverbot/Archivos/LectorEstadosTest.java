@@ -33,6 +33,16 @@ public class LectorEstadosTest extends TestCase {
 		clear();
 	}
 	
+	@Test (expected = Exception.class)
+	public void testArchivoConMenosLineas() throws Exception
+	{	
+		inicialize("src/test/java/viverbot/Archivos/FileCon2Lineas.txt");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains("El archivo debe contener 3 renglones"));
+		clear();
+	}
+	
 	
 	@Test
 	public void testArchivoOK() throws Exception
