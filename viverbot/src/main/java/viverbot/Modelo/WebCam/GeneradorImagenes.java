@@ -16,17 +16,10 @@ public class GeneradorImagenes {
 		return primerImagen;
 	}
 
-	public void setPrimerImagen(Imagen primerImagen) {
-		this.primerImagen = primerImagen;
-	}
-
 	public Imagen getSegundaImagen() {
 		return segundaImagen;
 	}
 
-	public void setSegundaImagen(Imagen segundaImagen) {
-		this.segundaImagen = segundaImagen;
-	}
 
 	
 	

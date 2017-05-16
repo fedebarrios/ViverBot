@@ -16,14 +16,13 @@ import viverbot.Modelo.WebCam.ReconocedorFruto;
 import viverbot.Modelo.WebCam.RectificadorImagen;
 import viverbot.Modelo.WebCam.ValidadorKernel;
 
-public class DetectorTest {
+public class DetectorFrutoTest {
 	
-	private ReconocedorFruto reconocedor;
+
 	private ObtenedorPath obtenedor; 
 	private GeneradorImagenes generador;
 	private AdapterImage adaptador;
 	private PosicionadorKernel posicionador;
-	private RectificadorImagen<PosicionadorKernel> rectificador;
 	private RectificadorImagen<Imagen> resaltador;
 
 
@@ -36,7 +35,6 @@ public class DetectorTest {
 		iniciarImagenes();
 		posicionarKernel(0, 0);
 		assertTrue(DetectorFruto.detectar(imgResaltada(), 164, 213, posicionador.getKernel()));
-		clean();
 	}
 	
 	@Test
@@ -48,7 +46,6 @@ public class DetectorTest {
 		posicionarKernel(10, 12);
 		assertEquals(10,posicionador.getX().intValue());
 		assertEquals(12,posicionador.getY().intValue());
-		clean();
 	}
 	
 	@Test
@@ -59,7 +56,6 @@ public class DetectorTest {
 		assertEquals(1,imgPrueba.getAlto().intValue());
 		assertEquals(1,imgPrueba.getAncho().intValue());
 		assertFalse(adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/imgVacia.png"));
-		clean();
 	}
 	
 
@@ -72,7 +68,6 @@ public class DetectorTest {
 		posicionarKernel(0, 0);
 		assertTrue(DetectorFruto.detectar(imgResaltada(), 164, 213, posicionador.getKernel()));
 		assertFalse(DetectorFruto.detectar(imgResaltada(), 164, 223, posicionador.getKernel()));
-		clean();
 		
 	}
 	
@@ -88,7 +83,6 @@ public class DetectorTest {
 		assertEquals(440,imagen.getAlto().intValue());
 
 		assertFalse(adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/naranja.png"));
-		clean();
 
 	}
 	
@@ -109,9 +103,7 @@ public class DetectorTest {
 	private void inicializar()
 	{
 		adaptador = new AdapterImage();
-		rectificador = new RectificadorImagen<PosicionadorKernel>();
 		resaltador = new RectificadorImagen<Imagen>();
-		reconocedor = new ReconocedorFruto();
 	
 	}
 	
@@ -130,11 +122,5 @@ public class DetectorTest {
 
 	}
 	
-	private void clean()
-	{
-		reconocedor = null;
-		obtenedor = null;
-		generador = null;
-		
-	}
+
 	}

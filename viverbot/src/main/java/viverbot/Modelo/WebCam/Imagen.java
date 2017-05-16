@@ -34,20 +34,6 @@ public class Imagen {
 		representacion.setRGB(x, y, n);
 	}
 	
-	public Integer getAzul()
-	{
-		return colorImagen.getBlue();
-	}
-	
-	public Integer getVerde()
-	{
-		return colorImagen.getGreen();
-	}
-	
-	public Integer getRojo()
-	{
-		return colorImagen.getRed();
-	}
 	
 	public Integer getAncho()
 	{
@@ -63,9 +49,6 @@ public class Imagen {
 		return representacion;
 	}
 
-	public void setRepresentacion(BufferedImage representacion) {
-		this.representacion = representacion;
-	}
 
 	public Color getColorImagen() {
 		return colorImagen;

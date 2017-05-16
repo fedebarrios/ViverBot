@@ -1,61 +1,41 @@
 package viverbot.Model.WebCam;
 
-import java.awt.image.Kernel;
-
 import viverbot.Modelo.WebCam.DetectorFruto;
 import viverbot.Modelo.WebCam.Imagen;
+import viverbot.Modelo.WebCam.PosicionadorKernel;
+import viverbot.Modelo.WebCam.RectificadorImagen;
 
 public class ReconocedorFrutoMock {
 	
-	private Integer cont = 0;
-	private DetectorFruto detector;
-	public Imagen reconocerFrutos(Imagen generador,int ancho, int alto)
+	public Integer reconocerFrutos(Imagen imagen, PosicionadorKernel posicionador)
 	{
-		Imagen img = generador;
-		Integer y=alto;
+		Integer y=0;
 		Integer x=0;
-		Integer amountObject=0;
-		detector = new DetectorFruto();
-			
-	
-			while(x != img.getAncho() && x < img.getAncho()-33)
-			{
-				img = detector.detectObject(x,y,generador);
-				
-					if(detector.getCont()==0)
+		Integer cantidadF=0;
+		RectificadorImagen<PosicionadorKernel> rectificador = new RectificadorImagen<PosicionadorKernel>();
+
+		while(y != imagen.getAlto()&& y < imagen.getAlto()-posicionador.getHeightKernel())
+		{
+			while(x != imagen.getAncho() && x < imagen.getAncho()-posicionador.getWidthKernel())
+			{				
+					if(DetectorFruto.detectar(imagen, x, y, posicionador.getKernel()))
 					{
-						x += 33;
+						posicionador.setX(x);
+						posicionador.setY(y);
+						rectificador.rectificarImagen(imagen, posicionador);
+						cantidadF ++;
+						x += posicionador.getWidthKernel();
 					}
 					else
-						{
-							x += 1;
-						}
-					if(detector.isFruit())
-						amountObject +=1;
-					
-					if(detector.getCont()>=674 )
-					System.out.println("detector.contador: "+detector.getCont());
+						x ++;	
 			}
-			
-		cont = amountObject;
-		return img;
+			x=0;
+			y ++;
+		}
+		return cantidadF;
+		
 		
 	}
 
-
-	public DetectorFruto getDetector() {
-		return detector;
-	}
-
-
-	public void setDetector(DetectorFruto detector) {
-		this.detector = detector;
-	}
-
-
-	public Integer getCont()
-	{
-		return cont;
-	}
 
 }

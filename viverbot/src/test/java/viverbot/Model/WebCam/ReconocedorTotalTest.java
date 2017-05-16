@@ -3,60 +3,67 @@ package viverbot.Model.WebCam;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
+import viverbot.Modelo.WebCam.AdapterImage;
+import viverbot.Modelo.WebCam.DetectorFruto;
 import viverbot.Modelo.WebCam.GeneradorImagenes;
+import viverbot.Modelo.WebCam.Imagen;
 import viverbot.Modelo.WebCam.ObtenedorPath;
+import viverbot.Modelo.WebCam.PosicionadorKernel;
 import viverbot.Modelo.WebCam.ReconocedorFruto;
-import viverbot.Modelo.WebCam.ResaltadorImagen;
+import viverbot.Modelo.WebCam.RectificadorImagen;
 
 public class ReconocedorTotalTest {
-
 	
-	private ResaltadorImagen resaltador;
-	private ReconocedorFruto reconocedor;
-	private ReconocedorVertical reconocedorVertical;
 	private ObtenedorPath obtenedor; 
 	private GeneradorImagenes generador;
+	private AdapterImage adaptador;
+	private PosicionadorKernel posicionador;
+	private ReconocedorFruto reconocedor;
+	private RectificadorImagen<Imagen> resaltador;
 	
-	@Test
+	//@Test
 	public void deteccion5Frutostest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
-		iniciarReconocimiento(0, 0);
-		assertTrue(5==reconocedor.getCont());
-		clean();
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(5,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
 	}
 	
-	@Test
+	//@Test
 	public void deteccion0Frutostest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.JPG");
-		iniciarReconocimiento(0, 0);
-		assertTrue(0==reconocedor.getCont());
-		clean();
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(0,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
 
 	}
 	
-	@Test
+	
+	//@Test
 	public void deteccionObjetoBasuratest() {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
-		iniciarReconocimiento(0, 0);
-		assertTrue(6==reconocedor.getCont());
-		clean();
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(6,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
 
 	}
 	
 	@Test
-	public void deteccion10Frutostest() {
+	public void deteccion15Frutostest() {
 		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbol10.png");
-		iniciarReconocimiento(0, 0);
-		assertTrue(10==reconocedor.getCont());
-		clean();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbol15.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(15,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+
 
 	}
-	
+	/*
 	@Test
 	public void desplazamientoPorBloqueTest() {
 		inicializar();
@@ -81,12 +88,26 @@ public class ReconocedorTotalTest {
 	}
 	
 	
+	*/
+	
+	private Imagen imgResaltada()
+	{
+		return resaltador.rectificarImagen(generador.getPrimerImagen(), generador.getSegundaImagen());
+
+	}
+	
+	private void posicionarKernel(int x, int y)
+	{
+		posicionador = new PosicionadorKernel(x,y,adaptador);
+
+	}
+	
 	
 	private void inicializar()
 	{
-		resaltador = new ResaltadorImagen();
+		adaptador = new AdapterImage();
+		resaltador = new RectificadorImagen<Imagen>();
 		reconocedor = new ReconocedorFruto();
-		reconocedorVertical = new ReconocedorVertical();
 	
 	}
 	
@@ -98,21 +119,12 @@ public class ReconocedorTotalTest {
 		generador = new GeneradorImagenes();
 	}
 	
-	private void iniciarReconocimiento(int ancho, int alto)
+	private void iniciarImagenes()
 	{
 		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
-		reconocedor.reconocerFrutos(resaltador.resaltarImagen(generador)).getRepresentacion();
-		System.out.println("cantidad de frutos detectados:"+reconocedor.getCont());
+		adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
 
 	}
 	
-	private void clean()
-	{
-		resaltador = null;
-		reconocedor = null;
-		reconocedorVertical = null;
-		obtenedor = null;
-		generador = null;
-	}
 
 }
