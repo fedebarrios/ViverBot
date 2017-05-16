@@ -109,7 +109,7 @@ public class InstrumentoMediatorTest {
 		boolean ret = true;
 		for (Hora h : horarios) {
 			a.setHoraActual(h);
-			ret = ret && mediatorTest.tomarMedicion().equals(a.getHumedad());
+			ret = ret && mediatorTest.tomarMedicion().equals(a.getHumedadActual());
 		}
 		return ret;
 	}

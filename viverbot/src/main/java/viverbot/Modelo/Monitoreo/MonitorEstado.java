@@ -13,8 +13,8 @@ public class MonitorEstado implements Observer {
 	private Medicion temperaturaActual;
 	private AnalizadorTemperatura analizador;
 	private VistaPrincipalController controlador;
-	private static final String tempAlta = "La temperatura esta por encima del rango ideal";
-	private static final String tempBaja = "La temperatura esta por debajo del rango ideal";
+	private static final String tempAlta = "La temperatura esta por encima del rango ideal por ";
+	private static final String tempBaja = "La temperatura esta por debajo del rango ideal por ";
 	private static final String tempOptima = "La temperatura esta dentro del rango ideal";
 
 	public MonitorEstado(VistaPrincipalController c) {
@@ -37,18 +37,23 @@ public class MonitorEstado implements Observer {
 			this.setTemperaturaActual((Medicion) arg);
 			DiagnosticoAnalisis d = this.analizador.analizar(this.temperaturaActual);
 			if (!d.getOptima()) {
-				if (d.getMagnitud().getValor() < 0) {
-					this.controlador.actualizarLabelEstado(tempBaja, this.temperaturaActual.getValor());
+				if (d.getDiferencia() < 0) {
+					this.controlador.actualizarLabelEstado(tempBaja + redondear(d.getDiferencia()), redondear(this.temperaturaActual.getValor()));
 
 				} else {
-					this.controlador.actualizarLabelEstado(tempAlta, this.temperaturaActual.getValor());
+					this.controlador.actualizarLabelEstado(tempAlta + redondear(d.getDiferencia()), redondear(this.temperaturaActual.getValor()));
 
 				}
 			} else {
-				this.controlador.actualizarLabelEstado(tempOptima, this.temperaturaActual.getValor());
+				this.controlador.actualizarLabelEstado(tempOptima, redondear(this.temperaturaActual.getValor()));
 			}
 
 		}
+	}
+
+	private Double redondear(Double valor) {
+		// TODO Auto-generated method stub
+		return Math.rint(valor*100)/100;
 	}
 
 }

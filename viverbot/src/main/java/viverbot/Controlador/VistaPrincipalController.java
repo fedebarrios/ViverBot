@@ -87,7 +87,7 @@ public class VistaPrincipalController implements ActionListener {
 	}
 
 	public void actualizarLabelEstado(String estado, Double valor) {
-		this.vista.setLabelEstado(estado);
-		this.vista.setLabelTemperatura(Math.rint(valor*100)/100 + " ºC");
+		this.vista.setLabelEstado(estado + " ºC");
+		this.vista.setLabelTemperatura(valor + " ºC");
 	}
 }

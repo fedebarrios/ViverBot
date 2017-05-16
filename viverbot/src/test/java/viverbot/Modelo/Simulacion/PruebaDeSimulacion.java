@@ -44,8 +44,6 @@ public class PruebaDeSimulacion {
 
 		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 
-		AnalizadorTemperatura tr = new AnalizadorTemperatura();
-		t.addObserver(tr);
 		t.colectar();
 
 	}
