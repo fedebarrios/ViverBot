@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
+import viverbot.Controlador.Verificacion.TuplaEstadosValores;
 import viverbot.DTO.EspecieDTO;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.TuplaAltura;
@@ -25,20 +26,22 @@ public class MediatorParser {
 		return new HistorialOptimo(tuplas,especie);
 	}
 	
-	public List<EstadoAltura> parsearEstados(List<String[]> datos){
+	public TuplaEstadosValores parsearEstadosValores(List<String[]> datos){
 		List<EstadoAltura> estados = new ArrayList<EstadoAltura>();
+		List<Integer> valores = new ArrayList<Integer>();
 		ParserEstados parser = new ParserEstados();
-		for(int i = 0; i < datos.get(1).length; i++){
-			if (i == 0){
-				estados.add(parser.parsear(datos.get(1)[i], -1, Integer.parseInt(datos.get(0)[i])));
-			}
-			else if (i == datos.get(1).length - 1){
-				estados.add(parser.parsear(datos.get(1)[i - 1], Integer.parseInt(datos.get(0)[i - 2]), -1));
-			}
-			else{
-				estados.add(parser.parsear(datos.get(1)[i], Integer.parseInt(datos.get(0)[i - 1]), Integer.parseInt(datos.get(0)[i])));
-			}
+		for(int i = 0; i < datos.get(0).length; i++){
+			valores.add(Integer.valueOf(datos.get(0)[i]));
 		}
-		return estados;
+		for(int i = 0; i < datos.get(1).length; i++){
+			estados.add(parser.parsear(datos.get(1)[i]));
+		}
+		return new TuplaEstadosValores(estados, valores);
+	}
+	
+	public Integer parsearCodigoEspecie(List<String[]> datos){
+		ParserEstados parser = new ParserEstados();
+		Integer valor = parser.getCodigoEspecie(datos.get(2));
+		return valor;
 	}
 }

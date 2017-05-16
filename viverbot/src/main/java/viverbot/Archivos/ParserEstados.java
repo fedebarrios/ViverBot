@@ -5,17 +5,14 @@ import viverbot.Interfaces.IParser;
 
 public class ParserEstados implements IParser<EstadoAltura>{
 	
-	public EstadoAltura parsear(String s, int valuemin, int valuemax){
+	@Override
+	public EstadoAltura parsear(String s){
 		EstadoAltura estado = new EstadoAltura();
 		estado.setEstado(s);
-		estado.setValorMin(valuemin);
-		estado.setValorMax(valuemax);
 		return estado;
 	}
-
-	@Override
-	public EstadoAltura parsear(String s) {
-		return null;
-	}
 	
+	public Integer getCodigoEspecie(String[] s){
+		return Integer.valueOf(s[0]);
+	}
 }

@@ -8,6 +8,7 @@ import java.util.Observable;
 import org.apache.log4j.Logger;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
+import viverbot.Controlador.Verificacion.TuplaEstadosValores;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
@@ -83,10 +84,11 @@ public class PluginArchivos extends Observable{
 		boolean esValidoEstados = validadorEstados.validarEstados(lectura);
 		if(esValidoEstados){
 			MediatorParser mediator = new MediatorParser();
-			List<EstadoAltura> estados = mediator.parsearEstados(lectura);
+			TuplaEstadosValores tupla = mediator.parsearEstadosValores(lectura);
+			Integer codigoEspecie = mediator.parsearCodigoEspecie(lectura);
 			BuscadorEstadoAltura buscador = new BuscadorEstadoAltura();
 			MapperEstadoAltura mapper = new MapperEstadoAltura();
-			mapper.relacionar(buscador, estados);
+			mapper.relacionar(buscador, tupla, codigoEspecie);
 			return false;
 		}
 		return true;

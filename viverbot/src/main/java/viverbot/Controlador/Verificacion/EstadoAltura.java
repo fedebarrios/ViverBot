@@ -4,8 +4,6 @@ import viverbot.DTO.PlantaDTO;
 
 public class EstadoAltura {
 	private String estado;
-	private int valorMin;
-	private int valorMax;
 	private double cmDeDiferencia;
 	private PlantaDTO planta;
 	
@@ -42,21 +40,4 @@ public class EstadoAltura {
 	public void informar(){
 		
 	}
-
-	public int getValorMin() {
-		return valorMin;
-	}
-
-	public void setValorMin(int valorMin) {
-		this.valorMin = valorMin;
-	}
-
-	public int getValorMax() {
-		return valorMax;
-	}
-
-	public void setValorMax(int valorMax) {
-		this.valorMax = valorMax;
-	}
-
 }

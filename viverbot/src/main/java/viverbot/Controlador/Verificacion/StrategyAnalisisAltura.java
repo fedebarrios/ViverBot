@@ -12,7 +12,7 @@ public class StrategyAnalisisAltura implements IAnalisisAltura{
 		
 		double porcentajeCrecimiento = comparar(actual, esperada);
 		double diferenciaAltura = diferenciaDeAlturas(esperada, actual);
-		EstadoAltura estado = BuscadorEstadoAltura.getInstance().obtenerEstado(porcentajeCrecimiento, diferenciaAltura, planta);
+		EstadoAltura estado = BuscadorEstadoAltura.getInstance().obtenerEstadoPorEspecie(porcentajeCrecimiento, diferenciaAltura, planta);
 		return estado;
 	}
 	
