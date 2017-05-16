@@ -17,6 +17,7 @@ import viverbot.Modelo.Medicion.ColectorAltura;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Medicion.MapperAltura;
+import viverbot.Modelo.Monitoreo.MonitorEstado;
 import viverbot.Modelo.Sensores.SensorTemperatura;
 import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
 import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaJunio;
@@ -64,6 +65,8 @@ public class VistaPrincipalController implements ActionListener {
 				t.addObserver(estado);
 				t.colectar();
 				estado.addObserver(automatizador);
+				MonitorEstado monitor = new MonitorEstado(this);
+				estado.addObserver(monitor);
 			} else {
 
 			}
@@ -81,5 +84,10 @@ public class VistaPrincipalController implements ActionListener {
 		if (e.getSource() == vista.getMntmTemperatura()) {
 			AutomatizadorVistaController automatizadorVista = new AutomatizadorVistaController(automatizador);
 		}
+	}
+
+	public void actualizarLabelEstado(String estado, Double valor) {
+		this.vista.setLabelEstado(estado);
+		this.vista.setLabelTemperatura(Math.rint(valor*100)/100 + " ºC");
 	}
 }

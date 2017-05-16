@@ -8,6 +8,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
 
 public class PrincipalView extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -21,6 +22,8 @@ public class PrincipalView extends JFrame {
 	private JMenuItem mntmControolarHumedad;
 	private JMenuItem mntmControlarTemperatura;
 	private JMenuItem mntmTemperatura;
+	private JLabel labelTemperatura;
+	private JLabel labelEstado;
 
 	public PrincipalView(ActionListener controlador) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,6 +62,14 @@ public class PrincipalView extends JFrame {
 
 		mntmControlarTemperatura = new JMenuItem("Controlar Temperatura");
 		mnAutomatizacin.add(mntmControlarTemperatura);
+		
+		labelTemperatura = new JLabel("");
+		labelTemperatura.setBounds(10, 222, 177, 14);
+		contentPane.add(labelTemperatura);
+		
+		labelEstado = new JLabel("");
+		labelEstado.setBounds(10, 236, 414, 14);
+		contentPane.add(labelEstado);
 		this.mntmControlarTemperatura.addActionListener(controlador);
 	}
 
@@ -95,5 +106,22 @@ public class PrincipalView extends JFrame {
 	public JMenuItem getMntmTemperatura() {
 		return mntmTemperatura;
 	}
+
+	public JLabel getLabelEstado() {
+		return labelEstado;
+	}
+
+	public void setLabelEstado(String cadena) {
+		this.labelEstado.setText(cadena);
+	}
+
+	public JLabel getLabelTemperatura() {
+		return labelTemperatura;
+	}
+
+	public void setLabelTemperatura(String  cadena) {
+		this.labelTemperatura.setText(cadena);
+	}
+	
 
 }

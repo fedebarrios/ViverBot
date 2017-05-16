@@ -17,8 +17,6 @@ public class StrategyRangoTemperatura implements IAnalisis {
 		int resultado = verificarRango(t,  rango);
 		if (resultado == 0) {
 			estado.setOptima(true);
-			System.out.println(
-					"la temperatura es: " + estado.getMagnitud().getValor() + " esta dentro del rango ideal");
 		} else {
 			
 			if(resultado == 1){
@@ -28,10 +26,6 @@ public class StrategyRangoTemperatura implements IAnalisis {
 				estado.setDiferencia(t.getValor() -  rango.getMinimo());
 				
 			}
-			
-			System.out
-					.println("la temperatura es: " + estado.getMagnitud().getValor()
-							+ " y no  esta dentro del rango ideal por: " + estado.getDiferencia() + " grados" );
 		}
 		return estado;
 	}

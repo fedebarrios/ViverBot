@@ -12,13 +12,13 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
-public class AnalizadorTemperatura implements Observer {
+public class AnalizadorTemperatura {
 	private IAnalisis estrategia;
 	private Medicion m;
 	private DiagnosticoAnalisis estado;
 	private RangoNumerico rango;
 
-	private static RangoNumerico rangoIdeal = new RangoNumerico(10.0, 30.0);
+	private static RangoNumerico rangoIdeal = new RangoNumerico(10.0, 11.0);
 
 	public AnalizadorTemperatura() {
 		this.m = null;
@@ -52,12 +52,6 @@ public class AnalizadorTemperatura implements Observer {
 
 	public void setRango(RangoNumerico r) {
 		this.rango = r;
-	}
-
-	@Override
-	public void update(Observable o, Object medicion) {
-		this.analizar((Medicion) medicion);
-		
 	}
 
 }
