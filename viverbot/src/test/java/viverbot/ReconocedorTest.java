@@ -14,43 +14,21 @@ import viverbot.Modelo.WebCam.ReconocedorFruto;
 import viverbot.Modelo.WebCam.RectificadorImagen;
 import viverbot.Vista.Imagen.ObtenedorSeleccionVista;
 
-public class RecoFrutosTest {
+public class ReconocedorTest {
 	
 	public static void main(String[] args)
 	{
-		/*
-		 ObtenedorSeleccionVista vista = new ObtenedorSeleccionVista();
-		 ResaltadorImagen resaltador = new ResaltadorImagen();
-		 ReconocedorFruto resalt = new ReconocedorFruto();
-		 ObtenedorPath obtenedor2 = new ObtenedorPath();
-		 obtenedor2.obtenerPath();
-		 GeneradorImagenes gen2 = new GeneradorImagenes();
-		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbolObjeto.png");
-		 gen2.generarImagenes(obtenedor2.getPrimerPath(),obtenedor2.getSegundoPath());
-		 vista.getPanelPrimeraImagen().setIcon(new ImageIcon(resalt.reconocerFrutos(resaltador.resaltarImagen(gen2)).getRepresentacion()));
-		//    vista.getPanelPrimeraImagen().setIcon(new ImageIcon(resaltador.resaltarImagen(gen2).getRepresentacion()));
-
-		    System.out.println("contador de frutos: "+resalt.getCont());
-			  vista.visible(true);	
-			  
 		
-		AdapterImage adaptador = new AdapterImage();
-		adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
-		PosicionadorKernel posicionador = new PosicionadorKernel(adaptador);
-		System.out.println("ancho del kernel: "+posicionador.getWidthKernel()+" alto del kernel: "+posicionador.getHeightKernel()+
-					" cantidad de pixeles: "+ posicionador.getKernel().cantidadPixel());
-		
-		*/
 		 ObtenedorSeleccionVista vista = new ObtenedorSeleccionVista();
 		 ObtenedorPath obtenedor2 = new ObtenedorPath();
 		 obtenedor2.obtenerPath();
 		 GeneradorImagenes gen2 = new GeneradorImagenes();
-		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
+		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbolObjetoChico.png");
 		 gen2.generarImagenes(obtenedor2.getPrimerPath(),obtenedor2.getSegundoPath());
 		
 		 AdapterImage adaptador = new AdapterImage();
-		adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
-		PosicionadorKernel posicionador = new PosicionadorKernel(0,0,adaptador);
+		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
+		 PosicionadorKernel posicionador = new PosicionadorKernel(0,0,adaptador);
 		 //RectificadorImagen<PosicionadorKernel> rectificador = new RectificadorImagen<PosicionadorKernel>();
 		 RectificadorImagen<Imagen> rectificador2 = new RectificadorImagen<Imagen>();
 

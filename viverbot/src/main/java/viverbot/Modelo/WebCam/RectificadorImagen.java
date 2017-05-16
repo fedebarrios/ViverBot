@@ -25,7 +25,7 @@ public class RectificadorImagen <T> {
 		
 		for(int y=vY; y<alto+vY; y++)
 			for(int x=vX; x<ancho+vX; x++)
-				analizador.analizarPixel(x,y,(Imagen)primario,secundario);
+				analizador.analizarPixel(x,y,primario,secundario);
 	
 		return primario;
 	}

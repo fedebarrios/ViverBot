@@ -1,7 +1,5 @@
 package viverbot.Modelo.WebCam;
 
-import java.util.ArrayList;
-
 public class ObtenedorImagenes {
 
 	private GeneradorImagenes contenedorImagenes;

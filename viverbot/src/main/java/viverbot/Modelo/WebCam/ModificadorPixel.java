@@ -1,8 +1,8 @@
 package viverbot.Modelo.WebCam;
 
-public class ResaltadorPixel {
+public class ModificadorPixel {
 	
-	public void resaltarPixel(int x, int y, Imagen imagen, Object dato, boolean result) {
+	public void modificarPixel(int x, int y, Imagen imagen, Object dato, boolean result) {
 		
 		Integer rgb=0;
 		if(dato instanceof Imagen)
