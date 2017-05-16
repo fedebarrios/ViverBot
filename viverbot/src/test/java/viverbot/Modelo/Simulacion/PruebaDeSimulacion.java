@@ -5,11 +5,13 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
+import viverbot.Modelo.Monitoreo.MonitorEstado;
 import viverbot.Modelo.Sensores.SensorTemperatura;
 
 public class PruebaDeSimulacion {
@@ -41,10 +43,14 @@ public class PruebaDeSimulacion {
 		SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();
 		simulador.simular();
 		s.setSimulador(simulador);
-
 		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
-
 		t.colectar();
+		EstadoVivero estado =  EstadoVivero.getInstance();
+		t.addObserver(estado);
+		MonitorEstado monitor = new MonitorEstado();
+		estado.addObserver(monitor);
+		// ahi esta
+		
 
 	}
 

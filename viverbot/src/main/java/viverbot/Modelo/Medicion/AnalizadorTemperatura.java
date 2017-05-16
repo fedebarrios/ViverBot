@@ -18,7 +18,7 @@ public class AnalizadorTemperatura {
 	private DiagnosticoAnalisis estado;
 	private RangoNumerico rango;
 
-	private static RangoNumerico rangoIdeal = new RangoNumerico(10.0, 11.0);
+	private static RangoNumerico rangoIdeal = new RangoNumerico(10.0, 30.0);
 
 	public AnalizadorTemperatura() {
 		this.m = null;
