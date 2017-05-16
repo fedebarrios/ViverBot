@@ -53,6 +53,10 @@ public class PosicionadorKernel {
 		this.y = y;
 	}
 
+	public void setKernel(Kernel kernel) {
+		this.kernel = kernel;
+	}
+
 
 	
 	

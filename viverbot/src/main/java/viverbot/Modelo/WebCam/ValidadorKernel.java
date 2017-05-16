@@ -11,10 +11,10 @@ public class ValidadorKernel {
 	
 	public boolean validarKernel(Imagen kernel)
 	{
-		if(kernel.getAncho()<=imagen.getAncho() && kernel.getAlto()<=imagen.getAlto()) return true;
+
+		if(kernel.getAncho()<=imagen.getAncho() && kernel.getAlto()<=imagen.getAlto() && kernel.getAncho()>1 && kernel.getAlto()>1) return true;
 		else return false;
 		
 	}
-	
 
 }

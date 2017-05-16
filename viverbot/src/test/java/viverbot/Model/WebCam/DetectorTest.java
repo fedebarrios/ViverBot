@@ -5,27 +5,37 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import viverbot.Modelo.WebCam.AdapterImage;
 import viverbot.Modelo.WebCam.DetectorFruto;
 import viverbot.Modelo.WebCam.GeneradorImagenes;
+import viverbot.Modelo.WebCam.Imagen;
 import viverbot.Modelo.WebCam.Kernel;
 import viverbot.Modelo.WebCam.ObtenedorPath;
+import viverbot.Modelo.WebCam.PosicionadorKernel;
 import viverbot.Modelo.WebCam.ReconocedorFruto;
-import viverbot.Modelo.WebCam.ResaltadorImagen;
+import viverbot.Modelo.WebCam.RectificadorImagen;
+import viverbot.Modelo.WebCam.ValidadorKernel;
 
 public class DetectorTest {
 	
-	private ResaltadorImagen resaltador;
-	private ReconocedorFrutoMock reconocedor;
+	private ReconocedorFruto reconocedor;
 	private ObtenedorPath obtenedor; 
 	private GeneradorImagenes generador;
+	private AdapterImage adaptador;
+	private PosicionadorKernel posicionador;
+	private RectificadorImagen<PosicionadorKernel> rectificador;
+	private RectificadorImagen<Imagen> resaltador;
+
+
 
 	@Test
 	public void kernelValidoTest() {
 		//kernel ubicado sobre ubicacion valida
 		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
-		iniciarReconocimiento(0,168);
-		assertTrue(1==reconocedor.getCont());
+		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertTrue(DetectorFruto.detectar(imgResaltada(), 164, 213, posicionador.getKernel()));
 		clean();
 	}
 	
@@ -33,52 +43,35 @@ public class DetectorTest {
 	public void posicionKernelTest()
 	{
 		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
-		iniciarReconocimiento(0, 0);
-		assertTrue(27==reconocedor.getDetector().getKernel().getHeight());
-		assertTrue(429==reconocedor.getDetector().getKernel().getWidth());
+		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
+		iniciarImagenes();
+		posicionarKernel(10, 12);
+		assertEquals(10,posicionador.getX().intValue());
+		assertEquals(12,posicionador.getY().intValue());
 		clean();
 	}
 	
 	@Test
-	public void kernelSinDimensiones()
+	public void kernelSinDimensionesTest()
 	{
-		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
-		Kernel kernel = new Kernel();
-		assertTrue(0==kernel.getHeight());
-		assertTrue(0==kernel.getWidth());
-		DetectorFrutoMock detector = new DetectorFrutoMock();
-		detector.setKernel(kernel);
-		detector.detectObject(0, 0, generador.getPrimerImagen());
-		assertTrue(0==detector.getCont());
+		adaptador = new AdapterImage();
+		Imagen imgPrueba = new Imagen("src/test/java/viverbot/recursosTest/imgVacia.png");
+		assertEquals(1,imgPrueba.getAlto().intValue());
+		assertEquals(1,imgPrueba.getAncho().intValue());
+		assertFalse(adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/imgVacia.png"));
 		clean();
 	}
 	
+
 	@Test
-	public void kernelAnalizaPixel()
+	public void kernelSinFrutoTest()
 	{
 		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
-		Kernel kernel = new Kernel();
-		assertTrue(0==kernel.getHeight());
-		assertTrue(0==kernel.getWidth());
-		kernel.setX(1);
-		kernel.setY(1);
-		DetectorFrutoMock detector = new DetectorFrutoMock();
-		detector.setKernel(kernel);
-		detector.detectObject(0, 0, generador.getPrimerImagen());
-		assertTrue(0==detector.getCont());
-		clean();
-	}
-	
-	@Test
-	public void kernelSinPixelesTest()
-	{
-		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
-		iniciarReconocimiento(0,100);
-		assertTrue(0==reconocedor.getCont());
+		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertTrue(DetectorFruto.detectar(imgResaltada(), 164, 213, posicionador.getKernel()));
+		assertFalse(DetectorFruto.detectar(imgResaltada(), 164, 223, posicionador.getKernel()));
 		clean();
 		
 	}
@@ -86,26 +79,39 @@ public class DetectorTest {
 	@Test
 	public void kernelSuperaDimensiones()
 	{
-		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbolC.png");
-		DetectorFruto detector = new DetectorFruto();
-		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
-		detector.detectObject(440, 440, generador.getPrimerImagen());
-		assertTrue(0==detector.getCont());
-		assertTrue(detector.getKernel().getWidth()>generador.getPrimerImagen().getAncho());
-		assertTrue(detector.getKernel().getHeight()>generador.getPrimerImagen().getAlto());
+		adaptador = new AdapterImage();
+		Imagen imagen = new Imagen("src/test/java/viverbot/recursosTest/arbol.JPG");
+		Imagen imgPrueba = new Imagen("src/test/java/viverbot/recursosTest/naranja.png");
+		assertEquals(768,imgPrueba.getAlto().intValue());
+		assertEquals(768,imgPrueba.getAncho().intValue());
+		assertEquals(440,imagen.getAncho().intValue());
+		assertEquals(440,imagen.getAlto().intValue());
+
+		assertFalse(adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/naranja.png"));
+		clean();
 
 	}
 	
-
 	
+	private Imagen imgResaltada()
+	{
+		return resaltador.rectificarImagen(generador.getPrimerImagen(), generador.getSegundaImagen());
 
+	}
+	
+	private void posicionarKernel(int x, int y)
+	{
+		posicionador = new PosicionadorKernel(x,y,adaptador);
+
+	}
 	
 	
 	private void inicializar()
 	{
-		resaltador = new ResaltadorImagen();
-		reconocedor = new ReconocedorFrutoMock();
+		adaptador = new AdapterImage();
+		rectificador = new RectificadorImagen<PosicionadorKernel>();
+		resaltador = new RectificadorImagen<Imagen>();
+		reconocedor = new ReconocedorFruto();
 	
 	}
 	
@@ -117,19 +123,18 @@ public class DetectorTest {
 		generador = new GeneradorImagenes();
 	}
 	
-	private void iniciarReconocimiento(int ancho, int alto)
+	private void iniciarImagenes()
 	{
 		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
-		reconocedor.reconocerFrutos(resaltador.resaltarImagen(generador),ancho,alto).getRepresentacion();
-		System.out.println("cantidad de frutos detectados:"+reconocedor.getCont());
+		adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
 
 	}
 	
 	private void clean()
 	{
-		resaltador = null;
 		reconocedor = null;
 		obtenedor = null;
 		generador = null;
+		
 	}
 	}

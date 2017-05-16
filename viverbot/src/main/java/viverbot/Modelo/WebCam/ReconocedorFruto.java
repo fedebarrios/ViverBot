@@ -10,9 +10,9 @@ public class ReconocedorFruto {
 		Integer cantidadF=0;
 		RectificadorImagen<PosicionadorKernel> rectificador = new RectificadorImagen<PosicionadorKernel>();
 
-		while(y != imagen.getAlto()&& y < imagen.getAlto()-33)
+		while(y != imagen.getAlto()&& y < imagen.getAlto()-posicionador.getHeightKernel())
 		{
-			while(x != imagen.getAncho() && x < imagen.getAncho()-33)
+			while(x != imagen.getAncho() && x < imagen.getAncho()-posicionador.getWidthKernel())
 			{				
 					if(DetectorFruto.detectar(imagen, x, y, posicionador.getKernel()))
 					{
@@ -20,15 +20,13 @@ public class ReconocedorFruto {
 						posicionador.setY(y);
 						rectificador.rectificarImagen(imagen, posicionador);
 						cantidadF ++;
-						x += 33;
+						x += posicionador.getWidthKernel();
 					}
 					else
-						{
-							x += 1;
-						}
+						x ++;	
 			}
 			x=0;
-			y += 1;
+			y ++;
 		}
 		return cantidadF;
 		
