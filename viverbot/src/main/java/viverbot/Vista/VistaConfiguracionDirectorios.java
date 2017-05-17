@@ -120,23 +120,23 @@ public class VistaConfiguracionDirectorios extends JFrame{
 		return rdDirectorio1;
 	}
 
-	public void setRdDirectorio1(JRadioButton rdDirectorio1) {
-		this.rdDirectorio1 = rdDirectorio1;
+	public void setRdDirectorio1(boolean b) {
+		this.rdDirectorio1.setSelected(b);
 	}
 
 	public JRadioButton getRdDirectorio2() {
 		return rdDirectorio2;
 	}
 
-	public void setRdDirectorio2(JRadioButton rdDirectorio2) {
-		this.rdDirectorio2 = rdDirectorio2;
+	public void setRdDirectorio2(boolean b) {
+		this.rdDirectorio2.setSelected(b);
 	}
 
 	public JRadioButton getRdDirectorio3() {
 		return rdDirectorio3;
 	}
 
-	public void setRdDirectorio3(JRadioButton rdDirectorio3) {
-		this.rdDirectorio3 = rdDirectorio3;
+	public void setRdDirectorio3(boolean b) {
+		this.rdDirectorio3.setSelected(b);
 	}
 }

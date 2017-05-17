@@ -13,6 +13,10 @@ public class MockFileChooser extends FileChooser{
 	public MockFileChooser(){
 		file = new File("recursos/arbol.jpg");
 	}
+	
+	public MockFileChooser(String s){
+		file = new File(s);
+	}
 	@Override
 	public File getSelectedFile(){
 		return file;
