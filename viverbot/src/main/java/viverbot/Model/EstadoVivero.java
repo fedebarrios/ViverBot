@@ -54,7 +54,6 @@ public class EstadoVivero extends Observable implements Observer {
 
 	public void setTemperaturaActual(Medicion t) {
 		this.temperaturaActual = t;
-		this.actualizar();
 	}
 
 	public Medicion getTemperaturaDiferencia() {
