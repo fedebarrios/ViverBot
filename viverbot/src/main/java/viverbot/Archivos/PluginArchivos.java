@@ -7,7 +7,6 @@ import java.util.Observable;
 
 import org.apache.log4j.Logger;
 
-import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.TuplaEstadosValores;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Model.HistorialOptimo;
@@ -24,13 +23,23 @@ public class PluginArchivos extends Observable{
 	}
 	
 	public void actuar() throws Exception{
-		notificarHistorialesNuevos(levantarArchivos());
+		notificarHistorialesNuevos(seleccionarMejorDirectorio());
 	}
 	
-	public List<HistorialOptimo> levantarArchivos() throws Exception{
-		//FALTAN COSAS; VOY A TENER UNOS PARES DE PATHS DONDE BUSCAR
-		//Version 0.69
-		String directorio = GatewayConfiguracion.getDirectorio(1);
+	public List<HistorialOptimo> seleccionarMejorDirectorio() throws Exception{
+		List<HistorialOptimo> historiales1 = levantarArchivos (GatewayConfiguracion.getDirectorio(1));
+		List<HistorialOptimo> historiales2 = levantarArchivos (GatewayConfiguracion.getDirectorio(1));
+		List<HistorialOptimo> historiales3 = levantarArchivos (GatewayConfiguracion.getDirectorio(1));
+		if(historiales1.size() > historiales2.size() && historiales1.size() > historiales3.size()){
+			return historiales1;
+		} else if(historiales2.size() > historiales1.size() && historiales2.size() > historiales3.size()){
+			return historiales1;
+		} else {
+			return historiales3;
+		}
+	}
+	
+	public List<HistorialOptimo> levantarArchivos (String directorio){
 		String file = "";
 		File folder = new File(directorio);
 	    File[] files = folder.listFiles();
