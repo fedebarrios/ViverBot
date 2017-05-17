@@ -15,7 +15,7 @@ public class ObtenedorComando implements ActionListener{
 	
 	private ObtenedorSeleccionVista vistaCargarImagen;
 	private ObtenedorImagenesMock obtenedorImagenes;
-	private RectificadorImagen<Imagen> resaltadorImagen;
+	private RectificadorImagen resaltadorImagen;
 	
 	
 	public ObtenedorComando()
@@ -23,7 +23,7 @@ public class ObtenedorComando implements ActionListener{
 		vistaCargarImagen = new ObtenedorSeleccionVista();
 		vistaCargarImagen.visible(true);
 		obtenedorImagenes = new ObtenedorImagenesMock();
-		resaltadorImagen = new RectificadorImagen<Imagen>();
+		resaltadorImagen = new RectificadorImagen();
 	}
 	
 	@Override

@@ -12,7 +12,7 @@ public class ReconocedorFrutoMock {
 		Integer y=posicionador.getY();
 		Integer x=posicionador.getX();
 		Integer cantidadF=0;
-		RectificadorImagen<PosicionadorKernel> rectificador = new RectificadorImagen<PosicionadorKernel>();
+		RectificadorImagen rectificador = new RectificadorImagen();
 
 	
 		if(DetectorFruto.detectar(imagen, x, y, posicionador.getKernel()))

@@ -1,11 +1,11 @@
 package viverbot.Modelo.WebCam;
 
 
-public class AnalizadorImagen <T> {
+public class AnalizadorImagen  {
 	
 	private static Integer valorVacio=-16777216; // imagen PNG (sin fondo)
 	
-	public void analizarPixel(int x, int y, Imagen imagen, T secundario) {
+	public void analizarPixel(int x, int y, Imagen imagen, Object secundario) {
 
 		ModificadorPixel resaltar = new ModificadorPixel();
 		boolean valor = compararPx(x,y,imagen,secundario); 
@@ -16,7 +16,7 @@ public class AnalizadorImagen <T> {
 		
 	}
 
-	private boolean compararPx(int x, int y, Imagen imagenResaltada, T secundario) {
+	private boolean compararPx(int x, int y, Imagen imagenResaltada, Object secundario) {
 		
 		imagenResaltada.getRGB(x, y);
 		if( secundario instanceof Imagen){

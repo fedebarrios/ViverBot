@@ -21,7 +21,7 @@ public class ReconocedorTotalTest {
 	private AdapterImage adaptador;
 	private PosicionadorKernel posicionador;
 	private ReconocedorFruto reconocedor;
-	private RectificadorImagen<Imagen> resaltador;
+	private RectificadorImagen resaltador;
 	
 	@Test
 	public void deteccion5Frutostest() {
@@ -104,7 +104,7 @@ public class ReconocedorTotalTest {
 	private void inicializar()
 	{
 		adaptador = new AdapterImage();
-		resaltador = new RectificadorImagen<Imagen>();
+		resaltador = new RectificadorImagen();
 		reconocedor = new ReconocedorFruto();
 	
 	}

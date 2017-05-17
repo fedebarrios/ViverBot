@@ -6,15 +6,20 @@ public class Kernel {
 	
 	private Integer width;
 	private Integer height;
-	private ArrayList<Integer> datos;
+	private ArrayList<Integer> imagen;
 	
 	
-	public Kernel(int x, int y, ArrayList<Integer> datos)
+	public Kernel(int ancho, int alto, ArrayList<Integer> datos)
 	{
 	
-		this.width = x;
-		this.height = y;
-		this.datos = datos;
+		this.width = ancho;
+		this.height = alto;
+		this.imagen = datos;
+	}
+	
+	public ArrayList<Integer> getImagen()
+	{
+		return imagen;
 	}
 
 
@@ -31,7 +36,7 @@ public class Kernel {
 
 	public Integer cantidadPixeles()
 	{
-		return datos.size();
+		return imagen.size();
 	}
 
 

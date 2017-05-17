@@ -1,11 +1,11 @@
 package viverbot.Modelo.WebCam;
 
-public class RectificadorImagen <T> {
+public class RectificadorImagen {
 	
 	
-	public Imagen rectificarImagen(Imagen primario, T secundario)
+	public Imagen rectificarImagen(Imagen primario, Object secundario)
 	{
-		AnalizadorImagen<T> analizador = new AnalizadorImagen<T>();
+		AnalizadorImagen analizador = new AnalizadorImagen();
 
 		Integer ancho=0;
 		Integer alto=0;

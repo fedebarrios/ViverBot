@@ -23,7 +23,7 @@ public class DetectorFrutoTest {
 	private GeneradorImagenes generador;
 	private AdapterImage adaptador;
 	private PosicionadorKernel posicionador;
-	private RectificadorImagen<Imagen> resaltador;
+	private RectificadorImagen resaltador;
 
 
 
@@ -103,7 +103,7 @@ public class DetectorFrutoTest {
 	private void inicializar()
 	{
 		adaptador = new AdapterImage();
-		resaltador = new RectificadorImagen<Imagen>();
+		resaltador = new RectificadorImagen();
 	
 	}
 	

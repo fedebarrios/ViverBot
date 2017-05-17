@@ -8,14 +8,14 @@ public class ConvertidorImagen {
 	
 	public ArrayList<Integer> convertirImagen(Imagen img)
 	{
-		ArrayList<Integer> datos = new ArrayList<Integer>();
+		ArrayList<Integer> imagen = new ArrayList<Integer>();
 		for(int j=0; j<img.getAlto(); j++)
 			for(int i=0; i<img.getAncho(); i++){
 				img.getRGB(i, j);
 				if(img.getColorImagen().getRGB()!=valorVacio)
-					datos.add(img.getColorImagen().getRGB()); }
+					imagen.add(img.getColorImagen().getRGB()); }
 		
-		return datos;
+		return imagen;
 	}
 	
 

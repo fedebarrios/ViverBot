@@ -8,7 +8,7 @@ public class ReconocedorFruto {
 		Integer y=0;
 		Integer x=0;
 		Integer cantidadF=0;
-		RectificadorImagen<PosicionadorKernel> rectificador = new RectificadorImagen<PosicionadorKernel>();
+		RectificadorImagen rectificador = new RectificadorImagen();
 
 		while(y != imagen.getAlto()&& y < imagen.getAlto()-posicionador.getHeightKernel())
 		{
