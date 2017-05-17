@@ -16,20 +16,17 @@ public class AnalizadorTemperatura {
 	private IAnalisis estrategia;
 	private Medicion m;
 	private DiagnosticoAnalisis estado;
-	private RangoNumerico rango;
 
-	private static RangoNumerico rangoIdeal = new RangoNumerico(10.0, 30.0);
 
 	public AnalizadorTemperatura() {
 		this.m = null;
 		this.estado = null;
-		this.rango = rangoIdeal;
 	}
 
-	public DiagnosticoAnalisis analizar(Medicion medicion) {
+	public DiagnosticoAnalisis analizar(Medicion medicion, RangoNumerico r) {
 		this.m = medicion;
 		IAnalisis estrategia = this.getStrategy(m);
-		this.estado = estrategia.analizar(m, this.rango);
+		this.estado = estrategia.analizar(m, r);
 		return estado;
 
 	}
@@ -50,8 +47,6 @@ public class AnalizadorTemperatura {
 		return this.estado;
 	}
 
-	public void setRango(RangoNumerico r) {
-		this.rango = r;
-	}
+	
 
 }

@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import viverbot.Controlador.VistaPrincipalController;
+import viverbot.Model.EstadoVivero;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorTemperatura;
@@ -35,17 +36,20 @@ public class MonitorEstado implements Observer {
 	public void update(Observable o, Object arg) {
 		if (!this.temperaturaActual.equals(arg)) {
 			this.setTemperaturaActual((Medicion) arg);
-			DiagnosticoAnalisis d = this.analizador.analizar(this.temperaturaActual);
+			DiagnosticoAnalisis d = this.analizador.analizar(this.temperaturaActual, EstadoVivero.getInstance().getRangoTemperatura());
 			if (!d.getOptima()) {
 				if (d.getDiferencia() < 0) {
-					this.controlador.actualizarLabelEstado(tempBaja + redondear(d.getDiferencia()), redondear(this.temperaturaActual.getValor()));
+					this.controlador.actualizarLabelEstado(tempBaja + redondear(d.getDiferencia()) + " ºC",
+							redondear(this.temperaturaActual.getValor()) + " ºC");
 
 				} else {
-					this.controlador.actualizarLabelEstado(tempAlta + redondear(d.getDiferencia()), redondear(this.temperaturaActual.getValor()));
+					this.controlador.actualizarLabelEstado(tempAlta + redondear(d.getDiferencia()) + " ºC",
+							redondear(this.temperaturaActual.getValor()) + " ºC");
 
 				}
 			} else {
-				this.controlador.actualizarLabelEstado(tempOptima, redondear(this.temperaturaActual.getValor()));
+				this.controlador.actualizarLabelEstado(tempOptima,
+						redondear(this.temperaturaActual.getValor()) + " ºC");
 			}
 
 		}
@@ -53,7 +57,7 @@ public class MonitorEstado implements Observer {
 
 	private Double redondear(Double valor) {
 		// TODO Auto-generated method stub
-		return Math.rint(valor*100)/100;
+		return Math.rint(valor * 100) / 100;
 	}
 
 }

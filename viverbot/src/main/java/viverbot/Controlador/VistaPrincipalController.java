@@ -31,7 +31,6 @@ public class VistaPrincipalController implements ActionListener {
 
 	public VistaPrincipalController() {
 		this.vista = new VistaPrincipal(this);
-		this.vista.mostrar();
 		this.automatizador = new AutomatizadorDeClima();
 	}
 
@@ -64,7 +63,7 @@ public class VistaPrincipalController implements ActionListener {
 				ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 				t.addObserver(estado);
 				t.colectar();
-				//estado.addObserver(automatizador);
+				// estado.addObserver(automatizador);
 				MonitorEstado monitor = new MonitorEstado(this);
 				estado.addObserver(monitor);
 			} else {
@@ -86,8 +85,12 @@ public class VistaPrincipalController implements ActionListener {
 		}
 	}
 
-	public void actualizarLabelEstado(String estado, Double valor) {
-		this.vista.setLabelEstado(estado + " ºC");
-		this.vista.setLabelTemperatura(valor + " ºC");
+	public void actualizarLabelEstado(String estado, String string) {
+		this.vista.setLabelEstado(estado);
+		this.vista.setLabelTemperatura(string);
+	}
+
+	public void mostrar() {
+		this.vista.mostrar();
 	}
 }

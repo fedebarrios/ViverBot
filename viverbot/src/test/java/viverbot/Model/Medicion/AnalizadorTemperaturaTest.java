@@ -32,8 +32,7 @@ public class AnalizadorTemperaturaTest {
 	@Test
 	public void AnalizarOptimoTest() {
 		this.inicialize();
-		this.analizadorTest.setRango(this.rango);
-		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(temperaturaOptima);
+		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(temperaturaOptima, rango);
 		assertNotNull(resultado);
 		assertEquals(resultado.getOptima(), true);
 		assertEquals(resultado.getMagnitud(), temperaturaOptima);
@@ -46,8 +45,7 @@ public class AnalizadorTemperaturaTest {
 	@Test
 	public void AnalizarBajoTest() {
 		this.inicialize();
-		this.analizadorTest.setRango(this.rango);
-		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(temperaturaBaja);
+		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(temperaturaBaja, rango);
 		assertNotNull(resultado);
 		assertTrue(resultado.getOptima() == false);
 		assertTrue((resultado.getMagnitud()).equals(temperaturaBaja));
@@ -60,8 +58,7 @@ public class AnalizadorTemperaturaTest {
 	@Test
 	public void AnalizarAltoTest() {
 		this.inicialize();
-		this.analizadorTest.setRango(this.rango);
-		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(this.temperaturaAlta);
+		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(this.temperaturaAlta, rango);
 		assertTrue(resultado.getOptima() == false);
 		assertTrue(resultado.getMagnitud().equals(this.temperaturaAlta));
 		assertNotNull(resultado);
@@ -74,8 +71,7 @@ public class AnalizadorTemperaturaTest {
 	@Test
 	public void AnalizarVacioTest() {
 		this.inicialize();
-		this.analizadorTest.setRango(this.rango);
-		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(this.vacia);
+		DiagnosticoAnalisis resultado = this.analizadorTest.analizar(this.vacia, rango);
 		assertTrue(resultado.getOptima() == false);
 		assertTrue(resultado.getMagnitud().getValor() == null);
 		assertNotNull(resultado);

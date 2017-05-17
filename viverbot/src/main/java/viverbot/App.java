@@ -7,5 +7,6 @@ public class App {
 	public static void main(String[] args) {
 		
 		VistaPrincipalController principal = new VistaPrincipalController();
+		principal.mostrar();
 	}
 }

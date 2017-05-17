@@ -58,7 +58,7 @@ public class InstrumentoMediatorTest {
 	@Test
 	public void testTomarMedicionHumedad() {
 		this.mediatorTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
-		EstadoVivero ambienteSimulado = new EstadoVivero();
+		EstadoVivero ambienteSimulado = EstadoVivero.getInstance();
 		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
 		assertTrue(this.mediatorTest.tomarMedicion().getTipo() == Magnitudes.HUMEDAD);
 

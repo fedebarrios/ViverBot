@@ -3,12 +3,11 @@ package viverbot.Modelo.Simulacion;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
 
+import viverbot.Controlador.VistaPrincipalController;
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
-import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Monitoreo.MonitorEstado;
@@ -36,19 +35,27 @@ public class PruebaDeSimulacion {
 		r.put(Horario.TARDE, r6);
 		r.put(Horario.ATARDECER, r7);
 		r.put(Horario.NOCHE, r8);
+		
+		VistaPrincipalController principal = new VistaPrincipalController();
 
 		Simulador simulador = new Simulador(r, Magnitudes.TEMPERATURA);
 		simulador.setFrecuencia(5000);
+		
 		InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
 		SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();
 		simulador.simular();
 		s.setSimulador(simulador);
+		
 		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 		t.colectar();
+		
 		EstadoVivero estado =  EstadoVivero.getInstance();
 		t.addObserver(estado);
-		MonitorEstado monitor = new MonitorEstado();
+		
+		MonitorEstado monitor = new MonitorEstado(principal);
 		estado.addObserver(monitor);
+		principal.mostrar();
+
 		// ahi esta
 		
 
