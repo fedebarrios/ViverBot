@@ -1,3 +1,3 @@
-40,50,60,
-Rico,Suave,Otro,Superado
+70,85,150
+Defectuoso,Anormal,Normal,Perfecto
 1

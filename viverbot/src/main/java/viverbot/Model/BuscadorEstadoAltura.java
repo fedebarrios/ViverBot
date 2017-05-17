@@ -25,15 +25,21 @@ public class BuscadorEstadoAltura {
 	
 	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , PlantaDTO planta){
 		TuplaEstadosValores tupla = map.get(planta.getCodigo());
+		if (tupla == null){
+			return null;
+		}
 		ArrayList<EstadoAltura> estados = (ArrayList<EstadoAltura>) tupla.getEstados();
 		ArrayList<Integer> valores = (ArrayList<Integer>) tupla.getValores();
 		int i = 0;
 		for (EstadoAltura estado : estados){
-			if ((  i == 0 && valorCrecimiento < valores.get(0))
+			if ((  i == 0 && valorCrecimiento <= valores.get(0))
 			   ||( i == estados.size() - 1 && valorCrecimiento > valores.get(i - 1))
-			   ||( valorCrecimiento > valores.get(i - 1) && valorCrecimiento < valores.get(i))){ 
+			   ||( i != 0 && i != estados.size() - 1 && valorCrecimiento > valores.get(i - 1) && valorCrecimiento <= valores.get(i))){ 
+				estado.setCmDeDiferencia(diferenciaAltura);
+				estado.setPlanta(planta);
 				return estado;
 			}
+			i++;
 		}
 		return null;
 	}

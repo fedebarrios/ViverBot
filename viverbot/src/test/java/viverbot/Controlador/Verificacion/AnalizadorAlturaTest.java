@@ -2,14 +2,14 @@ package viverbot.Controlador.Verificacion;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.Test;
 
+import viverbot.Archivos.PluginArchivos;
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.Controlador.Verificacion.EstadoAlturaAnormal;
-import viverbot.Controlador.Verificacion.EstadoAlturaDefectuosa;
 import viverbot.Controlador.Verificacion.EstadoAlturaNoComparada;
-import viverbot.Controlador.Verificacion.EstadoAlturaNormal;
-import viverbot.Controlador.Verificacion.EstadoAlturaPerfecta;
 import viverbot.Controlador.Verificacion.PlanificadorAltura;
 import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.Controlador.Verificacion.StrategyMetroDown;
@@ -25,37 +25,60 @@ import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
 
 public class AnalizadorAlturaTest {
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+	PluginArchivos plugin;
 	
 	@Test
-	public void EstadoDefectuoso(){
+	public void EstadoDefectuoso() throws Exception{
+		inicialize("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017)); 
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(10.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
-		assertTrue(estadoDevuelto instanceof EstadoAlturaDefectuosa);
+		assertTrue(estadoDevuelto instanceof EstadoAltura);
+		assertEquals(estadoDevuelto.getEstado(), "Defectuoso");
 	}
 	
 	@Test
-	public void EstadoNormal(){
+	public void EstadoNormal() throws Exception{
+		inicialize("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(19.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
-		assertTrue(estadoDevuelto instanceof EstadoAlturaNormal);
+		assertTrue(estadoDevuelto instanceof EstadoAltura);
+		assertEquals(estadoDevuelto.getEstado(), "Normal");
 	}
 	
 	@Test
-	public void EstadoAnormal(){
+	public void EstadoAnormal() throws Exception{
+		inicialize("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(16.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
-		assertTrue(estadoDevuelto instanceof EstadoAlturaAnormal);
+		assertTrue(estadoDevuelto instanceof EstadoAltura);
+		assertEquals(estadoDevuelto.getEstado(), "Anormal");
 	}
 	
 	@Test
-	public void EstadoPerfecto(){
+	public void EstadoPerfecto() throws Exception{
+		inicialize("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		String msjLog = outContent.toString();
+		assertNotNull(msjLog);
+		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(50.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
-		assertTrue(estadoDevuelto instanceof EstadoAlturaPerfecta);
+		assertTrue(estadoDevuelto instanceof EstadoAltura);
+		assertEquals(estadoDevuelto.getEstado(), "Perfecto");
 	}
 	
 	@Test
@@ -98,5 +121,11 @@ public class AnalizadorAlturaTest {
 		assertTrue(estrategia instanceof StrategyAnalisisAltura);
 	}
 	
+	private void inicialize(String archivo) throws Exception{
+		System.setOut(new PrintStream(outContent));
+	    System.setErr(new PrintStream(errContent));
+		plugin = new PluginArchivos();
+		plugin.cargarEstados(archivo);
+	}
 	
 }

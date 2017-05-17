@@ -1,9 +1,6 @@
 package viverbot.Archivos;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import junit.framework.TestCase;
@@ -90,7 +87,6 @@ public class ValidadorEstadosTest extends TestCase {
 		String msjLog = outContent.toString();
 		assertNotNull(msjLog);
 		assertTrue(msjLog.contains(""));
-		assertThat(outContent.toString(), containsString(""));
 		clear();
 	}
 	

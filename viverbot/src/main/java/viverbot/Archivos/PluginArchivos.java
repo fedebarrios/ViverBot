@@ -86,7 +86,7 @@ public class PluginArchivos extends Observable{
 			MediatorParser mediator = new MediatorParser();
 			TuplaEstadosValores tupla = mediator.parsearEstadosValores(lectura);
 			Integer codigoEspecie = mediator.parsearCodigoEspecie(lectura);
-			BuscadorEstadoAltura buscador = new BuscadorEstadoAltura();
+			BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 			MapperEstadoAltura mapper = new MapperEstadoAltura();
 			mapper.relacionar(buscador, tupla, codigoEspecie);
 			return false;
