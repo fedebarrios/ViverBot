@@ -37,6 +37,28 @@ public class PluginTest {
 		//assertThat(outContent.toString(), containsString("No existe informacion acerca de la especie"));
 	}
 	
+	@Test
+	public void levantarArchivos(){
+		inicialize();
+		assertEquals(0,plugin.levantarArchivos("src/test/java/viverbot/Archivos/DirectorioTest1").size());
+		assertEquals(2,plugin.levantarArchivos("src/test/java/viverbot/Archivos/DirectorioTest2").size());
+		assertEquals(1,plugin.levantarArchivos("src/test/java/viverbot/Archivos/DirectorioTest3").size());
+	}
+	
+	@Test
+	public void elegirMejorDirectorio(){
+		inicialize();
+		String[] directorios = {"src/test/java/viverbot/Archivos/DirectorioTest1",
+								"src/test/java/viverbot/Archivos/DirectorioTest2",
+								"src/test/java/viverbot/Archivos/DirectorioTest3"};
+		int i = 1;
+		for(String s:directorios){
+			GatewayConfiguracion.setearDirectorio(s, i);
+			i++;
+		}
+		assertEquals(2,plugin.seleccionarMejorDirectorio().size());
+	}
+	
 	public void inicialize(){
 		plugin = new PluginArchivos();
 		System.setOut(new PrintStream(outContent));
