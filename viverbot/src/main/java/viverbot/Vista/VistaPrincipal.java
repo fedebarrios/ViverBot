@@ -24,6 +24,7 @@ public class VistaPrincipal extends JFrame {
 	private JMenuItem mntmTemperatura;
 	private JLabel labelTemperatura;
 	private JLabel labelEstado;
+	private JLabel labelEstadoSensor;
 
 	public VistaPrincipal(ActionListener controlador) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,12 +65,16 @@ public class VistaPrincipal extends JFrame {
 		mnAutomatizacin.add(mntmControlarTemperatura);
 		
 		labelTemperatura = new JLabel("");
-		labelTemperatura.setBounds(10, 222, 177, 14);
+		labelTemperatura.setBounds(10, 202, 177, 14);
 		contentPane.add(labelTemperatura);
 		
 		labelEstado = new JLabel("");
-		labelEstado.setBounds(10, 236, 414, 14);
+		labelEstado.setBounds(10, 218, 414, 14);
 		contentPane.add(labelEstado);
+		
+		 labelEstadoSensor = new JLabel("");
+		labelEstadoSensor.setBounds(10, 243, 414, 14);
+		contentPane.add(labelEstadoSensor);
 		this.mntmControlarTemperatura.addActionListener(controlador);
 	}
 
@@ -122,6 +127,14 @@ public class VistaPrincipal extends JFrame {
 	public void setLabelTemperatura(String  cadena) {
 		this.labelTemperatura.setText(cadena);
 	}
-	
 
+	public JLabel getLabelEstadoSensor() {
+		return labelEstadoSensor;
+	}
+
+	public void setLabelEstadoSensor(String cadena) {
+		this.labelEstadoSensor.setText(cadena);
+	}
+	
+	
 }

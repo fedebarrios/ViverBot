@@ -29,6 +29,7 @@ public class VistaPrincipalController implements ActionListener {
 	private AutomatizadorDeClima automatizador;
 	private EstadoVivero estado = EstadoVivero.getInstance();
 
+	
 	public VistaPrincipalController() {
 		this.vista = new VistaPrincipal(this);
 		this.automatizador = new AutomatizadorDeClima();
@@ -36,42 +37,8 @@ public class VistaPrincipalController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// implementar un distpacher y dentro del distpacher commands
 
-		if (e.getSource() == this.vista.getMntmControlarTemperatura()) {
-			// abstraer en otro objeto
-			InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
-			SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();
-			Simulador simulador;
-
-			// ventana de opciones
-			int confirmado = JOptionPane.showConfirmDialog(null,
-					"La medición de datos de temperatura no esta disponible. Utilizar una simulación?", "Seleccione",
-					JOptionPane.OK_CANCEL_OPTION);
-			if (JOptionPane.OK_OPTION == confirmado) {
-				int seleccion = JOptionPane.showOptionDialog(null, "Seleccione una opcion", "Simulaciones",
-						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-						new Object[] { "Enero", "Junio" }, "opcion 1");
-				if (seleccion == 0) {
-					simulador = new BuildSimuladorTemperaturaEnero().getSimulador();
-
-				} else {
-					simulador = new BuildSimuladorTemperaturaJunio().getSimulador();
-				}
-				simulador.simular();
-				s.setSimulador(simulador);
-				ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
-				t.addObserver(estado);
-				t.colectar();
-				// estado.addObserver(automatizador);
-				MonitorEstado monitor = new MonitorEstado(this);
-				estado.addObserver(monitor);
-			} else {
-
-			}
-			// fin de la ventan de opciones
-
-		} else if (e.getSource() == this.vista.getMntmControlarAltura()) {
+		if (e.getSource() == this.vista.getMntmControlarAltura()) {
 			ColectorAltura c = new ColectorAltura();
 			PlanificadorAltura p = PlanificadorAltura.getInstance();
 			AnalizadorAltura a = new AnalizadorAltura(GuardadorAltura.getInstance());
@@ -92,5 +59,10 @@ public class VistaPrincipalController implements ActionListener {
 
 	public void mostrar() {
 		this.vista.mostrar();
+	}
+
+	public VistaPrincipal getVista() {
+		// TODO Auto-generated method stub
+		return this.vista;
 	}
 }
