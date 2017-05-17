@@ -7,7 +7,6 @@ import viverbot.Controlador.Imagen.ObtenedorComando;
 import viverbot.Modelo.WebCam.AdapterImage;
 import viverbot.Modelo.WebCam.DetectorFruto;
 import viverbot.Modelo.WebCam.GeneradorImagenes;
-import viverbot.Modelo.WebCam.GeneradorProporcional;
 import viverbot.Modelo.WebCam.Imagen;
 import viverbot.Modelo.WebCam.ObtenedorPath;
 import viverbot.Modelo.WebCam.PosicionadorKernel;
@@ -31,22 +30,19 @@ public class ReconocedorTest {
 		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
 		 PosicionadorKernel posicionador = new PosicionadorKernel(0,0,adaptador);
 		 //RectificadorImagen<PosicionadorKernel> rectificador = new RectificadorImagen<PosicionadorKernel>();
-		// RectificadorImagen rectificador2 = new RectificadorImagen();
+		 RectificadorImagen rectificador2 = new RectificadorImagen();
 
-		 //Imagen img2 = rectificador2.rectificarImagen(gen2.getPrimerImagen(), gen2.getSegundaImagen());
+		 Imagen img2 = rectificador2.rectificarImagen(gen2.getPrimerImagen(), gen2.getSegundaImagen());
 	//	System.out.println("cant optenida: "+DetectorFrutos.detectar(img2, 164, 213, posicionador.getKernel()));
 
-		 //vista.getPanelPrimeraImagen().setIcon(new ImageIcon(img2.getRepresentacion()));
+		 vista.getPanelPrimeraImagen().setIcon(new ImageIcon(img2.getRepresentacion()));
 		 //vista.getPanelPrimeraImagen().setIcon(new ImageIcon(rectificador2.rectificarImagen(img2, posicionador).getRepresentacion()));
 
-		 //vista.visible(true);
-		 //ReconocedorFruto reco = new ReconocedorFruto();
-		 //System.out.println("Frutos detectados: "+reco.reconocerFrutos(img2, posicionador));
+		 vista.visible(true);
+		 ReconocedorFruto reco = new ReconocedorFruto();
+		 System.out.println("Frutos detectados: "+reco.reconocerFrutos(img2, posicionador));
 		
 		 //    vista.getPanelPrimeraImagen().setIcon(new ImageIcon(resaltador.resaltarImagen(gen2).getRepresentacion()));
 		
-		 
-		 GeneradorProporcional prop = new GeneradorProporcional();
-		 prop.generarKernelProporcional(posicionador.getKernel(), 0.8f);
 	}
 }
