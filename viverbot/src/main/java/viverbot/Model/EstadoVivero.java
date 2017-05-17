@@ -102,4 +102,9 @@ public class EstadoVivero extends Observable implements Observer {
 		return false;
 	}
 
+	public void setTemperaturaDiferenciaSumar(Medicion m) {
+		this.temperaturaDiferencia.setValor(this.temperaturaDiferencia.getValor() + m.getValor());
+		this.actualizar();
+	}
+
 }

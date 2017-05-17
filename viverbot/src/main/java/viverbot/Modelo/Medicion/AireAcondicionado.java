@@ -31,7 +31,7 @@ public class AireAcondicionado {
 
 		@Override
 		public void run() {
-			estadoVivero.setTemperaturaDiferencia(ejecutar());
+			estadoVivero.setTemperaturaDiferenciaSumar(ejecutar());
 			WriterExcel.registrarAutomatizacion(returnThis());
 			System.out.println(estadoVivero.getTemperaturaActual().getValor());
 		}
@@ -103,7 +103,8 @@ public class AireAcondicionado {
 	public TemperaturaAireAcondicionado getTemp() {
 		return temp;
 	}
-	
-	
 
+	public EstadoVivero getEstadoVivero() {
+		return estadoVivero;
+	}
 }

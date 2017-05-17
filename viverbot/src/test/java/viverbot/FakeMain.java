@@ -9,13 +9,38 @@ public class FakeMain {
 
 	public static void main(String[] args) {
 		EstadoVivero estadoVivero = EstadoVivero.getInstance();
-		estadoVivero.setTemperaturaActual(new Medicion(30.0, Magnitudes.TEMPERATURA));
+		estadoVivero.setTemperaturaColector(new Medicion(30.0, Magnitudes.TEMPERATURA));
 		System.out.println(estadoVivero.getTemperaturaActual().getValor());
 		AireAcondicionado aire = new AireAcondicionado();
-		//System.out.println(aire.getEstadoVivero().getTemperaturaActual().getValor());
-		//aire.encender();
-		//System.out.println(aire.getEstadoVivero().getTemperaturaActual().getValor());
+		
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
 
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+		System.out.println(estadoVivero.getTemperaturaActual().getValor());
+
+		
 	}
 
 }

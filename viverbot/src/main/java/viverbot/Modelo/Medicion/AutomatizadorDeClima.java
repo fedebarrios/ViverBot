@@ -23,13 +23,14 @@ public class AutomatizadorDeClima {
 
 		@Override
 		public void run() {
-			definirEstados();
-			estadoVivero.setTemperaturaDiferencia(aire.ejecutar());
-			WriterExcel.registrarAutomatizacion(aire);
-			System.out.println(estadoVivero.getTemperaturaActual().getValor());
 			if (estadoVivero.verificarRango()) {
 				tt.cancel();
 			}
+			definirEstados();
+			estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
+			WriterExcel.registrarAutomatizacion(aire);
+			System.out.println(estadoVivero.getTemperaturaActual().getValor());
+			
 		}
 	};
 

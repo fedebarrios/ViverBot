@@ -35,10 +35,7 @@ public class AireAcondicionadoTest {
 		init();
 		Medicion aux = aire.ejecutar();
 		Medicion expected = new Medicion(0.026, Magnitudes.TEMPERATURA);
-		DecimalFormat df = new DecimalFormat("0.000");
-		String s = df.format(aux.getValor());
-		assertNotNull(s);
-		Double ret = Double.parseDouble(s);
+		Double ret = (double) (Math.round(aux.getValor() * 1000d) / 1000d);
 		assertNotNull(ret);
 		assertEquals(expected.getValor(), ret);
 	}
