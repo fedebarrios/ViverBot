@@ -53,9 +53,9 @@ public class WriterExcel {
 			HSSFCell columna2 = fila.createCell(2);
 			HSSFCell columna3 = fila.createCell(3);
 			columna.setCellValue(Calendar.getInstance().getTime().toString());
-			columna1.setCellValue(aire.getFrioCalorEstado().toString());
-			columna2.setCellValue(aire.getPotenciaEstado().toString());
-			columna3.setCellValue("NO AUN");
+			columna1.setCellValue(aire.getEstado().toString());
+			columna2.setCellValue(aire.getPotencia().toString());
+			columna3.setCellValue(aire.getTemp().toString());
 			contador++;
 			FileOutputStream archivoSalida = new FileOutputStream(file);
 			libro.write(archivoSalida);

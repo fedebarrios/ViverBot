@@ -6,8 +6,7 @@ import java.util.Observer;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class EstadoVivero extends Observable implements Observer  {
-
+public class EstadoVivero extends Observable implements Observer {
 	private Medicion temperaturaColector;
 	private Medicion temperaturaActual;
 	private Medicion temperaturaDiferencia;
@@ -28,7 +27,7 @@ public class EstadoVivero extends Observable implements Observer  {
 		this.temperaturaColector = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.temperaturaDiferencia = new Medicion(0.0, Magnitudes.TEMPERATURA);
 		this.humedadActual = new Medicion(10.0, Magnitudes.HUMEDAD);
-		this.rangoTemperatura =  new RangoNumerico(15.00, 25.00);
+		this.rangoTemperatura = new RangoNumerico(15.00, 25.00);
 	}
 
 	public Medicion getTemperaturaColector() {
@@ -82,17 +81,26 @@ public class EstadoVivero extends Observable implements Observer  {
 	public void setHoraActual(Hora horaActual) {
 		this.horaActual = horaActual;
 	}
-	
-	private void actualizar(){
-		this.temperaturaActual =  new Medicion(this.temperaturaColector.getValor() + this.temperaturaDiferencia.getValor(), Magnitudes.TEMPERATURA);
+
+	private void actualizar() {
+		this.temperaturaActual = new Medicion(
+				this.temperaturaColector.getValor() + this.temperaturaDiferencia.getValor(), Magnitudes.TEMPERATURA);
 		this.setChanged();
 		this.notifyObservers(this.temperaturaActual);
 	}
 
 	@Override
 	public void update(Observable arg0, Object t) {
-		Medicion m =  (Medicion) t;
+		Medicion m = (Medicion) t;
 		this.setTemperaturaColector(m);
+	}
+
+	public boolean verificarRango() {
+		if (temperaturaActual.getValor() <= rangoTemperatura.getMaximo()
+				&& temperaturaActual.getValor() >= rangoTemperatura.getMinimo()) {
+			return true;
+		}
+		return false;
 	}
 
 }

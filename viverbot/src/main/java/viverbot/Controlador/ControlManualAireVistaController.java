@@ -34,16 +34,16 @@ public class ControlManualAireVistaController implements ActionListener {
 			if (aire.isEncendidoManualmente()) {
 				aire.apagar();
 			} else {
-				aire.setFrioCalorEstado((IFrioCalor) vista.getDropdown_friocalor().getSelectedItem());
-				aire.setPotenciaEstado((IPotencia) vista.getDropdown_potencia().getSelectedItem());
-				aire.setTemperaturaAireAcondicionado((String) vista.getDropdown_temperatura().getSelectedItem());
+				aire.setEstado((IFrioCalor) vista.getDropdown_friocalor().getSelectedItem());
+				aire.setPotencia((IPotencia) vista.getDropdown_potencia().getSelectedItem());
+				aire.setTemperatura((String) vista.getDropdown_temperatura().getSelectedItem());
 				aire.encender();
 			}
 		}
 		if (e.getSource() == vista.getBtn_guardar()) {
-			aire.setFrioCalorEstado((IFrioCalor) vista.getDropdown_friocalor().getSelectedItem());
-			aire.setPotenciaEstado((IPotencia) vista.getDropdown_potencia().getSelectedItem());
-			aire.setTemperaturaAireAcondicionado((String) vista.getDropdown_temperatura().getSelectedItem());
+			aire.setEstado((IFrioCalor) vista.getDropdown_friocalor().getSelectedItem());
+			aire.setPotencia((IPotencia) vista.getDropdown_potencia().getSelectedItem());
+			aire.setTemperatura((String) vista.getDropdown_temperatura().getSelectedItem());
 		}
 	}
 

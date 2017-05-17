@@ -37,30 +37,18 @@ public class AireAcondicionado {
 		}
 	};
 
-	public IPotencia getPotenciaEstado() {
-		return potencia;
-	}
-
-	public IFrioCalor getFrioCalorEstado() {
-		return estado;
-	}
-
-	public void setPotenciaEstado(IPotencia potenciaEstado) {
-		this.potencia = potenciaEstado;
-	}
-
-	public void setFrioCalorEstado(IFrioCalor frioCalorEstado) {
-		this.estado = frioCalorEstado;
-	}
-	
-	public void setTemperaturaAireAcondicionado(String s){
-		this.temp.definirTemp(s);
-	}
-
 	public Medicion ejecutar() {
 		estado.definirEstado(this);
 		Double suma = potencia.aplicarPotencia(this).getValor() + temp.getDiferencia().getValor();
 		return new Medicion(definirPositivoNegativo(suma), Magnitudes.TEMPERATURA);
+	}
+
+	private Double definirPositivoNegativo(Double d) {
+		if (estado.getClass() == Calor.class) {
+			return d;
+		} else {
+			return d * (-1.0);
+		}
 	}
 
 	public AireAcondicionado returnThis() {
@@ -78,13 +66,7 @@ public class AireAcondicionado {
 		encendidoManualmente = false;
 	}
 
-	private Double definirPositivoNegativo(Double d) {
-		if (estado.getClass() == Calor.class) {
-			return d;
-		} else {
-			return d * (-1.0);
-		}
-	}
+	// ------------------GETTERS Y SETTERS-----------------------
 
 	public boolean isEncendidoAutomatizado() {
 		return encendidoAutomatizado;
@@ -98,12 +80,28 @@ public class AireAcondicionado {
 		return encendidoManualmente;
 	}
 
-	public EstadoVivero getEstadoVivero() {
-		return estadoVivero;
+	public IPotencia getPotencia() {
+		return potencia;
 	}
 
-	public void setEstadoVivero(EstadoVivero estadoVivero) {
-		this.estadoVivero = estadoVivero;
+	public IFrioCalor getEstado() {
+		return estado;
+	}
+
+	public void setPotencia(IPotencia potenciaEstado) {
+		this.potencia = potenciaEstado;
+	}
+
+	public void setEstado(IFrioCalor frioCalorEstado) {
+		this.estado = frioCalorEstado;
+	}
+
+	public void setTemperatura(String s) {
+		this.temp.definirTemp(s);
+	}
+
+	public TemperaturaAireAcondicionado getTemp() {
+		return temp;
 	}
 	
 	

@@ -8,8 +8,8 @@ public class Potencia_0 implements IPotencia {
 
 	@Override
 	public Medicion aplicarPotencia(AireAcondicionado aire) {
-		Medicion ret = new Medicion(0.005, Magnitudes.TEMPERATURA);
-		aire.setPotenciaEstado(this);
+		Medicion ret = new Medicion(0.003, Magnitudes.TEMPERATURA);
+		aire.setPotencia(this);
 		return ret;
 	}
 

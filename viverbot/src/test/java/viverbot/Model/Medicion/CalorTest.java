@@ -14,7 +14,7 @@ public class CalorTest {
 		AireAcondicionado aire = new AireAcondicionado();
 		Calor calor = new Calor();
 		calor.definirEstado(aire);
-		assertEquals(Calor.class, aire.getFrioCalorEstado().getClass());
+		assertEquals(Calor.class, aire.getEstado().getClass());
 	}
 	
 	@Test

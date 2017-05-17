@@ -10,15 +10,29 @@ import viverbot.Modelo.Medicion.Calor;
 import viverbot.Modelo.Medicion.Potencia_0;
 
 public class Potencia_0Test {
+	AireAcondicionado aire;
+	Potencia_0 pote;
 
 	@Test
 	public void aplicarPotenciaTest() {
-		AireAcondicionado aire = new AireAcondicionado();
-		aire.setFrioCalorEstado(new Calor());
-		Potencia_0 pote = new Potencia_0();
+		init();
+		aire.setEstado(new Calor());
 		Medicion ret = pote.aplicarPotencia(aire);
-		Double expected = 0.05;
+		Double expected = 0.003;
 		assertEquals(expected, ret.getValor());
+	}
+
+	@Test
+	public void toStringTest() {
+		init();
+		String ret = pote.toString();
+		String expected = "Potencia 0";
+		assertEquals(expected, ret);
+	}
+
+	public void init() {
+		aire = new AireAcondicionado();
+		pote = new Potencia_0();
 	}
 
 }

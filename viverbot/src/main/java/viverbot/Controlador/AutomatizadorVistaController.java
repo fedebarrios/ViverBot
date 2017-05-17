@@ -32,9 +32,9 @@ public class AutomatizadorVistaController implements ActionListener {
 		}
 		if (e.getSource() == vista.getMenuitem_onOffAutomatizador()) {
 			if (automatizador.isEncendido()) {
-				automatizador.apagarAutomatizador();
+				automatizador.apagar();
 			} else {
-				automatizador.encenderAutomatizador();
+				automatizador.encender();
 			}
 		}
 
@@ -49,8 +49,8 @@ public class AutomatizadorVistaController implements ActionListener {
 		if (automatizador.isEncendido()) {
 			vista.getText_encendidoAutomatizador().setText("Encendido");
 			vista.getText_controlmanual().setText("Apagado");
-			vista.getText_estado().setText(aire.getFrioCalorEstado().toString());
-			vista.getText_potencia().setText(aire.getPotenciaEstado().toString());
+			vista.getText_estado().setText(aire.getEstado().toString());
+			vista.getText_potencia().setText(aire.getPotencia().toString());
 			vista.getText_temperaturaAire().setText("NO AUN");
 		} else {
 			vista.getText_encendidoAutomatizador().setText("Apagado");

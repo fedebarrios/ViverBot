@@ -14,12 +14,12 @@ public class AireAcondicionadoTest {
 	@Test
 	public void getSetTest() {
 		AireAcondicionado aire = new AireAcondicionado();
-		aire.setFrioCalorEstado(new Calor());
-		aire.setPotenciaEstado(new Potencia_0());
-		assertNotNull(aire.getFrioCalorEstado());
-		assertNotNull(aire.getPotenciaEstado());
-		assertEquals(new Potencia_0().getClass(), aire.getPotenciaEstado().getClass());
-		assertEquals(new Calor().getClass(), aire.getFrioCalorEstado().getClass());
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_0());
+		assertNotNull(aire.getEstado());
+		assertNotNull(aire.getPotencia());
+		assertEquals(new Potencia_0().getClass(), aire.getPotencia().getClass());
+		assertEquals(new Calor().getClass(), aire.getEstado().getClass());
 	}
 
 }
