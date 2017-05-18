@@ -88,6 +88,38 @@ public class ReconocedorTotalTest {
 	}
 	
 	
+	
+	@Test
+	public void detectar2de2tamañosTest()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolConFChicos.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada(), posicionador,0.5f,1).intValue());
+	}
+	
+	@Test
+	public void detectar2de3tamañosTest()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolConFChicos3.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(8,reconocedor.reconocerFrutos(imgResaltada(), posicionador,0.6f,1).intValue());
+	}
+	
+	@Test
+	public void detectar3de3tamañosTest()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolConFChicos3.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada(), posicionador,0.5f,1).intValue());
+	}
+	
+	
 	private Imagen imgResaltada()
 	{
 		return resaltador.rectificarImagen(generador.getPrimerImagen(), generador.getSegundaImagen());
