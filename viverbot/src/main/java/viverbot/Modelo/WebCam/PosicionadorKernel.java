@@ -9,9 +9,17 @@ public class PosicionadorKernel {
 	
 	public PosicionadorKernel(int vX, int vY, AdapterImage adapter)
 	{
-		x = vX;
-		y = vY;
-		kernel = new Kernel(adapter.getWidth(),adapter.getHeight(),adapter.getDatos());
+		this.x = vX;
+		this.y = vY;
+		this.kernel = new Kernel(adapter.getWidth(),adapter.getHeight(),adapter.getDatos());
+				
+	}
+	
+	public PosicionadorKernel(int vX, int vY, Kernel kernel)
+	{
+		this.x = vX;
+		this.y = vY;
+		this.kernel = kernel;
 				
 	}
 	
