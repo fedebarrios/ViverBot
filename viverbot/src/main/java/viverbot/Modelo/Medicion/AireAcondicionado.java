@@ -32,7 +32,6 @@ public class AireAcondicionado {
 		public void run() {
 			estadoVivero.setTemperaturaDiferenciaSumar(ejecutar());
 			WriterExcel.registrarAutomatizacion(returnThis());
-			System.out.println(estadoVivero.getTemperaturaActual().getValor());
 		}
 	};
 

@@ -2,6 +2,7 @@ package viverbot.Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
 
 import viverbot.Interfaces.IFrioCalor;
 import viverbot.Interfaces.IPotencia;
@@ -14,7 +15,7 @@ import viverbot.Modelo.Medicion.Potencia_2;
 import viverbot.Modelo.Medicion.Potencia_3;
 import viverbot.Vista.ControlManualAireVista;
 
-public class ControlManualAireVistaController implements ActionListener {
+public class ControlManualAireVistaController extends Observable implements ActionListener {
 	private AireAcondicionado aire;
 	private ControlManualAireVista vista;
 
@@ -22,7 +23,6 @@ public class ControlManualAireVistaController implements ActionListener {
 		this.aire = aire;
 		this.vista = new ControlManualAireVista(this);
 		cargarCampos();
-		mostrar();
 	}
 
 	@Override
@@ -38,6 +38,8 @@ public class ControlManualAireVistaController implements ActionListener {
 				aire.setPotencia((IPotencia) vista.getDropdown_potencia().getSelectedItem());
 				aire.setTemperatura((String) vista.getDropdown_temperatura().getSelectedItem());
 				aire.encender();
+				setChanged();
+				notifyObservers();
 			}
 		}
 		if (e.getSource() == vista.getBtn_guardar()) {
@@ -47,17 +49,12 @@ public class ControlManualAireVistaController implements ActionListener {
 		}
 	}
 
-	private void cargarCampos() {
-		llenarDropDowns();
-
-	}
-
-	private void mostrar() {
+	public void mostrar() {
 		this.vista.setVisible(true);
 	}
 
 	@SuppressWarnings("unchecked")
-	private void llenarDropDowns() {
+	private void cargarCampos() {
 		vista.getDropdown_friocalor().addItem(new Calor());
 		vista.getDropdown_friocalor().addItem(new Frio());
 		vista.getDropdown_potencia().addItem(new Potencia_0());
@@ -78,7 +75,6 @@ public class ControlManualAireVistaController implements ActionListener {
 		vista.getDropdown_temperatura().addItem("27");
 		vista.getDropdown_temperatura().addItem("28");
 		vista.getDropdown_temperatura().addItem("29");
-
 	}
 
 }

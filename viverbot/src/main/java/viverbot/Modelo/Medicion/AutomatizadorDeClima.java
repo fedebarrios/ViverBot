@@ -29,9 +29,6 @@ public class AutomatizadorDeClima {
 			definirEstados();
 			estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
 			WriterExcel.registrarAutomatizacion(aire);
-			System.out.println(aire.toString());
-			System.out.println(estadoVivero.getTemperaturaActual().getValor());
-
 		}
 	};
 

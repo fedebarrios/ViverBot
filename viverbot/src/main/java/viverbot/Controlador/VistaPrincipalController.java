@@ -16,11 +16,12 @@ import viverbot.Vista.VistaPrincipal;
 public class VistaPrincipalController implements ActionListener {
 	private VistaPrincipal vista;
 	private AutomatizadorDeClima automatizador;
+	private AutomatizadorVistaController automatizadorVista;
 
-	
 	public VistaPrincipalController() {
 		this.vista = new VistaPrincipal(this);
 		this.automatizador = new AutomatizadorDeClima();
+		this.automatizadorVista = new AutomatizadorVistaController(automatizador);
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class VistaPrincipalController implements ActionListener {
 			c.colectar();
 		}
 		if (e.getSource() == vista.getMntmTemperatura()) {
-			AutomatizadorVistaController automatizadorVista = new AutomatizadorVistaController(automatizador);
+			this.automatizadorVista.mostrar();
 		}
 	}
 
@@ -52,4 +53,9 @@ public class VistaPrincipalController implements ActionListener {
 	public VistaPrincipal getVista() {
 		return this.vista;
 	}
+
+	public AutomatizadorVistaController getAutomatizadorVista() {
+		return automatizadorVista;
+	}
+
 }

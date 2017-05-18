@@ -55,6 +55,7 @@ public class App {
 			t.colectar();
 			MonitorEstado monitor = new MonitorEstado();
 			estado.addObserver(monitor);
+			estado.addObserver(principal.getAutomatizadorVista());
 			monitor.addObserver(principal.getVista());
 		}
 		// fin de la ventan de opciones
