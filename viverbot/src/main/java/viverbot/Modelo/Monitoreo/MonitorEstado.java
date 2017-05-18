@@ -19,6 +19,10 @@ public class MonitorEstado extends Observable implements Observer {
 		this.analizador = new AnalizadorTemperatura();
 	}
 
+	public AnalizadorTemperatura getAnalizador() {
+		return analizador;
+	}
+
 	public Medicion getTemperaturaActual() {
 		return temperaturaActual;
 	}
