@@ -2,8 +2,10 @@ package viverbot.Model.WebCam;
 
 import static org.junit.Assert.*;
 
-
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.internal.runners.statements.Fail;
+import org.junit.rules.ExpectedException;
 
 import viverbot.Modelo.WebCam.AdapterImage;
 import viverbot.Modelo.WebCam.DetectorFruto;
@@ -31,10 +33,20 @@ public class DetectorFrutoTest {
 	public void kernelValidoTest() {
 		//kernel ubicado sobre ubicacion valida
 		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/testDeteccion1.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertTrue(DetectorFruto.detectar(imgResaltada(), 0, 0, posicionador.getKernel()));
+	}
+	
+	@Test
+	public void kernelVacioFrutoTest() {
+		//kernel ubicado sobre ubicacion valida
+		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertTrue(DetectorFruto.detectar(imgResaltada(), 164, 213, posicionador.getKernel()));
+		assertFalse(DetectorFruto.detectar(imgResaltada(), 0, 0, posicionador.getKernel()));
 	}
 	
 	@Test
@@ -49,31 +61,20 @@ public class DetectorFrutoTest {
 	}
 	
 	@Test
-	public void kernelSinDimensionesTest()
-	{
-		adaptador = new AdapterImage();
-		Imagen imgPrueba = new Imagen("src/test/java/viverbot/recursosTest/imgVacia.png");
-		assertEquals(1,imgPrueba.getAlto().intValue());
-		assertEquals(1,imgPrueba.getAncho().intValue());
-		assertFalse(adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/imgVacia.png"));
-	}
-	
-
-	@Test
-	public void kernelSinFrutoTest()
-	{
+	public void kernelMedioFrutoTest() {
+		//kernel ubicado sobre ubicacion valida
 		inicializar();
-		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
+		iniciarPath("src/test/java/viverbot/recursosTest/testDeteccion4.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertTrue(DetectorFruto.detectar(imgResaltada(), 164, 213, posicionador.getKernel()));
-		assertFalse(DetectorFruto.detectar(imgResaltada(), 164, 223, posicionador.getKernel()));
-		
+		assertFalse(DetectorFruto.detectar(imgResaltada(), 0, 0, posicionador.getKernel()));
 	}
 	
 	@Test
-	public void kernelSuperaDimensiones()
+	public void kernelSuperaDimensiones()throws Exception 
 	{
+		
+		
 		adaptador = new AdapterImage();
 		Imagen imagen = new Imagen("src/test/java/viverbot/recursosTest/arbol.JPG");
 		Imagen imgPrueba = new Imagen("src/test/java/viverbot/recursosTest/naranja.png");
@@ -81,8 +82,11 @@ public class DetectorFrutoTest {
 		assertEquals(768,imgPrueba.getAncho().intValue());
 		assertEquals(440,imagen.getAncho().intValue());
 		assertEquals(440,imagen.getAlto().intValue());
+		ValidadorKernel validador = new ValidadorKernel(); 
+		validador.validarKernel(imgPrueba);
+		
 
-		assertFalse(adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/naranja.png"));
+
 
 	}
 	
