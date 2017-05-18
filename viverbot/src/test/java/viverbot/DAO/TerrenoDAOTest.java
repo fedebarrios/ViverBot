@@ -19,7 +19,7 @@ public class TerrenoDAOTest {
 	public void construirTerrenoTest() {
 		inicializar();
 		terreno.construirTerreno(3, 3);
-		UbicacionDTO[][] ubicaciones = terreno.mostrarTerreno();
+		UbicacionDTO[][] ubicaciones = terreno.getUbicaciones();
 		for (int i = 0; i < ubicaciones.length; i++) {
 			for (int j = 0; j < ubicaciones[i].length; j++) {
 				assertFalse(ubicaciones[i][j]==null);
@@ -32,7 +32,7 @@ public class TerrenoDAOTest {
 		inicializar();
 		terreno.construirTerreno(3, 3);
 		terreno.ocuparUbicacion(new UbicacionDTO(0,0,0));
-		assertTrue(terreno.mostrarTerreno()[0][0].isEstado());
+		assertTrue(terreno.getUbicaciones()[0][0].isEstado());
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class TerrenoDAOTest {
 		terreno.construirTerreno(3, 3);
 		terreno.ocuparUbicacion(new UbicacionDTO(0,0,0));
 		assertFalse(terreno.ocuparUbicacion(new UbicacionDTO(0,0,0)));
-		assertTrue(terreno.mostrarTerreno()[0][0].isEstado());
+		assertTrue(terreno.getUbicaciones()[0][0].isEstado());
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class TerrenoDAOTest {
 		terreno.construirTerreno(3, 3);
 		terreno.ocuparUbicacion(new UbicacionDTO(0,0,0));
 		terreno.desocuparUbicacion(new UbicacionDTO(0,0,0));
-		assertFalse(terreno.mostrarTerreno()[0][0].isEstado());
+		assertFalse(terreno.getUbicaciones()[0][0].isEstado());
 	}
 	
 	@Test

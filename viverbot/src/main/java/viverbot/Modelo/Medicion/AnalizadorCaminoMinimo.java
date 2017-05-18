@@ -2,19 +2,19 @@ package viverbot.Modelo.Medicion;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import viverbot.DAO.TerrenoDAO;
 import viverbot.DTO.Arista;
 import viverbot.DTO.Grafo;
-import viverbot.DTO.TerrenoDTO;
 import viverbot.DTO.UbicacionDTO;
  
 public class AnalizadorCaminoMinimo {
 
 	private Grafo g;
-	private TerrenoDTO terreno;
+	private TerrenoDAO terreno;
 
-	public AnalizadorCaminoMinimo(TerrenoDTO terreno) {
-		this.terreno = terreno;
-		g = this.generarGrafo(terreno.getTamañoTerreno(), generarAristas(terreno.getUbicaciones()));
+	public AnalizadorCaminoMinimo() {
+		this.terreno = TerrenoDAO.getInstance();
+		g = this.generarGrafo(terreno.getTamanioTerreno(), generarAristas(terreno.getUbicaciones()));
 	}
 
 	public ArrayList<Arista> generarAristas(UbicacionDTO[][] ubicaciones) {
@@ -23,13 +23,17 @@ public class AnalizadorCaminoMinimo {
 		int auxJ = 0;
 		for (int i = 0; i < ubicaciones.length; i++) {
 			for (int j = 0; j < ubicaciones[i].length; j++) {
-				auxI = i + 1;
-				auxJ = j + 1;
-				if (auxI < ubicaciones.length) {
-					listaAristas.add(new Arista(ubicaciones[i][j], ubicaciones[auxI][j], 1));
-				}
-				if (auxJ < ubicaciones[i].length) {
-					listaAristas.add(new Arista(ubicaciones[i][j], ubicaciones[i][auxJ], 1));
+				if(i==0 && j+1==ubicaciones[i].length){
+					//Es la ubicacion de descanso
+				}else{
+					auxI = i + 1;
+					auxJ = j + 1;
+					if (auxI < ubicaciones.length) {
+						listaAristas.add(new Arista(ubicaciones[i][j], ubicaciones[auxI][j], 1));
+					}
+					if (auxJ < ubicaciones[i].length) {
+						listaAristas.add(new Arista(ubicaciones[i][j], ubicaciones[i][auxJ], 1));
+					}
 				}
 			}
 		}
@@ -57,8 +61,10 @@ public class AnalizadorCaminoMinimo {
 		Grafo g = new Grafo(n);
 
 		for (Arista arista : listaAristas) {
+	//		System.out.println(arista.getUbicacionA().getIndice()+" " +" " +arista.getUbicacionB().getIndice());
 			g.agregarArista(arista.getUbicacionA().getIndice(), arista.getUbicacionB().getIndice(),
 					arista.getDistancia());
+			
 		}
 
 		return g;
