@@ -7,7 +7,6 @@ public class Calor implements IFrioCalor {
 	@Override
 	public void definirEstado(AireAcondicionado aire) {
 		aire.setEstado(this);
-		System.out.println("El aire se encuentra en calor");
 	}
 
 	@Override

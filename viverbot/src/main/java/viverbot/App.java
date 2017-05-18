@@ -53,7 +53,6 @@ public class App {
 			ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 			t.addObserver(estado);
 			t.colectar();
-			// estado.addObserver(automatizador);
 			MonitorEstado monitor = new MonitorEstado();
 			estado.addObserver(monitor);
 			monitor.addObserver(principal.getVista());

@@ -6,7 +6,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import viverbot.Controlador.AutomatizadorVistaController;
@@ -14,13 +13,6 @@ import viverbot.Controlador.AutomatizadorVistaController;
 public class AutomatizadorVista extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField text_temperaturaAmbiente;
-	private JTextField text_rango;
-	private JTextField text_encendidoAutomatizador;
-	private JTextField text_controlmanual;
-	private JTextField text_estado;
-	private JTextField text_potencia;
-	private JTextField text_temperaturaAire;
 	private JLabel label_temperaturaAmbiente;
 	private JLabel label_rango;
 	private JLabel label_encendidoAutomatizador;
@@ -34,6 +26,13 @@ public class AutomatizadorVista extends JFrame {
 	private JMenu menu_opciones;
 	private JMenuItem menuitem_onOffAutomatizador;
 	private JMenuItem menuitem_configuracionManual;
+	private JLabel label_texttemperaturaAmbiente;
+	private JLabel label_textrango;
+	private JLabel label_textencendidoAutomatizador;
+	private JLabel label_textcontrolManual;
+	private JLabel label_textestado;
+	private JLabel label_textpotencia;
+	private JLabel label_texttemperaturaAire;
 
 	public AutomatizadorVista(AutomatizadorVistaController controlador) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -94,103 +93,33 @@ public class AutomatizadorVista extends JFrame {
 		label_temperaturaAire.setBounds(10, 254, 194, 26);
 		contentPane.add(label_temperaturaAire);
 
-		text_temperaturaAmbiente = new JTextField();
-		text_temperaturaAmbiente.setColumns(10);
-		text_temperaturaAmbiente.setBounds(214, 32, 112, 26);
-		text_temperaturaAmbiente.addActionListener(controlador);
-		contentPane.add(text_temperaturaAmbiente);
+		label_texttemperaturaAmbiente = new JLabel("");
+		label_texttemperaturaAmbiente.setBounds(214, 32, 118, 21);
+		contentPane.add(label_texttemperaturaAmbiente);
 
-		text_rango = new JTextField();
-		text_rango.setBounds(214, 69, 112, 26);
-		text_rango.addActionListener(controlador);
-		text_rango.setColumns(10);
-		contentPane.add(text_rango);
+		label_textrango = new JLabel("");
+		label_textrango.setBounds(214, 69, 118, 21);
+		contentPane.add(label_textrango);
 
-		text_encendidoAutomatizador = new JTextField();
-		text_encendidoAutomatizador.setBounds(214, 106, 112, 26);
-		text_encendidoAutomatizador.addActionListener(controlador);
-		text_encendidoAutomatizador.setColumns(10);
-		contentPane.add(text_encendidoAutomatizador);
+		label_textencendidoAutomatizador = new JLabel("");
+		label_textencendidoAutomatizador.setBounds(214, 106, 118, 21);
+		contentPane.add(label_textencendidoAutomatizador);
 
-		text_controlmanual = new JTextField();
-		text_controlmanual.setColumns(10);
-		text_controlmanual.setBounds(214, 143, 112, 26);
-		contentPane.add(text_controlmanual);
-		text_controlmanual.addActionListener(controlador);
+		label_textcontrolManual = new JLabel("");
+		label_textcontrolManual.setBounds(214, 143, 118, 21);
+		contentPane.add(label_textcontrolManual);
 
-		text_estado = new JTextField();
-		text_estado.setColumns(10);
-		text_estado.setBounds(214, 180, 112, 26);
-		text_estado.addActionListener(controlador);
-		contentPane.add(text_estado);
+		label_textestado = new JLabel("");
+		label_textestado.setBounds(214, 180, 118, 21);
+		contentPane.add(label_textestado);
 
-		text_potencia = new JTextField();
-		text_potencia.setColumns(10);
-		text_potencia.setBounds(214, 217, 112, 26);
-		text_potencia.addActionListener(controlador);
-		contentPane.add(text_potencia);
+		label_textpotencia = new JLabel("");
+		label_textpotencia.setBounds(214, 217, 118, 21);
+		contentPane.add(label_textpotencia);
 
-		text_temperaturaAire = new JTextField();
-		text_temperaturaAire.setColumns(10);
-		text_temperaturaAire.setBounds(214, 254, 112, 26);
-		text_temperaturaAire.addActionListener(controlador);
-		contentPane.add(text_temperaturaAire);
-	}
-
-	public JTextField getText_temperaturaAmbiente() {
-		return text_temperaturaAmbiente;
-	}
-
-	public void setText_temperaturaAmbiente(JTextField text_temperaturaAmbiente) {
-		this.text_temperaturaAmbiente = text_temperaturaAmbiente;
-	}
-
-	public JTextField getText_rango() {
-		return text_rango;
-	}
-
-	public void setText_rango(JTextField text_rango) {
-		this.text_rango = text_rango;
-	}
-
-	public JTextField getText_encendidoAutomatizador() {
-		return text_encendidoAutomatizador;
-	}
-
-	public void setText_encendidoAutomatizador(JTextField text_encendidoAutomatizador) {
-		this.text_encendidoAutomatizador = text_encendidoAutomatizador;
-	}
-
-	public JTextField getText_controlmanual() {
-		return text_controlmanual;
-	}
-
-	public void setText_controlmanual(JTextField text_controlmanual) {
-		this.text_controlmanual = text_controlmanual;
-	}
-
-	public JTextField getText_estado() {
-		return text_estado;
-	}
-
-	public void setText_estado(JTextField text_estado) {
-		this.text_estado = text_estado;
-	}
-
-	public JTextField getText_potencia() {
-		return text_potencia;
-	}
-
-	public void setText_potencia(JTextField text_potencia) {
-		this.text_potencia = text_potencia;
-	}
-
-	public JTextField getText_temperaturaAire() {
-		return text_temperaturaAire;
-	}
-
-	public void setText_temperaturaAire(JTextField text_temperaturaAire) {
-		this.text_temperaturaAire = text_temperaturaAire;
+		label_texttemperaturaAire = new JLabel("");
+		label_texttemperaturaAire.setBounds(214, 254, 118, 21);
+		contentPane.add(label_texttemperaturaAire);
 	}
 
 	public JMenuItem getMenuitem_salir() {
@@ -203,6 +132,62 @@ public class AutomatizadorVista extends JFrame {
 
 	public JMenuItem getMenuitem_configuracionManual() {
 		return menuitem_configuracionManual;
+	}
+
+	public JLabel getLabel_texttemperaturaAmbiente() {
+		return label_texttemperaturaAmbiente;
+	}
+
+	public void setLabel_texttemperaturaAmbiente(JLabel label_texttemperaturaAmbiente) {
+		this.label_texttemperaturaAmbiente = label_texttemperaturaAmbiente;
+	}
+
+	public JLabel getLabel_textrango() {
+		return label_textrango;
+	}
+
+	public void setLabel_textrango(JLabel label_textrango) {
+		this.label_textrango = label_textrango;
+	}
+
+	public JLabel getLabel_textencendidoAutomatizador() {
+		return label_textencendidoAutomatizador;
+	}
+
+	public void setLabel_textencendidoAutomatizador(JLabel label_textencendidoAutomatizador) {
+		this.label_textencendidoAutomatizador = label_textencendidoAutomatizador;
+	}
+
+	public JLabel getLabel_textcontrolManual() {
+		return label_textcontrolManual;
+	}
+
+	public void setLabel_textcontrolManual(JLabel label_textcontrolManual) {
+		this.label_textcontrolManual = label_textcontrolManual;
+	}
+
+	public JLabel getLabel_textestado() {
+		return label_textestado;
+	}
+
+	public void setLabel_textestado(JLabel label_textestado) {
+		this.label_textestado = label_textestado;
+	}
+
+	public JLabel getLabel_textpotencia() {
+		return label_textpotencia;
+	}
+
+	public void setLabel_textpotencia(JLabel label_textpotencia) {
+		this.label_textpotencia = label_textpotencia;
+	}
+
+	public JLabel getLabel_texttemperaturaAire() {
+		return label_texttemperaturaAire;
+	}
+
+	public void setLabel_texttemperaturaAire(JLabel label_texttemperaturaAire) {
+		this.label_texttemperaturaAire = label_texttemperaturaAire;
 	}
 
 }

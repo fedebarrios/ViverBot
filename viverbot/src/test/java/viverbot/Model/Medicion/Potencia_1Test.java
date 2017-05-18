@@ -26,7 +26,7 @@ public class Potencia_1Test {
 	public void toStringTest() {
 		init();
 		String ret = pote.toString();
-		String expected = "Potencia 1";
+		String expected = "1";
 		assertEquals(expected, ret);
 	}
 

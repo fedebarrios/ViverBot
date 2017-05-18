@@ -16,7 +16,6 @@ public class AireAcondicionado {
 	private TemperaturaAireAcondicionado temp;
 	private Timer timer;
 	private boolean encendidoManualmente = false;
-	private boolean encendidoAutomatizado = false;
 	private EstadoVivero estadoVivero;
 
 	public AireAcondicionado() {
@@ -51,7 +50,7 @@ public class AireAcondicionado {
 		}
 	}
 
-	public AireAcondicionado returnThis() {
+	private AireAcondicionado returnThis() {
 		return this;
 	}
 
@@ -65,16 +64,16 @@ public class AireAcondicionado {
 		timer.purge();
 		encendidoManualmente = false;
 	}
+	
+	@Override
+	public String toString() {
+		String estado = "Estado: " + this.estado.toString();
+		String potencia = "Potencia: " + this.potencia.toString();
+		String temp = "Temperatura: " + this.temp.toString() + " C°";
+		return estado + "\n" + potencia + "\n" + temp;
+	}
 
 	// ------------------GETTERS Y SETTERS-----------------------
-
-	public boolean isEncendidoAutomatizado() {
-		return encendidoAutomatizado;
-	}
-
-	public void setEncendidoAutomatizado(boolean encendidoAutomatizado) {
-		this.encendidoAutomatizado = encendidoAutomatizado;
-	}
 
 	public boolean isEncendidoManualmente() {
 		return encendidoManualmente;
@@ -104,7 +103,4 @@ public class AireAcondicionado {
 		return temp;
 	}
 
-	public EstadoVivero getEstadoVivero() {
-		return estadoVivero;
-	}
 }
