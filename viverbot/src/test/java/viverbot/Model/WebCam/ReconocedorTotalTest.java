@@ -29,7 +29,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(5,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(5,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 	}
 	
 	@Test
@@ -38,7 +38,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.JPG");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(0,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(0,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 
 	}
 	
@@ -49,7 +49,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(6,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(6,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 
 	}
 	
@@ -59,7 +59,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol15.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(15,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(15,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 
 
 	}
