@@ -1,6 +1,8 @@
 package viverbot.Vista;
 
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -8,10 +10,22 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
+
 import javax.swing.JLabel;
 
-public class VistaPrincipal extends JFrame {
+public class VistaPrincipal extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
+
+	private static final String temperaturaActual = "La temperatura actual es: ";
+	private static final String temperturaOptima = "La temperatura está dentro del rango ideal";
+	private static final String temperaturaAlta = "La temperatura está por encima del rango ideal por ";
+	private static final String temperaturaBaja = "La temperatura está por debajo del rango ideal por ";
+	private static final String sensorActivo = "El sensor esta activo.";
+	private static final String sensorInactivo = "El sensor esta inactivo. Ejecutando simulacion";
+	private static final String grados = " ºC";
+
 	private JPanel contentPane;
 	private JMenuBar menuBar;
 	// Menu Administracion
@@ -63,16 +77,16 @@ public class VistaPrincipal extends JFrame {
 
 		mntmControlarTemperatura = new JMenuItem("Controlar Temperatura");
 		mnAutomatizacin.add(mntmControlarTemperatura);
-		
+
 		labelTemperatura = new JLabel("");
-		labelTemperatura.setBounds(10, 202, 177, 14);
+		labelTemperatura.setBounds(10, 202, 394, 14);
 		contentPane.add(labelTemperatura);
-		
+
 		labelEstado = new JLabel("");
 		labelEstado.setBounds(10, 218, 414, 14);
 		contentPane.add(labelEstado);
-		
-		 labelEstadoSensor = new JLabel("");
+
+		labelEstadoSensor = new JLabel("");
 		labelEstadoSensor.setBounds(10, 243, 414, 14);
 		contentPane.add(labelEstadoSensor);
 		this.mntmControlarTemperatura.addActionListener(controlador);
@@ -124,7 +138,7 @@ public class VistaPrincipal extends JFrame {
 		return labelTemperatura;
 	}
 
-	public void setLabelTemperatura(String  cadena) {
+	public void setLabelTemperatura(String cadena) {
 		this.labelTemperatura.setText(cadena);
 	}
 
@@ -135,6 +149,34 @@ public class VistaPrincipal extends JFrame {
 	public void setLabelEstadoSensor(String cadena) {
 		this.labelEstadoSensor.setText(cadena);
 	}
-	
-	
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		DiagnosticoAnalisis s = (DiagnosticoAnalisis) arg1;
+		ActualizarVista(s);
+	}
+
+	public void ActualizarVista(DiagnosticoAnalisis s) {
+		this.labelTemperatura.setText(temperaturaActual + this.redondear(s.getMagnitud().getValor()) + grados);
+		if (s.getOptima()) {
+			this.labelEstado.setText(temperturaOptima);
+		} else {
+			this.labelEstado.setText(this.elegirMensaje(s.getDiferencia()) + this.redondear(s.getDiferencia()) + grados);
+
+		}
+		this.labelEstadoSensor.setText(sensorInactivo);
+	}
+
+	private String elegirMensaje(Double diferencia) {
+		if (diferencia < 0) {
+			return temperaturaBaja;
+		}
+		return temperaturaAlta;
+	}
+
+	private String redondear(Double valor) {
+		// TODO Auto-generated method stub
+		return Math.rint(valor * 100) / 100 + "";
+	}
+
 }

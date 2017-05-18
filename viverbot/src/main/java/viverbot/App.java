@@ -26,8 +26,6 @@ public class App {
 	}
 
 	public static void controlarTemperatura(VistaPrincipalController principal) {
-		String sensorOperando = "El sensor de temperatura esta operando correctamente";
-		String sensorInoperando = "El sensor de temperatura esta inactivo. Ejecutando simullacion de ";
 		EstadoVivero estado = EstadoVivero.getInstance();
 
 		// abstraer en otro objeto
@@ -45,11 +43,9 @@ public class App {
 					new Object[] { "Enero", "Junio" }, "opcion 1");
 			if (seleccion == 0) {
 				simulador = new BuildSimuladorTemperaturaEnero().getSimulador();
-				principal.getVista().setLabelEstadoSensor(sensorInoperando + "Enero");
 
 			} else {
 				simulador = new BuildSimuladorTemperaturaJunio().getSimulador();
-				principal.getVista().setLabelEstadoSensor(sensorInoperando + "Junio");
 
 			}
 			simulador.simular();
@@ -58,8 +54,9 @@ public class App {
 			t.addObserver(estado);
 			t.colectar();
 			// estado.addObserver(automatizador);
-			MonitorEstado monitor = new MonitorEstado(principal);
+			MonitorEstado monitor = new MonitorEstado();
 			estado.addObserver(monitor);
+			monitor.addObserver(principal.getVista());
 		}
 		// fin de la ventan de opciones
 	}

@@ -51,9 +51,9 @@ public class PruebaDeSimulacion {
 		
 		EstadoVivero estado =  EstadoVivero.getInstance();
 		t.addObserver(estado);
-		
-		MonitorEstado monitor = new MonitorEstado(principal);
+		MonitorEstado monitor = new MonitorEstado();
 		estado.addObserver(monitor);
+		monitor.addObserver(principal.getVista());
 		principal.mostrar();
 
 		// ahi esta
