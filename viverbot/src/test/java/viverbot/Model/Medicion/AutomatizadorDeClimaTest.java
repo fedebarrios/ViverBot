@@ -33,7 +33,7 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Frio().getClass(), aire.getEstado().getClass());
 	}
-	
+
 	@Test
 	public void definirEstadosTest_calor() throws Exception {
 		init();
@@ -43,9 +43,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Calor().getClass(), aire.getEstado().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia0_arriba() throws Exception{
+	public void definirPotenciaTest_potencia0_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(21.0, Magnitudes.TEMPERATURA));
@@ -54,9 +54,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_0().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia0_abajo() throws Exception{
+	public void definirPotenciaTest_potencia0_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(14.0, Magnitudes.TEMPERATURA));
@@ -65,9 +65,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_0().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia1_arriba() throws Exception{
+	public void definirPotenciaTest_potencia1_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(21.5, Magnitudes.TEMPERATURA));
@@ -76,9 +76,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_1().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia1_abajo() throws Exception{
+	public void definirPotenciaTest_potencia1_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(13.5, Magnitudes.TEMPERATURA));
@@ -87,9 +87,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_1().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia2_arriba() throws Exception{
+	public void definirPotenciaTest_potencia2_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(22.7, Magnitudes.TEMPERATURA));
@@ -98,9 +98,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_2().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia2_abajo() throws Exception{
+	public void definirPotenciaTest_potencia2_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(12.3, Magnitudes.TEMPERATURA));
@@ -109,9 +109,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_2().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia3_arriba() throws Exception{
+	public void definirPotenciaTest_potencia3_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(25.0, Magnitudes.TEMPERATURA));
@@ -120,9 +120,9 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_3().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void definirPotenciaTest_potencia3_abajo() throws Exception{
+	public void definirPotenciaTest_potencia3_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		estado.setTemperaturaColector(new Medicion(10.0, Magnitudes.TEMPERATURA));
@@ -131,15 +131,185 @@ public class AutomatizadorDeClimaTest {
 		assertNotNull(estado);
 		assertEquals(new Potencia_3().getClass(), aire.getPotencia().getClass());
 	}
-	
+
 	@Test
-	public void encenderTest(){
+	public void definirTemperaturaTest_calor_potencia0_22() throws Exception {
 		init();
-		automatizador.encender();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_0());
+		estado.setTemperaturaColector(new Medicion(14.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("22", aire.getTemp().toString());
+	}
+
+	@Test
+	public void definirTemperaturaTest_calor_potencia0_23() throws Exception {
+		init();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_0());
+		estado.setTemperaturaColector(new Medicion(14.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("23", aire.getTemp().toString());
 	}
 	
 	@Test
-	public void apagarTest(){
+	public void definirTemperaturaTest_calor_potencia1_24() throws Exception {
+		init();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_1());
+		estado.setTemperaturaColector(new Medicion(13.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("24", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_calor_potencia1_25() throws Exception {
+		init();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_1());
+		estado.setTemperaturaColector(new Medicion(13.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("25", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_calor_potencia2_26() throws Exception {
+		init();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_2());
+		estado.setTemperaturaColector(new Medicion(12.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("26", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_calor_potencia2_27() throws Exception {
+		init();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_2());
+		estado.setTemperaturaColector(new Medicion(12.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("27", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_calor_potencia3_28() throws Exception {
+		init();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_3());
+		estado.setTemperaturaColector(new Medicion(11.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("28", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_calor_potencia3_29() throws Exception {
+		init();
+		aire.setEstado(new Calor());
+		aire.setPotencia(new Potencia_3());
+		estado.setTemperaturaColector(new Medicion(11.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("29", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia0_24() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_0());
+		estado.setTemperaturaColector(new Medicion(25.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("24", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia0_23() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_0());
+		estado.setTemperaturaColector(new Medicion(26.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("23", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia1_22() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_1());
+		estado.setTemperaturaColector(new Medicion(26.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("22", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia1_21() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_1());
+		estado.setTemperaturaColector(new Medicion(27.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("21", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia2_20() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_2());
+		estado.setTemperaturaColector(new Medicion(27.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("20", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia2_19() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_2());
+		estado.setTemperaturaColector(new Medicion(28.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("19", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia3_18() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_3());
+		estado.setTemperaturaColector(new Medicion(28.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("18", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia3_17() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_3());
+		estado.setTemperaturaColector(new Medicion(29.0, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("17", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void definirTemperaturaTest_frio_potencia3_16() throws Exception {
+		init();
+		aire.setEstado(new Frio());
+		aire.setPotencia(new Potencia_3());
+		estado.setTemperaturaColector(new Medicion(29.5, Magnitudes.TEMPERATURA));
+		Whitebox.invokeMethod(automatizador, "definirTemperatura");
+		assertEquals("16", aire.getTemp().toString());
+	}
+	
+	@Test
+	public void encenderTest() {
+		init();
+		automatizador.encender();
+	}
+
+	@Test
+	public void apagarTest() {
 		init();
 		automatizador.apagar();
 	}
@@ -148,6 +318,7 @@ public class AutomatizadorDeClimaTest {
 		automatizador = new AutomatizadorDeClima();
 		aire = automatizador.getAire();
 		estado = automatizador.getEstadoVivero();
+		estado.setRangoTemperatura(new RangoNumerico(15.0, 25.0));
 	}
 
 }

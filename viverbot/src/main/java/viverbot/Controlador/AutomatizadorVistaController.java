@@ -87,4 +87,8 @@ public class AutomatizadorVistaController implements ActionListener, Observer {
 		return vista;
 	}
 
+	public AutomatizadorDeClima getAutomatizador() {
+		return automatizador;
+	}
+
 }
