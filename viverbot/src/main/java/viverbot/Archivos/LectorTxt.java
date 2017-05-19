@@ -18,11 +18,9 @@ public class LectorTxt {
 
 	public String leerTxt(String archivo) throws Exception {
 		if (!Verificador.validarExistencia(archivo)) {
-			logger.error("No existe archivo");
-			throw new Exception();
+			throw new Exception("No existe archivo.");
 		} else if (!Verificador.validarExtension(archivo, ".txt")) {
-			logger.error("La extension del archivo no es .txt.");
-			throw new Exception();
+			throw new Exception("La extension del archivo no es .txt.");
 		}
 		String data = "";
 		FileReader f;

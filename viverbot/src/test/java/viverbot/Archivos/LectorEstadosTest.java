@@ -1,6 +1,10 @@
 package viverbot.Archivos;
 
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import junit.framework.TestCase;
@@ -13,33 +17,26 @@ public class LectorEstadosTest extends TestCase {
 	@Test (expected = Exception.class)
 	public void testArchivoNoTxt() throws Exception
 	{
-		inicialize("src/test/java/viverbot/Archivos/File.notxt");
-		String msjLog = outContent.toString();
-		assertNotNull(msjLog);
-		assertTrue(msjLog.contains("La extension del archivo no es .txt."));
+		try{
+			inicialize("src/test/java/viverbot/Archivos/File.notxt");
+		}
+		catch (Exception ex){
+			assertThat(ex.getMessage(), containsString("La extension del archivo no es .txt."));
+		}
 		clear();
 	}
 
 	@Test (expected = Exception.class)
 	public void testArchivoNoEncontrado() throws Exception
 	{	
-		inicialize("src/test/java/viverbot/Archivos/FixleDoxsEstadxxosMenoxs.txt");
-		String msjLog = outContent.toString();
-		assertNotNull(msjLog);
-		assertTrue(msjLog.contains("No existe archivo"));
+		try{
+			inicialize("src/test/java/viverbot/Archivos/FixleDoxsEstadxxosMenoxs.txt");
+		}
+		catch (Exception ex){
+			assertThat(ex.getMessage(), containsString("No existe archivo."));
+		}
 		clear();
 	}
-	
-	@Test (expected = Exception.class)
-	public void testArchivoConMenosLineas() throws Exception
-	{	
-		inicialize("src/test/java/viverbot/Archivos/FileCon2Lineas.txt");
-		String msjLog = outContent.toString();
-		assertNotNull(msjLog);
-		assertTrue(msjLog.contains("El archivo debe contener 3 renglones"));
-		clear();
-	}
-	
 	
 	@Test
 	public void testArchivoOK() throws Exception

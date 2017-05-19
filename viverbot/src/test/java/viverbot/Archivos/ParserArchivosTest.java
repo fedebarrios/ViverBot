@@ -3,12 +3,14 @@ package viverbot.Archivos;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+
 import junit.framework.TestCase;
+import viverbot.Controlador.Verificacion.EstadoAltura;
 
 public class ParserArchivosTest extends TestCase {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	PluginArchivos plugin;
 	
 	// Comentados los assert del log
 	@Test (expected = Exception.class)
@@ -41,46 +43,6 @@ public class ParserArchivosTest extends TestCase {
 		clear();
 	}
 	
-	@Test (expected = Exception.class)
-	public void testArchivoArreglosIgualTamaño() throws Exception
-	{
-		inicialize("src/test/java/viverbot/Archivos/FileIgualdad.txt");
-		//String msjLog = outContent.toString();
-		//assertNotNull(msjLog);
-		//assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
-		clear();
-	}
-	
-	@Test (expected = Exception.class)
-	public void testArchivoArregloValoresMasGrande() throws Exception
-	{
-		inicialize("src/test/java/viverbot/Archivos/FileValoresMasGrande.txt");
-		//String msjLog = outContent.toString();
-		//assertNotNull(msjLog);
-		//assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
-		clear();
-	}
-	
-	@Test (expected = Exception.class)
-	public void testArchivoDosEstadosMenosQueValores() throws Exception
-	{
-		inicialize("src/test/java/viverbot/Archivos/FileDosEstadosMenos.txt");
-		//String msjLog = outContent.toString();
-		//assertNotNull(msjLog);
-		//assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
-		clear();
-	}
-	
-	@Test (expected = Exception.class)
-	public void testArchivoDosEstadosMasQueValores() throws Exception
-	{
-		inicialize("src/test/java/viverbot/Archivos/FileDosEstadosMas.txt");
-		//String msjLog = outContent.toString();
-		//assertNotNull(msjLog);
-		//assertTrue(msjLog.contains("La cantidad de valores debe ser menor en uno a la cantidad de estados."));
-		clear();
-	}
-	
 	@Test
 	public void testArchivoOK() throws Exception
 	{
@@ -91,11 +53,16 @@ public class ParserArchivosTest extends TestCase {
 		clear();
 	}
 	
+	@SuppressWarnings("unused")
 	private void inicialize(String archivo) throws Exception{
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
-		plugin = new PluginArchivos();
-		plugin.cargarEstados(archivo);
+		LectorTxt lector = new LectorTxt();
+		String lectura = lector.leerTxt(archivo);
+		ParserDataArchivos parser = new ParserDataArchivos();
+		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
+		ArrayList<Double> valores = parser.parsearValores(lectura);
+		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
 	}
 
 	private void clear() {
