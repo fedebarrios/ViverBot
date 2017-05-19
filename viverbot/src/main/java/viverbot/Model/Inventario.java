@@ -38,4 +38,8 @@ public class Inventario {
 	public int cantidadEspecies() {
 		return especieDAO.leer().size();
 	}
+	
+	public void cargarEspeciesHarcodeadas(){
+		especieDAO.cargarEspeciesHarcodeadas();
+	}
 }
