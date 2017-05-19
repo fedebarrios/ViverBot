@@ -1,4 +1,4 @@
-h1:2.4
-h2:2.41
-h3:2.42
-ezanahoria:zanahorius
+Dia:(1:2.4cm)
+Dia:(2:2.44cm)
+Dia:(3:2.50cm)
+Especie:(zanahoria,zanahorius)
