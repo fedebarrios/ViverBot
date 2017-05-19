@@ -45,4 +45,8 @@ public class ControlHistoriales {
 		}
 		return false;
 	}
+
+	public int cantidadHistoriales() {
+		return historiales.size();
+	}
 }

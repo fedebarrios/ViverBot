@@ -1,6 +1,5 @@
 package viverbot.Archivos;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
@@ -15,30 +14,31 @@ public class PluginTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	
+	//Aqui empiezan los test relacionados a historiales
 	@Test
 	public void cargarHistorial() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/Historial.txt");
 		assertEquals("zanahoria",h.getEspecie().getNombre());
 		assertTrue( 2.44 == h.buscarTupla(2).getAltura().getValor());
-		assertNotNull(h);
 	}
 	
+	@SuppressWarnings("unused")
 	@Test (expected = Exception.class)
-	public void cargaFallidaHistorial() throws Exception{
+	public void cargaFallidaHistorialInconsistente() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialNoConsistente.txt");
 	}
 	
+	@SuppressWarnings("unused")
 	@Test (expected = Exception.class)
 	public void FaltaInfoEspecie() throws Exception{
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialSinInfoEspecie.txt");
-		//assertThat(outContent.toString(), containsString("No existe informacion acerca de la especie"));
 	}
 	
 	@Test
-	public void levantarArchivos(){
+	public void levantarHistoriales(){
 		inicialize();
 		assertEquals(0,plugin.levantarArchivos("src/test/java/viverbot/Archivos/DirectorioTest1").size());
 		assertEquals(2,plugin.levantarArchivos("src/test/java/viverbot/Archivos/DirectorioTest2").size());
@@ -58,6 +58,8 @@ public class PluginTest {
 		}
 		assertEquals(2,plugin.seleccionarMejorDirectorio().size());
 	}
+	
+	//Aqui terminan los test relacionados a historiales
 	
 	public void inicialize(){
 		plugin = new PluginArchivos();

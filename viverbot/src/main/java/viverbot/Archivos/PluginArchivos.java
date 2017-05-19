@@ -15,14 +15,23 @@ import viverbot.Model.Log;
 import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
 public class PluginArchivos extends Observable{
-	ValidadorHistorial validadorHistorial ;
-	Logger logger;
+	private Logger logger;
+	private LectorTxt lector;
+	private ParserDataArchivos mediator;
+	
 	public PluginArchivos(){
 		logger = Log.getLog(PluginArchivos.class);
+		lector = new LectorTxt();
+		mediator = new ParserDataArchivos();
 	}
 	
 	public void actuar() throws Exception{
 		notificarHistorialesNuevos(seleccionarMejorDirectorio());
+	}
+	
+	protected void notificarHistorialesNuevos(List<HistorialOptimo> historiales) {
+		setChanged();
+		notifyObservers(historiales);
 	}
 	
 	public List<HistorialOptimo> seleccionarMejorDirectorio(){
@@ -46,7 +55,6 @@ public class PluginArchivos extends Observable{
 	    for (File f : files){
             if (f.isFile()){
                 file = f.getName();
-                logger.info(file);
                 try{
                 	HistorialOptimo h = cargarHistorial(directorio+"/"+file);
                 	historiales.add(h);
@@ -60,22 +68,18 @@ public class PluginArchivos extends Observable{
 	}
 	
 	public HistorialOptimo cargarHistorial(String path) throws Exception {
-		LectorTxt lector = new LectorTxt();
-		validadorHistorial = new ValidadorHistorial();
 		String lectura = lector.leerTxt(path);
-		ParserDataArchivos mediator = new ParserDataArchivos();
-		HistorialOptimo historial = mediator.parsearHistorialEspecie(lectura);
-		if(!CalculadorHistorial.calcularDiferencia(historial)){
-			throw new Exception("Por favor ingrese un historial mas consistente");
+		try{
+			HistorialOptimo historial = mediator.parsearHistorialEspecie(lectura);
+			if(!CalculadorHistorial.calcularDiferencia(historial)){
+				throw new Exception("Por favor ingrese un historial mas consistente");
+			}
+			else{
+				return historial;
+			}
+		} catch(Exception e){
+			throw new Exception(e.getMessage());
 		}
-		else{
-			return historial;
-		}
-	}
-	
-	protected void notificarHistorialesNuevos(List<HistorialOptimo> historiales) {
-		setChanged();
-		notifyObservers(historiales);
 	}
 	
 	public boolean cargarEstados(String path) throws Exception{

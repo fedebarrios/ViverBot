@@ -3,8 +3,6 @@ package viverbot.Archivos;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -28,9 +26,9 @@ public class CalculadoHistorialTest {
 	}
 	
 	@Test
-	public void CalculadorTestFallaEnDias(){
+	public void CalculadorTestFallaEnAltura(){
 		int[] dias = {1,2,3};
-		double[] alturas = {1.05,1.25,1.35};
+		double[] alturas = {1.05,1.35,1.85};
 		ArrayList<TuplaAltura> t = new ArrayList<TuplaAltura>();
 		for(int i = 0 ; i<3 ; i++){
 			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));

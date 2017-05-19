@@ -33,4 +33,8 @@ public class Inventario {
 	public boolean existeEspecie(EspecieDTO especie){
 		return especieDAO.existeEspecie(especie);
 	}
+
+	public int cantidadEspecies() {
+		return especieDAO.leer().size();
+	}
 }
