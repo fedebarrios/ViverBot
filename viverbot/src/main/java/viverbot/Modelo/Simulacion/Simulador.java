@@ -23,6 +23,7 @@ public class Simulador {
 		this.horaActual = Hora.obtenerHoraActual();
 		this.actualizarValorActual(this.horaActual);
 		this.frecuencia = 300000;
+		this.simular();
 	}
 
 	public void simular() {
