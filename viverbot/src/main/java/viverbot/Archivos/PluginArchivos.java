@@ -60,25 +60,18 @@ public class PluginArchivos extends Observable{
 	    return historiales;
 	}
 	
-	public HistorialOptimo cargarHistorial(String path) throws Exception{
-		LectorHistorial lector = new LectorHistorial();
+	public HistorialOptimo cargarHistorial(String path) throws Exception {
+		LectorTxt lector = new LectorTxt();
 		validadorHistorial = new ValidadorHistorial();
-		List<String> lectura = lector.leerArchivo(path);
-		boolean esValidoHistorial = validadorHistorial.validarHistorial(lectura);
-		if(esValidoHistorial){
-			ParserDataArchivos mediator = new ParserDataArchivos();
-			HistorialOptimo historial = mediator.parsearHistorialEspecie(lectura);
-			if(!CalculadorHistorial.calcularDiferencia(historial)){
-				logger.info("Por favor ingrese un historial mas consistente");
-			}
-			else{
-				return historial;
-			}
+		String lectura = lector.leerTxt(path);
+		ParserDataArchivos mediator = new ParserDataArchivos();
+		HistorialOptimo historial = mediator.parsearHistorialEspecie(lectura);
+		if(!CalculadorHistorial.calcularDiferencia(historial)){
+			throw new Exception("Por favor ingrese un historial mas consistente");
 		}
 		else{
-			logger.info("No existe informacion acerca de la especie");
+			return historial;
 		}
-		throw new Exception();
 	}
 	
 	protected void notificarHistorialesNuevos(List<HistorialOptimo> historiales) {

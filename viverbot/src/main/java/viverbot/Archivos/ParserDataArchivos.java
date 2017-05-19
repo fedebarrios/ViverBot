@@ -19,19 +19,15 @@ public class ParserDataArchivos {
 		logger = Log.getLog(LectorTxt.class);
 	}
 	
-	public HistorialOptimo parsearHistorialEspecie(List<String> datos){
-		EspecieDTO especie = null;
-		List<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
-		for(String s : datos){
-			if(s.substring(0,1).equals("h")){
-				ParserHistorial parser = new ParserHistorial();
-				tuplas.add(parser.parsear(s));
-			} else{
-			    ParserEspecie parser = new ParserEspecie();
-			    especie = parser.parsear(s);
-			}
+	public HistorialOptimo parsearHistorialEspecie(String datos) throws Exception{
+		try{
+			List<TuplaAltura> tuplas = new ParserHistorial().parsear(datos);	
+			EspecieDTO especie = new ParserEspecie().parsear(datos);
+			return new HistorialOptimo(tuplas,especie);
 		}
-		return new HistorialOptimo(tuplas,especie);
+		catch(Exception e){
+			throw new Exception(e.getMessage());
+		}		
 	}
 	
 	public ArrayList<EstadoAltura> parsearEstados(String lectura){
@@ -55,7 +51,7 @@ public class ParserDataArchivos {
 		return estados;
 	}
 	
-	public ArrayList<Double> parsearValores(String lectura) throws Exception{
+	public ArrayList<Double> parsearValores(String lectura) throws Exception{	
 		Pattern p = Pattern.compile("Valores:\\(([0-9,]+)\\)");
 		Matcher m = p.matcher(lectura);
 		String match = "";

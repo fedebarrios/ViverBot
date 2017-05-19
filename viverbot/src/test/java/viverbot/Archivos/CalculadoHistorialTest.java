@@ -3,6 +3,8 @@ package viverbot.Archivos;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -47,5 +49,18 @@ public class CalculadoHistorialTest {
 		}
 		HistorialAltura h = new HistorialAltura(t);
 		assertFalse(CalculadorHistorial.calcularDiferencia(h));
+	}
+	
+	@Test
+	public void t() throws Exception {
+		Pattern p = Pattern.compile("Dia:\\(([0-9]+[:][0-9]+[.][0-9]+)cm\\)");
+		Pattern p2 = Pattern.compile("Especie:\\(([A-Za-z]+[,][A-Za-z]+)\\)");
+		Matcher m = p.matcher("Dia:(4:6.51cm)");
+		//Matcher m = p2.matcher("Especie:(tomate,tomatus,pera)");
+		while(m.find()) {
+			System.out.println( m.group(1));
+		}
+		PluginArchivos pt = new PluginArchivos();
+		pt.cargarHistorial("src/test/java/viverbot/Archivos/Historial.txt");
 	}
 }
