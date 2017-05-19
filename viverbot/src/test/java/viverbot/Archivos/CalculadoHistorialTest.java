@@ -48,4 +48,16 @@ public class CalculadoHistorialTest {
 		HistorialAltura h = new HistorialAltura(t);
 		assertFalse(CalculadorHistorial.calcularDiferencia(h));
 	}	
+	
+	@Test
+	public void CalculadorInfoDesordenada(){
+		int[] dias = {7,15,13};
+		double[] alturas = {1.05,1.10,1.15};
+		ArrayList<TuplaAltura> t = new ArrayList<TuplaAltura>();
+		for(int i = 0 ; i<3 ; i++){
+			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
+		}
+		HistorialAltura h = new HistorialAltura(t);
+		assertFalse(CalculadorHistorial.calcularDiferencia(h));
+	}	
 }
