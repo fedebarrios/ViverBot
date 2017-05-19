@@ -8,7 +8,7 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class BuildSimuladorTemperaturaEnero implements IBuildSimulador {
 
-	private static final Simulador s = new Simulador(inicializarRangos(), Magnitudes.TEMPERATURA);
+	private static final Simulador s = new Simulador(inicializarRangos(), Magnitudes.TEMPERATURA, 300000);
 
 	@Override
 	public Simulador getSimulador() {

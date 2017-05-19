@@ -5,6 +5,8 @@ public class UbicacionDTO {
 	private Integer columna;
 	private boolean estado;
 	private Integer indice;
+	private double ejeX;
+	private double ejeY;
 
 	public UbicacionDTO(Integer fila, Integer columna, Integer indice) {
 		super();
@@ -18,7 +20,6 @@ public class UbicacionDTO {
 		return fila;
 	}
 
-
 	public Integer getColumna() {
 		return columna;
 	}
@@ -29,6 +30,22 @@ public class UbicacionDTO {
 
 	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+	
+	public void setEjeX(double ejeX) {
+		this.ejeX = ejeX;
+	}
+
+	public double getEjeX() {
+		return ejeX;
+	}
+	
+	public void setEjeY(double ejeY) {
+		this.ejeY = ejeY;
+	}
+
+	public double getEjeY() {
+		return ejeY;
 	}
 
 	@Override
@@ -41,9 +58,7 @@ public class UbicacionDTO {
 		}
 		if (this.getColumna().equals(u.getColumna()) && this.getFila().equals(u.getFila())) {
 			return true;
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
@@ -57,6 +72,5 @@ public class UbicacionDTO {
 	public Integer getIndice() {
 		return indice;
 	}
-
 
 }

@@ -3,32 +3,32 @@ package viverbot.DAO;
 import java.util.ArrayList;
 import java.util.List;
 
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 
 public class EspecieDAO {
 	
-	private ArrayList<EspecieDTO> especies ;
+	private ArrayList<Especie> especies ;
 	public static EspecieDAO especieDAO;
 	
 	public EspecieDAO() {
-		this.especies = new ArrayList<EspecieDTO>();
+		this.especies = new ArrayList<Especie>();
 	}
 	
 	public void cargarEspeciesHarcodeadas(){
-		this.especies.add(new EspecieDTO(1, "Rosa","Rosus",""));
-		this.especies.add(new EspecieDTO(2, "Margarita","Margaritus",""));
-		this.especies.add(new EspecieDTO(3, "Amapola","Amapolus",""));
+		this.especies.add(new Especie(1, "Rosa","Rosus",""));
+		this.especies.add(new Especie(2, "Margarita","Margaritus",""));
+		this.especies.add(new Especie(3, "Amapola","Amapolus",""));
 	}
 	
-	public void cargarEspecies(List<EspecieDTO> especies){
-		this.especies = (ArrayList<EspecieDTO>) especies;
+	public void cargarEspecies(List<Especie> especies){
+		this.especies = (ArrayList<Especie>) especies;
 	}
 	
-	public void agregar(EspecieDTO especie){
+	public void agregar(Especie especie){
 		this.especies.add(especie);
 	}
 	
-	public ArrayList<EspecieDTO> leer() {
+	public ArrayList<Especie> leer() {
 		return especies;
 	}
 	
@@ -46,7 +46,7 @@ public class EspecieDAO {
 		return longitud;
 	}
 	
-	public EspecieDTO obtenerEspecie(int codEspecie){
+	public Especie obtenerEspecie(int codEspecie){
 		int longitud = this.especies.size();
 		for(int i=0; i<longitud; i++){
 			if(especies.get(i).getCodEspecie()==codEspecie) return especies.get(i);
@@ -61,8 +61,8 @@ public class EspecieDAO {
 		return especieDAO;
 	}
 
-	public boolean existeEspecie(EspecieDTO especie) {
-		for(EspecieDTO e : especies){
+	public boolean existeEspecie(Especie especie) {
+		for(Especie e : especies){
 			if(e.equals(especie)){
 				return true;
 			}

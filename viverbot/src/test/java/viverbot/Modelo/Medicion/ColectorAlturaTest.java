@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Fecha;
 import viverbot.Modelo.Magnitudes.Magnitudes;
@@ -40,9 +40,9 @@ public class ColectorAlturaTest {
 	@Test
 	public void pedirAlturas(){
 		inicialize();
-		List<PlantaDTO> plantas = new ArrayList<PlantaDTO>();
-		plantas.add(new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017)));
-		plantas.add(new PlantaDTO(2, 11, new UbicacionDTO(1,5,1), new Fecha(04, 05, 2017)));
+		List<Planta> plantas = new ArrayList<Planta>();
+		plantas.add(new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017)));
+		plantas.add(new Planta(2, 11, new UbicacionDTO(1,5,1), new Fecha(04, 05, 2017)));
 		List<Medicion> mediciones = colector.medir(plantas);
 		assertEquals(2 , mediciones.size());
 		assertEquals(Magnitudes.ALTURA , mediciones.get(0).getTipo());

@@ -1,11 +1,11 @@
 package viverbot.Controlador.Verificacion;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 
 public class EstadoAltura {
 	private String estado;
 	private double cmDeDiferencia;
-	private PlantaDTO planta;
+	private Planta planta;
 	
 	public EstadoAltura(){
 		this.estado = "";
@@ -21,11 +21,11 @@ public class EstadoAltura {
 		this.estado = estado;
 	}
 	
-	public PlantaDTO getPlanta() {
+	public Planta getPlanta() {
 		return planta;
 	}
 
-	public void setPlanta(PlantaDTO planta) {
+	public void setPlanta(Planta planta) {
 		this.planta = planta;
 	}
 

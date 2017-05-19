@@ -4,35 +4,35 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Fecha;
 
 public class PlantaDAO {
 
-	private ArrayList<PlantaDTO> plantas;
+	private ArrayList<Planta> plantas;
 	public static PlantaDAO plantaDAO;
 
 	public PlantaDAO() {
-		plantas = new ArrayList<PlantaDTO>();
+		plantas = new ArrayList<Planta>();
 		cargarPlantasHarcodeadas();
 	}
 	
-	public void cargarPlantas(List<PlantaDTO> plantas){
-		this.plantas = (ArrayList<PlantaDTO>) plantas;
+	public void cargarPlantas(List<Planta> plantas){
+		this.plantas = (ArrayList<Planta>) plantas;
 	}
 
 	private void cargarPlantasHarcodeadas() {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 6; j++) {
 				@SuppressWarnings("deprecation")
-				PlantaDTO p = new PlantaDTO(1, i++, new UbicacionDTO(i * j, i * j,(((i*j)+1)*(i*j))-1), new Fecha(02, 05, 2017));
+				Planta p = new Planta(1, i++, new UbicacionDTO(i * j, i * j,(((i*j)+1)*(i*j))-1), new Fecha(02, 05, 2017));
 				plantas.add(p);
 			} 
 		}
 	}
 
-	public PlantaDTO obtenerPlanta(int codPlanta) {
+	public Planta obtenerPlanta(int codPlanta) {
 		int longitud = this.plantas.size();
 		for (int i = 0; i < longitud; i++) {
 			if (plantas.get(i).getCodigoPlanta() == codPlanta)
@@ -41,9 +41,9 @@ public class PlantaDAO {
 		return null;
 	}
 
-	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {
-		ArrayList<PlantaDTO> aux = new ArrayList<PlantaDTO>();
-		for (PlantaDTO p : plantas) {
+	public ArrayList<Planta> obtenerPlantas(int codEspecie) {
+		ArrayList<Planta> aux = new ArrayList<Planta>();
+		for (Planta p : plantas) {
 			if (p.getCodigo() == codEspecie)
 				aux.add(p);
 		}
@@ -68,13 +68,13 @@ public class PlantaDAO {
 		plantas.remove(indice);
 	}
 
-	public void agregarPlanta(PlantaDTO plantaDTO) {
+	public void agregarPlanta(Planta plantaDTO) {
 		this.plantas.add(plantaDTO);
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<PlantaDTO> obtenerPlantas() {
-		return (ArrayList<PlantaDTO>) this.plantas.clone();
+	public ArrayList<Planta> obtenerPlantas() {
+		return (ArrayList<Planta>) this.plantas.clone();
 	}
 
 	public static PlantaDAO getInstance(){                        
@@ -84,7 +84,7 @@ public class PlantaDAO {
 		return plantaDAO;
 	}
 
-	public PlantaDTO obtenerPlantaEspecifica(int codPlanta) {
+	public Planta obtenerPlantaEspecifica(int codPlanta) {
 		for (int i=0; i<plantas.size(); i++){
 			if( plantas.get(i).getCodigoPlanta()==codPlanta){
 				return plantas.get(i);

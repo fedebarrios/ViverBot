@@ -13,7 +13,7 @@ import viverbot.MockOptionPane;
 import viverbot.Controlador.ControladorConfiguracionDirectorio;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
@@ -51,7 +51,7 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);
-		PlantaDTO planta = new PlantaDTO(1, 1, null, null);
+		Planta planta = new Planta(1, 1, null, null);
 		EstadoAltura guardado = buscador.obtenerEstadoPorEspecie(60, 30, planta);
 		assertEquals(guardado.getCmDeDiferencia(), 30.0);
 		assertEquals(guardado.getPlanta().getCodigoPlanta(), 1);

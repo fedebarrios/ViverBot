@@ -7,7 +7,7 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.Model.Plantas;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
@@ -27,9 +27,9 @@ public class ColectorAltura extends Observable{
 		this.alturasActuales = null;	
 	}
 
-	protected List<Medicion> medir(List<PlantaDTO> plantas) {
+	protected List<Medicion> medir(List<Planta> plantas) {
 		List<Medicion> alturasActuales = new ArrayList<Medicion>();
-		for (PlantaDTO p : plantas){
+		for (Planta p : plantas){
 			alturasActuales.add(this.mediator.tomarAltura(p));
 		}
 		return alturasActuales;
@@ -40,7 +40,7 @@ public class ColectorAltura extends Observable{
 
 		task = new TimerTask() {
 			
-			List<PlantaDTO> plantas = new Plantas().obtenerPlantas();
+			List<Planta> plantas = new Plantas().obtenerPlantas();
 			@Override
 			public void run() {
 				alturasActuales = medir(plantas);

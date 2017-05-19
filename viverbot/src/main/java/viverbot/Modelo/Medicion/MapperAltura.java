@@ -6,7 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Modelo.Magnitudes.Medicion;
@@ -14,11 +14,11 @@ import viverbot.Modelo.Magnitudes.Medicion;
 public class MapperAltura extends Observable implements Observer  {
 	
 	private AnalizadorAltura analizador;
-	private List<PlantaDTO> plantas;
+	private List<Planta> plantas;
 	private ControlSeguimientos buscador;
 	private List<EstadoAltura> estadosDePlantas;
 	
-	public MapperAltura(AnalizadorAltura analizador, List<PlantaDTO> plantas, ControlSeguimientos buscador){
+	public MapperAltura(AnalizadorAltura analizador, List<Planta> plantas, ControlSeguimientos buscador){
 		this.analizador = analizador;
 		this.plantas = plantas;
 		this.buscador = buscador;
@@ -28,7 +28,7 @@ public class MapperAltura extends Observable implements Observer  {
 	public List<EstadoAltura> relacionar(List<Medicion> alturas){
 		List<EstadoAltura> estadosDevueltos = new ArrayList<EstadoAltura>(); 
 		int i = 0;
-		for(PlantaDTO p : plantas){
+		for(Planta p : plantas){
 			SeguimientoAltura seguimiento = buscador.getSeguimiento(p);
 			int diaActual = seguimiento.getUltimoDiaMedicion()+1;
 			estadosDevueltos.add(analizador.analizar(alturas.get(i), seguimiento, diaActual));

@@ -38,8 +38,7 @@ public class PruebaDeSimulacion {
 		
 		VistaPrincipalController principal = new VistaPrincipalController();
 
-		Simulador simulador = new Simulador(r, Magnitudes.TEMPERATURA);
-		simulador.setFrecuencia(5000);
+		Simulador simulador = new Simulador(r, Magnitudes.TEMPERATURA, 5000);
 		
 		InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
 		SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();

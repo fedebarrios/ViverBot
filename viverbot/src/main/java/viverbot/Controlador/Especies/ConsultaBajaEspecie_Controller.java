@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
 import viverbot.Vista.Auxiliares.DefaultOptionPane;
@@ -29,7 +29,7 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 
 	@SuppressWarnings("unchecked")
 	public void llenarCombo(@SuppressWarnings("rawtypes") JComboBox combo) {
-		ArrayList<EspecieDTO> especies = inventario.obtenerEspecies();
+		ArrayList<Especie> especies = inventario.obtenerEspecies();
 		for (int i = 0; i < especies.size(); i++) {
 			consultaBajaVista.getComboBox().addItem(especies.get(i).getNombre());
 		}
@@ -54,7 +54,7 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 				optionPane.showMessageDialog(this.consultaBajaVista, "La especie asociada tiene plantas cargadas");
 			} 
 			else{
-				ArrayList<EspecieDTO> esp = inventario.obtenerEspecies();
+				ArrayList<Especie> esp = inventario.obtenerEspecies();
 				for (int i = 0; i < esp.size(); i++) {
 					if (esp.get(i).getNombre().equals(elementoElegido)) {
 						this.inventario.borrarEspecie(esp.get(i).getCodEspecie());
@@ -65,8 +65,8 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 			}
 		} else if (e.getSource() == this.consultaBajaVista.getBtnVerDetalle()){
 			String elementoElegido = this.consultaBajaVista.getComboBox().getSelectedItem().toString();
-			ArrayList<EspecieDTO> especies = inventario.obtenerEspecies();
-			for (EspecieDTO esp: especies) {
+			ArrayList<Especie> especies = inventario.obtenerEspecies();
+			for (Especie esp: especies) {
 				if(esp.getNombre().equals(elementoElegido))
 					controladorVerDetalle = new VerDetallesEspecie_Controller(esp);
 			}
@@ -74,7 +74,7 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 	}
 
 	public boolean sePuedeBorrar(String elementoElegido) {
-		ArrayList<EspecieDTO> esp = inventario.obtenerEspecies();
+		ArrayList<Especie> esp = inventario.obtenerEspecies();
 		int codigoEspecie = 0;
 		for (int i = 0; i < esp.size(); i++) {
 			if (esp.get(i).getNombre().equals(elementoElegido)) {

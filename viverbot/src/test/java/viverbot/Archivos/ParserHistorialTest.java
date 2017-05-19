@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.TuplaAltura;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
@@ -17,7 +17,7 @@ public class ParserHistorialTest {
 	public void ParserEspecie() throws Exception{
 		ParserEspecie parser = new ParserEspecie();
 		String datos = "Especie:(tomate,tomatus)";
-		EspecieDTO especie = parser.parsear(datos);
+		Especie especie = parser.parsear(datos);
 		assertEquals("tomate",especie.getNombre());
 		assertEquals("tomatus",especie.getNombreCientifico());
 	}
@@ -27,7 +27,7 @@ public class ParserHistorialTest {
 	public void ParserMalFormato() throws Exception{
 		ParserEspecie parser = new ParserEspecie();
 		String datos = "Esp:(tomate,tomatus)";
-		EspecieDTO especie = parser.parsear(datos);
+		Especie especie = parser.parsear(datos);
 	}
 	
 	@SuppressWarnings("unused")
@@ -35,7 +35,7 @@ public class ParserHistorialTest {
 	public void ParserSinInfo() throws Exception{
 		ParserEspecie parser = new ParserEspecie();
 		String datos = "";
-		EspecieDTO especie = parser.parsear(datos);
+		Especie especie = parser.parsear(datos);
 	}
 	
 	@SuppressWarnings("unused")
@@ -43,7 +43,7 @@ public class ParserHistorialTest {
 	public void ParserInfoExcesiva() throws Exception{
 		ParserEspecie parser = new ParserEspecie();
 		String datos = "Especie:(tomate,tomatus,tomatina)";
-		EspecieDTO especie = parser.parsear(datos);
+		Especie especie = parser.parsear(datos);
 	}
 	
 	@Test

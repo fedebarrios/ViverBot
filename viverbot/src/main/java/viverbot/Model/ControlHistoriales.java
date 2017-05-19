@@ -3,7 +3,7 @@ package viverbot.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 
 public class ControlHistoriales {
 	protected static ControlHistoriales control;
@@ -28,7 +28,7 @@ public class ControlHistoriales {
 		historiales.remove(historial);
 	}
 	
-	public HistorialOptimo getHistorial(EspecieDTO especie){
+	public HistorialOptimo getHistorial(Especie especie){
 		for(HistorialOptimo h : historiales){
 			if(h.equals(especie)){
 				return h;
@@ -37,7 +37,7 @@ public class ControlHistoriales {
 		return null;
 	}
 	
-	public boolean existeHistorial(EspecieDTO especie){
+	public boolean existeHistorial(Especie especie){
 		for(HistorialOptimo h : historiales){
 			if(h.equals(especie)){
 				return true;

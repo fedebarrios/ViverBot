@@ -17,12 +17,13 @@ public class Simulador {
 	private Medicion valorActual;
 	private long frecuencia;
 
-	public Simulador(Map<Horario, RangoNumerico> r, Magnitudes m) {
+	public Simulador(Map<Horario, RangoNumerico> r, Magnitudes m, long f) {
 		this.rangos = r;
 		magnitud = m;
 		this.horaActual = Hora.obtenerHoraActual();
 		this.actualizarValorActual(this.horaActual);
-		this.frecuencia = 300000;
+		this.frecuencia = f;
+		this.simular();
 	}
 
 	public void simular() {

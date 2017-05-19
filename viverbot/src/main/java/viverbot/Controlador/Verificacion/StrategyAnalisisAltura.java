@@ -1,6 +1,6 @@
 package viverbot.Controlador.Verificacion;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.Interfaces.IAnalisisAltura;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Modelo.Magnitudes.Medicion;
@@ -8,7 +8,7 @@ import viverbot.Modelo.Magnitudes.Medicion;
 public class StrategyAnalisisAltura implements IAnalisisAltura{
 
 	@Override
-	public EstadoAltura analizar(Medicion actual, Medicion esperada , PlantaDTO planta) {
+	public EstadoAltura analizar(Medicion actual, Medicion esperada , Planta planta) {
 		
 		double porcentajeCrecimiento = comparar(actual, esperada);
 		double diferenciaAltura = diferenciaDeAlturas(esperada, actual);

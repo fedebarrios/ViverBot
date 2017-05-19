@@ -34,6 +34,7 @@ public class SimularTest {
 	private static RangoNumerico r7 = new RangoNumerico(6.0, 7.0);
 	private static RangoNumerico r8 = new RangoNumerico(7.0, 8.0);
 
+	//actualiza la temperatura actual si horario de mañana
 	@Test
 	public void testActualizarValorActualMañana() {
 
@@ -46,6 +47,7 @@ public class SimularTest {
 		this.clear();
 
 	}
+	//actualiza la temperatura actual si horario de tarde
 
 	@Test
 	public void testActualizarValorActualTarde() {
@@ -60,6 +62,8 @@ public class SimularTest {
 
 	}
 
+	//actualiza la temperatura actual si horario de noche
+
 	@Test
 	public void testActualizarValorActualNoche() {
 
@@ -73,6 +77,7 @@ public class SimularTest {
 
 	}
 
+	//verifica que el simulador trabaje con el rango apropiado segun el horario
 	@Test
 	public void testGetRangoMedionoche() {
 		this.inicializar();
@@ -142,6 +147,7 @@ public class SimularTest {
 		this.clear();
 	}
 
+	//verifica que el simulador este trabajando segun la hora indicada
 	@Test
 	public void testSetHoraActual() {
 
@@ -162,7 +168,7 @@ public class SimularTest {
 		r.put(Horario.TARDE, r6);
 		r.put(Horario.ATARDECER, r7);
 		r.put(Horario.NOCHE, r8);
-		simulador = new Simulador(r, Magnitudes.TEMPERATURA);
+		simulador = new Simulador(r, Magnitudes.TEMPERATURA,300000);
 	}
 
 	private void clear() {
