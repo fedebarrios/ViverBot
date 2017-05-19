@@ -33,7 +33,7 @@ public class ParserTest {
 	
 	@Test
 	public void MediatorTest(){
-		MediatorParser mediator = new MediatorParser();
+		ParserDataArchivos mediator = new ParserDataArchivos();
 		ArrayList<String> datos = new ArrayList<String>();
 		datos.add("h1:1.54");
 		datos.add("h3:1.65");

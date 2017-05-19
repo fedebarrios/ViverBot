@@ -7,14 +7,14 @@ import java.util.Observable;
 
 import org.apache.log4j.Logger;
 
-import viverbot.Controlador.Verificacion.TuplaEstadosValores;
+import viverbot.Controlador.Verificacion.EstadoAltura;
+import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
 import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
 public class PluginArchivos extends Observable{
-	LectorTxt lector ;
 	ValidadorHistorial validadorHistorial ;
 	ValidadorEstados validadorEstados ;
 	Logger logger;
@@ -61,12 +61,12 @@ public class PluginArchivos extends Observable{
 	}
 	
 	public HistorialOptimo cargarHistorial(String path) throws Exception{
-		lector = new LectorHistorial();
+		LectorHistorial lector = new LectorHistorial();
 		validadorHistorial = new ValidadorHistorial();
-		List<String> lectura = ((LectorHistorial) lector).leerArchivo(path);
+		List<String> lectura = lector.leerArchivo(path);
 		boolean esValidoHistorial = validadorHistorial.validarHistorial(lectura);
 		if(esValidoHistorial){
-			MediatorParser mediator = new MediatorParser();
+			ParserDataArchivos mediator = new ParserDataArchivos();
 			HistorialOptimo historial = mediator.parsearHistorialEspecie(lectura);
 			if(!CalculadorHistorial.calcularDiferencia(historial)){
 				logger.info("Por favor ingrese un historial mas consistente");
@@ -87,19 +87,17 @@ public class PluginArchivos extends Observable{
 	}
 	
 	public boolean cargarEstados(String path) throws Exception{
-		lector = new LectorEstados();
+		LectorTxt lector = new LectorTxt();
 		validadorEstados = new ValidadorEstados();
-		List<String[]> lectura = ((LectorEstados) lector).leerArchivo(path);
-		boolean esValidoEstados = validadorEstados.validarEstados(lectura);
-		if(esValidoEstados){
-			MediatorParser mediator = new MediatorParser();
-			TuplaEstadosValores tupla = mediator.parsearEstadosValores(lectura);
-			Integer codigoEspecie = mediator.parsearCodigoEspecie(lectura);
-			BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
-			MapperEstadoAltura mapper = new MapperEstadoAltura();
-			mapper.relacionar(buscador, tupla, codigoEspecie);
-			return false;
-		}
+		String lectura = lector.leerTxt(path);
+		ParserDataArchivos parser = new ParserDataArchivos();
+		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
+		ArrayList<Double> valores = parser.parsearValores(lectura);
+		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		SelectorEstadosPorValor tupla = new SelectorEstadosPorValor(estados, valores);
+		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
+		MapperEstadoAltura mapper = new MapperEstadoAltura();
+		mapper.relacionar(buscador, tupla, codigoEspecie);
 		return true;
 	}
 }

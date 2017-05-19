@@ -10,39 +10,34 @@ import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.Log;
 
 public class LectorTxt {
-	protected Logger logger ;
-	
-	public LectorTxt(){
+	protected Logger logger;
+
+	public LectorTxt() {
 		logger = Log.getLog(LectorTxt.class);
 	}
-	
+
 	public String leerTxt(String archivo) throws Exception {
-		if(!Verificador.validarExistencia(archivo)){
+		if (!Verificador.validarExistencia(archivo)) {
 			logger.error("No existe archivo");
 			throw new Exception();
-		}else if (!Verificador.validarExtension(archivo, ".txt")){
+		} else if (!Verificador.validarExtension(archivo, ".txt")) {
 			logger.error("La extension del archivo no es .txt.");
 			throw new Exception();
 		}
-		else{
-
-			String data = "";
-	        FileReader f;
-			try {
-				f = new FileReader(archivo);
-		        BufferedReader b = new BufferedReader(f);
-		        String line = "";
-		        while((line = b.readLine()) != null) {
-		            data += line + "/";
-		        }
-		        b.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				return e.toString();
+		String data = "";
+		FileReader f;
+		try {
+			f = new FileReader(archivo);
+			BufferedReader b = new BufferedReader(f);
+			String line = "";
+			while ((line = b.readLine()) != null) {
+				data += line;
 			}
-	        return data;
-
+			b.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return e.toString();
 		}
-			
-    }
+		return data;
+	}
 }

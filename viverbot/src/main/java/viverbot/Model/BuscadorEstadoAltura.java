@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.Controlador.Verificacion.TuplaEstadosValores;
+import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
 import viverbot.DTO.PlantaDTO;
 
 public class BuscadorEstadoAltura {
-	private Map<Integer, TuplaEstadosValores> map;
+	private Map<Integer, SelectorEstadosPorValor> map;
 	private static BuscadorEstadoAltura buscador;
 	
 	public BuscadorEstadoAltura(){
-		this.setMap(new HashMap<Integer, TuplaEstadosValores>());
+		this.setMap(new HashMap<Integer, SelectorEstadosPorValor>());
 	};
 	
 	public static BuscadorEstadoAltura getInstance(){
@@ -24,12 +24,12 @@ public class BuscadorEstadoAltura {
 	}
 	
 	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , PlantaDTO planta){
-		TuplaEstadosValores tupla = map.get(planta.getCodigo());
+		SelectorEstadosPorValor tupla = map.get(planta.getCodigo());
 		if (tupla == null){
 			return null;
 		}
-		ArrayList<EstadoAltura> estados = (ArrayList<EstadoAltura>) tupla.getEstados();
-		ArrayList<Integer> valores = (ArrayList<Integer>) tupla.getValores();
+		ArrayList<EstadoAltura> estados = tupla.getEstados();
+		ArrayList<Double> valores = tupla.getValores();
 		int i = 0;
 		for (EstadoAltura estado : estados){
 			if ((  i == 0 && valorCrecimiento <= valores.get(0))
@@ -44,15 +44,15 @@ public class BuscadorEstadoAltura {
 		return null;
 	}
 
-	public Map<Integer, TuplaEstadosValores> getMap() {
+	public Map<Integer, SelectorEstadosPorValor> getMap() {
 		return map;
 	}
 
-	public void setMap(Map<Integer, TuplaEstadosValores> map) {
+	public void setMap(Map<Integer, SelectorEstadosPorValor> map) {
 		this.map = map;
 	}
 	
-	public void agregarEntrada(TuplaEstadosValores tupla, Integer codigoEspecie){
+	public void agregarEntrada(SelectorEstadosPorValor tupla, Integer codigoEspecie){
 		this.map.put(codigoEspecie, tupla);
 	}
 }

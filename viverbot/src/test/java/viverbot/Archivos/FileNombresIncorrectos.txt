@@ -1,3 +1,3 @@
-40,50,60
-Rico,Suav**e
-1
+Valores:(40,50,60)
+Estados:(Rico,Suav**e)
+Codigo:(1)

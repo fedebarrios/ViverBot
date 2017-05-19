@@ -1,9 +1,6 @@
 package viverbot.Archivos;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import junit.framework.TestCase;
@@ -11,7 +8,7 @@ import junit.framework.TestCase;
 public class LectorEstadosTest extends TestCase {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	LectorEstados lector;
+	LectorTxt lector;
 	
 	@Test (expected = Exception.class)
 	public void testArchivoNoTxt() throws Exception
@@ -57,8 +54,8 @@ public class LectorEstadosTest extends TestCase {
 	private void inicialize(String archivo) throws Exception {
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
-		lector = new LectorEstados();
-		lector.leerArchivo(archivo);
+		lector = new LectorTxt();
+		lector.leerTxt(archivo);
 	}
 
 	private void clear() {

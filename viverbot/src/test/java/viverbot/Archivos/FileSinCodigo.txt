@@ -1,2 +1,2 @@
-40,50,60
-Rico,Suave
+Valores:(40,50,60)
+Estados:(Rico,Suave)

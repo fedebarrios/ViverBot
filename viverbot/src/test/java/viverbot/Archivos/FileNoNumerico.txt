@@ -1,3 +1,3 @@
-40,5x0,60
-Rico,Suave
-1
+Valores:(40,5x0,60)
+Estados:(Rico,Suave)
+Codigo:(1)
