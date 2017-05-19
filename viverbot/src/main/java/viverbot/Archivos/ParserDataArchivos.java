@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
 import viverbot.DTO.EspecieDTO;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
