@@ -3,7 +3,6 @@ package viverbot.Model;
 import java.util.ArrayList;
 
 import viverbot.DAO.EspecieDAO;
-import viverbot.DAO.PlantaDAO;
 import viverbot.DTO.EspecieDTO;
 
 public class Inventario {
@@ -19,7 +18,9 @@ public class Inventario {
 	
 	public void agregarEspecie(String nombreEspecie, String nombreCientifico, String pathAlmacenado){
 		EspecieDTO especieDTO = new EspecieDTO(especieDAO.obtenerUltimoCodigo()+1, nombreEspecie, nombreCientifico, pathAlmacenado);
-		especieDAO.agregar(especieDTO);
+		if(!existeEspecie(especieDTO)){
+			especieDAO.agregar(especieDTO);	
+		}
 	}
 	
 	public void borrarEspecie(int codEspecie){
