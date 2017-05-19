@@ -24,7 +24,7 @@ public class ReconocedorFruto {
 				x += posicionador.getWidthKernel();
 			}
 			else
-				x ++;	
+				x+=4;	
 			}
 			x=0;
 			y ++;
