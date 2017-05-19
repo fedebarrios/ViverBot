@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import viverbot.MockFileChooser;
 import viverbot.MockOptionPane;
+import viverbot.Archivos.GatewayConfiguracion;
 import viverbot.Vista.Auxiliares.FileChooser;
 
 public class ControladorConfiguracionTest {
@@ -42,11 +43,13 @@ public class ControladorConfiguracionTest {
 	public void llenarCampos(){
 		inicialize();
 		conf.getVista().setRdDirectorio3(true);
-		MockFileChooser fileChooser = new MockFileChooser("src\\main\\java");
+		MockFileChooser fileChooser = new MockFileChooser("C\\Documents");
 		conf.setFileChooser(fileChooser);
 		conf.setOptionPane(new MockOptionPane());
 		conf.actionPerformed(new ActionEvent(conf.getVista().getBtnCargarDirectorio(), 1, ""));
-		assertEquals("src\\main\\java",conf.getVista().getDirectorio3().getText());
+		assertEquals("C\\Documents",conf.getVista().getDirectorio3().getText());
+		
+		assertEquals("C\\Documents", GatewayConfiguracion.getDirectorio(3));
 	}
 	
 	public void inicialize(){

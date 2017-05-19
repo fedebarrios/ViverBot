@@ -70,6 +70,22 @@ public class MapperCargadorTest {
 		
 		clear();
 	}
+	
+	@Test
+	public void mapearEspecieRepetida(){	
+		inicialize();
+		
+		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
+		EspecieDTO especie1= new EspecieDTO(6,"tomate", "tomatus", "");
+		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie1);
+		historiales.add(historial1);
+		int cantEspeciesAntes = inventario.cantidadEspecies();
+		mapper.update(null , historiales);
+		assertEquals(cantEspeciesAntes , inventario.cantidadEspecies());
+		assertThat("Se cargaron 0 historiales" , containsString(outContent.toString()));
+		
+		clear();
+	}
 
 	private void clear() {
 		mapper = null;
