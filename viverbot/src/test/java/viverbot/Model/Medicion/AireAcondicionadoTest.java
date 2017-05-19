@@ -1,9 +1,6 @@
 package viverbot.Model.Medicion;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.text.DecimalFormat;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
@@ -29,9 +26,9 @@ public class AireAcondicionadoTest {
 		assertEquals(new Calor().getClass(), aire.getEstado().getClass());
 		assertEquals(new TemperaturaAireAcondicionado().getClass(), aire.getTemp().getClass());
 	}
-	
+
 	@Test
-	public void ejecutarTest() throws NumberFormatException{
+	public void ejecutarTest() throws NumberFormatException {
 		init();
 		Medicion aux = aire.ejecutar();
 		Medicion expected = new Medicion(0.026, Magnitudes.TEMPERATURA);
@@ -39,7 +36,7 @@ public class AireAcondicionadoTest {
 		assertNotNull(ret);
 		assertEquals(expected.getValor(), ret);
 	}
-	
+
 	@Test
 	public void definirPositivoNegativoTest_calor() throws Exception {
 		init();
@@ -48,7 +45,7 @@ public class AireAcondicionadoTest {
 		assertNotNull(ret);
 		assertEquals(aux, ret);
 	}
-	
+
 	@Test
 	public void definirPositivoNegativoTest_frio() throws Exception {
 		init();
@@ -56,10 +53,36 @@ public class AireAcondicionadoTest {
 		Double aux = -0.5;
 		Double ret = Whitebox.invokeMethod(aire, "definirPositivoNegativo", 0.5);
 		assertNotNull(ret);
-		assertEquals(aux, ret); 
+		assertEquals(aux, ret);
 	}
-	
-	public void init(){
+
+	@Test
+	public void encenderTest() {
+		init();
+		aire.encender();
+	}
+
+	@Test
+	public void isEncendidoTest() {
+		init();
+		assertFalse(aire.isEncendidoManualmente());
+	}
+
+	@Test
+	public void ApagarTest() {
+		init();
+		aire.apagar();
+	}
+
+	@Test
+	public void returnThisTest() throws Exception {
+		init();
+		AireAcondicionado aire = Whitebox.invokeMethod(this.aire, "returnThis");
+		assertNotNull(aire);
+		assertEquals(aire, this.aire);
+	}
+
+	public void init() {
 		this.aire = new AireAcondicionado();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_1());

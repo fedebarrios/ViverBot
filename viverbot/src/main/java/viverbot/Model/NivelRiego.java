@@ -2,7 +2,6 @@ package viverbot.Model;
 
 public enum NivelRiego {
 	NIVELNULO(0),
-	NIVELNORMAL(3),
 	NIVELNEUTRO(3),
 	
     NIVEL1(1),
@@ -37,9 +36,7 @@ public enum NivelRiego {
     		return NIVELNULO;    
     }
     
-    
-
-    
+   
     private NivelRiego evaluaPeso(int peso){
     	NivelRiego n=NIVEL1;
     	
@@ -69,7 +66,7 @@ public enum NivelRiego {
 		
     	return n;
     }
-    
+  
     
     
 }

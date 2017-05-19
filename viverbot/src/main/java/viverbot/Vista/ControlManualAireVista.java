@@ -12,8 +12,11 @@ import viverbot.Controlador.ControlManualAireVistaController;
 public class ControlManualAireVista extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	@SuppressWarnings("rawtypes")
 	private JComboBox dropdown_friocalor;
+	@SuppressWarnings("rawtypes")
 	private JComboBox dropdown_potencia;
+	@SuppressWarnings("rawtypes")
 	private JComboBox dropdown_temperatura;
 	private JLabel label_friocalor;
 	private JLabel label_potencia;
@@ -22,6 +25,7 @@ public class ControlManualAireVista extends JFrame {
 	private JButton btn_encenderAire;
 	private JButton btn_cerrar;
 
+	@SuppressWarnings("rawtypes")
 	public ControlManualAireVista(ControlManualAireVistaController controlador) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 280, 272);
@@ -87,14 +91,17 @@ public class ControlManualAireVista extends JFrame {
 		return btn_cerrar;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public JComboBox getDropdown_friocalor() {
 		return dropdown_friocalor;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public JComboBox getDropdown_potencia() {
 		return dropdown_potencia;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public JComboBox getDropdown_temperatura() {
 		return dropdown_temperatura;
 	}

@@ -15,7 +15,7 @@ public class Potencia_1 implements IPotencia {
 
 	@Override
 	public String toString() {
-		return "Potencia 1";
+		return "1";
 	}
 
 }

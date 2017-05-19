@@ -29,7 +29,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(5,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(5,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 	}
 	
 	@Test
@@ -38,7 +38,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.JPG");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(0,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(0,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 
 	}
 	
@@ -49,7 +49,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(6,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(6,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 
 	}
 	
@@ -59,7 +59,7 @@ public class ReconocedorTotalTest {
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol15.png");
 		iniciarImagenes();
 		posicionarKernel(0, 0);
-		assertEquals(15,reconocedor.reconocerFrutos(imgResaltada(), posicionador).intValue());
+		assertEquals(15,reconocedor.reconocerFrutos(imgResaltada(), posicionador,1,1).intValue());
 
 
 	}
@@ -85,6 +85,38 @@ public class ReconocedorTotalTest {
 		ReconocedorFrutoMock recoFalso = new ReconocedorFrutoMock();
 		assertEquals(33,recoFalso.reconocerFrutos(imgResaltada(), posicionador).intValue());
 
+	}
+	
+	
+	
+	@Test
+	public void detectar2de2tamañosTest()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolConFChicos.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada(), posicionador,0.5f,1).intValue());
+	}
+	
+	@Test
+	public void detectar2de3tamañosTest()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolConFChicos3.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(8,reconocedor.reconocerFrutos(imgResaltada(), posicionador,0.6f,1).intValue());
+	}
+	
+	@Test
+	public void detectar3de3tamañosTest()
+	{
+		inicializar();
+		iniciarPath("src/test/java/viverbot/recursosTest/arbolConFChicos3.png");
+		iniciarImagenes();
+		posicionarKernel(0, 0);
+		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada(), posicionador,0.5f,1).intValue());
 	}
 	
 	

@@ -22,7 +22,6 @@ public class Grafo {
 	{
 		_A[i][j]= peso;
 		_A[j][i]= peso;
-
 	}
 	
 	public int getVertices()

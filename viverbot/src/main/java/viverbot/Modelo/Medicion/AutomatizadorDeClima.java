@@ -29,8 +29,6 @@ public class AutomatizadorDeClima {
 			definirEstados();
 			estadoVivero.setTemperaturaDiferenciaSumar(aire.ejecutar());
 			WriterExcel.registrarAutomatizacion(aire);
-			System.out.println(estadoVivero.getTemperaturaActual().getValor());
-			
 		}
 	};
 
@@ -69,37 +67,88 @@ public class AutomatizadorDeClima {
 	}
 
 	private void definirTemperatura() {
-		Integer random;
-		if (aire.getPotencia().getClass() == Potencia_0.class) {
-			random = (int) (Math.random() * 2 + 22);
-			aire.setTemperatura(random.toString());
-		}
 		if (aire.getEstado().getClass() == Calor.class) {
+			if (aire.getPotencia().getClass() == Potencia_0.class) {
+				if (getRango().getMinimo() - getTemp().getValor() <= 0.5) {
+					aire.setTemperatura("22");
+				}
+				if (getRango().getMinimo() - getTemp().getValor() <= 1.0
+						&& getRango().getMinimo() - getTemp().getValor() > 0.5) {
+					aire.setTemperatura("23");
+				}
+			}
 			if (aire.getPotencia().getClass() == Potencia_1.class) {
-				random = (int) (Math.random() * 3 + 22);
-				aire.setTemperatura(random.toString());
+				if (getRango().getMinimo() - getTemp().getValor() <= 1.5
+						&& getRango().getMinimo() - getTemp().getValor() > 1.0) {
+					aire.setTemperatura("24");
+				}
+				if (getRango().getMinimo() - getTemp().getValor() <= 2.0
+						&& getRango().getMinimo() - getTemp().getValor() > 1.5) {
+					aire.setTemperatura("25");
+				}
 			}
 			if (aire.getPotencia().getClass() == Potencia_2.class) {
-				random = (int) (Math.random() * 5 + 22);
-				aire.setTemperatura(random.toString());
+				if (getRango().getMinimo() - getTemp().getValor() <= 2.5
+						&& getRango().getMinimo() - getTemp().getValor() > 2.0) {
+					aire.setTemperatura("26");
+				}
+				if (getRango().getMinimo() - getTemp().getValor() <= 3.0
+						&& getRango().getMinimo() - getTemp().getValor() > 2.5) {
+					aire.setTemperatura("27");
+				}
 			}
 			if (aire.getPotencia().getClass() == Potencia_3.class) {
-				random = (int) (Math.random() * 7 + 22);
-				aire.setTemperatura(random.toString());
+				if (getRango().getMinimo() - getTemp().getValor() <= 3.5
+						&& getRango().getMinimo() - getTemp().getValor() > 3.0) {
+					aire.setTemperatura("28");
+				}
+				if (getRango().getMinimo() - getTemp().getValor() > 3.5) {
+					aire.setTemperatura("29");
+				}
 			}
 		}
 		if (aire.getEstado().getClass() == Frio.class) {
+			if (aire.getPotencia().getClass() == Potencia_0.class) {
+				if (getTemp().getValor() - getRango().getMaximo() <= 0.5) {
+					aire.setTemperatura("24");
+				}
+				if (getTemp().getValor() - getRango().getMaximo() <= 1.0
+						&& getTemp().getValor() - getRango().getMaximo() > 0.5) {
+					aire.setTemperatura("23");
+				}
+			}
 			if (aire.getPotencia().getClass() == Potencia_1.class) {
-				random = (int) (Math.random() * 3 + 20);
-				aire.setTemperatura(random.toString());
+				if (getTemp().getValor() - getRango().getMaximo() <= 1.5
+						&& getTemp().getValor() - getRango().getMaximo() > 1.0) {
+					aire.setTemperatura("22");
+				}
+				if (getTemp().getValor() - getRango().getMaximo() <= 2.0
+						&& getTemp().getValor() - getRango().getMaximo() > 1.5) {
+					aire.setTemperatura("21");
+				}
 			}
 			if (aire.getPotencia().getClass() == Potencia_2.class) {
-				random = (int) (Math.random() * 4 + 18);
-				aire.setTemperatura(random.toString());
+				if (getTemp().getValor() - getRango().getMaximo() <= 2.5
+						&& getTemp().getValor() - getRango().getMaximo() > 2.0) {
+					aire.setTemperatura("20");
+				}
+				if (getTemp().getValor() - getRango().getMaximo() <= 3.0
+						&& getTemp().getValor() - getRango().getMaximo() > 2.5) {
+					aire.setTemperatura("19");
+				}
 			}
 			if (aire.getPotencia().getClass() == Potencia_3.class) {
-				random = (int) (Math.random() * 4 + 16);
-				aire.setTemperatura(random.toString());
+				if (getTemp().getValor() - getRango().getMaximo() <= 3.5
+						&& getTemp().getValor() - getRango().getMaximo() > 3.0) {
+					aire.setTemperatura("18");
+				}
+				if (getTemp().getValor() - getRango().getMaximo() <= 4.0
+						&& getTemp().getValor() - getRango().getMaximo() > 3.5) {
+					aire.setTemperatura("17");
+				}
+				if (getTemp().getValor() - getRango().getMaximo() > 4.0) {
+					aire.setTemperatura("16");
+				}
 			}
 		}
 	}
@@ -107,14 +156,12 @@ public class AutomatizadorDeClima {
 	public void encender() {
 		timer.schedule(tt, 1000, 1000);
 		encendido = true;
-		aire.setEncendidoAutomatizado(true);
 	}
 
 	public void apagar() {
 		timer.cancel();
 		timer.purge();
 		encendido = false;
-		aire.setEncendidoAutomatizado(false);
 	}
 
 	// -------------------------GETTERS Y SETTERS----------------------
@@ -133,6 +180,10 @@ public class AutomatizadorDeClima {
 
 	private RangoNumerico getRango() {
 		return this.estadoVivero.getRangoTemperatura();
+	}
+
+	public EstadoVivero getEstadoVivero() {
+		return estadoVivero;
 	}
 
 }

@@ -20,7 +20,7 @@ public class Ubicacion {
 	}
 
 	public ArrayList<Object[]> obtenerUbicaciones() {
-		UbicacionDTO[][] ubicaciones = terrenoDAO.mostrarTerreno();
+		UbicacionDTO[][] ubicaciones = terrenoDAO.getUbicaciones();
 		ArrayList<Object[]> matriz = new ArrayList<Object[]>();
 		for (int i = 0; i < ubicaciones.length; i++) {
 			for (int j = 0; j < ubicaciones[i].length; j++) {

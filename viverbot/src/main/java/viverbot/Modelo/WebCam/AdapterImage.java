@@ -13,13 +13,19 @@ public class AdapterImage {
 		Imagen img = new Imagen(path);
 		ValidadorKernel validador = new ValidadorKernel();
 		ConvertidorImagen convertidor = new ConvertidorImagen();
-		if(validador.validarKernel(img)){
-			datos = convertidor.convertirImagen(img);
-			width = img.getAncho();
-			height = img.getAlto();
-			return true;}
-		else
-			return false;
+		try{ if(validador.validarKernel(img)){
+				datos = convertidor.convertirImagen(img);
+				width = img.getAncho();
+				height = img.getAlto();
+				return true;}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+
+		
 	}
 	
 	public Integer getCantidadPixeles()

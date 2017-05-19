@@ -21,7 +21,8 @@ public class DetectorFruto {
 	}
 	
 	private static boolean validarFruto(Integer cantObtenida, Kernel kernel) {
-		return cantObtenida.intValue()>=kernel.cantidadPixeles()-2 || cantObtenida.intValue()>=kernel.cantidadPixeles()+2;
+		
+		return cantObtenida.intValue()>=kernel.cantidadPixeles()-2 && cantObtenida.intValue()<=kernel.cantidadPixeles()+2;
 	}
 
 	private static boolean validarPx(Imagen img)
