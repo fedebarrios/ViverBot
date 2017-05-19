@@ -1,13 +1,13 @@
 package viverbot.Controlador.Verificacion;
 
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.NivelRiego;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Temperatura;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class EvaluaRiegoXTemperatura  extends EvaluaRiegoDecorator{
 	private RangoNumerico rangoIdeal = new RangoNumerico(25.0, 5.0);
-//	private Temperatura temperaturaActual=new TransmisorTemperaturaActual().getTemperaturaActual();
-	private Temperatura temperaturaActual=new Temperatura(5.0);
+	Medicion temperaturaActual = EstadoVivero.getInstance().getTemperaturaActual();
 	
 	public EvaluaRiegoXTemperatura(RiegoValidable riegoValidable) {
 		super(riegoValidable);
@@ -30,12 +30,12 @@ public class EvaluaRiegoXTemperatura  extends EvaluaRiegoDecorator{
 	}
 
 
-	public Temperatura getTemperaturaActual() {
+	public Medicion getTemperaturaActual() {
 		return temperaturaActual;
 	}
 
 
-	public void setTemperaturaActual(Temperatura temperaturaActual) {
+	public void setTemperaturaActual(Medicion temperaturaActual) {
 		this.temperaturaActual = temperaturaActual;
 	}
 

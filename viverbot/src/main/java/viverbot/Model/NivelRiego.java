@@ -6,7 +6,7 @@ public enum NivelRiego {
 	
     NIVEL1(1),
 	NIVEL2(2),
-	NIVEL3(3),/*NORMAL*/
+	NIVEL3(3),
 	NIVEL4(4),
 	NIVEL5(5);
 	
@@ -40,14 +40,10 @@ public enum NivelRiego {
     private NivelRiego evaluaPeso(int peso){
     	NivelRiego n=NIVEL1;
     	
-    	if(peso<0){
-    		n= NIVEL1;
-    	}else if(peso>5){
-    		n= NIVEL5;
-    	}
     	
 		switch (peso){
-		case 1:
+		case 0:
+		case 1:			
 		n= NIVEL1;
 		break;
 		case 2:
@@ -59,7 +55,8 @@ public enum NivelRiego {
 		case 4:
 		n=NIVEL4;		
 		break;
-		case 5:    	
+		case 5:
+		case 6:    				
 		n=NIVEL5;		
 		break;
 		}

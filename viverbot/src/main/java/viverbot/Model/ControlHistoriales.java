@@ -30,7 +30,7 @@ public class ControlHistoriales {
 	
 	public HistorialOptimo getHistorial(Especie especie){
 		for(HistorialOptimo h : historiales){
-			if(h.equals(especie)){
+			if(h.getEspecie().equals(especie)){
 				return h;
 			}
 		}
@@ -39,7 +39,7 @@ public class ControlHistoriales {
 	
 	public boolean existeHistorial(Especie especie){
 		for(HistorialOptimo h : historiales){
-			if(h.equals(especie)){
+			if(h.getEspecie().equals(especie)){
 				return true;
 			}
 		}

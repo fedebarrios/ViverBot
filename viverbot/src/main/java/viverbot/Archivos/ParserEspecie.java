@@ -3,6 +3,7 @@ package viverbot.Archivos;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import viverbot.DAO.EspecieDAO;
 import viverbot.DTO.Especie;
 import viverbot.Interfaces.IParser;
 
@@ -19,7 +20,7 @@ public class ParserEspecie implements IParser<Especie>{
 			throw new Exception("No existe informacion acerca de la especie");
 		}
 		String[] datosEspecie = match.split(",");
-		Especie ret = new Especie(6,datosEspecie[0],datosEspecie[1],"");
+		Especie ret = new Especie(EspecieDAO.getInstance().obtenerUltimoCodigo(),datosEspecie[0],datosEspecie[1],"");
 		return ret;
 	}
 }
