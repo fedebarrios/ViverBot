@@ -16,7 +16,6 @@ import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
 public class PluginArchivos extends Observable{
 	ValidadorHistorial validadorHistorial ;
-	ValidadorEstados validadorEstados ;
 	Logger logger;
 	public PluginArchivos(){
 		logger = Log.getLog(PluginArchivos.class);
@@ -81,7 +80,6 @@ public class PluginArchivos extends Observable{
 	
 	public boolean cargarEstados(String path) throws Exception{
 		LectorTxt lector = new LectorTxt();
-		validadorEstados = new ValidadorEstados();
 		String lectura = lector.leerTxt(path);
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
