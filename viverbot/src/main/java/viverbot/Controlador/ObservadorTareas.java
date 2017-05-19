@@ -1,17 +1,18 @@
 package viverbot.Controlador;
 
-import viverbot.Model.ProtocoloBrazoRobotico;
+import viverbot.DAO.ColaTareas;
+import viverbot.Model.ControladorBrazoRobotico;
 
 public class ObservadorTareas {
-	private ProtocoloBrazoRobotico protocolo;
+	private ControladorBrazoRobotico _controlador;
 	
-	public ObservadorTareas(){
-		protocolo = new ProtocoloBrazoRobotico();
+	public ObservadorTareas(ColaTareas cola){
+		_controlador = new ControladorBrazoRobotico(cola);
 	}
 	
 	public void actualizarEstadoProtocolo(){
-		if(!protocolo.estaOcupado()){
-			protocolo.run();
+		if(!_controlador.estaOcupado()){
+			_controlador.inicializarControlador();
 		}
 	}
 }

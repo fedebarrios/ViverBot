@@ -15,12 +15,12 @@ public class Ubicacion {
 	}
 	
 	public void inicializar(){
-		terrenoDAO = new TerrenoDAO();
+		terrenoDAO = TerrenoDAO.obtenerInstancia();
 		terrenoDAO.construirTerreno(10, 5);
 	}
 
 	public ArrayList<Object[]> obtenerUbicaciones() {
-		UbicacionDTO[][] ubicaciones = terrenoDAO.getUbicaciones();
+		UbicacionDTO[][] ubicaciones = terrenoDAO.mostrarMatrizDeUbicaciones();
 		ArrayList<Object[]> matriz = new ArrayList<Object[]>();
 		for (int i = 0; i < ubicaciones.length; i++) {
 			for (int j = 0; j < ubicaciones[i].length; j++) {

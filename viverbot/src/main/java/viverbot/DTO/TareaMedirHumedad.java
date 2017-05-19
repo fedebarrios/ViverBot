@@ -2,8 +2,8 @@ package viverbot.DTO;
 
 public class TareaMedirHumedad extends Tarea {
 
-	public TareaMedirHumedad(UbicacionDTO ubicacion, TipoTarea tipoTarea) {
-		super(ubicacion, tipoTarea);
+	public TareaMedirHumedad(UbicacionDTO ubicacion) {
+		super(ubicacion);
 	}
 	
 	@Override

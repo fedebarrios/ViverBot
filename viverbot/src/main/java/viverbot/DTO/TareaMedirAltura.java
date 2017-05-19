@@ -2,8 +2,8 @@ package viverbot.DTO;
 
 public class TareaMedirAltura extends Tarea{
 
-	public TareaMedirAltura(UbicacionDTO ubicacion, TipoTarea tipoTarea) {
-		super(ubicacion, tipoTarea);
+	public TareaMedirAltura(UbicacionDTO ubicacion) {
+		super(ubicacion);
 	}
 	
 	@Override

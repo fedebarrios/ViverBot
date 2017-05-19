@@ -2,8 +2,8 @@ package viverbot.DTO;
 
 public class TareaRegarUbicacion extends Tarea{
 
-	public TareaRegarUbicacion(UbicacionDTO ubicacion, TipoTarea tipoTarea) {
-		super(ubicacion, tipoTarea);
+	public TareaRegarUbicacion(UbicacionDTO ubicacion) {
+		super(ubicacion);
 	}
 	
 	@Override

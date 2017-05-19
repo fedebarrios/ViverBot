@@ -6,108 +6,118 @@ import viverbot.DTO.UbicacionDTO;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class TerrenoDAO {
+
+	private UbicacionDTO[][] _ubicaciones;
+	private static TerrenoDAO _terreno;
+	private static Temperatura _temperatura;
+	private int _cantFilas;
+	private int _cantColumnas;
 	
-	private UbicacionDTO[][] ubicaciones;
-	private static TerrenoDAO terreno;
-	private static Temperatura temperatura;
-	private int tamanioTerreno;
-	 
-	public void construirTerreno(int cantFilas, int cantColumnas){
-		ubicaciones = generarMatrizIrregularTerreno(cantFilas, cantColumnas);
-		tamanioTerreno = cantFilas * cantColumnas;
-		int indice = 0;
-		for (int i = 0; i < cantFilas; i++) {
-			for (int j = 0; j < cantColumnas; j++) {
-				UbicacionDTO ubicacion = new UbicacionDTO(i, j, indice);
-				ubicaciones[i][j] = ubicacion;
-				indice++;
-			} 
-		}
-		tamanioTerreno++;
+	private TerrenoDAO(){
+		_cantFilas=0;
+		_cantColumnas=0;
+		_ubicaciones = new UbicacionDTO[0][0];
 	}
 	
-	private UbicacionDTO[][] generarMatrizIrregularTerreno(int cantFilas, int cantColumnas){
-		ubicaciones = new UbicacionDTO[cantFilas][];
+	public void construirTerreno(int cantFilas, int cantColumnas) {
+		_cantColumnas = cantColumnas;
+		_cantFilas = cantFilas;
+		_ubicaciones = generarMatrizIrregularTerreno(cantFilas, cantColumnas);
+		generarUbicacionesDentroDelTerreno(_ubicaciones);
+	}
+
+	private UbicacionDTO[][] generarMatrizIrregularTerreno(int cantFilas, int cantColumnas) {
+		_ubicaciones = new UbicacionDTO[cantFilas][];
 		for (int i = 0; i < cantFilas; i++) {
-			if(i==0){
-				ubicaciones[i]=new UbicacionDTO[cantColumnas+1];
+			if (i == 0) {
+				_ubicaciones[i] = new UbicacionDTO[cantColumnas + 1];
 				continue;
 			}
-			ubicaciones[i]=new UbicacionDTO[cantColumnas];
+			_ubicaciones[i] = new UbicacionDTO[cantColumnas];
 		}
-		int indicePosicionDescanso = mostrarTamañoTerreno()-1;
-		ubicaciones[0][cantColumnas]= new UbicacionDTO(0, cantColumnas, indicePosicionDescanso);
-		return ubicaciones;
+		generarUbicacionDeDescanso(_ubicaciones);
+		return _ubicaciones;
 	}
 	
-	public boolean ocuparUbicacion(UbicacionDTO ubicacion){
-		int fila = ubicacion.getFila();
-		int columna = ubicacion.getColumna();
-		if(!ubicaciones[fila][columna].isEstado()){
-			ubicaciones[fila][columna].setEstado(true);
-			return true;
-		}
-		else return false;
+	private void generarUbicacionDeDescanso(UbicacionDTO[][] ubicaciones){
+		int indicePosicionDescanso = obtenerTamañoTerreno() - 1;
+		ubicaciones[0][_cantColumnas] = new UbicacionDTO(0, _cantColumnas, indicePosicionDescanso);
 	}
 	
-	public boolean desocuparUbicacion(UbicacionDTO ubicacion){
-		int fila = ubicacion.getFila();
-		int columna = ubicacion.getColumna();
-		if(ubicaciones[fila][columna].isEstado()){
-			ubicaciones[fila][columna].setEstado(false);
-			return true;
-		}
-		else return false;
-	}
-	
-	public Integer mostrarTamañoTerreno(){
-		int indice=1;
-		if(this.ubicaciones!=null){
-			for (int i = 0; i < ubicaciones.length; i++) {
-				for (int j = 0; j < ubicaciones[i].length; j++) {
-					if(i==0 && j+1==ubicaciones[i].length){
-						
-					}else{
-						indice++;
-					}
-				}
+	private void generarUbicacionesDentroDelTerreno(UbicacionDTO[][] ubicaciones){
+		int indice = 0;
+		for (int i = 0; i < _cantFilas; i++) {
+			for (int j = 0; j < _cantColumnas; j++) {
+				UbicacionDTO ubicacion = new UbicacionDTO(i,j,indice);
+				ubicacion.setEjeX((i+1)/2);
+				ubicacion.setEjeY((j+1)/2);
+				ubicaciones[i][j] = ubicacion;
+				indice++;
 			}
 		}
-		return indice;
 	}
-	
-	public ArrayList<UbicacionDTO> getListaUbicaciones() {
+
+	public boolean ocuparUbicacion(UbicacionDTO ubicacion) {
+		int fila = ubicacion.getFila();
+		int columna = ubicacion.getColumna();
+		if (!_ubicaciones[fila][columna].isEstado()) {
+			_ubicaciones[fila][columna].setEstado(true);
+			return true;
+		} else
+			return false;
+	}
+
+	public boolean desocuparUbicacion(UbicacionDTO ubicacion) {
+		int fila = ubicacion.getFila();
+		int columna = ubicacion.getColumna();
+		if (_ubicaciones[fila][columna].isEstado()) {
+			_ubicaciones[fila][columna].setEstado(false);
+			return true;
+		} else
+			return false;
+	}
+
+	public Integer obtenerTamañoTerreno() {
+		//El tamaño del terreno es la multiplicacion de las filas por las columnas mas la posicion de descanso
+		return (_cantFilas*_cantColumnas)+1;
+	}
+
+	public ArrayList<UbicacionDTO> mostrarListaUbicaciones() {
 		ArrayList<UbicacionDTO> listaUbicaciones = new ArrayList<UbicacionDTO>();
-		for (int i = 0; i < ubicaciones.length; i++) {
-			for (int j = 0; j < ubicaciones.length; j++) {
-				listaUbicaciones.add(ubicaciones[i][j]);
+		for (int i = 0; i < _ubicaciones.length; i++) {
+			for (int j = 0; j < _ubicaciones.length; j++) {
+				listaUbicaciones.add(_ubicaciones[i][j]);
 			}
 		}
 		return listaUbicaciones;
 	}
-	
-	public UbicacionDTO[][] getUbicaciones(){
-		return ubicaciones;
+
+	public int mostrarCantidadFilas() {
+		return this._cantFilas;
 	}
-	
-	public UbicacionDTO mostrarUbicacionDescanso(){
+
+	public int mostrarCantidadColumnas() {
+		return this._cantColumnas;
+	}
+
+	public UbicacionDTO[][] mostrarMatrizDeUbicaciones() {
+		return _ubicaciones;
+	}
+
+	public UbicacionDTO mostrarUbicacionDescanso() {
 		int primerFila = 0;
-		int columnaDescanso = ubicaciones[primerFila].length;
-		return ubicaciones[primerFila][columnaDescanso];
+		int columnaDescanso = _ubicaciones[primerFila].length -1;
+		return _ubicaciones[primerFila][columnaDescanso];
 	}
-	
-	public static void setTemperatura(Temperatura t){
-		temperatura = t;
+
+	public static void setTemperatura(Temperatura t) {
+		_temperatura = t;
 	}
-	
-	public static TerrenoDAO getInstance(){
-		if(terreno==null){
-			terreno = new TerrenoDAO();
+
+	public static TerrenoDAO obtenerInstancia() {
+		if (_terreno == null) {
+			_terreno = new TerrenoDAO();
 		}
-		return terreno;
-	}
-	
-	public int getTamanioTerreno(){
-		return tamanioTerreno;
+		return _terreno;
 	}
 }

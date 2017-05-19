@@ -1,36 +1,36 @@
 package viverbot.Controlador;
 
 public class ControladorPuenteBrazoRobotico {
-	
-	private double x=0;
-	private double y=0;
+	//De momento queda hardCodeado con la posicion de inicio cero
+	private double _x=0;
+	private double _y=0;
 	
 	public ControladorPuenteBrazoRobotico(){
-		x = obtenerDistanciaEjeX();
-		y = obtenerDistanciaEjeY();
+		_x = obtenerDistanciaEjeX();
+		_y = obtenerDistanciaEjeY();
 	}
 	
 	public double obtenerDistanciaEjeX() {
-		return x;
+		return _x;
 	}
 
 	public double obtenerDistanciaEjeY() {
-		return y;
+		return _y;
 	}
 
 	public void incrementarEjeX(double x) {
-		this.x+=x;
+		_x+=x;
 	}
 
 	public void decrementarEjeX(double x) {
-		this.x-=x;
+		_x-=x;
 	}
 
 	public void incrementarEjeY(double y) {
-		this.y+=y;
+		_y+=y;
 	}
 
 	public void decrementarEjeY(double y) {
-		this.y-=y;
+		_y-=y;
 	}
 }

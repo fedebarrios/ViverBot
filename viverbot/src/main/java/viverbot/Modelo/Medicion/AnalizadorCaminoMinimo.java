@@ -13,13 +13,13 @@ public class AnalizadorCaminoMinimo {
 	private TerrenoDAO terreno;
 
 	public AnalizadorCaminoMinimo() {
-		this.terreno = TerrenoDAO.getInstance();
+		this.terreno = TerrenoDAO.obtenerInstancia();
 		g = obtenerGrafo();
 	}
 	
 	public Grafo obtenerGrafo(){
-		int tamanioTerreno = terreno.getTamanioTerreno();
-		ArrayList<Arista> aristas = generarAristas(terreno.getUbicaciones());
+		int tamanioTerreno = terreno.obtenerTamañoTerreno();
+		ArrayList<Arista> aristas = generarAristas(terreno.mostrarMatrizDeUbicaciones());
 		return generarGrafo(tamanioTerreno, aristas);
 	}
 
@@ -48,7 +48,7 @@ public class AnalizadorCaminoMinimo {
 	
 	private ArrayList<UbicacionDTO> normalizarCamino(Stack<Integer> camino){
 		int indice;
-		ArrayList<UbicacionDTO> ubicaciones = terreno.getListaUbicaciones();
+		ArrayList<UbicacionDTO> ubicaciones = terreno.mostrarListaUbicaciones();
 		ArrayList<UbicacionDTO> ubicacionesFinales = new ArrayList<UbicacionDTO>();
 		while (camino.size() > 0) {
 			indice = camino.pop();
@@ -102,7 +102,7 @@ public class AnalizadorCaminoMinimo {
 
 		int origen = camino.pop();
 		ArrayList<Arista> ret = new ArrayList<Arista>();
-		ArrayList<UbicacionDTO> ubicaciones = terreno.getListaUbicaciones();
+		ArrayList<UbicacionDTO> ubicaciones = terreno.mostrarListaUbicaciones();
 
 		while (camino.size() > 0) {
 			int destino = camino.pop();

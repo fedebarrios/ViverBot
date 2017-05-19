@@ -9,7 +9,7 @@ import viverbot.Modelo.Medicion.AnalizadorCaminoMinimo;
 
 public class AnalizadorCaminoMinimoTest {
 	private AnalizadorCaminoMinimo analizadorCamino;
-	private TerrenoDAO terrenoDAO = TerrenoDAO.getInstance();
+	private TerrenoDAO terrenoDAO = TerrenoDAO.obtenerInstancia();
 	
 	@Test
 	public void analizarCaminoMinimoTest() {
