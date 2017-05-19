@@ -8,6 +8,8 @@ import org.junit.Test;
 import viverbot.Controlador.Verificacion.EvaluaRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiegoXTemperatura;
 import viverbot.Controlador.Verificacion.RiegoValidable;
+import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class NivelRiegoTest {
@@ -15,8 +17,8 @@ public class NivelRiegoTest {
 	private EvaluaRiegoXTemperatura EvaluaRiegoTempTest=null;
 	private EvaluaRiego EvaluaRiegoInicial=null;
 
-	private Temperatura temperaturaBaja = new Temperatura(5.0);
-	private Temperatura temperaturaAlta = new Temperatura(25.0);
+	private Medicion temperaturaBaja = new Medicion(5.0,Magnitudes.TEMPERATURA);
+	private Medicion temperaturaAlta = new Medicion(25.0,Magnitudes.TEMPERATURA);
 
 	@Test
 	public void ValidaRiegoTempTest() {
