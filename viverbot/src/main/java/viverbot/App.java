@@ -34,30 +34,19 @@ public class App {
 		Simulador simulador;
 
 		// ventana de opciones
-		int confirmado = JOptionPane.showConfirmDialog(null,
-				"La medición de datos de temperatura no esta disponible. Utilizar una simulación?", "Seleccione",
-				JOptionPane.OK_CANCEL_OPTION);
-		if (JOptionPane.OK_OPTION == confirmado) {
-			int seleccion = JOptionPane.showOptionDialog(null, "Seleccione una opcion", "Simulaciones",
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-					new Object[] { "Enero", "Junio" }, "opcion 1");
-			if (seleccion == 0) {
-				simulador = new BuildSimuladorTemperaturaEnero().getSimulador();
 
-			} else {
-				simulador = new BuildSimuladorTemperaturaJunio().getSimulador();
+		simulador = new BuildSimuladorTemperaturaJunio().getSimulador();
 
-			}
-			simulador.simular();
-			s.setSimulador(simulador);
-			ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
-			t.addObserver(estado);
-			t.colectar();
-			MonitorEstado monitor = new MonitorEstado();
-			estado.addObserver(monitor);
-			estado.addObserver(principal.getAutomatizadorVista());
-			monitor.addObserver(principal.getVista());
-		}
-		// fin de la ventan de opciones
+		//simulador.simular();
+		s.setSimulador(simulador);
+		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
+		t.addObserver(estado);
+		t.colectar();
+		MonitorEstado monitor = new MonitorEstado();
+		estado.addObserver(monitor);
+		estado.addObserver(principal.getAutomatizadorVista());
+		monitor.addObserver(principal.getVista());
 	}
+	// fin de la ventan de opciones
+
 }

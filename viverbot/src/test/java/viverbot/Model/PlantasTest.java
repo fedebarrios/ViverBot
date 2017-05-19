@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import viverbot.DAO.PlantaDAO;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Fecha;
 import viverbot.Model.Plantas;
@@ -38,7 +38,7 @@ public class PlantasTest {
 		// Agregaremos una nueva planta
 		plantas.agregarPlanta(1, "34,543,55", new Fecha(10, 10, 2017));
 		
-		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543,18461), 
+		Planta plantaPorCrear = new Planta(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543,18461), 
 																					new Fecha(10, 10, 2017));
 		cantidadPlantas = plantas.obtenerPlantas().size();
 		// Ahora la cantidad de plantas se incremento
@@ -59,13 +59,13 @@ public class PlantasTest {
 		// Agregaremos una nueva planta
 		plantas.agregarPlanta(1, "34,543,55", new Fecha(10, 10, 2017));
 		
-		PlantaDTO plantaPorCrear = new PlantaDTO(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543, 18461), 
+		Planta plantaPorCrear = new Planta(1, plantas.obtenerUltimoCodigoPlanta(),new UbicacionDTO(34,543, 18461), 
 																					new Fecha(10, 10, 2017));
 		cantidadPlantas = plantas.obtenerPlantas().size();
 		// Ahora la cantidad de plantas se incremento
 		assertTrue(cantidadPlantas == 7);
 		int codPlanta = plantas.obtenerUltimoCodigoPlanta();
-		PlantaDTO plantaEnPersistencia = plantas.obtenerPlanta(codPlanta);
+		Planta plantaEnPersistencia = plantas.obtenerPlanta(codPlanta);
 		// Corroboramos que la planta en cuestion es la misma que se agregó al final
 		assertTrue(plantaEnPersistencia.equals(plantaPorCrear));
 	}

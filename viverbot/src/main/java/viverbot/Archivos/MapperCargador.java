@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 import viverbot.Model.ControlHistoriales;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Inventario;
@@ -26,7 +26,7 @@ public class MapperCargador implements Observer{
 		return false;
 	}
 	
-	protected boolean sePuedeCargarEspecie(EspecieDTO especie){
+	protected boolean sePuedeCargarEspecie(Especie especie){
 		if(!inventario.existeEspecie(especie)){
 			return true;
 		}

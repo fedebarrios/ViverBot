@@ -2,14 +2,14 @@ package viverbot.DTO;
 
 import viverbot.Model.Fecha;
 
-public class PlantaDTO {
+public class Planta {
 	
 	private int codigoEspecie;
 	private int codigoPlanta;
 	private UbicacionDTO ubicacion;
 	private Fecha fechaPlanta;
 	
-	public PlantaDTO(int codigoEspecie, int codigoPlanta, UbicacionDTO ubicacion, Fecha fechaPlanta)
+	public Planta(int codigoEspecie, int codigoPlanta, UbicacionDTO ubicacion, Fecha fechaPlanta)
 	{
 		this.codigoEspecie = codigoEspecie;
 		this.ubicacion = ubicacion;
@@ -41,7 +41,7 @@ public class PlantaDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PlantaDTO other = (PlantaDTO) obj;
+		Planta other = (Planta) obj;
 		if (codigoEspecie != other.codigoEspecie)
 			return false;
 		if (codigoPlanta != other.codigoPlanta)

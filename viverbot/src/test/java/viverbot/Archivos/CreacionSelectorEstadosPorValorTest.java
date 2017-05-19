@@ -1,8 +1,6 @@
 package viverbot.Archivos;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -15,7 +13,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 public class CreacionSelectorEstadosPorValorTest extends TestCase {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	PluginArchivos plugin;
+	CargadorArchivos plugin;
 
 	public void testArchivoArreglosIgualTamaño()
 	{
@@ -74,7 +72,7 @@ public class CreacionSelectorEstadosPorValorTest extends TestCase {
 	private void inicialize(String archivo) throws Exception{
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
-		plugin = new PluginArchivos();
+		plugin = new CargadorArchivos();
 		plugin.cargarEstados(archivo);
 	}
 

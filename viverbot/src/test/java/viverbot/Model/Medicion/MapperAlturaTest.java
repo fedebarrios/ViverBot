@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.EstadoAlturaPerfecta;
-import viverbot.DTO.EspecieDTO;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Especie;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.Fecha;
@@ -26,7 +26,7 @@ public class MapperAlturaTest {
 	MapperAltura mapper;
 	AnalizadorAltura analizador;
 	ControlSeguimientos control;
-	List<PlantaDTO> plantas;
+	List<Planta> plantas;
 	
 	@Test
 	public void MapearAlturas(){
@@ -47,13 +47,13 @@ public class MapperAlturaTest {
 //	}
 	
 	public void inicializar(){
-		plantas = new ArrayList<PlantaDTO>();
+		plantas = new ArrayList<Planta>();
 		analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		control = ControlSeguimientos.getInstance();
 		mapper = new MapperAltura(analizador, plantas, control);
 		
-		EspecieDTO especie1 = new EspecieDTO(60 , "tomates" , "tomatus" , "");
-		PlantaDTO planta1 = new PlantaDTO(60, 22, new UbicacionDTO(5,4,19), new Fecha(5, 5, 2017));
+		Especie especie1 = new Especie(60 , "tomates" , "tomatus" , "");
+		Planta planta1 = new Planta(60, 22, new UbicacionDTO(5,4,19), new Fecha(5, 5, 2017));
 		plantas.add(planta1);
 		
 		ArrayList <TuplaAltura> tuplas1 = new ArrayList<TuplaAltura>();

@@ -3,7 +3,7 @@ package viverbot.Model;
 import java.util.ArrayList;
 
 import viverbot.DAO.PlantaDAO;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 
 public class Plantas {
@@ -14,11 +14,11 @@ public class Plantas {
 		this.plantaDAO = PlantaDAO.getInstance();
 	}
 
-	public ArrayList<PlantaDTO> obtenerPlantas(int codEspecie) {
+	public ArrayList<Planta> obtenerPlantas(int codEspecie) {
 		return plantaDAO.obtenerPlantas(codEspecie);
 	}
 
-	public PlantaDTO obtenerPlanta(int codPlanta) {
+	public Planta obtenerPlanta(int codPlanta) {
 		return plantaDAO.obtenerPlanta(codPlanta);
 	}
 
@@ -26,17 +26,17 @@ public class Plantas {
 		return plantaDAO.obtenerUltimoCodigo();
 	}
 
-	public ArrayList<PlantaDTO> obtenerPlantas() {
+	public ArrayList<Planta> obtenerPlantas() {
 		return plantaDAO.obtenerPlantas();
 	}
 
-	public PlantaDTO obtenerPlantaEspecifica(int codPlanta) {
+	public Planta obtenerPlantaEspecifica(int codPlanta) {
 		return plantaDAO.obtenerPlantaEspecifica(codPlanta);
 	}
 
 	public boolean agregarPlanta(int codEspecie, String ubicacion, Fecha fecha) {
 		UbicacionDTO ubicacionDTO = obtenerUbicacion(ubicacion);
-		PlantaDTO plantaDTO = new PlantaDTO(codEspecie, obtenerUltimoCodigoPlanta() + 1, ubicacionDTO, fecha);
+		Planta plantaDTO = new Planta(codEspecie, obtenerUltimoCodigoPlanta() + 1, ubicacionDTO, fecha);
 		plantaDAO.agregarPlanta(plantaDTO);
 		return false;
 	}

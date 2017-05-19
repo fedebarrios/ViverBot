@@ -2,7 +2,7 @@ package viverbot.Modelo.Medicion;
 
 import java.util.ArrayList;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
@@ -15,7 +15,7 @@ public class InstrumentoMediator {
 	protected InstrumentoMedicion instrumentoMedicion;
 	protected String tipoValor;
 	protected SoporteMovible soporte;
-	protected ArrayList<PlantaDTO> plantas;
+	protected ArrayList<Planta> plantas;
 
 	//revisar si esto se va a seguir utilizando
 	public InstrumentoMediator() {
@@ -34,7 +34,7 @@ public class InstrumentoMediator {
 		return instrumentoMedicion;
 	}
 	
-	public Medicion tomarAltura(PlantaDTO p){
+	public Medicion tomarAltura(Planta p){
 		soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
 		plantas = new Plantas().obtenerPlantas();
 		soporte.mover(p.getUbicacion());

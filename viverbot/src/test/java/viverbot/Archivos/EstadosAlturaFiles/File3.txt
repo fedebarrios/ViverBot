@@ -1,0 +1,3 @@
+Valores:(60,100) #Estos son los valores
+Estados:(Defectuoso,Normal,Perfecto) #Estos los estados
+Codigo:(1) #Este el codigo

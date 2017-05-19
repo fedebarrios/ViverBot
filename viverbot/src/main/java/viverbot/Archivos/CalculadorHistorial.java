@@ -8,7 +8,7 @@ import viverbot.Model.TuplaAltura;
 public class CalculadorHistorial {
 	
 	public static boolean calcularDiferencia(HistorialAltura historial){
-		if(!infoDesordenada(historial)){
+		if(!infoRepetida(historial)){
 			double alturaAux = 0;
 			int diaAux = 0;
 			int pos = 0;
@@ -32,11 +32,11 @@ public class CalculadorHistorial {
 		return false;
 	}
 	
-	protected static boolean infoDesordenada(HistorialAltura historial){
+	protected static boolean infoRepetida(HistorialAltura historial){
 		List<TuplaAltura> tuplas = historial.getTuplas();
 		for(int i =0; i < tuplas.size()-1 ; i++){
 			for(int j = i+1 ; j < tuplas.size() ; j++){
-				if(tuplas.get(i).getDiaDeVida()>=tuplas.get(j).getDiaDeVida()){
+				if(tuplas.get(i).getDiaDeVida()==tuplas.get(j).getDiaDeVida()){
 					return true;
 				}
 			}

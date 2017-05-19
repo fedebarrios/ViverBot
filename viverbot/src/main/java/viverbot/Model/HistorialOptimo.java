@@ -2,18 +2,18 @@ package viverbot.Model;
 
 import java.util.List;
 
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 
 public class HistorialOptimo extends HistorialAltura{
 	
-	private EspecieDTO especie;
+	private Especie especie;
 	
-	public HistorialOptimo(List<TuplaAltura> lista, EspecieDTO especie){
+	public HistorialOptimo(List<TuplaAltura> lista, Especie especie){
 		super(lista);
 		this.especie = especie;
 	}
 
-	public EspecieDTO getEspecie() {
+	public Especie getEspecie() {
 		return especie;
 	}
 }

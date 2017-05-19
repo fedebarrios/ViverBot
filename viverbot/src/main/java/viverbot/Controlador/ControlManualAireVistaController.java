@@ -77,4 +77,8 @@ public class ControlManualAireVistaController extends Observable implements Acti
 		vista.getDropdown_temperatura().addItem("29");
 	}
 
+	public ControlManualAireVista getVista() {
+		return vista;
+	}
+
 }

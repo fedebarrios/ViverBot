@@ -50,8 +50,8 @@ public class CalculadoHistorialTest {
 	}	
 	
 	@Test
-	public void CalculadorInfoDesordenada(){
-		int[] dias = {7,15,13};
+	public void CalculadorInfoRepetida(){
+		int[] dias = {7,8,7};
 		double[] alturas = {1.05,1.10,1.15};
 		ArrayList<TuplaAltura> t = new ArrayList<TuplaAltura>();
 		for(int i = 0 ; i<3 ; i++){

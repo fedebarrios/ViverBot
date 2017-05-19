@@ -26,7 +26,7 @@ public class VistaConfiguracionDirectorios extends JFrame{
 
 	public VistaConfiguracionDirectorios(ControladorConfiguracionDirectorio controlador){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 415, 300);
+		setBounds(100, 100, 430, 300);
 		setTitle("Directorios configurados");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,15 +71,15 @@ public class VistaConfiguracionDirectorios extends JFrame{
 		contentPane.add(directorio3_tf);
 		
 		rdDirectorio1 = new JRadioButton("");
-		rdDirectorio1.setBounds(359, 48, 109, 23);
+		rdDirectorio1.setBounds(359, 48, 21, 23);
 		contentPane.add(rdDirectorio1);
 		
 		rdDirectorio2 = new JRadioButton("");
-		rdDirectorio2.setBounds(359, 99, 109, 23);
+		rdDirectorio2.setBounds(359, 99, 21, 23);
 		contentPane.add(rdDirectorio2);
 		
 		rdDirectorio3 = new JRadioButton("");
-		rdDirectorio3.setBounds(359, 158, 109, 23);
+		rdDirectorio3.setBounds(359, 158, 21, 23);
 		contentPane.add(rdDirectorio3);
 		
 		ButtonGroup grupo = new ButtonGroup();

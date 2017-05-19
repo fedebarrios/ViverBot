@@ -109,7 +109,7 @@ public class ReconocedorTotalTest {
 		assertEquals(8,reconocedor.reconocerFrutos(imgResaltada(), posicionador,0.6f,1).intValue());
 	}
 	
-	@Test
+	
 	public void detectar3de3tamañosTest()
 	{
 		inicializar();

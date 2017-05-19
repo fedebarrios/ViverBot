@@ -1,7 +1,6 @@
 package viverbot.Controlador.Verificacion;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SelectorEstadosPorValor {
 	private ArrayList<EstadoAltura> estados;

@@ -1,13 +1,13 @@
 package viverbot.DTO;
 
-public class EspecieDTO {
+public class Especie {
 	
 	private int codEspecie;
 	private String nombre;
 	private String nombreCientifico;
 	private String urlImage;
 	
-	public EspecieDTO(int codEspecie, String nombre, String nombreC, String imagen)
+	public Especie(int codEspecie, String nombre, String nombreC, String imagen)
 	{
 		this.codEspecie = codEspecie;
 		this.nombre = nombre; 
@@ -33,8 +33,8 @@ public class EspecieDTO {
 	
 	@Override
 	public boolean equals(Object o){
-		if(o instanceof EspecieDTO){
-			if(((EspecieDTO) o).getNombre().equals(nombre)&&((EspecieDTO) o).getNombreCientifico().equals(nombreCientifico)){
+		if(o instanceof Especie){
+			if(((Especie) o).getNombre().equals(nombre)&&((Especie) o).getNombreCientifico().equals(nombreCientifico)){
 				return true;
 			}
 		}
