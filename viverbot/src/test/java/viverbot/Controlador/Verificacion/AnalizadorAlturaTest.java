@@ -7,7 +7,7 @@ import java.io.PrintStream;
 
 import org.junit.Test;
 
-import viverbot.Archivos.PluginArchivos;
+import viverbot.Archivos.CargadorArchivos;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.EstadoAlturaNoComparada;
 import viverbot.Controlador.Verificacion.PlanificadorAltura;
@@ -27,7 +27,7 @@ import viverbot.Modelo.Medicion.AnalizadorAltura;
 public class AnalizadorAlturaTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	PluginArchivos plugin;
+	CargadorArchivos plugin;
 	
 	@Test
 	public void EstadoDefectuoso() throws Exception{
@@ -124,7 +124,7 @@ public class AnalizadorAlturaTest {
 	private void inicialize(String archivo) throws Exception{
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
-		plugin = new PluginArchivos();
+		plugin = new CargadorArchivos();
 		plugin.cargarEstados(archivo);
 	}
 	

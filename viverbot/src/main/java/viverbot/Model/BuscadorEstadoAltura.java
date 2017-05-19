@@ -23,6 +23,10 @@ public class BuscadorEstadoAltura {
 		return buscador;
 	}
 	
+	public void cleanMap() {
+		BuscadorEstadoAltura.getInstance().setMap(new HashMap<Integer, SelectorEstadosPorValor>());
+	}
+	
 	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , PlantaDTO planta){
 		SelectorEstadosPorValor tupla = map.get(planta.getCodigo());
 		if (tupla == null){

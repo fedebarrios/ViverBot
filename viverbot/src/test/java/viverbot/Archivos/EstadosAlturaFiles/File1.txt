@@ -1,0 +1,3 @@
+Valores:(80,95,110) #Estos son los valores
+Estados:(Defectuoso,Anormal,Normal,Perfecto) #Estos los estados
+Codigo:(4) #Este el codigo

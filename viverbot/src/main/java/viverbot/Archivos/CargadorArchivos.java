@@ -14,13 +14,13 @@ import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
 import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
-public class PluginArchivos extends Observable{
+public class CargadorArchivos extends Observable{
 	private Logger logger;
 	private LectorTxt lector;
 	private ParserDataArchivos mediator;
 	
-	public PluginArchivos(){
-		logger = Log.getLog(PluginArchivos.class);
+	public CargadorArchivos(){
+		logger = Log.getLog(CargadorArchivos.class);
 		lector = new LectorTxt();
 		mediator = new ParserDataArchivos();
 	}
@@ -93,6 +93,33 @@ public class PluginArchivos extends Observable{
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, tupla, codigoEspecie);
+		return true;
+	}
+	
+	public boolean cargarEstadosBatch(String directorio) throws Exception{
+		LectorTxt lector = new LectorTxt();
+		String file = "";
+		File folder = new File(directorio);
+	    File[] files = folder.listFiles();
+		ParserDataArchivos parser = new ParserDataArchivos();
+		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
+		MapperEstadoAltura mapper = new MapperEstadoAltura();
+	    for (File f : files){
+            if (f.isFile()){
+                file = f.getName();
+                try{
+            		String lectura = lector.leerTxt(directorio+"/"+file);
+            		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
+            		ArrayList<Double> valores = parser.parsearValores(lectura);
+            		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+            		SelectorEstadosPorValor tupla = new SelectorEstadosPorValor(estados, valores);
+            		mapper.relacionar(buscador, tupla, codigoEspecie);
+                }
+                catch(Exception e){
+                	logger.error(e.getMessage());
+                }
+            }
+        }
 		return true;
 	}
 }

@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import viverbot.Model.HistorialOptimo;
 
-public class PluginTest {
-	PluginArchivos plugin ;
+public class CargadorTest {
+	CargadorArchivos plugin ;
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	
@@ -62,7 +62,7 @@ public class PluginTest {
 	//Aqui terminan los test relacionados a historiales
 	
 	public void inicialize(){
-		plugin = new PluginArchivos();
+		plugin = new CargadorArchivos();
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
 	}
