@@ -1,7 +1,6 @@
 package viverbot.Modelo.Medicion;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.Controlador.Verificacion.PlanificadorAltura;
 import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.Controlador.Verificacion.StrategyMetroDown;
 import viverbot.Controlador.Verificacion.StrategySeguimientoNull;
@@ -22,8 +21,7 @@ public class AnalizadorAltura {
 		Medicion alturaEsperada = seguimiento.getHistorialOptimo().buscarTupla(diaActual).getAltura();
 		IAnalisisAltura estrategia = getStrategy(alturaActual, alturaEsperada) ;
 		EstadoAltura estadoActual = estrategia.analizar(alturaActual, alturaEsperada, seguimiento.getPlanta());
-		//guardador.guardar(estrategia, alturaActual, diaActual, seguimiento.getHistorialVerdadero());
-		//planificador.actuar(estadoActual);	
+		guardador.guardar(estrategia, alturaActual, diaActual, seguimiento.getHistorialVerdadero());
 		return estadoActual;
 	}
 	
