@@ -14,7 +14,7 @@ import viverbot.Controlador.Verificacion.PlanificadorAltura;
 import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.Controlador.Verificacion.StrategyMetroDown;
 import viverbot.Controlador.Verificacion.StrategySeguimientoNull;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Interfaces.IAnalisisAltura;
 import viverbot.Model.Fecha;
@@ -36,7 +36,7 @@ public class AnalizadorAlturaTest {
 		assertNotNull(msjLog);
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
-		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017)); 
+		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017)); 
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(10.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Defectuoso");
@@ -49,7 +49,7 @@ public class AnalizadorAlturaTest {
 		assertNotNull(msjLog);
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
-		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
+		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(19.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Normal");
@@ -62,7 +62,7 @@ public class AnalizadorAlturaTest {
 		assertNotNull(msjLog);
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
-		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
+		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(16.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Anormal");
@@ -75,7 +75,7 @@ public class AnalizadorAlturaTest {
 		assertNotNull(msjLog);
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
-		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
+		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(50.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Perfecto");
@@ -92,7 +92,7 @@ public class AnalizadorAlturaTest {
 	@Test
 	public void EstadoNoComparada(){
 		StrategyMetroDown estrategiaMetro = new StrategyMetroDown();
-		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,9), new Fecha(04, 05, 2017));
+		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,9), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategiaMetro.analizar(new Medicion(-5.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAlturaNoComparada);
 	}
@@ -100,7 +100,7 @@ public class AnalizadorAlturaTest {
 	@Test
 	public void EstadoNoComparada2(){
 		StrategySeguimientoNull estrategiaSeguimiento = new StrategySeguimientoNull();
-		PlantaDTO planta = new PlantaDTO(1, 10, new UbicacionDTO(1,5,9), new Fecha(04, 05, 2017));
+		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,9), new Fecha(04, 05, 2017));
 		EstadoAltura estadoDevuelto = estrategiaSeguimiento.analizar(new Medicion(45.0,Magnitudes.ALTURA), new EmptyMedicion(), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAlturaNoComparada);
 	}

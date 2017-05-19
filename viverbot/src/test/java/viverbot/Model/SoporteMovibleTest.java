@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteMovible;
@@ -39,7 +39,7 @@ public class SoporteMovibleTest {
 	public void podar(){
 		inicialize();
 		int cantidadPlantasAntes = plantas.cantidadPlantas();
-		PlantaDTO plantaAPodar = plantas.obtenerPlantaEspecifica(1);
+		Planta plantaAPodar = plantas.obtenerPlantaEspecifica(1);
 		assertNotNull(this.soporteTest.getPodador());
 //		boolean b = this.soporteTest.getPodador().podar(plantaAPodar);
 //		assertTrue(b);

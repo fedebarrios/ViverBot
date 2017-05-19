@@ -1,6 +1,6 @@
 package viverbot.Model;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 
 public class Podador {
 	private static Podador podador;
@@ -15,7 +15,7 @@ public class Podador {
 		return podador;
 	}
 	
-	public boolean podar(PlantaDTO planta){
+	public boolean podar(Planta planta){
 		Plantas plantas = new Plantas();
 		if(plantas.obtenerPlantaEspecifica(planta.getCodigoPlanta())==null){
 			return false; 

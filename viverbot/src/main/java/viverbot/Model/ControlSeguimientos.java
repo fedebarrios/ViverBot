@@ -1,7 +1,7 @@
 package viverbot.Model;
 
 import java.util.ArrayList;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 
 public class ControlSeguimientos {
 	protected static ControlSeguimientos control;
@@ -23,7 +23,7 @@ public class ControlSeguimientos {
 		return seguimientos;
 	}
 	
-	public SeguimientoAltura getSeguimiento( PlantaDTO planta ){
+	public SeguimientoAltura getSeguimiento( Planta planta ){
 		for (int i = 0; i<seguimientos.size() ; i++){
 			if( seguimientos.get(i).getPlanta().getCodigo() == planta.getCodigo()
 				&& seguimientos.get(i).getPlanta().getCodigoPlanta() == planta.getCodigoPlanta()){
@@ -128,7 +128,7 @@ public class ControlSeguimientos {
 		
 	}*/
 	
-	public void agregarSeguimiento(PlantaDTO planta, HistorialOptimo historialOptimo){
+	public void agregarSeguimiento(Planta planta, HistorialOptimo historialOptimo){
 		if(planta.getCodigo() == historialOptimo.getEspecie().getCodEspecie()){
 			ArrayList<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();
 			HistorialAltura h2 = new HistorialAltura(tuplas);

@@ -12,8 +12,8 @@ import viverbot.Controlador.Especies.AltaEspecie_Controller;
 import viverbot.Controlador.Especies.ConsultaBajaEspecie_Controller;
 import viverbot.DAO.EspecieDAO;
 import viverbot.DAO.PlantaDAO;
-import viverbot.DTO.EspecieDTO;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Especie;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Fecha;
 import viverbot.Model.Plantas;
@@ -25,14 +25,14 @@ public class BajaEspecieTest {
 	
 	public void inicializar(){
 		controladorEspecies = new ConsultaBajaEspecie_Controller();
-		ArrayList<EspecieDTO> especies = new ArrayList<EspecieDTO>();
-		EspecieDTO e1 = new EspecieDTO(1, "Marga","Margus","");
-		EspecieDTO e2 = new EspecieDTO(2, "Cebolla","Cebollus","");
+		ArrayList<Especie> especies = new ArrayList<Especie>();
+		Especie e1 = new Especie(1, "Marga","Margus","");
+		Especie e2 = new Especie(2, "Cebolla","Cebollus","");
 		especies.add(e1);
 		especies.add(e2);
 		EspecieDAO.getInstance().cargarEspecies(especies);
-		ArrayList<PlantaDTO> plantasTest = new ArrayList<PlantaDTO>();
-		PlantaDTO p1= new PlantaDTO(1, 10, new UbicacionDTO(1,5,0), new Fecha(04, 05, 2017));
+		ArrayList<Planta> plantasTest = new ArrayList<Planta>();
+		Planta p1= new Planta(1, 10, new UbicacionDTO(1,5,0), new Fecha(04, 05, 2017));
 		plantasTest.add(p1);
 		PlantaDAO.getInstance().cargarPlantas(plantasTest);		
 	}
@@ -63,8 +63,8 @@ public class BajaEspecieTest {
 	@Test
 	public void TestActionPerformedBorrar(){
 		inicializar();
-		ArrayList<EspecieDTO> especies = new ArrayList<EspecieDTO>();
-		EspecieDTO e1 = new EspecieDTO(155, "Marga","Margus","");
+		ArrayList<Especie> especies = new ArrayList<Especie>();
+		Especie e1 = new Especie(155, "Marga","Margus","");
 		especies.add(e1);
 		EspecieDAO.getInstance().cargarEspecies(especies);
 		controladorEspecies.llenarCombo(controladorEspecies.getVista().getComboBox());
@@ -78,12 +78,12 @@ public class BajaEspecieTest {
 	@Test
 	public void TestActionPerformedNoSePuedeBorrar(){
 		inicializar();
-		ArrayList<EspecieDTO> especies = new ArrayList<EspecieDTO>();
-		EspecieDTO e1 = new EspecieDTO(155, "Marga","Margus","");
+		ArrayList<Especie> especies = new ArrayList<Especie>();
+		Especie e1 = new Especie(155, "Marga","Margus","");
 		especies.add(e1);
 		EspecieDAO.getInstance().cargarEspecies(especies);
-		ArrayList<PlantaDTO> plantasTest = new ArrayList<PlantaDTO>();
-		PlantaDTO p1= new PlantaDTO(155, 10, new UbicacionDTO(1,5,0), new Fecha(04, 05, 2017));
+		ArrayList<Planta> plantasTest = new ArrayList<Planta>();
+		Planta p1= new Planta(155, 10, new UbicacionDTO(1,5,0), new Fecha(04, 05, 2017));
 		plantasTest.add(p1);
 		PlantaDAO.getInstance().cargarPlantas(plantasTest);		
 		controladorEspecies.setOptionPane(new MockOptionPane());

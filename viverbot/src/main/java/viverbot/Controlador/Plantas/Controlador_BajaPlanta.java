@@ -3,7 +3,7 @@ package viverbot.Controlador.Plantas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
 import viverbot.Vista.Auxiliares.DefaultOptionPane;
@@ -12,7 +12,7 @@ import viverbot.Vista.Plantas.Vista_BajaPlanta;
 public class Controlador_BajaPlanta implements ActionListener{
 
 	private Vista_BajaPlanta vistaBajaPlanta;
-	private ArrayList<PlantaDTO> listaPlantas;
+	private ArrayList<Planta> listaPlantas;
 	private Plantas gestorPlantas;
 	private Inventario inventario;
 	private DefaultOptionPane optionPane;
@@ -39,7 +39,7 @@ public class Controlador_BajaPlanta implements ActionListener{
 	public void llenarComboPlantas() {
 		listaPlantas = gestorPlantas.obtenerPlantas();
 		String aux;
-		for(PlantaDTO i: listaPlantas) {
+		for(Planta i: listaPlantas) {
 			aux = this.inventario.obtenerEspecie(i.getCodigo()).getNombre();
 			vistaBajaPlanta.getCmbPlantas().addItem(aux);
 		}

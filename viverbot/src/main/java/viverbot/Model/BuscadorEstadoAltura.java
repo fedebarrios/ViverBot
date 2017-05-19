@@ -6,7 +6,7 @@ import java.util.Map;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 
 public class BuscadorEstadoAltura {
 	private Map<Integer, SelectorEstadosPorValor> map;
@@ -27,7 +27,7 @@ public class BuscadorEstadoAltura {
 		BuscadorEstadoAltura.getInstance().setMap(new HashMap<Integer, SelectorEstadosPorValor>());
 	}
 	
-	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , PlantaDTO planta){
+	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , Planta planta){
 		SelectorEstadosPorValor tupla = map.get(planta.getCodigo());
 		if (tupla == null){
 			return null;

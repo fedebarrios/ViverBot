@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
 import viverbot.Model.TuplaAltura;
@@ -22,7 +22,7 @@ public class ParserDataArchivos {
 	public HistorialOptimo parsearHistorialEspecie(String datos) throws Exception{
 		try{
 			List<TuplaAltura> tuplas = new ParserHistorial().parsear(datos);	
-			EspecieDTO especie = new ParserEspecie().parsear(datos);
+			Especie especie = new ParserEspecie().parsear(datos);
 			return new HistorialOptimo(tuplas,especie);
 		}
 		catch(Exception e){

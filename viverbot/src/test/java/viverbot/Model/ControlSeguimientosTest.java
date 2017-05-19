@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
-import viverbot.DTO.EspecieDTO;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Especie;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.Fecha;
@@ -19,12 +19,12 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class ControlSeguimientosTest {
-	EspecieDTO especie1;
-	EspecieDTO especie2;
-	EspecieDTO especie3;
-	PlantaDTO planta1 ;
-	PlantaDTO planta2 ;
-	PlantaDTO planta3 ;
+	Especie especie1;
+	Especie especie2;
+	Especie especie3;
+	Planta planta1 ;
+	Planta planta2 ;
+	Planta planta3 ;
 	ArrayList<TuplaAltura> tuplas1;
 	ArrayList<TuplaAltura> tuplas2 ;
 	HistorialOptimo historialOptimo1;
@@ -91,13 +91,13 @@ public class ControlSeguimientosTest {
 	
 	private void inicializar() {
 		clear();
-		especie1 = new EspecieDTO(60 , "tomates" , "tomatus" , "");
-		especie2 = new EspecieDTO(64 , "cebolla" , "cebollus" , "");
-		especie3 = new EspecieDTO(65 , "papa" , "papus" , "");
+		especie1 = new Especie(60 , "tomates" , "tomatus" , "");
+		especie2 = new Especie(64 , "cebolla" , "cebollus" , "");
+		especie3 = new Especie(65 , "papa" , "papus" , "");
 		
-		planta1 = new PlantaDTO(64, 22, new UbicacionDTO(5,4,19), new Fecha(6, 5, 2017));
-		planta2 = new PlantaDTO(60, 59, new UbicacionDTO(4,4,15), new Fecha(6, 5, 2017));
-		planta3 = new PlantaDTO(65, 100, new UbicacionDTO(1,4,3), new Fecha(6, 5, 2017));
+		planta1 = new Planta(64, 22, new UbicacionDTO(5,4,19), new Fecha(6, 5, 2017));
+		planta2 = new Planta(60, 59, new UbicacionDTO(4,4,15), new Fecha(6, 5, 2017));
+		planta3 = new Planta(65, 100, new UbicacionDTO(1,4,3), new Fecha(6, 5, 2017));
 		
 		
 		tuplas1 = new ArrayList<TuplaAltura>();

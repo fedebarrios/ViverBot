@@ -1,14 +1,14 @@
 package viverbot.Model;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 
 public class SeguimientoAltura {
-	private PlantaDTO planta;
+	private Planta planta;
 	private HistorialOptimo historialOptimo;
 	private HistorialAltura historialVerdadero;
 	private String estado;
 	
-	public SeguimientoAltura(PlantaDTO p, HistorialOptimo h1, HistorialAltura h2) {
+	public SeguimientoAltura(Planta p, HistorialOptimo h1, HistorialAltura h2) {
 	
 			this.planta = p;
 			this.historialOptimo = h1;
@@ -18,7 +18,7 @@ public class SeguimientoAltura {
 		
 	}
 
-	public PlantaDTO getPlanta() {
+	public Planta getPlanta() {
 		return planta;
 	}
 

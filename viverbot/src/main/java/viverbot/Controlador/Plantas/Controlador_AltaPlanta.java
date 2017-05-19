@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import viverbot.Controlador.Verificacion.Verificador;
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 import viverbot.Model.Fecha;
 import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
@@ -17,13 +17,13 @@ public class Controlador_AltaPlanta implements ActionListener {
 
 	private Vista_AltaPlanta vistaAltaPlanta;
 	private Plantas gestorPlantas;
-	private ArrayList<EspecieDTO> listaEspecies;
+	private ArrayList<Especie> listaEspecies;
 	private Inventario gestorEspecies;
 
 	public Controlador_AltaPlanta() {
 		this.gestorEspecies = new Inventario();
 		this.gestorPlantas = new Plantas();
-		listaEspecies = new ArrayList<EspecieDTO>();
+		listaEspecies = new ArrayList<Especie>();
 	}
 
 	public void inicializar() {
@@ -78,7 +78,7 @@ public class Controlador_AltaPlanta implements ActionListener {
 
 	public void llenarComboEspecies() {
 		listaEspecies = gestorEspecies.obtenerEspecies();
-		for (EspecieDTO i : listaEspecies) {
+		for (Especie i : listaEspecies) {
 			vistaAltaPlanta.getCmbEspecies().addItem(i.getNombre());
 		}
 	}

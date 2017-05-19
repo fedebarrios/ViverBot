@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 import viverbot.Model.ControlHistoriales;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Inventario;
@@ -36,8 +36,8 @@ public class MapperCargadorTest {
 		inicialize();
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
-		EspecieDTO especie1= new EspecieDTO(5,"manzana", "manzanus", "");
-		EspecieDTO especie2= new EspecieDTO(6,"tomate", "tomatus", "");
+		Especie especie1= new Especie(5,"manzana", "manzanus", "");
+		Especie especie2= new Especie(6,"tomate", "tomatus", "");
 		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie1);
 		HistorialOptimo historial2 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie2);
 		historiales.add(historial1);
@@ -58,7 +58,7 @@ public class MapperCargadorTest {
 		inicialize();
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
-		EspecieDTO especie1= new EspecieDTO(6,"tomate", "tomatus", "");
+		Especie especie1= new Especie(6,"tomate", "tomatus", "");
 		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie1);
 		historiales.add(historial1);
 		int cantEspeciesAntes = inventario.cantidadEspecies();
@@ -76,7 +76,7 @@ public class MapperCargadorTest {
 		inicialize();
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
-		EspecieDTO especie1= new EspecieDTO(6,"tomate", "tomatus", "");
+		Especie especie1= new Especie(6,"tomate", "tomatus", "");
 		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie1);
 		historiales.add(historial1);
 		int cantEspeciesAntes = inventario.cantidadEspecies();

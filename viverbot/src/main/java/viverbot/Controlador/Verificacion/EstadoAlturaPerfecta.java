@@ -1,10 +1,10 @@
 package viverbot.Controlador.Verificacion;
 
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Planta;
 
 public class EstadoAlturaPerfecta extends EstadoAltura{
 
-	public EstadoAlturaPerfecta(double cm , PlantaDTO planta){
+	public EstadoAlturaPerfecta(double cm , Planta planta){
 		this.setEstado("Perfecta");
 		this.setCmDeDiferencia(cm);
 		this.setPlanta(planta);

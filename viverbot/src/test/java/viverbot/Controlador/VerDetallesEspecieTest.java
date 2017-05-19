@@ -5,12 +5,12 @@ import org.junit.Test;
 import junit.framework.TestCase;
 import viverbot.Controlador.Especies.VerDetallesEspecie_Controller;
 import viverbot.DAO.PlantaDAO;
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 import viverbot.Model.Plantas;
 
 
 public class VerDetallesEspecieTest extends TestCase {
-	private static EspecieDTO especie = null;
+	private static Especie especie = null;
 	private static VerDetallesEspecie_Controller controlador = null;
 	private static Plantas planta = null;
 	
@@ -26,7 +26,7 @@ public class VerDetallesEspecieTest extends TestCase {
 	public void testCantidadPlantas()
 	{
 		inicialize();
-		especie = new EspecieDTO(2,"especie1","prueba","rosa.jpg");
+		especie = new Especie(2,"especie1","prueba","rosa.jpg");
 		Integer cantidad = controlador.getPlantas().obtenerPlantas(especie.getCodEspecie()).size();
 		assertFalse(cantidad==6);
 		clear();
@@ -41,7 +41,7 @@ public class VerDetallesEspecieTest extends TestCase {
 	
 	private void inicialize() {
 		planta = new Plantas();
-		especie = new EspecieDTO(1,"especie1","prueba","rosa.jpg");
+		especie = new Especie(1,"especie1","prueba","rosa.jpg");
 		controlador = new VerDetallesEspecie_Controller(especie);
 	}
 

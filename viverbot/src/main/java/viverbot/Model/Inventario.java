@@ -3,7 +3,7 @@ package viverbot.Model;
 import java.util.ArrayList;
 
 import viverbot.DAO.EspecieDAO;
-import viverbot.DTO.EspecieDTO;
+import viverbot.DTO.Especie;
 
 public class Inventario {
 	private EspecieDAO especieDAO;
@@ -12,12 +12,12 @@ public class Inventario {
 		this.especieDAO = EspecieDAO.getInstance();
 	}
 	
-	public ArrayList<EspecieDTO> obtenerEspecies(){
+	public ArrayList<Especie> obtenerEspecies(){
 		return especieDAO.leer();
 	}
 	
 	public void agregarEspecie(String nombreEspecie, String nombreCientifico, String pathAlmacenado){
-		EspecieDTO especieDTO = new EspecieDTO(especieDAO.obtenerUltimoCodigo()+1, nombreEspecie, nombreCientifico, pathAlmacenado);
+		Especie especieDTO = new Especie(especieDAO.obtenerUltimoCodigo()+1, nombreEspecie, nombreCientifico, pathAlmacenado);
 		if(!existeEspecie(especieDTO)){
 			especieDAO.agregar(especieDTO);	
 		}
@@ -27,11 +27,11 @@ public class Inventario {
 		especieDAO.borrarEspecie(codEspecie);
 	}
 	
-	public EspecieDTO obtenerEspecie(int codEspecie){
+	public Especie obtenerEspecie(int codEspecie){
 		return especieDAO.obtenerEspecie(codEspecie);
 	}
 	
-	public boolean existeEspecie(EspecieDTO especie){
+	public boolean existeEspecie(Especie especie){
 		return especieDAO.existeEspecie(especie);
 	}
 

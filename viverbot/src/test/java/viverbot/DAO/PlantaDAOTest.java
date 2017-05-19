@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import viverbot.DTO.EspecieDTO;
-import viverbot.DTO.PlantaDTO;
+import viverbot.DTO.Especie;
+import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Fecha;
 
@@ -22,8 +22,8 @@ public class PlantaDAOTest {
 	@Test
 	public void cargarPlantasTest() {
 		inicializar();
-		List<PlantaDTO> plantas = new ArrayList<PlantaDTO>();
-		plantas.add(new PlantaDTO(0,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017)));
+		List<Planta> plantas = new ArrayList<Planta>();
+		plantas.add(new Planta(0,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017)));
 		int cantidadInicial = plantaDAO.obtenerPlantas().size();
 		plantaDAO.cargarPlantas(plantas);
 		int cantidadFinal = plantaDAO.obtenerPlantas().size();
@@ -33,18 +33,18 @@ public class PlantaDAOTest {
 	@Test
 	public void obtenerPlantaTest() {
 		inicializar();
-		List<PlantaDTO> plantas = new ArrayList<PlantaDTO>();
-		PlantaDTO planta = new PlantaDTO(0,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
+		List<Planta> plantas = new ArrayList<Planta>();
+		Planta planta = new Planta(0,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
 		plantas.add(planta);
 		plantaDAO.cargarPlantas(plantas);
-		PlantaDTO plantaObtenida = plantaDAO.obtenerPlanta(planta.getCodigoPlanta());
+		Planta plantaObtenida = plantaDAO.obtenerPlanta(planta.getCodigoPlanta());
 		assertEquals(planta, plantaObtenida);
 	} 
 	
 	@Test
 	public void obtenerPlantaQueNoExisteTest() {
 		inicializar();
-		PlantaDTO plantaObtenida = plantaDAO.obtenerPlanta(999);
+		Planta plantaObtenida = plantaDAO.obtenerPlanta(999);
 		assertEquals(plantaObtenida,null);
 	} 
 	
@@ -52,17 +52,17 @@ public class PlantaDAOTest {
 	public void obtenerPlantasDeEspecieTest() {
 		inicializar();
 		EspecieDAO especieDAO = EspecieDAO.getInstance();
-		EspecieDTO especie = new EspecieDTO(555, "Aloe Vera", "AloeVeraaaa","recursos/Arbol.jpg");
+		Especie especie = new Especie(555, "Aloe Vera", "AloeVeraaaa","recursos/Arbol.jpg");
 		especieDAO.agregar(especie);
-		List<PlantaDTO> plantas = new ArrayList<PlantaDTO>();
-		PlantaDTO planta1 = new PlantaDTO(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
-		PlantaDTO planta2 = new PlantaDTO(555,56,new UbicacionDTO(0,1,1), new Fecha(15,06,2017));
-		PlantaDTO planta3 = new PlantaDTO(555,57,new UbicacionDTO(0,2,2), new Fecha(15,06,2017));
+		List<Planta> plantas = new ArrayList<Planta>();
+		Planta planta1 = new Planta(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
+		Planta planta2 = new Planta(555,56,new UbicacionDTO(0,1,1), new Fecha(15,06,2017));
+		Planta planta3 = new Planta(555,57,new UbicacionDTO(0,2,2), new Fecha(15,06,2017));
 		plantas.add(planta1);
 		plantas.add(planta2);
 		plantas.add(planta3);
 		plantaDAO.cargarPlantas(plantas);
-		List<PlantaDTO> plantasObtenidas = plantaDAO.obtenerPlantas(especie.getCodEspecie());
+		List<Planta> plantasObtenidas = plantaDAO.obtenerPlantas(especie.getCodEspecie());
 		assertTrue(plantasObtenidas.contains(planta1));
 		assertTrue(plantasObtenidas.contains(planta2));
 		assertTrue(plantasObtenidas.contains(planta3));
@@ -72,7 +72,7 @@ public class PlantaDAOTest {
 	@Test
 	public void obtenerUltimoCodigoTest() {
 		inicializar();
-		PlantaDTO planta1 = new PlantaDTO(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
+		Planta planta1 = new Planta(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
 		plantaDAO.agregarPlanta(planta1);
 		assertEquals(planta1.getCodigoPlanta(), plantaDAO.obtenerUltimoCodigo());
 	} 
@@ -80,7 +80,7 @@ public class PlantaDAOTest {
 	@Test
 	public void borrarPlantaTest() {
 		inicializar();
-		PlantaDTO planta1 = new PlantaDTO(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
+		Planta planta1 = new Planta(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
 		plantaDAO.agregarPlanta(planta1);
 		plantaDAO.borrarPlanta(planta1.getCodigoPlanta());
 		assertEquals(plantaDAO.obtenerPlanta(planta1.getCodigoPlanta()),null);
@@ -89,7 +89,7 @@ public class PlantaDAOTest {
 	@Test
 	public void obtenerPlantaEspecificaTest() {
 		inicializar();
-		PlantaDTO planta1 = new PlantaDTO(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
+		Planta planta1 = new Planta(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
 		plantaDAO.agregarPlanta(planta1);
 		assertEquals(plantaDAO.obtenerPlantaEspecifica(planta1.getCodigoPlanta()),planta1);
 	} 
@@ -97,7 +97,7 @@ public class PlantaDAOTest {
 	@Test
 	public void obtenerCantidadPlantasTest() {
 		inicializar();
-		PlantaDTO planta1 = new PlantaDTO(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
+		Planta planta1 = new Planta(555,55,new UbicacionDTO(0,0,0), new Fecha(15,06,2017));
 		plantaDAO.agregarPlanta(planta1);
 		int cantPlantas = plantaDAO.obtenerPlantas().size();
 		assertEquals(plantaDAO.cantidadPlantas(),cantPlantas);
