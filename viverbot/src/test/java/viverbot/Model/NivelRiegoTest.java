@@ -14,53 +14,73 @@ import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class NivelRiegoTest {
 
-	private EvaluaRiegoXTemperatura EvaluaRiegoTempTest=null;
-	private EvaluaRiego EvaluaRiegoInicial=null;
-
-	private Medicion temperaturaBaja = new Medicion(5.0,Magnitudes.TEMPERATURA);
-	private Medicion temperaturaAlta = new Medicion(25.0,Magnitudes.TEMPERATURA);
+	NivelRiego nivelRiegoTest =null;
+	NivelRiego nivelRiegoMaxTest =NivelRiego.NIVEL5;
+	NivelRiego nivelRiegoMinTest =NivelRiego.NIVEL1;
 
 	@Test
 	public void ValidaRiegoTempTest() {
 		this.inicialize();
-		assertTrue(this.EvaluaRiegoTempTest.getTemperaturaActual() != null);
+		assertTrue(this.nivelRiegoTest != null);
 		this.clear();
 
 	}
 
 	
 	@Test
-	public void AnalizarBajoTest() {
+	public void AnalizarBajarTest() {
 		this.inicialize();
-		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaBaja);
-				
-		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),EvaluaRiegoInicial.cantidadOptimaRiego().bajar());
+		
+		assertEquals(nivelRiegoTest.bajar(),NivelRiego.NIVEL2);
 
 	}
 	
 	@Test
-	public void AnalizarAltoTest() {
+	public void AnalizarAumentarTest() {
 		this.inicialize();
-		EvaluaRiegoTempTest.setTemperaturaActual(temperaturaAlta);
-		
-		assertEquals(EvaluaRiegoTempTest.cantidadOptimaRiego(),EvaluaRiegoInicial.cantidadOptimaRiego().aumentar());
+		assertEquals(nivelRiegoTest.aumentar(),NivelRiego.NIVEL4);
 	}
 	
 	
+	
+	@Test
+	public void AnalizarAumentarMaxTest() {
+		this.inicialize();
+		assertEquals(nivelRiegoMaxTest.aumentar(),NivelRiego.NIVEL5);
+	}
 
+	@Test
+	public void AnalizarBajarMinTest() {
+		this.inicialize();
+		assertEquals(nivelRiegoMinTest.bajar(),NivelRiego.NIVEL1);
+	}
+
+	
+	@Test
+	public void AnalizarNuloBajarTest() {
+		this.inicialize();
+		nivelRiegoTest=NivelRiego.NIVELNULO;
+		assertEquals(nivelRiegoTest.bajar(),NivelRiego.NIVELNULO);
+	}
+
+	@Test
+	public void AnalizarNuloAumentarTest() {
+		this.inicialize();
+		nivelRiegoTest=NivelRiego.NIVELNULO;
+		assertEquals(nivelRiegoTest.aumentar(),NivelRiego.NIVELNULO);
+	}	
+	
+	
 	// metodos auxiliares
 
 	private void inicialize() {
-		RiegoValidable rv= new EvaluaRiego();
-		EvaluaRiegoInicial=new EvaluaRiego();
-		EvaluaRiegoTempTest=new EvaluaRiegoXTemperatura(rv);
-
-
+		nivelRiegoTest =NivelRiego.NIVEL3;
 		
 	}
 
 	private void clear() {
-		this.EvaluaRiegoTempTest = null;
+		nivelRiegoTest = null;
+		
 	}
 
 }
