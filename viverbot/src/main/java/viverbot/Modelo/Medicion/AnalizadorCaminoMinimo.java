@@ -14,7 +14,13 @@ public class AnalizadorCaminoMinimo {
 
 	public AnalizadorCaminoMinimo() {
 		this.terreno = TerrenoDAO.getInstance();
-		g = this.generarGrafo(terreno.getTamanioTerreno(), generarAristas(terreno.getUbicaciones()));
+		g = obtenerGrafo();
+	}
+	
+	public Grafo obtenerGrafo(){
+		int tamanioTerreno = terreno.getTamanioTerreno();
+		ArrayList<Arista> aristas = generarAristas(terreno.getUbicaciones());
+		return generarGrafo(tamanioTerreno, aristas);
 	}
 
 	public ArrayList<Arista> generarAristas(UbicacionDTO[][] ubicaciones) {
@@ -39,15 +45,35 @@ public class AnalizadorCaminoMinimo {
 		}
 		return listaAristas;
 	}
+	
+	private ArrayList<UbicacionDTO> normalizarCamino(Stack<Integer> camino){
+		int indice;
+		ArrayList<UbicacionDTO> ubicaciones = terreno.getListaUbicaciones();
+		ArrayList<UbicacionDTO> ubicacionesFinales = new ArrayList<UbicacionDTO>();
+		while (camino.size() > 0) {
+			indice = camino.pop();
+			ubicacionesFinales.add(obtenerUbicacion(indice, ubicaciones));
+		}
+		return ubicacionesFinales;
+	}
+	
+	private UbicacionDTO obtenerUbicacion(int indice, ArrayList<UbicacionDTO> ubicaciones){
+		for (UbicacionDTO item : ubicaciones) {
+			if(item.getIndice()==indice){
+				return item;
+			}
+		}
+		return null;
+	}
 
 	// devuelve una lista de las aristas por q componen el camino minimo
-	public ArrayList<Arista> caminoMinimo(int inicio, int fin) {
+	public ArrayList<UbicacionDTO> caminoMinimo(int inicio, int fin) {
 		if (inicio == fin) { 
 			return null;
 		}
 
 		Stack<Integer> camino = this.calcularCamino(inicio, fin);
-		return this.generarAristas(camino);
+		return this.normalizarCamino(camino);
 	}
 
 	// aplica e algoritmo de dikstra a el grafo
