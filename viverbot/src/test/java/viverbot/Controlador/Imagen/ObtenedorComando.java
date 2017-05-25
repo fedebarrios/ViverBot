@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 
 import viverbot.Model.WebCam.ObtenedorImagenesMock;
 import viverbot.Modelo.WebCam.Imagen;
-import viverbot.Modelo.WebCam.RectificadorImagen;
+import viverbot.Modelo.WebCam.ResaltadorImagen;
 import viverbot.Vista.Imagen.ObtenedorSeleccionVista;
 
 
@@ -15,7 +15,7 @@ public class ObtenedorComando implements ActionListener{
 	
 	private ObtenedorSeleccionVista vistaCargarImagen;
 	private ObtenedorImagenesMock obtenedorImagenes;
-	private RectificadorImagen resaltadorImagen;
+	private ResaltadorImagen resaltadorImagen;
 	
 	
 	public ObtenedorComando()
@@ -23,7 +23,7 @@ public class ObtenedorComando implements ActionListener{
 		vistaCargarImagen = new ObtenedorSeleccionVista();
 		vistaCargarImagen.visible(true);
 		obtenedorImagenes = new ObtenedorImagenesMock();
-		resaltadorImagen = new RectificadorImagen();
+		resaltadorImagen = new ResaltadorImagen();
 	}
 	
 	@Override

@@ -6,10 +6,10 @@ public class GeneradorProporcional {
 	
 	public static Kernel generarKernelProporcional(Kernel kernel, float proporcion)
 	{
+		Integer width = kernel.getWidth();
+		Integer height = kernel.getHeight();
 		
-		Kernel newKernel = new Kernel(kernel.getWidth(),kernel.getHeight(),aplicarProporcion(kernel, kernel.getWidth(), kernel.getHeight(),proporcion));
-		return newKernel;
-		
+		return new Kernel(width, height, aplicarProporcion(kernel, width, height,proporcion));
 	}
 	
 	
@@ -18,11 +18,8 @@ public class GeneradorProporcional {
 		ArrayList<Integer> imgProp = new ArrayList<Integer>();
 		Integer area = (int)(Math.pow(((int)((ancho/2)*proporcion)),2)*Math.PI);
 		
-		for(int j=0; j<area; j++){
+		for(int j=0; j<area; j++)
 			imgProp.add(kernel.getImagen().get(j));
-		}
-		//System.out.println("contador "+area+" longitud de la imagne"+ imgProp.size());
-					
 
 		return imgProp;
 

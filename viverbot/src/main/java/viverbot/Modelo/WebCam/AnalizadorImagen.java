@@ -3,28 +3,23 @@ package viverbot.Modelo.WebCam;
 
 public class AnalizadorImagen  {
 	
-	
-	public void analizarPixel(int x, int y, Imagen imagen, Object secundario) {
+	public void analizarPixel(int x, int y, Imagen primerImagen, Imagen segundaImagen) {
 
-		ModificadorPixel resaltar = new ModificadorPixel();
-		boolean valor = false;
-		if(secundario instanceof PosicionadorKernel)
-			((PosicionadorKernel) secundario).posicionarKernel(x, y);
+		if(!compararPx(x,y,primerImagen,segundaImagen)){
+			Integer rgb = segundaImagen.valorRGB();
+			ModificadorPixel.modificarPixel(x, y, primerImagen, rgb);
+		}
 		else
-			valor = compararPx(x,y,imagen,secundario); 
-		
-		resaltar.modificarPixel(x, y, imagen, secundario, valor);
+			ModificadorPixel.modificarPixel(x, y, primerImagen, 0);
 		
 	}
 
-	private boolean compararPx(int x, int y, Imagen imagenResaltada, Object secundario) {
+	private boolean compararPx(int x, int y, Imagen primerImagen, Imagen segundaImagen) {
 		
-		imagenResaltada.getRGB(x, y);
-		if( secundario instanceof Imagen){
-			((Imagen) secundario).getRGB(x, y);
-			return imagenResaltada.getColorImagen().getRGB()==((Imagen) secundario).getColorImagen().getRGB();
-		}
-		return true;
+		primerImagen.getRGB(x, y);
+		segundaImagen.getRGB(x, y);
+		return primerImagen.getColorImagen().getRGB() == segundaImagen.getColorImagen().getRGB();
+
 
 	}
 	

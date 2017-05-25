@@ -15,7 +15,7 @@ import viverbot.Modelo.WebCam.Kernel;
 import viverbot.Modelo.WebCam.ObtenedorPath;
 import viverbot.Modelo.WebCam.PosicionadorKernel;
 import viverbot.Modelo.WebCam.ReconocedorFruto;
-import viverbot.Modelo.WebCam.RectificadorImagen;
+import viverbot.Modelo.WebCam.ResaltadorImagen;
 import viverbot.Modelo.WebCam.ValidadorKernel;
 
 public class DetectorFrutoTest {
@@ -25,7 +25,7 @@ public class DetectorFrutoTest {
 	private GeneradorImagenes generador;
 	private AdapterImage adaptador;
 	private PosicionadorKernel posicionador;
-	private RectificadorImagen resaltador;
+	private ResaltadorImagen resaltador;
 
 
 
@@ -107,7 +107,7 @@ public class DetectorFrutoTest {
 	private void inicializar()
 	{
 		adaptador = new AdapterImage();
-		resaltador = new RectificadorImagen();
+		resaltador = new ResaltadorImagen();
 	
 	}
 	
