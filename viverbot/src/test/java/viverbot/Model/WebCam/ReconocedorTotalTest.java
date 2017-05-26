@@ -22,7 +22,7 @@ public class ReconocedorTotalTest {
 	private ReconocedorFruto reconocedor;
 	private Kernel kernel;
 	
-	//@Test
+	@Test
 	public void deteccion5Frutostest() {
 		 generarImagenes();
 		 iniciarKernel();
@@ -35,7 +35,7 @@ public class ReconocedorTotalTest {
 	}
 	
 	
-	//@Test
+	@Test
 	public void deteccion0Frutostest() {
 		generarImagenes();
 		 iniciarKernel();
@@ -49,7 +49,7 @@ public class ReconocedorTotalTest {
 	}
 	
 	
-	//@Test
+	@Test
 	public void deteccionObjetoBasuratest() {
 		generarImagenes();
 		 iniciarKernel();
@@ -62,7 +62,7 @@ public class ReconocedorTotalTest {
 
 	}
 	
-	//@Test
+	@Test
 	public void deteccion15Frutostest() {
 		
 		generarImagenes();
@@ -110,13 +110,12 @@ public class ReconocedorTotalTest {
 		 iniciarKernel();
 
 		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 
 		 Imagen imgResaltada = generador.getPrimerImagen();
 		
 		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada, kernel,0.5f,1).intValue());
 	}
 	
-	//@Test
+	@Test
 	public void detectar2de3tamañosTest()
 	{
 		generarImagenes();
@@ -128,7 +127,7 @@ public class ReconocedorTotalTest {
 		assertEquals(8,reconocedor.reconocerFrutos(imgResaltada, kernel,0.6f,1).intValue());
 	}
 	
-	//@Test
+	@Test
 	public void detectar3de3tamañosTest()
 	{
 		generarImagenes();
@@ -142,6 +141,7 @@ public class ReconocedorTotalTest {
 	
 
 	private void generarImagenes() {
+		reconocedor = new ReconocedorFruto();
 		 obtenedor = new ObtenedorPath();
 		 obtenedor.obtenerPath();
 		 generador = new GeneradorImagenes();
