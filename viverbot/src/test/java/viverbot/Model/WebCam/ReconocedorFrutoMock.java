@@ -2,26 +2,24 @@ package viverbot.Model.WebCam;
 
 import viverbot.Modelo.WebCam.DetectorFruto;
 import viverbot.Modelo.WebCam.Imagen;
-import viverbot.Modelo.WebCam.PosicionadorKernel;
+import viverbot.Modelo.WebCam.Kernel;
 import viverbot.Modelo.WebCam.ResaltadorImagen;
+import viverbot.Modelo.WebCam.ResaltadorKernel;
 
 public class ReconocedorFrutoMock {
 	
-	public Integer reconocerFrutos(Imagen imagen, PosicionadorKernel posicionador)
+	public Integer reconocerFrutos(Imagen imagen, Kernel kernel,int x, int y)
 	{
-		Integer y=posicionador.getY();
-		Integer x=posicionador.getX();
+
 		Integer cantidadF=0;
-		ResaltadorImagen rectificador = new ResaltadorImagen();
 
 	
-		if(DetectorFruto.detectar(imagen, x, y, posicionador.getKernel()))
+		if(DetectorFruto.detectar(imagen, x, y, kernel))
 		{
-			posicionador.setX(x);
-			posicionador.setY(y);
-			rectificador.rectificarImagen(imagen, posicionador);
+		
+			ResaltadorKernel.resaltarKernel(imagen, kernel,x,y);
 			cantidadF ++;
-			x = posicionador.getWidthKernel();
+			x = kernel.getWidth();
 		}
 		else
 			x ++;	

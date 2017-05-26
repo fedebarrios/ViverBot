@@ -13,7 +13,6 @@ import viverbot.Modelo.WebCam.GeneradorImagenes;
 import viverbot.Modelo.WebCam.Imagen;
 import viverbot.Modelo.WebCam.Kernel;
 import viverbot.Modelo.WebCam.ObtenedorPath;
-import viverbot.Modelo.WebCam.PosicionadorKernel;
 import viverbot.Modelo.WebCam.ReconocedorFruto;
 import viverbot.Modelo.WebCam.ResaltadorImagen;
 import viverbot.Modelo.WebCam.ValidadorKernel;
@@ -24,9 +23,8 @@ public class DetectorFrutoTest {
 	private ObtenedorPath obtenedor; 
 	private GeneradorImagenes generador;
 	private AdapterImage adaptador;
-	private PosicionadorKernel posicionador;
 	private ResaltadorImagen resaltador;
-
+	private Kernel kernel;
 
 
 	@Test
@@ -35,8 +33,7 @@ public class DetectorFrutoTest {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/testDeteccion1.png");
 		iniciarImagenes();
-		posicionarKernel(0, 0);
-		assertTrue(DetectorFruto.detectar(imgResaltada(), 0, 0, posicionador.getKernel()));
+		assertTrue(DetectorFruto.detectar(imgResaltada(), 0, 0, kernel));
 	}
 	
 	@Test
@@ -45,20 +42,20 @@ public class DetectorFrutoTest {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
 		iniciarImagenes();
-		posicionarKernel(0, 0);
-		assertFalse(DetectorFruto.detectar(imgResaltada(), 0, 0, posicionador.getKernel()));
+		assertFalse(DetectorFruto.detectar(imgResaltada(), 0, 0, kernel));
 	}
 	
+	/*
 	@Test
 	public void posicionKernelTest()
 	{
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/arbol.png");
 		iniciarImagenes();
-		posicionarKernel(10, 12);
 		assertEquals(10,posicionador.getX().intValue());
 		assertEquals(12,posicionador.getY().intValue());
 	}
+	*/
 	
 	@Test
 	public void kernelMedioFrutoTest() {
@@ -66,8 +63,7 @@ public class DetectorFrutoTest {
 		inicializar();
 		iniciarPath("src/test/java/viverbot/recursosTest/testDeteccion4.png");
 		iniciarImagenes();
-		posicionarKernel(0, 0);
-		assertFalse(DetectorFruto.detectar(imgResaltada(), 0, 0, posicionador.getKernel()));
+		assertFalse(DetectorFruto.detectar(imgResaltada(), 0, 0, kernel));
 	}
 	
 	@Test
@@ -93,15 +89,10 @@ public class DetectorFrutoTest {
 	
 	private Imagen imgResaltada()
 	{
-		return resaltador.rectificarImagen(generador.getPrimerImagen(), generador.getSegundaImagen());
+		return ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
 
 	}
 	
-	private void posicionarKernel(int x, int y)
-	{
-		posicionador = new PosicionadorKernel(x,y,adaptador);
-
-	}
 	
 	
 	private void inicializar()
@@ -124,6 +115,7 @@ public class DetectorFrutoTest {
 	{
 		generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
 		adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
+		kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());
 
 	}
 	

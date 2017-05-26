@@ -19,7 +19,11 @@ public class GeneradorImagenes {
 	public Imagen getSegundaImagen() {
 		return segundaImagen;
 	}
-
+	
+	public void setSegundaImagen(String path)
+	{
+		segundaImagen = new Imagen(path);
+	}
 
 	
 	

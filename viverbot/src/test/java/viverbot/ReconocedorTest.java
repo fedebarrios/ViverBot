@@ -25,7 +25,7 @@ public class ReconocedorTest {
 		 obtenedor2.obtenerPath();
 		 GeneradorImagenes gen2 = new GeneradorImagenes();
 		 obtenedor2.setPrimerPath("src/test/java/viverbot/recursosTest/arbol.jpg");
-		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbolConFChicos2.png");
+		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbolConFChicos.png");
 		 gen2.generarImagenes(obtenedor2.getPrimerPath(),obtenedor2.getSegundoPath());
 		 
 		 
@@ -40,7 +40,7 @@ public class ReconocedorTest {
 		 vista.visible(true);
 		
 		 ReconocedorFruto reco = new ReconocedorFruto();	
-		 System.out.println("Frutos detectados: "+reco.reconocerFrutos(imgResaltada, kernel,0.6f,1));
+		 System.out.println("Frutos detectados: "+reco.reconocerFrutos(imgResaltada, kernel,0.5f,1));
 		
 		 
 	}

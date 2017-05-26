@@ -15,7 +15,6 @@ public class ObtenedorComando implements ActionListener{
 	
 	private ObtenedorSeleccionVista vistaCargarImagen;
 	private ObtenedorImagenesMock obtenedorImagenes;
-	private ResaltadorImagen resaltadorImagen;
 	
 	
 	public ObtenedorComando()
@@ -23,7 +22,6 @@ public class ObtenedorComando implements ActionListener{
 		vistaCargarImagen = new ObtenedorSeleccionVista();
 		vistaCargarImagen.visible(true);
 		obtenedorImagenes = new ObtenedorImagenesMock();
-		resaltadorImagen = new ResaltadorImagen();
 	}
 	
 	@Override
@@ -45,8 +43,8 @@ public class ObtenedorComando implements ActionListener{
 		else if( e.getSource() == vistaCargarImagen.getBtnFiltrar())
 		{
 			
-				Imagen imgResaltada = resaltadorImagen.rectificarImagen(obtenedorImagenes.getContenedorImagenes().getPrimerImagen(), obtenedorImagenes.getContenedorImagenes().getSegundaImagen());
-				vistaCargarImagen.getPanelPrimeraImagen().setIcon(new ImageIcon(imgResaltada.getRepresentacion()));
+				ResaltadorImagen.resaltarImagen(obtenedorImagenes.getContenedorImagenes().getPrimerImagen(), obtenedorImagenes.getContenedorImagenes().getSegundaImagen(),0,0);
+				vistaCargarImagen.getPanelPrimeraImagen().setIcon(new ImageIcon(obtenedorImagenes.getContenedorImagenes().getPrimerImagen().getRepresentacion()));
 				vistaCargarImagen.getPanelSegundaImagen().setIcon(new ImageIcon(obtenedorImagenes.getContenedorImagenes().getSegundaImagen().getRepresentacion()));
 			}
 
