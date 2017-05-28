@@ -4,12 +4,13 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import viverbot.Interfaces.IMedir;
 import viverbot.Model.Hora;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class Simulador {
+public class Simulador implements IMedir{
 
 	private Map<Horario, RangoNumerico> rangos;
 	private Magnitudes magnitud;
@@ -59,17 +60,17 @@ public class Simulador {
 		actualizarValorActual(h0);
 	}
 
-	public Medicion getMedicion() {
-		return this.valorActual;
-	}
-
 	public Hora getHora() {
-		// TODO Auto-generated method stub
 		return this.horaActual;
 	}
 
 	public void setFrecuencia(long i) {
 		this.frecuencia = i;
+	}
+
+	@Override
+	public Medicion getMedicion() {
+		return this.valorActual;
 	}
 
 }
