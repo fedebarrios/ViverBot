@@ -1,5 +1,6 @@
 package viverbot.Modelo.Simulacion;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,8 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 
 public class BuildSimuladorTemperaturaJunio implements IBuildSimulador {
 
-	private static final Simulador s = new Simulador(inicializarRangos(), Magnitudes.TEMPERATURA,300000);
+	private static final Simulador s = new Simulador(inicializarRangos(), Magnitudes.TEMPERATURA, 300000);
+	private static final String rangos = "#00,05#02,07#05,10#07,15#10,17#07,15#05,10#02,07#";
 
 	@Override
 	public Simulador getSimulador() {
@@ -17,16 +19,13 @@ public class BuildSimuladorTemperaturaJunio implements IBuildSimulador {
 
 	private static Map<Horario, RangoNumerico> inicializarRangos() {
 		Map<Horario, RangoNumerico> r = new HashMap<Horario, RangoNumerico>();
-		r.put(Horario.MEDIANOCHE, new RangoNumerico(0.0, 0.5));
-		r.put(Horario.MADRUGADA, new RangoNumerico(2.0, 7.0));
-		r.put(Horario.AMANECER, new RangoNumerico(5.0, 10.0));
-		r.put(Horario.MAÑANA, new RangoNumerico(7.0, 15.0));
-		r.put(Horario.MEDIODIA, new RangoNumerico(10.0, 17.0));
-		r.put(Horario.TARDE, new RangoNumerico(7.0, 15.0));
-		r.put(Horario.ATARDECER, new RangoNumerico(5.0, 10.0));
-		r.put(Horario.NOCHE, new RangoNumerico(2.0, 7.0));
+		ArrayList<RangoNumerico> rango = RangoNumerico.parseRangoNumerico(rangos);
+		Horario[] horarios = Horario.values();
+		for (int i = 0; i < horarios.length; i++) {
+			r.put(horarios[i], rango.get(i));
+		}
+
 		return r;
 	}
-
 
 }

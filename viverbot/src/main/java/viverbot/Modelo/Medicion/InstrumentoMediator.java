@@ -40,5 +40,7 @@ public class InstrumentoMediator {
 		soporte.mover(p.getUbicacion());
 		return tomarMedicion();
 	}
+	
+	
 
 }
