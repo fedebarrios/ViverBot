@@ -23,7 +23,7 @@ public class ReconocedorTotalTest {
 	private Kernel kernel;
 	
 	@Test
-	public void deteccion5Frutostest() {
+	public void deteccion4Frutostest() {
 		 generarImagenes();
 		 iniciarKernel();
 		 
@@ -34,12 +34,11 @@ public class ReconocedorTotalTest {
 		 assertEquals(5,reconocedor.reconocerFrutos(imgResaltada, kernel,1,1).intValue());
 	}
 	
-	
 	@Test
 	public void deteccion0Frutostest() {
 		generarImagenes();
 		 iniciarKernel();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/arbol.jpg");
+		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/plantaSinFrutos.jpg");
 		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
 		 Imagen imgResaltada = generador.getPrimerImagen();
 		
@@ -48,7 +47,7 @@ public class ReconocedorTotalTest {
 
 	}
 	
-	
+	/*
 	@Test
 	public void deteccionObjetoBasuratest() {
 		generarImagenes();
@@ -139,20 +138,20 @@ public class ReconocedorTotalTest {
 		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada, kernel,0.5f,1).intValue());
 	}
 	
-
+	*/
 	private void generarImagenes() {
 		reconocedor = new ReconocedorFruto();
 		 obtenedor = new ObtenedorPath();
 		 obtenedor.obtenerPath();
 		 generador = new GeneradorImagenes();
-		 obtenedor.setPrimerPath("src/test/java/viverbot/recursosTest/arbol.jpg");
-		 obtenedor.setSegundoPath("src/test/java/viverbot/recursosTest/arbol.png");
+		 obtenedor.setPrimerPath("src/test/java/viverbot/recursosTest/plantaSinFrutos.jpg");
+		 obtenedor.setSegundoPath("src/test/java/viverbot/recursosTest/5frutosConObjetos.png");
 		 generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
 	}
 	
 	private void iniciarKernel() {
 		 adaptador = new AdapterImage();
-		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
+		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/fruto.png");
 		 kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());		
 	}
 	
