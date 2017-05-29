@@ -23,7 +23,7 @@ public class ReconocedorTotalTest {
 	private Kernel kernel;
 	
 	@Test
-	public void deteccion4Frutostest() {
+	public void deteccion5Frutostest() {
 		 generarImagenes();
 		 iniciarKernel();
 		 
@@ -100,19 +100,20 @@ public class ReconocedorTotalTest {
 	}
 	
 	
-	
+	*/
 	@Test
 	public void detectar2de2tamañosTest()
 	{
 		generarImagenes();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/arbolConFChicos.png");
+		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/8frutos2tamaños.png");
 		 iniciarKernel();
 
 		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
 		 Imagen imgResaltada = generador.getPrimerImagen();
 		
-		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada, kernel,0.5f,1).intValue());
+		assertEquals(8,reconocedor.reconocerFrutos(imgResaltada, kernel,0.5f,1).intValue());
 	}
+	/*
 	
 	@Test
 	public void detectar2de3tamañosTest()
