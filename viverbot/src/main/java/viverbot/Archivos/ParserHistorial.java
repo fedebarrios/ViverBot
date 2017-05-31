@@ -10,9 +10,9 @@ import viverbot.Model.TuplaAltura;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class ParserHistorial implements IParser<List<TuplaAltura>>{
+public class ParserHistorial {
 	
-	public List<TuplaAltura> parsear(String s) throws Exception{
+	/*public List<TuplaAltura> parsear(String s) throws Exception{
 		Pattern p = Pattern.compile("Dia:\\(([0-9]+[:][0-9]+[.][0-9]+)cm\\)");
 		Matcher m = p.matcher(s);
 		List<TuplaAltura> historial = new ArrayList<TuplaAltura>();
@@ -30,6 +30,23 @@ public class ParserHistorial implements IParser<List<TuplaAltura>>{
 			historial.add(new TuplaAltura(new Medicion(altura,Magnitudes.ALTURA),dia));
 		}
 		return historial;
+	}*/
+	
+	public static TuplaAltura parsearTuplaAltura(String s){
+		Pattern p = Pattern.compile("Dia:\\(([0-9]+[:][0-9]+[.][0-9]+)cm\\)");
+		Matcher m = p.matcher(s);
+		List<String> match = new ArrayList<String>();
+		while(m.find()) {
+			String datoValido = m.group(1);
+			String[] datosTupla = datoValido.split(":");
+			int dia = Integer.parseInt(datosTupla[0]);
+			double altura = Double.parseDouble(datosTupla[1]);
+			return new TuplaAltura(new Medicion(altura,Magnitudes.ALTURA),dia);
+		}
+		/*if (match.size()==0){
+			throw new Exception("No existe informacion valida acerca del historial");
+		}*/
+		return null;
 	}
 	
 	

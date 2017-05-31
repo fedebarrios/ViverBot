@@ -34,7 +34,7 @@ public class ControlSeguimientosTest {
 	
 	
 	@Test
-	public void SeguimientoInvalido() {
+	public void SeguimientoInvalido() throws Exception {
 		inicializar();
 		
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
@@ -42,13 +42,12 @@ public class ControlSeguimientosTest {
 		this.control = ControlSeguimientos.getInstance();
 		control.agregarSeguimiento(planta2, historialOptimo1);
 		
-		assertEquals(0 , control.getSeguimientos().size());
-		
+		assertEquals(0 , control.seguimientos.size());
 		clear();
 	}
 	
 	@Test
-	public void SeguimientoValidoCargado() {
+	public void SeguimientoValidoCargado() throws Exception {
 		inicializar();
 		
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
@@ -61,8 +60,8 @@ public class ControlSeguimientosTest {
 		clear();
 	}
 	
-	@Test
-	public void UltimoDiamedicionTestSinMedicionAnterior() {
+	@Test 
+	public void UltimoDiamedicionTestSinMedicionAnterior() throws Exception {
 		inicializar();
 		
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
@@ -76,7 +75,7 @@ public class ControlSeguimientosTest {
 	}
 	
 	@Test
-	public void UltimoDiamedicionTestConMedicionGuardada() {
+	public void UltimoDiamedicionTestConMedicionGuardada() throws Exception {
 		inicializar();
 		
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
@@ -102,13 +101,13 @@ public class ControlSeguimientosTest {
 		
 		tuplas1 = new ArrayList<TuplaAltura>();
 		tuplas1.add(new TuplaAltura(new Medicion(30.0, Magnitudes.ALTURA), 4));
-		tuplas1.add(new TuplaAltura(new Medicion(40.0 , Magnitudes.ALTURA), 5));
-		tuplas1.add(new TuplaAltura(new Medicion(50.0, Magnitudes.ALTURA), 6));
+		tuplas1.add(new TuplaAltura(new Medicion(30.1 , Magnitudes.ALTURA), 5));
+		tuplas1.add(new TuplaAltura(new Medicion(30.2, Magnitudes.ALTURA), 6));
 		
 		tuplas2 = new ArrayList<TuplaAltura>();
 		tuplas2.add(new TuplaAltura(new Medicion(30.0, Magnitudes.ALTURA), 4));
-		tuplas2.add(new TuplaAltura(new Medicion(40.0, Magnitudes.ALTURA), 5));
-		tuplas2.add(new TuplaAltura(new Medicion(50.0, Magnitudes.ALTURA), 6));
+		tuplas2.add(new TuplaAltura(new Medicion(30.12, Magnitudes.ALTURA), 5));
+		tuplas2.add(new TuplaAltura(new Medicion(30.14, Magnitudes.ALTURA), 6));
 		
 	}
 	

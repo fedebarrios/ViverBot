@@ -1,5 +1,7 @@
 package viverbot.Archivos;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -14,21 +16,35 @@ import viverbot.Model.TuplaAltura;
 
 public class ParserDataArchivos {
 	protected Logger logger;
+	private LectorArchivo lector;
 	public ParserDataArchivos(){
-		logger = Log.getLog(LectorTxt.class);
+		lector = new LectorArchivo();
+		logger = Log.getLog(LectorArchivo.class);
 	}
 	
-	public HistorialOptimo parsearHistorialEspecie(String datos) throws Exception{
+	public HistorialOptimo parsearHistorialEspecie(String path) throws Exception{
 		try{
-			List<TuplaAltura> tuplas = new ParserHistorial().parsear(datos);	
-			Especie especie = new ParserEspecie().parsear(datos);
+			List<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();	
+			Especie especie = null;
+			BufferedReader b = new BufferedReader(new FileReader(path));
+			String s;
+			boolean finalizoNavegacion = false;
+			while(!finalizoNavegacion){
+				s = lector.lecturaParcial(b);
+				if(ParserHistorial.parsearTuplaAltura(s)!=null){
+					tuplas.add(ParserHistorial.parsearTuplaAltura(s));
+				} else if (ParserEspecie.parsearEspecie(s)!=null){
+					especie = ParserEspecie.parsearEspecie(s);
+				}
+				if(s.equals("")) finalizoNavegacion = true;			
+			}
 			return new HistorialOptimo(tuplas,especie);
 		}
 		catch(Exception e){
 			throw new Exception(e.getMessage());
 		}		
 	}
-	
+
 	public ArrayList<EstadoAltura> parsearEstados(String lectura){
 		Pattern p = Pattern.compile("Estados:\\(([A-Za-z,]+)\\)");
 		Matcher m = p.matcher(lectura);

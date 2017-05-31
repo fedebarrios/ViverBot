@@ -15,63 +15,57 @@ public class ParserHistorialTest {
 	
 	@Test
 	public void ParserEspecie() throws Exception{
-		ParserEspecie parser = new ParserEspecie();
 		String datos = "Especie:(tomate,tomatus)";
-		Especie especie = parser.parsear(datos);
+		Especie especie = ParserEspecie.parsearEspecie(datos);
 		assertEquals("tomate",especie.getNombre());
 		assertEquals("tomatus",especie.getNombreCientifico());
 	}
 	
-	@SuppressWarnings("unused")
-	@Test (expected = Exception.class)
-	public void ParserMalFormato() throws Exception{
-		ParserEspecie parser = new ParserEspecie();
+	@Test
+	public void ParserMalFormato(){
 		String datos = "Esp:(tomate,tomatus)";
-		Especie especie = parser.parsear(datos);
+		Especie especie = ParserEspecie.parsearEspecie(datos);
+		assertNull(especie);
 	}
 	
-	@SuppressWarnings("unused")
-	@Test (expected = Exception.class)
-	public void ParserSinInfo() throws Exception{
-		ParserEspecie parser = new ParserEspecie();
+	@Test
+	public void ParserSinInfo(){
 		String datos = "";
-		Especie especie = parser.parsear(datos);
+		Especie especie = ParserEspecie.parsearEspecie(datos);
+		assertNull(especie);
 	}
 	
-	@SuppressWarnings("unused")
-	@Test (expected = Exception.class)
+	@Test
 	public void ParserInfoExcesiva() throws Exception{
-		ParserEspecie parser = new ParserEspecie();
 		String datos = "Especie:(tomate,tomatus,tomatina)";
-		Especie especie = parser.parsear(datos);
+		Especie especie = ParserEspecie.parsearEspecie(datos);
+		assertNull(especie);	
 	}
 	
 	@Test
 	public void ParserListaTuplaAlturaExitosa() throws Exception{
-		ParserHistorial parser = new ParserHistorial();
 		String datos = "Dia:(4:6.51cm)";
-		List<TuplaAltura> tuplas = parser.parsear(datos);
-		assertEquals(4,tuplas.get(0).getDiaDeVida());
-		assertEquals( 6.51 , tuplas.get(0).getAltura().getValor() , 0);
+		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
+		assertEquals(4,tupla.getDiaDeVida());
+		assertEquals( 6.51 , tupla.getAltura().getValor() , 0);
 	}
 	
-	@SuppressWarnings("unused")
-	@Test (expected = Exception.class)
+	@Test
 	public void ParserListaTuplaAlturaFallida() throws Exception{
-		ParserHistorial parser = new ParserHistorial();
 		String datos = "D(-4:-6.51cm)";
-		List<TuplaAltura> tuplas = parser.parsear(datos);
+		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
+		assertNull(tupla);
 	}
 	
 	@Test
 	public void MediatorTest() throws Exception{
 		ParserDataArchivos mediator = new ParserDataArchivos();
-		String datos = "Dia:(4:6.51cm)" +"Comentario"+ "Dia:(6:8.41cm)" + "InfoSinImportancia" +"Especie:(cebolla,cebollus)" ;
+		String datos = "src/test/java/viverbot/Archivos/Historial.txt" ;
 		HistorialOptimo historial = mediator.parsearHistorialEspecie(datos);
-		assertEquals("cebolla",historial.getEspecie().getNombre());
-		assertEquals("cebollus",historial.getEspecie().getNombreCientifico());
-		assertEquals(6.51 , historial.buscarTupla(4).getAltura().getValor(), 0);
-		assertEquals(8.41 , historial.buscarTupla(6).getAltura().getValor(), 0);
-		assertTrue(historial.buscarTupla(2).getAltura() instanceof EmptyMedicion);
+		assertEquals("zanahoria",historial.getEspecie().getNombre());
+		assertEquals("zanahorius",historial.getEspecie().getNombreCientifico());
+		assertEquals(2.4 , historial.buscarTupla(1).getAltura().getValor(), 0);
+		assertEquals(2.50 , historial.buscarTupla(3).getAltura().getValor(), 0);
+		assertTrue(historial.buscarTupla(5).getAltura() instanceof EmptyMedicion);
 	}
 }

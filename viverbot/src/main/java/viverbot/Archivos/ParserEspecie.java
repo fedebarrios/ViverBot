@@ -7,9 +7,9 @@ import viverbot.DAO.EspecieDAO;
 import viverbot.DTO.Especie;
 import viverbot.Interfaces.IParser;
 
-public class ParserEspecie implements IParser<Especie>{
+public class ParserEspecie{
 	
-	public Especie parsear(String s) throws Exception{
+	/*public Especie parsear(String s) throws Exception{
 		Pattern p = Pattern.compile("Especie:\\(([A-Za-z]+[,][A-Za-z]+)\\)");
 		Matcher m = p.matcher(s);
 		String match = "";
@@ -22,5 +22,19 @@ public class ParserEspecie implements IParser<Especie>{
 		String[] datosEspecie = match.split(",");
 		Especie ret = new Especie(EspecieDAO.getInstance().obtenerUltimoCodigo(),datosEspecie[0],datosEspecie[1],"");
 		return ret;
+	}*/
+	
+	public static Especie parsearEspecie(String s){
+		Pattern p = Pattern.compile("Especie:\\(([A-Za-z]+[,][A-Za-z]+)\\)");
+		Matcher m = p.matcher(s);
+		String match = "";
+		while(m.find()) {
+			match += m.group(1);
+		}
+		if (!match.equals("")){
+			String[] datosEspecie = match.split(",");
+			return new Especie(EspecieDAO.getInstance().obtenerUltimoCodigo(),datosEspecie[0],datosEspecie[1],"");
+		}
+		return null;
 	}
 }

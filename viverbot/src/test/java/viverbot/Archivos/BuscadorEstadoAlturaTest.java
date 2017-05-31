@@ -24,8 +24,8 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 	@Test
 	public void testBuscadorEfectivamenteCargado() throws Exception
 	{
-		LectorTxt lector = new LectorTxt();
-		String lectura = lector.leerTxt("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		LectorArchivo lector = new LectorArchivo();
+		String lectura = lector.leerArchivo("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
@@ -41,8 +41,8 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 	@Test
 	public void testBuscadorDevolviendoUnEstadoAlturaPorPlanta() throws Exception
 	{
-		LectorTxt lector = new LectorTxt();
-		String lectura = lector.leerTxt("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		LectorArchivo lector = new LectorArchivo();
+		String lectura = lector.leerArchivo("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
@@ -80,8 +80,8 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 	public void testBuscadorEspecieNoCargada() throws Exception
 	{
 		System.setOut(new PrintStream(errContent));
-		LectorTxt lector = new LectorTxt();
-		String lectura = lector.leerTxt("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
+		LectorArchivo lector = new LectorArchivo();
+		String lectura = lector.leerArchivo("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);

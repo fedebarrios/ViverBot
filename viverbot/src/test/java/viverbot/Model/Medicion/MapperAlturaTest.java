@@ -29,7 +29,7 @@ public class MapperAlturaTest {
 	List<Planta> plantas;
 	
 	@Test
-	public void MapearAlturas(){
+	public void MapearAlturas() throws Exception{
 		inicializar();
 		ArrayList<Medicion> alturas = new ArrayList<Medicion>();
 		alturas.add(new Medicion(24.0, Magnitudes.ALTURA));
@@ -46,7 +46,7 @@ public class MapperAlturaTest {
 //		assertTrue(estadosDevueltos.get(0) instanceof EstadoAlturaPerfecta);
 //	}
 	
-	public void inicializar(){
+	public void inicializar() throws Exception{
 		plantas = new ArrayList<Planta>();
 		analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		control = ControlSeguimientos.getInstance();

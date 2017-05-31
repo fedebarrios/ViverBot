@@ -21,7 +21,7 @@ public class MapperCargadorTest {
 	private ControlHistoriales control;
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	
-	public void inicialize(){
+	public void inicialize() throws Exception{
 		clear();
 		inventario = new Inventario();
 		inventario.agregarEspecie("tomate", "tomatus", "");
@@ -32,7 +32,7 @@ public class MapperCargadorTest {
 	}
 	
 	@Test
-	public void mapearHistorialesCreados(){
+	public void mapearHistorialesCreados() throws Exception{
 		inicialize();
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
@@ -52,7 +52,7 @@ public class MapperCargadorTest {
 	}
 	
 	@Test
-	public void mapearHistorialesRepetidos(){
+	public void mapearHistorialesRepetidos() throws Exception{
 		
 		
 		inicialize();
@@ -72,7 +72,7 @@ public class MapperCargadorTest {
 	}
 	
 	@Test
-	public void mapearEspecieRepetida(){	
+	public void mapearEspecieRepetida() throws Exception{	
 		inicialize();
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();

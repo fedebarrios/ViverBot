@@ -22,7 +22,7 @@ public class CalculadoHistorialTest {
 			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		HistorialAltura h = new HistorialAltura(t);
-		assertTrue(CalculadorHistorial.calcularDiferencia(h));
+		assertTrue(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}
 	
 	@Test
@@ -34,7 +34,7 @@ public class CalculadoHistorialTest {
 			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		HistorialAltura h = new HistorialAltura(t);
-		assertFalse(CalculadorHistorial.calcularDiferencia(h));
+		assertFalse(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}
 	
 	@Test
@@ -46,7 +46,7 @@ public class CalculadoHistorialTest {
 			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		HistorialAltura h = new HistorialAltura(t);
-		assertFalse(CalculadorHistorial.calcularDiferencia(h));
+		assertFalse(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}	
 	
 	@Test
@@ -58,6 +58,6 @@ public class CalculadoHistorialTest {
 			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		HistorialAltura h = new HistorialAltura(t);
-		assertFalse(CalculadorHistorial.calcularDiferencia(h));
+		assertFalse(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}	
 }

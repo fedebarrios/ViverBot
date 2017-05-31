@@ -2,17 +2,17 @@ package viverbot.Archivos;
 
 import java.util.List;
 
-import viverbot.Model.HistorialAltura;
+import viverbot.DTO.Especie;
 import viverbot.Model.TuplaAltura;
 
 public class CalculadorHistorial {
 	
-	public static boolean calcularDiferencia(HistorialAltura historial){
-		if(!infoRepetida(historial)){
+	public static boolean calcularDiferencia(List<TuplaAltura> tuplas){
+		if(!infoRepetida(tuplas)){
 			double alturaAux = 0;
 			int diaAux = 0;
 			int pos = 0;
-			for(TuplaAltura t: historial.getTuplas()){
+			for(TuplaAltura t: tuplas){
 				if(pos == 0){
 					alturaAux = t.getAltura().getValor();
 					diaAux = t.getDiaDeVida();
@@ -32,15 +32,18 @@ public class CalculadorHistorial {
 		return false;
 	}
 	
-	protected static boolean infoRepetida(HistorialAltura historial){
-		List<TuplaAltura> tuplas = historial.getTuplas();
-		for(int i =0; i < tuplas.size()-1 ; i++){
-			for(int j = i+1 ; j < tuplas.size() ; j++){
-				if(tuplas.get(i).getDiaDeVida()==tuplas.get(j).getDiaDeVida()){
+	protected static boolean infoRepetida(List<TuplaAltura> tuplasHistorial){
+		for(int i =0; i < tuplasHistorial.size()-1 ; i++){
+			for(int j = i+1 ; j < tuplasHistorial.size() ; j++){
+				if(tuplasHistorial.get(i).getDiaDeVida()==tuplasHistorial.get(j).getDiaDeVida()){
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+
+	public static boolean hayInfoValida(List<TuplaAltura> lista, Especie especie) {
+		return especie!=null;
 	}
 }

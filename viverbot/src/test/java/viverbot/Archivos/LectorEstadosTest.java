@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 public class LectorEstadosTest extends TestCase {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	LectorTxt lector;
+	LectorArchivo lector;
 	
 	@Test (expected = Exception.class)
 	public void testArchivoNoTxt() throws Exception
@@ -51,8 +51,8 @@ public class LectorEstadosTest extends TestCase {
 	private void inicialize(String archivo) throws Exception {
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
-		lector = new LectorTxt();
-		lector.leerTxt(archivo);
+		lector = new LectorArchivo();
+		lector.leerArchivo(archivo);
 	}
 
 	private void clear() {

@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
+import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
@@ -16,12 +17,12 @@ import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
 public class CargadorArchivos extends Observable{
 	private Logger logger;
-	private LectorTxt lector;
+	private LectorArchivo lector;
 	private ParserDataArchivos mediator;
 	
 	public CargadorArchivos(){
 		logger = Log.getLog(CargadorArchivos.class);
-		lector = new LectorTxt();
+		lector = new LectorArchivo();
 		mediator = new ParserDataArchivos();
 	}
 	
@@ -68,23 +69,21 @@ public class CargadorArchivos extends Observable{
 	}
 	
 	public HistorialOptimo cargarHistorial(String path) throws Exception {
-		String lectura = lector.leerTxt(path);
+		if (!Verificador.validarExistencia(path)) {
+			throw new Exception("No existe archivo.");
+		} else if (!Verificador.validarExtension(path, ".txt")) {
+			throw new Exception("La extension del archivo no es .txt.");
+		}
 		try{
-			HistorialOptimo historial = mediator.parsearHistorialEspecie(lectura);
-			if(!CalculadorHistorial.calcularDiferencia(historial)){
-				throw new Exception("Por favor ingrese un historial mas consistente");
-			}
-			else{
-				return historial;
-			}
+			return mediator.parsearHistorialEspecie(path);
 		} catch(Exception e){
 			throw new Exception(e.getMessage());
 		}
 	}
 	
 	public boolean cargarEstados(String path) throws Exception{
-		LectorTxt lector = new LectorTxt();
-		String lectura = lector.leerTxt(path);
+		LectorArchivo lector = new LectorArchivo();
+		String lectura = lector.leerArchivo(path);
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
@@ -97,7 +96,7 @@ public class CargadorArchivos extends Observable{
 	}
 	
 	public boolean cargarEstadosBatch(String directorio) throws Exception{
-		LectorTxt lector = new LectorTxt();
+		LectorArchivo lector = new LectorArchivo();
 		String file = "";
 		File folder = new File(directorio);
 	    File[] files = folder.listFiles();
@@ -108,7 +107,7 @@ public class CargadorArchivos extends Observable{
             if (f.isFile()){
                 file = f.getName();
                 try{
-            		String lectura = lector.leerTxt(directorio+"/"+file);
+            		String lectura = lector.leerArchivo(directorio+"/"+file);
             		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
             		ArrayList<Double> valores = parser.parsearValores(lectura);
             		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);

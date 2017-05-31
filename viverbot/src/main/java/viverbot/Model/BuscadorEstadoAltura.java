@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import viverbot.Archivos.LectorTxt;
+import viverbot.Archivos.LectorArchivo;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
 import viverbot.DTO.Planta;
@@ -18,7 +18,7 @@ public class BuscadorEstadoAltura {
 	
 	public BuscadorEstadoAltura(){
 		this.setMap(new HashMap<Integer, SelectorEstadosPorValor>());
-		logger = Log.getLog(LectorTxt.class);
+		logger = Log.getLog(LectorArchivo.class);
 	};
 	
 	public static BuscadorEstadoAltura getInstance(){

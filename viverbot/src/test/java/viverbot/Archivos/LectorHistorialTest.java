@@ -1,37 +1,43 @@
 package viverbot.Archivos;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import org.junit.Test;
 
 public class LectorHistorialTest {
-	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	LectorTxt lector;
+	CargadorArchivos cargador = new CargadorArchivos();
 	
 	@Test (expected = Exception.class)
 	public void testArchivoNoEncontrado() throws Exception
 	{
-		inicialize("src/test/java/viverbot/Archivos/Historial.t");
+		cargador.cargarHistorial("src/test/java/viverbot/Archivos/Historial.t");
 	}
 	
 	@Test (expected = Exception.class)
 	public void testArchivoNoTxt() throws Exception
 	{
-		inicialize("src/test/java/viverbot/Archivos/Historial.csb");
+		cargador.cargarHistorial("src/test/java/viverbot/Archivos/Historial.csb");
 	}
 	
 	@Test
 	public void testLecturaExitosa() throws Exception
 	{
-		inicialize("src/test/java/viverbot/Archivos/Historial.txt");	
+		cargador.cargarHistorial("src/test/java/viverbot/Archivos/Historial.txt");	
 	}
 	
-	private void inicialize(String archivo) throws Exception{
-		System.setOut(new PrintStream(outContent));
-	    System.setErr(new PrintStream(errContent));
-		lector = new LectorTxt();
-		lector.leerTxt(archivo);
+	@Test
+	public void test(){
+		LectorArchivo l = new LectorArchivo();
+		try {
+			BufferedReader b = new BufferedReader(new FileReader("src/test/java/viverbot/Archivos/Historial.txt"));
+			String s = "etiqueta";
+			while(!s.equals("")){
+				s=l.lecturaParcial(b);
+				System.out.println(s);
+			}
+		}
+		catch(Exception e){
+		}
 	}
 }

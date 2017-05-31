@@ -57,8 +57,8 @@ public class ParserArchivosTest extends TestCase {
 	private void inicialize(String archivo) throws Exception{
 		System.setOut(new PrintStream(outContent));
 	    System.setErr(new PrintStream(errContent));
-		LectorTxt lector = new LectorTxt();
-		String lectura = lector.leerTxt(archivo);
+		LectorArchivo lector = new LectorArchivo();
+		String lectura = lector.leerArchivo(archivo);
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
