@@ -1,10 +1,10 @@
 package viverbot.Modelo.Medicion;
 
-import viverbot.Interfaces.IPotencia;
+import viverbot.Interfaces.Potencia;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class Potencia_2 implements IPotencia {
+public class Potencia_2 implements Potencia {
 
 	@Override
 	public Medicion aplicarPotencia(AireAcondicionado aire) {

@@ -1,11 +1,11 @@
 package viverbot.Controlador.Verificacion;
 
 import viverbot.DTO.Planta;
-import viverbot.Interfaces.IAnalisisAltura;
+import viverbot.Interfaces.AnalisisAltura;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class StrategyAnalisisAltura implements IAnalisisAltura{
+public class StrategyAnalisisAltura implements AnalisisAltura{
 
 	@Override
 	public EstadoAltura analizar(Medicion actual, Medicion esperada , Planta planta) {

@@ -1,8 +1,8 @@
 package viverbot.Modelo.Medicion;
 
-import viverbot.Interfaces.IFrioCalor;
+import viverbot.Interfaces.FrioCalor;
 
-public class Frio implements IFrioCalor {
+public class Frio implements FrioCalor {
 
 	@Override
 	public void definirEstado(AireAcondicionado aire) {

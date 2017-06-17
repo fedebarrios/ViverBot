@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 
-import viverbot.Interfaces.IFrioCalor;
-import viverbot.Interfaces.IPotencia;
+import viverbot.Interfaces.FrioCalor;
+import viverbot.Interfaces.Potencia;
 import viverbot.Modelo.Medicion.AireAcondicionado;
 import viverbot.Modelo.Medicion.Calor;
 import viverbot.Modelo.Medicion.Frio;
@@ -34,8 +34,8 @@ public class ControlManualAireVistaController extends Observable implements Acti
 			if (aire.isEncendidoManualmente()) {
 				aire.apagar();
 			} else {
-				aire.setEstado((IFrioCalor) vista.getDropdown_friocalor().getSelectedItem());
-				aire.setPotencia((IPotencia) vista.getDropdown_potencia().getSelectedItem());
+				aire.setEstado((FrioCalor) vista.getDropdown_friocalor().getSelectedItem());
+				aire.setPotencia((Potencia) vista.getDropdown_potencia().getSelectedItem());
 				aire.setTemperatura((String) vista.getDropdown_temperatura().getSelectedItem());
 				aire.encender();
 				setChanged();
@@ -43,8 +43,8 @@ public class ControlManualAireVistaController extends Observable implements Acti
 			}
 		}
 		if (e.getSource() == vista.getBtn_guardar()) {
-			aire.setEstado((IFrioCalor) vista.getDropdown_friocalor().getSelectedItem());
-			aire.setPotencia((IPotencia) vista.getDropdown_potencia().getSelectedItem());
+			aire.setEstado((FrioCalor) vista.getDropdown_friocalor().getSelectedItem());
+			aire.setPotencia((Potencia) vista.getDropdown_potencia().getSelectedItem());
 			aire.setTemperatura((String) vista.getDropdown_temperatura().getSelectedItem());
 		}
 	}

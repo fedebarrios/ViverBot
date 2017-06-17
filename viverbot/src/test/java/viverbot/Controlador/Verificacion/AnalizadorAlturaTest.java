@@ -16,7 +16,7 @@ import viverbot.Controlador.Verificacion.StrategyMetroDown;
 import viverbot.Controlador.Verificacion.StrategySeguimientoNull;
 import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
-import viverbot.Interfaces.IAnalisisAltura;
+import viverbot.Interfaces.AnalisisAltura;
 import viverbot.Model.Fecha;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
@@ -85,7 +85,7 @@ public class AnalizadorAlturaTest {
 	public void EstrategiaMetroRoto(){
 		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
-		IAnalisisAltura estrategia = analizador.getStrategy(new Medicion(-10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
+		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(-10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
 		assertTrue(estrategia instanceof StrategyMetroDown);
 	}
 	
@@ -109,7 +109,7 @@ public class AnalizadorAlturaTest {
 	public void EstrategiaNadaContraQueComparar(){
 		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
-		IAnalisisAltura estrategia = analizador.getStrategy(new Medicion(4.0,Magnitudes.ALTURA), new EmptyMedicion());
+		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(4.0,Magnitudes.ALTURA), new EmptyMedicion());
 		assertTrue(estrategia instanceof StrategySeguimientoNull);
 	}
 	
@@ -117,7 +117,7 @@ public class AnalizadorAlturaTest {
 	public void EstrategiaSePuedeAnalizar(){
 		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
-		IAnalisisAltura estrategia = analizador.getStrategy(new Medicion(10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
+		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
 		assertTrue(estrategia instanceof StrategyAnalisisAltura);
 	}
 	

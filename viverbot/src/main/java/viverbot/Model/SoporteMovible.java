@@ -1,11 +1,11 @@
 package viverbot.Model;
 
 import viverbot.DTO.UbicacionDTO;
-import viverbot.Interfaces.IMovible;
+import viverbot.Interfaces.Movible;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 
-public class SoporteMovible implements IMovible{
+public class SoporteMovible implements Movible{
 
 	private InstrumentoMediator mediator;
 	private Podador podador;

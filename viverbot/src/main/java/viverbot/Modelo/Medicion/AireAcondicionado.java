@@ -4,15 +4,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import viverbot.Archivos.WriterExcel;
-import viverbot.Interfaces.IFrioCalor;
-import viverbot.Interfaces.IPotencia;
+import viverbot.Interfaces.FrioCalor;
+import viverbot.Interfaces.Potencia;
 import viverbot.Model.EstadoVivero;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class AireAcondicionado {
-	private IPotencia potencia;
-	private IFrioCalor estado;
+	private Potencia potencia;
+	private FrioCalor estado;
 	private TemperaturaAireAcondicionado temp;
 	private Timer timer;
 	private boolean encendidoManualmente = false;
@@ -78,19 +78,19 @@ public class AireAcondicionado {
 		return encendidoManualmente;
 	}
 
-	public IPotencia getPotencia() {
+	public Potencia getPotencia() {
 		return potencia;
 	}
 
-	public IFrioCalor getEstado() {
+	public FrioCalor getEstado() {
 		return estado;
 	}
 
-	public void setPotencia(IPotencia potenciaEstado) {
+	public void setPotencia(Potencia potenciaEstado) {
 		this.potencia = potenciaEstado;
 	}
 
-	public void setEstado(IFrioCalor frioCalorEstado) {
+	public void setEstado(FrioCalor frioCalorEstado) {
 		this.estado = frioCalorEstado;
 	}
 

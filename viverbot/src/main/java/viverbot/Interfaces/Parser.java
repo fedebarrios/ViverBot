@@ -1,5 +1,5 @@
 package viverbot.Interfaces;
 
-public interface IParser<T> {
+public interface Parser<T> {
 	public T parsear(String s) throws Exception;
 }

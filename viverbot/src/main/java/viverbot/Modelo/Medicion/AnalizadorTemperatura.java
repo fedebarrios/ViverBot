@@ -5,7 +5,7 @@ import java.util.Observer;
 
 import viverbot.Controlador.Verificacion.StrategyMagnitudInvalida;
 import viverbot.Controlador.Verificacion.StrategyRangoTemperatura;
-import viverbot.Interfaces.IAnalisis;
+import viverbot.Interfaces.Analisis;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Magnitudes;
@@ -13,7 +13,7 @@ import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class AnalizadorTemperatura {
-	private IAnalisis estrategia;
+	private Analisis estrategia;
 	private Medicion m;
 	private DiagnosticoAnalisis estado;
 
@@ -25,13 +25,13 @@ public class AnalizadorTemperatura {
 
 	public DiagnosticoAnalisis analizar(Medicion medicion, RangoNumerico r) {
 		this.m = medicion;
-		IAnalisis estrategia = this.getStrategy(m);
+		Analisis estrategia = this.getStrategy(m);
 		this.estado = estrategia.analizar(m, r);
 		return estado;
 
 	}
 
-	private IAnalisis getStrategy(Medicion m) {
+	private Analisis getStrategy(Medicion m) {
 		if (m.getTipo().equals(Magnitudes.TEMPERATURA)) {
 			return new StrategyRangoTemperatura();
 		} else {

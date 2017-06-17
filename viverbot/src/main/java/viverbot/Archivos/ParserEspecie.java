@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import viverbot.DAO.EspecieDAO;
 import viverbot.DTO.Especie;
-import viverbot.Interfaces.IParser;
+import viverbot.Interfaces.Parser;
 
 public class ParserEspecie{
 	

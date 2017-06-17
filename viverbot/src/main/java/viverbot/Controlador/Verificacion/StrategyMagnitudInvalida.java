@@ -1,13 +1,13 @@
 package viverbot.Controlador.Verificacion;
 
-import viverbot.Interfaces.IAnalisis;
+import viverbot.Interfaces.Analisis;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.EmptyMagnitud;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 
-public class StrategyMagnitudInvalida implements IAnalisis {
+public class StrategyMagnitudInvalida implements Analisis {
 
 	@Override
 	public DiagnosticoAnalisis analizar(Medicion m, RangoNumerico rangoIdeal) {

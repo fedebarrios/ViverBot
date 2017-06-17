@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import viverbot.Interfaces.IParser;
+import viverbot.Interfaces.Parser;
 import viverbot.Model.TuplaAltura;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;

@@ -4,13 +4,13 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import viverbot.Interfaces.IMedir;
+import viverbot.Interfaces.Medir;
 import viverbot.Model.Hora;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class Simulador implements IMedir{
+public class Simulador implements Medir{
 
 	private Map<Horario, RangoNumerico> rangos;
 	private Magnitudes magnitud;
