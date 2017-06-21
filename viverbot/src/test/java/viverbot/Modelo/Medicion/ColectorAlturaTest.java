@@ -50,7 +50,8 @@ public class ColectorAlturaTest {
 	}
 
 	private void inicialize() {
-		this.colector = new ColectorAltura();
+		InstrumentoMediator mediator =  new InstrumentoMediator(Magnitudes.ALTURA);
+		this.colector = new ColectorAltura(mediator);
 	}
 	
 	private void esperar(long tiempo) throws InterruptedException {

@@ -19,10 +19,10 @@ public class ColectorAltura extends Observable{
 	private TimerTask task;
 	private long milisegundosEnUnDia = 3600000*24;
 
-	private final static Magnitudes m = Magnitudes.ALTURA;
 
-	public ColectorAltura() {
-		this.mediator = new InstrumentoMediator(m);
+	// si te fijas bien ahora este colector sirve para cualquier cosa n.nm no necesariamente altura :v
+	public ColectorAltura(InstrumentoMediator m) {
+		this.mediator = m;
 		this.timer = new Timer();
 		this.alturasActuales = null;	
 	}

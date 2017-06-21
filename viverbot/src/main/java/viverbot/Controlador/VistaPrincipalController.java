@@ -7,9 +7,11 @@ import viverbot.Controlador.Verificacion.PlanificadorAltura;
 import viverbot.Model.ControlSeguimientos;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.Plantas;
+import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
 import viverbot.Modelo.Medicion.AutomatizadorDeClima;
 import viverbot.Modelo.Medicion.ColectorAltura;
+import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Medicion.MapperAltura;
 import viverbot.Vista.VistaPrincipal;
 
@@ -28,7 +30,8 @@ public class VistaPrincipalController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == this.vista.getMntmControlarAltura()) {
-			ColectorAltura c = new ColectorAltura();
+			InstrumentoMediator mediator =  new InstrumentoMediator(Magnitudes.ALTURA);
+			ColectorAltura c = new ColectorAltura(mediator);
 			PlanificadorAltura p = PlanificadorAltura.getInstance();
 			AnalizadorAltura a = new AnalizadorAltura(GuardadorAltura.getInstance());
 			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas(), ControlSeguimientos.getInstance());
