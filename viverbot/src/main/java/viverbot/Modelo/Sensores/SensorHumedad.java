@@ -5,11 +5,11 @@ import viverbot.Modelo.Magnitudes.Humedad;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class SensorHumedad extends InstrumentoMedicion {
+public class SensorHumedad implements IMedir {
 
 	
 	@Override
-	protected Medicion obtenerMedicion() {
+	public Medicion getMedicion() {
 		return this.simularMedicion();
 	}
 

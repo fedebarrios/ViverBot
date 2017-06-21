@@ -3,7 +3,7 @@ package viverbot.Modelo.Sensores;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Simulacion.Simulador;
 
-public class SensorTemperatura extends InstrumentoMedicion {
+public class SensorTemperatura implements IMedir {
 
 	private Simulador s;
 

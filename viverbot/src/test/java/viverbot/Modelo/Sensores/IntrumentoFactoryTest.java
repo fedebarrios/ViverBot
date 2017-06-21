@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
-import viverbot.Modelo.Sensores.InstrumentoMedicion;
 import viverbot.Modelo.Sensores.Metro;
 import viverbot.Modelo.Sensores.SensorHumedad;
 import viverbot.Modelo.Sensores.SensorTemperatura;
@@ -14,7 +13,7 @@ import viverbot.Modelo.Sensores.UnknowInstrumentoMedicion;
 
 public class IntrumentoFactoryTest {
 
-	private  InstrumentoMedicion instrumentoTest = null;
+	private  IMedir instrumentoTest = null;
 
 	@Test
 	public void CreatInstrumentoTestTemperatura() {
@@ -49,7 +48,7 @@ public class IntrumentoFactoryTest {
 	@Test
 	public void CreatSingletownTestTemperatura() {
 		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
-		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
+		IMedir aux = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}
@@ -57,7 +56,7 @@ public class IntrumentoFactoryTest {
 	@Test
 	public void CreatSingletownTestHumedad() {
 		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
-		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
+		IMedir aux = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}
@@ -65,7 +64,7 @@ public class IntrumentoFactoryTest {
 	@Test
 	public void CreatSingletownTestAltura() {
 		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
-		InstrumentoMedicion aux = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		IMedir aux = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}	

@@ -8,11 +8,11 @@ import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
+import viverbot.Modelo.Sensores.IMedir;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
-import viverbot.Modelo.Sensores.InstrumentoMedicion;
 
 public class InstrumentoMediator {
-	protected InstrumentoMedicion instrumentoMedicion;
+	protected IMedir instrumentoMedicion;
 	protected String tipoValor;
 	protected SoporteMovible soporte;
 	protected ArrayList<Planta> plantas;
@@ -30,7 +30,7 @@ public class InstrumentoMediator {
 		return this.instrumentoMedicion.getMedicion();
 	}
 
-	public InstrumentoMedicion getInstrumentoMedicion() {
+	public IMedir getInstrumentoMedicion() {
 		return instrumentoMedicion;
 	}
 	
