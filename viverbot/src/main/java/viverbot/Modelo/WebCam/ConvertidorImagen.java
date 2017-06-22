@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class ConvertidorImagen {
 	
-	private static Integer valorVacio=-16777216; // imagen PNG (sin fondo)
 	
 	public ArrayList<Integer> convertirImagen(Imagen img)
 	{
@@ -12,7 +11,6 @@ public class ConvertidorImagen {
 		for(int j=0; j<img.getAlto(); j++)
 			for(int i=0; i<img.getAncho(); i++){
 				img.getRGB(i, j);
-				if(img.getColorImagen().getRGB()!=valorVacio)
 					imagen.add(img.getColorImagen().getRGB()); }
 		
 		return imagen;
