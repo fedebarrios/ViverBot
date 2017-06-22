@@ -1,5 +1,6 @@
 package viverbot.Modelo.WebCam;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class ComparadorKernel {
@@ -8,16 +9,16 @@ public class ComparadorKernel {
 	private Integer width;
 	private Integer height;
 	
-	public boolean compararKernel(String path,Imagen imagen)
+	public boolean compararKernel(String path,BufferedImage imagen)
 	{
 				
-		Imagen img = new Imagen(path);
+		BufferedImage img = GeneradorImagen.generarImagen(path);
 		ValidadorKernel validador = new ValidadorKernel();
 		ConvertidorImagen convertidor = new ConvertidorImagen();
 		try{ if(validador.validarKernel(img,imagen)){
 				datos = convertidor.convertirImagen(img);
-				width = img.getAncho();
-				height = img.getAlto();
+				width = img.getWidth();
+				height = img.getHeight();
 				return true;}
 		}
 		catch(Exception e)

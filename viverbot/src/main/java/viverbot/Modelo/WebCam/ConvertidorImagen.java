@@ -1,17 +1,19 @@
 package viverbot.Modelo.WebCam;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class ConvertidorImagen {
 	
 	
-	public ArrayList<Integer> convertirImagen(Imagen img)
+	public ArrayList<Integer> convertirImagen(BufferedImage img)
 	{
 		ArrayList<Integer> imagen = new ArrayList<Integer>();
-		for(int j=0; j<img.getAlto(); j++)
-			for(int i=0; i<img.getAncho(); i++){
+		for(int j=0; j<img.getHeight(); j++)
+			for(int i=0; i<img.getWidth(); i++){
 				img.getRGB(i, j);
-					imagen.add(img.getColorImagen().getRGB()); }
+					imagen.add(new Color(img.getRGB(i, j)).getRGB()); }
 		
 		return imagen;
 	}

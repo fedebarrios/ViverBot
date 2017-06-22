@@ -1,16 +1,16 @@
 package viverbot.Model.WebCam;
 
+import java.awt.image.BufferedImage;
+
 import viverbot.Modelo.WebCam.DetectorFruto;
-import viverbot.Modelo.WebCam.Imagen;
 import viverbot.Modelo.WebCam.Kernel;
 import viverbot.Modelo.WebCam.ResaltadorImagen;
 import viverbot.Modelo.WebCam.ResaltadorKernel;
 
 public class ReconocedorFrutoMock {
 	
-	public Integer reconocerFrutos(Imagen imagen, Kernel kernel,int x, int y)
+	public Integer reconocerFrutos(BufferedImage imagen, Kernel kernel,int x, int y)
 	{
-
 		Integer cantidadF=0;
 
 	

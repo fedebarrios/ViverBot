@@ -1,6 +1,7 @@
 package viverbot.Modelo.WebCam;
 
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -14,14 +15,14 @@ public class ReconocedorFruto {
 		ubicaciones = new ArrayList<Point>();
 	}
 	
-	public Integer reconocerFrutos(Imagen imagen, Kernel kernel,float pExpectativa, float pRecibida )
+	public Integer reconocerFrutos(BufferedImage imagen, Kernel kernel,float pExpectativa, float pRecibida )
 	{
 		Integer y=0;
 		Integer x=0;
 		Integer cantidadF=0;
 
-		while(y != imagen.getAlto()&& y < imagen.getAlto()-kernel.getHeight()){
-		while(x != imagen.getAncho() && x < imagen.getAncho()-kernel.getWidth()){				
+		while(y != imagen.getHeight()&& y < imagen.getHeight()-kernel.getHeight()){
+		while(x != imagen.getWidth() && x < imagen.getWidth()-kernel.getWidth()){				
 			if(DetectorFruto.detectar(imagen, x, y, kernel))
 			{
 				
