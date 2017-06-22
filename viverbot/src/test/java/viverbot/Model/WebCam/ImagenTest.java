@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import viverbot.Modelo.WebCam.Imagen;
-import viverbot.Modelo.WebCam.ObtenedorImagenes;
 
 public class ImagenTest {
 	

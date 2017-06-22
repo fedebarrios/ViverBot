@@ -4,40 +4,30 @@ package viverbot;
 
 import javax.swing.ImageIcon;
 
-import viverbot.Modelo.WebCam.AdapterImage;
-import viverbot.Modelo.WebCam.GeneradorImagenes;
+import viverbot.Modelo.WebCam.ComparadorKernel;
 import viverbot.Modelo.WebCam.GeneradorProporcional;
 import viverbot.Modelo.WebCam.Imagen;
 import viverbot.Modelo.WebCam.Kernel;
-import viverbot.Modelo.WebCam.ObtenedorPath;
 import viverbot.Modelo.WebCam.ReconocedorFruto;
 import viverbot.Modelo.WebCam.ResaltadorImagen;
-import viverbot.Vista.Imagen.ObtenedorSeleccionVista;
 
 public class ReconocedorTest {
 	
 	public static void main(String[] args)
 	{
 		
-		 ObtenedorSeleccionVista vista = new ObtenedorSeleccionVista();
 		 
-		 ObtenedorPath obtenedor2 = new ObtenedorPath();
-		 obtenedor2.obtenerPath();
-		 GeneradorImagenes gen2 = new GeneradorImagenes();
-		 obtenedor2.setPrimerPath("src/test/java/viverbot/recursosTest/arbol.jpg");
-		 obtenedor2.setSegundoPath("src/test/java/viverbot/recursosTest/arbolConFChicos.png");
-		 gen2.generarImagenes(obtenedor2.getPrimerPath(),obtenedor2.getSegundoPath());
+	 	String img1 = "src/test/java/viverbot/recursosTest/arbol.jpg";
+		String img2="src/test/java/viverbot/recursosTest/arbolConFChicos.png";
 		 
 		 
 		 
-		 AdapterImage adaptador = new AdapterImage();
-		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png",gen2.getPrimerImagen());
+		 ComparadorKernel adaptador = new ComparadorKernel();
+		 adaptador.compararKernel("src/test/java/viverbot/recursosTest/objetoChico.png",new Imagen(img1));
 		 Kernel kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());
 
-		 ResaltadorImagen.resaltarImagen(gen2.getPrimerImagen(), gen2.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = gen2.getPrimerImagen();
-		 vista.getPanelPrimeraImagen().setIcon(new ImageIcon(imgResaltada.getRepresentacion()));
-		 vista.visible(true);
+		 Imagen imgResaltada =ResaltadorImagen.resaltarImagen(new Imagen(img1), new Imagen(img2),0,0);
+	
 		
 		 ReconocedorFruto reco = new ReconocedorFruto();	
 		 System.out.println("Frutos detectados: "+reco.reconocerFrutos(imgResaltada, kernel,0.5f,1));

@@ -7,14 +7,18 @@ import java.util.ArrayList;
 public class ReconocedorFruto {
 	
 	private ArrayList<Point> ubicaciones;
+	private static final DecimalFormat formatoD = new DecimalFormat("#0.0");
+
+	public ReconocedorFruto()
+	{
+		ubicaciones = new ArrayList<Point>();
+	}
 	
 	public Integer reconocerFrutos(Imagen imagen, Kernel kernel,float pExpectativa, float pRecibida )
 	{
 		Integer y=0;
 		Integer x=0;
 		Integer cantidadF=0;
-		ubicaciones = new ArrayList<Point>();
-		DecimalFormat formatoD = new DecimalFormat("#0.0");
 
 		while(y != imagen.getAlto()&& y < imagen.getAlto()-kernel.getHeight()){
 		while(x != imagen.getAncho() && x < imagen.getAncho()-kernel.getWidth()){				
@@ -49,5 +53,9 @@ public class ReconocedorFruto {
 		
 	}
 
+	public ArrayList<Point> getUbicaciones()
+	{
+		return ubicaciones;
+	}
 
 }

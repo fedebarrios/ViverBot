@@ -3,7 +3,7 @@ package viverbot.Model.WebCam;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import viverbot.Modelo.WebCam.AdapterImage;
+import viverbot.Modelo.WebCam.ComparadorKernel;
 import viverbot.Modelo.WebCam.DetectorFruto;
 import viverbot.Modelo.WebCam.Imagen;
 import viverbot.Modelo.WebCam.Kernel;
@@ -12,7 +12,7 @@ import viverbot.Modelo.WebCam.ValidadorKernel;
 
 public class DetectorFrutoTest {
 	
-	private AdapterImage adaptador;
+	private ComparadorKernel adaptador;
 	private Kernel kernel;
 	private Imagen imagenPlanta;
 	
@@ -49,8 +49,8 @@ public class DetectorFrutoTest {
 	
 
 	private void iniciarKernel() {
-		 adaptador = new AdapterImage();
-		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objeto1px.png", imagenPlanta);
+		 adaptador = new ComparadorKernel();
+		 adaptador.compararKernel("src/test/java/viverbot/recursosTest/objeto1px.png", imagenPlanta);
 		 kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());		
 	}
 	

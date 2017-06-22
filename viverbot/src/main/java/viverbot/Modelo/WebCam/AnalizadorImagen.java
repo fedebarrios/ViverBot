@@ -2,7 +2,7 @@ package viverbot.Modelo.WebCam;
 
 
 public class AnalizadorImagen  {
-	
+
 	public void analizarPixel(int x, int y, Imagen primerImagen, Imagen segundaImagen) {
 
 		if(!compararPx(x,y,primerImagen,segundaImagen)){

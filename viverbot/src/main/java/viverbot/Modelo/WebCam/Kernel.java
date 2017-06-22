@@ -11,7 +11,7 @@ public class Kernel {
 	
 	public Kernel(int ancho, int alto, ArrayList<Integer> datos)
 	{
-	
+
 		this.width = ancho;
 		this.height = alto;
 		this.imagen = datos;

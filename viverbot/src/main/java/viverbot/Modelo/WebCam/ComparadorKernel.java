@@ -2,13 +2,13 @@ package viverbot.Modelo.WebCam;
 
 import java.util.ArrayList;
 
-public class AdapterImage {
+public class ComparadorKernel {
 	
 	private ArrayList<Integer> datos;
 	private Integer width;
 	private Integer height;
 	
-	public boolean adaptarImagen(String path,Imagen imagen)
+	public boolean compararKernel(String path,Imagen imagen)
 	{
 				
 		Imagen img = new Imagen(path);
