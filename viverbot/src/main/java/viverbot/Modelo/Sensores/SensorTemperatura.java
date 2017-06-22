@@ -10,13 +10,11 @@ public class SensorTemperatura implements IMedir {
 	@Override
 	public Medicion getMedicion() {
 
-		return this.simularMedicion();
-	}
-
-	protected Medicion simularMedicion() {
 		EstadoVivero e = EstadoVivero.getInstance();
 		return e.getTemperaturaActual();
 	}
+
+	
 
 	
 }

@@ -31,7 +31,7 @@ public class ColectorTemperatura extends Observable {
 	}
 
 	public void colectar() {
-
+		Timer timer =  new Timer();
 		TimerTask t = new TimerTask() {
 
 			@Override

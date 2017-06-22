@@ -65,9 +65,6 @@ public class Simulador implements IMedir{
 		return this.horaActual;
 	}
 
-	public void setFrecuencia(long i) {
-		this.frecuencia = i;
-	}
 
 	@Override
 	public Medicion getMedicion() {
