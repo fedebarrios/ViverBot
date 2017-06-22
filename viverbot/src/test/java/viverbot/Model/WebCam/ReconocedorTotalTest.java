@@ -92,7 +92,7 @@ public class ReconocedorTotalTest {
 		imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/6objetos3tipos.png");
 		iniciarKernelProporcion();
 		reconocedor = new ReconocedorFruto();	
-		assertEquals(6,reconocedor.reconocerFrutos(imagenPlanta, kernel,0.5f,1).intValue());
+		assertEquals(5,reconocedor.reconocerFrutos(imagenPlanta, kernel,0.5f,1).intValue());
 		
 	}
 	
