@@ -27,7 +27,7 @@ public class App {
 		EstadoVivero estado = EstadoVivero.getInstance();
 		String rangos = "#00,05#02,07#05,10#07,15#10,17#07,15#05,10#02,07#";
 
-		Simulador simulador =  new Simulador(Simulador.inicializarRangos(rangos), Magnitudes.TEMPERATURA, 300000);
+		Simulador simulador =  new Simulador(Simulador.inicializarRangos(rangos), 300000);
 		simulador.simular();
 		
 		InstrumentoMediator i = new InstrumentoMediator(simulador);
