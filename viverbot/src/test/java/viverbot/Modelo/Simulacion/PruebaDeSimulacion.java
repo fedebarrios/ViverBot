@@ -40,10 +40,8 @@ public class PruebaDeSimulacion {
 
 		Simulador simulador = new Simulador(r, Magnitudes.TEMPERATURA, 5000);
 		
-		InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
-		SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();
+		InstrumentoMediator i = new InstrumentoMediator(simulador);
 		simulador.simular();
-		s.setSimulador(simulador);
 		
 		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 		t.colectar();

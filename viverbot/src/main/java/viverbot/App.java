@@ -27,17 +27,11 @@ public class App {
 		EstadoVivero estado = EstadoVivero.getInstance();
 		String rangos = "#00,05#02,07#05,10#07,15#10,17#07,15#05,10#02,07#";
 
-		// abstraer en otro objeto
-		InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
-		SensorTemperatura s = (SensorTemperatura) i.getInstrumentoMedicion();
-		Simulador simulador;
+		Simulador simulador =  new Simulador(Simulador.inicializarRangos(rangos), Magnitudes.TEMPERATURA, 300000);
+		simulador.simular();
+		
+		InstrumentoMediator i = new InstrumentoMediator(simulador);
 
-		// ventana de opciones
-
-		simulador = new Simulador(Simulador.inicializarRangos(rangos), Magnitudes.TEMPERATURA, 300000);
-
-		//simulador.simular();
-		s.setSimulador(simulador);
 		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
 		t.addObserver(estado);
 		t.colectar();
@@ -45,6 +39,7 @@ public class App {
 		estado.addObserver(monitor);
 		estado.addObserver(principal.getAutomatizadorVista());
 		monitor.addObserver(principal.getVista());
+
 	}
 	// fin de la ventan de opciones
 

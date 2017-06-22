@@ -10,6 +10,7 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Sensores.IMedir;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
+import viverbot.Modelo.Simulacion.Simulador;
 
 public class InstrumentoMediator {
 	protected IMedir instrumentoMedicion;
@@ -24,6 +25,10 @@ public class InstrumentoMediator {
 
 	public InstrumentoMediator(Magnitudes m) {
 		this.instrumentoMedicion = InstrumentoFactory.crearInstrumento(m);
+	}
+
+	public InstrumentoMediator(IMedir simulador) {
+		this.instrumentoMedicion = simulador;
 	}
 
 	public Medicion tomarMedicion() {
