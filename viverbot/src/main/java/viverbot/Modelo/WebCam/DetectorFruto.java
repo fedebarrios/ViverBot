@@ -27,7 +27,7 @@ public class DetectorFruto {
 
 	private static boolean validarPx(Imagen img)
 	{
-		return img.getColorImagen().getRGB() != valorVacio;
+		return img.getColorImagen().getRGB() != img.getRGB(0, 0);
 	}
 
 }

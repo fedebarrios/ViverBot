@@ -16,152 +16,99 @@ import viverbot.Modelo.WebCam.ResaltadorImagen;
 
 public class ReconocedorTotalTest {
 	
-	private ObtenedorPath obtenedor; 
-	private GeneradorImagenes generador;
 	private AdapterImage adaptador;
 	private ReconocedorFruto reconocedor;
 	private Kernel kernel;
+	private Imagen imagenPlanta; 
 	
 	@Test
-	public void deteccion5Frutostest() {
-		 generarImagenes();
+	public void detectar4Frutostest() {
+		 imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/4objetos.png");
 		 iniciarKernel();
-		 
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
-		
 		 reconocedor = new ReconocedorFruto();	
-		 assertEquals(5,reconocedor.reconocerFrutos(imgResaltada, kernel,1,1).intValue());
+		 assertEquals(4,reconocedor.reconocerFrutos(imagenPlanta, kernel,1,1).intValue());
 	}
 	
 	@Test
-	public void deteccion0Frutostest() {
-		generarImagenes();
+	public void noDetectarFrutotest() {
+		imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/vacio30x30.jpg");
 		 iniciarKernel();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/plantaSinFrutos.jpg");
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
-		
 		 reconocedor = new ReconocedorFruto();	
-		assertEquals(0,reconocedor.reconocerFrutos(imgResaltada, kernel,1,1).intValue());
+		 assertEquals(0,reconocedor.reconocerFrutos(imagenPlanta, kernel,1,1).intValue());
 
 	}
 	
-	/*
+	
 	@Test
 	public void deteccionObjetoBasuratest() {
-		generarImagenes();
+		imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/6objetosYbasura.png");
 		 iniciarKernel();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/arbolObjetoCayo.png");
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
-		
 		 reconocedor = new ReconocedorFruto();	
-		assertEquals(6,reconocedor.reconocerFrutos(imgResaltada, kernel,1,1).intValue());
+		 assertEquals(6,reconocedor.reconocerFrutos(imagenPlanta, kernel,1,1).intValue());
+
 
 	}
 	
-	@Test
-	public void deteccion15Frutostest() {
-		
-		generarImagenes();
-		 iniciarKernel();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/arbol15.png");
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
-		
-		 reconocedor = new ReconocedorFruto();	
-		assertEquals(15,reconocedor.reconocerFrutos(imgResaltada, kernel,1,1).intValue());
-
-	}
+	
+	
 	
 	@Test
 	public void desplazamientoPorPixelTest() {
-		
-		generarImagenes();
-		 iniciarKernel();
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
+		imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/4objetos.png");
+		iniciarKernel();
 		ReconocedorFrutoMock recoFalso = new ReconocedorFrutoMock();
-		assertEquals(1,recoFalso.reconocerFrutos(imgResaltada, kernel,0,0).intValue());
+		Integer desplazamientoKernel = recoFalso.reconocerFrutos(imagenPlanta, kernel,0,0);
+		assertEquals(1,desplazamientoKernel.intValue());
 
 	}
 	
 	
 	@Test
 	public void desplazamientoPorBloqueTest() {
-		generarImagenes();
-		 iniciarKernel();
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
+		imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/4objetos.png");
+		iniciarKernel();
 		ReconocedorFrutoMock recoFalso = new ReconocedorFrutoMock();
-		assertEquals(33,recoFalso.reconocerFrutos(imgResaltada, kernel,164,213).intValue());
-
+		Integer desplazamientoKernel = recoFalso.reconocerFrutos(imagenPlanta, kernel,1,1);
+		assertEquals(3,desplazamientoKernel.intValue());
 	}
 	
 	
-	*/
-	@Test
-	public void detectar2de2tamañosTest()
-	{
-		generarImagenes();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/8frutos2tamaños.png");
-		 iniciarKernel();
-
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
-		
-		assertEquals(8,reconocedor.reconocerFrutos(imgResaltada, kernel,0.5f,1).intValue());
-	}
-	/*
 	
 	@Test
-	public void detectar2de3tamañosTest()
+	public void detectar4de2tamañosTest()
 	{
-		generarImagenes();
-		 iniciarKernel();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/arbolConFChicos3.png");
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
+
+		imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/4objetos2tipos40x40.png");
+		iniciarKernelProporcion();
+		reconocedor = new ReconocedorFruto();	
+		assertEquals(4,reconocedor.reconocerFrutos(imagenPlanta, kernel,0.5f,1).intValue());
 		
-		assertEquals(8,reconocedor.reconocerFrutos(imgResaltada, kernel,0.6f,1).intValue());
 	}
+	
 	
 	@Test
 	public void detectar3de3tamañosTest()
 	{
-		generarImagenes();
-		 iniciarKernel();
-		 cargarImagenPrueba("src/test/java/viverbot/recursosTest/arbolConFChicos3.png");
-		 ResaltadorImagen.resaltarImagen(generador.getPrimerImagen(), generador.getSegundaImagen(),0,0);
-		 Imagen imgResaltada = generador.getPrimerImagen();
+		imagenPlanta = new Imagen("src/test/java/viverbot/recursosTest/6objetos3tipos.png");
+		iniciarKernelProporcion();
+		reconocedor = new ReconocedorFruto();	
+		assertEquals(6,reconocedor.reconocerFrutos(imagenPlanta, kernel,0.5f,1).intValue());
 		
-		assertEquals(11,reconocedor.reconocerFrutos(imgResaltada, kernel,0.5f,1).intValue());
 	}
 	
-	*/
-	private void generarImagenes() {
-		reconocedor = new ReconocedorFruto();
-		 obtenedor = new ObtenedorPath();
-		 obtenedor.obtenerPath();
-		 generador = new GeneradorImagenes();
-		 obtenedor.setPrimerPath("src/test/java/viverbot/recursosTest/plantaSinFrutos.jpg");
-		 obtenedor.setSegundoPath("src/test/java/viverbot/recursosTest/5frutosConObjetos.png");
-		 generador.generarImagenes(obtenedor.getPrimerPath(),obtenedor.getSegundoPath());
-	}
+	
 	
 	private void iniciarKernel() {
 		 adaptador = new AdapterImage();
-		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/fruto.png");
+		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objeto1px.png",imagenPlanta);
 		 kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());		
 	}
 	
-	private void cargarImagenPrueba(String path)
-	{
-		 generador.setSegundaImagen(path);
-
+	private void iniciarKernelProporcion() {
+		 adaptador = new AdapterImage();
+		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objeto10x10.png",imagenPlanta);
+		 kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());		
 	}
-	
 	
 	
 

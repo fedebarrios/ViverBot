@@ -24,8 +24,7 @@ public class ImagenTest {
 	{
 		String ubicacion = "src/test/java/viverbot/recursosTest/"+imagen;
 		plantaImagen = new Imagen(ubicacion);
-		ObtenedorImagenes obtenedor = new ObtenedorImagenes();
-		obtenedor.obtenerImagenes();
+	
 		
 	}
 

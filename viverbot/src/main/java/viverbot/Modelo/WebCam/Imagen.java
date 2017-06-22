@@ -20,6 +20,7 @@ public class Imagen {
 	
 	public Integer getRGB(int x, int y)
 	{
+		
 		colorImagen = new Color(representacion.getRGB(x, y));
 		return colorImagen.getRGB();
 	}

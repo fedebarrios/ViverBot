@@ -8,12 +8,13 @@ public class AdapterImage {
 	private Integer width;
 	private Integer height;
 	
-	public boolean adaptarImagen(String path)
+	public boolean adaptarImagen(String path,Imagen imagen)
 	{
+				
 		Imagen img = new Imagen(path);
 		ValidadorKernel validador = new ValidadorKernel();
 		ConvertidorImagen convertidor = new ConvertidorImagen();
-		try{ if(validador.validarKernel(img)){
+		try{ if(validador.validarKernel(img,imagen)){
 				datos = convertidor.convertirImagen(img);
 				width = img.getAncho();
 				height = img.getAlto();

@@ -31,7 +31,7 @@ public class ReconocedorTest {
 		 
 		 
 		 AdapterImage adaptador = new AdapterImage();
-		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png");
+		 adaptador.adaptarImagen("src/test/java/viverbot/recursosTest/objetoChico.png",gen2.getPrimerImagen());
 		 Kernel kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());
 
 		 ResaltadorImagen.resaltarImagen(gen2.getPrimerImagen(), gen2.getSegundaImagen(),0,0);

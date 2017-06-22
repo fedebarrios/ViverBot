@@ -16,7 +16,8 @@ public class GeneradorProporcional {
 	private static ArrayList<Integer> aplicarProporcion(Kernel kernel, Integer ancho, Integer alto, float proporcion)
 	{
 		ArrayList<Integer> imgProp = new ArrayList<Integer>();
-		Integer area = (int)(Math.pow(((int)((ancho/2)*proporcion)),2)*Math.PI);
+	//	Integer area = (int)(Math.pow(((int)((ancho/2)*proporcion)),2)*Math.PI);
+		Integer area = (int) ((ancho*proporcion)*(alto*proporcion));
 		
 		for(int j=0; j<area; j++)
 			imgProp.add(kernel.getImagen().get(j));

@@ -4,15 +4,10 @@ public class ObtenedorImagenes {
 
 	private GeneradorImagenes contenedorImagenes;
 
-	public boolean obtenerImagenes() {
-			ObtenedorPath obtenedorPath = new ObtenedorPath();
-	
-			if(obtenedorPath.obtenerPath()){
+	public void obtenerImagenes(String img1, String img2) {
+		
 				contenedorImagenes = new GeneradorImagenes();
-				contenedorImagenes.generarImagenes(obtenedorPath.getPrimerPath(), obtenedorPath.getSegundoPath());
-				return true; }
-			else
-				return false;
+				contenedorImagenes.generarImagenes(img1, img2);
 	}
 	
 
