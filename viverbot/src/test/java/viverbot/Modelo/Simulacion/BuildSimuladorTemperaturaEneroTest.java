@@ -11,8 +11,8 @@ import viverbot.Modelo.Magnitudes.Medicion;
 
 public class BuildSimuladorTemperaturaEneroTest {
 
-	private static final IBuildSimulador b = new BuildSimuladorTemperaturaEnero();
-	private static  Simulador s = b.getSimulador();
+	private static final String rangos = "#15,19#10,17#15,20#18,25#25,32#27,35#20,30#17,25#";
+	private static final Simulador s = new Simulador(Simulador.inicializarRangos(rangos), Magnitudes.TEMPERATURA, 300000);
 
 	
 	@Test

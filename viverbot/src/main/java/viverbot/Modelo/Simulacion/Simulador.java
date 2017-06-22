@@ -1,5 +1,7 @@
 package viverbot.Modelo.Simulacion;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -72,5 +74,15 @@ public class Simulador implements IMedir{
 	public Medicion getMedicion() {
 		return this.valorActual;
 	}
+	
+	public static Map<Horario, RangoNumerico> inicializarRangos(String rangos) {
+		Map<Horario, RangoNumerico> r = new HashMap<Horario, RangoNumerico>();
+		ArrayList<RangoNumerico> rango = RangoNumerico.parseRangoNumerico(rangos);
+		Horario[] horarios = Horario.values();
+		for (int i = 0; i < horarios.length; i++) {
+			r.put(horarios[i], rango.get(i));
+		}
 
+		return r;
+	}
 }

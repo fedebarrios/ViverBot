@@ -15,15 +15,13 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Sensores.SensorHumedad;
 import viverbot.Modelo.Sensores.SensorTemperatura;
-import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
-import viverbot.Modelo.Simulacion.IBuildSimulador;
 import viverbot.Modelo.Simulacion.Simulador;
 
 public class InstrumentoMediatorTest {
 
 	InstrumentoMediator mediatorTest = null;
-	private static IBuildSimulador bEnero = new BuildSimuladorTemperaturaEnero();
-	private static Simulador simuladorEnero = bEnero.getSimulador();
+	private static final String rangos = "#15,19#10,17#15,20#18,25#25,32#27,35#20,30#17,25#";
+	
 
 	@Test
 	public void colectorMagnitudesTestTemperatura() {
@@ -45,10 +43,11 @@ public class InstrumentoMediatorTest {
 	public void testTomarMedicionTemperatura() {
 		this.mediatorTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
 		SensorTemperatura s = (SensorTemperatura) this.mediatorTest.getInstrumentoMedicion();
-		s.setSimulador(simuladorEnero);
-		simuladorEnero.simular();
+		Simulador simulador = new Simulador(Simulador.inicializarRangos(rangos), Magnitudes.TEMPERATURA, 300000);
+		s.setSimulador(simulador);
+		simulador.simular();
 		
-		assertEquals(simuladorEnero.getMedicion(), this.mediatorTest.tomarMedicion());
+		assertEquals(simulador.getMedicion(), this.mediatorTest.tomarMedicion());
 		assertEquals(this.mediatorTest.tomarMedicion().getTipo(), Magnitudes.TEMPERATURA);
 
 		clear();

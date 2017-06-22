@@ -12,15 +12,16 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Medicion.ColectorTemperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Sensores.SensorTemperatura;
-import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
-import viverbot.Modelo.Simulacion.IBuildSimulador;
+
 import viverbot.Modelo.Simulacion.Simulador;
 
 public class ColectorTemperaturaTest {
-	ColectorTemperatura colector = null;
+	private ColectorTemperatura colector = null;
 	private InstrumentoMediator m = null;
-	private static IBuildSimulador bEnero = new BuildSimuladorTemperaturaEnero();
-	private static Simulador simuladorEnero = bEnero.getSimulador();
+	private static final String rangos = "#15,19#10,17#15,20#18,25#25,32#27,35#20,30#17,25#";
+	private static final Simulador simulador = new Simulador(Simulador.inicializarRangos(rangos), Magnitudes.TEMPERATURA, 300000);
+
+
 
 	@Test
 	public void testColectorTemperatura() {
@@ -47,7 +48,7 @@ public class ColectorTemperaturaTest {
 	public void testMedir() {
 		this.inicialize();
 
-		assertEquals(this.colector.medir(), simuladorEnero.getMedicion());
+		assertEquals(this.colector.medir(), simulador.getMedicion());
 
 		this.clear();
 
@@ -63,7 +64,8 @@ public class ColectorTemperaturaTest {
 	private void inicialize() {
 		m = new InstrumentoMediator(Magnitudes.TEMPERATURA);
 		SensorTemperatura s = (SensorTemperatura) this.m.getInstrumentoMedicion();
-		s.setSimulador(simuladorEnero);
+		
+		s.setSimulador(simulador);
 		this.colector = new ColectorTemperatura(5000, 0, m);
 	}
 

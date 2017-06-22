@@ -9,8 +9,6 @@ import viverbot.Modelo.Medicion.ColectorTemperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Monitoreo.MonitorEstado;
 import viverbot.Modelo.Sensores.SensorTemperatura;
-import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaEnero;
-import viverbot.Modelo.Simulacion.BuildSimuladorTemperaturaJunio;
 import viverbot.Modelo.Simulacion.Simulador;
 
 public class App {
@@ -27,6 +25,7 @@ public class App {
 
 	public static void controlarTemperatura(VistaPrincipalController principal) {
 		EstadoVivero estado = EstadoVivero.getInstance();
+		String rangos = "#00,05#02,07#05,10#07,15#10,17#07,15#05,10#02,07#";
 
 		// abstraer en otro objeto
 		InstrumentoMediator i = new InstrumentoMediator(Magnitudes.TEMPERATURA);
@@ -35,7 +34,7 @@ public class App {
 
 		// ventana de opciones
 
-		simulador = new BuildSimuladorTemperaturaJunio().getSimulador();
+		simulador = new Simulador(Simulador.inicializarRangos(rangos), Magnitudes.TEMPERATURA, 300000);
 
 		//simulador.simular();
 		s.setSimulador(simulador);
