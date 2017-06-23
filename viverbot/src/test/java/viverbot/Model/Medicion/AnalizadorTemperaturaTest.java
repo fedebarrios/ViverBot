@@ -15,11 +15,10 @@ import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 public class AnalizadorTemperaturaTest {
 	private RangoNumerico rango = new RangoNumerico(10.0, 20.0);
 	private Medicion temperaturaOptima = new Medicion(15.0, Magnitudes.TEMPERATURA);
-	private Medicion temperaturaBaja = new Medicion(5.0,Magnitudes.TEMPERATURA);
-	private Medicion temperaturaAlta = new Medicion(25.0,Magnitudes.TEMPERATURA);
-	private Medicion vacia = new Medicion(null,Magnitudes.VACIO);
+	private Medicion temperaturaBaja = new Medicion(5.0, Magnitudes.TEMPERATURA);
+	private Medicion temperaturaAlta = new Medicion(25.0, Magnitudes.TEMPERATURA);
+	private Medicion vacia = new Medicion(0.0, Magnitudes.VACIO);
 
-	
 	@Test
 	public void AnalizarOptimoTest() {
 		DiagnosticoAnalisis resultado = AnalizadorTemperatura.analizar(temperaturaOptima, rango);
@@ -27,7 +26,6 @@ public class AnalizadorTemperaturaTest {
 		assertEquals(resultado.getOptima(), true);
 		assertEquals(resultado.getValor(), temperaturaOptima);
 		assertTrue(resultado.getDiferencia() == 0.0);
-		
 
 	}
 
@@ -39,7 +37,6 @@ public class AnalizadorTemperaturaTest {
 		assertTrue((resultado.getValor()).equals(temperaturaBaja));
 		assertTrue(resultado.getDiferencia() == -5.0);
 
-
 	}
 
 	@Test
@@ -50,17 +47,15 @@ public class AnalizadorTemperaturaTest {
 		assertNotNull(resultado);
 		assertTrue(resultado.getDiferencia() == 5.0);
 
-
 	}
-	
+
 	@Test
 	public void AnalizarVacioTest() {
 		DiagnosticoAnalisis resultado = AnalizadorTemperatura.analizar(this.vacia, rango);
 		assertTrue(resultado.getOptima() == false);
-		assertTrue(resultado.getValor().getValor() == null);
+		assertTrue(resultado.getValor().getValor() ==  0.0);
 		assertNotNull(resultado);
 
 	}
-
 
 }

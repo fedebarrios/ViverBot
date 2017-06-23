@@ -1,4 +1,3 @@
 src/test/java/viverbot/Archivos/DirectorioTest1
 src/test/java/viverbot/Archivos/DirectorioTest2
-src/test/java/viverbot/Archivos/DirectorioTest3
-src\test\java\viverbot\Archivos\EstadosAlturaFiles
+src/test/java/viverbot/Archivos/EstadosAlturaFiles
