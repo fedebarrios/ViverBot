@@ -20,11 +20,12 @@ public class Simulador implements IMedir{
 	private Medicion valorActual;
 	private long frecuencia;
 
-	public Simulador(Map<Horario, RangoNumerico> r, long f) {
+	public Simulador(Map<Horario, RangoNumerico> r, long f, Magnitudes m) {
 		this.rangos = r;
 		this.horaActual = Hora.obtenerHoraActual();
 		this.actualizarValorActual(this.horaActual);
 		this.frecuencia = f;
+		this.magnitud = m;
 		this.simular();
 	}
 

@@ -168,7 +168,7 @@ public class SimularTest {
 		r.put(Horario.TARDE, r6);
 		r.put(Horario.ATARDECER, r7);
 		r.put(Horario.NOCHE, r8);
-		simulador = new Simulador(r,300000);
+		simulador = new Simulador(r,300000, Magnitudes.TEMPERATURA);
 	}
 
 	private void clear() {

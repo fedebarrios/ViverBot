@@ -38,7 +38,7 @@ public class PruebaDeSimulacion {
 		
 		VistaPrincipalController principal = new VistaPrincipalController();
 
-		Simulador simulador = new Simulador(r, 5000);
+		Simulador simulador = new Simulador(r, 5000, Magnitudes.TEMPERATURA);
 		
 		InstrumentoMediator i = new InstrumentoMediator(simulador);
 		simulador.simular();
