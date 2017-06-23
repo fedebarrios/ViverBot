@@ -1,5 +1,6 @@
 package viverbot.Controlador.Verificacion;
 
+import viverbot.Model.EstadoVivero;
 import viverbot.Model.NivelRiego;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
@@ -7,7 +8,8 @@ import viverbot.Modelo.Magnitudes.Medicion;
 
 public class EvaluaRiegoXHumedad extends EvaluaRiegoDecorator{
 	private RangoNumerico rangoIdeal = new RangoNumerico(50.0, 40.0);
-	Medicion medicionHumedad=new Medicion(0.0,Magnitudes.HUMEDAD);
+	Medicion medicionHumedad=EstadoVivero.getInstance().getHumedadActual();
+	
 	
 	public EvaluaRiegoXHumedad(RiegoValidable riegoValidable) {
 		super(riegoValidable);
@@ -22,8 +24,7 @@ public class EvaluaRiegoXHumedad extends EvaluaRiegoDecorator{
 			nivel=nivel.aumentar();
 		}
 		return nivel;
-
-			}
+	}
 
 	public Medicion getMedicionHumedad() {
 		return medicionHumedad;
@@ -32,7 +33,5 @@ public class EvaluaRiegoXHumedad extends EvaluaRiegoDecorator{
 	public void setMedicionHumedad(Medicion medicionHumedad) {
 		this.medicionHumedad = medicionHumedad;
 	}
-	
-	
 		
 }
