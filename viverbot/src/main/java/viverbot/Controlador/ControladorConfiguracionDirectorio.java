@@ -3,6 +3,7 @@ package viverbot.Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.List;
 
 import viverbot.Archivos.GatewayConfiguracion;
 import viverbot.Vista.VistaConfiguracionDirectorios;
@@ -26,15 +27,19 @@ public class ControladorConfiguracionDirectorio implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.v.getBtnCargarDirectorio()){
-			if(!eligioDirectorio()){
-				optionPane.showMessageDialog(this.v,"Seleccione un directorio a modificar");
+			if(!cargarDirectorio()){
+				optionPane.showMessageDialog(this.v,"Hubo un problema al seleccionar el directorio");
 			}
-			else{
-				if(!cargarDirectorio()){
-					optionPane.showMessageDialog(this.v,"Hubo un problema al seleccionar el directorio");
-				}
-			}	
+		} else if (e.getSource() == this.v.getBtnBorrarDirectorio()){
+			if(!eligioDirectorio()){
+				optionPane.showMessageDialog(this.v,"Seleccione un directorio");
+			} borrarDirectorio();
 		}
+	}
+
+	protected void borrarDirectorio() {
+		GatewayConfiguracion.borrarDirectorio(this.v.getComboBox().getSelectedIndex()-1);
+		llenarCampos();
 	}
 
 	protected boolean cargarDirectorio() {
@@ -43,32 +48,29 @@ public class ControladorConfiguracionDirectorio implements ActionListener{
 		File directorioElegido = selector.getSelectedFile();
 		if (directorioElegido!=null)
 		{
-			System.out.println(selector.getSelectedFile().getPath());
-			setearDirectorio(selector.getSelectedFile().getPath());
+			agregarDirectorio(selector.getSelectedFile().getPath());
 			return true;
 		}
 		return false;
 	}
 	
-	protected int getDirectorioSeleccionado() {
-		if (this.v.getRdDirectorio1().isSelected()) return 1;
-		else if (this.v.getRdDirectorio2().isSelected()) return 2;
-		return 3;
-	}
-	
-	protected void setearDirectorio(String directorio){
-		GatewayConfiguracion.setearDirectorio(directorio, getDirectorioSeleccionado());
+	protected void agregarDirectorio(String directorio){
+		GatewayConfiguracion.agregarDirectorio(directorio);
 		llenarCampos();
 	}
 
 	protected boolean eligioDirectorio() {
-		return this.v.getRdDirectorio1().isSelected()||this.v.getRdDirectorio2().isSelected()||this.v.getRdDirectorio3().isSelected();
+		return !this.v.getComboBox().getSelectedItem().equals("");
 	}
 	
+	@SuppressWarnings("unchecked")
 	protected void llenarCampos() {
-		this.v.setDirectorio1(GatewayConfiguracion.getDirectorio(1));
-		this.v.setDirectorio2(GatewayConfiguracion.getDirectorio(2));
-		this.v.setDirectorio3(GatewayConfiguracion.getDirectorio(3));
+		this.v.getComboBox().removeAllItems();
+		this.v.getComboBox().addItem("");
+		List<String> directorios = GatewayConfiguracion.getDirectorios();
+		for(String path : directorios){
+			this.v.getComboBox().addItem(path);
+		}
 	}
 	
 	public VistaConfiguracionDirectorios getVista(){

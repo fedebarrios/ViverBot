@@ -35,17 +35,14 @@ public class CargadorArchivos extends Observable{
 		notifyObservers(historiales);
 	}
 	
-	public List<HistorialOptimo> seleccionarMejorDirectorio(){
-		List<HistorialOptimo> historiales1 = levantarArchivos (GatewayConfiguracion.getDirectorio(1));
-		List<HistorialOptimo> historiales2 = levantarArchivos (GatewayConfiguracion.getDirectorio(2));
-		List<HistorialOptimo> historiales3 = levantarArchivos (GatewayConfiguracion.getDirectorio(3));
-		if(historiales1.size() > historiales2.size() && historiales1.size() > historiales3.size()){
-			return historiales1;
-		} else if(historiales2.size() > historiales1.size() && historiales2.size() > historiales3.size()){
-			return historiales2;
-		} else {
-			return historiales3;
+	public List<HistorialOptimo> seleccionarMejorDirectorio() {
+		List<String> directorios = GatewayConfiguracion.getDirectorios();
+		for(String path :directorios) {
+			List<HistorialOptimo> historiales = levantarArchivos (path);
+			if(historiales.size()>0) return historiales;
 		}
+		//throw new Exception("No hay historiales consistentes para cargar");
+		return null;
 	}
 	
 	public List<HistorialOptimo> levantarArchivos (String directorio){

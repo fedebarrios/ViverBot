@@ -8,13 +8,12 @@ public class GatewayConfiguracionTest {
 	
 	@Test
 	public void setearTest(){
-		GatewayConfiguracion.setearDirectorio("c/usuario", 1);
-		assertEquals("c/usuario" , GatewayConfiguracion.getDirectorio(1));	
+		GatewayConfiguracion.limpiar();
+		GatewayConfiguracion.agregarDirectorio("c/usuario");
+		assertEquals(1 , GatewayConfiguracion.getDirectorios().size());	
 
-		GatewayConfiguracion.setearDirectorio("c/desktop", 2);
-		assertEquals("c/desktop" , GatewayConfiguracion.getDirectorio(2));	
+		GatewayConfiguracion.agregarDirectorio("c/desktop");
+		assertEquals(2 , GatewayConfiguracion.getDirectorios().size());	
 
-		GatewayConfiguracion.setearDirectorio("c/documents", 3);
-		assertEquals("c/documents" , GatewayConfiguracion.getDirectorio(3));	
 	}
 }

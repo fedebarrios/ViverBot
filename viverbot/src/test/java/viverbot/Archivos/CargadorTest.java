@@ -41,12 +41,13 @@ public class CargadorTest {
 	@Test
 	public void elegirPrimerDirectorioConArchivosParaLevantar(){
 		inicialize();
+		GatewayConfiguracion.limpiar();
 		String[] directorios = {"src/test/java/viverbot/Archivos/DirectorioTest1",
 								"src/test/java/viverbot/Archivos/DirectorioTest2",
 								"src/test/java/viverbot/Archivos/DirectorioTest3"};
 		int i = 1;
 		for(String s:directorios){
-			GatewayConfiguracion.setearDirectorio(s, i);
+			GatewayConfiguracion.agregarDirectorio(s);
 			i++;
 		}
 		assertEquals(2,plugin.seleccionarMejorDirectorio().size());

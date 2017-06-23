@@ -34,15 +34,16 @@ public class ControladorAnalizadorAlturaTest {
 	}
 	
 	public void inicialize(ControladorAnalizadorAltura controlador) throws Exception{
+		GatewayConfiguracion.limpiar();
 		String[] directorios = {"src/test/java/viverbot/Archivos/DirectorioTest1",
 				"src/test/java/viverbot/Archivos/DirectorioTest2",
 				"src/test/java/viverbot/Archivos/EstadosAlturaFiles"};
 		int i = 1;
 		for(String s:directorios){
-			GatewayConfiguracion.setearDirectorio(s, i);
+			GatewayConfiguracion.agregarDirectorio(s);
 			i++;
 		}
 		CargadorArchivos plugin = new CargadorArchivos();
-		plugin.cargarEstadosBatch(GatewayConfiguracion.getDirectorio(3));
+		plugin.cargarEstadosBatch(GatewayConfiguracion.getDirectorio(2));
 	}
 }

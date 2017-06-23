@@ -63,7 +63,6 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 	@Test
 	public void testBuscadorLevantarEnBatch() throws Exception{
 		ControladorConfiguracionDirectorio conf = new ControladorConfiguracionDirectorio();
-		conf.getVista().setRdDirectorio3(true);
 		MockFileChooser fileChooser = new MockFileChooser("src/test/java/viverbot/Archivos/EstadosAlturaFiles");
 		conf.setFileChooser(fileChooser);
 		conf.setOptionPane(new MockOptionPane());
