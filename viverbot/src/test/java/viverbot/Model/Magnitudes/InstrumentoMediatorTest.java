@@ -70,7 +70,7 @@ public class InstrumentoMediatorTest {
 	public void TomarAltura() {
 		this.mediatorTest = new InstrumentoMediator(Magnitudes.ALTURA);
 		Planta p = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
-		assertEquals(Magnitudes.ALTURA , mediatorTest.tomarAltura(p).getTipo());
+		assertEquals(Magnitudes.ALTURA , mediatorTest.tomarMedicion().getTipo());
 		this.clear();
 	}	
 

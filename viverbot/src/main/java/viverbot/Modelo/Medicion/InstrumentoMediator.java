@@ -38,14 +38,4 @@ public class InstrumentoMediator {
 	public IMedir getInstrumentoMedicion() {
 		return instrumentoMedicion;
 	}
-	
-	public Medicion tomarAltura(Planta p){
-		soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
-		plantas = new Plantas().obtenerPlantas();
-		soporte.mover(p.getUbicacion());
-		return tomarMedicion();
-	}
-	
-	
-
 }

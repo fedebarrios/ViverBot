@@ -30,7 +30,7 @@ public class ColectorAltura extends Observable{
 	protected List<Medicion> medir(List<Planta> plantas) {
 		List<Medicion> alturasActuales = new ArrayList<Medicion>();
 		for (Planta p : plantas){
-			alturasActuales.add(this.mediator.tomarAltura(p));
+			alturasActuales.add(this.mediator.tomarMedicion());
 		}
 		return alturasActuales;
 

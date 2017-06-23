@@ -1,9 +1,6 @@
 package viverbot.Archivos;
 
 import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.Test;
 
 import viverbot.DTO.Especie;
@@ -14,7 +11,22 @@ import viverbot.Modelo.Magnitudes.EmptyMedicion;
 public class ParserHistorialTest {
 	
 	@Test
-	public void ParserEspecie() throws Exception{
+	public void ParsearRegistroHistorialExitoso() throws Exception{
+		String datos = "Dia:(4:6.51cm)";
+		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
+		assertEquals(4,tupla.getDiaDeVida());
+		assertEquals( 6.51 , tupla.getAltura().getValor() , 0);
+	}
+	
+	@Test
+	public void ParsearRegistroHistorialFallido() throws Exception{
+		String datos = "D(-4:-6.51cm)";
+		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
+		assertNull(tupla);
+	}
+	
+	@Test
+	public void ParsearEspecieExitosamente() throws Exception{
 		String datos = "Especie:(tomate,tomatus)";
 		Especie especie = ParserEspecie.parsearEspecie(datos);
 		assertEquals("tomate",especie.getNombre());
@@ -22,7 +34,7 @@ public class ParserHistorialTest {
 	}
 	
 	@Test
-	public void ParserMalFormato(){
+	public void ParsearEspecieMalFormato(){
 		String datos = "Esp:(tomate,tomatus)";
 		Especie especie = ParserEspecie.parsearEspecie(datos);
 		assertNull(especie);
@@ -43,25 +55,11 @@ public class ParserHistorialTest {
 	}
 	
 	@Test
-	public void ParserListaTuplaAlturaExitosa() throws Exception{
-		String datos = "Dia:(4:6.51cm)";
-		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
-		assertEquals(4,tupla.getDiaDeVida());
-		assertEquals( 6.51 , tupla.getAltura().getValor() , 0);
-	}
-	
-	@Test
-	public void ParserListaTuplaAlturaFallida() throws Exception{
-		String datos = "D(-4:-6.51cm)";
-		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
-		assertNull(tupla);
-	}
-	
-	@Test
 	public void MediatorTest() throws Exception{
 		ParserDataArchivos mediator = new ParserDataArchivos();
 		String datos = "src/test/java/viverbot/Archivos/Historial.txt" ;
 		HistorialOptimo historial = mediator.parsearHistorialEspecie(datos);
+		
 		assertEquals("zanahoria",historial.getEspecie().getNombre());
 		assertEquals("zanahorius",historial.getEspecie().getNombreCientifico());
 		assertEquals(2.4 , historial.buscarTupla(1).getAltura().getValor(), 0);

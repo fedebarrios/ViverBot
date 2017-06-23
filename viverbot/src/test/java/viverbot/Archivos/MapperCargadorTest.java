@@ -2,8 +2,6 @@ package viverbot.Archivos;
 
 import static org.junit.Assert.*;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +17,8 @@ public class MapperCargadorTest {
 	private MapperCargador mapper;
 	private Inventario inventario;
 	private ControlHistoriales control;
-	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	
-	public void inicialize() throws Exception{
+	public void setearInfoNecesaria() throws Exception{
 		clear();
 		inventario = new Inventario();
 		inventario.agregarEspecie("tomate", "tomatus", "");
@@ -33,7 +30,7 @@ public class MapperCargadorTest {
 	
 	@Test
 	public void mapearHistorialesCreados() throws Exception{
-		inicialize();
+		setearInfoNecesaria();
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
 		Especie especie1= new Especie(5,"manzana", "manzanus", "");
@@ -45,35 +42,17 @@ public class MapperCargadorTest {
 		int cantEspeciesAntes = inventario.cantidadEspecies();
 		int cantHistorialesAntes = control.cantidadHistoriales();
 		mapper.update(null , historiales);
+		
+		//solo se pudo cargar el historial de la manzana, ya existia el del tomate.
 		assertEquals(cantEspeciesAntes+1 , inventario.cantidadEspecies());
 		assertEquals(cantHistorialesAntes+1 , control.cantidadHistoriales());
-		assertThat("Se cargaron 1 historiales" , containsString(outContent.toString()));
 		clear();
 	}
 	
-	@Test
-	public void mapearHistorialesRepetidos() throws Exception{
-		
-		
-		inicialize();
-		
-		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
-		Especie especie1= new Especie(6,"tomate", "tomatus", "");
-		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie1);
-		historiales.add(historial1);
-		int cantEspeciesAntes = inventario.cantidadEspecies();
-		int cantHistorialesAntes = control.cantidadHistoriales();
-		mapper.update(null , historiales);
-		assertEquals(cantEspeciesAntes , inventario.cantidadEspecies());
-		assertEquals(cantHistorialesAntes , control.cantidadHistoriales());
-		assertThat("Se cargaron 0 historiales" , containsString(outContent.toString()));
-		
-		clear();
-	}
 	
 	@Test
 	public void mapearEspecieRepetida() throws Exception{	
-		inicialize();
+		setearInfoNecesaria();
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
 		Especie especie1= new Especie(6,"tomate", "tomatus", "");
@@ -82,7 +61,6 @@ public class MapperCargadorTest {
 		int cantEspeciesAntes = inventario.cantidadEspecies();
 		mapper.update(null , historiales);
 		assertEquals(cantEspeciesAntes , inventario.cantidadEspecies());
-		assertThat("Se cargaron 0 historiales" , containsString(outContent.toString()));
 		
 		clear();
 	}

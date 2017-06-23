@@ -2,19 +2,12 @@ package viverbot.Archivos;
 
 import static org.junit.Assert.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import org.junit.Test;
 
 import viverbot.Model.HistorialOptimo;
 
 public class CargadorTest {
 	CargadorArchivos plugin ;
-	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	
-	//Aqui empiezan los test relacionados a historiales
 	@Test
 	public void cargarHistorial() throws Exception{
 		inicialize();
@@ -46,7 +39,7 @@ public class CargadorTest {
 	}
 	
 	@Test
-	public void elegirMejorDirectorio(){
+	public void elegirPrimerDirectorioConArchivosParaLevantar(){
 		inicialize();
 		String[] directorios = {"src/test/java/viverbot/Archivos/DirectorioTest1",
 								"src/test/java/viverbot/Archivos/DirectorioTest2",
@@ -58,13 +51,9 @@ public class CargadorTest {
 		}
 		assertEquals(2,plugin.seleccionarMejorDirectorio().size());
 	}
-	
-	//Aqui terminan los test relacionados a historiales
-	
+		
 	public void inicialize(){
 		plugin = new CargadorArchivos();
-		System.setOut(new PrintStream(outContent));
-	    System.setErr(new PrintStream(errContent));
 	}
 
 }
