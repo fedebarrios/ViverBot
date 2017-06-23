@@ -16,7 +16,7 @@ public class VistaPrincipalTest {
 	public void testActualizarVistaDiagnosticoOptimo() {
 		this.inicializar();
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
-		DiagnosticoAnalisis d = new DiagnosticoAnalisis(temp, true);
+		DiagnosticoAnalisis d = new DiagnosticoAnalisis(temp, true,0.0);
 		vista.ActualizarVista(d);
 		assertEquals(vista.getLabelEstado().getText(), "La temperatura está dentro del rango ideal");
 		assertEquals(vista.getLabelEstadoSensor().getText(), "El sensor esta inactivo. Ejecutando simulacion");
@@ -28,8 +28,7 @@ public class VistaPrincipalTest {
 	public void testActualizarVistaDiagnosticoAlto() {
 		this.inicializar();
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
-		DiagnosticoAnalisis d = new DiagnosticoAnalisis(temp, false);
-		d.setDiferencia(5.0);
+		DiagnosticoAnalisis d = new DiagnosticoAnalisis(temp, false,5.0);
 		vista.ActualizarVista(d);
 		assertEquals(vista.getLabelEstado().getText(), "La temperatura está por encima del rango ideal por 5.0 ºC");
 		assertEquals(vista.getLabelEstadoSensor().getText(), "El sensor esta inactivo. Ejecutando simulacion");
@@ -41,8 +40,7 @@ public class VistaPrincipalTest {
 	public void testActualizarVistaDiagnosticoBajo() {
 		this.inicializar();
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
-		DiagnosticoAnalisis d = new DiagnosticoAnalisis(temp, false);
-		d.setDiferencia(-5.0);
+		DiagnosticoAnalisis d = new DiagnosticoAnalisis(temp, false,-5.0);
 		vista.ActualizarVista(d);
 		assertEquals(vista.getLabelEstado().getText(), "La temperatura está por debajo del rango ideal por -5.0 ºC");
 		assertEquals(vista.getLabelEstadoSensor().getText(), "El sensor esta inactivo. Ejecutando simulacion");

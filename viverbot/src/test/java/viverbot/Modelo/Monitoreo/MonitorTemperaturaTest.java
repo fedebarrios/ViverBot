@@ -13,14 +13,7 @@ import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 public class MonitorTemperaturaTest {
 	private MonitorEstado monitor;
 
-	@Test
-	public void testMonitorEstado() {
-		this.inicializar();
-		assertEquals(this.monitor.getTemperaturaActual(), new Medicion(0.0, Magnitudes.TEMPERATURA));
-		assertNotNull(this.monitor.getAnalizador());
-		this.clear();
-
-	}
+	
 
 	@Test
 	public void testGetTemperaturaActual() {
@@ -29,7 +22,7 @@ public class MonitorTemperaturaTest {
 		estado.addObserver(this.monitor);
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
 		estado.setTemperaturaColector(temp);
-		assertEquals(this.monitor.getTemperaturaActual(), temp);
+		assertEquals(this.monitor.getUltimaMedicion(), temp);
 		this.clear();
 	}
 
@@ -39,7 +32,7 @@ public class MonitorTemperaturaTest {
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
 
 		this.monitor.setTemperaturaActual(temp);
-		assertEquals(this.monitor.getTemperaturaActual(), new Medicion(10.0, Magnitudes.TEMPERATURA));
+		assertEquals(this.monitor.getUltimaMedicion(), new Medicion(10.0, Magnitudes.TEMPERATURA));
 	}
 
 	@Test
@@ -49,7 +42,7 @@ public class MonitorTemperaturaTest {
 		EstadoVivero.getInstance().setRangoTemperatura(new RangoNumerico(5.0, 15.0));
 		DiagnosticoAnalisis d = this.monitor.monitorear(temp);
 		assertTrue(d.getOptima());
-		assertEquals(this.monitor.getTemperaturaActual(), temp);
+		assertEquals(this.monitor.getUltimaMedicion(), temp);
 		assertEquals(d.getDiferencia(), new Double(0.0));
 	}
 	
@@ -60,7 +53,7 @@ public class MonitorTemperaturaTest {
 		EstadoVivero.getInstance().setRangoTemperatura(new RangoNumerico(5.0, 8.0));
 		DiagnosticoAnalisis d = this.monitor.monitorear(temp);
 		assertFalse(d.getOptima());
-		assertEquals(this.monitor.getTemperaturaActual(), temp);
+		assertEquals(this.monitor.getUltimaMedicion(), temp);
 		assertEquals(d.getDiferencia(), new Double(2.0));
 	}
 	
@@ -71,7 +64,7 @@ public class MonitorTemperaturaTest {
 		EstadoVivero.getInstance().setRangoTemperatura(new RangoNumerico(15.0, 20.0));
 		DiagnosticoAnalisis d = this.monitor.monitorear(temp);
 		assertFalse(d.getOptima());
-		assertEquals(this.monitor.getTemperaturaActual(), temp);
+		assertEquals(this.monitor.getUltimaMedicion(), temp);
 		assertEquals(d.getDiferencia(), new Double(-5.0));
 	}
 

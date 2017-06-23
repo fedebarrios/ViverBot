@@ -11,24 +11,17 @@ import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
 
 public class MonitorEstado extends Observable implements Observer {
-	private Medicion temperaturaActual;
-	private AnalizadorTemperatura analizador;
+	private Medicion ultimaMedicion;
 
 	public MonitorEstado() {
-		this.temperaturaActual = new Medicion(0.0, Magnitudes.TEMPERATURA);
-		this.analizador = new AnalizadorTemperatura();
+		this.ultimaMedicion = new Medicion(0.0, Magnitudes.TEMPERATURA);
 	}
-
-	public AnalizadorTemperatura getAnalizador() {
-		return analizador;
-	}
-
-	public Medicion getTemperaturaActual() {
-		return temperaturaActual;
+	public Medicion getUltimaMedicion() {
+		return ultimaMedicion;
 	}
 
 	public void setTemperaturaActual(Medicion t) {
-		this.temperaturaActual = new Medicion(t.getValor(), t.getTipo());
+		this.ultimaMedicion = new Medicion(t.getValor(), t.getTipo());
 	}
 
 	@Override
@@ -37,9 +30,9 @@ public class MonitorEstado extends Observable implements Observer {
 	}
 
 	public DiagnosticoAnalisis monitorear(Object arg) {
-		if (!this.temperaturaActual.equals(arg)) {
+		if (!this.ultimaMedicion.equals(arg)) {
 			this.setTemperaturaActual((Medicion) arg);
-			DiagnosticoAnalisis d = this.analizador.analizar(this.temperaturaActual,
+			DiagnosticoAnalisis d = AnalizadorTemperatura.analizar(this.ultimaMedicion,
 					EstadoVivero.getInstance().getRangoTemperatura());
 			this.setChanged();
 			this.notifyObservers(d);

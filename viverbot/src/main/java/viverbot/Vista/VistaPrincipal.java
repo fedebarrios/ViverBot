@@ -157,7 +157,7 @@ public class VistaPrincipal extends JFrame implements Observer {
 	}
 
 	public void ActualizarVista(DiagnosticoAnalisis s) {
-		this.labelTemperatura.setText(temperaturaActual + this.redondear(s.getMagnitud().getValor()) + grados);
+		this.labelTemperatura.setText(temperaturaActual + this.redondear(s.getValor().getValor()) + grados);
 		if (s.getOptima()) {
 			this.labelEstado.setText(temperturaOptima);
 		} else {

@@ -7,11 +7,10 @@ public class DiagnosticoAnalisis {
 	private Boolean optima;
 	Double diferencia ;
 
-	public DiagnosticoAnalisis(Medicion temperatura, Boolean optima) {
-		super();
+	public DiagnosticoAnalisis(Medicion temperatura, Boolean optima, Double diferencia) {
 		this.m = temperatura;
 		this.optima = optima;
-		this.diferencia = 0.0;
+		this.diferencia = diferencia;
 	}
 	
 
@@ -20,12 +19,10 @@ public class DiagnosticoAnalisis {
 	}
 
 
-	public void setDiferencia(Double diferenccia) {
-		this.diferencia = diferenccia;
-	}
+	
 
 
-	public Medicion getMagnitud() {
+	public Medicion getValor() {
 		return m;
 	}
 
@@ -33,19 +30,22 @@ public class DiagnosticoAnalisis {
 		return optima;
 	}
 
-	public void setTemperatura(Medicion temperatura) {
-		this.m = temperatura;
-	}
-
-	public void setOptima(Boolean optima) {
-		this.optima = optima;
-	}
+//	public void setDiferencia(Double diferenccia) {
+//		this.diferencia = diferenccia;
+//	}
+//	public void setValor(Medicion temperatura) {
+//		this.m = temperatura;
+//	}
+//
+//	public void setOptima(Boolean optima) {
+//		this.optima = optima;
+//	}
 
 	@Override
 	public boolean equals(Object e) {
 		DiagnosticoAnalisis estado =  (DiagnosticoAnalisis) e;
 		boolean ret = true;
-		if(this.m.getValor() != estado.getMagnitud().getValor() || this.getOptima() != estado.getOptima()){
+		if(this.m.getValor() != estado.getValor().getValor() || this.getOptima() != estado.getOptima()){
 			ret = false;
 		}
 		

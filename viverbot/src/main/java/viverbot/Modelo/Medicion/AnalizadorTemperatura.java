@@ -1,51 +1,40 @@
 package viverbot.Modelo.Medicion;
 
-import java.util.Observable;
-import java.util.Observer;
 
-import viverbot.Controlador.Verificacion.StrategyMagnitudInvalida;
-import viverbot.Controlador.Verificacion.StrategyRangoTemperatura;
-import viverbot.Interfaces.Analisis;
+
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Magnitud;
-import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
-import viverbot.Modelo.Magnitudes.Temperatura;
 
 public class AnalizadorTemperatura {
-	private Analisis estrategia;
-	private Medicion m;
-	private DiagnosticoAnalisis estado;
+	
 
-
-	public AnalizadorTemperatura() {
-		this.m = null;
-		this.estado = null;
-	}
-
-	public DiagnosticoAnalisis analizar(Medicion medicion, RangoNumerico r) {
-		this.m = medicion;
-		Analisis estrategia = this.getStrategy(m);
-		this.estado = estrategia.analizar(m, r);
+	public static DiagnosticoAnalisis analizar(Medicion t, RangoNumerico rango) {
+		DiagnosticoAnalisis estado;
+		int resultado = verificarTemperaturaEnRango(t, rango);
+		if (resultado == 0) {
+			estado = new DiagnosticoAnalisis(t, true, 0.0);
+		} else {
+			if (resultado == 1) {
+				estado = new DiagnosticoAnalisis(t, false, t.getValor() - rango.getMaximo());
+			} else {
+				estado = new DiagnosticoAnalisis(t, false, t.getValor() - rango.getMinimo());
+			}
+		}
 		return estado;
 
 	}
 
-	private Analisis getStrategy(Medicion m) {
-		if (m.getTipo().equals(Magnitudes.TEMPERATURA)) {
-			return new StrategyRangoTemperatura();
+	private static int verificarTemperaturaEnRango(Medicion t, RangoNumerico rango) {
+		if (rango.getMinimo() <= t.getValor() && rango.getMaximo() >= t.getValor()) {
+			return 0;
+		} else if (t.getValor() < rango.getMinimo()) {
+			return -1;
 		} else {
-			return new StrategyMagnitudInvalida();
+			return 1;
 		}
 	}
 
-	public Medicion getValorRecibido() {
-		return m;
-	}
 
-	public DiagnosticoAnalisis getEstado() {
-		return this.estado;
-	}
 
 	
 
