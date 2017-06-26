@@ -3,7 +3,7 @@ package viverbot.Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import viverbot.Controlador.Verificacion.PlanificadorAltura;
+import viverbot.Controlador.Verificacion.InformadorAltura;
 import viverbot.Model.ManagerSeguimientos;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.Plantas;
@@ -32,7 +32,7 @@ public class VistaPrincipalController implements ActionListener {
 		if (e.getSource() == this.vista.getMntmControlarAltura()) {
 			InstrumentoMediator mediator =  new InstrumentoMediator(Magnitudes.ALTURA);
 			ColectorAltura c = new ColectorAltura(mediator);
-			PlanificadorAltura p = PlanificadorAltura.getInstance();
+			InformadorAltura p = InformadorAltura.getInstance();
 			AnalizadorAltura a = new AnalizadorAltura(GuardadorAltura.getInstance());
 			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas(), ManagerSeguimientos.getInstance());
 			c.addObserver(m);

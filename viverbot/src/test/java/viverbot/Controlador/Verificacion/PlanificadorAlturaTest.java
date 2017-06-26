@@ -15,7 +15,7 @@ import viverbot.Controlador.Verificacion.EstadoAlturaAnormal;
 import viverbot.Controlador.Verificacion.EstadoAlturaDefectuosa;
 import viverbot.Controlador.Verificacion.EstadoAlturaNormal;
 import viverbot.Controlador.Verificacion.EstadoAlturaPerfecta;
-import viverbot.Controlador.Verificacion.PlanificadorAltura;
+import viverbot.Controlador.Verificacion.InformadorAltura;
 import viverbot.DAO.EspecieDAO;
 import viverbot.DAO.PlantaDAO;
 import viverbot.DTO.Especie;
@@ -26,7 +26,7 @@ import viverbot.Model.Fecha;
 public class PlanificadorAlturaTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	PlanificadorAltura planificador;
+	InformadorAltura planificador;
 	Planta p1;
 	Planta p2;
 	Planta p3;
@@ -151,7 +151,7 @@ public class PlanificadorAlturaTest {
 		plantasTest.add(p4);
 		PlantaDAO.getInstance().cargarPlantas(plantasTest);
 		
-		planificador = PlanificadorAltura.getInstance();
+		planificador = InformadorAltura.getInstance();
 		si = new SimuladorEscritura("Si");
 		no = new SimuladorEscritura("no");
 		inStream = System.in;

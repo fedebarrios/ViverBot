@@ -10,7 +10,7 @@ import org.junit.Test;
 import viverbot.Archivos.CargadorArchivos;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.EstadoAlturaNoComparada;
-import viverbot.Controlador.Verificacion.PlanificadorAltura;
+import viverbot.Controlador.Verificacion.InformadorAltura;
 import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
 import viverbot.Controlador.Verificacion.StrategyMetroDown;
 import viverbot.Controlador.Verificacion.StrategySeguimientoNull;
@@ -83,7 +83,7 @@ public class AnalizadorAlturaTest {
 	
 	@Test
 	public void EstrategiaMetroRoto(){
-		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
+		InformadorAltura planificador = InformadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(-10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
 		assertTrue(estrategia instanceof StrategyMetroDown);
@@ -107,7 +107,7 @@ public class AnalizadorAlturaTest {
 	
 	@Test
 	public void EstrategiaNadaContraQueComparar(){
-		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
+		InformadorAltura planificador = InformadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(4.0,Magnitudes.ALTURA), new EmptyMedicion());
 		assertTrue(estrategia instanceof StrategySeguimientoNull);
@@ -115,7 +115,7 @@ public class AnalizadorAlturaTest {
 	
 	@Test
 	public void EstrategiaSePuedeAnalizar(){
-		PlanificadorAltura planificador = PlanificadorAltura.getInstance();
+		InformadorAltura planificador = InformadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
 		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
 		assertTrue(estrategia instanceof StrategyAnalisisAltura);
