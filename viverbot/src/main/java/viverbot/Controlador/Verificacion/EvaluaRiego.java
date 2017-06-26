@@ -2,7 +2,7 @@ package viverbot.Controlador.Verificacion;
 
 import viverbot.Model.NivelRiego;
 
-public class EvaluaRiego  extends AnalizadorRiego{
+public class EvaluaRiego  implements RiegoValidable{
 	
 	
 	public EvaluaRiego() {

@@ -23,16 +23,12 @@ public class NivelRiegoTest {
 		this.inicialize();
 		assertTrue(this.nivelRiegoTest != null);
 		this.clear();
-
 	}
-
 	
 	@Test
 	public void AnalizarBajarTest() {
 		this.inicialize();
-		
 		assertEquals(nivelRiegoTest.bajar(),NivelRiego.NIVEL2);
-
 	}
 	
 	@Test
@@ -40,8 +36,6 @@ public class NivelRiegoTest {
 		this.inicialize();
 		assertEquals(nivelRiegoTest.aumentar(),NivelRiego.NIVEL4);
 	}
-	
-	
 	
 	@Test
 	public void AnalizarAumentarMaxTest() {
@@ -54,7 +48,6 @@ public class NivelRiegoTest {
 		this.inicialize();
 		assertEquals(nivelRiegoMinTest.bajar(),NivelRiego.NIVEL1);
 	}
-
 	
 	@Test
 	public void AnalizarNuloBajarTest() {

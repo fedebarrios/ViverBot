@@ -13,7 +13,8 @@ public class GatewayConfiguracionTest {
 		assertEquals(1 , GatewayConfiguracion.getDirectorios().size());	
 
 		GatewayConfiguracion.agregarDirectorio("c/desktop");
-		assertEquals(2 , GatewayConfiguracion.getDirectorios().size());	
+		assertEquals(2 , GatewayConfiguracion.getDirectorios().size());
+		
 
 	}
 }
