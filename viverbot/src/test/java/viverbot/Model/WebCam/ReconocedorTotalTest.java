@@ -26,9 +26,8 @@ public class ReconocedorTotalTest {
 		 iniciarKernel();
 		 ArrayList<Point> posicionesFrutos = reconocerFrutos(imagenPlanta,kernel,1,1);
 		 assertTrue(new Point(1,1).equals(posicionesFrutos.get(0)));
-		 assertTrue(new Point(13,8).equals(posicionesFrutos.get(1)));
-		 assertTrue(new Point(4,15).equals(posicionesFrutos.get(2)));
-		 assertTrue(new Point(21,20).equals(posicionesFrutos.get(3)));
+		 assertTrue(new Point(6,5).equals(posicionesFrutos.get(1)));
+
 
 	}
 	
@@ -48,12 +47,8 @@ public class ReconocedorTotalTest {
 		imagenPlanta = GeneradorImagen.generarImagen("src/test/java/viverbot/recursosTest/6objetosYbasura.png");
 		 iniciarKernel();
 		 ArrayList<Point> posicionesFrutos = reconocerFrutos(imagenPlanta,kernel,1,1);
-		 assertTrue(new Point(3,2).equals(posicionesFrutos.get(0)));
-		 assertTrue(new Point(21,2).equals(posicionesFrutos.get(1)));
-		 assertTrue(new Point(8,9).equals(posicionesFrutos.get(2)));
-		 assertTrue(new Point(18,16).equals(posicionesFrutos.get(3)));
-		 assertTrue(new Point(5,23).equals(posicionesFrutos.get(4)));
-		 assertTrue(new Point(21,25).equals(posicionesFrutos.get(5)));
+		 assertTrue(new Point(1,1).equals(posicionesFrutos.get(0)));
+		 assertTrue(new Point(9,5).equals(posicionesFrutos.get(1)));
 
 
 	}
@@ -66,8 +61,8 @@ public class ReconocedorTotalTest {
 		imagenPlanta = GeneradorImagen.generarImagen("src/test/java/viverbot/recursosTest/4objetos.png");
 		iniciarKernel();
 		ReconocedorFrutoMock recoFalso = new ReconocedorFrutoMock();
-		Integer desplazamientoKernel = recoFalso.reconocerFrutos(imagenPlanta, kernel,0,0);
-		assertEquals(1,desplazamientoKernel.intValue());
+		Point desplazamientoKernel = recoFalso.reconocerFrutos(imagenPlanta, kernel,0,1);
+		assertEquals(new Point(1,1),desplazamientoKernel);
 
 	}
 	
@@ -77,8 +72,8 @@ public class ReconocedorTotalTest {
 		imagenPlanta = GeneradorImagen.generarImagen("src/test/java/viverbot/recursosTest/4objetos.png");
 		iniciarKernel();
 		ReconocedorFrutoMock recoFalso = new ReconocedorFrutoMock();
-		Integer desplazamientoKernel = recoFalso.reconocerFrutos(imagenPlanta, kernel,1,1);
-		assertEquals(3,desplazamientoKernel.intValue());
+		Point desplazamientoKernel = recoFalso.reconocerFrutos(imagenPlanta, kernel,1,1);
+		assertEquals(new Point(4,1),desplazamientoKernel);
 	}
 	
 	

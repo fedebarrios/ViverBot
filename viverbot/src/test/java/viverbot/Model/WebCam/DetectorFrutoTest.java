@@ -26,7 +26,7 @@ public class DetectorFrutoTest {
 	}
 	
 	@Test
-	public void kernelx6y6Test() {
+	public void kernelx6y1Test() {
 		 imagenPlanta = GeneradorImagen.generarImagen("src/test/java/viverbot/recursosTest/objeto(1,1).png");
 		 iniciarKernel();
 		 assertFalse(DetectorFruto.detectar(imagenPlanta, 6, 1, kernel));

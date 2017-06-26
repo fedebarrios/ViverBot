@@ -1,5 +1,6 @@
 package viverbot.Model.WebCam;
 
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 import viverbot.Modelo.WebCam.DetectorFruto;
@@ -9,7 +10,7 @@ import viverbot.Modelo.WebCam.ResaltadorKernel;
 
 public class ReconocedorFrutoMock {
 	
-	public Integer reconocerFrutos(BufferedImage imagen, Kernel kernel,int x, int y)
+	public Point reconocerFrutos(BufferedImage imagen, Kernel kernel,int x, int y)
 	{
 		Integer cantidadF=0;
 
@@ -19,13 +20,13 @@ public class ReconocedorFrutoMock {
 		
 			ResaltadorKernel.resaltarKernel(imagen, kernel,x,y);
 			cantidadF ++;
-			x = kernel.getWidth();
+			x += kernel.getWidth();
 		}
 		else
 			x ++;	
 			
 	
-		return x;
+		return new Point(x,y);
 		
 		
 	}
