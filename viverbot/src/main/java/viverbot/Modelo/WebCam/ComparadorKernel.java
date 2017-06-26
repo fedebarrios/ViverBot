@@ -9,16 +9,15 @@ public class ComparadorKernel {
 	private Integer width;
 	private Integer height;
 	
-	public boolean compararKernel(String path,BufferedImage imagen)
+	public boolean compararKernel(BufferedImage kernel,BufferedImage imagen)
 	{
 				
-		BufferedImage img = GeneradorImagen.generarImagen(path);
 		ValidadorKernel validador = new ValidadorKernel();
 		ConvertidorImagen convertidor = new ConvertidorImagen();
-		try{ if(validador.validarKernel(img,imagen)){
-				datos = convertidor.convertirImagen(img);
-				width = img.getWidth();
-				height = img.getHeight();
+		try{ if(validador.validarKernel(kernel,imagen)){
+				datos = convertidor.convertirImagen(kernel);
+				width = kernel.getWidth();
+				height = kernel.getHeight();
 				return true;}
 		}
 		catch(Exception e)

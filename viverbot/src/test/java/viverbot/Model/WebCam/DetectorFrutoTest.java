@@ -14,7 +14,7 @@ import viverbot.Modelo.WebCam.ValidadorKernel;
 
 public class DetectorFrutoTest {
 	
-	private ComparadorKernel adaptador;
+	private ComparadorKernel comparador;
 	private Kernel kernel;
 	private BufferedImage imagenPlanta;
 	
@@ -51,9 +51,11 @@ public class DetectorFrutoTest {
 	
 
 	private void iniciarKernel() {
-		 adaptador = new ComparadorKernel();
-		 adaptador.compararKernel("src/test/java/viverbot/recursosTest/objeto1px.png", imagenPlanta);
-		 kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());		
+		 comparador = new ComparadorKernel();
+		 String path = "src/test/java/viverbot/recursosTest/objeto1px.png";
+		 BufferedImage ker = GeneradorImagen.generarImagen(path);
+		 comparador.compararKernel(ker, imagenPlanta);
+		 kernel = new Kernel(comparador.getWidth(),comparador.getHeight(),comparador.getDatos());		
 	}
 	
 	

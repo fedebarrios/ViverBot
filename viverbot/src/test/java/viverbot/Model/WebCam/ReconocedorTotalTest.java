@@ -16,7 +16,7 @@ import viverbot.Modelo.WebCam.ReconocedorFruto;
 
 public class ReconocedorTotalTest {
 	
-	private ComparadorKernel adaptador;
+	private ComparadorKernel comparador;
 	private Kernel kernel;
 	private BufferedImage imagenPlanta; 
 	
@@ -108,15 +108,19 @@ public class ReconocedorTotalTest {
 	
 	
 	private void iniciarKernel() {
-		 adaptador = new ComparadorKernel();
-		 adaptador.compararKernel("src/test/java/viverbot/recursosTest/objeto1px.png",imagenPlanta);
-		 kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());		
+		 comparador = new ComparadorKernel();
+		 String path = "src/test/java/viverbot/recursosTest/objeto1px.png";
+		 BufferedImage kern = GeneradorImagen.generarImagen(path);
+		 comparador.compararKernel(kern,imagenPlanta);
+		 kernel = new Kernel(comparador.getWidth(),comparador.getHeight(),comparador.getDatos());		
 	}
 	
 	private void iniciarKernelProporcion() {
-		 adaptador = new ComparadorKernel();
-		 adaptador.compararKernel("src/test/java/viverbot/recursosTest/objeto10x10.png",imagenPlanta);
-		 kernel = new Kernel(adaptador.getWidth(),adaptador.getHeight(),adaptador.getDatos());		
+		 comparador = new ComparadorKernel();
+		 String path = "src/test/java/viverbot/recursosTest/objeto10x10.png";
+		 BufferedImage kern = GeneradorImagen.generarImagen(path);
+		 comparador.compararKernel(kern,imagenPlanta);
+		 kernel = new Kernel(comparador.getWidth(),comparador.getHeight(),comparador.getDatos());		
 	}
 	
 	private ArrayList<Point> reconocerFrutos(BufferedImage imagenPlanta2, Kernel kernel2, int i, int j) {

@@ -4,13 +4,10 @@ import java.awt.image.BufferedImage;
 
 public class ValidadorImagenes {
 	
-	public static boolean validarTamañoImagen(String primerPath,String segundoPath)
+	public static boolean validarTamañoImagen(BufferedImage primerImagen,BufferedImage segundaImagen)
 	{
-		BufferedImage primerImagenAux = GeneradorImagen.generarImagen(primerPath);
-		BufferedImage segundaImagenAux = GeneradorImagen.generarImagen(segundoPath);
-		
-		if(!(primerImagenAux.getHeight()==segundaImagenAux.getHeight()) 
-				|| !(primerImagenAux.getWidth() == segundaImagenAux.getWidth())){
+		if(!(primerImagen.getHeight()==segundaImagen.getHeight()) 
+				|| !(primerImagen.getWidth() == segundaImagen.getWidth())){
 			return false; }
 		return true;
 	}

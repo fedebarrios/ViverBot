@@ -25,7 +25,7 @@ public class ReconocedorFruto {
 		while(x != imagen.getWidth() && x < imagen.getWidth()-kernel.getWidth()){				
 			if(DetectorFruto.detectar(imagen, x, y, kernel))
 			{
-				
+		
 				ubicaciones.add(new Point(x,y));
 				ResaltadorKernel.resaltarKernel(imagen, kernel,x,y);
 				cantidadF ++;
@@ -40,15 +40,10 @@ public class ReconocedorFruto {
 		
 		if(!String.valueOf(pExpectativa).equals(formatoD.format(pRecibida)))
 		{
-			System.out.println(pExpectativa+" valores "+formatoD.format(pRecibida));
 			Kernel nuevoKernel = GeneradorProporcional.generarKernelProporcional(kernel, pRecibida-0.1f);
 			cantidadF += reconocerFrutos(imagen, nuevoKernel, pExpectativa, pRecibida-0.1f);
 		}
-		for(Point p: ubicaciones){
-			System.out.println("("+p.getX()+","+p.getY()+")");
-			System.out.println(ubicaciones.size());
 	
-		}
 		return cantidadF;
 		
 		

@@ -18,8 +18,7 @@ public class AnalizadorImagen  {
 
 	private boolean compararPx(int x, int y, BufferedImage primerImagen, BufferedImage segundaImagen) {
 	
-		primerImagen.getRGB(x, y);
-		segundaImagen.getRGB(x, y);
+	
 		return new Color(primerImagen.getRGB(x, y)).getRGB() == new Color(segundaImagen.getRGB(x, y)).getRGB();
 
 
