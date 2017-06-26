@@ -6,9 +6,9 @@ import viverbot.Modelo.Magnitudes.EmptyMedicion;
 
 public class HistorialAltura {
 	
-	private List<TuplaAltura> historial;
+	private List<RegistroHistorial> historial;
 	
-	public HistorialAltura(List<TuplaAltura> lista){
+	public HistorialAltura(List<RegistroHistorial> lista){
 		this.historial = lista;
 	}
 	
@@ -16,28 +16,28 @@ public class HistorialAltura {
 		return this.historial.size();
 	}
 	
-	public List<TuplaAltura> getTuplas(){
+	public List<RegistroHistorial> getTuplas(){
 		return historial;
 	}
 
 	
-	public void agregarTupla(TuplaAltura t){
+	public void agregarTupla(RegistroHistorial t){
 		historial.add(t);
 	}
 	
-	public void borrarTupla(TuplaAltura t){
+	public void borrarTupla(RegistroHistorial t){
 		if (historial.contains(t)){
 			historial.remove(t);
 		}
 	}
 	
-	public TuplaAltura buscarTupla(int d){
+	public RegistroHistorial buscarTupla(int d){
 		for (int i = 0; i<historial.size() ; i++){
 			if(historial.get(i).getDiaDeVida() == d ){
 				return historial.get(i);
 			}
 		}
-		return new TuplaAltura(new EmptyMedicion(),0);
+		return new RegistroHistorial(new EmptyMedicion(),0);
 	}
 	
 	public boolean verificarExistente(int dia) {

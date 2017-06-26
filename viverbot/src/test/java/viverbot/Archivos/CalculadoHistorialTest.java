@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import viverbot.Model.HistorialAltura;
-import viverbot.Model.TuplaAltura;
+import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
@@ -19,12 +19,12 @@ public class CalculadoHistorialTest {
 		assertTrue(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}
 
-	protected ArrayList<TuplaAltura> fabricarHistorialSatisfactorio() {
+	protected ArrayList<RegistroHistorial> fabricarHistorialSatisfactorio() {
 		int[] dias = {1,2,3};
 		double[] alturas = {1.05,1.10,1.15};
-		ArrayList<TuplaAltura> t = new ArrayList<TuplaAltura>();
+		ArrayList<RegistroHistorial> t = new ArrayList<RegistroHistorial>();
 		for(int i = 0 ; i<3 ; i++){
-			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
+			t.add(new RegistroHistorial( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		return t;
 	}
@@ -35,12 +35,12 @@ public class CalculadoHistorialTest {
 		assertFalse(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}
 
-	protected ArrayList<TuplaAltura> fabricarHistorialFallaAltura() {
+	protected ArrayList<RegistroHistorial> fabricarHistorialFallaAltura() {
 		int[] dias = {1,2,3};
 		double[] alturas = {1.05,1.35,1.85};
-		ArrayList<TuplaAltura> t = new ArrayList<TuplaAltura>();
+		ArrayList<RegistroHistorial> t = new ArrayList<RegistroHistorial>();
 		for(int i = 0 ; i<3 ; i++){
-			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
+			t.add(new RegistroHistorial( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		return t;
 	}
@@ -51,12 +51,12 @@ public class CalculadoHistorialTest {
 		assertFalse(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}
 
-	protected ArrayList<TuplaAltura> fabricarHistorialFallaDia() {
+	protected ArrayList<RegistroHistorial> fabricarHistorialFallaDia() {
 		int[] dias = {1,7,13};
 		double[] alturas = {1.05,1.10,1.15};
-		ArrayList<TuplaAltura> t = new ArrayList<TuplaAltura>();
+		ArrayList<RegistroHistorial> t = new ArrayList<RegistroHistorial>();
 		for(int i = 0 ; i<3 ; i++){
-			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
+			t.add(new RegistroHistorial( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		return t;
 	}	
@@ -67,12 +67,12 @@ public class CalculadoHistorialTest {
 		assertFalse(CalculadorHistorial.calcularDiferencia(h.getTuplas()));
 	}
 
-	protected ArrayList<TuplaAltura> fabricarHistorialInfoRepetida() {
+	protected ArrayList<RegistroHistorial> fabricarHistorialInfoRepetida() {
 		int[] dias = {7,8,7};
 		double[] alturas = {1.05,1.10,1.15};
-		ArrayList<TuplaAltura> t = new ArrayList<TuplaAltura>();
+		ArrayList<RegistroHistorial> t = new ArrayList<RegistroHistorial>();
 		for(int i = 0 ; i<3 ; i++){
-			t.add(new TuplaAltura( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
+			t.add(new RegistroHistorial( new Medicion (alturas[i],Magnitudes.ALTURA), dias[i]));
 		}
 		return t;
 	}	

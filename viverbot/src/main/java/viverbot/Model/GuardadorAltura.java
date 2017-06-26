@@ -20,7 +20,7 @@ public class GuardadorAltura {
 	
 	public void guardar(AnalisisAltura estrategia, Medicion altura, int diaActual , HistorialAltura historial){
 		if( estrategia instanceof StrategyAnalisisAltura){
-			historial.agregarTupla(new TuplaAltura(altura, diaActual));
+			historial.agregarTupla(new RegistroHistorial(altura, diaActual));
 		}
 	}
 }

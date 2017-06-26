@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import viverbot.DTO.Especie;
 import viverbot.Model.HistorialOptimo;
-import viverbot.Model.TuplaAltura;
+import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
 
 public class ParserHistorialTest {
@@ -13,7 +13,7 @@ public class ParserHistorialTest {
 	@Test
 	public void ParsearRegistroHistorialExitoso() throws Exception{
 		String datos = "Dia:(4:6.51cm)";
-		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
+		RegistroHistorial tupla = ParserHistorial.parsearTuplaAltura(datos);
 		assertEquals(4,tupla.getDiaDeVida());
 		assertEquals( 6.51 , tupla.getAltura().getValor() , 0);
 	}
@@ -21,7 +21,7 @@ public class ParserHistorialTest {
 	@Test
 	public void ParsearRegistroHistorialFallido() throws Exception{
 		String datos = "D(-4:-6.51cm)";
-		TuplaAltura tupla = ParserHistorial.parsearTuplaAltura(datos);
+		RegistroHistorial tupla = ParserHistorial.parsearTuplaAltura(datos);
 		assertNull(tupla);
 	}
 	

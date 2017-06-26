@@ -1,6 +1,6 @@
 package viverbot.Controlador.Verificacion;
 
-import viverbot.Model.TuplaAltura;
+import viverbot.Model.RegistroHistorial;
 
 public class CalculadorAlturaFutura {
 	
@@ -17,7 +17,7 @@ public class CalculadorAlturaFutura {
 		return calculador;
 	}
 	
-	public double calcular(TuplaAltura ultimaTupla, int diaActualPlanta, double alturaActual) {
+	public double calcular(RegistroHistorial ultimaTupla, int diaActualPlanta, double alturaActual) {
 		int ultimoDia = ultimaTupla.getDiaDeVida();
 		int diasRestantes = ultimoDia - diaActualPlanta;
 		double ultimaAlturaDeseada = ultimaTupla.getAltura().getValor();

@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.DTO.Planta;
-import viverbot.Model.ControlSeguimientos;
+import viverbot.Model.ManagerSeguimientos;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Modelo.Magnitudes.Medicion;
 
@@ -15,10 +15,10 @@ public class MapperAltura extends Observable implements Observer  {
 	
 	private AnalizadorAltura analizador;
 	private List<Planta> plantas;
-	private ControlSeguimientos buscador;
+	private ManagerSeguimientos buscador;
 	private List<EstadoAltura> estadosDePlantas;
 	
-	public MapperAltura(AnalizadorAltura analizador, List<Planta> plantas, ControlSeguimientos buscador){
+	public MapperAltura(AnalizadorAltura analizador, List<Planta> plantas, ManagerSeguimientos buscador){
 		this.analizador = analizador;
 		this.plantas = plantas;
 		this.buscador = buscador;

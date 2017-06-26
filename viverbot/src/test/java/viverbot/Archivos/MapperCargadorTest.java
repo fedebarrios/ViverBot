@@ -11,7 +11,7 @@ import viverbot.DTO.Especie;
 import viverbot.Model.ControlHistoriales;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Inventario;
-import viverbot.Model.TuplaAltura;
+import viverbot.Model.RegistroHistorial;
 
 public class MapperCargadorTest {
 	private MapperCargador mapper;
@@ -23,7 +23,7 @@ public class MapperCargadorTest {
 		inventario = new Inventario();
 		inventario.agregarEspecie("tomate", "tomatus", "");
 		control = ControlHistoriales.getInstance();
-		HistorialOptimo historial = new HistorialOptimo(new ArrayList<TuplaAltura>(), inventario.obtenerEspecie(1));
+		HistorialOptimo historial = new HistorialOptimo(new ArrayList<RegistroHistorial>(), inventario.obtenerEspecie(1));
 		control.agregarSeguimiento(historial);
 		mapper = new MapperCargador(control , inventario);
 	}
@@ -35,8 +35,8 @@ public class MapperCargadorTest {
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
 		Especie especie1= new Especie(5,"manzana", "manzanus", "");
 		Especie especie2= new Especie(6,"tomate", "tomatus", "");
-		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie1);
-		HistorialOptimo historial2 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie2);
+		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<RegistroHistorial>(), especie1);
+		HistorialOptimo historial2 = new HistorialOptimo(new ArrayList<RegistroHistorial>(), especie2);
 		historiales.add(historial1);
 		historiales.add(historial2);
 		int cantEspeciesAntes = inventario.cantidadEspecies();
@@ -56,7 +56,7 @@ public class MapperCargadorTest {
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
 		Especie especie1= new Especie(6,"tomate", "tomatus", "");
-		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<TuplaAltura>(), especie1);
+		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<RegistroHistorial>(), especie1);
 		historiales.add(historial1);
 		int cantEspeciesAntes = inventario.cantidadEspecies();
 		mapper.update(null , historiales);

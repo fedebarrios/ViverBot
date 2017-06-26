@@ -12,7 +12,7 @@ import viverbot.DTO.Especie;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Log;
-import viverbot.Model.TuplaAltura;
+import viverbot.Model.RegistroHistorial;
 
 public class ParserDataArchivos {
 	protected Logger logger;
@@ -24,7 +24,7 @@ public class ParserDataArchivos {
 	
 	public HistorialOptimo parsearHistorialEspecie(String path) throws Exception{
 		try{
-			List<TuplaAltura> tuplas = new ArrayList<TuplaAltura>();	
+			List<RegistroHistorial> tuplas = new ArrayList<RegistroHistorial>();	
 			Especie especie = null;
 			BufferedReader b = new BufferedReader(new FileReader(path));
 			String s;

@@ -9,7 +9,7 @@ public class HistorialOptimo extends HistorialAltura{
 	
 	private Especie especie;
 	
-	public HistorialOptimo(List<TuplaAltura> lista, Especie especie) throws Exception{
+	public HistorialOptimo(List<RegistroHistorial> lista, Especie especie) throws Exception{
 		super(lista);
 		this.especie = especie;
 		if(!CalculadorHistorial.hayInfoValida(lista,especie)){

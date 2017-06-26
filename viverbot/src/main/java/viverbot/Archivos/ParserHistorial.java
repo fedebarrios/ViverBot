@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import viverbot.Interfaces.Parser;
-import viverbot.Model.TuplaAltura;
+import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
@@ -32,7 +32,7 @@ public class ParserHistorial {
 		return historial;
 	}*/
 	
-	public static TuplaAltura parsearTuplaAltura(String s){
+	public static RegistroHistorial parsearTuplaAltura(String s){
 		Pattern p = Pattern.compile("Dia:\\(([0-9]+[:][0-9]+[.][0-9]+)cm\\)");
 		Matcher m = p.matcher(s);
 		List<String> match = new ArrayList<String>();
@@ -41,7 +41,7 @@ public class ParserHistorial {
 			String[] datosTupla = datoValido.split(":");
 			int dia = Integer.parseInt(datosTupla[0]);
 			double altura = Double.parseDouble(datosTupla[1]);
-			return new TuplaAltura(new Medicion(altura,Magnitudes.ALTURA),dia);
+			return new RegistroHistorial(new Medicion(altura,Magnitudes.ALTURA),dia);
 		}
 		/*if (match.size()==0){
 			throw new Exception("No existe informacion valida acerca del historial");
