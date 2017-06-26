@@ -8,13 +8,13 @@ import viverbot.Modelo.Medicion.InstrumentoMediator;
 public class SoporteMovible implements Movible{
 
 	private InstrumentoMediator mediator;
-	private Podador podador;
+	private Cosechador podador;
 	private UbicacionDTO ubicacion;
 	private UbicacionDTO defaultUbicacion= new UbicacionDTO(0,0,0);
 	
 	public SoporteMovible(Magnitudes m){
 		this.mediator = new InstrumentoMediator(m);
-		this.podador = Podador.getInstance();
+		this.podador = Cosechador.getInstance();
 		this.ubicacion = defaultUbicacion;
 	}
 	
@@ -39,11 +39,11 @@ public class SoporteMovible implements Movible{
 		this.ubicacion = ubicacion;
 	}
 
-	public Podador getPodador() {
+	public Cosechador getPodador() {
 		return podador;
 	}
 
-	public void setPodador(Podador podador) {
+	public void setPodador(Cosechador podador) {
 		this.podador = podador;
 	}	
 }
