@@ -7,23 +7,26 @@ import viverbot.Modelo.Magnitudes.Medicion;
 
 public class AnalizadorTemperatura {
 
-	public static DiagnosticoAnalisis analizar(Medicion t, RangoNumerico rango) {
+	public static DiagnosticoAnalisis analizar(Medicion t, RangoNumerico rango) throws MedicionVacioException {
 		DiagnosticoAnalisis estado;
 
-		if(t.getTipo().equals(Magnitudes.VACIO)){
-			return new DiagnosticoAnalisis(t, false, 0.0);
+		if(t.getTipo() == Magnitudes.VACIO){
+			throw new MedicionVacioException();
 		}
-		int resultado = verificarTemperaturaEnRango(t, rango);
-		if (resultado == 0) {
-			estado = new DiagnosticoAnalisis(t, true, 0.0);
-		} else {
-			if (resultado == 1) {
-				estado = new DiagnosticoAnalisis(t, false, t.getValor() - rango.getMaximo());
+		else{
+			int resultado = verificarTemperaturaEnRango(t, rango);
+			if (resultado == 0) {
+				estado = new DiagnosticoAnalisis(t, true, 0.0);
 			} else {
-				estado = new DiagnosticoAnalisis(t, false, t.getValor() - rango.getMinimo());
+				if (resultado == 1) {
+					estado = new DiagnosticoAnalisis(t, false, t.getValor() - rango.getMaximo());
+				} else {
+					estado = new DiagnosticoAnalisis(t, false, t.getValor() - rango.getMinimo());
+				}
 			}
+			return estado;
 		}
-		return estado;
+		
 
 	}
 

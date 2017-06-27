@@ -8,7 +8,7 @@ import viverbot.Controlador.VistaPrincipalController;
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
-import viverbot.Modelo.Medicion.ColectorTemperatura;
+import viverbot.Modelo.Medicion.Colector;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Monitoreo.MonitorEstado;
 import viverbot.Modelo.Sensores.SensorTemperatura;
@@ -43,7 +43,7 @@ public class PruebaDeSimulacion {
 		InstrumentoMediator i = new InstrumentoMediator(simulador);
 		simulador.simular();
 		
-		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
+		Colector t = new Colector(5000, 0, i);
 		t.colectar();
 		
 		EstadoVivero estado =  EstadoVivero.getInstance();

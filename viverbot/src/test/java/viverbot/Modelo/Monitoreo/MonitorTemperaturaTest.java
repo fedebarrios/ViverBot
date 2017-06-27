@@ -9,6 +9,7 @@ import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
+import viverbot.Modelo.Medicion.MedicionVacioException;
 
 public class MonitorTemperaturaTest {
 	private MonitorEstado monitor;
@@ -36,7 +37,7 @@ public class MonitorTemperaturaTest {
 	}
 
 	@Test
-	public void testMonitorearOptimo() {
+	public void testMonitorearOptimo() throws MedicionVacioException {
 		this.inicializar();
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
 		EstadoVivero.getInstance().setRangoTemperatura(new RangoNumerico(5.0, 15.0));
@@ -47,7 +48,7 @@ public class MonitorTemperaturaTest {
 	}
 	
 	@Test
-	public void testMonitorearAlta() {
+	public void testMonitorearAlta() throws MedicionVacioException {
 		this.inicializar();
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
 		EstadoVivero.getInstance().setRangoTemperatura(new RangoNumerico(5.0, 8.0));
@@ -58,7 +59,7 @@ public class MonitorTemperaturaTest {
 	}
 	
 	@Test
-	public void testMonitorearBaja() {
+	public void testMonitorearBaja() throws MedicionVacioException {
 		this.inicializar();
 		Medicion temp = new Medicion(10.0, Magnitudes.TEMPERATURA);
 		EstadoVivero.getInstance().setRangoTemperatura(new RangoNumerico(15.0, 20.0));

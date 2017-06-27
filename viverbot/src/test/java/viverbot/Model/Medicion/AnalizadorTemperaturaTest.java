@@ -11,6 +11,7 @@ import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
+import viverbot.Modelo.Medicion.MedicionVacioException;
 
 public class AnalizadorTemperaturaTest {
 	private RangoNumerico rango = new RangoNumerico(10.0, 20.0);
@@ -20,7 +21,7 @@ public class AnalizadorTemperaturaTest {
 	private Medicion vacia = new Medicion(0.0, Magnitudes.VACIO);
 
 	@Test
-	public void AnalizarOptimoTest() {
+	public void AnalizarOptimoTest() throws MedicionVacioException {
 		DiagnosticoAnalisis resultado = AnalizadorTemperatura.analizar(temperaturaOptima, rango);
 		assertNotNull(resultado);
 		assertEquals(resultado.getOptima(), true);
@@ -30,7 +31,7 @@ public class AnalizadorTemperaturaTest {
 	}
 
 	@Test
-	public void AnalizarBajoTest() {
+	public void AnalizarBajoTest() throws MedicionVacioException {
 		DiagnosticoAnalisis resultado = AnalizadorTemperatura.analizar(temperaturaBaja, rango);
 		assertNotNull(resultado);
 		assertTrue(resultado.getOptima() == false);
@@ -40,7 +41,7 @@ public class AnalizadorTemperaturaTest {
 	}
 
 	@Test
-	public void AnalizarAltoTest() {
+	public void AnalizarAltoTest() throws MedicionVacioException {
 		DiagnosticoAnalisis resultado = AnalizadorTemperatura.analizar(this.temperaturaAlta, rango);
 		assertTrue(resultado.getOptima() == false);
 		assertTrue(resultado.getValor().equals(this.temperaturaAlta));
@@ -51,10 +52,17 @@ public class AnalizadorTemperaturaTest {
 
 	@Test
 	public void AnalizarVacioTest() {
-		DiagnosticoAnalisis resultado = AnalizadorTemperatura.analizar(this.vacia, rango);
-		assertTrue(resultado.getOptima() == false);
-		assertTrue(resultado.getValor().getValor() ==  0.0);
-		assertNotNull(resultado);
+		try {
+			DiagnosticoAnalisis resultado;
+
+			resultado = AnalizadorTemperatura.analizar(this.vacia, rango);
+	        fail("Expected an MedicionVacioException to be thrown");
+
+		} catch (Exception e) {
+	        assertEquals(e.getMessage(), "Medicion no reconocida");
+
+		}
+		;
 
 	}
 

@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import viverbot.Controlador.VistaPrincipalController;
 import viverbot.Model.EstadoVivero;
 import viverbot.Modelo.Magnitudes.Magnitudes;
-import viverbot.Modelo.Medicion.ColectorTemperatura;
+import viverbot.Modelo.Medicion.Colector;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Monitoreo.MonitorEstado;
 import viverbot.Modelo.Sensores.SensorTemperatura;
@@ -32,7 +32,7 @@ public class App {
 		
 		InstrumentoMediator i = new InstrumentoMediator(simulador);
 
-		ColectorTemperatura t = new ColectorTemperatura(5000, 0, i);
+		Colector t = new Colector(5000, 0, i);
 		t.addObserver(estado);
 		t.colectar();
 		MonitorEstado monitor = new MonitorEstado();

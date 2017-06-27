@@ -9,6 +9,7 @@ import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
+import viverbot.Modelo.Medicion.MedicionVacioException;
 
 public class MonitorEstado extends Observable implements Observer {
 	private Medicion ultimaMedicion;
@@ -26,10 +27,15 @@ public class MonitorEstado extends Observable implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		monitorear(arg);
+		try {
+			monitorear(arg);
+		} catch (MedicionVacioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public DiagnosticoAnalisis monitorear(Object arg) {
+	public DiagnosticoAnalisis monitorear(Object arg) throws MedicionVacioException {
 		if (!this.ultimaMedicion.equals(arg)) {
 			this.setTemperaturaActual((Medicion) arg);
 			DiagnosticoAnalisis d = AnalizadorTemperatura.analizar(this.ultimaMedicion,
