@@ -10,14 +10,12 @@ import org.junit.Test;
 import viverbot.MockFileChooser;
 import viverbot.MockOptionPane;
 import viverbot.Archivos.GatewayConfiguracion;
-import viverbot.Vista.Auxiliares.FileChooser;
 
 public class ControladorConfiguracionTest {
-	ControladorConfiguracionDirectorio conf;
 	
 	@Test
 	public void noEligioDirectorioOptionPane(){
-		conf = new ControladorConfiguracionDirectorio();
+		ControladorConfiguracionDirectorio conf = new ControladorConfiguracionDirectorio();
 		MockFileChooser fileChooser = new MockFileChooser();
 		fileChooser.setFile(null);
 		conf.setFileChooser(fileChooser);
@@ -30,7 +28,7 @@ public class ControladorConfiguracionTest {
 	@Test
 	public void noEligioDirectorioComboBox(){
 
-		conf = new ControladorConfiguracionDirectorio();
+		ControladorConfiguracionDirectorio conf = new ControladorConfiguracionDirectorio();
 		GatewayConfiguracion.limpiar();
 		GatewayConfiguracion.agregarDirectorio("c/usuario");
 		assertEquals(1 , GatewayConfiguracion.getDirectorios().size());	
@@ -49,7 +47,7 @@ public class ControladorConfiguracionTest {
 	
 	@Test
 	public void borrarDirectorio(){
-		conf = new ControladorConfiguracionDirectorio();
+		ControladorConfiguracionDirectorio conf = new ControladorConfiguracionDirectorio();
 		GatewayConfiguracion.limpiar();
 		GatewayConfiguracion.agregarDirectorio("c/usuario");
 		GatewayConfiguracion.agregarDirectorio("c/desktop");
@@ -64,7 +62,7 @@ public class ControladorConfiguracionTest {
 	
 	@Test
 	public void noSePudoBorrarDirectorio(){
-		conf = new ControladorConfiguracionDirectorio();
+		ControladorConfiguracionDirectorio conf = new ControladorConfiguracionDirectorio();
 		GatewayConfiguracion.limpiar();
 		GatewayConfiguracion.agregarDirectorio("c/usuario");
 		GatewayConfiguracion.agregarDirectorio("c/desktop");
@@ -81,7 +79,7 @@ public class ControladorConfiguracionTest {
 	@Test
 	public void guardoDirectorio(){
 
-		conf = new ControladorConfiguracionDirectorio();
+		ControladorConfiguracionDirectorio conf = new ControladorConfiguracionDirectorio();
 		GatewayConfiguracion.limpiar();
 		GatewayConfiguracion.agregarDirectorio("c/usuario");
 		assertEquals(1 , GatewayConfiguracion.getDirectorios().size());	
