@@ -19,9 +19,9 @@ public class ConsultaBajaEspecie_Controller implements ActionListener {
 	private Inventario inventario;
 	private DefaultOptionPane optionPane;
 
-	public ConsultaBajaEspecie_Controller() {
+	public ConsultaBajaEspecie_Controller(Inventario i) {
 		consultaBajaVista = new ConsultaBajaEspecie(this);
-		inventario = new Inventario();
+		inventario = i;
 		llenarCombo(consultaBajaVista.getComboBox());
 		this.consultaBajaVista.setVisible(true);
 		this.optionPane = new DefaultOptionPane();

@@ -25,7 +25,6 @@ public class VerDetalleEspecie extends JFrame {
 	private JLabel imagenEspecie;
 	private ListaPlantaDeEspecie panel;
 	private JLabel llegoNombreC;
-	private JButton btnRevivir;
 	private JButton btnEliminar;
 	
 
@@ -75,13 +74,8 @@ public class VerDetalleEspecie extends JFrame {
 		llegoNombreC.setBounds(265, 134, 139, 16);
 		contentPane.add(llegoNombreC);
 		
-		btnRevivir = new JButton("Revivir");
-		btnRevivir.setBounds(27, 397, 117, 29);
-		contentPane.add(btnRevivir);
-		btnRevivir.addActionListener(controlador);
-		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(149, 397, 117, 29);
+		btnEliminar.setBounds(322, 395, 117, 29);
 		contentPane.add(btnEliminar);
 		btnEliminar.addActionListener(controlador);
 		
@@ -125,14 +119,6 @@ public class VerDetalleEspecie extends JFrame {
 		
 		this.imagenEspecie.setIcon(new ImageIcon(VerDetalleEspecie.class.getResource("/Recursos/"+imagenEspecie)));
 		}
-
-	public JButton getBtnRevivir() {
-		return btnRevivir;
-	}
-
-	public void setBtnRevivir(JButton btnRevivir) {
-		this.btnRevivir = btnRevivir;
-	}
 
 	public JButton getBtnEliminar() {
 		return btnEliminar;

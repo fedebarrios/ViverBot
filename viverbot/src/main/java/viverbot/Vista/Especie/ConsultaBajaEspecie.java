@@ -41,17 +41,17 @@ public class ConsultaBajaEspecie extends JFrame{
 		contentPane.add(lblSeleccioneUnaEspecie);
 		
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(136, 102, 89, 23);
+		btnBorrar.setBounds(137, 127, 89, 23);
 		contentPane.add(btnBorrar);
 		btnBorrar.addActionListener(controlador);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(235, 102, 89, 23);
+		btnCancelar.setBounds(235, 127, 89, 23);
 		contentPane.add(btnCancelar);
 		btnCancelar.addActionListener(controlador);
 		
 		btnVerDetalle = new JButton("Ver Detalle");
-		btnVerDetalle.setBounds(37, 102, 89, 23);
+		btnVerDetalle.setBounds(10, 127, 116, 23);
 		contentPane.add(btnVerDetalle);
 		btnVerDetalle.addActionListener(controlador);
 	}

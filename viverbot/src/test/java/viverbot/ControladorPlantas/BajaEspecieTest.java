@@ -16,6 +16,7 @@ import viverbot.DTO.Especie;
 import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Fecha;
+import viverbot.Model.Inventario;
 import viverbot.Model.Plantas;
 
 
@@ -24,7 +25,7 @@ public class BajaEspecieTest {
 	private ConsultaBajaEspecie_Controller controladorEspecies;
 	
 	public void inicializar(){
-		controladorEspecies = new ConsultaBajaEspecie_Controller();
+		controladorEspecies = new ConsultaBajaEspecie_Controller(new Inventario());
 		ArrayList<Especie> especies = new ArrayList<Especie>();
 		Especie e1 = new Especie(1, "Marga","Margus","");
 		Especie e2 = new Especie(2, "Cebolla","Cebollus","");

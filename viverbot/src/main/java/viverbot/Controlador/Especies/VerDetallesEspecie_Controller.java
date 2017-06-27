@@ -49,9 +49,7 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == vistaVerDetalle.getBtnRevivir()) {
-			System.out.println(vistaVerDetalle.filaSeleccionada());
-		} else if (e.getSource() == vistaVerDetalle.getBtnEliminar()) {
+		if (e.getSource() == vistaVerDetalle.getBtnEliminar()) {
 
 		}
 
