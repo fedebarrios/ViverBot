@@ -1,19 +1,19 @@
 package viverbot.Vista;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import viverbot.Controlador.ControladorConfiguracionDirectorio;
 
-import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 
 public class VistaConfiguracionDirectorios extends JFrame{
 	
+
+
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel seleccioneDirectorios;
 	private JButton btnCargarDirectorio;
