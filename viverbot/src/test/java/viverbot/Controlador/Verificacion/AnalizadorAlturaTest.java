@@ -20,7 +20,7 @@ import viverbot.Interfaces.AnalisisAltura;
 import viverbot.Model.Fecha;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
 
@@ -37,7 +37,7 @@ public class AnalizadorAlturaTest {
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017)); 
-		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(10.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
+		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(10.0,Magnitud.ALTURA), new Medicion(20.0,Magnitud.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Defectuoso");
 	}
@@ -50,7 +50,7 @@ public class AnalizadorAlturaTest {
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
-		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(19.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
+		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(19.0,Magnitud.ALTURA), new Medicion(20.0,Magnitud.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Normal");
 	}
@@ -63,7 +63,7 @@ public class AnalizadorAlturaTest {
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
-		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(16.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
+		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(16.0,Magnitud.ALTURA), new Medicion(20.0,Magnitud.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Anormal");
 	}
@@ -76,7 +76,7 @@ public class AnalizadorAlturaTest {
 		assertTrue(msjLog.contains(""));
 		StrategyAnalisisAltura estrategia = new StrategyAnalisisAltura();
 		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
-		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(50.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
+		EstadoAltura estadoDevuelto = estrategia.analizar(new Medicion(50.0,Magnitud.ALTURA), new Medicion(20.0,Magnitud.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAltura);
 		assertEquals(estadoDevuelto.getEstado(), "Perfecto");
 	}
@@ -85,7 +85,7 @@ public class AnalizadorAlturaTest {
 	public void EstrategiaMetroRoto(){
 		InformadorAltura planificador = InformadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
-		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(-10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
+		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(-10.0,Magnitud.ALTURA), new Medicion(4.0,Magnitud.ALTURA));
 		assertTrue(estrategia instanceof StrategyMetroDown);
 	}
 	
@@ -93,7 +93,7 @@ public class AnalizadorAlturaTest {
 	public void EstadoNoComparada(){
 		StrategyMetroDown estrategiaMetro = new StrategyMetroDown();
 		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,9), new Fecha(04, 05, 2017));
-		EstadoAltura estadoDevuelto = estrategiaMetro.analizar(new Medicion(-5.0,Magnitudes.ALTURA), new Medicion(20.0,Magnitudes.ALTURA), planta);
+		EstadoAltura estadoDevuelto = estrategiaMetro.analizar(new Medicion(-5.0,Magnitud.ALTURA), new Medicion(20.0,Magnitud.ALTURA), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAlturaNoComparada);
 	}
 	
@@ -101,7 +101,7 @@ public class AnalizadorAlturaTest {
 	public void EstadoNoComparada2(){
 		StrategySeguimientoNull estrategiaSeguimiento = new StrategySeguimientoNull();
 		Planta planta = new Planta(1, 10, new UbicacionDTO(1,5,9), new Fecha(04, 05, 2017));
-		EstadoAltura estadoDevuelto = estrategiaSeguimiento.analizar(new Medicion(45.0,Magnitudes.ALTURA), new EmptyMedicion(), planta);
+		EstadoAltura estadoDevuelto = estrategiaSeguimiento.analizar(new Medicion(45.0,Magnitud.ALTURA), new EmptyMedicion(), planta);
 		assertTrue(estadoDevuelto instanceof EstadoAlturaNoComparada);
 	}
 	
@@ -109,7 +109,7 @@ public class AnalizadorAlturaTest {
 	public void EstrategiaNadaContraQueComparar(){
 		InformadorAltura planificador = InformadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
-		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(4.0,Magnitudes.ALTURA), new EmptyMedicion());
+		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(4.0,Magnitud.ALTURA), new EmptyMedicion());
 		assertTrue(estrategia instanceof StrategySeguimientoNull);
 	}
 	
@@ -117,7 +117,7 @@ public class AnalizadorAlturaTest {
 	public void EstrategiaSePuedeAnalizar(){
 		InformadorAltura planificador = InformadorAltura.getInstance();
 		AnalizadorAltura analizador = new AnalizadorAltura(GuardadorAltura.getInstance());
-		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(10.0,Magnitudes.ALTURA), new Medicion(4.0,Magnitudes.ALTURA));
+		AnalisisAltura estrategia = analizador.getStrategy(new Medicion(10.0,Magnitud.ALTURA), new Medicion(4.0,Magnitud.ALTURA));
 		assertTrue(estrategia instanceof StrategyAnalisisAltura);
 	}
 	

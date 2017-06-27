@@ -6,13 +6,13 @@ import org.junit.Test;
 
 import viverbot.Model.Hora;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class SimuladorTemperaturaEneroTest {
 
 	private static final String rangos = "#15,19#10,17#15,20#18,25#25,32#27,35#20,30#17,25#";
-	private static final Simulador s = new Simulador(Simulador.inicializarRangos(rangos), 300000, Magnitudes.TEMPERATURA);
+	private static final Simulador s = new Simulador(Simulador.inicializarRangos(rangos), 300000, Magnitud.TEMPERATURA);
 
 	
 	@Test
@@ -25,19 +25,19 @@ public class SimuladorTemperaturaEneroTest {
 		s.setHoraActual(h0);
 		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		
 		s.setHoraActual(h1);
 		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		
 		s.setHoraActual(h2);
 		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 	}
 
@@ -53,19 +53,19 @@ public class SimuladorTemperaturaEneroTest {
 		s.setHoraActual(h0);
 		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		
 		s.setHoraActual(h1);
 		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		
 		s.setHoraActual(h2);
 		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 	}
 
@@ -81,19 +81,19 @@ public class SimuladorTemperaturaEneroTest {
 		s.setHoraActual(h0);
 		Medicion m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		
 		s.setHoraActual(h1);
 		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		
 		s.setHoraActual(h2);
 		m = s.getMedicion();
 		assertTrue(m.getValor() >= r.getMinimo() && m.getValor() <= r.getMaximo());
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 	}
 

@@ -8,19 +8,19 @@ import java.util.TimerTask;
 
 import viverbot.Model.Hora;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Sensores.Medir;
 
 public class Simulador implements Medir{
 
 	private Map<Horario, RangoNumerico> rangos;
-	private Magnitudes magnitud;
+	private Magnitud magnitud;
 	private Hora horaActual;
 	private Medicion valorActual;
 	private long frecuencia;
 
-	public Simulador(Map<Horario, RangoNumerico> r, long f, Magnitudes m) {
+	public Simulador(Map<Horario, RangoNumerico> r, long f, Magnitud m) {
 		this.rangos = r;
 		this.horaActual = Hora.obtenerHoraActual();
 		this.actualizarValorActual(this.horaActual);

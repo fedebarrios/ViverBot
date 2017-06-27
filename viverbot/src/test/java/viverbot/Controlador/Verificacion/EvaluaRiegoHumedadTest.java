@@ -8,7 +8,7 @@ import viverbot.Controlador.Verificacion.RiegoValidable;
 import viverbot.Model.NivelRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiegoXHumedad;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class EvaluaRiegoHumedadTest {
@@ -16,8 +16,8 @@ public class EvaluaRiegoHumedadTest {
 	private EvaluaRiegoXHumedad evaluaRiegoHumedadTest=null;
 	private EvaluaRiego evaluaRiegoInicial=null;
 
-	private Medicion humedadBaja = new Medicion(30.0,Magnitudes.HUMEDAD);
-	private Medicion humedadAlta = new Medicion(60.0,Magnitudes.HUMEDAD);
+	private Medicion humedadBaja = new Medicion(30.0,Magnitud.HUMEDAD);
+	private Medicion humedadAlta = new Medicion(60.0,Magnitud.HUMEDAD);
 
 	@Test
 	public void ValidaRiegoTempTest() {

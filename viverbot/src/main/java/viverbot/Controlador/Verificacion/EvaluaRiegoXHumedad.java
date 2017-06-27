@@ -3,7 +3,7 @@ package viverbot.Controlador.Verificacion;
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.NivelRiego;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class EvaluaRiegoXHumedad extends EvaluaRiegoDecorator{

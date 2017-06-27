@@ -9,7 +9,7 @@ import java.util.TimerTask;
 
 import viverbot.DTO.Planta;
 import viverbot.Model.Plantas;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class ColectorAltura extends Observable{

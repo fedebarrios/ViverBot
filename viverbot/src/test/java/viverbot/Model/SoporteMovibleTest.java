@@ -8,7 +8,7 @@ import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteMovible;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public class SoporteMovibleTest {
 	
@@ -53,7 +53,7 @@ public class SoporteMovibleTest {
 	//metodos auxiliares
 	
 	private void inicialize(){
-		this.soporteTest =  new SoporteMovible(Magnitudes.HUMEDAD);
+		this.soporteTest =  new SoporteMovible(Magnitud.HUMEDAD);
 	}
 	
 	private void  clear(){

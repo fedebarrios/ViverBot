@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
 import viverbot.Modelo.Sensores.Metro;
 import viverbot.Modelo.Sensores.SensorHumedad;
@@ -17,21 +17,21 @@ public class IntrumentoFactoryTest {
 
 	@Test
 	public void CreatInstrumentoTestTemperatura() {
-		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitud.TEMPERATURA);
 		assertTrue(instrumentoTest instanceof SensorTemperatura);
 		clear();
 	}
 
 	@Test
 	public void CreatInstrumentoTestHumedad() {
-		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitud.HUMEDAD);
 		assertTrue(instrumentoTest instanceof SensorHumedad);
 		this.clear();
 	}
 	
 	@Test
 	public void CreatInstrumentoTestAltura() {
-		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitud.ALTURA);
 		assertTrue(instrumentoTest instanceof Metro);
 		this.clear();
 	}
@@ -39,7 +39,7 @@ public class IntrumentoFactoryTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void CreatInstrumentoDesconocido() {
-		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.VACIO);
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitud.VACIO);
 		assertTrue(instrumentoTest instanceof UnknowInstrumentoMedicion);
 		assertEquals(0.0 , instrumentoTest.getMedicion().getValor().doubleValue(),1);
 		this.clear();
@@ -47,24 +47,24 @@ public class IntrumentoFactoryTest {
 
 	@Test
 	public void CreatSingletownTestTemperatura() {
-		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
-		Medir aux = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitud.TEMPERATURA);
+		Medir aux = InstrumentoFactory.crearInstrumento(Magnitud.TEMPERATURA);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}
 	
 	@Test
 	public void CreatSingletownTestHumedad() {
-		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
-		Medir aux = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitud.HUMEDAD);
+		Medir aux = InstrumentoFactory.crearInstrumento(Magnitud.HUMEDAD);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}
 	
 	@Test
 	public void CreatSingletownTestAltura() {
-		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
-		Medir aux = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitud.ALTURA);
+		Medir aux = InstrumentoFactory.crearInstrumento(Magnitud.ALTURA);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}	

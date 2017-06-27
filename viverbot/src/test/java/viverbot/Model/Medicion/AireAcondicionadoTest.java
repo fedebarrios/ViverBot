@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
 
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AireAcondicionado;
 import viverbot.Modelo.Medicion.Calor;
@@ -31,7 +31,7 @@ public class AireAcondicionadoTest {
 	public void ejecutarTest() throws NumberFormatException {
 		init();
 		Medicion aux = aire.ejecutar();
-		Medicion expected = new Medicion(0.026, Magnitudes.TEMPERATURA);
+		Medicion expected = new Medicion(0.026, Magnitud.TEMPERATURA);
 		Double ret = (double) (Math.round(aux.getValor() * 1000d) / 1000d);
 		assertNotNull(ret);
 		assertEquals(expected.getValor(), ret);

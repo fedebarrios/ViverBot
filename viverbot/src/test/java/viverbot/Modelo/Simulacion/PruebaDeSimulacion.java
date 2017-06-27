@@ -7,7 +7,7 @@ import java.util.Map;
 import viverbot.Controlador.VistaPrincipalController;
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Medicion.Colector;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Monitoreo.MonitorEstado;
@@ -38,7 +38,7 @@ public class PruebaDeSimulacion {
 		
 		VistaPrincipalController principal = new VistaPrincipalController();
 
-		Simulador simulador = new Simulador(r, 5000, Magnitudes.TEMPERATURA);
+		Simulador simulador = new Simulador(r, 5000, Magnitud.TEMPERATURA);
 		
 		InstrumentoMediator i = new InstrumentoMediator(simulador);
 		simulador.simular();

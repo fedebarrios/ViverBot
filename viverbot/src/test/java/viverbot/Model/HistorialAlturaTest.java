@@ -10,7 +10,7 @@ import viverbot.Model.HistorialAltura;
 import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 
 public class HistorialAlturaTest {
 	private HistorialAltura historial ;
@@ -19,10 +19,10 @@ public class HistorialAlturaTest {
 	@Test
 	public void BuscarTupla(){
 		historial = new HistorialAltura();
-		historial.agregarRegistro(1,new Medicion(10.0, Magnitudes.ALTURA));
-		historial.agregarRegistro(2,new Medicion(14.0, Magnitudes.ALTURA));
-		historial.agregarRegistro(3,new Medicion(16.0, Magnitudes.ALTURA));
-		historial.agregarRegistro(4,new Medicion(18.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(1,new Medicion(10.0, Magnitud.ALTURA));
+		historial.agregarRegistro(2,new Medicion(14.0, Magnitud.ALTURA));
+		historial.agregarRegistro(3,new Medicion(16.0, Magnitud.ALTURA));
+		historial.agregarRegistro(4,new Medicion(18.0, Magnitud.ALTURA));
 		
 		
 		assertTrue(historial.tamaño()==4);
@@ -33,14 +33,14 @@ public class HistorialAlturaTest {
 	@Test
 	public void BuscarMedicionPorDia(){
 		historial = new HistorialAltura();
-		historial.agregarRegistro(10,new Medicion(25.0, Magnitudes.ALTURA));
-		historial.agregarRegistro(20,new Medicion(58.0, Magnitudes.ALTURA));
-		historial.agregarRegistro(30,new Medicion(64.0, Magnitudes.ALTURA));
-		historial.agregarRegistro(40,new Medicion(69.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(10,new Medicion(25.0, Magnitud.ALTURA));
+		historial.agregarRegistro(20,new Medicion(58.0, Magnitud.ALTURA));
+		historial.agregarRegistro(30,new Medicion(64.0, Magnitud.ALTURA));
+		historial.agregarRegistro(40,new Medicion(69.0, Magnitud.ALTURA));
 		
 		
 		assertTrue(historial.tamaño()==4);
-		historial.agregarRegistro(5,new Medicion(60.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(5,new Medicion(60.0, Magnitud.ALTURA));
 		assertTrue(historial.tamaño()==5);
 		historial.borrarTupla(5);
 		assertTrue(historial.tamaño()==4);

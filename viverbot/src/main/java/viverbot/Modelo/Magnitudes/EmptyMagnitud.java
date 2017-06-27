@@ -1,6 +1,6 @@
 package viverbot.Modelo.Magnitudes;
 
-public class EmptyMagnitud extends Magnitud {
+public class EmptyMagnitud extends MagnitudPorFavorNoUsenEstaCosaYUsenMeidcion {
 
 	public EmptyMagnitud(Double valor) {
 		super(valor);

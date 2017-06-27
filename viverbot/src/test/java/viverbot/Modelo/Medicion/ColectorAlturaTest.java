@@ -10,7 +10,7 @@ import org.junit.Test;
 import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.Fecha;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.ColectorAltura;
 
@@ -45,12 +45,12 @@ public class ColectorAlturaTest {
 		plantas.add(new Planta(2, 11, new UbicacionDTO(1,5,1), new Fecha(04, 05, 2017)));
 		List<Medicion> mediciones = colector.medir(plantas);
 		assertEquals(2 , mediciones.size());
-		assertEquals(Magnitudes.ALTURA , mediciones.get(0).getTipo());
+		assertEquals(Magnitud.ALTURA , mediciones.get(0).getTipo());
 	
 	}
 
 	private void inicialize() {
-		InstrumentoMediator mediator =  new InstrumentoMediator(Magnitudes.ALTURA);
+		InstrumentoMediator mediator =  new InstrumentoMediator(Magnitud.ALTURA);
 		this.colector = new ColectorAltura(mediator);
 	}
 	

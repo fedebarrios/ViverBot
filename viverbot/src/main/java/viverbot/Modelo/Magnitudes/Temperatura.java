@@ -1,6 +1,6 @@
 package viverbot.Modelo.Magnitudes;
 
-public class Temperatura extends Magnitud{
+public class Temperatura extends MagnitudPorFavorNoUsenEstaCosaYUsenMeidcion{
 
 	public Temperatura(Double valor) {
 		super(valor);

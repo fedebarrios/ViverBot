@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import viverbot.Modelo.Magnitudes.Medicion;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Sensores.Metro;
 
 public class MetroTest {
@@ -22,6 +22,6 @@ public class MetroTest {
 	public void metroDevuelveMedicion() throws Exception{
 		metro = new Metro();
 		Medicion medicion = metro.simularMedicion(88);
-		assertTrue(medicion.getTipo().equals(Magnitudes.ALTURA));
+		assertTrue(medicion.getTipo().equals(Magnitud.ALTURA));
 	}
 }

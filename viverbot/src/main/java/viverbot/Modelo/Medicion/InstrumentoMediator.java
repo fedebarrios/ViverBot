@@ -6,7 +6,7 @@ import viverbot.DTO.Planta;
 import viverbot.Model.Plantas;
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Sensores.Medir;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
@@ -23,7 +23,7 @@ public class InstrumentoMediator {
 		this.tipoValor = "";
 	}
 
-	public InstrumentoMediator(Magnitudes m) {
+	public InstrumentoMediator(Magnitud m) {
 		this.instrumentoMedicion = InstrumentoFactory.crearInstrumento(m);
 	}
 

@@ -4,8 +4,8 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import viverbot.Modelo.Magnitudes.MagnitudPorFavorNoUsenEstaCosaYUsenMeidcion;
 import viverbot.Modelo.Magnitudes.Magnitud;
-import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class Colector extends Observable {

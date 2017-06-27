@@ -17,7 +17,7 @@ import viverbot.Model.Fecha;
 import viverbot.Model.HistorialAltura;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Model.RegistroHistorial;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class ControlSeguimientosTest {
@@ -88,7 +88,7 @@ public class ControlSeguimientosTest {
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
 		GuardadorAltura g = GuardadorAltura.getInstance();
-		g.guardar(new StrategyAnalisisAltura(),new Medicion(14.0,Magnitudes.ALTURA) , 5, control.getSeguimiento(planta1).getHistorialVerdadero());
+		g.guardar(new StrategyAnalisisAltura(),new Medicion(14.0,Magnitud.ALTURA) , 5, control.getSeguimiento(planta1).getHistorialVerdadero());
 		assertEquals(5,control.getSeguimiento(planta1).getUltimoDiaMedicion());
 
 		clear();
@@ -106,14 +106,14 @@ public class ControlSeguimientosTest {
 		
 		
 		tuplas1 = new ArrayList<RegistroHistorial>();
-		tuplas1.add(new RegistroHistorial(new Medicion(30.0, Magnitudes.ALTURA), 4));
-		tuplas1.add(new RegistroHistorial(new Medicion(30.1 , Magnitudes.ALTURA), 5));
-		tuplas1.add(new RegistroHistorial(new Medicion(30.2, Magnitudes.ALTURA), 6));
+		tuplas1.add(new RegistroHistorial(new Medicion(30.0, Magnitud.ALTURA), 4));
+		tuplas1.add(new RegistroHistorial(new Medicion(30.1 , Magnitud.ALTURA), 5));
+		tuplas1.add(new RegistroHistorial(new Medicion(30.2, Magnitud.ALTURA), 6));
 		
 		tuplas2 = new ArrayList<RegistroHistorial>();
-		tuplas2.add(new RegistroHistorial(new Medicion(30.0, Magnitudes.ALTURA), 4));
-		tuplas2.add(new RegistroHistorial(new Medicion(30.12, Magnitudes.ALTURA), 5));
-		tuplas2.add(new RegistroHistorial(new Medicion(30.14, Magnitudes.ALTURA), 6));
+		tuplas2.add(new RegistroHistorial(new Medicion(30.0, Magnitud.ALTURA), 4));
+		tuplas2.add(new RegistroHistorial(new Medicion(30.12, Magnitud.ALTURA), 5));
+		tuplas2.add(new RegistroHistorial(new Medicion(30.14, Magnitud.ALTURA), 6));
 		
 	}
 	

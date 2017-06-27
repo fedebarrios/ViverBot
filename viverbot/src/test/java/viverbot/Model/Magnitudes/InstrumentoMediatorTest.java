@@ -11,7 +11,7 @@ import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.Fecha;
 import viverbot.Model.Hora;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
@@ -28,14 +28,14 @@ public class InstrumentoMediatorTest {
 
 	@Test
 	public void colectorMagnitudesTestTemperatura() {
-		this.mediatorTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
+		this.mediatorTest = new InstrumentoMediator(Magnitud.TEMPERATURA);
 		assertTrue(this.mediatorTest.getInstrumentoMedicion().getClass() == SensorTemperatura.class);
 		this.clear();
 	}
 
 	@Test
 	public void colectorMagnitudesTestHumedad() {
-		this.mediatorTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
+		this.mediatorTest = new InstrumentoMediator(Magnitud.HUMEDAD);
 		assertTrue(this.mediatorTest.getInstrumentoMedicion() instanceof SensorHumedad);
 		
 		
@@ -44,12 +44,12 @@ public class InstrumentoMediatorTest {
 
 	@Test
 	public void testTomarMedicionTemperatura() {
-		this.mediatorTest = new InstrumentoMediator(Magnitudes.TEMPERATURA);
+		this.mediatorTest = new InstrumentoMediator(Magnitud.TEMPERATURA);
 		SensorTemperatura s = (SensorTemperatura) this.mediatorTest.getInstrumentoMedicion();
-		Medicion medicion = new Medicion(5.0, Magnitudes.TEMPERATURA);
+		Medicion medicion = new Medicion(5.0, Magnitud.TEMPERATURA);
 		EstadoVivero.getInstance().setTemperaturaActual(medicion);
 		assertEquals(medicion, this.mediatorTest.tomarMedicion());
-		assertEquals(this.mediatorTest.tomarMedicion().getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(this.mediatorTest.tomarMedicion().getTipo(), Magnitud.TEMPERATURA);
 
 		clear();
 
@@ -57,10 +57,10 @@ public class InstrumentoMediatorTest {
 	
 	@Test
 	public void testTomarMedicionHumedad() {
-		this.mediatorTest = new InstrumentoMediator(Magnitudes.HUMEDAD);
+		this.mediatorTest = new InstrumentoMediator(Magnitud.HUMEDAD);
 		EstadoVivero ambienteSimulado = EstadoVivero.getInstance();
 		assertTrue(this.verificarHumedad(this.getHorarios(), ambienteSimulado));
-		assertTrue(this.mediatorTest.tomarMedicion().getTipo() == Magnitudes.HUMEDAD);
+		assertTrue(this.mediatorTest.tomarMedicion().getTipo() == Magnitud.HUMEDAD);
 
 		clear();
 
@@ -68,9 +68,9 @@ public class InstrumentoMediatorTest {
 	
 	@Test
 	public void TomarAltura() {
-		this.mediatorTest = new InstrumentoMediator(Magnitudes.ALTURA);
+		this.mediatorTest = new InstrumentoMediator(Magnitud.ALTURA);
 		Planta p = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
-		assertEquals(Magnitudes.ALTURA , mediatorTest.tomarMedicion().getTipo());
+		assertEquals(Magnitud.ALTURA , mediatorTest.tomarMedicion().getTipo());
 		this.clear();
 	}	
 

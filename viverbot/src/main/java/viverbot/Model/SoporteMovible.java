@@ -2,7 +2,7 @@ package viverbot.Model;
 
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Interfaces.Movible;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 
 public class SoporteMovible implements Movible{
@@ -12,7 +12,7 @@ public class SoporteMovible implements Movible{
 	private UbicacionDTO ubicacion;
 	private UbicacionDTO defaultUbicacion= new UbicacionDTO(0,0,0);
 	
-	public SoporteMovible(Magnitudes m){
+	public SoporteMovible(Magnitud m){
 		this.mediator = new InstrumentoMediator(m);
 		this.podador = Cosechador.getInstance();
 		this.ubicacion = defaultUbicacion;

@@ -8,7 +8,7 @@ import org.junit.Test;
 import viverbot.Controlador.Verificacion.EvaluaRiego;
 import viverbot.Controlador.Verificacion.EvaluaRiegoXTemperatura;
 import viverbot.Controlador.Verificacion.RiegoValidable;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 

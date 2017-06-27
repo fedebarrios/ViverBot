@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.Hora;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.Colector;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
@@ -19,7 +19,7 @@ import viverbot.Modelo.Simulacion.Simulador;
 public class ColectorTemperaturaTest {
 	private Colector colector = null;
 	private InstrumentoMediator m = null;
-	private Medicion medicion = new Medicion(5.0, Magnitudes.TEMPERATURA);
+	private Medicion medicion = new Medicion(5.0, Magnitud.TEMPERATURA);
 
 	@Test
 	public void testColectorTemperatura() {
@@ -60,9 +60,9 @@ public class ColectorTemperaturaTest {
 	}
 
 	private void inicialize() {
-		m = new InstrumentoMediator(Magnitudes.TEMPERATURA);
+		m = new InstrumentoMediator(Magnitud.TEMPERATURA);
 
-		medicion = new Medicion(5.0, Magnitudes.TEMPERATURA);
+		medicion = new Medicion(5.0, Magnitud.TEMPERATURA);
 		EstadoVivero.getInstance().setTemperaturaActual(medicion);
 
 		this.colector = new Colector(5000, 0, m);

@@ -1,6 +1,6 @@
 package viverbot.Modelo.Medicion;
 
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class TemperaturaAireAcondicionado {
@@ -8,7 +8,7 @@ public class TemperaturaAireAcondicionado {
 	private Medicion diferencia;
 
 	public TemperaturaAireAcondicionado() {
-		this.diferencia = new Medicion(0.026, Magnitudes.TEMPERATURA);
+		this.diferencia = new Medicion(0.026, Magnitud.TEMPERATURA);
 		this.temp = "24";
 	}
 

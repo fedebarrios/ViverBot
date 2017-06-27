@@ -7,7 +7,7 @@ import viverbot.Archivos.WriterExcel;
 import viverbot.Interfaces.FrioCalor;
 import viverbot.Interfaces.Potencia;
 import viverbot.Model.EstadoVivero;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class AireAcondicionado {
@@ -38,7 +38,7 @@ public class AireAcondicionado {
 	public Medicion ejecutar() {
 		estado.definirEstado(this);
 		Double suma = potencia.aplicarPotencia(this).getValor() + temp.getDiferencia().getValor();
-		return new Medicion(definirPositivoNegativo(suma), Magnitudes.TEMPERATURA);
+		return new Medicion(definirPositivoNegativo(suma), Magnitud.TEMPERATURA);
 	}
 
 	private Double definirPositivoNegativo(Double d) {

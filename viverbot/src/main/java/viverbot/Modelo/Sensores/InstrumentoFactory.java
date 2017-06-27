@@ -1,6 +1,6 @@
 package viverbot.Modelo.Sensores;
 
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Simulacion.Simulador;
 
 import java.util.HashMap;
@@ -10,19 +10,19 @@ public class InstrumentoFactory {
 
 	
 
-	private static final Map<Magnitudes, Medir> sensores = inicializar();
+	private static final Map<Magnitud, Medir> sensores = inicializar();
 
-	public static Medir crearInstrumento(Magnitudes m) {
+	public static Medir crearInstrumento(Magnitud m) {
 		return sensores.get(m);
 	}
 
-	private static Map<Magnitudes, Medir> inicializar() {
+	private static Map<Magnitud, Medir> inicializar() {
 
-		Map<Magnitudes, Medir> s = new HashMap<Magnitudes, Medir>();
-		s.put(Magnitudes.TEMPERATURA, new SensorTemperatura());
-		s.put(Magnitudes.HUMEDAD, new SensorHumedad());
-		s.put(Magnitudes.ALTURA, new Metro());
-		s.put(Magnitudes.VACIO, new UnknowInstrumentoMedicion());
+		Map<Magnitud, Medir> s = new HashMap<Magnitud, Medir>();
+		s.put(Magnitud.TEMPERATURA, new SensorTemperatura());
+		s.put(Magnitud.HUMEDAD, new SensorHumedad());
+		s.put(Magnitud.ALTURA, new Metro());
+		s.put(Magnitud.VACIO, new UnknowInstrumentoMedicion());
 	
 		
 

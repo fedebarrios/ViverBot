@@ -5,7 +5,7 @@ import java.util.Observer;
 
 import viverbot.Controlador.VistaPrincipalController;
 import viverbot.Model.EstadoVivero;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorTemperatura;
 import viverbot.Modelo.Medicion.DiagnosticoAnalisis;
@@ -15,7 +15,7 @@ public class MonitorEstado extends Observable implements Observer {
 	private Medicion ultimaMedicion;
 
 	public MonitorEstado() {
-		this.ultimaMedicion = new Medicion(0.0, Magnitudes.TEMPERATURA);
+		this.ultimaMedicion = new Medicion(0.0, Magnitud.TEMPERATURA);
 	}
 	public Medicion getUltimaMedicion() {
 		return ultimaMedicion;

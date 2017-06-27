@@ -8,8 +8,7 @@ import org.junit.Test;
 
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.Hora;
-import viverbot.Modelo.Magnitudes.Humedad;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Sensores.SensorHumedad;
 
 public class SensorHumedadTest {
@@ -19,7 +18,7 @@ public class SensorHumedadTest {
 	@Test
 	public void verificarClaseTest() {
 		inicialize();
-		assertEquals(sensorTest.getMedicion().getTipo(), Magnitudes.HUMEDAD);
+		assertEquals(sensorTest.getMedicion().getTipo(), Magnitud.HUMEDAD);
 		clear();
 	}
 

@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import viverbot.Model.Hora;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class SimularTest {
@@ -42,7 +42,7 @@ public class SimularTest {
 		simulador.actualizarValorActual(mañana);
 		Medicion m = simulador.getMedicion();
 		assertTrue(m.getValor() >= 3.0 && m.getValor() <= 4.0);
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		this.clear();
 
@@ -56,7 +56,7 @@ public class SimularTest {
 		simulador.actualizarValorActual(tarde);
 		Medicion m = simulador.getMedicion();
 		assertTrue(m.getValor() >= 5.0 && m.getValor() <= 6.0);
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		this.clear();
 
@@ -71,7 +71,7 @@ public class SimularTest {
 		simulador.actualizarValorActual(noche);
 		Medicion m = simulador.getMedicion();
 		assertTrue(m.getValor() >= 7.0 && m.getValor() <= 8.0);
-		assertEquals(m.getTipo(), Magnitudes.TEMPERATURA);
+		assertEquals(m.getTipo(), Magnitud.TEMPERATURA);
 
 		this.clear();
 
@@ -168,7 +168,7 @@ public class SimularTest {
 		r.put(Horario.TARDE, r6);
 		r.put(Horario.ATARDECER, r7);
 		r.put(Horario.NOCHE, r8);
-		simulador = new Simulador(r,300000, Magnitudes.TEMPERATURA);
+		simulador = new Simulador(r,300000, Magnitud.TEMPERATURA);
 	}
 
 	private void clear() {

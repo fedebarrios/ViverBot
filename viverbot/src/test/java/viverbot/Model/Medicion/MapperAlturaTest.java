@@ -19,7 +19,7 @@ import viverbot.Model.Fecha;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.RegistroHistorial;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
 import viverbot.Modelo.Medicion.MapperAltura;
@@ -34,7 +34,7 @@ public class MapperAlturaTest {
 	public void MapearAlturas() throws Exception{
 		inicializar();
 		ArrayList<Medicion> alturas = new ArrayList<Medicion>();
-		alturas.add(new Medicion(24.0, Magnitudes.ALTURA));
+		alturas.add(new Medicion(24.0, Magnitud.ALTURA));
 		List<EstadoAltura> estadosDevueltos = mapper.relacionar(alturas);
 		assertEquals(1, estadosDevueltos.size());
 	}
@@ -59,7 +59,7 @@ public class MapperAlturaTest {
 		plantas.add(planta1);
 		
 		ArrayList <RegistroHistorial> tuplas1 = new ArrayList<RegistroHistorial>();
-		tuplas1.add(new RegistroHistorial(new Medicion(30.0, Magnitudes.ALTURA), 5));
+		tuplas1.add(new RegistroHistorial(new Medicion(30.0, Magnitud.ALTURA), 5));
 		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie1);
 		control.agregarSeguimiento(planta1, historialOptimo1);

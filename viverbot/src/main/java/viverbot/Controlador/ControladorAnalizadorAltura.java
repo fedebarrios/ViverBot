@@ -19,7 +19,7 @@ import viverbot.Model.HistorialAltura;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Model.RegistroHistorial;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
 import viverbot.Vista.VistaAnalizadorAltura;
@@ -63,7 +63,7 @@ public class ControladorAnalizadorAltura implements ActionListener{
 			HistorialOptimo historialPlanta = controlHistorialesOptimos.getHistorial(especiePlanta);
 			HistorialAltura historialReal = new HistorialAltura();
 			SeguimientoAltura seguimiento = new SeguimientoAltura(planta, historialPlanta, historialReal);
-			EstadoAltura estado = analizador.analizar(new Medicion(2.2, Magnitudes.ALTURA), seguimiento, 2);
+			EstadoAltura estado = analizador.analizar(new Medicion(2.2, Magnitud.ALTURA), seguimiento, 2);
 			mensaje = "El estado es: " + estado.getEstado();
 			this.optionPane.showMessageDialog(this.v, mensaje);
 		}

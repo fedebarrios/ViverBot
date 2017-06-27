@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Vista.Auxiliares.DefaultOptionPane;
 
 
@@ -18,7 +18,7 @@ public class InformadorAltura implements Observer{
 	private DefaultOptionPane optionPane = new DefaultOptionPane();
 	
 	private InformadorAltura(){
-		this.soporte = SoporteFactory.crearSoporte(Magnitudes.ALTURA);
+		this.soporte = SoporteFactory.crearSoporte(Magnitud.ALTURA);
 	}
 	
 	public static InformadorAltura getInstance(){

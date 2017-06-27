@@ -2,7 +2,7 @@ package viverbot.Modelo.Medicion;
 
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class AnalizadorTemperatura {
@@ -10,7 +10,7 @@ public class AnalizadorTemperatura {
 	public static DiagnosticoAnalisis analizar(Medicion t, RangoNumerico rango) throws MedicionVacioException {
 		DiagnosticoAnalisis estado;
 
-		if(t.getTipo() == Magnitudes.VACIO){
+		if(t.getTipo() == Magnitud.VACIO){
 			throw new MedicionVacioException();
 		}
 		else{

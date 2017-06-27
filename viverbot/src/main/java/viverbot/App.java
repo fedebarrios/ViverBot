@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import viverbot.Controlador.VistaPrincipalController;
 import viverbot.Model.EstadoVivero;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Medicion.Colector;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Monitoreo.MonitorEstado;
@@ -27,7 +27,7 @@ public class App {
 		EstadoVivero estado = EstadoVivero.getInstance();
 		String rangos = "#00,05#02,07#05,10#07,15#10,17#07,15#05,10#02,07#";
 
-		Simulador simulador =  new Simulador(Simulador.inicializarRangos(rangos), 300000, Magnitudes.TEMPERATURA);
+		Simulador simulador =  new Simulador(Simulador.inicializarRangos(rangos), 300000, Magnitud.TEMPERATURA);
 		simulador.simular();
 		
 		InstrumentoMediator i = new InstrumentoMediator(simulador);

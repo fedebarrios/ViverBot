@@ -8,7 +8,7 @@ import org.powermock.reflect.Whitebox;
 
 import viverbot.Model.EstadoVivero;
 import viverbot.Model.RangoNumerico;
-import viverbot.Modelo.Magnitudes.Magnitudes;
+import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AireAcondicionado;
 import viverbot.Modelo.Medicion.AutomatizadorDeClima;
@@ -27,7 +27,7 @@ public class AutomatizadorDeClimaTest {
 	@Test
 	public void definirEstadosTest_frio() throws Exception {
 		init();
-		estado.setTemperaturaColector(new Medicion(30.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(30.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirFrioCalor");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -38,7 +38,7 @@ public class AutomatizadorDeClimaTest {
 	@Test
 	public void definirEstadosTest_calor() throws Exception {
 		init();
-		estado.setTemperaturaColector(new Medicion(10.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(10.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirFrioCalor");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -50,7 +50,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia0_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(21.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(21.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -62,7 +62,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia0_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(14.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(14.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -74,7 +74,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia1_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(21.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(21.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -86,7 +86,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia1_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(13.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(13.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -98,7 +98,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia2_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(22.7, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(22.7, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -110,7 +110,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia2_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(12.3, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(12.3, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -122,7 +122,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia3_arriba() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(25.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(25.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -134,7 +134,7 @@ public class AutomatizadorDeClimaTest {
 	public void definirPotenciaTest_potencia3_abajo() throws Exception {
 		init();
 		estado.setRangoTemperatura(new RangoNumerico(15.0, 20.0));
-		estado.setTemperaturaColector(new Medicion(10.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(10.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirPotencia");
 		assertNotNull(aire);
 		assertNotNull(estado);
@@ -147,7 +147,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_0());
-		estado.setTemperaturaColector(new Medicion(14.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(14.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("22", aire.getTemp().toString());
 		clear();
@@ -158,7 +158,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_0());
-		estado.setTemperaturaColector(new Medicion(14.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(14.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("23", aire.getTemp().toString());
 		clear();
@@ -169,7 +169,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_1());
-		estado.setTemperaturaColector(new Medicion(13.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(13.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("24", aire.getTemp().toString());
 		clear();
@@ -180,7 +180,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_1());
-		estado.setTemperaturaColector(new Medicion(13.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(13.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("25", aire.getTemp().toString());
 		clear();
@@ -191,7 +191,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_2());
-		estado.setTemperaturaColector(new Medicion(12.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(12.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("26", aire.getTemp().toString());
 		clear();
@@ -202,7 +202,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_2());
-		estado.setTemperaturaColector(new Medicion(12.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(12.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("27", aire.getTemp().toString());
 		clear();
@@ -213,7 +213,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_3());
-		estado.setTemperaturaColector(new Medicion(11.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(11.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("28", aire.getTemp().toString());
 		clear();
@@ -224,7 +224,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_3());
-		estado.setTemperaturaColector(new Medicion(11.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(11.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("29", aire.getTemp().toString());
 		clear();
@@ -235,7 +235,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_0());
-		estado.setTemperaturaColector(new Medicion(25.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(25.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("24", aire.getTemp().toString());
 		clear();
@@ -246,7 +246,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_0());
-		estado.setTemperaturaColector(new Medicion(26.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(26.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("23", aire.getTemp().toString());
 		clear();
@@ -257,7 +257,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_1());
-		estado.setTemperaturaColector(new Medicion(26.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(26.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("22", aire.getTemp().toString());
 		clear();
@@ -268,7 +268,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_1());
-		estado.setTemperaturaColector(new Medicion(27.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(27.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("21", aire.getTemp().toString());
 		clear();
@@ -279,7 +279,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_2());
-		estado.setTemperaturaColector(new Medicion(27.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(27.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("20", aire.getTemp().toString());
 		clear();
@@ -290,7 +290,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_2());
-		estado.setTemperaturaColector(new Medicion(28.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(28.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("19", aire.getTemp().toString());
 		clear();
@@ -301,7 +301,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_3());
-		estado.setTemperaturaColector(new Medicion(28.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(28.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("18", aire.getTemp().toString());
 		clear();
@@ -312,7 +312,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_3());
-		estado.setTemperaturaColector(new Medicion(29.0, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(29.0, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("17", aire.getTemp().toString());
 		clear();
@@ -323,7 +323,7 @@ public class AutomatizadorDeClimaTest {
 		init();
 		aire.setEstado(new Frio());
 		aire.setPotencia(new Potencia_3());
-		estado.setTemperaturaColector(new Medicion(29.5, Magnitudes.TEMPERATURA));
+		estado.setTemperaturaColector(new Medicion(29.5, Magnitud.TEMPERATURA));
 		Whitebox.invokeMethod(automatizador, "definirTemperatura");
 		assertEquals("16", aire.getTemp().toString());
 		clear();

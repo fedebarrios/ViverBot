@@ -3,9 +3,9 @@ package viverbot.Modelo.Magnitudes;
 public class Medicion {
 
 	private Double valor;
-	private Magnitudes tipo;
+	private Magnitud tipo;
 
-	public Medicion(Double v, Magnitudes m) {
+	public Medicion(Double v, Magnitud m) {
 		this.valor = v;
 		this.tipo = m;
 	}
@@ -18,7 +18,7 @@ public class Medicion {
 		this.valor = valor;
 	}
 
-	public Magnitudes getTipo() {
+	public Magnitud getTipo() {
 		return tipo;
 	}
 
