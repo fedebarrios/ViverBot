@@ -21,13 +21,12 @@ public class ReconocedorTotalTest {
 	private BufferedImage imagenPlanta; 
 	
 	@Test
-	public void detectar4Frutostest() {
+	public void detectar2Frutostest() {
 		 imagenPlanta = GeneradorImagen.generarImagen("src/test/java/viverbot/recursosTest/4objetos.png");
 		 iniciarKernel();
 		 ArrayList<Point> posicionesFrutos = reconocerFrutos(imagenPlanta,kernel,1,1);
 		 assertTrue(new Point(1,1).equals(posicionesFrutos.get(0)));
-		 assertTrue(new Point(6,5).equals(posicionesFrutos.get(1)));
-
+		 assertTrue(new Point(5,6).equals(posicionesFrutos.get(1)));
 
 	}
 	
