@@ -13,7 +13,7 @@ public class CargadorTest {
 		inicialize();
 		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/Historial.txt");
 		assertEquals("zanahoria",h.getEspecie().getNombre());
-		assertTrue( 2.44 == h.buscarTupla(2).getAltura().getValor());
+		assertTrue( 2.44 == h.buscarMedicion(2).getValor());
 	}
 	
 	@SuppressWarnings("unused")

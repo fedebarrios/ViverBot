@@ -1,60 +1,66 @@
 package viverbot.Model;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class HistorialAltura {
 	
-	private List<RegistroHistorial> historial;
-	
-	public HistorialAltura(List<RegistroHistorial> lista){
-		this.historial = lista;
+	protected Map<Integer, Medicion> historial;
+	private int ultimoDia;
+	public HistorialAltura(){
+		this.historial = new HashMap<Integer, Medicion>();
 	}
 	
 	public int tamaño () {
 		return this.historial.size();
 	}
 	
-	public List<RegistroHistorial> getTuplas(){
-		return historial;
+	public Collection<Medicion> getMediciones(){
+		return historial.values();
+	}
+	
+	public Set<Entry<Integer,Medicion>> getEntrySet(){
+		return historial.entrySet();
 	}
 
 	
-	public void agregarTupla(RegistroHistorial t){
-		historial.add(t);
-	}
-	
-	public void borrarTupla(RegistroHistorial t){
-		if (historial.contains(t)){
-			historial.remove(t);
+	public void agregarRegistro(int dia, Medicion medicion){
+		if(!historial.containsKey(dia)){
+			historial.put(dia,medicion);	
 		}
 	}
 	
-	public RegistroHistorial buscarTupla(int d){
-		for (int i = 0; i<historial.size() ; i++){
-			if(historial.get(i).getDiaDeVida() == d ){
-				return historial.get(i);
-			}
+	public void borrarTupla(int dia){
+		if(historial.containsKey(dia)){
+			historial.remove(dia);	
 		}
-		return new RegistroHistorial(new EmptyMedicion(),0);
 	}
 	
-	public boolean verificarExistente(int dia) {
-		for (int i = 0; i<historial.size() ; i++){
-			if (historial.get(i).getDiaDeVida() == dia ){
-				return true;
-			}
+	public Medicion buscarMedicion(int dia){
+		if(historial.containsKey(dia)){
+			return historial.get(dia);	
 		}
-		return false;
+		return new EmptyMedicion();
 	}
 	
 	public int diaUltimaMedicion(){
 		if(historial.size()==0){
 			return 0;
 		} else{
-			return historial.get(historial.size()-1).getDiaDeVida();
+			this.ultimoDia = 0;
+			historial.forEach((k,v) -> {if(k>ultimoDia) this.ultimoDia = k;});
+			return this.ultimoDia;
 		}
+	}
+
+	public boolean verificarExistente(int i) {
+		return historial.containsKey(i);
 	}
 
 }

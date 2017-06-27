@@ -3,7 +3,9 @@ package viverbot.Model.Medicion;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -58,7 +60,8 @@ public class MapperAlturaTest {
 		
 		ArrayList <RegistroHistorial> tuplas1 = new ArrayList<RegistroHistorial>();
 		tuplas1.add(new RegistroHistorial(new Medicion(30.0, Magnitudes.ALTURA), 5));
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie1);
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie1);
 		control.agregarSeguimiento(planta1, historialOptimo1);
 	}
 }

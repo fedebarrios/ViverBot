@@ -3,7 +3,9 @@ package viverbot.Archivos;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -12,6 +14,7 @@ import viverbot.Model.ControlHistoriales;
 import viverbot.Model.HistorialOptimo;
 import viverbot.Model.Inventario;
 import viverbot.Model.RegistroHistorial;
+import viverbot.Modelo.Magnitudes.Medicion;
 
 public class MapperCargadorTest {
 	private MapperCargador mapper;
@@ -23,7 +26,8 @@ public class MapperCargadorTest {
 		inventario = new Inventario();
 		inventario.agregarEspecie("tomate", "tomatus", "");
 		control = ControlHistoriales.getInstance();
-		HistorialOptimo historial = new HistorialOptimo(new ArrayList<RegistroHistorial>(), inventario.obtenerEspecie(1));
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historial = new HistorialOptimo( mapa ,inventario.obtenerEspecie(1));
 		control.agregarSeguimiento(historial);
 		mapper = new MapperCargador(control , inventario);
 	}
@@ -35,8 +39,9 @@ public class MapperCargadorTest {
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
 		Especie especie1= new Especie(5,"manzana", "manzanus", "");
 		Especie especie2= new Especie(6,"tomate", "tomatus", "");
-		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<RegistroHistorial>(), especie1);
-		HistorialOptimo historial2 = new HistorialOptimo(new ArrayList<RegistroHistorial>(), especie2);
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historial1 = new HistorialOptimo(mapa, especie1);
+		HistorialOptimo historial2 = new HistorialOptimo(mapa, especie2);
 		historiales.add(historial1);
 		historiales.add(historial2);
 		int cantEspeciesAntes = inventario.cantidadEspecies();
@@ -56,7 +61,8 @@ public class MapperCargadorTest {
 		
 		List<HistorialOptimo> historiales = new ArrayList<HistorialOptimo>();
 		Especie especie1= new Especie(6,"tomate", "tomatus", "");
-		HistorialOptimo historial1 = new HistorialOptimo(new ArrayList<RegistroHistorial>(), especie1);
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historial1 = new HistorialOptimo(mapa , especie1);
 		historiales.add(historial1);
 		int cantEspeciesAntes = inventario.cantidadEspecies();
 		mapper.update(null , historiales);

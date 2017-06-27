@@ -62,8 +62,8 @@ public class ParserHistorialTest {
 		
 		assertEquals("zanahoria",historial.getEspecie().getNombre());
 		assertEquals("zanahorius",historial.getEspecie().getNombreCientifico());
-		assertEquals(2.4 , historial.buscarTupla(1).getAltura().getValor(), 0);
-		assertEquals(2.50 , historial.buscarTupla(3).getAltura().getValor(), 0);
-		assertTrue(historial.buscarTupla(5).getAltura() instanceof EmptyMedicion);
+		assertEquals(2.4 , historial.buscarMedicion(1).getValor(), 0);
+		assertEquals(2.50 , historial.buscarMedicion(3).getValor(), 0);
+		assertTrue(historial.buscarMedicion(5) instanceof EmptyMedicion);
 	}
 }

@@ -3,6 +3,8 @@ package viverbot.Model;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -36,8 +38,9 @@ public class ControlSeguimientosTest {
 	@Test
 	public void SeguimientoInvalido() throws Exception {
 		inicializar();
-		
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
+
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa , especie2);
 		
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta2, historialOptimo1);
@@ -49,8 +52,9 @@ public class ControlSeguimientosTest {
 	@Test
 	public void SeguimientoValidoCargado() throws Exception {
 		inicializar();
-		
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
+
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie2);
 		
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
@@ -63,8 +67,9 @@ public class ControlSeguimientosTest {
 	@Test 
 	public void UltimoDiamedicionTestSinMedicionAnterior() throws Exception {
 		inicializar();
-		
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
+
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie2);
 		
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
@@ -77,8 +82,9 @@ public class ControlSeguimientosTest {
 	@Test
 	public void UltimoDiamedicionTestConMedicionGuardada() throws Exception {
 		inicializar();
-		
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(tuplas1 , especie2);
+
+		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
+		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie2);
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
 		GuardadorAltura g = GuardadorAltura.getInstance();

@@ -1,3 +1,2 @@
-src/test/java/viverbot/Archivos/DirectorioTest1
-src/test/java/viverbot/Archivos/DirectorioTest2
-src/test/java/viverbot/Archivos/EstadosAlturaFiles
+c/usuario
+c/desktop

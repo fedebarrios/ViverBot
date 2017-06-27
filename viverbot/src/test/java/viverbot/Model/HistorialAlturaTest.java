@@ -18,32 +18,31 @@ public class HistorialAlturaTest {
 	
 	@Test
 	public void BuscarTupla(){
-		tuplas = new ArrayList<RegistroHistorial>();
-		tuplas.add(new RegistroHistorial(new Medicion(10.0, Magnitudes.ALTURA),1));
-		tuplas.add(new RegistroHistorial(new Medicion(14.0, Magnitudes.ALTURA),2));
-		tuplas.add(new RegistroHistorial(new Medicion(16.0, Magnitudes.ALTURA),3));
-		tuplas.add(new RegistroHistorial(new Medicion(18.0, Magnitudes.ALTURA),4));
-		historial = new HistorialAltura(tuplas);
+		historial = new HistorialAltura();
+		historial.agregarRegistro(1,new Medicion(10.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(2,new Medicion(14.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(3,new Medicion(16.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(4,new Medicion(18.0, Magnitudes.ALTURA));
+		
 		
 		assertTrue(historial.tamaño()==4);
-		assertTrue(historial.buscarTupla(5).getAltura() instanceof EmptyMedicion);
-		assertTrue(historial.buscarTupla(4).getAltura().getValor() == 18);
+		assertTrue(historial.buscarMedicion(5) instanceof EmptyMedicion);
+		assertTrue(historial.buscarMedicion(4).getValor() == 18);
 	}
 	
 	@Test
 	public void BuscarMedicionPorDia(){
-		tuplas = new ArrayList<RegistroHistorial>();
-		tuplas.add(new RegistroHistorial(new Medicion(25.0, Magnitudes.ALTURA),10));
-		tuplas.add(new RegistroHistorial(new Medicion(58.0, Magnitudes.ALTURA),20));
-		tuplas.add(new RegistroHistorial(new Medicion(64.0, Magnitudes.ALTURA),30));
-		tuplas.add(new RegistroHistorial(new Medicion(69.0, Magnitudes.ALTURA),40));
-		historial = new HistorialAltura(tuplas);
+		historial = new HistorialAltura();
+		historial.agregarRegistro(10,new Medicion(25.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(20,new Medicion(58.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(30,new Medicion(64.0, Magnitudes.ALTURA));
+		historial.agregarRegistro(40,new Medicion(69.0, Magnitudes.ALTURA));
+		
 		
 		assertTrue(historial.tamaño()==4);
-		RegistroHistorial nuevaTupla = new RegistroHistorial(new Medicion(60.0, Magnitudes.ALTURA),5);
-		historial.agregarTupla(nuevaTupla);
+		historial.agregarRegistro(5,new Medicion(60.0, Magnitudes.ALTURA));
 		assertTrue(historial.tamaño()==5);
-		historial.borrarTupla(nuevaTupla);
+		historial.borrarTupla(5);
 		assertTrue(historial.tamaño()==4);
 		
 		assertTrue(historial.verificarExistente(20));
@@ -52,8 +51,7 @@ public class HistorialAlturaTest {
 	
 	@Test
 	public void retornarDia(){
-		tuplas = new ArrayList<RegistroHistorial>();
-		historial = new HistorialAltura(tuplas);
+		historial = new HistorialAltura();
 		
 		assertEquals(0,historial.diaUltimaMedicion());
 	}

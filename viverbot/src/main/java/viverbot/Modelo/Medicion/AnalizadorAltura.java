@@ -18,7 +18,7 @@ public class AnalizadorAltura {
 	}
 
 	public EstadoAltura analizar(Medicion alturaActual, SeguimientoAltura seguimiento, int diaActual) {
-		Medicion alturaEsperada = seguimiento.getHistorialOptimo().buscarTupla(diaActual).getAltura();
+		Medicion alturaEsperada = seguimiento.getHistorialOptimo().buscarMedicion(diaActual);
 		AnalisisAltura estrategia = getStrategy(alturaActual, alturaEsperada) ;
 		EstadoAltura estadoActual = estrategia.analizar(alturaActual, alturaEsperada, seguimiento.getPlanta());
 		guardador.guardar(estrategia, alturaActual, diaActual, seguimiento.getHistorialVerdadero());
