@@ -7,8 +7,10 @@ import java.util.Observer;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.DTO.Planta;
+import viverbot.Model.GuardadorAltura;
 import viverbot.Model.ManagerSeguimientos;
 import viverbot.Model.SeguimientoAltura;
+import viverbot.Modelo.Magnitudes.EmptyMedicion;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class MapperAltura extends Observable implements Observer  {
@@ -17,6 +19,7 @@ public class MapperAltura extends Observable implements Observer  {
 	private List<Planta> plantas;
 	private ManagerSeguimientos buscador;
 	private List<EstadoAltura> estadosDePlantas;
+	private GuardadorAltura guardador;
 	
 	public MapperAltura(AnalizadorAltura analizador, List<Planta> plantas, ManagerSeguimientos buscador){
 		this.analizador = analizador;
@@ -31,9 +34,21 @@ public class MapperAltura extends Observable implements Observer  {
 		for(Planta p : plantas){
 			SeguimientoAltura seguimiento = buscador.getSeguimiento(p);
 			int diaActual = seguimiento.getUltimoDiaMedicion()+1;
-			estadosDevueltos.add(analizador.analizar(alturas.get(i), seguimiento, diaActual));
+			Medicion alturaActual = alturas.get(i);
+			System.out.println(diaActual);
+			Medicion alturaIdeal = seguimiento.getHistorialOptimo().buscarMedicion(diaActual);
+			if(alturaIdeal instanceof EmptyMedicion){
+
+				System.out.println("entro al if");
+			}
+			else{
+				System.out.println("entro al else");
+				estadosDevueltos.add(analizador.analizar(alturaActual, alturaIdeal , p));
+			}
+			//guardador.guardar(alturaActual, diaActual, seguimiento.getHistorialVerdadero());
 			i++;
 		}
+		System.out.println(i);
 		return estadosDevueltos;
 	}
 
@@ -48,5 +63,4 @@ public class MapperAltura extends Observable implements Observer  {
 		setChanged();
 		notifyObservers(estadosDePlantas);
 	}
-
 }

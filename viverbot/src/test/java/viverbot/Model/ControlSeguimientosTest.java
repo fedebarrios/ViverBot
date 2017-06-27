@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
+import viverbot.Controlador.Verificacion.Comparador;
 import viverbot.DTO.Especie;
 import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
@@ -88,7 +88,7 @@ public class ControlSeguimientosTest {
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
 		GuardadorAltura g = GuardadorAltura.getInstance();
-		g.guardar(new StrategyAnalisisAltura(),new Medicion(14.0,Magnitud.ALTURA) , 5, control.getSeguimiento(planta1).getHistorialVerdadero());
+		g.guardar(new Medicion(14.0,Magnitud.ALTURA) , 5, control.getSeguimiento(planta1).getHistorialVerdadero());
 		assertEquals(5,control.getSeguimiento(planta1).getUltimoDiaMedicion());
 
 		clear();

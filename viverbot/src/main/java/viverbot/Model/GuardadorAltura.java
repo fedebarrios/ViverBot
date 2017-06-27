@@ -1,6 +1,6 @@
 package viverbot.Model;
 
-import viverbot.Controlador.Verificacion.StrategyAnalisisAltura;
+import viverbot.Controlador.Verificacion.Comparador;
 import viverbot.Interfaces.AnalisisAltura;
 import viverbot.Modelo.Magnitudes.Medicion;
 
@@ -18,9 +18,7 @@ public class GuardadorAltura {
 		return guardador;
 	}
 	
-	public void guardar(AnalisisAltura estrategia, Medicion altura, int diaActual , HistorialAltura historial){
-		if( estrategia instanceof StrategyAnalisisAltura){
-			historial.agregarRegistro(diaActual , altura);
-		}
+	public void guardar(Medicion altura, int diaActual, HistorialAltura historial) {
+		historial.agregarRegistro(diaActual, altura);
 	}
 }

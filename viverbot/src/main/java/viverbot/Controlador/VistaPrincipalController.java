@@ -33,7 +33,7 @@ public class VistaPrincipalController implements ActionListener {
 			InstrumentoMediator mediator =  new InstrumentoMediator(Magnitud.ALTURA);
 			ColectorAltura c = new ColectorAltura(mediator);
 			InformadorAltura p = InformadorAltura.getInstance();
-			AnalizadorAltura a = new AnalizadorAltura(GuardadorAltura.getInstance());
+			AnalizadorAltura a = new AnalizadorAltura();
 			MapperAltura m = new MapperAltura(a, new Plantas().obtenerPlantas(), ManagerSeguimientos.getInstance());
 			c.addObserver(m);
 			m.addObserver(p);

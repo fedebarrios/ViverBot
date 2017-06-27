@@ -59,11 +59,11 @@ public class ControladorAnalizadorAltura implements ActionListener{
 			}
 			Planta planta = v.getPlantaSeleccionada();
 			Especie especiePlanta = especies.obtenerEspecie(planta.getCodigoPlanta());
-			AnalizadorAltura analizador = new AnalizadorAltura(guardador);
+			AnalizadorAltura analizador = new AnalizadorAltura();
 			HistorialOptimo historialPlanta = controlHistorialesOptimos.getHistorial(especiePlanta);
 			HistorialAltura historialReal = new HistorialAltura();
 			SeguimientoAltura seguimiento = new SeguimientoAltura(planta, historialPlanta, historialReal);
-			EstadoAltura estado = analizador.analizar(new Medicion(2.2, Magnitud.ALTURA), seguimiento, 2);
+			EstadoAltura estado = analizador.analizar(new Medicion(2.2, Magnitud.ALTURA), seguimiento.getHistorialOptimo().buscarMedicion(2), planta);
 			mensaje = "El estado es: " + estado.getEstado();
 			this.optionPane.showMessageDialog(this.v, mensaje);
 		}
