@@ -50,6 +50,7 @@ public class AireAcondicionadoTest {
 	public void definirPositivoNegativoTest_frio() throws Exception {
 		init();
 		aire.setEstado(new Frio());
+		aire.toString();
 		Double aux = -0.5;
 		Double ret = Whitebox.invokeMethod(aire, "definirPositivoNegativo", 0.5);
 		assertNotNull(ret);
@@ -87,6 +88,7 @@ public class AireAcondicionadoTest {
 		aire.setEstado(new Calor());
 		aire.setPotencia(new Potencia_1());
 		aire.setTemperatura("22");
+		
 	}
 
 }

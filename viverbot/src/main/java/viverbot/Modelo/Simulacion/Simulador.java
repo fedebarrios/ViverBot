@@ -10,9 +10,9 @@ import viverbot.Model.Hora;
 import viverbot.Model.RangoNumerico;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
-import viverbot.Modelo.Sensores.IMedir;
+import viverbot.Modelo.Sensores.Medir;
 
-public class Simulador implements IMedir{
+public class Simulador implements Medir{
 
 	private Map<Horario, RangoNumerico> rangos;
 	private Magnitudes magnitud;

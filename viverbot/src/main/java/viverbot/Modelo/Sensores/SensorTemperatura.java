@@ -4,7 +4,7 @@ import viverbot.Model.EstadoVivero;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Simulacion.Simulador;
 
-public class SensorTemperatura implements IMedir {
+public class SensorTemperatura implements Medir {
 
 
 	@Override

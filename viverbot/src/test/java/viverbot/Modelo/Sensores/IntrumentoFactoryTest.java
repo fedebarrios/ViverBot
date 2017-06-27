@@ -13,7 +13,7 @@ import viverbot.Modelo.Sensores.UnknowInstrumentoMedicion;
 
 public class IntrumentoFactoryTest {
 
-	private  IMedir instrumentoTest = null;
+	private  Medir instrumentoTest = null;
 
 	@Test
 	public void CreatInstrumentoTestTemperatura() {
@@ -48,7 +48,7 @@ public class IntrumentoFactoryTest {
 	@Test
 	public void CreatSingletownTestTemperatura() {
 		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
-		IMedir aux = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
+		Medir aux = InstrumentoFactory.crearInstrumento(Magnitudes.TEMPERATURA);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}
@@ -56,7 +56,7 @@ public class IntrumentoFactoryTest {
 	@Test
 	public void CreatSingletownTestHumedad() {
 		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
-		IMedir aux = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
+		Medir aux = InstrumentoFactory.crearInstrumento(Magnitudes.HUMEDAD);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}
@@ -64,7 +64,7 @@ public class IntrumentoFactoryTest {
 	@Test
 	public void CreatSingletownTestAltura() {
 		instrumentoTest = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
-		IMedir aux = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
+		Medir aux = InstrumentoFactory.crearInstrumento(Magnitudes.ALTURA);
 		assertTrue(instrumentoTest == aux);
 		this.clear();
 	}	

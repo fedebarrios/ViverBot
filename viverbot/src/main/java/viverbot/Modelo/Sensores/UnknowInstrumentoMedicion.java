@@ -3,7 +3,7 @@ package viverbot.Modelo.Sensores;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class UnknowInstrumentoMedicion implements IMedir {
+public class UnknowInstrumentoMedicion implements Medir {
 
 	@Override
 	public Medicion getMedicion() {

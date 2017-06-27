@@ -8,12 +8,12 @@ import viverbot.Model.SoporteFactory;
 import viverbot.Model.SoporteMovible;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
-import viverbot.Modelo.Sensores.IMedir;
+import viverbot.Modelo.Sensores.Medir;
 import viverbot.Modelo.Sensores.InstrumentoFactory;
 import viverbot.Modelo.Simulacion.Simulador;
 
 public class InstrumentoMediator {
-	protected IMedir instrumentoMedicion;
+	protected Medir instrumentoMedicion;
 	protected String tipoValor;
 	protected SoporteMovible soporte;
 	protected ArrayList<Planta> plantas;
@@ -27,7 +27,7 @@ public class InstrumentoMediator {
 		this.instrumentoMedicion = InstrumentoFactory.crearInstrumento(m);
 	}
 
-	public InstrumentoMediator(IMedir simulador) {
+	public InstrumentoMediator(Medir simulador) {
 		this.instrumentoMedicion = simulador;
 	}
 
@@ -35,7 +35,7 @@ public class InstrumentoMediator {
 		return this.instrumentoMedicion.getMedicion();
 	}
 
-	public IMedir getInstrumentoMedicion() {
+	public Medir getInstrumentoMedicion() {
 		return instrumentoMedicion;
 	}
 }

@@ -98,7 +98,8 @@ public class AnalizadorCaminoMinimo {
 	}
 
 	// devulve una lista de las aristas indicadas por la Pila
-	private ArrayList<Arista> generarAristas(Stack<Integer> camino) {
+	//Ver si se usa, y si se usa testear
+	/*private ArrayList<Arista> generarAristas(Stack<Integer> camino) {
 
 		int origen = camino.pop();
 		ArrayList<Arista> ret = new ArrayList<Arista>();
@@ -112,5 +113,5 @@ public class AnalizadorCaminoMinimo {
 			origen = destino;
 		}
 		return ret;
-	}
+	}*/
 }

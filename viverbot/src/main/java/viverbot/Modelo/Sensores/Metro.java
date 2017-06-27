@@ -6,7 +6,7 @@ import viverbot.Modelo.Magnitudes.EmptyMedicion;
 import viverbot.Modelo.Magnitudes.Magnitudes;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class Metro implements IMedir {
+public class Metro implements Medir {
 	private int cantidadDeMediciones = 0;
 	private Random random;
 

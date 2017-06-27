@@ -10,15 +10,15 @@ public class InstrumentoFactory {
 
 	
 
-	private static final Map<Magnitudes, IMedir> sensores = inicializar();
+	private static final Map<Magnitudes, Medir> sensores = inicializar();
 
-	public static IMedir crearInstrumento(Magnitudes m) {
+	public static Medir crearInstrumento(Magnitudes m) {
 		return sensores.get(m);
 	}
 
-	private static Map<Magnitudes, IMedir> inicializar() {
+	private static Map<Magnitudes, Medir> inicializar() {
 
-		Map<Magnitudes, IMedir> s = new HashMap<Magnitudes, IMedir>();
+		Map<Magnitudes, Medir> s = new HashMap<Magnitudes, Medir>();
 		s.put(Magnitudes.TEMPERATURA, new SensorTemperatura());
 		s.put(Magnitudes.HUMEDAD, new SensorHumedad());
 		s.put(Magnitudes.ALTURA, new Metro());

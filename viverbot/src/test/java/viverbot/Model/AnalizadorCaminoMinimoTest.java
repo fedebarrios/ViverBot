@@ -15,6 +15,7 @@ public class AnalizadorCaminoMinimoTest {
 	public void analizarCaminoMinimoTest() {
 		terrenoDAO.construirTerreno(4, 4);
 		analizadorCamino = new AnalizadorCaminoMinimo();
+		
 		ArrayList<UbicacionDTO> camino = analizadorCamino.caminoMinimo(1, 14);
 		for (int i = 0; i < camino.size(); i++) {
 			System.out.print("->"+camino.get(i).getIndice());
