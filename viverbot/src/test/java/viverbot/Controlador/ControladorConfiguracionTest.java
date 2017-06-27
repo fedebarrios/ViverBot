@@ -14,9 +14,21 @@ import viverbot.Vista.Auxiliares.FileChooser;
 
 public class ControladorConfiguracionTest {
 	ControladorConfiguracionDirectorio conf;
-
+	
 	@Test
-	public void noEligioDirectorio(){
+	public void noEligioDirectorioOptionPane(){
+		conf = new ControladorConfiguracionDirectorio();
+		MockFileChooser fileChooser = new MockFileChooser();
+		fileChooser.setFile(null);
+		conf.setFileChooser(fileChooser);
+		conf.setOptionPane(new MockOptionPane());
+		int cantidadDirectoriosAntes = GatewayConfiguracion.getDirectorios().size();
+		conf.actionPerformed(new ActionEvent(conf.getVista().getBtnCargarDirectorio(), 1, ""));
+		assertEquals(cantidadDirectoriosAntes, GatewayConfiguracion.getDirectorios().size());
+	}
+	
+	@Test
+	public void noEligioDirectorioComboBox(){
 
 		conf = new ControladorConfiguracionDirectorio();
 		GatewayConfiguracion.limpiar();
@@ -35,7 +47,37 @@ public class ControladorConfiguracionTest {
 	
 	}
 	
-
+	@Test
+	public void borrarDirectorio(){
+		conf = new ControladorConfiguracionDirectorio();
+		GatewayConfiguracion.limpiar();
+		GatewayConfiguracion.agregarDirectorio("c/usuario");
+		GatewayConfiguracion.agregarDirectorio("c/desktop");
+		conf.llenarCampos();
+		conf.getVista().getComboBox().setSelectedIndex(2);
+		
+		int cantidadDirectoriosAntes = GatewayConfiguracion.getDirectorios().size();
+		conf.actionPerformed(new ActionEvent(conf.getVista().getBtnBorrarDirectorio(), 1, ""));
+		assertEquals(cantidadDirectoriosAntes-1, GatewayConfiguracion.getDirectorios().size());
+		
+	}
+	
+	@Test
+	public void noSePudoBorrarDirectorio(){
+		conf = new ControladorConfiguracionDirectorio();
+		GatewayConfiguracion.limpiar();
+		GatewayConfiguracion.agregarDirectorio("c/usuario");
+		GatewayConfiguracion.agregarDirectorio("c/desktop");
+		conf.llenarCampos();
+		conf.setOptionPane(new MockOptionPane());
+		conf.getVista().getComboBox().setSelectedIndex(0);
+		
+		int cantidadDirectoriosAntes = GatewayConfiguracion.getDirectorios().size();
+		conf.actionPerformed(new ActionEvent(conf.getVista().getBtnBorrarDirectorio(), 1, ""));
+		assertEquals(cantidadDirectoriosAntes, GatewayConfiguracion.getDirectorios().size());
+		
+	}
+	
 	@Test
 	public void guardoDirectorio(){
 
@@ -56,4 +98,5 @@ public class ControladorConfiguracionTest {
 		assertEquals(3, GatewayConfiguracion.getDirectorios().size());
 	
 	}
+	
 }
