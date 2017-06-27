@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import viverbot.MockOptionPane;
 import viverbot.Controlador.Verificacion.EstadoAlturaAnormal;
 import viverbot.Controlador.Verificacion.EstadoAlturaDefectuosa;
 import viverbot.Controlador.Verificacion.EstadoAlturaNormal;
@@ -88,9 +89,8 @@ public class PlanificadorAlturaTest {
 	public void estadoAlturaDefectuosaTest() {
 		this.inicialize();
 		si.escribir();
+		planificador.setOptionPane(new MockOptionPane());
 		planificador.actuar(esd);
-		assertThat(outContent.toString(), containsString("La planta 13 tiene un problema de crecimiento."));
-		assertThat(outContent.toString(), containsString("Ingrese Si, si desea podar la planta"));
 		this.clear();
 	}
 	
