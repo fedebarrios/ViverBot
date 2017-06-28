@@ -8,6 +8,7 @@ import java.util.Observer;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.DTO.Planta;
 import viverbot.Model.GuardadorAltura;
+import viverbot.Model.Log;
 import viverbot.Model.ManagerSeguimientos;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
@@ -35,20 +36,16 @@ public class MapperAltura extends Observable implements Observer  {
 			SeguimientoAltura seguimiento = buscador.getSeguimiento(p);
 			int diaActual = seguimiento.getUltimoDiaMedicion()+1;
 			Medicion alturaActual = alturas.get(i);
-			System.out.println(diaActual);
 			Medicion alturaIdeal = seguimiento.getHistorialOptimo().buscarMedicion(diaActual);
 			if(alturaIdeal instanceof EmptyMedicion){
-
-				System.out.println("entro al if");
+				Log.getLog(MapperAltura.class).info("No existe altura ideal contra la cual comparar");
 			}
 			else{
-				System.out.println("entro al else");
 				estadosDevueltos.add(analizador.analizar(alturaActual, alturaIdeal , p));
 			}
 			//guardador.guardar(alturaActual, diaActual, seguimiento.getHistorialVerdadero());
 			i++;
 		}
-		System.out.println(i);
 		return estadosDevueltos;
 	}
 

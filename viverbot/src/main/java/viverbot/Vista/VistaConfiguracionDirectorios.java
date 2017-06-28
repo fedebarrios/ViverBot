@@ -35,7 +35,7 @@ public class VistaConfiguracionDirectorios extends JFrame{
 		
 
 		btnCargarDirectorio = new JButton("Cargar Directorio");
-		btnCargarDirectorio.setBounds(252, 106, 152, 23);
+		btnCargarDirectorio.setBounds(252, 139, 152, 23);
 		contentPane.add(btnCargarDirectorio);
 		this.btnCargarDirectorio.addActionListener(controlador);
 		
@@ -44,7 +44,7 @@ public class VistaConfiguracionDirectorios extends JFrame{
 		contentPane.add(comboBox);
 		
 		btnBorrarDirectorio = new JButton("Borrar Directorio");
-		btnBorrarDirectorio.setBounds(78, 106, 137, 23);
+		btnBorrarDirectorio.setBounds(105, 139, 137, 23);
 		contentPane.add(btnBorrarDirectorio);
 		this.btnBorrarDirectorio.addActionListener(controlador);
 	}

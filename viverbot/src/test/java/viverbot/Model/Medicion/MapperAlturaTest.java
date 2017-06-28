@@ -28,14 +28,14 @@ public class MapperAlturaTest {
 	List<Planta> plantas;
 	
 	@Test
-	public void MapearAlturas() throws Exception{
+	public void MapearAlturasSatisfactoriamente() throws Exception{
 		inicializar();
 		ArrayList<Medicion> alturas = new ArrayList<Medicion>();
 		alturas.add(new Medicion(24.0, Magnitud.ALTURA));
 		List<EstadoAltura> estadosDevueltos = mapper.relacionar(alturas);
 		assertEquals(1, estadosDevueltos.size());
 	}
-
+	
 	public void inicializar() throws Exception{
 		plantas = new ArrayList<Planta>();
 		analizador = new AnalizadorAltura();
@@ -46,7 +46,7 @@ public class MapperAlturaTest {
 		plantas.add(planta1);
 		
 		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
-		mapa.put(Fecha.diasEntreDosFechas(new Fecha(27, 6, 2017), new Fecha(22, 6, 2017)),new Medicion(30.0, Magnitud.ALTURA));
+		mapa.put(Fecha.diasEntreDosFechas(new Fecha(28, 6, 2017), new Fecha(22, 6, 2017)),new Medicion(30.0, Magnitud.ALTURA));
 
 		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie1);
 		control.agregarSeguimiento(planta1, historialOptimo1);

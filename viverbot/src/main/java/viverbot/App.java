@@ -1,14 +1,11 @@
 package viverbot;
 
-import javax.swing.JOptionPane;
-
 import viverbot.Controlador.VistaPrincipalController;
 import viverbot.Model.EstadoVivero;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Medicion.Colector;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
 import viverbot.Modelo.Monitoreo.MonitorEstado;
-import viverbot.Modelo.Sensores.SensorTemperatura;
 import viverbot.Modelo.Simulacion.Simulador;
 
 public class App {

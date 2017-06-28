@@ -20,7 +20,6 @@ public class HoraTest {
 		
 		//System.out.println("hora: " + h5.getHora() + " minuto: " + h5.getMinuto() + " segundos: " + h5.getSegundo());
 		
-		assertTrue(h5.compareTo(h6) == 1); 
 
 		assertFalse(h1.compareTo(h2) == 1);
 		assertTrue(h1.compareTo(h2) == -1);
