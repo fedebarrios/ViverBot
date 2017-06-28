@@ -1,2 +1,5 @@
 c/usuario
 c/desktop
+src\test\java\viverbot\Archivos\EstadosAlturaFiles
+src\test\java\viverbot\Archivos\EstadosAlturaFiles
+src\test\java\viverbot\Archivos\EstadosAlturaFiles

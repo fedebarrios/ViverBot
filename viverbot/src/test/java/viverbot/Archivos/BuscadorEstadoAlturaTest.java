@@ -51,10 +51,10 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);
-		Planta planta = new Planta(1, 1, null, null);
+		Planta planta = new Planta(4, 4, null, null);
 		EstadoAltura guardado = buscador.obtenerEstadoPorEspecie(60, 30, planta);
 		assertEquals(guardado.getCmDeDiferencia(), 30.0);
-		assertEquals(guardado.getPlanta().getCodigoPlanta(), 1);
+		assertEquals(guardado.getPlanta().getCodigoPlanta(), 4);
 		assertEquals(guardado.getEstado(), "Defectuoso");
 		assertEquals(buscador.getMap().size(), 1);
 		clear();
