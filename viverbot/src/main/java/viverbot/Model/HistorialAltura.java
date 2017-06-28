@@ -59,7 +59,7 @@ public class HistorialAltura {
 		}
 	}
 
-	public boolean verificarExistente(int i) {
+	public boolean verificarRegistro(int i) {
 		return historial.containsKey(i);
 	}
 
