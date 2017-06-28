@@ -15,6 +15,7 @@ import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Magnitudes.Temperatura;
 import viverbot.Modelo.Medicion.InstrumentoMediator;
+import viverbot.Modelo.Sensores.Metro;
 import viverbot.Modelo.Sensores.SensorHumedad;
 import viverbot.Modelo.Sensores.SensorTemperatura;
 import viverbot.Modelo.Simulacion.Simulador;
@@ -68,7 +69,7 @@ public class InstrumentoMediatorTest {
 	
 	@Test
 	public void TomarAltura() {
-		this.mediatorTest = new InstrumentoMediator(Magnitud.ALTURA);
+		this.mediatorTest = new InstrumentoMediator(new Metro());
 		Planta p = new Planta(1, 10, new UbicacionDTO(1,5,4), new Fecha(04, 05, 2017));
 		assertEquals(Magnitud.ALTURA , mediatorTest.tomarMedicion().getTipo());
 		this.clear();

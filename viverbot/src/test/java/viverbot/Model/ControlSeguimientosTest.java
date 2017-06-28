@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import viverbot.Controlador.Verificacion.Comparador;
 import viverbot.DTO.Especie;
 import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
