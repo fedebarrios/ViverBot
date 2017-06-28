@@ -39,7 +39,7 @@ public class VerDetallesEspecie_Controller implements ActionListener {
 		if (!listadoPlantas.isEmpty()) {
 			for (Planta p : listadoPlantas) {
 				vistaVerDetalle.getPanel().msgTablaVacia(false);
-				Object[] obj = { p.getCodigo(), p.getUbicacion().getFila(), p.getUbicacion().getColumna() };
+				Object[] obj = {  p.getUbicacion().getFila(), p.getUbicacion().getColumna() };
 				vistaVerDetalle.getPanel().agregarFila(obj);
 			}
 		} else

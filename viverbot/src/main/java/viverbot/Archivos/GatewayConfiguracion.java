@@ -1,17 +1,12 @@
 package viverbot.Archivos;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class GatewayConfiguracion{
 	
@@ -27,7 +22,6 @@ public class GatewayConfiguracion{
 			}
 			b.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return directorios;
 	}
@@ -43,7 +37,6 @@ public class GatewayConfiguracion{
             fichero.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
         } 
 	}
 
@@ -62,7 +55,6 @@ public class GatewayConfiguracion{
             fichero.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
         } 
 		
 	}
@@ -78,7 +70,6 @@ public class GatewayConfiguracion{
             fichero.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
         } 
 		
 	}

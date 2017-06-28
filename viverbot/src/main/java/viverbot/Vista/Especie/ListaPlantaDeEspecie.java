@@ -21,7 +21,7 @@ public class ListaPlantaDeEspecie extends JPanel{
 	private JLabel listadoPlantas;
 	private JTable table;
 	private JLabel tablaVacia;
-	private String[] nombreColumnas = { "Codigo","Fila", "Columna" };
+	private String[] nombreColumnas = { "Fila", "Columna" };
 	private DefaultTableModel modelo;
 	
 	public ListaPlantaDeEspecie(VerDetallesEspecie_Controller controlador){
