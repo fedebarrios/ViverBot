@@ -13,7 +13,6 @@ import viverbot.DTO.Especie;
 import viverbot.Model.ControlHistoriales;
 import viverbot.Model.HistorialIdeal;
 import viverbot.Model.Inventario;
-import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class MapperCargadorTest {
@@ -33,7 +32,6 @@ public class MapperCargadorTest {
 	}
 	
 	@Test
-	public void mapearHistorialesCreados() throws Exception{
 		setearInfoNecesaria();
 		
 		List<HistorialIdeal> historiales = new ArrayList<HistorialIdeal>();

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import viverbot.Model.HistorialAltura;
-import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 
@@ -59,16 +58,5 @@ public class CalculadoHistorialTest {
 			h.agregarRegistro(dias[i] , new Medicion (alturas[i],Magnitud.ALTURA));
 		}
 		return h;
-	}	
-
-
-	protected HistorialAltura fabricarHistorialInfoRepetida() {
-		int[] dias = {7,8,7};
-		double[] alturas = {1.05,1.10,1.15};
-		HistorialAltura h = new HistorialAltura();
-		for(int i = 0 ; i<3 ; i++){
-			h.agregarRegistro(dias[i] , new Medicion (alturas[i],Magnitud.ALTURA));
-		}
-		return h;
-	}	
+	}		
 }
