@@ -32,6 +32,7 @@ public class MapperCargadorTest {
 	}
 	
 	@Test
+	public void mapearHistorialesSatisfactoriamente() throws Exception{
 		setearInfoNecesaria();
 		
 		List<HistorialIdeal> historiales = new ArrayList<HistorialIdeal>();
