@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import viverbot.DTO.Especie;
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.EmptyMedicion;
 
@@ -58,7 +58,7 @@ public class ParserHistorialTest {
 	public void MediatorTest() throws Exception{
 		ParserDataArchivos mediator = new ParserDataArchivos();
 		String datos = "src/test/java/viverbot/Archivos/Historial.txt" ;
-		HistorialOptimo historial = mediator.parsearHistorialEspecie(datos);
+		HistorialIdeal historial = mediator.parsearHistorialEspecie(datos);
 		
 		assertEquals("zanahoria",historial.getEspecie().getNombre());
 		assertEquals("zanahorius",historial.getEspecie().getNombreCientifico());

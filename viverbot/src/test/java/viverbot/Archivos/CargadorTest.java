@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 
 public class CargadorTest {
 	CargadorArchivos plugin ;
 	@Test
 	public void cargarHistorial() throws Exception{
 		inicialize();
-		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/Historial.txt");
+		HistorialIdeal h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/Historial.txt");
 		assertEquals("zanahoria",h.getEspecie().getNombre());
 		assertTrue( 2.44 == h.buscarMedicion(2).getValor());
 	}
@@ -20,14 +20,14 @@ public class CargadorTest {
 	@Test (expected = Exception.class)
 	public void cargaFallidaHistorialInconsistente() throws Exception{
 		inicialize();
-		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialNoConsistente.txt");
+		HistorialIdeal h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialNoConsistente.txt");
 	}
 	
 	@SuppressWarnings("unused")
 	@Test (expected = Exception.class)
 	public void FaltaInfoEspecie() throws Exception{
 		inicialize();
-		HistorialOptimo h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialSinInfoEspecie.txt");
+		HistorialIdeal h = plugin.cargarHistorial("src/test/java/viverbot/Archivos/HistorialSinInfoEspecie.txt");
 	}
 	
 	@Test

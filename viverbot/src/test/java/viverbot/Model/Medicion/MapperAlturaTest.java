@@ -15,7 +15,7 @@ import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
 import viverbot.Model.ManagerSeguimientos;
 import viverbot.Model.Fecha;
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 import viverbot.Modelo.Magnitudes.Magnitud;
 import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
@@ -48,7 +48,7 @@ public class MapperAlturaTest {
 		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
 		mapa.put(Fecha.diasEntreDosFechas(new Fecha(28, 6, 2017), new Fecha(22, 6, 2017)),new Medicion(30.0, Magnitud.ALTURA));
 
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie1);
+		HistorialIdeal historialOptimo1 = new HistorialIdeal(mapa, especie1);
 		control.agregarSeguimiento(planta1, historialOptimo1);
 		
 		mapper = new MapperAltura(analizador, plantas, control);

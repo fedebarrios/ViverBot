@@ -128,7 +128,7 @@ public class ManagerSeguimientos {
 		
 	}*/
 	
-	public void agregarSeguimiento(Planta planta, HistorialOptimo historialOptimo){
+	public void agregarSeguimiento(Planta planta, HistorialIdeal historialOptimo){
 		if(planta.getCodigo() == historialOptimo.getEspecie().getCodEspecie()){
 			ArrayList<RegistroHistorial> tuplas = new ArrayList<RegistroHistorial>();
 			HistorialAltura h2 = new HistorialAltura();

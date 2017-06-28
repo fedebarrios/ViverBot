@@ -6,11 +6,11 @@ import viverbot.Archivos.CalculadorHistorial;
 import viverbot.DTO.Especie;
 import viverbot.Modelo.Magnitudes.Medicion;
 
-public class HistorialOptimo extends HistorialAltura{
+public class HistorialIdeal extends HistorialAltura{
 	
 	private Especie especie;
 	
-	public HistorialOptimo(Map<Integer,Medicion> mapa, Especie especie) throws Exception{
+	public HistorialIdeal(Map<Integer,Medicion> mapa, Especie especie) throws Exception{
 		super();
 		this.historial = mapa;
 		this.especie = especie;

@@ -16,7 +16,7 @@ import viverbot.DTO.Planta;
 import viverbot.Model.ControlHistoriales;
 import viverbot.Model.GuardadorAltura;
 import viverbot.Model.HistorialAltura;
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 import viverbot.Model.SeguimientoAltura;
 import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.Magnitud;
@@ -51,8 +51,8 @@ public class ControladorAnalizadorAltura implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.v.getBtnAnalizarPlanta()){
 			CargadorArchivos cargador = new CargadorArchivos();
-			List<HistorialOptimo> historialesOptimos = cargador.seleccionarMejorDirectorio();
-			for (HistorialOptimo historial : historialesOptimos){
+			List<HistorialIdeal> historialesOptimos = cargador.seleccionarMejorDirectorio();
+			for (HistorialIdeal historial : historialesOptimos){
 				Especie especie = historial.getEspecie();
 				especies.agregar(especie);
 				controlHistorialesOptimos.agregarSeguimiento(historial);
@@ -60,7 +60,7 @@ public class ControladorAnalizadorAltura implements ActionListener{
 			Planta planta = v.getPlantaSeleccionada();
 			Especie especiePlanta = especies.obtenerEspecie(planta.getCodigoPlanta());
 			AnalizadorAltura analizador = new AnalizadorAltura();
-			HistorialOptimo historialPlanta = controlHistorialesOptimos.getHistorial(especiePlanta);
+			HistorialIdeal historialPlanta = controlHistorialesOptimos.getHistorial(especiePlanta);
 			HistorialAltura historialReal = new HistorialAltura();
 			SeguimientoAltura seguimiento = new SeguimientoAltura(planta, historialPlanta, historialReal);
 			EstadoAltura estado = analizador.analizar(new Medicion(2.2, Magnitud.ALTURA), seguimiento.getHistorialOptimo().buscarMedicion(2), planta);

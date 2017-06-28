@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import viverbot.DTO.Especie;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Model.HistorialAltura;
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 import viverbot.Model.Log;
 import viverbot.Model.RegistroHistorial;
 import viverbot.Modelo.Magnitudes.Medicion;
@@ -26,7 +26,7 @@ public class ParserDataArchivos {
 		logger = Log.getLog(LectorArchivo.class);
 	}
 	
-	public HistorialOptimo parsearHistorialEspecie(String path) throws Exception{
+	public HistorialIdeal parsearHistorialEspecie(String path) throws Exception{
 		try{
 			List<RegistroHistorial> tuplas = new ArrayList<RegistroHistorial>();	
 			Especie especie = null;
@@ -44,7 +44,7 @@ public class ParserDataArchivos {
 				}
 				if(s.equals("")) finalizoNavegacion = true;			
 			}
-			return new HistorialOptimo(mapa,especie);
+			return new HistorialIdeal(mapa,especie);
 		}
 		catch(Exception e){
 			throw new Exception(e.getMessage());

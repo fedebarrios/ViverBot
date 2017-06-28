@@ -6,7 +6,7 @@ import java.util.Observer;
 
 import viverbot.DTO.Especie;
 import viverbot.Model.ControlHistoriales;
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 import viverbot.Model.Inventario;
 import viverbot.Model.Log;
 
@@ -19,7 +19,7 @@ public class MapperCargador implements Observer{
 		this.inventario = inventario;
 	}
 	
-	protected boolean sePuedeCargarHistorial(HistorialOptimo h){
+	protected boolean sePuedeCargarHistorial(HistorialIdeal h){
 		if(!controlHistoriales.existeHistorial(h.getEspecie())){
 			return true;
 		}
@@ -36,13 +36,13 @@ public class MapperCargador implements Observer{
 	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable o, Object historiales) {
-		int i = cargar((List<HistorialOptimo>) historiales);
+		int i = cargar((List<HistorialIdeal>) historiales);
 		Log.getLog(MapperCargador.class).info("Se cargaron "+i+" historiales");
 	}
 
-	protected int cargar(List<HistorialOptimo> historiales) {
+	protected int cargar(List<HistorialIdeal> historiales) {
 		int cantidadCargadas= 0;
-		for(HistorialOptimo h : historiales){
+		for(HistorialIdeal h : historiales){
 			if(sePuedeCargarEspecie(h.getEspecie())&&sePuedeCargarHistorial(h)){
 				controlHistoriales.agregarSeguimiento(h);
 				String nombre = h.getEspecie().getNombre();

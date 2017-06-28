@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 import viverbot.DTO.Especie;
 import viverbot.Model.HistorialAltura;
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 import viverbot.Modelo.Magnitudes.Medicion;
 
 public class CalculadorHistorial {
@@ -32,7 +32,7 @@ public class CalculadorHistorial {
 		return true;
 	}
 
-	public static boolean hayInfoValida(HistorialOptimo historialOptimo, Especie especie) {
+	public static boolean hayInfoValida(HistorialIdeal historialOptimo, Especie especie) {
 		return especie != null;
 	}
 }

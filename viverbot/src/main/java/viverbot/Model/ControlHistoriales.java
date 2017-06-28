@@ -7,10 +7,10 @@ import viverbot.DTO.Especie;
 
 public class ControlHistoriales {
 	protected static ControlHistoriales control;
-	private List<HistorialOptimo> historiales;
+	private List<HistorialIdeal> historiales;
 	
 	private ControlHistoriales(){
-		this.historiales = new ArrayList<HistorialOptimo>();
+		this.historiales = new ArrayList<HistorialIdeal>();
 	}
 	
 	public static ControlHistoriales getInstance(){
@@ -20,16 +20,16 @@ public class ControlHistoriales {
 		return control;
 	}
 	
-	public void agregarSeguimiento(HistorialOptimo historial){
+	public void agregarSeguimiento(HistorialIdeal historial){
 		historiales.add(historial);
 	}
 	
-	public void borrarrSeguimiento(HistorialOptimo historial){
+	public void borrarrSeguimiento(HistorialIdeal historial){
 		historiales.remove(historial);
 	}
 	
-	public HistorialOptimo getHistorial(Especie especie){
-		for(HistorialOptimo h : historiales){
+	public HistorialIdeal getHistorial(Especie especie){
+		for(HistorialIdeal h : historiales){
 			if(h.getEspecie().equals(especie)){
 				return h;
 			}
@@ -38,7 +38,7 @@ public class ControlHistoriales {
 	}
 	
 	public boolean existeHistorial(Especie especie){
-		for(HistorialOptimo h : historiales){
+		for(HistorialIdeal h : historiales){
 			if(h.getEspecie().equals(especie)){
 				return true;
 			}

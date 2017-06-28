@@ -11,7 +11,7 @@ import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
 import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.BuscadorEstadoAltura;
-import viverbot.Model.HistorialOptimo;
+import viverbot.Model.HistorialIdeal;
 import viverbot.Model.Log;
 import viverbot.Modelo.Medicion.MapperEstadoAltura;
 
@@ -30,31 +30,31 @@ public class CargadorArchivos extends Observable{
 		notificarHistorialesNuevos(seleccionarMejorDirectorio());
 	}
 	
-	protected void notificarHistorialesNuevos(List<HistorialOptimo> historiales) {
+	protected void notificarHistorialesNuevos(List<HistorialIdeal> historiales) {
 		setChanged();
 		notifyObservers(historiales);
 	}
 	
-	public List<HistorialOptimo> seleccionarMejorDirectorio() {
+	public List<HistorialIdeal> seleccionarMejorDirectorio() {
 		List<String> directorios = GatewayConfiguracion.getDirectorios();
 		for(String path :directorios) {
-			List<HistorialOptimo> historiales = levantarArchivos (path);
+			List<HistorialIdeal> historiales = levantarArchivos (path);
 			if(historiales.size()>0) return historiales;
 		}
 		//throw new Exception("No hay historiales consistentes para cargar");
 		return null;
 	}
 	
-	public List<HistorialOptimo> levantarArchivos (String directorio){
+	public List<HistorialIdeal> levantarArchivos (String directorio){
 		String file = "";
 		File folder = new File(directorio);
 	    File[] files = folder.listFiles();
-	    List<HistorialOptimo> historiales= new ArrayList<HistorialOptimo>();
+	    List<HistorialIdeal> historiales= new ArrayList<HistorialIdeal>();
 	    for (File f : files){
             if (f.isFile()){
                 file = f.getName();
                 try{
-                	HistorialOptimo h = cargarHistorial(directorio+"/"+file);
+                	HistorialIdeal h = cargarHistorial(directorio+"/"+file);
                 	historiales.add(h);
                 }
                 catch(Exception e){
@@ -65,7 +65,7 @@ public class CargadorArchivos extends Observable{
 	    return historiales;
 	}
 	
-	public HistorialOptimo cargarHistorial(String path) throws Exception {
+	public HistorialIdeal cargarHistorial(String path) throws Exception {
 		if (!Verificador.validarExistencia(path)) {
 			throw new Exception("No existe archivo.");
 		} else if (!Verificador.validarExtension(path, ".txt")) {

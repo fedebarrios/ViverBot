@@ -12,7 +12,7 @@ import viverbot.Model.Fecha;
 import viverbot.Model.Plantas;
 import viverbot.Model.Cosechador;
 
-public class PodadorTest {
+public class CosechadorTest {
 	
 	@Test
 	public void NoCosechar(){

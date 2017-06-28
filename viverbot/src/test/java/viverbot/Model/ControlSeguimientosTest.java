@@ -28,7 +28,7 @@ public class ControlSeguimientosTest {
 	Planta planta3 ;
 	ArrayList<RegistroHistorial> tuplas1;
 	ArrayList<RegistroHistorial> tuplas2 ;
-	HistorialOptimo historialOptimo1;
+	HistorialIdeal historialOptimo1;
 	HistorialAltura historialAltura1;
 	SeguimientoAltura seguimiento1;
 	ManagerSeguimientos control;
@@ -39,7 +39,7 @@ public class ControlSeguimientosTest {
 		inicializar();
 
 		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa , especie2);
+		HistorialIdeal historialOptimo1 = new HistorialIdeal(mapa , especie2);
 		
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta2, historialOptimo1);
@@ -53,7 +53,7 @@ public class ControlSeguimientosTest {
 		inicializar();
 
 		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie2);
+		HistorialIdeal historialOptimo1 = new HistorialIdeal(mapa, especie2);
 		
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
@@ -68,7 +68,7 @@ public class ControlSeguimientosTest {
 		inicializar();
 
 		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie2);
+		HistorialIdeal historialOptimo1 = new HistorialIdeal(mapa, especie2);
 		
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
@@ -83,7 +83,7 @@ public class ControlSeguimientosTest {
 		inicializar();
 
 		Map<Integer,Medicion> mapa = new HashMap<Integer,Medicion>();
-		HistorialOptimo historialOptimo1 = new HistorialOptimo(mapa, especie2);
+		HistorialIdeal historialOptimo1 = new HistorialIdeal(mapa, especie2);
 		this.control = ManagerSeguimientos.getInstance();
 		control.agregarSeguimiento(planta1, historialOptimo1);
 		GuardadorAltura g = GuardadorAltura.getInstance();
