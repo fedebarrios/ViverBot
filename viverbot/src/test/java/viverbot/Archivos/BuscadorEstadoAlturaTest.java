@@ -29,7 +29,7 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
-		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
 		SelectorEstadosPorValor selector = new SelectorEstadosPorValor(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
@@ -46,12 +46,12 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
-		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
 		SelectorEstadosPorValor selector = new SelectorEstadosPorValor(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);
-		Planta planta = new Planta(4, 4, null, null);
+		Planta planta = new Planta(codigoEspecie, 4, null, null);
 		EstadoAltura guardado = buscador.obtenerEstadoPorEspecie(60, 30, planta);
 		assertEquals(guardado.getCmDeDiferencia(), 30.0);
 		assertEquals(guardado.getPlanta().getCodigoPlanta(), 4);
@@ -71,7 +71,6 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		plugin.cargarEstadosBatch(GatewayConfiguracion.getDirectorio(3));
 		assertEquals(buscador.getMap().size(), 3);
-		//assertTrue(buscador.getMap().get(1) instanceof SelectorEstadosPorValor);
 		clear();
 	}
 	
@@ -84,12 +83,12 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
-		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
 		SelectorEstadosPorValor selector = new SelectorEstadosPorValor(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);
-		Planta planta = new Planta(16, 15, null, null);
+		Planta planta = new Planta("Pepino", 15, null, null); //Cargue Tomate, y me fijo que Pepino no exista
 		EstadoAltura guardado = buscador.obtenerEstadoPorEspecie(60, 30, planta);
 		assertEquals(guardado, null);
 		String msjLog = errContent.toString();

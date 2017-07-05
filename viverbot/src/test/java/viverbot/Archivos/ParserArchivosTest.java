@@ -62,7 +62,7 @@ public class ParserArchivosTest extends TestCase {
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
-		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
 	}
 
 	private void clear() {

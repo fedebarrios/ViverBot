@@ -84,11 +84,11 @@ public class CargadorArchivos extends Observable{
 		ParserDataArchivos parser = new ParserDataArchivos();
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
-		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		String nombreEspecie = parser.parsearCodigoEspecie(lectura);
 		SelectorEstadosPorValor tupla = new SelectorEstadosPorValor(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
-		mapper.relacionar(buscador, tupla, codigoEspecie);
+		mapper.relacionar(buscador, tupla, nombreEspecie);
 		return true;
 	}
 	
@@ -107,9 +107,9 @@ public class CargadorArchivos extends Observable{
             		String lectura = lector.leerArchivo(directorio+"/"+file);
             		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
             		ArrayList<Double> valores = parser.parsearValores(lectura);
-            		Integer codigoEspecie = parser.parsearCodigoEspecie(lectura);
+            		String nombreEspecie = parser.parsearCodigoEspecie(lectura);
             		SelectorEstadosPorValor tupla = new SelectorEstadosPorValor(estados, valores);
-            		mapper.relacionar(buscador, tupla, codigoEspecie);
+            		mapper.relacionar(buscador, tupla, nombreEspecie);
                 }
                 catch(Exception e){
                 	logger.error(e.getMessage());

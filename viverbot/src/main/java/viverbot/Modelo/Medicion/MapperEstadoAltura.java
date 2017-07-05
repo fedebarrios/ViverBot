@@ -9,7 +9,7 @@ public class MapperEstadoAltura  {
 
 	}
 	
-	public void relacionar(BuscadorEstadoAltura buscador, SelectorEstadosPorValor tuplas, Integer codigoEspecie){
-		buscador.agregarEntrada(tuplas, codigoEspecie);
+	public void relacionar(BuscadorEstadoAltura buscador, SelectorEstadosPorValor tuplas, String nombreEspecie){
+		buscador.agregarEntrada(tuplas, nombreEspecie);
 	}
 }

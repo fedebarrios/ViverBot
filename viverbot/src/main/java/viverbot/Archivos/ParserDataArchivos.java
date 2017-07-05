@@ -91,7 +91,7 @@ public class ParserDataArchivos {
 		return valores;
 	}
 	
-	public Integer parsearCodigoEspecie(String lectura) throws Exception{
+	public String parsearCodigoEspecie(String lectura) throws Exception{
 		Pattern p = Pattern.compile("Codigo:\\(([0-9]+)\\)");
 		Matcher m = p.matcher(lectura);
 		String valor = "";
@@ -100,8 +100,8 @@ public class ParserDataArchivos {
 		}
 		if (valor.equals("")){
 			logger.error("El codigo no es numerico o no esta seteado.");
-			return -1;
+			return "";
 		}
-		return Integer.valueOf(valor);
+		return valor;
 	}
 }

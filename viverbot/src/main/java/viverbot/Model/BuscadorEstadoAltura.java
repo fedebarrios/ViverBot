@@ -12,12 +12,12 @@ import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
 import viverbot.DTO.Planta;
 
 public class BuscadorEstadoAltura {
-	private Map<Integer, SelectorEstadosPorValor> map;
+	private Map<String, SelectorEstadosPorValor> map;
 	private static BuscadorEstadoAltura buscador;
 	private Logger logger;
 	
 	public BuscadorEstadoAltura(){
-		this.setMap(new HashMap<Integer, SelectorEstadosPorValor>());
+		this.setMap(new HashMap<String, SelectorEstadosPorValor>());
 		logger = Log.getLog(LectorArchivo.class);
 	};
 	
@@ -29,11 +29,11 @@ public class BuscadorEstadoAltura {
 	}
 	
 	public void cleanMap() {
-		BuscadorEstadoAltura.getInstance().setMap(new HashMap<Integer, SelectorEstadosPorValor>());
+		BuscadorEstadoAltura.getInstance().setMap(new HashMap<String, SelectorEstadosPorValor>());
 	}
 	
 	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , Planta planta){
-		SelectorEstadosPorValor tupla = map.get(planta.getCodigo());
+		SelectorEstadosPorValor tupla = map.get(planta.getNombreEspecie());
 		if (tupla == null){
 			logger.error("No existe un selector para la especie dada.");
 			return null;
@@ -54,15 +54,15 @@ public class BuscadorEstadoAltura {
 		return null;
 	}
 
-	public Map<Integer, SelectorEstadosPorValor> getMap() {
+	public Map<String, SelectorEstadosPorValor> getMap() {
 		return map;
 	}
 
-	public void setMap(Map<Integer, SelectorEstadosPorValor> map) {
+	public void setMap(Map<String, SelectorEstadosPorValor> map) {
 		this.map = map;
 	}
 	
-	public void agregarEntrada(SelectorEstadosPorValor tupla, Integer codigoEspecie){
-		this.map.put(codigoEspecie, tupla);
+	public void agregarEntrada(SelectorEstadosPorValor tupla, String nombreEspecie){
+		this.map.put(nombreEspecie, tupla);
 	}
 }

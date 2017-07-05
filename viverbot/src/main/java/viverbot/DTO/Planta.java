@@ -6,12 +6,23 @@ public class Planta {
 	
 	private int codigoEspecie;
 	private int codigoPlanta;
+	private String nombreEspecie;
 	private UbicacionDTO ubicacion;
 	private Fecha fechaPlanta;
 	
 	public Planta(int codigoEspecie, int codigoPlanta, UbicacionDTO ubicacion, Fecha fechaPlanta)
 	{
 		this.codigoEspecie = codigoEspecie;
+		this.nombreEspecie = "";
+		this.ubicacion = ubicacion;
+		this.fechaPlanta = fechaPlanta;
+		this.codigoPlanta = codigoPlanta;
+	}
+	
+	public Planta(String nombreEspecie, int codigoPlanta, UbicacionDTO ubicacion, Fecha fechaPlanta)
+	{
+		this.codigoEspecie = -1;
+		this.nombreEspecie = nombreEspecie;
 		this.ubicacion = ubicacion;
 		this.fechaPlanta = fechaPlanta;
 		this.codigoPlanta = codigoPlanta;
@@ -57,5 +68,13 @@ public class Planta {
 		} else if (!ubicacion.equals(other.ubicacion))
 			return false;
 		return true;
+	}
+
+	public String getNombreEspecie() {
+		return nombreEspecie;
+	}
+
+	public void setNombreEspecie(String nombreEspecie) {
+		this.nombreEspecie = nombreEspecie;
 	}
 }

@@ -54,6 +54,14 @@ public class EspecieDAO {
 		return null;
 	}
 	
+	public Especie obtenerEspeciePorNombre(String nombre){
+		int longitud = this.especies.size();
+		for(int i=0; i<longitud; i++){
+			if(especies.get(i).getNombre().equals(nombre)) return especies.get(i);
+		}
+		return null;
+	}
+	
 	public static EspecieDAO getInstance(){                        
 		if(especieDAO==null){
 			especieDAO = new EspecieDAO();
