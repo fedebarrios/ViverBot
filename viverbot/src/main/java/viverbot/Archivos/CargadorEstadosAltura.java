@@ -21,10 +21,9 @@ public class CargadorEstadosAltura {
 	public boolean cargarEstados(String path) throws Exception{
 		LectorArchivo lector = new LectorArchivo();
 		String lectura = lector.leerArchivo(path);
-		ParserDataArchivos parser = new ParserDataArchivos();
-		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
-		ArrayList<Double> valores = parser.parsearValores(lectura);
-		String nombreEspecie = parser.parsearCodigoEspecie(lectura);
+		ArrayList<EstadoAltura> estados = ParserEstadosAltura.parsearEstados(lectura);
+		ArrayList<Double> valores = ParserValoresEstadosAltura.parsearValores(lectura);
+		String nombreEspecie = ParserNombreEspecie.parsearNombreEspecie(lectura);
 		EstadosDeAlturaDisponibles tupla = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
@@ -37,7 +36,6 @@ public class CargadorEstadosAltura {
 		String file = "";
 		File folder = new File(directorio);
 	    File[] files = folder.listFiles();
-		ParserDataArchivos parser = new ParserDataArchivos();
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 	    for (File f : files){
@@ -45,9 +43,9 @@ public class CargadorEstadosAltura {
                 file = f.getName();
                 try{
             		String lectura = lector.leerArchivo(directorio+"/"+file);
-            		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
-            		ArrayList<Double> valores = parser.parsearValores(lectura);
-            		String nombreEspecie = parser.parsearCodigoEspecie(lectura);
+            		ArrayList<EstadoAltura> estados = ParserEstadosAltura.parsearEstados(lectura);
+            		ArrayList<Double> valores = ParserValoresEstadosAltura.parsearValores(lectura);
+            		String nombreEspecie = ParserNombreEspecie.parsearNombreEspecie(lectura);
             		EstadosDeAlturaDisponibles tupla = new EstadosDeAlturaDisponibles(estados, valores);
             		mapper.relacionar(buscador, tupla, nombreEspecie);
                 }

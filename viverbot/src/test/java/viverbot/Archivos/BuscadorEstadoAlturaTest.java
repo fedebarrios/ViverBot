@@ -26,10 +26,9 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 	{
 		LectorArchivo lector = new LectorArchivo();
 		String lectura = lector.leerArchivo("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
-		ParserDataArchivos parser = new ParserDataArchivos();
-		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
-		ArrayList<Double> valores = parser.parsearValores(lectura);
-		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		ArrayList<EstadoAltura> estados = ParserEstadosAltura.parsearEstados(lectura);
+		ArrayList<Double> valores = ParserValoresEstadosAltura.parsearValores(lectura);
+		String codigoEspecie = ParserNombreEspecie.parsearNombreEspecie(lectura);
 		EstadosDeAlturaDisponibles selector = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
@@ -44,10 +43,9 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 	{
 		LectorArchivo lector = new LectorArchivo();
 		String lectura = lector.leerArchivo("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
-		ParserDataArchivos parser = new ParserDataArchivos();
-		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
-		ArrayList<Double> valores = parser.parsearValores(lectura);
-		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		ArrayList<EstadoAltura> estados = ParserEstadosAltura.parsearEstados(lectura);
+		ArrayList<Double> valores = ParserValoresEstadosAltura.parsearValores(lectura);
+		String codigoEspecie = ParserNombreEspecie.parsearNombreEspecie(lectura);
 		EstadosDeAlturaDisponibles selector = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
@@ -81,10 +79,9 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		System.setOut(new PrintStream(errContent));
 		LectorArchivo lector = new LectorArchivo();
 		String lectura = lector.leerArchivo("src/test/java/viverbot/Archivos/FileEstadosMasGrande.txt");
-		ParserDataArchivos parser = new ParserDataArchivos();
-		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
-		ArrayList<Double> valores = parser.parsearValores(lectura);
-		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
+		ArrayList<EstadoAltura> estados = ParserEstadosAltura.parsearEstados(lectura);
+		ArrayList<Double> valores = ParserValoresEstadosAltura.parsearValores(lectura);
+		String codigoEspecie = ParserNombreEspecie.parsearNombreEspecie(lectura);
 		EstadosDeAlturaDisponibles selector = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
