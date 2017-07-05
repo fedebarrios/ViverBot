@@ -33,7 +33,7 @@ public class BuscadorEstadoAltura {
 	}
 	
 	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , Planta planta){
-		EstadosDeAlturaDisponibles tupla = map.get(planta.getNombreEspecie());
+		EstadosDeAlturaDisponibles tupla = get(planta.getNombreEspecie());
 		if (tupla == null){
 			logger.error("No existe un selector para la especie dada.");
 			return null;
@@ -65,12 +65,16 @@ public class BuscadorEstadoAltura {
 	public Map<String, EstadosDeAlturaDisponibles> getMap() {
 		return map;
 	}
+	
+	public EstadosDeAlturaDisponibles get(String s){
+		return this.map.get(s.toLowerCase());
+	}
 
 	public void setMap(Map<String, EstadosDeAlturaDisponibles> map) {
 		this.map = map;
 	}
 	
 	public void agregarEntrada(EstadosDeAlturaDisponibles tupla, String nombreEspecie){
-		this.map.put(nombreEspecie, tupla);
+		this.map.put(nombreEspecie.toLowerCase(), tupla);
 	}
 }

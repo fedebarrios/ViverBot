@@ -2,6 +2,7 @@ package viverbot.Archivos;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -16,6 +17,14 @@ public class CargadorEstadosAltura {
 	
 	public CargadorEstadosAltura(){
 		logger = Log.getLog(CargadorArchivos.class);
+	}
+	
+	public void cargarDirectorios() throws Exception {
+		List<String> directorios = GatewayConfiguracion.getDirectorios();
+		for(String path :directorios) {
+			List<EstadosDeAlturaDisponibles> estados = levantarEstadosBatch (path);
+			if(estados.size()>0) cargarEstadosBatch(path);
+		}
 	}
 	
 	public boolean cargarEstados(String path) throws Exception{
@@ -55,5 +64,29 @@ public class CargadorEstadosAltura {
             }
         }
 		return true;
+	}
+	
+	public List<EstadosDeAlturaDisponibles> levantarEstadosBatch(String directorio) throws Exception{
+		LectorArchivo lector = new LectorArchivo();
+		String file = "";
+		File folder = new File(directorio);
+	    File[] files = folder.listFiles();
+		List<EstadosDeAlturaDisponibles> estadosAltura = new ArrayList<EstadosDeAlturaDisponibles>();
+	    for (File f : files){
+            if (f.isFile()){
+                file = f.getName();
+                try{
+            		String lectura = lector.leerArchivo(directorio+"/"+file);
+            		ArrayList<EstadoAltura> estados = ParserEstadosAltura.parsearEstados(lectura);
+            		ArrayList<Double> valores = ParserValoresEstadosAltura.parsearValores(lectura);
+            		EstadosDeAlturaDisponibles tupla = new EstadosDeAlturaDisponibles(estados, valores);
+            		estadosAltura.add(tupla);
+                }
+                catch(Exception e){
+                	logger.error(e.getMessage());
+                }
+            }
+        }
+		return estadosAltura;
 	}
 }

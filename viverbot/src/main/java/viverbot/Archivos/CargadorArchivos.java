@@ -7,6 +7,7 @@ import java.util.Observable;
 
 import org.apache.log4j.Logger;
 
+import viverbot.Controlador.Verificacion.EstadosDeAlturaDisponibles;
 import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.HistorialIdeal;
 import viverbot.Model.Log;

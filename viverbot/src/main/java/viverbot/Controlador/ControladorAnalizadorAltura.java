@@ -59,6 +59,7 @@ public class ControladorAnalizadorAltura implements ActionListener{
 			}
 			Planta planta = v.getPlantaSeleccionada();
 			Especie especiePlanta = especies.obtenerEspecie(planta.getCodigoPlanta());
+			planta.setNombreEspecie(especiePlanta.getNombre());
 			AnalizadorAltura analizador = new AnalizadorAltura();
 			HistorialIdeal historialPlanta = controlHistorialesOptimos.getHistorial(especiePlanta);
 			HistorialAltura historialReal = new HistorialAltura();

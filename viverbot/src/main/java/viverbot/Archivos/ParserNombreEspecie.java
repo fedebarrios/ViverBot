@@ -11,7 +11,7 @@ public class ParserNombreEspecie {
 	protected static Logger logger  = Log.getLog(LectorArchivo.class);
 	
 	public static String parsearNombreEspecie(String lectura) throws Exception{
-		Pattern p = Pattern.compile("Codigo:\\(([0-9]+)\\)");
+		Pattern p = Pattern.compile("Codigo:\\(([a-zA-Z\\s]+)\\)");
 		Matcher m = p.matcher(lectura);
 		String valor = "";
 		while(m.find()) {
