@@ -68,7 +68,7 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		conf.setFileChooser(fileChooser);
 		conf.setOptionPane(new MockOptionPane());
 		conf.actionPerformed(new ActionEvent(conf.getVista().getBtnCargarDirectorio(), 1, ""));
-		CargadorArchivos plugin = new CargadorArchivos();
+		CargadorEstadosAltura plugin = new CargadorEstadosAltura();
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		plugin.cargarEstadosBatch(GatewayConfiguracion.getDirectorio(3));
 		assertEquals(buscador.getMap().size(), 3);
