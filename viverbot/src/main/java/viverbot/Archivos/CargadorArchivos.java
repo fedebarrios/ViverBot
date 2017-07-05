@@ -8,7 +8,7 @@ import java.util.Observable;
 import org.apache.log4j.Logger;
 
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
+import viverbot.Controlador.Verificacion.EstadosDeAlturaDisponibles;
 import viverbot.Controlador.Verificacion.Verificador;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Model.HistorialIdeal;
@@ -85,7 +85,7 @@ public class CargadorArchivos extends Observable{
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
 		String nombreEspecie = parser.parsearCodigoEspecie(lectura);
-		SelectorEstadosPorValor tupla = new SelectorEstadosPorValor(estados, valores);
+		EstadosDeAlturaDisponibles tupla = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, tupla, nombreEspecie);
@@ -108,7 +108,7 @@ public class CargadorArchivos extends Observable{
             		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
             		ArrayList<Double> valores = parser.parsearValores(lectura);
             		String nombreEspecie = parser.parsearCodigoEspecie(lectura);
-            		SelectorEstadosPorValor tupla = new SelectorEstadosPorValor(estados, valores);
+            		EstadosDeAlturaDisponibles tupla = new EstadosDeAlturaDisponibles(estados, valores);
             		mapper.relacionar(buscador, tupla, nombreEspecie);
                 }
                 catch(Exception e){

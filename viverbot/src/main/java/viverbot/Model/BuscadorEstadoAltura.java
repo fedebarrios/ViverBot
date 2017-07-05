@@ -8,16 +8,16 @@ import org.apache.log4j.Logger;
 
 import viverbot.Archivos.LectorArchivo;
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
+import viverbot.Controlador.Verificacion.EstadosDeAlturaDisponibles;
 import viverbot.DTO.Planta;
 
 public class BuscadorEstadoAltura {
-	private Map<String, SelectorEstadosPorValor> map;
+	private Map<String, EstadosDeAlturaDisponibles> map;
 	private static BuscadorEstadoAltura buscador;
 	private Logger logger;
 	
 	public BuscadorEstadoAltura(){
-		this.setMap(new HashMap<String, SelectorEstadosPorValor>());
+		this.setMap(new HashMap<String, EstadosDeAlturaDisponibles>());
 		logger = Log.getLog(LectorArchivo.class);
 	};
 	
@@ -29,11 +29,11 @@ public class BuscadorEstadoAltura {
 	}
 	
 	public void cleanMap() {
-		BuscadorEstadoAltura.getInstance().setMap(new HashMap<String, SelectorEstadosPorValor>());
+		BuscadorEstadoAltura.getInstance().setMap(new HashMap<String, EstadosDeAlturaDisponibles>());
 	}
 	
 	public EstadoAltura obtenerEstadoPorEspecie(double valorCrecimiento, double diferenciaAltura , Planta planta){
-		SelectorEstadosPorValor tupla = map.get(planta.getNombreEspecie());
+		EstadosDeAlturaDisponibles tupla = map.get(planta.getNombreEspecie());
 		if (tupla == null){
 			logger.error("No existe un selector para la especie dada.");
 			return null;
@@ -55,22 +55,22 @@ public class BuscadorEstadoAltura {
 	}
 	
 	public boolean existeEspecie(String especie){
-		SelectorEstadosPorValor tupla = map.get(especie);
+		EstadosDeAlturaDisponibles tupla = map.get(especie);
 		if (tupla != null){
 			return true;
 		}
 		return false;
 	}
 
-	public Map<String, SelectorEstadosPorValor> getMap() {
+	public Map<String, EstadosDeAlturaDisponibles> getMap() {
 		return map;
 	}
 
-	public void setMap(Map<String, SelectorEstadosPorValor> map) {
+	public void setMap(Map<String, EstadosDeAlturaDisponibles> map) {
 		this.map = map;
 	}
 	
-	public void agregarEntrada(SelectorEstadosPorValor tupla, String nombreEspecie){
+	public void agregarEntrada(EstadosDeAlturaDisponibles tupla, String nombreEspecie){
 		this.map.put(nombreEspecie, tupla);
 	}
 }

@@ -1,6 +1,6 @@
 package viverbot.Modelo.Medicion;
 
-import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
+import viverbot.Controlador.Verificacion.EstadosDeAlturaDisponibles;
 import viverbot.Model.BuscadorEstadoAltura;
 
 public class MapperEstadoAltura  {
@@ -9,7 +9,7 @@ public class MapperEstadoAltura  {
 
 	}
 	
-	public void relacionar(BuscadorEstadoAltura buscador, SelectorEstadosPorValor tuplas, String nombreEspecie){
+	public void relacionar(BuscadorEstadoAltura buscador, EstadosDeAlturaDisponibles tuplas, String nombreEspecie){
 		buscador.agregarEntrada(tuplas, nombreEspecie);
 	}
 }

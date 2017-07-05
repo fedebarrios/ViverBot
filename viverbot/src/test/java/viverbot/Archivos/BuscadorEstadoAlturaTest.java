@@ -12,7 +12,7 @@ import viverbot.MockFileChooser;
 import viverbot.MockOptionPane;
 import viverbot.Controlador.ControladorConfiguracionDirectorio;
 import viverbot.Controlador.Verificacion.EstadoAltura;
-import viverbot.Controlador.Verificacion.SelectorEstadosPorValor;
+import viverbot.Controlador.Verificacion.EstadosDeAlturaDisponibles;
 import viverbot.DTO.Planta;
 import viverbot.Model.BuscadorEstadoAltura;
 import viverbot.Modelo.Medicion.MapperEstadoAltura;
@@ -30,12 +30,12 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
 		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
-		SelectorEstadosPorValor selector = new SelectorEstadosPorValor(estados, valores);
+		EstadosDeAlturaDisponibles selector = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);
 		assertEquals(buscador.getMap().size(), 1);
-		assertTrue(buscador.existeEspecie(codigoEspecie));
+		assertTrue(buscador.existeEspecie(codigoEspecie)); //Verifico que la especie cargada esta en el map
 		clear();
 	}
 	
@@ -48,7 +48,7 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
 		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
-		SelectorEstadosPorValor selector = new SelectorEstadosPorValor(estados, valores);
+		EstadosDeAlturaDisponibles selector = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);
@@ -85,7 +85,7 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		ArrayList<EstadoAltura> estados = parser.parsearEstados(lectura);
 		ArrayList<Double> valores = parser.parsearValores(lectura);
 		String codigoEspecie = parser.parsearCodigoEspecie(lectura);
-		SelectorEstadosPorValor selector = new SelectorEstadosPorValor(estados, valores);
+		EstadosDeAlturaDisponibles selector = new EstadosDeAlturaDisponibles(estados, valores);
 		BuscadorEstadoAltura buscador = BuscadorEstadoAltura.getInstance();
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);

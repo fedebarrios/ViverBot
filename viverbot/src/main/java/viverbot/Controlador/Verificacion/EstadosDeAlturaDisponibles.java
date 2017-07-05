@@ -2,11 +2,11 @@ package viverbot.Controlador.Verificacion;
 
 import java.util.ArrayList;
 
-public class SelectorEstadosPorValor {
+public class EstadosDeAlturaDisponibles {
 	private ArrayList<EstadoAltura> estados;
 	private ArrayList<Double> valores;
 	
-	public SelectorEstadosPorValor(ArrayList<EstadoAltura> estados, ArrayList<Double> valores) throws Exception {
+	public EstadosDeAlturaDisponibles(ArrayList<EstadoAltura> estados, ArrayList<Double> valores) throws Exception {
 		if (estados.size() == valores.size() || estados.size() < valores.size() || (estados.size() - valores.size()) > 1){
 			throw new Exception("El tamaño del arreglo de estados debe ser mayor en 1 al de valores.");
 		}
