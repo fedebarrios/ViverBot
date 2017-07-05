@@ -35,6 +35,7 @@ public class BuscadorEstadoAlturaTest extends TestCase {
 		MapperEstadoAltura mapper = new MapperEstadoAltura();
 		mapper.relacionar(buscador, selector, codigoEspecie);
 		assertEquals(buscador.getMap().size(), 1);
+		assertTrue(buscador.existeEspecie(codigoEspecie));
 		clear();
 	}
 	

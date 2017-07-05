@@ -53,6 +53,14 @@ public class BuscadorEstadoAltura {
 		}
 		return null;
 	}
+	
+	public boolean existeEspecie(String especie){
+		SelectorEstadosPorValor tupla = map.get(especie);
+		if (tupla != null){
+			return true;
+		}
+		return false;
+	}
 
 	public Map<String, SelectorEstadosPorValor> getMap() {
 		return map;
