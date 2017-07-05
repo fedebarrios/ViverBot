@@ -2,19 +2,16 @@ package viverbot.Controlador;
 
 import static org.junit.Assert.*;
 
-import java.awt.event.ActionEvent;
-import java.io.File;
 
 import org.junit.Test;
 
 import viverbot.MockOptionPane;
-import viverbot.Archivos.CargadorArchivos;
+import viverbot.Archivos.CargadorEstadosAltura;
 import viverbot.Archivos.GatewayConfiguracion;
 
 public class ControladorAnalizadorAlturaTest {
 	ControladorAnalizadorAltura controlador;
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void verificarPlantasCargadas() throws Exception{
 		controlador = new ControladorAnalizadorAltura();
@@ -43,7 +40,7 @@ public class ControladorAnalizadorAlturaTest {
 			GatewayConfiguracion.agregarDirectorio(s);
 			i++;
 		}
-		CargadorArchivos plugin = new CargadorArchivos();
+		CargadorEstadosAltura plugin = new CargadorEstadosAltura();
 		plugin.cargarEstadosBatch(GatewayConfiguracion.getDirectorio(2));
 	}
 }

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import viverbot.Archivos.CargadorArchivos;
+import viverbot.Archivos.CargadorEstadosAltura;
 import viverbot.Controlador.Verificacion.EstadoAltura;
 import viverbot.DTO.Planta;
 import viverbot.DTO.UbicacionDTO;
@@ -14,7 +14,7 @@ import viverbot.Modelo.Magnitudes.Medicion;
 import viverbot.Modelo.Medicion.AnalizadorAltura;
 
 public class AnalizadorAlturaTest {
-	CargadorArchivos plugin;
+	CargadorEstadosAltura plugin;
 	
 	@Test
 	public void EstadoDefectuoso() throws Exception{
@@ -57,7 +57,7 @@ public class AnalizadorAlturaTest {
 	}
 	
 	private void levantarEstados(String archivo) throws Exception{
-		plugin = new CargadorArchivos();
+		plugin = new CargadorEstadosAltura();
 		plugin.cargarEstados(archivo);
 	}
 	
